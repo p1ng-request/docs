@@ -24,12 +24,13 @@ naas.scheduler.add(path="path/to/my/super/notebook.ipynb", recurrence="0 9 * * *
 
 ## Parameters
 
-`notif_down` : If you need to receive email when notebook fails.
+`notif_down` : Receive email when notebook run fails.
 
-`notif_up` : If you need to receive email when notebook run well.
+`notif_up` : Receive email when notebook run well.
 
 ```python
 params = {"notif_down": "bob@naas.ai", "notif_up": "georges@naas.ai"}
+
 naas.scheduler.add(recurrence="0 9 * * *", params=params)
 ```
 
