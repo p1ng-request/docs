@@ -12,13 +12,13 @@ If you use Naas Cloud skip the install phase
 
 Notebooks is awesome, but use them in production is messy, so we created Naas to allow any Jupyter singleuser to become a safe production server !
 
-### Prerequisite:
+### How to install
+
+#### Prerequisite
 
 * `JUPYTER_SERVER_ROOT` =&gt; Should be set as your home folder
 * `JUPYTERHUB_USER` =&gt; Should be set as your machine user, not root
 * `JUPYTERHUB_API_TOKEN` =&gt; should be auto set by your hub
-
-### How to install
 
 ```python
 !pip install nass
