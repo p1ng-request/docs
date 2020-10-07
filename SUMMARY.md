@@ -2,12 +2,12 @@
 
 * [Quickstart](README.md)
 * [On-prem install](onprem-install.md)
-* [API](api.md)
-* [Asset](asset.md)
-* [Dependency](dependency.md)
-* [Secret](secret.md)
 
 ## Features
 
 * [Scheduler](features/scheduler.md)
+* [Api](features/api.md)
+* [Asset](features/asset.md)
+* [Dependency](features/dependency.md)
+* [Secret](features/secret.md)
 

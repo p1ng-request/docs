@@ -14,7 +14,7 @@ naas.assets.add()
 
 You will get url who download this current file when you open it.
 
-![screenshot-add-asset](.gitbook/assets/screenshot-2020-10-07-at-18.34.12.png)
+![screenshot-add-asset](../.gitbook/assets/screenshot-2020-10-07-at-18.34.12.png)
 
 ## Other file
 
