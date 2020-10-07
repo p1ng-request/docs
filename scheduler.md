@@ -1,8 +1,10 @@
 ---
-description: Get more options in scheduler system
+description: Make your notebook run at every period
 ---
 
 # Scheduler
+
+If you don't know cron  : [https://crontab.guru/](https://crontab.guru/)
 
 ## Basic
 
@@ -12,7 +14,7 @@ Send in production this notebook and run it, every day at 9:00 :
 naas.scheduler.add(recurrence="0 9 * * *")
 ```
 
-## Other file
+## Other notebook
 
 You can also give a path to the function and that will deploy this one instead of the current one.
 
