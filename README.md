@@ -54,7 +54,7 @@ naas.scheduler.add(recurrence="0 9 * * *")
 
 ### Dependency
 
-Copy in production this notebook as dependency and allow other Scheduler or API to use it. 
+Copy in production this notebook as dependency and allow notebooksI to use it. 
 
 ```python
 naas.dependency.add("test.csv")

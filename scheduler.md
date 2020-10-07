@@ -62,5 +62,7 @@ Need to understand why, something go bad ?
 
 ```python
 naas.scheduler.add(recurrence="0 9 * * *", debug=True)
+# or
+naas.scheduler.delete(debug=True)
 ```
 

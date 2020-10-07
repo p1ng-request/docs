@@ -5,4 +5,6 @@
 * [Scheduler](scheduler.md)
 * [API](api.md)
 * [Asset](asset.md)
+* [Dependency](dependency.md)
+* [Secret](secret.md)
 

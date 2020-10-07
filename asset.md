@@ -1,10 +1,10 @@
 ---
-description: get more option in asset
+description: Expose assets by url
 ---
 
 # Asset
 
-## Basic add
+## Simple
 
 Copy in production this current file as asset \( file \) and allow to get it by calling the returned url `naas.asset.add()`
 
@@ -32,5 +32,35 @@ This will display from the url the file instead of download it .
 naas.assets.add(None, {"inline": True})
 ```
 
+## List current
 
+You don't remember how many assets you have ?
+
+```python
+naas.asset.currents()
+```
+
+Optionally you can get the raw result :
+
+```python
+naas.asset.currents(raw=True)
+```
+
+## Delete
+
+You can remove any scheduler capability like that, it takes optionally a path .
+
+```python
+naas.asset.delete()
+```
+
+## Debug
+
+Need to understand why, something go bad ?
+
+```python
+naas.asset.add(debug=True)
+# or
+naas.asset.delete(debug=True)
+```
 
