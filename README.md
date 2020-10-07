@@ -4,10 +4,6 @@ description: How to start using Naas in minute
 
 # Quickstart
 
-![Naas](.gitbook/assets/naas_logo.svg)
-
-
-
 ## Welcome to Nass
 
 If you use Naas Cloud skip the install phase 
