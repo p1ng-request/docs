@@ -1,29 +1,16 @@
 ---
-description: get more options of API
+description: Run a notebook by calling an url
 ---
 
 # API
 
-## Getting Super Powers
+## Simple
 
-Becoming a super hero is a fairly straight forward process:
+Send in production this notebook and get url to run it when opened.
 
+```python
+naas.api.add()
 ```
-$ give me super-powers
-```
 
-{% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
-{% endhint %}
-
-Once you're strong enough, save the world:
-
-{% code title="hello.sh" %}
-```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
-```
-{% endcode %}
-
-
+![](.gitbook/assets/screenshot-2020-10-07-at-18.35.42.png)
 
