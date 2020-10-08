@@ -6,35 +6,23 @@ description: How to start using Naas in minute
 
 ## Welcome to Nass
 
-If you use Naas Cloud skip the install phase 
+If you wanna use Naas on your jupyter it's free and open source follow : 
 
-### Why Nass exist
+{% page-ref page="onprem-install.md" %}
 
-Notebooks is awesome, but use them in production is messy, so we created Naas to allow any Jupyter singleuser to become a safe production server !
+### Why Naas exist
 
-### How to install
+{% hint style="danger" %}
+Jupyter Notebooks are awesome, but use them in production is messy.
+{% endhint %}
 
-#### Prerequisite
+{% hint style="success" %}
+Naas allow any Jupyter Notebooks become a safe production server !
+{% endhint %}
 
-* `JUPYTER_SERVER_ROOT` =&gt; Should be set as your home folder
-* `JUPYTERHUB_USER` =&gt; Should be set as your machine user, not root
-* `JUPYTERHUB_API_TOKEN` =&gt; should be auto set by your hub
+## Naas basic
 
-```python
-!pip install nass
-```
-
-Start the server in your Jupyter singleuser machine: 
-
-```bash
-!python -m naas.runner &
-```
-
-You can now delete both previous cells
-
-## Use Naas
-
-Then import Naas :
+Import Naas in your notebook :
 
 ```python
 import naas
@@ -45,12 +33,15 @@ import naas
 Send in production this notebook and run it, every day at 9:00 
 
 ```python
+# do stuff in your notebook
 naas.scheduler.add(recurrence="0 9 * * *")
 ```
 
+{% page-ref page="features/scheduler.md" %}
+
 ### Dependency
 
-Copy in production this notebook as dependency and allow notebooksI to use it. 
+Copy in production `test.csv` as dependency: 
 
 ```python
 naas.dependency.add("test.csv")
@@ -58,11 +49,11 @@ naas.dependency.add("test.csv")
 
 Then you can use `test.csv` in your production notebook.
 
+{% page-ref page="features/dependency.md" %}
+
 ### Secret
 
-Copy in production your secret and allow Notebook to use it. 
-
-Run this line:
+Copy in production your secret :
 
 ```python
 naas.secret.add(name="MY_API_KEY", secret="SUPER_SECRET_API_KEY")
@@ -74,19 +65,15 @@ Remove the previous line and get your secret with :
 naas.secret.get(name="MY_API_KEY")
 ```
 
-This allow you to push your notebook in production without Sensitive data in it
+This allow you to push your notebook in production without Sensitive data in it.
 
-## Feature that have external dependency
+{% page-ref page="features/secret.md" %}
 
-If you use Naas cloud they all work natively, otherwise go to Custom install
+## Naas advanced
 
-### Notification
+If you use Naas cloud they all work natively, otherwise go to :
 
-Send and email notification to anyone,  to notify data as change, notebook as run etc.. 
-
-```python
-naas.notifications.send(email="elon@musk.com", subject="The tesla action is going up", content="check in the link the new chart data maide with naas from fresh dataset : [LINK]")
-```
+{% page-ref page="onprem-install.md" %}
 
 ### Notebook as API
 
@@ -96,7 +83,7 @@ Copy in production this notebook and allow to run it by calling the returned url
 naas.api.add()
 ```
 
-Call the Url with your navigator you will get a message and see the notebook has run.
+Call the url with your navigator you will get a message and see the notebook has run.
 
 If you want download the notebook result instead, add this line: 
 
@@ -104,13 +91,33 @@ If you want download the notebook result instead, add this line:
 naas.api.respond_notebook()
 ```
 
+{% page-ref page="features/api.md" %}
+
 ### Expose Asset
 
 Copy in production this asset \( file \) and allow to get it by calling the returned url:
 
 ```python
-naas.assets.add()
+link = naas.assets.add("tesla-chart.html")
 ```
+
+{% page-ref page="features/asset.md" %}
+
+### Notification
+
+Send and email notification to anyone,  notify data have change, notebook have run etc.. 
+
+```python
+# Get link var from previous step
+email = "elon@musk.com"
+subject = "The tesla action is going up"
+content = "check in the link the chart data maide from fresh dataset : " + link
+naas.notifications.send(email=email, subject=subject, content=content)
+```
+
+{% page-ref page="features/notification.md" %}
+
+
 
 
 

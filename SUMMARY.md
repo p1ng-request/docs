@@ -9,5 +9,6 @@
 * [Api](features/api.md)
 * [Asset](features/asset.md)
 * [Dependency](features/dependency.md)
+* [Notification](features/notification.md)
 * [Secret](features/secret.md)
 
