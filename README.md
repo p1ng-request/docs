@@ -8,7 +8,7 @@ description: How to start using Naas in minute
 
 If you wanna use Naas on your jupyter it's free and open source follow : 
 
-{% page-ref page="onprem-install.md" %}
+{% page-ref page="local-install.md" %}
 
 ### Why Naas exist
 

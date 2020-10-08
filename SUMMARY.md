@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Quickstart](README.md)
+* [Local install](local-install.md)
 * [On-prem install](onprem-install.md)
 
 ## Features
