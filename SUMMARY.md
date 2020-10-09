@@ -6,12 +6,12 @@
 
 ## Features
 
-* [Scheduler](features/scheduler.md)
-* [API](features/api.md)
-* [Asset](features/asset.md)
-* [Dependency](features/dependency.md)
-* [Notification](features/notification.md)
-* [Secret](features/secret.md)
+* [⏰ Scheduler](features/scheduler.md)
+* [⚙️ API](features/api.md)
+* [🖼️ Assets](features/asset.md)
+* [🔗 Dependency](features/dependency.md)
+* [🛎️ Notifications](features/notification.md)
+* [🤐 Secret](features/secret.md)
 
 ## Others docs
 

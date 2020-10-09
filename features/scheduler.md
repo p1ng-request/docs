@@ -2,7 +2,7 @@
 description: Make your notebook run at every period
 ---
 
-# Scheduler
+# ⏰ Scheduler
 
 If you don't know cron  : [https://crontab.guru/](https://crontab.guru/)
 

@@ -2,7 +2,7 @@
 description: Send simple email from your notebooks
 ---
 
-# Notification
+# 🛎️ Notifications
 
 ## Text
 

@@ -2,7 +2,7 @@
 description: Add in production folder file needed by your notebooks
 ---
 
-# Dependency
+# 🔗 Dependency
 
 ## Simple
 

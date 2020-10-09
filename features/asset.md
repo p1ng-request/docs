@@ -2,7 +2,7 @@
 description: Expose assets by url
 ---
 
-# Asset
+# 🖼️ Assets
 
 ## Add
 

@@ -2,7 +2,7 @@
 description: Copy in secure location your sensible data and allow Notebook to use it.
 ---
 
-# Secret
+# 🤐 Secret
 
 ## Simple
 
