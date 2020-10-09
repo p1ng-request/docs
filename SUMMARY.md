@@ -1,8 +1,8 @@
 # Table of contents
 
-* [Get started](README.md)
-* [Use on your computer](local-install.md)
-* [Deploy on Kubernetes](onprem-install.md)
+* [🚀 Get started](README.md)
+* [🖥️ Use on your computer](local-install.md)
+* [☁️ Deploy on Kubernetes](onprem-install.md)
 
 ## Features
 

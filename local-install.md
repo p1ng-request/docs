@@ -2,7 +2,7 @@
 description: Install Naas in your local Jupyter environment.
 ---
 
-# Use on your computer
+# 🖥️ Use on your computer
 
 ## Is your local env ready?
 

@@ -2,7 +2,7 @@
 description: Install Naas on a Kubernetes environment.
 ---
 
-# Deploy on Kubernetes
+# ☁️ Deploy on Kubernetes
 
 ## Before your start
 

@@ -2,7 +2,7 @@
 description: How to start using Naas in minutes.
 ---
 
-# Get started
+# 🚀 Get started
 
 ## Welcome to Naas
 
