@@ -1,34 +1,36 @@
 ---
-description: How to start using Naas in minute
+description: How to start using Naas in minutes.
 ---
 
-# Quickstart
+# Get started
 
-## Welcome to Nass
+## Welcome to Naas
 
-If you wanna use Naas on your jupyter it's free and open source follow : 
+If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  : 
 
 {% page-ref page="local-install.md" %}
 
-### Why Naas exist
+### Why Naas?
 
 {% hint style="danger" %}
-Jupyter Notebooks are awesome, but use them in production is messy.
+Jupyter Notebooks are awesome, but using them in production can be risky & messy.
 {% endhint %}
 
 {% hint style="success" %}
-Naas allow any Jupyter Notebooks become a safe production server !
+Naas allows any Jupyter Notebooks to become a safe production environment!
 {% endhint %}
 
-## Naas basic
+## First things first
 
-Import Naas in your notebook :
+Naas makes a dynamic production environment based out of your current folder.
+
+Create a folder, open a notebook, and import Naas :
 
 ```python
 import naas
 ```
 
-### Schedule
+### Schedule your first notebook
 
 Send in production this notebook and run it, every day at 9:00 
 
@@ -39,27 +41,25 @@ naas.scheduler.add(recurrence="0 9 * * *")
 
 {% page-ref page="features/scheduler.md" %}
 
-### Dependency
+### Add a Dependency
 
-Copy in production `test.csv` as dependency: 
+Send in production any file type like `test.csv` as a dependency:
 
 ```python
 naas.dependency.add("test.csv")
 ```
 
-Then you can use `test.csv` in your production notebook.
-
 {% page-ref page="features/dependency.md" %}
 
-### Secret
+### Add a Secret key
 
-Copy in production your secret :
+Copy in production any secret key :
 
 ```python
-naas.secret.add(name="MY_API_KEY", secret="SUPER_SECRET_API_KEY")
+naas.secret.add(name="API_NAME", secret="API_KEY")
 ```
 
-Remove the previous line and get your secret with :
+Remove the previous line and get your secret key with :
 
 ```python
 naas.secret.get(name="MY_API_KEY")

@@ -1,10 +1,10 @@
 ---
-description: install Naas in your local jupyter
+description: Install Naas in your local Jupyter environment.
 ---
 
-# Local install
+# Use on your computer
 
-## Check before install
+## Is your local env ready?
 
 Open a new notebook and then check if the require env is set :
 
@@ -18,7 +18,7 @@ print(os.getenv('NB_USER'), os.getenv('JUPYTERHUB_USER'), os.getenv('JUPYTERHUB_
 
 * `NB_USER` =&gt; Should be set as your notebook user, probably `joyvan`
 * `JUPYTERHUB_USER` =&gt; Should be set as your machine user, not root
-* `JUPYTERHUB_API_TOKEN` =&gt; should be auto set by your hub
+* `JUPYTERHUB_API_TOKEN` =&gt; should be auto-set by your hub
 
 ## Install
 
@@ -29,11 +29,11 @@ Naas is a python module, install it with:
 ```
 
 {% hint style="warning" %}
-You can test on your local computer only Scheduler feature.
+You can test on your local computer only the Scheduler feature.
 {% endhint %}
 
 {% hint style="danger" %}
-Full install needs Kubernet and Docker knowledge.
+Full install needs Kubernetes and Docker. Let's talk.
 {% endhint %}
 
 {% page-ref page="onprem-install.md" %}
