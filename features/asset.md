@@ -1,18 +1,18 @@
 ---
-description: Expose assets by url
+description: Expose assets by URL.
 ---
 
 # 🖼️ Assets
 
 ## Add
 
-Copy in production this current file as asset \( file \) and allow to get it by calling the returned url `naas.asset.add()`
+Copy in production this current file as an asset \(file\) and allow yourself to get it by calling the returned URL.
 
 ```python
 naas.assets.add()
 ```
 
-You will get url who download this current file when you open it.
+You will get URL who downloads this current file when you open it.
 
 ![screenshot-add-asset](../.gitbook/assets/screenshot-2020-10-07-at-18.34.12.png)
 
