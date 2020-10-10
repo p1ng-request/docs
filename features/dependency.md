@@ -6,7 +6,7 @@ description: Add in production folder file needed by your notebooks
 
 ## Simple
 
-Copy in production this notebook as dependency and allow notebooksI to use it. 
+Copy in production this notebook as a dependency and allow notebooks to use it. 
 
 ```python
 naas.dependency.add("test.csv")
@@ -64,7 +64,7 @@ naas.dependency.get(path="path/to/my/super/data.csv", histo="2020100810122187966
 
 ## Clear
 
-You can clear previous version of a file pushed into the production:
+You can clear the previous version of a file pushed into the production:
 
 ### One
 
@@ -92,7 +92,7 @@ naas.dependency.clear(path="path/to/my/super/data.csv")
 
 ## Delete
 
-You can remove any scheduler capability like that, it takes optionally a path 
+You can remove any scheduler capability like that, it takes optionally a path. 
 
 ### Current
 
@@ -112,9 +112,9 @@ naas.dependency.delete(path="path/to/my/super/data.csv")
 naas.dependency.delete(debug=True)
 ```
 
-## List Api
+## List Dependency
 
-You don't remember how many Scheduled notebook you have ?
+You don't remember how many Dependency notebooks you have?
 
 ### Simple
 

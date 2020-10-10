@@ -6,7 +6,7 @@ description: Send simple email from your notebooks
 
 ## Text
 
-Send and email notification to anyone,  notify data have change, notebook have run etc.. 
+Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc... 
 
 ```python
 email = "elon@musk.com"
@@ -27,7 +27,7 @@ files = ["path/to/my/super/data.csv"]
 naas.notifications.send(email=email, subject=subject, content=content, files=files)
 ```
 
-## Html
+## HTML
 
 ```python
 email = "elon@musk.com"

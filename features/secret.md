@@ -6,19 +6,23 @@ description: Copy in secure location your sensible data and allow Notebook to us
 
 ## Simple
 
-Copy in production this notebook as dependency and allow notebooksI to use it. 
+Copy in production your secret keys and allow notebooks to use it. 
 
-### Save it
+### Add
+
+Name your secret and add it's key.
 
 ```python
-naas.secret.add(name="MY_API_KEY", secret="SUPER_SECRET_API_KEY")
+naas.secret.add(name="API_NAME", secret="API_KEY")
 ```
 
 {% hint style="info" %}
-You can delete this line from your notebook after runned it, your data is saved and secure
+You can delete this line from your notebook after running it, your data is safe and secure.
 {% endhint %}
 
-### Get it 
+### Get
+
+Returns your secret \(use with caution\).
 
 ```python
 naas.secret.get(name="MY_API_KEY")
@@ -26,7 +30,7 @@ naas.secret.get(name="MY_API_KEY")
 
 ## List current
 
-You don't remember how many assets you have ?
+You don't remember how many secrets you have?
 
 ```python
 naas.secret.currents()
@@ -40,7 +44,7 @@ naas.secret.currents(raw=True)
 
 ## Delete
 
-You can remove any scheduler capability like that, it takes optionally a path .
+You can remove any scheduler capability like that, it takes optionally a path.
 
 ```python
 naas.secret.delete()
@@ -48,7 +52,7 @@ naas.secret.delete()
 
 ## Debug
 
-Need to understand why, something go bad ?
+Need to understand why something goes bad?
 
 ```python
 naas.secret.add("test.csv", debug=True)

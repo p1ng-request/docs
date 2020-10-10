@@ -258,7 +258,7 @@ naas.api.delete(path="path/to/my/super/notebook.ipynb")
 naas.api.delete(debug=True)
 ```
 
-## List API
+## List APIs
 
 You don't remember how many API notebooks you have?
 
