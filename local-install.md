@@ -6,7 +6,7 @@ description: Install Naas in your local Jupyter environment.
 
 ## Is your local env ready?
 
-Open a new notebook and then check if the require env is set :
+Open a new notebook and check if the require env is set :
 
 ```python
 import os
@@ -14,7 +14,7 @@ print('Yes' if (os.getenv('NB_USER') and os.getenv('JUPYTERHUB_USER') and os.get
 print(os.getenv('NB_USER'), os.getenv('JUPYTERHUB_USER'), os.getenv('JUPYTERHUB_API_TOKEN'))
 ```
 
-#### Require Env
+#### Env requirements
 
 * `NB_USER` =&gt; Should be set as your notebook user, probably `joyvan`
 * `JUPYTERHUB_USER` =&gt; Should be set as your machine user, not root

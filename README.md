@@ -41,7 +41,7 @@ naas.scheduler.add(recurrence="0 9 * * *")
 
 {% page-ref page="features/scheduler.md" %}
 
-### Add a Dependency
+### Add a dependency
 
 Send in production any file type like `test.csv` as a dependency:
 
@@ -51,7 +51,7 @@ naas.dependency.add("test.csv")
 
 {% page-ref page="features/dependency.md" %}
 
-### Add a Secret key
+### Add a secret key
 
 Copy in production any secret key :
 
@@ -93,7 +93,7 @@ naas.api.respond_notebook()
 
 {% page-ref page="features/api.md" %}
 
-### Expose Asset
+### Expose assets
 
 Copy in production this asset \( file \) and allow to get it by calling the returned url:
 
@@ -103,7 +103,7 @@ link = naas.assets.add("tesla-chart.html")
 
 {% page-ref page="features/asset.md" %}
 
-### Send Notifications
+### Send notifications
 
 Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc...
 
