@@ -1,10 +1,12 @@
 ---
-description: Make your notebook run at every period
+description: 'Make your notebook run, even when you sleep.'
 ---
 
 # ⏰ Scheduler
 
-If you don't know cron  : [https://crontab.guru/](https://crontab.guru/)
+We user CRON to schedule notebooks f you don't know the syntax, check it out : [https://crontab.guru/](https://crontab.guru/)
+
+It's a common language to schedule events.
 
 ## Add
 

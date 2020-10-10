@@ -13,7 +13,7 @@ Naas is not only a python module, it's a set of tools that work perfectly togeth
 Below the set of tools we run to build the perfect notebook experience.
 
 {% hint style="info" %}
-Documentation on how to install them, is coming soon.
+Documentation on how to install them is coming soon.
 {% endhint %}
 
 ### [Naas](https://hub.docker.com/r/jupyternaas/naas) 

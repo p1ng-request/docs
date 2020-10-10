@@ -20,7 +20,7 @@ Jupyter Notebooks are awesome, but using them in production can be risky & messy
 Naas allows any Jupyter Notebooks to become a safe production environment!
 {% endhint %}
 
-## First things first
+## Basic features
 
 Naas makes a dynamic production environment based out of your current folder.
 
@@ -65,27 +65,27 @@ Remove the previous line and get your secret key with :
 naas.secret.get(name="MY_API_KEY")
 ```
 
-This allow you to push your notebook in production without Sensitive data in it.
+This allows you to push your notebook in production without sensitive data getting exposed. 
 
 {% page-ref page="features/secret.md" %}
 
-## Naas advanced
+## Advanced features
 
 If you use Naas cloud they all work natively, otherwise go to :
 
 {% page-ref page="onprem-install.md" %}
 
-### Notebook as API
+### Use Notebooks as API
 
-Copy in production this notebook and allow to run it by calling the returned url:
+Copy in production this notebook and allow to run it by calling the returned URL:
 
 ```python
 naas.api.add()
 ```
 
-Call the url with your navigator you will get a message and see the notebook has run.
+Call the URL with your navigator you will get a message and see the notebook has run.
 
-If you want download the notebook result instead, add this line: 
+If you want to download the notebook result instead, add this line: 
 
 ```python
 naas.api.respond_notebook()
@@ -103,9 +103,9 @@ link = naas.assets.add("tesla-chart.html")
 
 {% page-ref page="features/asset.md" %}
 
-### Notification
+### Send Notifications
 
-Send and email notification to anyone,  notify data have change, notebook have run etc.. 
+Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc...
 
 ```python
 # Get link var from previous step

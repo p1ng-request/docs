@@ -11,7 +11,7 @@
 * [🖼️ Assets](features/asset.md)
 * [🔗 Dependency](features/dependency.md)
 * [🛎️ Notifications](features/notification.md)
-* [🤐 Secret](features/secret.md)
+* [🔑 Secret keys](features/secret.md)
 
 ## Others docs
 
