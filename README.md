@@ -22,7 +22,7 @@ Naas allows any Jupyter Notebooks to become a safe production environment!
 
 ## Basic features
 
-Naas makes a dynamic production environment based out of your current folder.
+Naas makes a dynamic production environment based out of your current notebook folder.
 
 Create a folder, open a notebook, and import Naas :
 
@@ -30,7 +30,7 @@ Create a folder, open a notebook, and import Naas :
 import naas
 ```
 
-### Schedule your first notebook
+### Schedule your notebook
 
 Send in production this notebook and run it, every day at 9:00 
 

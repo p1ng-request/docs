@@ -4,9 +4,7 @@ description: 'Make your notebook run, even when you sleep.'
 
 # ⏰ Scheduler
 
-We user CRON to schedule notebooks f you don't know the syntax, check it out : [https://crontab.guru/](https://crontab.guru/)
-
-It's a common language to schedule events.
+We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru/)
 
 ## Add
 
@@ -26,9 +24,9 @@ naas.scheduler.add(path="path/to/my/super/notebook.ipynb", recurrence="0 9 * * *
 
 ### Parameters
 
-`notif_down` : Receive email when notebook run fails.
+`notif_down` : Receive an email when the notebook run fails.
 
-`notif_up` : Receive email when notebook run well.
+`notif_up` : Receive an email when the notebook runs well.
 
 ```python
 params = {"notif_down": "bob@naas.ai", "notif_up": "georges@naas.ai"}
@@ -44,7 +42,7 @@ naas.scheduler.add(recurrence="0 9 * * *", debug=True)
 
 ## List 
 
-You can list all version of a file pushed into the production:
+You can list all version of a file pushed into the production folder:
 
 ### Current file
 
@@ -88,7 +86,7 @@ naas.scheduler.get(path="path/to/my/super/notebook.ipynb", histo="20201008101221
 
 ## Clear
 
-You can clear previous version of a file pushed into the production:
+You can clear the previous version of a file pushed into the production:
 
 ### One
 
@@ -116,7 +114,7 @@ naas.scheduler.clear(path="path/to/my/super/notebook.ipynb")
 
 ## Get output
 
-You can get output of the production file:
+You can get the output of the production file:
 
 ### Get the last one
 
@@ -132,7 +130,7 @@ naas.scheduler.get_output(path="path/to/my/super/notebook.ipynb")
 
 ## Clear output
 
-You can clear previous  output of a file pushed into the production:
+You can clear the previous output of a file pushed into the production:
 
 ### One
 
@@ -148,7 +146,7 @@ naas.scheduler.clear_output(path="path/to/my/super/notebook.ipynb")
 
 ## Delete
 
-You can remove any scheduler capability like that, it takes optionally a path 
+You can remove any scheduler capability like that, it takes optionally a path: 
 
 ### Current
 
@@ -170,7 +168,7 @@ naas.scheduler.delete(debug=True)
 
 ## List Schedulers
 
-You don't remember how many Scheduled notebook you have ?
+You don't remember how many Scheduled notebooks you have?
 
 ### Simple
 

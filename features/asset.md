@@ -16,9 +16,9 @@ You will get url who download this current file when you open it.
 
 ![screenshot-add-asset](../.gitbook/assets/screenshot-2020-10-07-at-18.34.12.png)
 
-### Other file
+### Other files
 
-If you wanna ad other file than current one, give a path:
+If you want to add another file than the current one, give a path:
 
 ```python
 naas.assets.add("path/to/my/super/data.csv")
@@ -26,7 +26,7 @@ naas.assets.add("path/to/my/super/data.csv")
 
 ### Parameters
 
-`inline` : Get response in your web browser instead of downloading the result.
+`inline` : Get a response in your web browser instead of downloading the result.
 
 ```python
 params = {"inline": True}
@@ -86,7 +86,7 @@ naas.assets.get(path="path/to/my/super/data.csv", histo="20201008101221879662")
 
 ## Clear
 
-You can clear previous version of a file pushed into the production:
+You can clear the previous version of a file pushed into the production:
 
 ### One
 
@@ -114,7 +114,7 @@ naas.assets.clear(path="path/to/my/super/data.csv")
 
 ## Delete
 
-You can remove any scheduler capability like that, it takes optionally a path 
+You can remove any scheduler capability like that, it takes optionally a path.
 
 ### Current
 
@@ -134,9 +134,9 @@ naas.assets.delete(path="path/to/my/super/data.csv")
 naas.assets.delete(debug=True)
 ```
 
-## List Api
+## List Assets
 
-You don't remember how many Scheduled notebook you have ?
+You don't remember how many Assets notebook you have?
 
 ### Simple
 
