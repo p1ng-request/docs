@@ -15,5 +15,5 @@
 
 ## Others docs
 
-* [Naas drivers](https://naas.gitbook.io/drivers/)
+* [Drivers](https://naas.gitbook.io/drivers/)
 
