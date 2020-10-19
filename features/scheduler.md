@@ -28,6 +28,8 @@ naas.scheduler.add(path="path/to/my/super/notebook.ipynb", recurrence="0 9 * * *
 
 `notif_up` : Receive an email when the notebook runs well.
 
+`next_url` : Url to call when the notebook success, it can be any service even if an Notebook API
+
 ```python
 params = {"notif_down": "bob@naas.ai", "notif_up": "georges@naas.ai"}
 
