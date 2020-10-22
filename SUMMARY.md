@@ -16,5 +16,6 @@
 
 ## Others docs
 
+* [AWS & Deployment](others-docs/aws-and-deployment.md)
 * [Drivers](https://naas.gitbook.io/drivers/)
 
