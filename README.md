@@ -73,8 +73,6 @@ This allows you to push your notebook in production without sensitive data getti
 
 If you use Naas cloud they all work natively, otherwise go to :
 
-{% page-ref page="onprem-install.md" %}
-
 ### Use Notebooks as API
 
 Copy in production this notebook and allow to run it by calling the returned URL:

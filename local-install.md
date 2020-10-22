@@ -36,8 +36,6 @@ You can test on your local computer only the Scheduler feature.
 Full install needs Kubernetes and Docker. Let's talk.
 {% endhint %}
 
-{% page-ref page="onprem-install.md" %}
-
 ## Start
 
 Start the server in your Jupyter singleuser machine: 

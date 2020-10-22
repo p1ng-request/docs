@@ -2,8 +2,8 @@
 
 * [🚀 Get started](README.md)
 * [🖥️ Use on your computer](local-install.md)
-* [☁️ Deploy on Kubernetes](onprem-install.md)
 * [👍Updates](updates.md)
+* [☁️ Deploy on Kubernetes](onprem-install.md)
 
 ## Features
 
@@ -16,6 +16,5 @@
 
 ## Others docs
 
-* [AWS & Deployment](others-docs/aws-and-deployment.md)
 * [Drivers](https://naas.gitbook.io/drivers/)
 
