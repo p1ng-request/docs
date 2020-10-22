@@ -3,6 +3,7 @@
 * [🚀 Get started](README.md)
 * [🖥️ Use on your computer](local-install.md)
 * [☁️ Deploy on Kubernetes](onprem-install.md)
+* [👍Updates](updates.md)
 
 ## Features
 
@@ -16,8 +17,4 @@
 ## Others docs
 
 * [Drivers](https://naas.gitbook.io/drivers/)
-
----
-
-* [👍Updates](updates.md)
 

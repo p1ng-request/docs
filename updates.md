@@ -19,6 +19,8 @@ naas.update()
 !pip install --upgrade naas_
 ```
 
+## Changelog
+
 ## 0.10.1 \(2020-10-20\)
 
 ### Fix
@@ -36,12 +38,6 @@ naas.update()
 ### Feat
 
 * **scheduler**:✨ allow chaining scheduler
-
-## 0.8.6 \(2020-10-16\)
-
-### Fix
-
-* build version python 3.8
 
 ## 0.8.5 \(2020-10-15\)
 
