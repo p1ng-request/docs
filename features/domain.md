@@ -4,6 +4,12 @@ description: Link custom domain to your public url
 
 # 🏰Domain
 
+{% hint style="danger" %}
+This feature is in early stage development ! 
+
+Contact devops@cashstory.com if you want to test it.
+{% endhint %}
+
 ## Simple
 
 Copy in production this notebook as a dependency and allow notebooks to use it. 
