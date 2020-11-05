@@ -11,6 +11,7 @@
 * [⚙️ API](features/api.md)
 * [🖼️ Assets](features/asset.md)
 * [🔗 Dependency](features/dependency.md)
+* [🏰Domain](features/domain.md)
 * [🛎️ Notifications](features/notification.md)
 * [🔑 Secret keys](features/secret.md)
 
