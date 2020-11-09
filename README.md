@@ -115,7 +115,34 @@ naas.notifications.send(email=email, subject=subject, content=content)
 
 {% page-ref page="features/notification.md" %}
 
+## Version
 
+### Get
 
+the version number in your local machine
 
+```python
+import naas
+naas.version()
+```
+
+### Get remote version
+
+the last version number in Github
+
+```python
+import naas
+naas.get_last_version()
+```
+
+## Documentation
+
+Show a button to quick open this documentation from Jupyter
+
+```python
+import naas
+naas.doc()
+```
+
+## 
 
