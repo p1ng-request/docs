@@ -10,6 +10,10 @@ This feature is in early stage development !
 Contact devops@cashstory.com if you want to test it.
 {% endhint %}
 
+{% hint style="info" %}
+Set CNAME in your domain or subdomain to:  `a32a71be9e5d1468a925011cc1a08bc1-1297102828.eu-west-3.elb.amazonaws.com`
+{% endhint %}
+
 ## Simple
 
 Copy in production this notebook as a dependency and allow notebooks to use it. 
