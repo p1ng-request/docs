@@ -4,6 +4,8 @@ description: Link custom domain to your public url
 
 # 🏰Domain
 
+If you are in local 
+
 {% hint style="danger" %}
 This feature is in early stage development ! 
 
