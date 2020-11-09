@@ -126,6 +126,24 @@ import naas
 naas.version()
 ```
 
+### Are you at the last version
+
+```python
+import naas
+
+naas.up_to_date()
+```
+
+## Update
+
+If you need update it will restart your machine
+
+```python
+import naas
+naas.auto_update()
+
+```
+
 ### Get remote version
 
 the last version number in Github
@@ -144,5 +162,30 @@ import naas
 naas.doc()
 ```
 
-## 
+## Changelog
+
+Show changelog
+
+```python
+import naas
+naas.changelog()
+```
+
+## Feature request
+
+show feature request inside Jupyter
+
+```python
+import naas
+mode = "naas" # can be naas, naas_drivers, awesome_notebook
+naas.feature_request(mode)
+```
+
+## Check if you are in production
+
+```python
+import naas
+
+naas.is_production()
+```
 
