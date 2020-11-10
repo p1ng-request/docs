@@ -134,6 +134,15 @@ import naas
 naas.up_to_date()
 ```
 
+### Get remote version
+
+the last version number in Github
+
+```python
+import naas
+naas.get_last_version()
+```
+
 ## Update
 
 If you need update it will restart your machine
@@ -142,15 +151,6 @@ If you need update it will restart your machine
 import naas
 naas.auto_update()
 
-```
-
-### Get remote version
-
-the last version number in Github
-
-```python
-import naas
-naas.get_last_version()
 ```
 
 ## Documentation
