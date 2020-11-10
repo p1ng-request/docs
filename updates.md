@@ -1,5 +1,5 @@
 ---
-description: Latest version 0.10.1
+description: Latest version 0.17.1
 ---
 
 # 👍Updates
@@ -16,10 +16,53 @@ naas.update()
 ### In your local machine
 
 ```python
-!pip install --upgrade naas_
+!pip install --upgrade naas
 ```
 
 ## Changelog
+
+### 0.17.1 \(2020-11-09\)
+
+#### Fix
+
+* auto\_update
+
+### 0.17.0 \(2020-11-09\)
+
+#### Feat
+
+* build without naas\_driver image but package
+
+### 0.16.2 \(2020-11-05\)
+
+#### Fix
+
+* proxy add function
+
+### 0.16.1 \(2020-11-05\)
+
+#### Fix
+
+* notification and test
+
+### 0.16.0 \(2020-11-05\)
+
+#### Feat
+
+* **notifications**: add auth in notif
+* **domain**: add domain config proxy system
+
+### 0.15.1 \(2020-11-04\)
+
+#### Fix
+
+* **runner**: allow form and json
+
+### 0.15.0 \(2020-11-04\)
+
+#### Feat
+
+* **runner**: add form request
 
 ### 0.14.0 \(2020-11-02\)
 
