@@ -38,6 +38,28 @@ params = {"notif_down": "bob@naas.ai", "notif_up": "georges@naas.ai"}
 naas.api.add(params=params)
 ```
 
+### Dynamic Parameters
+
+When you notebook `url` is called in **get** or **post**, it accept parameters with **mimetype** :
+
+`application/x-www-form-urlencoded`
+
+`application/json`
+
+They will be inject in new cell in first position in your notebook.
+
+{% hint style="info" %}
+If You want them to be add at specific place add tag **parameters** in a cell and your **dynamic parameters** will be add in a new cell next to it.
+{% endhint %}
+
+![](../.gitbook/assets/screenshot-2020-11-14-at-14.34.13.png)
+
+In this screenshot you can see variables from our notebook in first cell and in the second cell the **dynamic parameters**
+
+{% hint style="warning" %}
+If your **dynamic parameters** doesn't follow python naming convention, they will be convert to exemple Full Name become Full\_Name.
+{% endhint %}
+
 ### Debug
 
 Need to understand why somethings go bad?
