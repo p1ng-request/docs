@@ -2,7 +2,7 @@
 
 * [🚀 Get started](README.md)
 * [🖥️ Use on your computer](local-install.md)
-* [👍Updates](updates.md)
+* [👍 Updates](updates.md)
 * [☁️ Deploy on Kubernetes](onprem-install.md)
 
 ## Features

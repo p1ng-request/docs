@@ -2,7 +2,7 @@
 description: Latest version 0.17.1
 ---
 
-# 👍Updates
+# 👍 Updates
 
 ## To get the latest version 
 
