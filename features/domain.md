@@ -2,7 +2,7 @@
 description: Link custom domain to your public url
 ---
 
-# 🏰Domain
+# 🏰 Domain
 
 If you are in local 
 
