@@ -9,27 +9,30 @@ description: Send simple email from your notebooks
 Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc... 
 
 ```python
-email = "elon@musk.com"
+import naas
+email_to = "elon@musk.com"
 subject = "The tesla action is going up"
 content = "check in the link the chart data maide from fresh dataset : [LINK]"
 
-naas.notifications.send(email_to=email, subject=subject, html=content)
+naas.notifications.send(email_to=email_to, subject=subject, html=content)
 ```
 
-## File
+## **Attachments**
 
 ```python
-email = "elon@musk.com"
+import naas
+email_to = "elon@musk.com"
 subject = "The tesla action is going up"
 content = "check in the link the chart data maide from fresh dataset : [LINK]"'
 files = ["path/to/my/super/data.csv"]
 
-naas.notifications.send(email_to=email, subject=subject, html=content, files=files)
+naas.notifications.send(email_to=email_to, subject=subject, html=content, files=files)
 ```
 
-## HTML
+## HTML  
 
 ```python
+import naas
 email = "elon@musk.com"
 subject = "The tesla action is going up"
 image_path = "path/to/my/super/data.png"
@@ -41,14 +44,12 @@ naas.notifications.send(email_to=email, subject=subject, html=content)
 ## Custom sender
 
 ```python
+import naas
 email_to = "elon@musk.com"
-email_from = "bob@cahstory.com"
-subject = "The tesla action is going up"
-image_path = "path/to/my/super/data.png"
-html = f"<h1>Check in the link the chart image below</h1><br/> <img src="{image_path}"/>"
+email_from = "tony@stark.com"
+subject = "❤️ Check this email sent from Naas"
+content = "I made this in 1 min. It's so easy to send emails with naas.ai"
 
-naas.notifications.send(email_to=email, subject=subject, html=content, email_from=email_from)
+naas.notifications.send(email_to=email_to, subject=subject, html=content, email_from=email_from)
 ```
-
-
 
