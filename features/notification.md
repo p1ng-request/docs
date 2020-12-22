@@ -33,12 +33,12 @@ naas.notifications.send(email_to=email_to, subject=subject, html=content, files=
 
 ```python
 import naas
-email = "elon@musk.com"
+email_to = "elon@musk.com"
 subject = "The tesla action is going up"
 image_path = "path/to/my/super/data.png"
-html = f"<h1>Check in the link the chart image below</h1><br/> <img src="{image_path}"/>"
+content = f"<h1>Check in the link the chart image below</h1><br/> <img src="{image_path}"/>"
 
-naas.notifications.send(email_to=email, subject=subject, html=content)
+naas.notifications.send(email_to=email_to, subject=subject, html=content)
 ```
 
 ## Custom sender
