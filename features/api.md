@@ -57,7 +57,7 @@ If You want them to be added at specific place add tag **parameters** in a cell 
 In this screenshot you can see variables from our notebook in first cell and in the second cell the **dynamic parameters**  injected .
 
 {% hint style="warning" %}
-If your **dynamic parameters** doesn't follow python naming convention, they will be convert to exemple Full Name become Full\_Name.
+If your **dynamic parameters** doesn't follow python naming convention, they will be convert, exemple if you send `Full Name` it become `Full_Name`.
 {% endhint %}
 
 ### Debug
