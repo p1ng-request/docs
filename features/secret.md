@@ -1,45 +1,37 @@
 ---
-description: Copy in secure location your sensible data and allow Notebook to use it.
+description: Copy in secure location your sensible data and use it in your notebook.
 ---
 
 # 🔑 Secret keys
 
-## Simple
+## Add or edit secret
 
-Copy in production your secret keys and allow notebooks to use it. 
-
-### Add
-
-Name your secret and add it's key.
+Add new secret in your naas
 
 ```python
 naas.secret.add(name="API_NAME", secret="API_KEY")
 ```
 
-{% hint style="info" %}
-You can delete this line from your notebook after running it, your data is safe and secure.
+{% hint style="warning" %}
+After running it, your data is safe and secure you can delete this line from your notebook.
 {% endhint %}
 
-### Get
+To edit a secret, use the function above with the same name and change the secret parameters.
 
-Returns your secret \(use with caution\).
+## Get your secret
+
+Returns your secret store in naas
 
 ```python
 naas.secret.get(name="MY_API_KEY")
 ```
 
-## List current
+## List all secrets name's
 
-You don't remember how many secrets you have?
-
-```python
-naas.secret.currents()
-```
-
-Optionally you can get the raw result :
+You don't remember your secret ?
 
 ```python
-naas.secret.currents(raw=True)
+naas.secret.list()
 ```
 
 ## Delete
@@ -59,6 +51,4 @@ naas.secret.add("test.csv", debug=True)
 # or
 naas.secret.delete("test.csv", debug=True)
 ```
-
-
 
