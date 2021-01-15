@@ -53,3 +53,21 @@ content = "I made this in 1 min. It's so easy to send emails with naas.ai"
 naas.notifications.send(email_to=email_to, subject=subject, html=content, email_from=email_from)
 ```
 
+## List
+
+Allows retrieving the details of emails/notifications sent by the user.
+
+```python
+import naas
+naas.notifications.list()
+```
+
+## List all \(Admin\)
+
+Allows retrieving the details of emails/notifications sent by all users as admin.
+
+```python
+import naas
+naas.notifications.list_all()
+```
+
