@@ -50,7 +50,7 @@ You can now delete previous cells
 
 It will run until you stop your Jupyter server, go back to:
 
-{% page-ref page="./" %}
+{% page-ref page="../" %}
 
 
 

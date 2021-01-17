@@ -58,7 +58,7 @@ One of the principal challenge with Naas is that it needs to fit user demands th
 
 ### Infrastructure Diagram
 
-![](.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image%20%283%29.png)
 
 This design allow us to deploy infrastructure into 3 different locations at the same time. Kubernetes nodes are started as the demand is growing and stopped when single users servers are shutting down.
 
@@ -66,7 +66,7 @@ This design allow us to deploy infrastructure into 3 different locations at the 
 
 We needed a solution to organise the deployment of the infrastructure, doing everything in the console was not a solution as it is very difficult to replicate the changes into different account \(dev, production, ... \).
 
-![](.gitbook/assets/image%20%282%29.png)
+![](../.gitbook/assets/image%20%282%29.png)
 
 Terraform was definitely the way to go, we can version our infrastructure into Github and verify what modifications will happen on the infrastructure before actually applying the changes.
 
@@ -81,7 +81,7 @@ terraform apply
 
 #### EKS Configuration Example
 
-![](.gitbook/assets/image.png)
+![](../.gitbook/assets/image.png)
 
 We are using the [kubernetes/autoscaler](https://github.com/kubernetes/autoscaler) with two different worker groups to separate the scaling and deployment of NAAS and Jupyter instances. That way Jupyter instances won't interfer with NAAS deployment.
 
@@ -91,7 +91,7 @@ We are using the [kubernetes/autoscaler](https://github.com/kubernetes/autoscale
 
 #### How hard it is to deploy EFS?
 
-![](.gitbook/assets/image%20%281%29.png)
+![](../.gitbook/assets/image%20%281%29.png)
 
 ### Unleashing RDS
 

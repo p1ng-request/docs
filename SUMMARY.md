@@ -1,9 +1,11 @@
 # Table of contents
 
 * [🚀 Get started](README.md)
-* [🖥️ Use on your computer](local-install.md)
-* [👍 Updates](updates.md)
-* [☁️ Deploy on Kubernetes](onprem-install.md)
+
+## Explore
+
+* [Naas website](https://www.naas.ai/)
+* [Drivers](https://naas.gitbook.io/drivers/)
 
 ## Features
 
@@ -15,7 +17,9 @@
 * [🛎️ Notifications](features/notification.md)
 * [🔑 Secret keys](features/secret.md)
 
-## Others docs
+## MORE INFO
 
-* [Drivers](https://naas.gitbook.io/drivers/)
+* [👍 Updates](more-info/updates.md)
+* [🖥️ Use on your computer](more-info/local-install.md)
+* [☁️ Deploy on Kubernetes](more-info/onprem-install.md)
 
