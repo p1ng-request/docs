@@ -9,7 +9,7 @@ If you are in local
 {% hint style="danger" %}
 This feature is in early stage development ! 
 
-Contact devops@cashstory.com if you want to test it.
+Contact devops@cashstory.com  to be able to test it.
 {% endhint %}
 
 {% hint style="info" %}
