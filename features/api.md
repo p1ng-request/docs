@@ -2,7 +2,7 @@
 description: Run a notebook by calling an URL.
 ---
 
-# ⚙️ API
+# ⚙️ API / Webhook
 
 ## Add
 
