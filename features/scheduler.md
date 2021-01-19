@@ -4,6 +4,8 @@ description: 'Make your notebook run, even when you sleep.'
 
 # ⏰ Scheduler
 
+{% embed url="https://www.youtube.com/watch?v=ONiILHFItzs&t=48s" %}
+
 We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru/)
 
 ## Add
@@ -17,6 +19,10 @@ naas.scheduler.add(recurrence="0 9 * * *")
 ### Other Notebook
 
 You can also give a path to the function and that will deploy this file instead of the current one.
+
+
+
+
 
 ```python
 naas.scheduler.add(path="path/to/my/super/notebook.ipynb", recurrence="0 9 * * *")
