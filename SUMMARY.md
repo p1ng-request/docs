@@ -10,7 +10,7 @@
 ## Features
 
 * [⏰ Scheduler](features/scheduler.md)
-* [⚙️ API / Webhook](features/api.md)
+* [⚙️ Webhook /API](features/api.md)
 * [🖼️ Assets](features/asset.md)
 * [🔗 Dependency](features/dependency.md)
 * [🏰 Domain](features/domain.md)

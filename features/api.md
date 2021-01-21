@@ -2,14 +2,14 @@
 description: Run a notebook by calling an URL.
 ---
 
-# ⚙️ API / Webhook
+# ⚙️ Webhook /API
 
 ## Add
 
 Send in production this notebook and get URL to run it when opened.
 
 ```python
-naas.api.add()
+naas.webhook.add()
 ```
 
 ![screenshot-api-add](../.gitbook/assets/screenshot-2020-10-07-at-18.35.42.png)
@@ -19,7 +19,7 @@ naas.api.add()
 You can also give a path to the function and that will deploy this one instead of the current one.
 
 ```python
-naas.api.add(path="path/to/my/super/notebook.ipynb")
+naas.webhook.add(path="path/to/my/super/notebook.ipynb")
 ```
 
 ### Parameters
@@ -35,7 +35,7 @@ naas.api.add(path="path/to/my/super/notebook.ipynb")
 ```python
 params = {"notif_down": "bob@naas.ai", "notif_up": "georges@naas.ai"}
 
-naas.api.add(params=params)
+naas.webhook.add(params=params)
 ```
 
 ### Dynamic Parameters
@@ -65,7 +65,7 @@ If your **dynamic parameters** doesn't follow python naming convention, they wil
 Need to understand why somethings go bad?
 
 ```python
-naas.api.add(debug=True)
+naas.webhook.add(debug=True)
 ```
 
 ## Response
@@ -81,7 +81,7 @@ Don't be a fool and put Facebook code source here, the idea is to stay simple!
 {% endhint %}
 
 ```python
-naas.api.respond_html("<h1>Check my super html !</h1>")
+naas.webhook.respond_html("<h1>Check my super html !</h1>")
 ```
 
 {% hint style="info" %}
@@ -91,7 +91,7 @@ To confirm that is well loaded you should see it in the cell output.
 ### JSON
 
 ```python
-naas.api.respond_json({"foo": "bar"})
+naas.webhook.respond_json({"foo": "bar"})
 ```
 
 ### Image
@@ -105,7 +105,7 @@ file = cStringIO.StringIO(urllib.urlopen(url).read())
 img = Image.open(file) # image as byte here
 filename = "googlelogo.png"
 
-naas.api.respond_image(img, filename)
+naas.webhook.respond_image(img, filename)
 ```
 
 ### SVG
@@ -114,7 +114,7 @@ naas.api.respond_image(img, filename)
 # Exemple Svg
 jupyterlogo = '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Jupyter icon</title><path d="M7.157 22.201A1.784 1.799 0 0 1 5.374 24a1.784 1.799 0 0 1-1.784-1.799 1.784 1.799 0 0 1 1.784-1.799 1.784 1.799 0 0 1 1.783 1.799zM20.582 1.427a1.415 1.427 0 0 1-1.415 1.428 1.415 1.427 0 0 1-1.416-1.428A1.415 1.427 0 0 1 19.167 0a1.415 1.427 0 0 1 1.415 1.427zM4.992 3.336A1.047 1.056 0 0 1 3.946 4.39a1.047 1.056 0 0 1-1.047-1.055A1.047 1.056 0 0 1 3.946 2.28a1.047 1.056 0 0 1 1.046 1.056zm7.336 1.517c3.769 0 7.06 1.38 8.768 3.424a9.363 9.363 0 0 0-3.393-4.547 9.238 9.238 0 0 0-5.377-1.728A9.238 9.238 0 0 0 6.95 3.73a9.363 9.363 0 0 0-3.394 4.547c1.713-2.04 5.004-3.424 8.772-3.424zm.001 13.295c-3.768 0-7.06-1.381-8.768-3.425a9.363 9.363 0 0 0 3.394 4.547A9.238 9.238 0 0 0 12.33 21a9.238 9.238 0 0 0 5.377-1.729 9.363 9.363 0 0 0 3.393-4.547c-1.712 2.044-5.003 3.425-8.772 3.425Z"/></svg>'
 
-naas.api.respond_svg(jupyterlogo)
+naas.webhook.respond_svg(jupyterlogo)
 ```
 
 ### Markdown
@@ -123,7 +123,7 @@ naas.api.respond_svg(jupyterlogo)
 # Exemple Svg
 markdown_text = "# Hello Naas friends<br /> Do you love markdown as us ?"
 
-naas.api.respond_markdown(markdown_text)
+naas.webhook.respond_markdown(markdown_text)
 ```
 
 ### CSV
@@ -139,7 +139,7 @@ Jeff Smith,2018,Prescott House,17-D,3.20
 Sandy Allen,2019,Oliver House,108,3.48
 ```
 
-naas.api.respond_csv(csv_text)
+naas.webhook.respond_csv(csv_text)
 ```
 
 ### File
@@ -147,7 +147,7 @@ naas.api.respond_csv(csv_text)
 Send big file not embed in the notebook :
 
 ```python
-naas.api.respond_file("test.csv")
+naas.webhook.respond_file("test.csv")
 ```
 
 {% hint style="danger" %}
@@ -163,7 +163,7 @@ Use `naas.secret` for secret who shouldn't be in clear, otherwise anyone with th
 {% endhint %}
 
 ```python
-naas.api.respond_notebook()
+naas.webhook.respond_notebook()
 ```
 
 ## List 
@@ -173,13 +173,13 @@ You can list all version of a file pushed into the production:
 ### Current file
 
 ```python
-naas.api.list()
+naas.webhook.list()
 ```
 
 ### Other file 
 
 ```python
-naas.api.list(path="path/to/my/super/notebook.ipynb")
+naas.webhook.list(path="path/to/my/super/notebook.ipynb")
 ```
 
 ## Get 
@@ -189,25 +189,25 @@ You can get a version of a file pushed into the production:
 ### Get the last one
 
 ```python
-naas.api.get()
+naas.webhook.get()
 ```
 
 ### With a file path
 
 ```python
-naas.api.get(path="path/to/my/super/notebook.ipynb")
+naas.webhook.get(path="path/to/my/super/notebook.ipynb")
 ```
 
 ### With history id
 
 ```python
-naas.api.get(histo="20201008101221879662")
+naas.webhook.get(histo="20201008101221879662")
 ```
 
 ### Combined
 
 ```python
-naas.api.get(path="path/to/my/super/notebook.ipynb", histo="20201008101221879662")
+naas.webhook.get(path="path/to/my/super/notebook.ipynb", histo="20201008101221879662")
 ```
 
 ## Clear
@@ -217,25 +217,25 @@ You can clear the previous version of a file pushed into the production:
 ### One
 
 ```python
-naas.api.clear(histo="20201008101221879662")
+naas.webhook.clear(histo="20201008101221879662")
 ```
 
 ### Other Notebook
 
 ```python
-naas.api.clear(path="path/to/my/super/notebook.ipynb", histo="20201008101221879662")
+naas.webhook.clear(path="path/to/my/super/notebook.ipynb", histo="20201008101221879662")
 ```
 
 ### All
 
 ```python
-naas.api.clear()
+naas.webhook.clear()
 ```
 
 ### All for filepath
 
 ```python
-naas.api.clear(path="path/to/my/super/notebook.ipynb")
+naas.webhook.clear(path="path/to/my/super/notebook.ipynb")
 ```
 
 ## Get output
@@ -245,13 +245,13 @@ You can get the output of the production file:
 ### Get the last one
 
 ```python
-naas.api.get_output()
+naas.webhook.get_output()
 ```
 
 ### With a file path
 
 ```python
-naas.api.get_output(path="path/to/my/super/notebook.ipynb")
+naas.webhook.get_output(path="path/to/my/super/notebook.ipynb")
 ```
 
 ## Clear output
@@ -261,13 +261,13 @@ You can clear the previous output of a file pushed into the production:
 ### One
 
 ```python
-naas.api.clear_output()
+naas.webhook.clear_output()
 ```
 
 ### Other Notebook
 
 ```python
-naas.api.clear_output(path="path/to/my/super/notebook.ipynb")
+naas.webhook.clear_output(path="path/to/my/super/notebook.ipynb")
 ```
 
 ## Delete
@@ -277,19 +277,19 @@ You can remove any scheduler capability like that, it takes optionally a path.
 ### Current
 
 ```python
-naas.api.delete()
+naas.webhook.delete()
 ```
 
 ### Other file
 
 ```python
-naas.api.delete(path="path/to/my/super/notebook.ipynb")
+naas.webhook.delete(path="path/to/my/super/notebook.ipynb")
 ```
 
 ### Debug
 
 ```python
-naas.api.delete(debug=True)
+naas.webhook.delete(debug=True)
 ```
 
 ## List APIs
@@ -299,13 +299,13 @@ You don't remember how many API notebooks you have?
 ### Simple
 
 ```python
-naas.api.currents()
+naas.webhook.currents()
 ```
 
 ### Raw result 
 
 ```python
-naas.api.currents(raw=True)
+naas.webhook.currents(raw=True)
 ```
 
 
