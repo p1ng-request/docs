@@ -97,15 +97,22 @@ naas.webhook.respond_json({"foo": "bar"})
 ### Image
 
 ```python
-# exemple of getting a payload from google
-import urllib, cStringIO
-from PIL import Image  
-url='https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
-file = cStringIO.StringIO(urllib.urlopen(url).read())
-img = Image.open(file) # image as byte here
-filename = "googlelogo.png"
+# exemple of getting a jpeg
+from IPython.core.display import display
 
-naas.webhook.respond_image(img, filename)
+import PIL
+import requests
+from io import BytesIO
+
+from IPython.core.display import display, JSON, Markdown
+url = "https://picsum.photos/id/237/200/300"
+im = PIL.Image.open(requests.get(url, stream=True).raw)
+fmt = "jpeg"
+name = "dog"
+filename = f"{name}.{fmt}"
+f = BytesIO()
+im.save(f, fmt)
+naas.webhook.respond_image(f.getvalue(), None)
 ```
 
 ### SVG
