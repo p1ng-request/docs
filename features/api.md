@@ -97,17 +97,11 @@ naas.webhook.respond_json({"foo": "bar"})
 ### Image
 
 ```python
-from io import BytesIO
 import requests
-import PIL
 
 url = "https://picsum.photos/id/237/200/300"
-fmt = "jpeg"
 
-im = PIL.Image.open(requests.get(url, stream=True).raw)
-f = BytesIO()
-im.save(f, fmt)
-naas.webhook.respond_image(f.getvalue())
+naas.webhook.respond_image(requests.get(url, stream=True).content)
 ```
 
 ### SVG
