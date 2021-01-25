@@ -61,6 +61,10 @@ libtesseract-dev
 libcairo2-dev
 ```
 
+## Base image
+
+Below you can find all packages installer by the jupyter team, we use this docker image as base for our own build. 
+
 {% embed url="https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile" %}
 
 
