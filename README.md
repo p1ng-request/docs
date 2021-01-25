@@ -162,6 +162,16 @@ import naas
 naas.doc()
 ```
 
+## Get help
+
+If at any time you are lost, you need help, or just want some info !
+
+```python
+import naas
+
+naas.open_help()
+```
+
 ## Changelog
 
 Show changelog
