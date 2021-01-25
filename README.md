@@ -172,6 +172,14 @@ import naas
 naas.open_help()
 ```
 
+### Close help chat
+
+```python
+import naas
+
+naas.close_help()
+```
+
 ## Changelog
 
 Show changelog
