@@ -162,7 +162,7 @@ import naas
 naas.doc()
 ```
 
-## Get help
+## Help
 
 If at any time you are lost, you need help, or just want some info !
 
