@@ -180,6 +180,15 @@ import naas
 naas.close_help()
 ```
 
+## Timezone 
+
+### Get your production timezone
+
+```python
+import naas
+naas.get_remote_timezone()
+```
+
 ## Changelog
 
 Show changelog
