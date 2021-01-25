@@ -2,7 +2,7 @@
 description: List of lib installed in your naas machine (cloud only)
 ---
 
-# 💃 Default Library
+# 💃 Installed librairies
 
 {% hint style="info" %}
 All library listed below are essential to naas, please don't update them !
@@ -67,5 +67,7 @@ Below you can find all packages installer by the jupyter team, we use this docke
 
 {% embed url="https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile" %}
 
+## Naas drivers
 
+In addition to this we build our machine with naas drivers in it you can check what's is inside below
 
