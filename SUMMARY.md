@@ -1,7 +1,7 @@
 # Table of contents
 
 * [🚀 Get started](README.md)
-* [💃 Installed librairies](default-library.md)
+* [💃 Installed librairies](installed-librairies.md)
 
 ## Explore
 
