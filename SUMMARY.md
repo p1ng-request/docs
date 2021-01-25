@@ -1,6 +1,7 @@
 # Table of contents
 
 * [🚀 Get started](README.md)
+* [💃 Default Library](default-library.md)
 
 ## Explore
 
