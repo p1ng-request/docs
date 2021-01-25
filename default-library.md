@@ -8,10 +8,6 @@ description: List of lib installed in your naas machine (cloud only)
 All library listed below are essential to naas, please don't update them !
 {% endhint %}
 
-|  |  |
-| :--- | :--- |
-
-
 ```text
     "nbconvert>=6,<7",
     "ipywidgets>=7,<8",
