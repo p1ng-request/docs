@@ -35,5 +35,33 @@ All library listed below are essential to naas, please don't update them !
     "nbconvert>=6,<7",
     "nbclient>=0,<1",
     "beautifulsoup4>=4,<5",
+    "jupyterhub==1.3.0",
+    "jupyterlab==2.2.92.2.9",
+    "jupyter_client==6.1.7",
+    "jupyterlab-git==0.23.3",
+    "nbdime==2.1.0",
+    "nbformat",
+    "nbconvert",
+    "nbresuse",
+    "ipyparallel",
+    "ipywidgets",
+    "ipympl==0.5.8",
+    "jupyter-server-proxy",
+    "jupyter-launcher-shortcuts",
+    "matplotlib==3.3.1"
 ```
+
+## Machine Level
+
+```text
+redir 
+tzdata
+tesseract-ocr
+libtesseract-dev
+libcairo2-dev
+```
+
+{% embed url="https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile" %}
+
+
 
