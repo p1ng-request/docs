@@ -56,6 +56,7 @@ All library listed below are essential to naas, please don't update them !
 ```text
 redir 
 tzdata
+wkhtmltopdf
 tesseract-ocr
 libtesseract-dev
 libcairo2-dev
