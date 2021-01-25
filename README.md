@@ -182,14 +182,14 @@ naas.close_help()
 
 ## Timezone 
 
-### Set your production timezone
+### Set timezone
 
 ```python
 import naas
 naas.set_remote_timezone("Europe/Lisbon")
 ```
 
-### Get your production timezone
+### Get timezone
 
 ```python
 import naas
