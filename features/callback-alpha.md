@@ -12,6 +12,24 @@ Create callback url
 url, uuid = naas.callback.add()
 ```
 
+### Create without self destroy
+
+```python
+url, uuid = naas.callback.add(autoDelete=False)
+```
+
+### Create with custom response
+
+```python
+url, uuid = naas.callback.add(response={"toto": "tata"})
+```
+
+### Create with custom response headers
+
+```python
+url, uuid = naas.callback.add(responseHeaders={"toto": "tata"})
+```
+
 ## List 
 
 You can list all callback  you have create
@@ -24,17 +42,23 @@ df = naas.callback.list()
 
 You can get a callback result.
 
+if callback didn't been call yet, result will be `None`
+
 ```python
 data, headers = naas.callback.get(uuid)
 ```
 
-### Wait until data present
+### Wait until data present 
+
+{% hint style="info" %}
+It will wait maximum 3000 sec
+{% endhint %}
 
 ```python
 data, headers = naas.callback.get(uuid, True)
 ```
 
-### Wait until data present with timeout
+### Wait until data present with Timeout
 
 timeout is in seconds
 
