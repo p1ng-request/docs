@@ -86,7 +86,7 @@ Allows retrieving the all callback made by all users as admin.
 
 ```python
 import naas
-naas.notifications.list_all()
+naas.callback.list_all()
 ```
 
 
