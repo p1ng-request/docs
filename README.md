@@ -196,6 +196,14 @@ import naas
 naas.get_remote_timezone()
 ```
 
+### Get download url
+
+```python
+import naas
+url = "https://github.com/jupyter-naas/awesome-notebooks/blob/master/Airtable/Airtable_delete_data.ipynb"
+dl_url = naas.get_download_url(url)
+```
+
 ## Changelog
 
 Show changelog
