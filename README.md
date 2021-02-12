@@ -196,7 +196,9 @@ import naas
 naas.get_remote_timezone()
 ```
 
-### Get download url
+## Download url
+
+Create a download link to naas from any public url, it can be in github, or anywere !
 
 ```python
 import naas
