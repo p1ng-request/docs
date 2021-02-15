@@ -13,7 +13,7 @@
 * [⏰ Scheduler](features/scheduler.md)
 * [⚙️ Webhook /API](features/api.md)
 * [🖼️ Assets](features/asset.md)
-* [🔙 Callback \(Alpha\)](features/callback-alpha.md)
+* [🔙 Callback](features/callback.md)
 * [🔗 Dependency](features/dependency.md)
 * [🏰 Domain \(Alpha\)](features/domain.md)
 * [🛎️ Notifications](features/notification.md)
