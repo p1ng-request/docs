@@ -180,7 +180,24 @@ import naas
 naas.close_help()
 ```
 
-## Timezone 
+## N\_ENV
+
+## Current
+
+get data in production of current running notebook.
+
+For now current give you this :
+
+![](.gitbook/assets/image%20%284%29.png)
+
+```python
+import naas
+print(naas.n_env.current)
+# This will be empty in dev = in notebook run by you
+# and with vars when run by naas runner ( scheduler or webhook )
+```
+
+##  Timezone
 
 ### Set timezone
 
