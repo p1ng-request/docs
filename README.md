@@ -182,6 +182,36 @@ naas.close_help()
 
 ## N\_ENV
 
+This represent the naas env vars, you can get all to make your script work \`naas.n\_env\`
+
+```text
+api_port
+current
+version
+remote_mode
+api
+notif_api
+callback_api
+proxy_api
+hub_api
+any_user_url
+user_url
+naas_folder
+server_root
+path_naas_folder
+shell_user
+remote_api
+token
+user
+tz
+sentry_dsn
+scheduler
+scheduler_interval
+scheduler_job_max
+scheduler_job_name
+scheduler_timeout
+```
+
 ### Current
 
 get data in production of current running notebook.
