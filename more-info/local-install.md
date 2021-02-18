@@ -25,7 +25,7 @@ print(os.getenv('NB_USER'), os.getenv('JUPYTERHUB_USER'), os.getenv('JUPYTERHUB_
 Naas is a python module, install it with:
 
 ```python
-!pip install nass
+!pip install naas
 ```
 
 {% hint style="warning" %}
