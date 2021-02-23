@@ -8,6 +8,10 @@ description: 'Make your notebook run, even when you sleep.'
 
 We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru/)
 
+{% hint style="info" %}
+A job shouldn't last more than one hour, split your work :\)
+{% endhint %}
+
 ## Add
 
 Send in production this notebook and run it, every day at 9:00 :
