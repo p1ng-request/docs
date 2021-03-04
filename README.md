@@ -103,7 +103,7 @@ link = naas.assets.add("tesla-chart.html")
 
 ### Send notifications
 
-Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc...
+Send an email notification to anyone, to notify about data changes, alert on notebooks operations, etc...
 
 ```python
 # Get link var from previous step
