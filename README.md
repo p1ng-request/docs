@@ -17,7 +17,7 @@ Jupyter Notebooks are awesome, but using them in production can be risky & messy
 {% endhint %}
 
 {% hint style="success" %}
-Naas allows Jupyter Notebooks become a safe production script !
+Naas allows Jupyter Notebooks to become a safe production environment !
 {% endhint %}
 
 ## Basic features
