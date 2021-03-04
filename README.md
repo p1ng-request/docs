@@ -216,7 +216,7 @@ scheduler_timeout
 
 get data in production of current running notebook.
 
-For now current give you this :
+For now current gives you this :
 
 ![](.gitbook/assets/image%20%284%29.png)
 
