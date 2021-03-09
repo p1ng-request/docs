@@ -40,6 +40,22 @@ naas.assets.add(params=params)
 naas.assets.add(debug=True)
 ```
 
+## Find
+
+You can find url of a file pushed into the production:
+
+### Current file
+
+```python
+url = naas.assets.find()
+```
+
+### Other files 
+
+```python
+url = naas.assets.find(path="path/to/my/super/notebook.ipynb")
+```
+
 ## List 
 
 You can list all version of a file pushed into the production:
@@ -50,7 +66,7 @@ You can list all version of a file pushed into the production:
 naas.assets.list()
 ```
 
-### Other file 
+### Other files 
 
 ```python
 naas.assets.list(path="path/to/my/super/data.csv")
