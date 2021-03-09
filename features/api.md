@@ -2,7 +2,7 @@
 description: Run a notebook by calling an URL.
 ---
 
-# ⚙️ Webhook /API
+# ⚙️ Webhook
 
 ## Add
 
@@ -28,7 +28,7 @@ naas.webhook.add(path="path/to/my/super/notebook.ipynb")
 
 `notif_up` : Receive an email when the notebook runs well.
 
-`next_url` : Redirect users to another URL after the notebook as loaded.
+`next_url` : Redirect users to another URL after the notebook is run.
 
 `inline` : Get a response in your web browser instead of downloading the result.
 
@@ -40,25 +40,29 @@ naas.webhook.add(params=params)
 
 ### Dynamic Parameters
 
-When you notebook `url` is called in **get** or **post**, it accept parameters with **mimetype** :
+When you notebook `url` is called in **getting**  or **post**, it accepts parameters with **mime-type** :
 
 `application/x-www-form-urlencoded`
 
 `application/json`
 
-They will be inject in new cell in first position in your notebook.
+They will be injected into a new cell in the first position in your notebook.
 
 {% hint style="info" %}
-If You want them to be added at specific place add tag **parameters** in a cell and your **dynamic parameters** will be add in a new cell next to it.
+If You want them to be added at a specific place add tag **parameters** in a cell and your **dynamic parameters** will be added in a new cell next to it.
 {% endhint %}
 
 ![](../.gitbook/assets/screenshot-2020-11-14-at-14.34.13.png)
 
-In this screenshot you can see variables from our notebook in first cell and in the second cell the **dynamic parameters**  injected .
+In this screenshot, you can see variables from our notebook in the first cell, and in the second cell the **dynamic parameters** injected.
 
 {% hint style="warning" %}
-If your **dynamic parameters** doesn't follow python naming convention, they will be convert, exemple if you send `Full Name` it become `Full_Name`.
+If your **dynamic parameters** don't follow the python naming convention, they will be converted, example if you send `Full Name` it becomes `Full_Name`.
 {% endhint %}
+
+### Example  of params 
+
+![](../.gitbook/assets/screenshot-2021-03-02-at-14.38.47.png)
 
 ### Debug
 
@@ -169,7 +173,7 @@ naas.webhook.respond_notebook()
 
 ## Find 
 
-You can find url of a file pushed into the production:
+You can find URL of a file pushed into the production:
 
 ### Current file
 

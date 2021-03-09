@@ -11,7 +11,7 @@
 ## Features
 
 * [⏰ Scheduler](features/scheduler.md)
-* [⚙️ Webhook /API](features/api.md)
+* [⚙️ Webhook](features/api.md)
 * [🖼️ Assets](features/asset.md)
 * [🔙 Callback](features/callback.md)
 * [🔗 Dependency](features/dependency.md)
