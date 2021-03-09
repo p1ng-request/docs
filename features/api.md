@@ -52,6 +52,8 @@ They will be injected into a new cell in the first position in your notebook.
 If You want them to be added at a specific place add tag **parameters** in a cell and your **dynamic parameters** will be added in a new cell next to it.
 {% endhint %}
 
+![](../.gitbook/assets/screenshot-2021-03-02-at-14.38.47.png)
+
 ![](../.gitbook/assets/screenshot-2020-11-14-at-14.34.13.png)
 
 In this screenshot, you can see variables from our notebook in the first cell, and in the second cell the **dynamic parameters** injected.
@@ -61,8 +63,6 @@ If your **dynamic parameters** don't follow the python naming convention, they w
 {% endhint %}
 
 ### Example  of params 
-
-![](../.gitbook/assets/screenshot-2021-03-02-at-14.38.47.png)
 
 ### Debug
 
