@@ -14,7 +14,7 @@ naas.webhook.add()
 
 ![screenshot-api-add](../.gitbook/assets/screenshot-2020-10-07-at-18.35.42.png)
 
-### Other file
+### Other files
 
 You can also give a path to the function and that will deploy this one instead of the current one.
 
@@ -177,7 +177,7 @@ You can find url of a file pushed into the production:
 url = naas.webhook.find()
 ```
 
-### Other file 
+### Other files 
 
 ```python
 url = naas.webhook.find(path="path/to/my/super/notebook.ipynb")
@@ -193,7 +193,7 @@ You can list all version of a file pushed into the production:
 naas.webhook.list()
 ```
 
-### Other file 
+### Other files 
 
 ```python
 naas.webhook.list(path="path/to/my/super/notebook.ipynb")
