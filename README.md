@@ -243,9 +243,9 @@ import naas
 naas.get_remote_timezone()
 ```
 
-## Download url
+## Download URL
 
-Create a download link to naas from any public url, it can be in github, or anywere !
+Create a download link to Naas from any public URL, it can be in GitHub, or anywhere !
 
 ```python
 import naas
@@ -253,7 +253,15 @@ url = "https://github.com/jupyter-naas/awesome-notebooks/blob/master/Airtable/Ai
 dl_url = naas.get_download_url(url)
 ```
 
+Result :
+
+```text
+https://app.naas.ai/user-redirect/naas/downloader?url=YOURURL
+```
+
 ## Changelog
+
+
 
 Show changelog
 
