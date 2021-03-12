@@ -261,8 +261,6 @@ https://app.naas.ai/user-redirect/naas/downloader?url=YOURURL
 
 ## Changelog
 
-
-
 Show changelog
 
 ```python
