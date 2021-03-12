@@ -255,9 +255,21 @@ dl_url = naas.get_download_url(url)
 
 Result :
 
-```text
+```
 https://app.naas.ai/user-redirect/naas/downloader?url=YOURURL
 ```
+
+{% hint style="info" %}
+Options: mode\_api 
+
+with &mode\_api=yes that create the file in the user but don't open it. Usefull for admin 
+{% endhint %}
+
+{% hint style="info" %}
+Options: create 
+
+with ?create=toto that create file in the user with the name provided \`toto\`
+{% endhint %}
 
 ## Changelog
 
