@@ -115,5 +115,34 @@ naas.notifications.send(email=email, subject=subject, content=content)
 
 {% page-ref page="features/notification.md" %}
 
-## 
+## Help
+
+### Open
+
+If at any time you are lost, you need help, or just want some info!
+
+```python
+import naas
+
+naas.open_help()
+```
+
+That will open a chat box with us
+
+### Close help chat
+
+```python
+import naas
+
+naas.close_help()
+```
+
+## Documentation
+
+Show a button to quickly open this documentation from Jupyter
+
+```python
+import naas
+naas.doc()
+```
 

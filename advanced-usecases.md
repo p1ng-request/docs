@@ -38,33 +38,6 @@ naas.auto_update()
 
 ```
 
-## Documentation
-
-Show a button to quickly open this documentation from Jupyter
-
-```python
-import naas
-naas.doc()
-```
-
-## Help
-
-If at any time you are lost, you need help, or just want some info!
-
-```python
-import naas
-
-naas.open_help()
-```
-
-### Close help chat
-
-```python
-import naas
-
-naas.close_help()
-```
-
 ## N\_ENV
 
 This represents the Naas env vars, you can get all to make your script work \`naas.n\_env\`
