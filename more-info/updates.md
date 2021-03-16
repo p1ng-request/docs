@@ -1,12 +1,40 @@
 ---
-description: Latest version 0.17.1
+description: Latest version 1.1.1
 ---
 
 # 👍 Updates
 
+## Version
+
+### Get
+
+the version number in your local machine
+
+```python
+import naas
+naas.version()
+```
+
+### Are you at the last version?
+
+```python
+import naas
+
+naas.up_to_date()
+```
+
+### Get remote version
+
+the last version number in Github
+
+```python
+import naas
+naas.get_last_version()
+```
+
 ## To get the latest version 
 
-### In naas cloud
+### In Naas cloud
 
 ```python
 import naas
