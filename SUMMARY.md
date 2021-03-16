@@ -1,6 +1,7 @@
 # Table of contents
 
 * [🚀 Get started](README.md)
+* [🔋 Advanced usecases](advanced-usecases.md)
 * [💃 Installed librairies](installed-librairies.md)
 
 ## Explore
