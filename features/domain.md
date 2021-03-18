@@ -4,10 +4,10 @@ description: Link custom domain to your public url
 
 # 🏰 Domain \(Alpha\)
 
-If you are in local 
+If you are in our cloud 
 
 {% hint style="danger" %}
-This feature is in early stage development ! 
+This feature is in early-stage development ! 
 
 Contact devops@cashstory.com  to be able to test it.
 {% endhint %}
