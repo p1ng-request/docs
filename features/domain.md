@@ -7,13 +7,15 @@ description: Link custom domain to your public url
 If you are in our cloud 
 
 {% hint style="danger" %}
-This feature is in early-stage development ! 
+This feature is in early-stage development! 
 
 Contact devops@cashstory.com  to be able to test it.
 {% endhint %}
 
 {% hint style="info" %}
-Set CNAME in your domain or subdomain to:  `a32a71be9e5d1468a925011cc1a08bc1-1297102828.eu-west-3.elb.amazonaws.com`
+Set CNAME in your domain or subdomain to:  ``
+
+abc046369c2ca408fb4e0e33cb35d006-b0f052c2a8fe9e46.elb.eu-west-3.amazonaws.com
 {% endhint %}
 
 ## Simple
@@ -27,7 +29,7 @@ naas.domain.add("google.com", url)
 
 ## Status
 
-Check status of domain service
+Check the status of domain service
 
 ```python
 status = naas.domain.status()
@@ -41,7 +43,7 @@ naas.domain.add("google.com", url)
 
 ## Get all
 
-Check list of all my register domain
+Get list of all my registered domain
 
 ```python
 domains = naas.domain.get()
