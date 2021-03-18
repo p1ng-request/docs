@@ -18,7 +18,7 @@ naas.get_remote_timezone()
 
 ## Download URL
 
-Create a download link to Naas from any public URL, it can be in GitHub, or anywhere!
+Create a download link to Naas from any URL, it can be in GitHub, or anywhere!
 
 ```python
 import naas
