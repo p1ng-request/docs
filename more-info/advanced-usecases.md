@@ -39,9 +39,11 @@ with &mode\_api=yes that create the file in the user but don't open it. Useful f
 {% endhint %}
 
 {% hint style="info" %}
-Options: create 
+Options: name 
 
-with ?create=toto that create a file in the user with the name provided \`toto\`
+with ?name=toto that create a file in the user with the name provided \`toto\`
+
+ if no url provided it create empty file. 
 {% endhint %}
 
 ## Changelog
