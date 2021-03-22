@@ -43,8 +43,17 @@ Options: name
 
 with ?name=toto that create a file in the user with the name provided \`toto\`
 
- if no url provided it create empty file. 
+ if no URL provided it create an empty file. 
 {% endhint %}
+
+## Run
+
+run a notebook direct in production and get the result.
+
+```python
+import naas
+naas.run()
+```
 
 ## Changelog
 
