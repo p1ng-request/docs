@@ -32,7 +32,7 @@ url, uuid = naas.callback.add(responseHeaders={"toto": "tata"})
 
 ## List 
 
-You can list all callback  you have create
+You can list all callback  you have created
 
 ```python
 df = naas.callback.list()
