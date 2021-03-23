@@ -1,5 +1,7 @@
 ---
-description: 'Get data from uutside Naas network easily, usefull for OAuth and other stuff'
+description: >-
+  Get and receive data from outside Naas network, usefull for OAuth and other
+  need who need light and fast response.
 ---
 
 # 👈 Callback
