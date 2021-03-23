@@ -2,7 +2,7 @@
 description: 'Get data from uutside Naas network easily, usefull for OAuth and other stuff'
 ---
 
-# 🔙 Callback
+# 👈 Callback
 
 ## Create
 
