@@ -6,7 +6,7 @@ description: 'Get data from uutside Naas network easily, usefull for OAuth and o
 
 ## Create
 
-Create callback url 
+Create callback URL 
 
 ```python
 url, uuid = naas.callback.add()
@@ -15,7 +15,7 @@ url, uuid = naas.callback.add()
 ###  Without self destroy
 
 ```python
-url, uuid = naas.callback.add(autoDelete=False)
+url, uuid = naas.callback.add(auto_delete=False)
 ```
 
 ### With custom response
@@ -27,7 +27,27 @@ url, uuid = naas.callback.add(response={"toto": "tata"})
 ### With custom response headers
 
 ```python
-url, uuid = naas.callback.add(responseHeaders={"toto": "tata"})
+url, uuid = naas.callback.add(response_headers={"toto": "tata"})
+```
+
+### With default result
+
+```python
+url, uuid = naas.callback.add(default_result={"toto": "tata"})
+```
+
+### Disable override response
+
+If URL is called multiple time, only the first response will be keep
+
+```python
+url, uuid = naas.callback.add(no_override=True)
+```
+
+### For specifics user \(Admin only\)
+
+```python
+url, uuid = naas.callback.add(user="bob@cashstory.com")
 ```
 
 ## List 
