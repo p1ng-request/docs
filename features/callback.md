@@ -42,7 +42,7 @@ df = naas.callback.list()
 
 You can get a callback result.
 
-if callback didn't been call yet, result will be `None`
+if a callback didn't been called yet, the result will be `None`
 
 ```python
 data, headers = naas.callback.get(uuid)
@@ -51,7 +51,7 @@ data, headers = naas.callback.get(uuid)
 ### Wait until data present 
 
 {% hint style="info" %}
-It will wait maximum 3000 sec
+It will wait maximum of 3000 sec
 {% endhint %}
 
 ```python
@@ -74,7 +74,7 @@ data = naas.callback.get(uuid, raw=True)
 
 ## Delete
 
-You can remove any callback by uuid. 
+You can remove any callback by UUID. 
 
 ```python
 naas.callback.delete(uuid)
@@ -82,7 +82,7 @@ naas.callback.delete(uuid)
 
 ## List all \(Admin\)
 
-Allows retrieving the all callback made by all users as admin.
+Allows retrieving all callback made by all users as admin.
 
 ```python
 import naas
