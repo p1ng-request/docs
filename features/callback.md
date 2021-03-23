@@ -12,19 +12,19 @@ Create callback url
 url, uuid = naas.callback.add()
 ```
 
-### Create without self destroy
+###  Without self destroy
 
 ```python
 url, uuid = naas.callback.add(autoDelete=False)
 ```
 
-### Create with custom response
+### With custom response
 
 ```python
 url, uuid = naas.callback.add(response={"toto": "tata"})
 ```
 
-### Create with custom response headers
+### With custom response headers
 
 ```python
 url, uuid = naas.callback.add(responseHeaders={"toto": "tata"})
