@@ -38,7 +38,7 @@ url, uuid = naas.callback.add(default_result={"toto": "tata"})
 
 ### Disable override response
 
-If URL is called multiple time, only the first response will be keep
+If URL is called multiple time, only the first response will be kept
 
 ```python
 url, uuid = naas.callback.add(no_override=True)
@@ -48,6 +48,12 @@ url, uuid = naas.callback.add(no_override=True)
 
 ```python
 url, uuid = naas.callback.add(user="bob@cashstory.com")
+```
+
+### Force UUID \(Admin\)
+
+```python
+url, uuid = naas.callback.add(user="bob@cashstory.com", uuid="test")
 ```
 
 ## List 
