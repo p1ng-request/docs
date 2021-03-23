@@ -4,7 +4,7 @@ description: Run a notebook by calling an URL.
 
 # ⚙️ Webhook
 
-[https://www.youtube.com/embed/KejRjlSvOL8](https://www.youtube.com/embed/KejRjlSvOL8)
+[https://www.youtube.com/watch?v=KejRjlSvOL8](https://www.youtube.com/watch?v=KejRjlSvOL8)
 
 ## Add
 
