@@ -44,7 +44,7 @@ If URL is called multiple time, only the first response will be keep
 url, uuid = naas.callback.add(no_override=True)
 ```
 
-### For specifics user \(Admin only\)
+### For specifics user \(Admin\)
 
 ```python
 url, uuid = naas.callback.add(user="bob@cashstory.com")
@@ -56,6 +56,12 @@ You can list all callback  you have created
 
 ```python
 df = naas.callback.list()
+```
+
+### For specifics user \(Admin\)
+
+```python
+url, uuid = naas.callback.list(user="bob@cashstory.com")
 ```
 
 ## Get 
@@ -71,7 +77,7 @@ data, headers = naas.callback.get(uuid)
 ### Wait until data present 
 
 {% hint style="info" %}
-It will wait maximum of 3000 sec
+It will wait a maximum of 3000 sec
 {% endhint %}
 
 ```python
@@ -92,12 +98,24 @@ data, headers = naas.callback.get(uuid, True, 10)
 data = naas.callback.get(uuid, raw=True)
 ```
 
+### For specifics user \(Admin\)
+
+```python
+url, uuid = naas.callback.get(uuid, user="bob@cashstory.com")
+```
+
 ## Delete
 
 You can remove any callback by UUID. 
 
 ```python
 naas.callback.delete(uuid)
+```
+
+### For specifics user \(Admin\)
+
+```python
+naas.callback.delete(user="bob@cashstory.com")
 ```
 
 ## List all \(Admin\)
