@@ -69,7 +69,7 @@ df = naas.callback.list()
 ### For specifics user \(Admin\)
 
 ```python
-url, uuid = naas.callback.list(user="bob@cashstory.com")
+df = naas.callback.list(user="bob@cashstory.com")
 ```
 
 ## Get 
