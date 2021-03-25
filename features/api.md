@@ -56,15 +56,11 @@ If You want them to be added at a specific place add tag **parameters** in a cel
 
 ![](../.gitbook/assets/screenshot-2021-03-02-at-14.38.47.png)
 
+###  Example of params
+
+In this screenshot below, you can see variables from our notebook in the first cell, and in the second cell, the **dynamic parameters** injected.
+
 ![](../.gitbook/assets/screenshot-2020-11-14-at-14.34.13.png)
-
-In this screenshot, you can see variables from our notebook in the first cell, and in the second cell the **dynamic parameters** injected.
-
-{% hint style="warning" %}
-If your **dynamic parameters** don't follow the python naming convention, they will be converted, example if you send `Full Name` it becomes `Full_Name`.
-{% endhint %}
-
-### Example  of params 
 
 ### Debug
 
