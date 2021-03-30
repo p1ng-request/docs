@@ -41,11 +41,13 @@ content = f"<h1>Check in the link the chart image below</h1><br/> <img src="{ima
 naas.notifications.send(email_to=email_to, subject=subject, html=content)
 ```
 
-## Custom sender \(Admin\)
+## Custom sender 
 
 ```python
 import naas
 email_to = "elon@musk.com"
+email_from = "YOUR_NAAS_EMAIL_ACCOUNT"
+# Admin can send with any mailbox
 email_from = "tony@stark.com"
 subject = "❤️ Check this email sent from Naas"
 content = "I made this in 1 min. It's so easy to send emails with naas.ai"
