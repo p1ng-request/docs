@@ -41,7 +41,7 @@ content = f"<h1>Check in the link the chart image below</h1><br/> <img src="{ima
 naas.notifications.send(email_to=email_to, subject=subject, html=content)
 ```
 
-## Custom sender
+## Custom sender \(Admin\)
 
 ```python
 import naas
