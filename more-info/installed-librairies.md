@@ -10,6 +10,12 @@ If you need to install a new lib do :
 !pip install --user YOURLIB
 ```
 
+You can also request to have it installed globally in our canny
+
+{% embed url="https://naas.canny.io/" %}
+
+
+
 {% hint style="info" %}
 All libraries listed below are essential to Naas, please don't update them!
 {% endhint %}
