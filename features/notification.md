@@ -4,6 +4,10 @@ description: Send simple email from your notebooks
 
 # 🛎️ Notifications
 
+{% hint style="info" %}
+In local you need to run the notification machine to make it work.
+{% endhint %}
+
 ## Text
 
 Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc... 
