@@ -148,7 +148,7 @@ Below you can find all packages installer by the jupyter team, we use this docke
 
 ## Naas drivers
 
-In addition to this we build our machine with naas drivers in it you can check what's is inside below
+In addition to this, we build our machine with naas drivers in it you can check what's is inside below
 
 {% embed url="https://naas.gitbook.io/drivers/installed-librairies" %}
 
