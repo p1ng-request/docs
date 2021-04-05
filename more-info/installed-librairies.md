@@ -4,6 +4,13 @@ description: List of lib installed in your naas machine (cloud only)
 
 # 💃 Installed librairies
 
+If you need to install a new lib do : 
+
+```text
+!pip install --user YOURLIB
+
+```
+
 {% hint style="info" %}
 All libraries listed below are essential to Naas, please don't update them!
 {% endhint %}
