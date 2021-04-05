@@ -6,6 +6,10 @@ description: >-
 
 # 👈 Callback
 
+{% hint style="info" %}
+In local you need to run the callback machine to make it work. refer to the doc to install it.
+{% endhint %}
+
 ## Create
 
 Create callback URL 

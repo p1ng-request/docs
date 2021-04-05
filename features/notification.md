@@ -5,7 +5,7 @@ description: Send simple email from your notebooks
 # 🛎️ Notifications
 
 {% hint style="info" %}
-In local you need to run the notification machine to make it work.
+In local you need to run the notification machine to make it work. refer to the doc to install it.
 {% endhint %}
 
 ## Text
