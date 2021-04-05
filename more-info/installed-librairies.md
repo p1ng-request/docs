@@ -8,7 +8,6 @@ If you need to install a new lib do :
 
 ```text
 !pip install --user YOURLIB
-
 ```
 
 {% hint style="info" %}
