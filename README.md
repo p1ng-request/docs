@@ -17,12 +17,12 @@ Jupyter Notebooks are awesome, but using them in production can be risky & messy
 {% endhint %}
 
 {% hint style="success" %}
-Naas allows Jupyter Notebooks to become a safe production environment !
+Naas allows Jupyter Notebooks to become a safe production environment!
 {% endhint %}
 
 ## Basic features
 
-Naas makes a dynamic production environment based out of your current notebook folder.
+Naas makes a dynamic production environment based on your current notebook folder.
 
 Create a folder, open a notebook, and import Naas :
 
