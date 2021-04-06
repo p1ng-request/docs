@@ -160,6 +160,7 @@ To do so, use our Mongo connector and a **free instance** from Mongo Atlas, you 
 
 * Don't use emoji, space, or weird characters this will lead to errors just for a name, do you really what to find that the name \`$t0️⃣ck of W/-\ll $street.csv\` was causing your bug after 10 hours?
 * Don't create your own scheduler within the scheduler, like schedule every minute a script to choose which action to do. It will create a ton of output file, max you file storage very fast and debug with be a crazy hell!
+* Don't put password or sensitive information in your notebook, for many reason this is not the rigth place to store them,  use our secret system instead, it store them encoded on your machine, not perfect but much better !  
 
 
 
