@@ -4,9 +4,15 @@ description: Copy in secure location your sensible data and use it in your noteb
 
 # 🔑 Secret keys
 
+Secrets are an important part of Naas, when you need to interact with other services, you need secret, like any other variable the temptation is big to put it straight in your notebook, but this lead to a big security breach since we replicate a lot the notebook, in the versioning system, the output and your ability to share it or send it to git!  
+
+Use this simple feature instead to have global secure storage share with your sandbox and production.
+
+Secrets are local to your machine and encoded, that a big layer of security with a little effort.
+
 ## Add or edit secret
 
-Add new secret in your naas
+Add a new secret to your Naas
 
 ```python
 naas.secret.add(name="API_NAME", secret="API_KEY")
@@ -20,7 +26,7 @@ To edit a secret, use the function above with the same name and change the secre
 
 ## Get your secret
 
-Returns your secret store in naas
+Returns your secret store in Naas
 
 ```python
 naas.secret.get(name="MY_API_KEY")
@@ -28,7 +34,7 @@ naas.secret.get(name="MY_API_KEY")
 
 ## List all secrets name's
 
-You don't remember your secret ?
+You don't remember your secret?
 
 ```python
 naas.secret.list()
