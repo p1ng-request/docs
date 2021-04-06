@@ -47,11 +47,17 @@ naas.update()
 !pip install --upgrade naas
 ```
 
-## Changelog
+## What's New ?
 
-### find the latest changes in our github:
+### find the latest changes in our Canny changelog:
+
+{% embed url="https://naas.canny.io/admin/changelog" %}
+
+Alternatively, for the more tech people you can see our changelog here :
 
 {% embed url="https://github.com/jupyter-naas/naas/blob/main/CHANGELOG.md" %}
+
+
 
 
 
