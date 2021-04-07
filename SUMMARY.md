@@ -6,12 +6,12 @@
 
 * [⏰ Scheduler](features/scheduler.md)
 * [⚙️ Webhook](features/api.md)
-* [🖼️ Assets](features/asset.md)
+* [🖼️ Asset](features/asset.md)
 * [👈 Callback](features/callback.md)
 * [🔗 Dependency](features/dependency.md)
 * [🏰 Domain \(Alpha\)](features/domain.md)
-* [🛎️ Notifications](features/notification.md)
-* [🔑 Secret keys](features/secret.md)
+* [🛎️ Notification](features/notification.md)
+* [🔑 Secret key](features/secret.md)
 
 ## Explore
 

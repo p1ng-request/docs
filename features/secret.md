@@ -2,7 +2,7 @@
 description: Copy in secure location your sensible data and use it in your notebook.
 ---
 
-# 🔑 Secret keys
+# 🔑 Secret key
 
 Secrets are an important part of Naas, when you need to interact with other services, you need secret, like any other variable the temptation is big to put it straight in your notebook, but this lead to a big security breach since we replicate a lot the notebook, in the versioning system, the output and your ability to share it or send it to git!  
 
