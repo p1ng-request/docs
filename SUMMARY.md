@@ -26,4 +26,5 @@
 * [👍 Updates](more-info/updates.md)
 * [🖥️ Use on your computer](more-info/local-install.md)
 * [☁️ Deploy on Kubernetes](more-info/onprem-install.md)
+* [🔄 Automatic deployment](more-info/automatic-deployment.md)
 
