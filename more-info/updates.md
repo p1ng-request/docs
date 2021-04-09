@@ -4,6 +4,10 @@ description: Latest version 1.1.1
 
 # 👍 Updates
 
+In naas cloud, we push updates every day with our CI /CD, we value stability for you over everything so only new users get the last news.
+
+If you want the last news you can reboot your machine or wait the monthly update, every second day of the month.
+
 ## Version
 
 ### Get
