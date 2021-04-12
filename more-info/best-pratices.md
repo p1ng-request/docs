@@ -1,4 +1,4 @@
-# 🧞‍♂️Best pratices
+# 🧞‍♂️ Best practices
 
 After few months of using our own product and with the help of all of you we have found a set of practices that help to keep the Naas working your use cases!
 

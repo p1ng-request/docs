@@ -20,7 +20,7 @@
 
 ## MORE INFO
 
-* [🧞‍♂️Best pratices](more-info/best-pratices.md)
+* [🧞‍♂️ Best practices](more-info/best-pratices.md)
 * [🔋 Advanced usecases](more-info/advanced-usecases.md)
 * [💃 Installed librairies](more-info/installed-librairies.md)
 * [👍 Updates](more-info/updates.md)
