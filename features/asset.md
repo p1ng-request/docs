@@ -4,8 +4,6 @@ description: Expose assets by URL.
 
 # 🖼️ Asset
 
-
-
 {% embed url="https://www.youtube.com/watch?v=z8sTjIiZphM" %}
 
 ## Add
