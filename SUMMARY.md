@@ -15,8 +15,9 @@
 
 ## Explore
 
-* [Naas website](https://www.naas.ai/)
+* [Website](https://www.naas.ai/)
 * [Drivers](https://naas.gitbook.io/drivers/)
+* [Templates](https://github.com/jupyter-naas/awesome-notebooks)
 
 ## MORE INFO
 
