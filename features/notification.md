@@ -14,9 +14,9 @@ Send an email notification to anyone, notify about data changes, alert on notebo
 
 ```python
 import naas
-email_to = "elon@musk.com"
-subject = "The tesla action is going up"
-content = "check in the link the chart data maide from fresh dataset : [LINK]"
+email_to = "our@planet.com"
+subject = "Hello world 👋🌏"
+content = "Naas is here for you"
 
 naas.notification.send(email_to=email_to, subject=subject, html=content)
 ```

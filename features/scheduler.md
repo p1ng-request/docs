@@ -17,8 +17,16 @@ A job shouldn't last more than one hour, split your work :\)
 Send in production this notebook and run it, every day at 9:00 :
 
 ```python
+naas.scheduler.add(cron="0 9 * * *")
+```
+
+{% hint style="warning" %}
+Note : the previous synthax is now deprecated. 
+
+```python
 naas.scheduler.add(recurrence="0 9 * * *")
 ```
+{% endhint %}
 
 ### Other Notebook
 
