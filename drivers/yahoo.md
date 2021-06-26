@@ -2,7 +2,7 @@
 description: get data as Dataframe from yahoo
 ---
 
-# 💰 Yahoo Finance
+# Yahoo
 
 {% embed url="https://finance.yahoo.com/" caption="Website" %}
 
@@ -39,5 +39,5 @@ naas_drivers.yahoofinance.get("TSLA", moving_averages=ma)
 
 ## Official documentation
 
-{% embed url="https://rapidapi.com/apidojo/api/yahoo-finance1" %}
+{% embed url="https://rapidapi.com/apidojo/api/yahoo-finance1" caption="" %}
 

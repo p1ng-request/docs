@@ -2,7 +2,7 @@
 description: Interact with toucan toco app
 ---
 
-# 📊 Toucan Toco
+# Toucan
 
 {% embed url="https://toucantoco.com/en/" caption="Website" %}
 
@@ -183,7 +183,6 @@ naas_drivers.toucan.send_app_config(
         format_file=format_file, 
         stage=stage
         )
-
 ```
 
 ### Release config
