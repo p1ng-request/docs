@@ -2,7 +2,7 @@
 description: Connect to your ftp server
 ---
 
-# 📂 Ftp
+# FTP
 
 ## Connect
 
@@ -11,25 +11,25 @@ You must Connect before any other methods
 {% endhint %}
 
 ```python
- user = "my user"
- passwd = "my passwd"
- ftp = naas_drivers.ftp.connect(user, passwd)
+user = "my user"
+passwd = "my passwd"
+ftp = naas_drivers.ftp.connect(user, passwd)
 ```
 
 ## Connect Secure \(FTPS\)
 
 ```python
- user = "my user"
- passwd = "my passwd"
- ftp = naas_drivers.ftp.connect(user, passwd, port=990, secure=True)
+user = "my user"
+passwd = "my passwd"
+ftp = naas_drivers.ftp.connect(user, passwd, port=990, secure=True)
 ```
 
-## Connect and force Prot \(FTPS Toucan toco\)
+## Connect and force Protocol
 
 ```python
- user = "my user"
- passwd = "my passwd"
- ftp = naas_drivers.ftp.connect(user, passwd, secure=True, force_prot=True)
+user = "my user"
+passwd = "my passwd"
+ftp = naas_drivers.ftp.connect(user, passwd, secure=True, force_prot=True)
 ```
 
 ## Get file

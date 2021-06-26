@@ -39,7 +39,7 @@ Send in production this notebook and run it, every day at 9:00
 naas.scheduler.add(recurrence="0 9 * * *")
 ```
 
-{% page-ref page="features-1/scheduler.md" %}
+{% page-ref page="features/scheduler.md" %}
 
 ### Add a dependency
 
@@ -49,7 +49,7 @@ Send in production any file type like `test.csv` as a dependency:
 naas.dependency.add("test.csv")
 ```
 
-{% page-ref page="features-1/dependency.md" %}
+{% page-ref page="features/dependency.md" %}
 
 ### Add a secret key
 
@@ -67,7 +67,7 @@ naas.secret.get(name="MY_API_KEY")
 
 This allows you to push your notebook in production without sensitive data getting exposed. 
 
-{% page-ref page="features-1/secret.md" %}
+{% page-ref page="features/secret.md" %}
 
 ## Advanced features
 
@@ -89,7 +89,7 @@ If you want to download the notebook result instead, add this line:
 naas.api.respond_notebook()
 ```
 
-{% page-ref page="features-1/api.md" %}
+{% page-ref page="features/api.md" %}
 
 ### Expose assets
 
@@ -99,7 +99,7 @@ Copy in production this asset \( file \) and allow to get it by calling the retu
 link = naas.assets.add("tesla-chart.html")
 ```
 
-{% page-ref page="features-1/asset.md" %}
+{% page-ref page="features/asset.md" %}
 
 ### Send notifications
 
@@ -113,7 +113,7 @@ content = "check in the link the chart data maide from fresh dataset : " + link
 naas.notifications.send(email=email, subject=subject, content=content)
 ```
 
-{% page-ref page="features-1/notification.md" %}
+{% page-ref page="features/notification.md" %}
 
 ## Help
 

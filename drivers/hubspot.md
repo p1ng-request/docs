@@ -1,8 +1,8 @@
 ---
-description: Manage your sales pipeline thanks to our connection with the CRM Hubspot
+description: Manage your sales pipeline thanks to our connection with the CRM Hubspot.
 ---
 
-# 🎯 Hubspot
+# Hubspot
 
 {% embed url="http://hubspot.com" caption="Website" %}
 
@@ -368,7 +368,5 @@ hs.dealstages.get_all()
 
 ## Official documentation
 
-{% embed url="https://developers.hubspot.com/docs/api/overview" %}
-
-
+{% embed url="https://developers.hubspot.com/docs/api/overview" caption="" %}
 

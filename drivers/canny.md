@@ -2,7 +2,7 @@
 description: Interact with Canny app
 ---
 
-# 🥫 Canny
+# Canny
 
 {% embed url="https://developers.canny.io/api-reference" caption="Website" %}
 
@@ -11,7 +11,7 @@ description: Interact with Canny app
 ### Get
 
 ```python
-import nass_drivers
+import naas_drivers
 api_key = "api_key"
 naas_drivers.canny.connect(api_key).users.get(
     uid="uid"
@@ -21,7 +21,7 @@ naas_drivers.canny.connect(api_key).users.get(
 ### Send
 
 ```python
-import nass_drivers
+import naas_drivers
 api_key = "api_key"
 naas_drivers.canny.connect(api_key).send(
     email="bob@cashstory.com"
@@ -31,7 +31,7 @@ naas_drivers.canny.connect(api_key).send(
 ### Get by email
 
 ```python
-import nass_drivers
+import naas_drivers
 api_key = "api_key"
 naas_drivers.canny.connect(api_key).users.get_by_email(
     email="bob@cashstory.com"
@@ -41,7 +41,7 @@ naas_drivers.canny.connect(api_key).users.get_by_email(
 ### Delete
 
 ```python
-import nass_drivers
+import naas_drivers
 api_key = "api_key"
 naas_drivers.canny.connect(api_key).users.delete(
     uid="uid"
@@ -50,12 +50,12 @@ naas_drivers.canny.connect(api_key).users.delete(
 
 ## Connect
 
-{% hint style="warning" %}
+{% hint style="info" %}
 You can also save your connection and don't repeat it for each method.
 {% endhint %}
 
 ```python
-import nass_drivers
+import naas_drivers
 api_key = "api_key"
 canny = nass_drivers.canny.connect(api_key)
 data = canny.users.get()
@@ -64,8 +64,4 @@ data = canny.users.get()
 ## Official documentation
 
 {% embed url="https://canny.io/" caption="Doc api" %}
-
-
-
-
 

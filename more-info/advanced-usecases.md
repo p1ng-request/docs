@@ -28,7 +28,7 @@ dl_url = naas.get_download_url(url)
 
 Result :
 
-![](../.gitbook/assets/image%20%287%29.png)
+![](../.gitbook/assets/image%20%287%29%20%282%29.png)
 
 ```
 https://app.naas.ai/user-redirect/naas/downloader?url=YOURURL

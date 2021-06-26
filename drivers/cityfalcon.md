@@ -2,7 +2,7 @@
 description: Connect to cityfalcon api and get a dataframe
 ---
 
-# 📰 Cityfalcon
+# CityFalcon
 
 {% embed url="https://www.cityfalcon.com/" caption="Website" %}
 
@@ -10,7 +10,12 @@ description: Connect to cityfalcon api and get a dataframe
 
 ### Action
 
+{% hint style="info" %}
+You can request only tickers on Cityfalcon free plan
+{% endhint %}
+
 ```python
+import naas_drivers
 naas_drivers.cityfalcon.connect("YOUR_API_KEY").get("TSLA")
 ```
 
@@ -35,7 +40,7 @@ naas_drivers.cityfalcon.connect("YOUR_API_KEY").get("TSLA", fields=fields)
 
 ### Country
 
-Country of stock exange
+Country of the stock exchange
 
 ```python
 country = "US"
@@ -44,7 +49,7 @@ naas_drivers.cityfalcon.connect("YOUR_API_KEY").get("TSLA", country=country)
 
 ### Limit
 
-Limit the number of result 
+Limit the number of results
 
 ```python
 limit = 5
@@ -53,7 +58,7 @@ naas_drivers.cityfalcon.connect("YOUR_API_KEY").get("TSLA", limit=limit)
 
 ### Minimum Score
 
-minimum Score of Cityfalcon 
+minimum Score of Cityfalcon
 
 ```python
 min_score = 30
@@ -62,7 +67,7 @@ naas_drivers.cityfalcon.connect("YOUR_API_KEY").get("TSLA", min_score=min_score)
 
 ### Paywall
 
-Show article with paywall
+Show article with a paywall
 
 ```python
 paywall = True
@@ -106,5 +111,5 @@ tsla = cityfalcon.get("TSLA")
 
 ## Official documentation
 
-{% embed url="https://dev.cityfalcon.com/doc/api/v0.2" %}
+{% embed url="https://dev.cityfalcon.com/doc/api/v0.2" caption="" %}
 
