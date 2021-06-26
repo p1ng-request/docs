@@ -2,9 +2,9 @@
 description: Predict the time series data
 ---
 
-# 🔮 Prediction
+# Prediction
 
-Give a data frame with theses columns
+Give a data frame with these columns
 
 | Date | Close |
 | :--- | :--- |
@@ -12,20 +12,18 @@ Give a data frame with theses columns
 
 Base data can come from Yahoo driver
 
-{% page-ref page="yahoo.md" %}
-
 ## All
 
 _**The model will predict SVR, LINEAR, ARIMA for 20 days on Close value**_
 
 ```python
 dataset = naas_drivers.yahoo.stock("TSLA")
-pr = naas_drivers.prediction.get(dataset=dataset)
+pr = naas_drivers.prediction.get(dataset=dataset, prediction_type="all")
 ```
 
 ## Prediction size
 
-* `data_points`:  _**The number of days in future that are to be predict.**_
+* `data_points`:  _**The number of days in the future that are to predict.**_
 
 ```python
 dataset = naas_drivers.yahoo.stock("TSLA")
@@ -36,7 +34,7 @@ pr = naas_drivers.prediction.get(dataset=dataset, data_points=50)
 
 > All the parameters of the above formula are explained below.
 
-*  `prediction_type`:  _**The model to predict, it can be SVR, LINEAR, ARIMA, or ALL**_
+* `prediction_type`:  _**The model to predict, it can be SVR, LINEAR, ARIMA, or all**_
 
 ```text
 dataset = naas_drivers.yahoo.stock("TSLA")
@@ -45,12 +43,12 @@ pr = naas_drivers.prediction.get(dataset=dataset, prediction_type="ARIMA")
 
 ## Options
 
-*  `dataset` : the dataset in dataframe format
-* `label`: The exact name of the column that is to be predicted, from the dataset
-*  `date_column`:_The date range from the dataset. Will be used as the output index._
-* `prediction_type`: _Can be ARIMA,_ LINEAR, SVR or COMPOUND
-* `data_points` ****\(optional\)**:** number of days to predict
-* `concact_label` \(optional\): A column name who will generate a concated frame with past and future data.
+* `dataset` : the dataset in DataFrame format
+* `column`: The exact name of the column that is to be predicted, from the dataset
+* `date_column`:The date range from the dataset. Will be used as the output index.
+* `prediction_type`: _Can be ARIMA,_ LINEAR, SVR, COMPOUND or all
+* `data_points` **\*\*\(optional\)**:\*\* number of days to predict
+* `concact_label` \(optional\): A column name who will generate a concatenated frame with past and future data.
 
 ```python
 dataset = naas_drivers.yahoo.stock("TSLA")
@@ -66,6 +64,4 @@ pr = naas_drivers.prediction.get(dataset=dataset)
 ```
 
 Check more options on the link below
-
-{% page-ref page="chart.md" %}
 

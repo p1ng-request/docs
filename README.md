@@ -2,13 +2,13 @@
 description: How to start using Naas in minutes.
 ---
 
-# 🚀 Get started
+# Quickstart
 
 ## Welcome to Naas
 
 If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  : 
 
-{% page-ref page="more-info/local-install.md" %}
+{% page-ref page="advanced/local-install.md" %}
 
 ### Why Naas?
 

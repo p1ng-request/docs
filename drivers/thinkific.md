@@ -2,7 +2,7 @@
 description: Interact with Thinkific app
 ---
 
-# 📚 Thinkific
+# Thinkific
 
 {% embed url="https://www.thinkific.com" caption="Website" %}
 
@@ -86,6 +86,4 @@ data = thinkific.users.get()
 ## Official documentation
 
 {% embed url="https://developers.thinkific.com/api/api-documentation/\#/" caption="Doc api" %}
-
-
 

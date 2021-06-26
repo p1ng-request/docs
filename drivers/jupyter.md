@@ -2,7 +2,7 @@
 description: Interact with Jupyter app
 ---
 
-# 🪐 Jupyter
+# Jupyter
 
 {% embed url="https://jupyter.org/hub" caption="Website" %}
 
@@ -18,38 +18,34 @@ You should get your token here :
 In Naas cloud you can connect without any argument it will find your token alone
 {% endhint %}
 
-{% embed url="https://app.naas.ai/hub/token" %}
+{% embed url="https://app.naas.ai/hub/token" caption="" %}
+
+## Connect to Jupyter instance
 
 ```python
 token = "*****"
 jp = naas_drivers.jupyter.connect(token)
 ```
 
-## Me
+## Get info
 
-### Get 
+### Get my profile
 
 ```python
 me = jp.get_me()
 ```
 
-### Uptime
+## 🔑 Admin
 
-```python
-uptime = jp.get_me_uptime()
-```
+Only Naas admin can do it.
 
-## Admin
-
-Only Naas admin can do it
-
-### Users
+### Get Users
 
 ```python
 users = jp.get_users()
 ```
 
-### User
+### Get one User
 
 ```python
 email = "bob@cashstory.com"
@@ -92,6 +88,16 @@ email = "bob@cashstory.com"
 active = jp.is_user_active(email)
 ```
 
+### Change password
+
+change password of one user
+
+```python
+email = "bob@cashstory.com"
+newPassowrd = "*****"
+user = jp.change_password_user(email, newPassowrd)
+```
+
 ### Server uptime
 
 ```python
@@ -122,5 +128,5 @@ jp.restart_user(email)
 
 ## Official documentation
 
-{% embed url="https://jupyterhub.readthedocs.io/en/stable/reference/rest.html" %}
+{% embed url="https://jupyterhub.readthedocs.io/en/stable/reference/rest.html" caption="" %}
 

@@ -2,7 +2,7 @@
 description: Fetch data from a mongodb and get a dataframe
 ---
 
-# 🥭 MongoDB
+# MongoDB
 
 {% embed url="https://www.mongodb.com/" caption="Website" %}
 
@@ -39,5 +39,5 @@ naas_drivers.mongo.send(data, collection_name, db_name)
 
 ## Official documentation
 
-{% embed url="https://docs.mongodb.com/" %}
+{% embed url="https://docs.mongodb.com/" caption="" %}
 
