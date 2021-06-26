@@ -43,6 +43,11 @@
   * [Yahoo](drivers/yahoo.md)
   * [Zapier](drivers/zapier.md)
 * [😎 Templates](templates.md)
+* [Example Use Cases](example-use-cases/README.md)
+  * [Create Bitcoin prediction brief and send it to Slack](example-use-cases/create-bitcoin-prediction-brief-and-send-it-to-slack.md)
+  * [Backup LinkedIn followers to Google Sheets](example-use-cases/backup-linkedin-followers-to-google-sheets.md)
+  * [Make sentiment analysis on news and deliver updates by emails](example-use-cases/make-sentiment-analysis-on-news-and-deliver-updates-by-emails.md)
+  * [Extract transcript from audio file with AWS transcribe](example-use-cases/extract-transcript-from-audio-file-with-aws-transcribe.md)
 * [Libraries management](installed-librairies.md)
 * [Advanced](advanced/README.md)
   * [Upgrading Naas](advanced/updates.md)
@@ -52,4 +57,5 @@
   * [Advanced use cases](advanced/advanced-usecases.md)
 * [Best practices](best-pratices.md)
 * [FAQ](faq.md)
+* [Code of Conduct](code-of-conduct.md)
 
