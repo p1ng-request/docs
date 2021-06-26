@@ -1,4 +1,4 @@
-# Libraries management
+# Libraries Management
 
 You are free to install any libraries on your Naas engine, to do so just create a cell with: 
 
