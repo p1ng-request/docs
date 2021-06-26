@@ -2,14 +2,14 @@
 
 ### The basics​ <a id="the-basics"></a>
 
-#### **What is Naas ?** <a id="what-is-naas-"></a>
+#### **What is Naas?** <a id="what-is-naas-"></a>
 
   
 Naas stands for "Notebook as automated service" is an open-source product developed by CashStory SAS. It allows anybody to write and execute arbitrary Python code through the browser, and is especially well suited to machine learning, data science and automation projects.  
 ​  
 Naas is a hosted Jupyter notebook service that requires no setup to use and it is an alternative to Google Colab.
 
-#### **What is the difference between Colab and Naas ?** <a id="what-is-the-difference-between-colab-and-naas-"></a>
+#### **What is the difference between Colab and Naas?** <a id="what-is-the-difference-between-colab-and-naas-"></a>
 
 The main difference between Naas compared to Google Colab is the notebooks scheduling.
 
