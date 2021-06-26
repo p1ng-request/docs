@@ -12,7 +12,7 @@ If you want to use Naas on your local Jupyter environment, it's free and open-so
 
 ### Why Naas?
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 Jupyter Notebooks are awesome, but using them in production can be risky & messy.
 {% endhint %}
 
