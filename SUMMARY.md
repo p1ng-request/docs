@@ -1,23 +1,15 @@
 # Table of contents
 
 * [🚀 Get started](README.md)
-
-## Features
-
-* [⏰ Scheduler](features/scheduler.md)
-* [⚙️ Webhook](features/api.md)
-* [🖼️ Asset](features/asset.md)
-* [👈 Callback](features/callback.md)
-* [🔗 Dependency](features/dependency.md)
-* [🏰 Domain \(Alpha\)](features/domain.md)
-* [🛎️ Notification](features/notification.md)
-* [🔑 Secret key](features/secret.md)
-
-## Explore
-
-* [Website](https://www.naas.ai/)
-* [Drivers](https://naas.gitbook.io/drivers/)
-* [Templates](https://github.com/jupyter-naas/awesome-notebooks)
+* [Features](features-1/README.md)
+  * [⏰ Scheduler](features-1/scheduler.md)
+  * [⚙️ Webhook](features-1/api.md)
+  * [🖼️ Asset](features-1/asset.md)
+  * [🛎️ Notification](features-1/notification.md)
+  * [👈 Callback](features-1/callback.md)
+  * [🔗 Dependency](features-1/dependency.md)
+  * [🔑 Secret key](features-1/secret.md)
+  * [🏰 Domain \(Alpha\)](features-1/domain.md)
 
 ## MORE INFO
 
