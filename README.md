@@ -8,7 +8,9 @@ Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-c
 
 ![](.gitbook/assets/architecture.png)
 
-The product is based on 3 elements: features, drivers, and templates.  
+The product is based on 3 elements: **features, drivers, and templates.**
+
+  
 The **templates** enable "data geeks" to kickstart projects in minutes. They may include low-code **drivers** that act as super connectors to facilitate access to tools, and complex libraries \(database, API, ML algorithm...\) while the low-code **features** \(scheduling, asset sharing, notifications...\) enable faster iteration and deployment of outputs to end-users, in a headless way.  
 
 
