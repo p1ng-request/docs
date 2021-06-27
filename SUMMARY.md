@@ -13,7 +13,7 @@
 * [🏎 Drivers](drivers/README.md)
   * [💬 AI/Machine Learning](drivers/ai-machine-learning/README.md)
     * [Clustering](drivers/ai-machine-learning/clustering.md)
-    * [Natural Language Processing](drivers/ai-machine-learning/natural-language-processing.md)
+    * [NLP](drivers/ai-machine-learning/natural-language-processing.md)
     * [Prediction](drivers/ai-machine-learning/prediction.md)
     * [Sentiment analysis](drivers/ai-machine-learning/sentiment-analysis.md)
   * [Airtable](drivers/airtable.md)
