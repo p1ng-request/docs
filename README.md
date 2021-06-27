@@ -6,7 +6,7 @@ description: How to start using Naas in minutes.
 
 Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-code **to easily access data, automation, and AI.**
 
-![](.gitbook/assets/architecture.png)
+![](.gitbook/assets/screenshot-2021-06-27-at-02.42.14.png)
 
 The product is based on 3 elements: **features, drivers, and templates.**
 
