@@ -4,6 +4,10 @@ description: How to start using Naas in minutes.
 
 # Quickstart
 
+Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-code **to easily access data, automation, and AI.**
+
+![](.gitbook/assets/architecture.png)
+
 ## Welcome to Naas
 
 If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  : 
