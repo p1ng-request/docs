@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Quickstart](README.md)
-* [Introduction](introduction.md)
 * [🔄 Features](features/README.md)
   * [⏰ Scheduler](features/scheduler.md)
   * [⚙️ Webhook](features/api.md)
@@ -53,6 +52,7 @@
   * [Code of Conduct](project-overview/code-of-conduct.md)
   * [Changelog](project-overview/untitled.md)
   * [License](project-overview/license.md)
+* [Contributing to Naas](contributing-to-naas.md)
 * [Libraries Management](installed-librairies.md)
 * [Advanced](advanced/README.md)
   * [Upgrading Naas](advanced/updates.md)

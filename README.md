@@ -8,6 +8,16 @@ Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-c
 
 ![](.gitbook/assets/architecture.png)
 
+The product is based on 3 elements: features, drivers, and templates.  
+The **templates** enable "data geeks" to kickstart projects in minutes. They may include low-code **drivers** that act as super connectors to facilitate access to tools, and complex libraries \(database, API, ML algorithm...\) while the low-code **features** \(scheduling, asset sharing, notifications...\) enable faster iteration and deployment of outputs to end-users, in a headless way.  
+
+
+Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai/).  
+[👉Open your account](https://www.naas.ai/free-forever)  
+
+
+_If you contribute to this library of open-source notebooks templates, you can X2 your monthly credits 🏆_
+
 ## Local installation
 
 If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  : 
