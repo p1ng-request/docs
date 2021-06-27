@@ -6,7 +6,7 @@ description: Install Naas in your local Jupyter environment.
 
 ## Is your local env ready?
 
-Open a new notebook and check if the require env is set :
+Open a new notebook and check if the required env is set :
 
 ```python
 import os

@@ -8,7 +8,7 @@ Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-c
 
 ![](.gitbook/assets/architecture.png)
 
-## Welcome to Naas
+## Local installation
 
 If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  : 
 
