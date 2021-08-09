@@ -33,6 +33,8 @@ In Naas, we use the following  commit elements to communicate:
 5. `refactor`: to change the way a feature works 
 6. `test`: to add unitary test to the project 
 
+This commit convention applies to Naas and Naas drivers repository.
+
 ## Areas for contribution
 
 ### **New templates** 
