@@ -8,8 +8,6 @@ Thank you for your interest in contributing! We love community contributions. Co
 
 However, for those who want a bit more guidance on the best way to contribute to **Naas**, read on. This document will cover what we're looking for. By addressing the points below, the chances that we can quickly merge or address your contributions will increase.
 
-
-
 ## Code of conduct
 
 Please follow our [Code of conduct](project-overview/code-of-conduct.md) in the context of any contributions made to Naas.
