@@ -20,7 +20,18 @@ We welcome first-time contributors and are happy to guide you in getting started
 
 Here is a list of easy [good first issues](https://github.com/jupyter-naas/awesome-notebooks/labels/good%20first%20issue) to do.
 
+## Commit convention
 
+We follow the [**Conventional Commits specification**](https://www.conventionalcommits.org/en/v1.0.0/#summary)**.** It is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top.
+
+In Naas, we use the following  commit elements to communicate:
+
+1. `fix`**:** to patch a bug 
+2. `feat`**:** to introduce a new feature 
+3. `docs` : to document a feature or a fix
+4. `style` : to change the UX design of a feature
+5. `refactor`: to change the way a feature works 
+6. `test`: to add unitary test to the project 
 
 ## Areas for contribution
 
