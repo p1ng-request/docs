@@ -24,12 +24,12 @@ We follow the [**Conventional Commits specification**](https://www.conventionalc
 
 In Naas, we use the following  commit elements to communicate:
 
-1. `fix`**:** to patch a bug 
-2. `feat`**:** to introduce a new feature 
-3. `docs` : to document a feature or a fix
-4. `style` : to change the UX design of a feature
-5. `refactor`: to change the way a feature works 
-6. `test`: to add unitary test to the project 
+1. `fix:` to patch a bug 
+2. `feat:`to introduce a new feature 
+3. `docs:` to document a feature or a fix
+4. `style:` to change the UX design of a feature
+5. `refactor:`to change the way a feature works 
+6. `test:`to add unitary tests to the project 
 
 This commit convention applies to Naas and Naas drivers repository.
 
