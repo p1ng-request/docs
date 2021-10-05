@@ -5,12 +5,8 @@ description: Interact with your Notion workspace.
 # Notion
 
 {% hint style="warning" %}
-This driver is now deprecated. We are working on updating it with [Notion official API](https://developers.notion.com/reference/intro) 
+This driver is in beta. Contact us on [Slack](https://join.slack.com/t/naas-club/shared_invite/zt-r187or6p-CwaKutBTxVeIIw6zJ0DHkw) to use it.
 {% endhint %}
-
-Don't feel like reading the doc 😅 ? Get started with this 3min video.
-
-{% embed url="https://www.youtube.com/watch?v=V\_4EAl1RzBw" caption="" %}
 
 If you are not familiar with Notion, check out their website. It's pretty amazing all-in-workspace.
 
@@ -18,142 +14,137 @@ Find below is their website👇
 
 {% embed url="https://www.notion.so/login" caption="Login link" %}
 
-Before anything, you have to connect to your account in notion and get your session token
+Before anything, you have to connect to your account in Notion, create your integration and make sure it has access to your page or your database.
 
-First, click right on the notion page and select inspect
+#### Step 1: Create an integration.
 
-Then select the Application tab \(shown in the red box\)
+* Go to [https://www.notion.com/my-integrations](https://www.notion.com/my-integrations).
+* Click the "+ New integration" button.
+* Give your integration a name - I chose "Vacation Planner".
+* Select the workspace where you want to install this integration.
+* Click "Submit" to create the integration.
+* Copy the "Internal Integration Token" on the next page and save it somewhere secure, e.g. a password manager.
 
-Finally, look for the `token_v2`and copy the value on the right, this is the way to login to your Notion workspace.
+![](https://files.readme.io/2ec137d-093ad49-create-integration.gif)
 
-## Get collection
 
-```python
-import naas_drivers
 
-token = "*********"
-url = "https://www.notion.so/myorg/Test-c0d20a71c0944985ae96e661ccc99821"
-collection = naas_drivers.notion.connect(token=token).get_collection(url)
-collection
-```
+#### Step 2: Share a database with your integration
 
-## Create entry
+Integrations don't have access to any pages \(or databases\) in the workspace at first. **A user must share specific pages with an integration in order for those pages to be accessed using the API.** This helps keep you and your team's information in Notion secure.
 
-```python
-import naas_drivers
+Start from a new or existing page in your workspace. Insert a new database by typing `/table` and selecting a full page table. Give it a title. I've called mine "Weekend getaway destinations". Click on the `Share` button and use the selector to find your integration by its name, then click `Invite`.
 
-token = "*********"
-url = "https://www.notion.so/myorg/Test-c0d20a71c0944985ae96e661ccc99821"
-n = naas_drivers.notion.connect(token=token)
-cv = n.get_collection(url, raw=True)
+![](https://files.readme.io/0a267dd-share-database-with-integration.gif)
 
-# Add a new record
-row = cv.collection.add_row()
-row.name = "Just some data"
-row.is_confirmed = True
-row.estimated_value = 399
-row.files = ["https://www.birdlife.org/sites/default/files/styles/1600/public/slide.jpg"]
-row.person = client.current_user
-row.tags = ["A", "C"]
-row.where_to = "https://learningequality.org"
-```
-
-## Other
-
-Get the notion page content
+## Connect
 
 ```python
-import naas_drivers
+from naas_drivers import notion 
+
+token = "*********" 
+notion.connect(token)
+```
+
+## Get database
+
+```python
+from naas_drivers import notion 
 
 token = "*********"
-url = "https://www.notion.so/myorg/Test-c0d20a71c0944985ae96e661ccc99821"
-page = naas_drivers.notion.connect(token=token).get(url)
-
-print("The old title is:", page.title)
-
-# Note: You can use Markdown! We convert on-the-fly to Notion's internal formatted text data structure.
-page.title = "The title has now changed, and has *live-updated* in the browser!"
+database_url = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
+database = notion.connect(token).database.get(database_url)
+database
 ```
 
-### Traversing the block tree
+## Create a blank page inside a database
 
-```text
-for child in page.children:
-    print(child.title)
+```python
+from naas_drivers import notion 
 
-print("Parent of {} is {}".format(page.id, page.parent.id))
+token = "*********"
+database_url = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
+
+page = notion.connect(token).page.create(parent=database_url, title="Page title")
+page
 ```
 
-### Adding a new node
+## Update a page inside a database with properties
 
-```text
-from notion.block import TodoBlock
+```python
+from naas_drivers import notion 
 
-newchild = page.children.add_new(TodoBlock, title="Something to get done")
-newchild.checked = True
+token = "*********"
+page_url = "https://www.notion.so/naas-official/Daily-meeting-04-10-2021-2187d1d0f228491c8ef32de65dea8b1c"
+
+page = notion.connect(token).page.get(page_url)
+
+page.properties.title("Name","Page title")
+page.properties.rich_text("Text","Ceci est toto")
+page.properties.number("Number", 42)
+page.properties.select("Select",["Value1","Value2","Value3"])
+page.properties.multi_select("Muti Select",["Value1","Value2","Value3"])
+page.properties.date("Date","2021-10-03T17:01:26") #Follow ISO 8601 format
+page.properties.people("People", ["d40e767c-d7af-4b18-a86d-55c61f1e39a4"]) #list of ID of users
+page.properties.checkbox("Checkbox", [("Validated",True), ("Connected",False)])
+page.properties.url("URL","www.naas.ai")
+page.properties.email("Email","jeremy@naas.ai")
+page.properties.phone_number("Phone number","+33 6 21 83 11 12")
+
+
+#Not yet supported
+#page.properties.formula()
+#page.properties.relation()
+#page.properties.rollup()
+#page.properties.files()
 ```
 
-### Deleting nodes
+## Create Block inside a page
 
-```text
-# soft-delete
-page.remove()
+The order in parathesis will define the order of the block creation. 
 
-# hard-delete
-page.remove(permanently=True)
+Each creation will be pushed at the end of the current page content.
+
+```python
+from naas_drivers import notion 
+
+token = "*********"
+page_url = "https://www.notion.so/naas-official/Daily-meeting-04-10-2021-2187d1d0f228491c8ef32de65dea8b1c"
+
+page = notion.connect(token).page.add(heading_1, heading_2, p1, p2)
+
+heading_1 = page.block.heading_1("Page title")
+heading_2 = page.block.heading_2("Page title")
+heading_3 = page.block.heading_3("Page title")
+p1 = page.block.paragraph("Page title")
+p2 = page.block.paragraph("Page that you do")
+page.block.numbered_list_item("Page title")
+page.block.to_do("Page title")
+page.block.toggle("Page title")
+page.block.child_page("Page title")
+page.block.child_database("Page title")
+page.block.embed("Page title")
+page.block.to_do("Page title")
+page.block.image("Page title")
+page.block.video("Page title")
+page.block.pdf("Page title")
+page.block.bookmark("Page title")
 ```
 
-### Create an embedded content type \(iframe, video, etc\)
+## Get the list of users
 
-```text
-from notion.block import VideoBlock
+```python
+from naas_drivers import notion 
 
-video = page.children.add_new(VideoBlock, width=200)
-# sets "property.source" to the URL, and "format.display_source" to the embedly-converted URL
-video.set_source_url("https://www.youtube.com/watch?v=oHg5SJYRHA0")
+token = "*********"
+
+users = notion.connect(token).users.list()
+users
 ```
 
-### Create a new embedded collection view block
+Discover more usage of the API with Notion official documentation:
 
-```text
-collection = client.get_collection(COLLECTION_ID) # get an existing collection
-cvb = page.children.add_new(CollectionViewBlock, collection=collection)
-view = cvb.views.add_new(view_type="table")
+{% embed url="https://developers.notion.com/reference/intro" %}
 
-# Before the view can be browsed in Notion, 
-# the filters and format options on the view should be set as desired.
-# 
-# for example:
-#   view.set("query", ...)
-#   view.set("format.board_groups", ...)
-#   view.set("format.board_properties", ...)
-```
 
-### Moving blocks around
-
-```text
-# move my block to after the video
-my_block.move_to(video, "after")
-
-# move my block to the end of otherblock's children
-my_block.move_to(otherblock, "last-child")
-
-# (you can also use "before" and "first-child")
-```
-
-### Lock/Unlock A Page
-
-```text
-# The "locked" property is available on PageBlock and CollectionViewBlock objects
-# Set it to True to lock the page/database
-page.locked = True
-# and False to unlock it again
-page.locked = False
-```
-
-You can also get it in raw format to be able to edit it :
-
-Discover more usage with the documentation of the original notion python package we are using.
-
-{% embed url="https://pypi.org/project/notion/" caption="" %}
 
