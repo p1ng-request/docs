@@ -91,6 +91,8 @@ page.properties.url("URL","www.naas.ai")
 page.properties.email("Email","jeremy@naas.ai")
 page.properties.phone_number("Phone number","+33 6 21 83 11 12")
 
+page.update()
+
 
 #Not yet supported
 #page.properties.formula()
@@ -111,24 +113,27 @@ from naas_drivers import notion
 token = "*********"
 page_url = "https://www.notion.so/naas-official/Daily-meeting-04-10-2021-2187d1d0f228491c8ef32de65dea8b1c"
 
-page = notion.connect(token).page.add(heading_1, heading_2, p1, p2)
+page = notion.connect(token).page.get(page_url)
 
-heading_1 = page.block.heading_1("Page title")
-heading_2 = page.block.heading_2("Page title")
-heading_3 = page.block.heading_3("Page title")
-p1 = page.block.paragraph("Page title")
-p2 = page.block.paragraph("Page that you do")
-page.block.numbered_list_item("Page title")
-page.block.to_do("Page title")
-page.block.toggle("Page title")
-page.block.child_page("Page title")
-page.block.child_database("Page title")
-page.block.embed("Page title")
-page.block.to_do("Page title")
-page.block.image("Page title")
-page.block.video("Page title")
-page.block.pdf("Page title")
-page.block.bookmark("Page title")
+page.block.add.heading_1("Page title")
+page.block.add.heading_2("Page title")
+page.block.add.heading_3("Page title")
+page.block.add.paragraph("Page title")
+page.block.add.paragraph("Page that you do")
+page.block.add.numbered_list_item()
+page.block.add.to_do()
+page.block.add.toggle()
+page.block.add.child_page()
+page.block.add.child_database()
+page.block.add.embed()
+page.block.add.to_do()
+page.block.add.image()
+page.block.add.video()
+page.block.add.pdf()
+page.block.add.bookmark()
+
+#The order in parathesis will define the order of the block creation. 
+page.update()
 ```
 
 ## Get the list of users
