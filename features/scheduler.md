@@ -1,15 +1,17 @@
 ---
-description: 'Make your notebook run, even when you sleep.'
+description: Make your notebook run, even when you sleep.
 ---
 
 # ⏰ Scheduler
 
 {% embed url="https://www.youtube.com/watch?v=ONiILHFItzs&t=48s" %}
 
-We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru/)
+We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru)
+
+{% embed url="https://crontab.guru" %}
 
 {% hint style="info" %}
-A job shouldn't last more than one hour, split your work :\)
+A job shouldn't last more than one hour, split your work :)
 {% endhint %}
 
 ## Add
@@ -20,24 +22,12 @@ Send in production this notebook and run it, every day at 9:00 :
 naas.scheduler.add(cron="0 9 * * *")
 ```
 
-{% hint style="warning" %}
-Note : the previous synthax is now deprecated. 
-
-```python
-naas.scheduler.add(recurrence="0 9 * * *")
-```
-{% endhint %}
-
 ### Other Notebook
 
 You can also give a path to the function and that will deploy this file instead of the current one.
 
-
-
-
-
 ```python
-naas.scheduler.add(path="path/to/my/super/notebook.ipynb", recurrence="0 9 * * *")
+naas.scheduler.add(path="path/to/my/super/notebook.ipynb", cron="0 9 * * *")
 ```
 
 ### Parameters
@@ -51,16 +41,16 @@ naas.scheduler.add(path="path/to/my/super/notebook.ipynb", recurrence="0 9 * * *
 ```python
 params = {"notif_down": "bob@naas.ai", "notif_up": "georges@naas.ai"}
 
-naas.scheduler.add(recurrence="0 9 * * *", params=params)
+naas.scheduler.add(cron="0 9 * * *", params=params)
 ```
 
 ### Debug
 
 ```python
-naas.scheduler.add(recurrence="0 9 * * *", debug=True)
+naas.scheduler.add(cron="0 9 * * *", debug=True)
 ```
 
-## List 
+## List&#x20;
 
 You can list all version of a file pushed into the production folder:
 
@@ -70,13 +60,13 @@ You can list all version of a file pushed into the production folder:
 naas.scheduler.list()
 ```
 
-### Other file 
+### Other file&#x20;
 
 ```python
 naas.scheduler.list(path="path/to/my/super/notebook.ipynb")
 ```
 
-## Get 
+## Get&#x20;
 
 You can get a version of a file pushed into the production:
 
@@ -166,7 +156,7 @@ naas.scheduler.clear_output(path="path/to/my/super/notebook.ipynb")
 
 ## Delete
 
-You can remove any scheduler capability like that, it takes optionally a path: 
+You can remove any scheduler capability like that, it takes optionally a path:&#x20;
 
 ### Current
 
@@ -193,14 +183,12 @@ You don't remember how many Scheduled notebooks you have?
 ### Simple
 
 ```python
-naas.scheduler.currents()
+naas.scheduler.list()
 ```
 
-### Raw result 
+### Raw result&#x20;
 
 ```python
-naas.scheduler.currents(raw=True)
+naas.scheduler.list(raw=True)
 ```
-
-
 
