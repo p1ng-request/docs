@@ -1,10 +1,10 @@
 ---
-description: 'We love contributions to Naas, big or small.'
+description: We love contributions to Naas, big or small.
 ---
 
 # Contributing to Naas
 
-Thank you for your interest in contributing! We love community contributions. Contribution guidelines are listed below. If you're unsure about how to start contributing or have any questions even after reading them, feel free to ask us on [Slack](https://slack.airbyte.io) in the \# 03\_contributions or \#general channel.
+Thank you for your interest in contributing! We love community contributions. Contribution guidelines are listed below. If you're unsure about how to start contributing or have any questions even after reading them, feel free to ask us on [Slack](https://slack.airbyte.io) in the # 03\_contributions or #general channel.
 
 However, for those who want a bit more guidance on the best way to contribute to **Naas**, read on. This document will cover what we're looking for. By addressing the points below, the chances that we can quickly merge or address your contributions will increase.
 
@@ -20,22 +20,22 @@ Here is a list of easy [good first issues](https://github.com/jupyter-naas/aweso
 
 ## Commit convention
 
-We follow the [**Conventional Commits specification**](https://www.conventionalcommits.org/en/v1.0.0/#summary)**.** It is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top.
+We follow the [**Conventional Commits specification**](https://www.conventionalcommits.org/en/v1.0.0/#summary)**. **It is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top.
 
 In Naas, we use the following  commit elements to communicate:
 
-1. `fix:` to patch a bug 
-2. `feat:`to introduce a new feature 
+1. `fix:` to patch a bug&#x20;
+2. `feat:`to introduce a new feature&#x20;
 3. `docs:` to document a feature or a fix
 4. `style:` to change the UX design of a feature
-5. `refactor:`to change the way a feature works 
-6. `test:`to add unitary tests to the project 
+5. `refactor:`to change the way a feature works&#x20;
+6. `test:`to add unitary tests to the project&#x20;
 
 This commit convention applies to Naas and Naas drivers repository.
 
 ## Areas for contribution
 
-### **New templates** 
+### **New templates **
 
 {% embed url="https://github.com/jupyter-naas/awesome-notebooks" %}
 
@@ -57,5 +57,4 @@ Our goal is to keep our docs comprehensive and updated. If you would like to hel
 
 
 
-###   ****
-
+### **  **

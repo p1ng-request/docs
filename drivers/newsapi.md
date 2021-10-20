@@ -1,10 +1,12 @@
 ---
-description: 'Connect to https://newsapi.org/ and get a dataframe'
+description: Connect to https://newsapi.org/ and get a dataframe
 ---
 
 # NewsAPI
 
-{% embed url="https://newsapi.org/" caption="Website" %}
+{% embed url="https://newsapi.org/" %}
+Website
+{% endembed %}
 
 ## Connect
 
@@ -76,5 +78,4 @@ sources = naas_drivers.newsapi.get_sources()
 
 ## Official documentation
 
-{% embed url="https://newsapi.org/docs/endpoints" caption="" %}
-
+{% embed url="https://newsapi.org/docs/endpoints" %}

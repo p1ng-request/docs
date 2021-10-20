@@ -4,7 +4,9 @@ description: Interact with Jupyter app
 
 # Jupyter
 
-{% embed url="https://jupyter.org/hub" caption="Website" %}
+{% embed url="https://jupyter.org/hub" %}
+Website
+{% endembed %}
 
 ## Connect
 
@@ -18,7 +20,7 @@ You should get your token here :
 In Naas cloud you can connect without any argument it will find your token alone
 {% endhint %}
 
-{% embed url="https://app.naas.ai/hub/token" caption="" %}
+{% embed url="https://app.naas.ai/hub/token" %}
 
 ## Connect to Jupyter instance
 
@@ -128,5 +130,4 @@ jp.restart_user(email)
 
 ## Official documentation
 
-{% embed url="https://jupyterhub.readthedocs.io/en/stable/reference/rest.html" caption="" %}
-
+{% embed url="https://jupyterhub.readthedocs.io/en/stable/reference/rest.html" %}

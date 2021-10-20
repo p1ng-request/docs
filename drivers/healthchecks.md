@@ -4,7 +4,9 @@ description: Interact with Healthchecks app
 
 # Healthchecks
 
-{% embed url="https://healthchecks.io/" caption="Website" %}
+{% embed url="https://healthchecks.io/" %}
+Website
+{% endembed %}
 
 If you are in Naas.ai cloud it's already setup, otherwise
 
@@ -12,7 +14,7 @@ If you are in Naas.ai cloud it's already setup, otherwise
 
 this should connect to this docker machine :
 
-{% embed url="https://hub.docker.com/r/galexrt/healthchecks/" caption="" %}
+{% embed url="https://hub.docker.com/r/galexrt/healthchecks/" %}
 
 ## Start
 
@@ -57,5 +59,4 @@ healthcheck.send()
 
 ## Official documentation
 
-{% embed url="https://healthchecks.io/docs" caption="" %}
-
+{% embed url="https://healthchecks.io/docs" %}

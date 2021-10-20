@@ -6,25 +6,27 @@ description: How to start using Naas in minutes.
 
 Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-code **to easily access data, automation, and AI.**
 
-![](.gitbook/assets/screenshot-2021-06-27-at-02.42.14.png)
+![](<.gitbook/assets/Screenshot 2021-06-27 at 02.42.14.png>)
 
 The product is based on 3 elements: **features, drivers, and templates.**
 
-  
-The **templates** enable "data geeks" to kickstart projects in minutes. They may include low-code **drivers** that act as super connectors to facilitate access to tools, and complex libraries \(database, API, ML algorithm...\) while the low-code **features** \(scheduling, asset sharing, notifications...\) enable faster iteration and deployment of outputs to end-users, in a headless way.  
+\
+The **templates** enable "data geeks" to kickstart projects in minutes. They may include low-code **drivers** that act as super connectors to facilitate access to tools, and complex libraries (database, API, ML algorithm...) while the low-code **features** (scheduling, asset sharing, notifications...) enable faster iteration and deployment of outputs to end-users, in a headless way.\
 
 
-Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai/).  
-[👉Open your account](https://www.naas.ai/free-forever)  
+Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
+[👉Open your account](https://www.naas.ai/free-forever)\
 
 
 _If you contribute to this library of open-source notebooks templates, you can X2 your monthly credits 🏆_
 
 ## Local installation
 
-If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  : 
+If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  :&#x20;
 
-{% page-ref page="advanced/local-install.md" %}
+{% content-ref url="advanced/local-install.md" %}
+[local-install.md](advanced/local-install.md)
+{% endcontent-ref %}
 
 ### Why Naas?
 
@@ -48,14 +50,16 @@ import naas
 
 ### Schedule your notebook
 
-Send in production this notebook and run it, every day at 9:00 
+Send in production this notebook and run it, every day at 9:00&#x20;
 
 ```python
 # do stuff in your notebook
 naas.scheduler.add(recurrence="0 9 * * *")
 ```
 
-{% page-ref page="features/scheduler.md" %}
+{% content-ref url="features/scheduler.md" %}
+[scheduler.md](features/scheduler.md)
+{% endcontent-ref %}
 
 ### Add a dependency
 
@@ -65,7 +69,9 @@ Send in production any file type like `test.csv` as a dependency:
 naas.dependency.add("test.csv")
 ```
 
-{% page-ref page="features/dependency.md" %}
+{% content-ref url="features/dependency.md" %}
+[dependency.md](features/dependency.md)
+{% endcontent-ref %}
 
 ### Add a secret key
 
@@ -81,13 +87,19 @@ Remove the previous line and get your secret key with :
 naas.secret.get(name="MY_API_KEY")
 ```
 
-This allows you to push your notebook in production without sensitive data getting exposed. 
+This allows you to push your notebook in production without sensitive data getting exposed.&#x20;
 
-{% page-ref page="features/secret.md" %}
+{% content-ref url="features/secret.md" %}
+[secret.md](features/secret.md)
+{% endcontent-ref %}
 
 ## Advanced features
 
 If you use Naas cloud they all work natively, otherwise go to :
+
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
 
 ### Use Notebooks as API
 
@@ -99,23 +111,27 @@ naas.api.add()
 
 Call the URL with your navigator you will get a message and see the notebook has run.
 
-If you want to download the notebook result instead, add this line: 
+If you want to download the notebook result instead, add this line:&#x20;
 
 ```python
 naas.api.respond_notebook()
 ```
 
-{% page-ref page="features/api.md" %}
+{% content-ref url="features/api.md" %}
+[api.md](features/api.md)
+{% endcontent-ref %}
 
 ### Expose assets
 
-Copy in production this asset \( file \) and allow to get it by calling the returned url:
+Copy in production this asset ( file ) and allow to get it by calling the returned url:
 
 ```python
 link = naas.assets.add("tesla-chart.html")
 ```
 
-{% page-ref page="features/asset.md" %}
+{% content-ref url="features/asset.md" %}
+[asset.md](features/asset.md)
+{% endcontent-ref %}
 
 ### Send notifications
 
@@ -129,7 +145,9 @@ content = "check in the link the chart data maide from fresh dataset : " + link
 naas.notifications.send(email=email, subject=subject, content=content)
 ```
 
-{% page-ref page="features/notification.md" %}
+{% content-ref url="features/notification.md" %}
+[notification.md](features/notification.md)
+{% endcontent-ref %}
 
 ## Help
 
@@ -161,4 +179,3 @@ Show a button to quickly open this documentation from Jupyter
 import naas
 naas.doc()
 ```
-

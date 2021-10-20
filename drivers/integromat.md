@@ -4,7 +4,7 @@ description: Interact with Integromat.com
 
 # Integromat
 
-{% embed url="https://integromat.com" caption="" %}
+{% embed url="https://integromat.com" %}
 
 ## WebHook
 
@@ -17,5 +17,6 @@ result = naas_drivers.integromat.connect(url).send(data)
 
 ## Official documentation
 
-{% embed url="https://support.integromat.com/hc/en-us/articles/360006249313-Webhooks" caption="Documentation" %}
-
+{% embed url="https://support.integromat.com/hc/en-us/articles/360006249313-Webhooks" %}
+Documentation
+{% endembed %}

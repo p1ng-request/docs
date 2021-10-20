@@ -4,7 +4,9 @@ description: Interact with toucan toco app
 
 # Toucan
 
-{% embed url="https://toucantoco.com/en/" caption="Website" %}
+{% embed url="https://toucantoco.com/en/" %}
+Website
+{% endembed %}
 
 ## Connect
 
@@ -229,5 +231,6 @@ naas_drivers.toucan.craft_token(username, access)
 
 ## Official documentation
 
-{% embed url="https://docs.toucantoco.com/" caption="Documentation" %}
-
+{% embed url="https://docs.toucantoco.com/" %}
+Documentation
+{% endembed %}

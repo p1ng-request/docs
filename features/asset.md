@@ -8,7 +8,7 @@ description: Expose assets by URL.
 
 ## Add
 
-Copy in production this current file as an asset \(file\) and allow yourself to get it by calling the returned URL.
+Copy in production this current file as an asset (file) and allow yourself to get it by calling the returned URL.
 
 ```python
 naas.asset.add()
@@ -16,7 +16,7 @@ naas.asset.add()
 
 You will get URL who downloads this current file when you open it.
 
-![screenshot-add-asset](../.gitbook/assets/screenshot-2020-10-07-at-18.34.12.png)
+![screenshot-add-asset](<../.gitbook/assets/Screenshot 2020-10-07 at 18.34.12.png>)
 
 ### Other files
 
@@ -52,13 +52,13 @@ You can find url of a file pushed into the production:
 url = naas.asset.find()
 ```
 
-### Other files 
+### Other files&#x20;
 
 ```python
 url = naas.asset.find(path="path/to/my/super/notebook.ipynb")
 ```
 
-## List 
+## List&#x20;
 
 You can list all version of a file pushed into the production:
 
@@ -68,13 +68,13 @@ You can list all version of a file pushed into the production:
 naas.asset.list()
 ```
 
-### Other files 
+### Other files&#x20;
 
 ```python
 naas.asset.list(path="path/to/my/super/data.csv")
 ```
 
-## Get 
+## Get&#x20;
 
 You can get a version of a file pushed into the production:
 
@@ -162,9 +162,8 @@ You don't remember how many Assets notebook you have?
 naas.asset.currents()
 ```
 
-### Raw result 
+### Raw result&#x20;
 
 ```python
 naas.asset.currents(raw=True)
 ```
-

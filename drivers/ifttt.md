@@ -4,9 +4,11 @@ description: Interact with IFTTT.com
 
 # IFTTT
 
-{% embed url="https://ifttt.com" caption="Website" %}
+{% embed url="https://ifttt.com" %}
+Website
+{% endembed %}
 
-Connect to IFTTT and first go to the webhook page: [https://ifttt.com/maker\_webhooks/](https://ifttt.com/maker_webhooks/)
+Connect to IFTTT and first go to the webhook page: [https://ifttt.com/maker\_webhooks/](https://ifttt.com/maker\_webhooks/)
 
 Hit the documentation button, your key appears on the first line:
 
@@ -39,5 +41,6 @@ result = naas_drivers.ifttt.connect(key).send(event, data)
 
 ## Official documentation
 
-{% embed url="https://ifttt.com/maker\_webhooks/" caption="Documentation" %}
-
+{% embed url="https://ifttt.com/maker_webhooks/" %}
+Documentation
+{% endembed %}

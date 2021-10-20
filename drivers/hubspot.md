@@ -4,7 +4,9 @@ description: Manage your sales pipeline thanks to our connection with the CRM Hu
 
 # Hubspot
 
-{% embed url="http://hubspot.com" caption="Website" %}
+{% embed url="http://hubspot.com" %}
+Website
+{% endembed %}
 
 ## Connect
 
@@ -368,5 +370,4 @@ hs.dealstages.get_all()
 
 ## Official documentation
 
-{% embed url="https://developers.hubspot.com/docs/api/overview" caption="" %}
-
+{% embed url="https://developers.hubspot.com/docs/api/overview" %}

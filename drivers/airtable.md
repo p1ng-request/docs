@@ -4,17 +4,19 @@ description: Interact with Airtable app
 
 # Airtable
 
-{% embed url="https://airtable.com/" caption="Website" %}
+{% embed url="https://airtable.com/" %}
+Website
+{% endembed %}
 
 `apikey` should be generated in your account :
 
-{% embed url="https://airtable.com/account" caption="" %}
+{% embed url="https://airtable.com/account" %}
 
 You should find it there:
 
 Then go to :
 
-{% embed url="https://airtable.com/api" caption="" %}
+{% embed url="https://airtable.com/api" %}
 
 and choose the workspace you wanna connect and on the Authentication section, you should see :
 
@@ -95,5 +97,6 @@ data = at.get(view='MyView', maxRecords=20)
 
 ## Official documentation
 
-{% embed url="https://airtable.com/api" caption="Documentation" %}
-
+{% embed url="https://airtable.com/api" %}
+Documentation
+{% endembed %}

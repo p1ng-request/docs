@@ -2,25 +2,25 @@
 description: Link custom domain to your public url
 ---
 
-# 🏰 Domain \(Alpha\)
+# 🏰 Domain (Alpha)
 
-If you are in our cloud 
+If you are in our cloud&#x20;
 
 {% hint style="danger" %}
-This feature is in early-stage development! 
+This feature is in early-stage development!&#x20;
 
 Contact devops@cashstory.com  to be able to test it.
 {% endhint %}
 
 {% hint style="info" %}
-Set CNAME in your domain or subdomain to:  ``
+Set CNAME in your domain or subdomain to: ` `
 
 abc046369c2ca408fb4e0e33cb35d006-b0f052c2a8fe9e46.elb.eu-west-3.amazonaws.com
 {% endhint %}
 
 ## Simple
 
-Copy in production this notebook as a dependency and allow notebooks to use it. 
+Copy in production this notebook as a dependency and allow notebooks to use it.&#x20;
 
 ```python
 url = "https://public.naas.ai/****/asset/****"
@@ -61,4 +61,3 @@ naas.domain.delete("google.com", url)
 ```python
 naas.domain.delete("google.com")
 ```
-

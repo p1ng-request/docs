@@ -4,7 +4,9 @@ description: Create chart easily with plotly
 
 # Plotly
 
-{% embed url="https://plotly.com/" caption="Website" %}
+{% embed url="https://plotly.com/" %}
+Website
+{% endembed %}
 
 ## Stock
 
@@ -14,21 +16,20 @@ If you use yahoo driver you can pass it without option it's made to work togethe
 
 Give a data frame with theses columns
 
-| Date | Open | High | Low | Close | Adj Close | Volume | Company |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2014-04-14 | 133.95 | 145.95 | 133.95 | 143.95 | 114.599 | 13650000 | TSLA |
+| Date       | Open   | High   | Low    | Close  | Adj Close | Volume   | Company |
+| ---------- | ------ | ------ | ------ | ------ | --------- | -------- | ------- |
+| 2014-04-14 | 133.95 | 145.95 | 133.95 | 143.95 | 114.599   | 13650000 | TSLA    |
 
-You can give Moving average with column start with MA \(Max 2\)
+You can give Moving average with column start with MA (Max 2)
 
 | MA5 | MA20 |
-| :--- | :--- |
-
+| --- | ---- |
 
 You can plot prediction coming from prediction driver with theses column
 
 | ARIMA | SVR | LINEAR | COMPOUND |
-| :--- | :--- | :--- | :--- |
-|  |  |  |  |
+| ----- | --- | ------ | -------- |
+|       |     |        |          |
 
 all this data can be generated for you by the Yahoo driver
 
@@ -87,7 +88,7 @@ chart = naas_drivers.plot.candlestick(df,
 
 this should connect to this docker machine :
 
-{% embed url="https://hub.docker.com/r/anthonylau/url-to-pdf-api" caption="" %}
+{% embed url="https://hub.docker.com/r/anthonylau/url-to-pdf-api" %}
 
 ### Simple
 
@@ -108,5 +109,4 @@ naas_drivers.plot.export(chart, "Tesla.png", css=css)
 
 ## Official documentation:
 
-{% embed url="https://plotly.com/python/getting-started/" caption="" %}
-
+{% embed url="https://plotly.com/python/getting-started/" %}

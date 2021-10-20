@@ -4,11 +4,11 @@ How to get your bot token
 
 Create app with the link below
 
-{% embed url="https://api.slack.com/apps" caption="" %}
+{% embed url="https://api.slack.com/apps" %}
 
 Then go to OAuth & Permissions
 
-Add scope to your app to allow bot to speak **\*\*\[**chat:write.public_\*\]\(_[https://api.slack.com/scopes/chat:write.public\)\](https://api.slack.com/scopes/chat:write.public%29\)\*\*\*
+Add scope to your app to allow bot to speak **\*\*\[**chat:write.public_\*]\(_[https://api.slack.com/scopes/chat:write.public)\\](https://api.slack.com/scopes/chat:write.public\)/)\*\*\*
 
 Then you sould reload your app, slack should notify you like this
 
@@ -36,4 +36,3 @@ message = "Hello friends"
 image = "http://i.imgur.com/c4jt321l.png")
 result = naas_drivers.slack.connect(token).send(message, image=image)
 ```
-

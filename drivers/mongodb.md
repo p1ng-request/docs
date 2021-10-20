@@ -4,7 +4,9 @@ description: Fetch data from a mongodb and get a dataframe
 
 # MongoDB
 
-{% embed url="https://www.mongodb.com/" caption="Website" %}
+{% embed url="https://www.mongodb.com/" %}
+Website
+{% endembed %}
 
 ## Connect
 
@@ -39,5 +41,4 @@ naas_drivers.mongo.send(data, collection_name, db_name)
 
 ## Official documentation
 
-{% embed url="https://docs.mongodb.com/" caption="" %}
-
+{% embed url="https://docs.mongodb.com/" %}

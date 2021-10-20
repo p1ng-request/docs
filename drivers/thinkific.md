@@ -4,7 +4,9 @@ description: Interact with Thinkific app
 
 # Thinkific
 
-{% embed url="https://www.thinkific.com" caption="Website" %}
+{% embed url="https://www.thinkific.com" %}
+Website
+{% endembed %}
 
 ## Users
 
@@ -85,5 +87,6 @@ data = thinkific.users.get()
 
 ## Official documentation
 
-{% embed url="https://developers.thinkific.com/api/api-documentation/\#/" caption="Doc api" %}
-
+{% embed url="https://developers.thinkific.com/api/api-documentation/#/" %}
+Doc api
+{% endembed %}

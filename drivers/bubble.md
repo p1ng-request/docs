@@ -4,7 +4,9 @@ description: Interact with Bubble.io
 
 # Bubble
 
-{% embed url="https://bubble.io" caption="Website" %}
+{% embed url="https://bubble.io" %}
+Website
+{% endembed %}
 
 ## Workflow
 
@@ -19,5 +21,6 @@ result = nass_drivers.bubble.send(url, data)
 
 ## Official documentation
 
-{% embed url="https://bubble.io/reference\#API.swagger\_spec" caption="Documentation" %}
-
+{% embed url="https://bubble.io/reference#API.swagger_spec" %}
+Documentation
+{% endembed %}

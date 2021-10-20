@@ -4,7 +4,9 @@ description: Connect to cityfalcon api and get a dataframe
 
 # CityFalcon
 
-{% embed url="https://www.cityfalcon.com/" caption="Website" %}
+{% embed url="https://www.cityfalcon.com/" %}
+Website
+{% endembed %}
 
 ## Get
 
@@ -111,5 +113,4 @@ tsla = cityfalcon.get("TSLA")
 
 ## Official documentation
 
-{% embed url="https://dev.cityfalcon.com/doc/api/v0.2" caption="" %}
-
+{% embed url="https://dev.cityfalcon.com/doc/api/v0.2" %}

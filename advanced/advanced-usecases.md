@@ -28,24 +28,24 @@ dl_url = naas.get_download_url(url)
 
 Result :
 
-![](../.gitbook/assets/image%20%287%29%20%282%29.png)
+![](<../.gitbook/assets/image (5).png>)
 
 ```
 https://app.naas.ai/user-redirect/naas/downloader?url=YOURURL
 ```
 
 {% hint style="info" %}
-Options: mode\_api 
+Options: mode\_api&#x20;
 
-with &mode\_api=yes that create the file in the user but don't open it. Useful for admin 
+with \&mode\_api=yes that create the file in the user but don't open it. Useful for admin&#x20;
 {% endhint %}
 
 {% hint style="info" %}
-Options: name 
+Options: name&#x20;
 
 with ?name=toto that create a file in the user with the name provided \`toto\`
 
- if no URL provided it create an empty file. 
+&#x20;if no URL provided it create an empty file.&#x20;
 {% endhint %}
 
 ## Run
@@ -57,16 +57,16 @@ import naas
 naas.run()
 ```
 
-## Changelog \(deprecated\)
+## Changelog (deprecated)
 
-Show changelog 
+Show changelog&#x20;
 
 ```python
 import naas
 naas.changelog()
 ```
 
-## Feature request \(deprecated\)
+## Feature request (deprecated)
 
 show feature request inside Jupyter
 
@@ -98,7 +98,7 @@ naas.reload_jobs()
 
 This represents the Naas env vars, you can get all to make your script work \`naas.n\_env\`
 
-```text
+```
 api_port
 current
 version
@@ -132,7 +132,7 @@ get data in the production of the current running notebook.
 
 For now current gives you this :
 
-![](../.gitbook/assets/image%20%284%29.png)
+![](<../.gitbook/assets/image (4).png>)
 
 ```python
 import naas
@@ -140,4 +140,3 @@ print(naas.n_env.current)
 # This will be empty in dev = in notebook run by you
 # and with vars when run by naas runner ( scheduler or webhook )
 ```
-

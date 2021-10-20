@@ -16,9 +16,9 @@ print(os.getenv('NB_USER'), os.getenv('JUPYTERHUB_USER'), os.getenv('JUPYTERHUB_
 
 #### Env requirements
 
-* `NB_USER` =&gt; Should be set as your notebook user, probably `joyvan`
-* `JUPYTERHUB_USER` =&gt; Should be set as your machine user, not root
-* `JUPYTERHUB_API_TOKEN` =&gt; should be auto-set by your hub
+* `NB_USER` => Should be set as your notebook user, probably `joyvan`
+* `JUPYTERHUB_USER` => Should be set as your machine user, not root
+* `JUPYTERHUB_API_TOKEN` => should be auto-set by your hub
 
 ## Install
 
@@ -36,9 +36,13 @@ You can test on your local computer only the Scheduler feature.
 Full install needs Kubernetes and Docker. Let's talk.
 {% endhint %}
 
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
+
 ## Start
 
-Start the server in your Jupyter singleuser machine: 
+Start the server in your Jupyter singleuser machine:&#x20;
 
 ```bash
 !python -m naas.runner &
@@ -50,7 +54,7 @@ You can now delete previous cells
 
 It will run until you stop your Jupyter server, go back to:
 
-{% page-ref page="../" %}
-
-
+{% content-ref url="../" %}
+[..](../)
+{% endcontent-ref %}
 
