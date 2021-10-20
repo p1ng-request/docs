@@ -183,12 +183,12 @@ You don't remember how many Scheduled notebooks you have?
 ### Simple
 
 ```python
-naas.scheduler.list()
+naas.scheduler.currents()
 ```
 
 ### Raw result&#x20;
 
 ```python
-naas.scheduler.list(raw=True)
+naas.scheduler.currents(raw=True)
 ```
 
