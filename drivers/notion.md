@@ -48,7 +48,7 @@ token = "*********"
 notion.connect(token)
 ```
 
-## Get database
+## Get database &#x20;
 
 ```python
 from naas_drivers import notion 
@@ -65,9 +65,21 @@ database
 from naas_drivers import notion 
 
 token = "*********"
-database_url = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
+database_id = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
 
-page = notion.connect(token).page.create(parent=database_url, title="Page title")
+page = notion.connect(token).page.create(database_id=database_url, title="Page title")
+page
+```
+
+## Create a blank page inside a page
+
+```python
+from naas_drivers import notion 
+
+token = "*********"
+page_id = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
+
+page = notion.connect(token).page.create(page_id=page_id, title="Page title")
 page
 ```
 
