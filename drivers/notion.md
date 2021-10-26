@@ -65,7 +65,7 @@ database
 from naas_drivers import notion 
 
 token = "*********"
-database_id = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
+database_url = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
 
 page = notion.connect(token).page.create(database_id=database_url, title="Page title")
 page
@@ -77,9 +77,9 @@ page
 from naas_drivers import notion 
 
 token = "*********"
-page_id = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
+page_url = "https://www.notion.so/naas-official/8910d64de001479c8494fbecbf52b525?v=4911d8baa8a5494a86f6215a6b0c95fe"
 
-page = notion.connect(token).page.create(page_id=page_id, title="Page title")
+page = notion.connect(token).page.create(page_id=page_url, title="Page title")
 page
 ```
 
