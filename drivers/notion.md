@@ -85,6 +85,12 @@ page
 
 ## Update a page inside a database with properties
 
+Properties are associated with the database. If you put a page type that is not currently present, it will create it.
+
+The types of properties available are listed below (".type")
+
+The first paramater into the parenthesis is the name of the field, the second is the value to update.
+
 ```python
 from naas_drivers import notion 
 
@@ -96,12 +102,11 @@ page = notion.connect(token).page.get(page_url)
 page.title("Name","Page title")
 page.rich_text("Text","Ceci est toto")
 page.number("Number", 42)
-page.select("Select",["Value1","Value2","Value3"])
+page.select("Select","Value1")
 page.multi_select("Muti Select",["Value1","Value2","Value3"])
 page.date("Date","2021-10-03T17:01:26") #Follow ISO 8601 format
 page.people("People", ["d40e767c-d7af-4b18-a86d-55c61f1e39a4"]) #list of ID of users
-page.checkbox("Checkbox", [("Validated",True), ("Connected",False)])
-page.url("URL","www.naas.ai")
+page.checkbox("Checkbox", True)
 page.email("Email","jeremy@naas.ai")
 page.phone_number("Phone number","+33 6 21 83 11 12")
 
@@ -109,10 +114,20 @@ page.update()
 
 
 #Not yet supported
+#page.url("URL","www.naas.ai")
 #page.properties.formula()
 #page.properties.relation()
 #page.properties.rollup()
 #page.properties.files()
+```
+
+### Add "Updated at" property
+
+Know when the page has last been updated.
+
+```python
+database.add_property("Updated at","last_edited_time")
+database.update()
 ```
 
 ## Create Block inside a page
