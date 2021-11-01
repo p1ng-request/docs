@@ -1,5 +1,7 @@
 ---
-description: Interact with your Notion workspace.
+description: >-
+  Interact with your Notion workspace with low code drivers on top of the
+  official API.
 ---
 
 # Notion
