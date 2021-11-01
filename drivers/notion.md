@@ -71,7 +71,11 @@ page = notion.connect(token).page.create(database_id=database_url, title="Page t
 page
 ```
 
-## Create a blank page inside a page
+## Create a blank page inside a page&#x20;
+
+{% hint style="warning" %}
+This feature is yet supported. Contact us on [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-r187or6p-CwaKutBTxVeIIw6zJ0DHkw) on #04\_question channel if you need it.
+{% endhint %}
 
 ```python
 from naas_drivers import notion 
