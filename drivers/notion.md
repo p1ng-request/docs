@@ -140,26 +140,34 @@ page_url = "https://www.notion.so/naas-official/Daily-meeting-04-10-2021-2187d1d
 
 page = notion.connect(token).page.get(page_url)
 
-page.heading_1("Page title")
-page.heading_2("Page title")
-page.heading_3("Page title")
-page.paragraph("Page title")
-page.paragraph("Page that you do")
-page.numbered_list_item()
-page.to_do()
-page.toggle()
-page.child_page()
-page.child_database()
-page.embed()
-page.to_do()
-page.image()
-page.video()
-page.pdf()
-page.bookmark()
+page.heading_1("Heading 1")
+page.heading_2("Heading 2")
+page.heading_3("Heading 3")
+page.paragraph("Paragraph")
+page.numbered_list_item("This is first")
+page.to_do("Need this to be done")
+page.embed("https://docs.google.com/spreadsheets/*************")
+page.video("https://www.youtube.com/watch?v=8AsMAc4VFJs")
+page.image("https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png")
+page.code("pip install naas")
+page.equation("e=mc2")
 
 #The order in parathesis will define the order of the block creation. 
 page.update()
+
+#Not yet supported 
+#page.pdf("https://bitcoin.org/bitcoin.pdf") #not working
+#page.bookmark("https://en.wikipedia.org/wiki/Project_Jupyter")  #do create a bookmark but do not add the link
+#page.toggle("Oh") #Should be getting a child block 
+#page.child_page()
+#page.child_database()
+#page.properties.formula()
+#page.properties.relation()
+#page.properties.rollup()
+#page.properties.files()
 ```
+
+The embed blocks are not yet supported. See [changelog](https://developers.notion.com/changelog/validation-on-embed-block-urls).
 
 ## Get the list of users
 
