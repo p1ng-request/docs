@@ -5,7 +5,7 @@ description: Interact with your Notion workspace.
 # Notion
 
 {% hint style="warning" %}
-This driver is in beta. Contact us on [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-r187or6p-CwaKutBTxVeIIw6zJ0DHkw) to use it.
+This driver is in beta. Contact us on [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-r187or6p-CwaKutBTxVeIIw6zJ0DHkw) on #04\_question channel if you need help.
 {% endhint %}
 
 If you are not familiar with Notion, check out their website. It's pretty amazing all-in-workspace.
