@@ -12,16 +12,13 @@ Check out our [Roadmap on GitHub](https://github.com/orgs/jupyter-naas/projects/
 
 ## Coming within a few weeks/months
 
-We understand that we're not "production-ready" for a lot of companies yet. In the end, we just got started in July 2020, so we're at the beginning of the journey. Here is a highlight of the main features we are planning on releasing in the next few months:
+**Landing in March or so:**
 
-**Landing in July or so:**
-
-* 0Auth login method to auto-connect with Google, LinkedIn, Github
-* Improvements to the onboarding experience.
-* Support of most popular databases.
-* Support of data lakes
+* Improved onboarding experience
+* \+100 new templates on "→ Metric Store" folder.
+* Naas API
 
 **Coming a bit later:**
 
-* Our credit management interface.
+* Naas mobile app.&#x20;
 * Collaboration features from JupyterLab release 3.0.
