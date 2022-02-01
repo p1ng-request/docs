@@ -1,5 +1,6 @@
 ---
 description: Interact with Canny app
+coverY: 0
 ---
 
 # Canny
