@@ -1,6 +1,13 @@
+---
+description: The security of your data and your usage of naas is very important to us.
+cover: >-
+  https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwyfHxuYXNhfGVufDB8fHx8MTY0Mzc1ODMyNA&ixlib=rb-1.2.1&q=85
+coverY: 1498.20166793025
+---
+
 # 🔐 Security
 
-The security of your data and your usage of naas is very important to us. We need to provide you safe ways to use our services while making sure you keep the control over your data.
+We need to provide you with safe ways to use our services while making sure you keep control over your data.
 
 ## Secure channel between you and us
 
