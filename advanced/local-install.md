@@ -1,8 +1,10 @@
 ---
-description: Install Naas in your local Jupyter environment.
+description: Install Naas in your local environment.
+cover: ../.gitbook/assets/Untitled Design.png
+coverY: 0
 ---
 
-# Use on your computer
+# Local installation
 
 ## Is your local env ready?
 

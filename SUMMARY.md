@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Quickstart](README.md)
+* [Welcome to Naas](README.md)
 * [🔄 Features](features/README.md)
   * [⏰ Scheduler](features/scheduler.md)
   * [⚙️ Webhook](features/api.md)
@@ -9,7 +9,7 @@
   * [👈 Callback](features/callback.md)
   * [🔗 Dependency](features/dependency.md)
   * [🔑 Secret key](features/secret.md)
-  * [🏰 Domain \(Alpha\)](features/domain.md)
+  * [🏰 Domain (Alpha)](features/domain.md)
 * [🏎 Drivers](drivers/README.md)
   * [💬 AI/Machine Learning](drivers/ai-machine-learning/README.md)
     * [Clustering](drivers/ai-machine-learning/clustering.md)
@@ -55,9 +55,8 @@
   * [Libraries Management](advanced/installed-librairies.md)
   * [Upgrading Naas](advanced/updates.md)
   * [Deploy on Kubernetes](advanced/onprem-install.md)
-  * [Use on your computer](advanced/local-install.md)
+  * [Local installation](advanced/local-install.md)
   * [Automatic deployment](advanced/automatic-deployment.md)
   * [Advanced use cases](advanced/advanced-usecases.md)
 * [Best Practices](best-pratices.md)
 * [FAQ](faq.md)
-

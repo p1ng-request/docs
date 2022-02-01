@@ -20,7 +20,7 @@ Here is a list of easy [good first issues](https://github.com/jupyter-naas/aweso
 
 ## Commit convention
 
-We follow the [**Conventional Commits specification**](https://www.conventionalcommits.org/en/v1.0.0/#summary)**. **It is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top.
+We follow the [**Conventional Commits specification**](https://www.conventionalcommits.org/en/v1.0.0/#summary)**.** It is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top.
 
 In Naas, we use the following  commit elements to communicate:
 
@@ -35,7 +35,7 @@ This commit convention applies to Naas and Naas drivers repository.
 
 ## Areas for contribution
 
-### **New templates **
+### **New templates**&#x20;
 
 {% embed url="https://github.com/jupyter-naas/awesome-notebooks" %}
 
@@ -57,4 +57,4 @@ Our goal is to keep our docs comprehensive and updated. If you would like to hel
 
 
 
-### **  **
+### &#x20; **** &#x20;

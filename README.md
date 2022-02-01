@@ -1,42 +1,72 @@
 ---
-description: How to start using Naas in minutes.
+description: An open-source, low-code data platform for high velocity decision-making.
+cover: >-
+  https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHw1fHxzdGFyc3xlbnwwfHx8fDE2NDM3MDc0ODE&ixlib=rb-1.2.1&q=85
+coverY: 0
 ---
 
-# Quickstart
+# Welcome to Naas
 
-Naas **augments Jupyter Notebooks** by adding micro-services accessible in low-code **to easily access data, automation, and AI.**
+{% hint style="warning" %}
+This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue](https://github.com/pycaret/pycaret/issues).&#x20;
+{% endhint %}
+
+> “[Naas.ai](http://naas.ai) democratises Data Science with low-code formulas and notebooks, the same way Excel formulas and spreadsheets did it for calculation modeling.” \
+> Christophe Jouin, Head of Ecosystem Engineering at Netflix
+
+### **Problem**
+
+The ability to access live business insights from data provides a real competitive advantage.
+
+Organizations collect a growing quantity of data across domains but only a few manage to connect the dots and extract the essential business value. This; is the purpose of data science.
+
+The main problem is that the data often sits in different silos. This situation generates :
+
+* Poor audibility
+* Complex multi-channel distribution (email, chat, files, reports, social media)
+* Lack of accountability
+
+### **Opportunity**
+
+In the past decade, the low-code and no-code solutions have become a multi-billion dollar industry. The promise of these solutions is that anyone can build applications and automation using templates. Yet, no standard has emerged in “low-code data science”.
+
+Naas was built to become this standard, comforted by Netflix publications explaining why they are investing in a Jupyter Notebook infrastructure to solve their data challenges.
+
+Naas leverages Jupyter Notebooks and its 10 milions users. Jupyter Notebook is a web-based interactive computing platform for data science. A notebook is a document made with cells of live code, text and visualizations for data exploration, collaboration and storytelling.
+
+Thanks to Naas low-code formulas, notebooks become more readable, more accessible, and interconnected to support faster business decision-making.
+
+Naas augments Jupyter Notebooks by adding micro-services accessible in low-code to easily access data, automation, and AI.
 
 ![](<.gitbook/assets/Screenshot 2021-06-27 at 02.42.14.png>)
 
-The product is based on 3 elements: **features, drivers, and templates.**
 
-\
-The **templates** enable "data geeks" to kickstart projects in minutes. They may include low-code **drivers** that act as super connectors to facilitate access to tools, and complex libraries (database, API, ML algorithm...) while the low-code **features** (scheduling, asset sharing, notifications...) enable faster iteration and deployment of outputs to end-users, in a headless way.\
+
+Naas is an open-source platform that allows data professionals (business analysts, scientists and engineers) to create data engines combining automation, analytics and AI from the comfort of their Jupyter notebooks.
+
+The data engines unlock the ability to follow live metrics across business domains and generate micro-decisions recommendations.
+
+The platform is based on 3 elements: templates, drivers, features.
+
+* The templates enable the user to create “ready-to-use” automation and reports in minutes.
+* The low-code drivers act as lego blocks to facilitate interconnections between tools (databases, APIs, Machine Learning algorithms...).
+* The low-code features (scheduling, asset sharing, notifications...) enable distribution of insights to end-users in multiple channels.\
 
 
 Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
-[👉Open your account](https://www.naas.ai/free-forever)\
+[👉Open your account](https://www.naas.ai/free-forever)&#x20;
 
+## Naas at a glance
 
-_If you contribute to this library of open-source notebooks templates, you can X2 your monthly credits 🏆_
-
-## Local installation
+{% hint style="success" %}
+Naas allows Jupyter Notebooks to become a safe production environment.
+{% endhint %}
 
 If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  :&#x20;
 
 {% content-ref url="advanced/local-install.md" %}
 [local-install.md](advanced/local-install.md)
 {% endcontent-ref %}
-
-### Why Naas?
-
-{% hint style="warning" %}
-Jupyter Notebooks are awesome, but using them in production can be risky & messy.
-{% endhint %}
-
-{% hint style="success" %}
-Naas allows Jupyter Notebooks to become a safe production environment!
-{% endhint %}
 
 ## Basic features
 
@@ -54,7 +84,7 @@ Send in production this notebook and run it, every day at 9:00&#x20;
 
 ```python
 # do stuff in your notebook
-naas.scheduler.add(recurrence="0 9 * * *")
+naas.scheduler.add(cron="0 9 * * *")
 ```
 
 {% content-ref url="features/scheduler.md" %}

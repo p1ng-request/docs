@@ -44,7 +44,7 @@ naas.webhook.add(params=params)
 
 ### Dynamic Parameters
 
-When you notebook `url` is called in **getting ** or **post**, it accepts parameters with **mime-type** :
+When you notebook `url` is called in **getting** or **post**, it accepts parameters with **mime-type** :
 
 `application/x-www-form-urlencoded`
 
@@ -53,7 +53,7 @@ When you notebook `url` is called in **getting ** or **post**, it accepts parame
 They will be injected into a new cell in the first position in your notebook.
 
 {% hint style="info" %}
-If You want them to be added at a specific place add tag **parameters** in a cell and your **dynamic parameters **will be added in a new cell next to it.
+If You want them to be added at a specific place add tag **parameters** in a cell and your **dynamic parameters** will be added in a new cell next to it.
 {% endhint %}
 
 ![](<../.gitbook/assets/Screenshot 2021-03-02 at 14.38.47.png>)

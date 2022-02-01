@@ -11,13 +11,13 @@ Not a crypto miner or any other Fancy idea, it will work as his best when :
 Create a folder in your Naas by project, ideally, in this project, you should find:
 
 * **Input** folder where you put every file you use as dependency to your notebook.
-* **Output **folder** **where you save all results of your notebook, intermediary or final
-* **Script **folder where you put your notebooks, all with a clear name of what they do.
-* **deploy.ipynb **who is there to list and send all your sandbox files in production, it will prevent you to send your work in production by restarting a kernel!
+* **Output** folder **** where you save all results of your notebook, intermediary or final
+* **Script** folder where you put your notebooks, all with a clear name of what they do.
+* **deploy.ipynb** who is there to list and send all your sandbox files in production, it will prevent you to send your work in production by restarting a kernel!
 
 Use **real Database** for storing purposes, CSVs are great but please use it as debug, not for storing every move from excel loses all its meaning!&#x20;
 
-To do so, use our Mongo connector and a **free instance** from Mongo Atlas, you have **512MB **a good point to start  :
+To do so, use our Mongo connector and a **free instance** from Mongo Atlas, you have **512MB** a good point to start  :
 
 {% embed url="https://www.mongodb.com/pricing" %}
 
