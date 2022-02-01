@@ -60,3 +60,4 @@
   * [Advanced use cases](advanced/advanced-usecases.md)
 * [Best Practices](best-pratices.md)
 * [FAQ](faq.md)
+* [🔐 Security](security.md)
