@@ -2,7 +2,7 @@
 description: Send simple email from your notebooks
 ---
 
-# 🛎️ Notification
+# 🛎 Notification
 
 {% hint style="info" %}
 In local you need to run the notification machine to make it work. refer to the doc to install it.
@@ -10,7 +10,7 @@ In local you need to run the notification machine to make it work. refer to the 
 
 ## Text
 
-Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc... 
+Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc...&#x20;
 
 ```python
 import naas
@@ -33,7 +33,7 @@ files = ["path/to/my/super/data.csv"]
 naas.notification.send(email_to=email_to, subject=subject, html=content, files=files)
 ```
 
-## HTML  
+## HTML &#x20;
 
 ```python
 import naas
@@ -45,7 +45,7 @@ content = f"<h1>Check in the link the chart image below</h1><br/> <img src="{ima
 naas.notification.send(email_to=email_to, subject=subject, html=content)
 ```
 
-## Custom sender 
+## Custom sender&#x20;
 
 ```python
 import naas
@@ -68,7 +68,7 @@ import naas
 naas.notification.list()
 ```
 
-## List all \(Admin\)
+## List all (Admin)
 
 Allows retrieving the details of emails/notifications sent by all users as admin.
 
@@ -76,4 +76,3 @@ Allows retrieving the details of emails/notifications sent by all users as admin
 import naas
 naas.notification.list_all()
 ```
-

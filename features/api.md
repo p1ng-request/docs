@@ -2,7 +2,7 @@
 description: Run a notebook by calling an URL.
 ---
 
-# ⚙️ Webhook
+# ⚙ Webhook
 
 {% embed url="https://www.youtube.com/watch?v=KejRjlSvOL8&t=13s" %}
 

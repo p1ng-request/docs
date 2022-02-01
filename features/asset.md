@@ -2,7 +2,7 @@
 description: Expose assets by URL.
 ---
 
-# 🖼️ Asset
+# 🖼 Asset
 
 {% embed url="https://www.youtube.com/watch?v=z8sTjIiZphM" %}
 
