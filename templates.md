@@ -1,7 +1,7 @@
 ---
 cover: >-
-  https://images.unsplash.com/photo-1575470522418-b88b692b8084?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHw2fHxsZWdvfGVufDB8fHx8MTY0MzcyNzUwOA&ixlib=rb-1.2.1&q=85
-coverY: 437.1834942932397
+  https://images.unsplash.com/photo-1457364887197-9150188c107b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwzfHxyb2NrZXR8ZW58MHx8fHwxNjQzNzU4NDE2&ixlib=rb-1.2.1&q=85
+coverY: 0
 ---
 
 # 😎 Templates
