@@ -1,6 +1,10 @@
 # Table of contents
 
 * [Welcome to Naas](README.md)
+* [😎 Templates](templates.md)
+* [Page 1](page-1/README.md)
+  * [Airtable](page-1/airtable/README.md)
+    * [Airtable\_delete\_data](page-1/airtable/airtable\_delete\_data.md)
 * [🔄 Features](features/README.md)
   * [⏰ Scheduler](features/scheduler.md)
   * [⚙ Webhook](features/api.md)
@@ -44,7 +48,6 @@
   * [Qonto](drivers/qonto.md)
   * [Yahoo](drivers/yahoo.md)
   * [Zapier](drivers/zapier.md)
-* [😎 Templates](templates.md)
 * [Project Overview](project-overview/README.md)
   * [Roadmap](project-overview/roadmap.md)
   * [Changelog](project-overview/changelog.md)

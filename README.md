@@ -11,8 +11,9 @@ coverY: 0
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
 
-> “[Naas.ai](http://naas.ai) democratises Data Science with low-code formulas and notebooks, the same way Excel formulas and spreadsheets did it for calculation modeling.” \
-> Christophe Jouin, Head of Ecosystem Engineering at Netflix
+### ****
+
+### ****
 
 ### **Problem**
 
