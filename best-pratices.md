@@ -1,29 +1,39 @@
+---
+description: What you need to know to keep your Naas experience clean and safe.
+---
+
 # Best Practices
 
-After few months of using our own product and with the help of all of you we have found a set of practices that help to keep the Naas working your use cases!
+As we "eat our own dog food" using Naas for our personal and business use cases, we have found a set of practices that help to keep the Naas working on any kind of your use cases!
 
-Use Mainly Naas as ETL :
+It prevents the "bad habits" people have in their notebook usage and emphasis a human-centric approach, where everything is as detailed as possible in written language, and as abstracted as possible.
 
-{% embed url="https://en.wikipedia.org/wiki/Extract,_transform,_load" %}
+### The Naas template framework.
 
-Not a crypto miner or any other Fancy idea, it will work as his best when :
+**→ Common  metadata on the notebook**
 
-Create a folder in your Naas by project, ideally, in this project, you should find:
+* Title: "Tool - Action of the notebook"
+* Description: a one-liner explaining the benefits of the notebooks for the user
+* Tags: hashtags of the topics the notebook is about
 
-* **Input** folder where you put every file you use as dependency to your notebook.
-* **Output** folder **** where you save all results of your notebook, intermediary or final
-* **Script** folder where you put your notebooks, all with a clear name of what they do.
-* **deploy.ipynb** who is there to list and send all your sandbox files in production, it will prevent you to send your work in production by restarting a kernel!
+**→ A repeatable structure. And if the functions can be packaged then create** [**a python wrapper on top.**](drivers/)****
 
-Use **real Database** for storing purposes, CSVs are great but please use it as debug, not for storing every move from excel loses all its meaning!&#x20;
-
-To do so, use our Mongo connector and a **free instance** from Mongo Atlas, you have **512MB** a good point to start  :
-
-{% embed url="https://www.mongodb.com/pricing" %}
+* Input: list of all the variables, credentials, that needs to be setup
+* Model: list the functions applied to the data
+* Output: list the assets to be used by the user and its distribution channels if any.\
 
 
+### Storage&#x20;
+
+When it's necessary (big amount of structured data to handle) we use are using parquet file + [https://duckdb.org/](https://duckdb.org) to query the dataset used in our data products.
+
+What's nice with that solution is that if at any time your dataset is becoming too big, then you can switch to storing everything in AWS S3 and then querying your parquets files with AWS Athena for example.
+
+This project from AWS makes it easy to deal with S3 + Parquet + SQL query [https://github.com/awslabs/aws-data-wrangler](https://github.com/awslabs/aws-data-wrangler)
 
 
+
+### Others
 
 * Don't use emoji, space, or weird characters this will lead to errors just for a name, do you really what to find that the name \`$t0️⃣ck of W/-\ll $street.csv\` was causing your bug after 10 hours?
 * Don't create your own scheduler within the scheduler, like schedule every minute a script to choose which action to do. It will create a ton of output file, max you file storage very fast and debug with be a crazy hell!

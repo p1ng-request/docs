@@ -1,24 +1,18 @@
-# Libraries Management
+# Packages Management
 
-You are free to install any libraries on your Naas engine, to do so just create a cell with: 
+You are free to install any libraries on your Naas engine, to do so just create a cell with:&#x20;
 
-```text
+```
 !pip install --user YOURLIB
 ```
 
-You can also request to have it installed globally in our canny
-
-{% embed url="https://naas.canny.io/" %}
-
-
-
 {% hint style="info" %}
-All libraries listed below are essential to Naas, please don't update them!
+All libraries listed below are essential to Naas, please ask us in [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-r187or6p-CwaKutBTxVeIIw6zJ0DHkw) how to update them.
 {% endhint %}
 
 ## Python level
 
-```text
+```
 # install by naas
 
 "nbconvert==6.0.7",
@@ -133,7 +127,7 @@ matplotlib==3.3.4
 
 ## Jupyter Level
 
-```text
+```
 jupyterlab-spreadsheet \
 @jupyterlab/server-proxy \
 jupyterlab-plotly
@@ -141,7 +135,7 @@ jupyterlab-plotly
 
 ## Machine Level
 
-```text
+```
 redir 
 tesseract-ocr
 libtesseract-dev
@@ -150,7 +144,7 @@ libcairo2-dev
 
 ## Base image
 
-Below you can find all packages installer by the jupyter team, we use this docker image as base for our own build. 
+Below you can find all packages installer by the jupyter team, we use this docker image as base for our own build.&#x20;
 
 {% embed url="https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile" %}
 
@@ -159,6 +153,4 @@ Below you can find all packages installer by the jupyter team, we use this docke
 In addition to this, we build our machine with naas drivers in it you can check what's is inside below
 
 {% embed url="https://naas.gitbook.io/drivers/installed-librairies" %}
-
-
 
