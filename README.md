@@ -7,15 +7,15 @@ coverY: 0
 
 # Welcome to Naas
 
+![](<.gitbook/assets/Untitled Design (1).jpg>)
+
 {% hint style="warning" %}
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
 
-### ****
+****
 
-### ****
-
-### **Problem**
+## **Why Naas?**
 
 The ability to access live business insights from data provides a real competitive advantage.
 
@@ -57,17 +57,9 @@ The platform is based on 3 elements: templates, drivers, features.
 Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
 [👉Open your account](https://www.naas.ai/free-forever)&#x20;
 
-## Naas at a glance
-
 {% hint style="success" %}
 Naas allows Jupyter Notebooks to become a safe production environment.
 {% endhint %}
-
-If you want to use Naas on your local Jupyter environment, it's free and open-source, just follow the procedure below  :&#x20;
-
-{% content-ref url="advanced/local-install.md" %}
-[local-install.md](advanced/local-install.md)
-{% endcontent-ref %}
 
 ## Basic features
 
