@@ -2,11 +2,12 @@
 cover: >-
   https://images.unsplash.com/photo-1457364887197-9150188c107b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwzfHxyb2NrZXR8ZW58MHx8fHwxNjQzNzU4NDE2&ixlib=rb-1.2.1&q=85
 coverY: 0
+description: You don't have to be a data scientist, to use data science.
 ---
 
 # 😎 Templates
 
-## Naas Templates [![Awesome](https://camo.githubusercontent.com/abb97269de2982c379cbc128bba93ba724d8822bfbe082737772bd4feb59cb54/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)
+## Naas Templates [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 (aka the "awesome-notebooks")
 
@@ -18,9 +19,9 @@ Naas is a data platform that enable anyone with minimal technical knowledge to t
 The platform is based on 3 elements:\
 
 
-* The **templates** enable anyone to use data engines on all kind of subjects in minutes.
+* The **templates** enable anyone to use data engines on all kinds of subjects in minutes.
 * The low-code **drivers** act as connectors to facilitate access to tools, and complex libraries (database, API, ML algorithm...)
-* The low-code **features** (scheduling, asset sharing, notifications...) turns Notebooks into production ready data engines.\
+* The low-code **features** (scheduling, asset sharing, notifications...) turn Notebooks into production-ready data engines.\
 
 
 Naas is forever free to use with 100 credits/month.\
@@ -29,11 +30,11 @@ Naas is forever free to use with 100 credits/month.\
 
 ### Naas Templates
 
-The aim of this repository is to be the largest aggregator of production ready Jupyter Notebooks templates. To do so, we have defined a framework that enable easy understanding and scaling of Notebooks: Each notebook is organized with the following msections:
+The aim of this repository is to be the largest aggregator of production ready Jupyter Notebooks templates. To do so, we have defined a framework that enable easy understanding and scaling of Notebooks: Each notebook is organized with the following sections:
 
 * Title: "Tool - Action of the notebook"
 * Description: a one-liner explaining the benefits of the notebooks for the user
-* Tags: hastags of the topics the notebook is about
+* Tags: hashtags of the topics the notebook is about
 * Input: list of all the variables, credentials, that needs to be setup
 * Model: list the functions applied to the data
 * Output: list the assets to be used by the user and its distribution channels if any.
@@ -61,14 +62,11 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 ✅ Follow us on social medias:
 
-* [Twitter: @naas.ai](https://twitter.com/JupyterNaas)\
-
-* [Linkedin: @JupyterNaas](https://www.linkedin.com/company/naas-ai/)\
-
+* [Twitter: @naas.ai](https://twitter.com/JupyterNaas)
+* [Linkedin: @JupyterNaas](https://www.linkedin.com/company/naas-ai/)
 * [Youtube: @naas](https://www.youtube.com/channel/UCKKG5hzjXXU\_rRdHHWQ8JHQ/videos)\
 
 
-\
 
 
 ## Templates list
@@ -163,14 +161,18 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 * [Close issue](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Close\_issue.ipynb)
 * [Create issue](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Create\_issue.ipynb)
 * [Download file from url](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Download\_file\_from\_url.ipynb)
+* [Get active projects](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_active\_projects.ipynb)
 * [Get commits ranking from repository](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_commits\_ranking\_from\_repository.ipynb)
+* [Get issues from repo](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_issues\_from\_repo.ipynb)
 * [Get profile from user](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_profile\_from\_user.ipynb)
 * [Get profiles from teams](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_profiles\_from\_teams.ipynb)
+* [Get pull requests from repository](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_pull\_requests\_from\_repository.ipynb)
 * [Get stargazers from repository](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_stargazers\_from\_repository.ipynb)
 * [Get weekly commits from repository](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Get\_weekly\_commits\_from\_repository.ipynb)
 * [Peform basic actions](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Peform\_basic\_actions.ipynb)
 * [Read issue](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Read\_issue.ipynb)
 * [Track notebooks created over time](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Track\_notebooks\_created\_over\_time.ipynb)
+* [Track open issues roadmap](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Github/Github\_Track\_open\_issues\_roadmap.ipynb)
 
 ### Gmail
 
@@ -291,6 +293,7 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 ### Metrics Store
 
+* [Content creation Track connections](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Metrics%20Store/Content\_creation\_Track\_connections.ipynb)
 * [Template](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Metrics%20Store/Metrics\_Store\_Template.ipynb)
 
 ### Microsoft Teams
@@ -420,12 +423,14 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 ### Qonto
 
-* [Get flows](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_flows.ipynb)
+* [Get cash position trend](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_cash\_position\_trend.ipynb)
+* [Get organizations](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_organizations.ipynb)
 * [Get positions](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_positions.ipynb)
-* [Get statement aggregated by date](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement\_aggregated\_by\_date.ipynb)
+* [Get statement](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement.ipynb)
 * [Get statement barline](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement\_barline.ipynb)
-* [Get statement detailed](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement\_detailed.ipynb)
-* [Get statement summary](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement\_summary.ipynb)
+* [Get statement ranking by category](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement\_ranking\_by\_category.ipynb)
+* [Get statement summary by operation type](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_statement\_summary\_by\_operation\_type.ipynb)
+* [Get transactions](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Get\_transactions.ipynb)
 * [Releve de compte augmente](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Qonto/Qonto\_Releve\_de\_compte\_augmente.ipynb)
 
 ### Quandl
@@ -440,6 +445,13 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 ### Redshift
 
 * [Connect with SQL Magic and IAM Credentials](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Redshift/Redshift\_Connect\_with\_SQL\_Magic\_and\_IAM\_Credentials.ipynb)
+
+### Remotive
+
+* [Get categories from job](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Remotive/Remotive\_Get\_categories\_from\_job.ipynb)
+* [Get jobs from categories](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Remotive/Remotive\_Get\_jobs\_from\_categories.ipynb)
+* [Post daily jobs on slack](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Remotive/Remotive\_Post\_daily\_jobs\_on\_slack.ipynb)
+* [Send jobs to gsheet](https://github.com/jupyter-naas/awesome-notebooks/tree/master/Remotive/Remotive\_Send\_jobs\_to\_gsheet.ipynb)
 
 ### SAP-HANA
 
@@ -530,6 +542,8 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 ### YahooFinance
 
+* [Candlestick chart](https://github.com/jupyter-naas/awesome-notebooks/tree/master/YahooFinance/YahooFinance\_Candlestick\_chart.ipynb)
+* [Cryptocurrencies heatmap correlation graph](https://github.com/jupyter-naas/awesome-notebooks/tree/master/YahooFinance/YahooFinance\_Cryptocurrencies\_heatmap\_correlation\_graph.ipynb)
 * [Display chart from ticker](https://github.com/jupyter-naas/awesome-notebooks/tree/master/YahooFinance/YahooFinance\_Display\_chart\_from\_ticker.ipynb)
 * [Get Stock Update](https://github.com/jupyter-naas/awesome-notebooks/tree/master/YahooFinance/YahooFinance\_Get\_Stock\_Update.ipynb)
 * [Get USDEUR data and chart](https://github.com/jupyter-naas/awesome-notebooks/tree/master/YahooFinance/YahooFinance\_Get\_USDEUR\_data\_and\_chart.ipynb)
@@ -557,4 +571,4 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 \
 Maintained by CashStory SAS (Naas mother company).\
-Contact us to learn more on our website chat : [https://naas.ai](https://naas.ai)
+Contact us to learn more on our website chat : https://naas.ai

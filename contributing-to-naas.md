@@ -2,7 +2,7 @@
 description: We love contributions to Naas, big or small.
 ---
 
-# Contributing to Naas
+# 🌎 Community
 
 Thank you for your interest in contributing! We love community contributions. Contribution guidelines are listed below. If you're unsure about how to start contributing or have any questions even after reading them, feel free to ask us on [Slack](https://slack.airbyte.io) in the # 03\_contributions or #general channel.
 
