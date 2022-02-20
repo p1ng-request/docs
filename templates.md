@@ -7,30 +7,15 @@ description: You don't have to be a data scientist, to use data science.
 
 # 😎 Templates
 
-## Naas Templates [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 (aka the "awesome-notebooks")
 
-### About Naas
+### Creating a framework for production-ready templates
 
-Naas is a data platform that enable anyone with minimal technical knowledge to turn [Jupyter Notebooks](https://jupyter.org) into powerful automation, analytical and AI engines thanks to [low-code formulas](https://docs.naas.ai).\
+The aim of the Naas templates is to be the largest aggregator of production-ready Jupyter Notebooks templates.&#x20;
 
-
-The platform is based on 3 elements:\
-
-
-* The **templates** enable anyone to use data engines on all kinds of subjects in minutes.
-* The low-code **drivers** act as connectors to facilitate access to tools, and complex libraries (database, API, ML algorithm...)
-* The low-code **features** (scheduling, asset sharing, notifications...) turn Notebooks into production-ready data engines.\
-
-
-Naas is forever free to use with 100 credits/month.\
-[Open your account](https://www.naas.ai/free-forever)\
-
-
-### Naas Templates
-
-The aim of this repository is to be the largest aggregator of production ready Jupyter Notebooks templates. To do so, we have defined a framework that enable easy understanding and scaling of Notebooks: Each notebook is organized with the following sections:
+To do so, we have defined a framework that enables easy understanding and scaling of Notebooks: Each notebook is organized with the following sections:
 
 * Title: "Tool - Action of the notebook"
 * Description: a one-liner explaining the benefits of the notebooks for the user
@@ -64,10 +49,7 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 * [Twitter: @naas.ai](https://twitter.com/JupyterNaas)
 * [Linkedin: @JupyterNaas](https://www.linkedin.com/company/naas-ai/)
-* [Youtube: @naas](https://www.youtube.com/channel/UCKKG5hzjXXU\_rRdHHWQ8JHQ/videos)\
-
-
-
+* [Youtube: @naas](https://www.youtube.com/channel/UCKKG5hzjXXU\_rRdHHWQ8JHQ/videos)
 
 ## Templates list
 
