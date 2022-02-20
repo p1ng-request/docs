@@ -13,8 +13,6 @@ coverY: 0
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
 
-****
-
 ## **Why Naas?**
 
 The ability to access live business insights from data provides a real competitive advantage.
@@ -33,7 +31,7 @@ In the past decade, the low-code and no-code solutions have become a multi-billi
 
 Naas was built to become this standard, comforted by Netflix publications explaining why they are investing in a Jupyter Notebook infrastructure to solve their data challenges.
 
-Naas leverages Jupyter Notebooks and its 10 milions users. Jupyter Notebook is a web-based interactive computing platform for data science. A notebook is a document made with cells of live code, text and visualizations for data exploration, collaboration and storytelling.
+Naas leverages Jupyter Notebooks and its 10 million users. Jupyter Notebook is a web-based interactive computing platform for data science. A notebook is a document made with cells of live code, text and visualizations for data exploration, collaboration and storytelling.
 
 Thanks to Naas low-code formulas, notebooks become more readable, more accessible, and interconnected to support faster business decision-making.
 
@@ -57,15 +55,11 @@ The platform is based on 3 elements: templates, drivers, features.
 Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
 [👉Open your account](https://www.naas.ai/free-forever)&#x20;
 
-{% hint style="success" %}
-Naas allows Jupyter Notebooks to become a safe production environment.
-{% endhint %}
+## Create data engines from Notebooks
 
-## Basic features
+Naas creates a dynamic production environment for your notebooks. Each time you run the following formulas in a notebook, it will be sent into the "⚡️ → Production" folder" for execution. &#x20;
 
-Naas makes a dynamic production environment based on your current notebook folder.
-
-Create a folder, open a notebook, and import Naas :
+To get started, create a folder, open a notebook, and import Naas :
 
 ```python
 import naas
@@ -76,7 +70,6 @@ import naas
 Send in production this notebook and run it, every day at 9:00&#x20;
 
 ```python
-# do stuff in your notebook
 naas.scheduler.add(cron="0 9 * * *")
 ```
 
@@ -116,20 +109,12 @@ This allows you to push your notebook in production without sensitive data getti
 [secret.md](features/secret.md)
 {% endcontent-ref %}
 
-## Advanced features
-
-If you use Naas cloud they all work natively, otherwise go to :
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-### Use Notebooks as API
+### Trigger Webhook
 
 Copy in production this notebook and allow to run it by calling the returned URL:
 
 ```python
-naas.api.add()
+naas.webhook.add()
 ```
 
 Call the URL with your navigator you will get a message and see the notebook has run.
@@ -137,7 +122,7 @@ Call the URL with your navigator you will get a message and see the notebook has
 If you want to download the notebook result instead, add this line:&#x20;
 
 ```python
-naas.api.respond_notebook()
+naas.webhook.respond_notebook()
 ```
 
 {% content-ref url="features/api.md" %}

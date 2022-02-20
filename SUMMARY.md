@@ -58,7 +58,7 @@
   * [About Decision Science](project-overview/about-decision-science.md)
   * [Naas as a Metric Layer](project-overview/naas-as-a-metric-layer.md)
   * [Roadmap](project-overview/roadmap.md)
-  * [Changelog](project-overview/changelog.md)
+  * [Release Notes](project-overview/changelog.md)
   * [Code of Conduct](project-overview/code-of-conduct.md)
   * [License](project-overview/license.md)
 * [Advanced](advanced/README.md)
