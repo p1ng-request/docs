@@ -1,5 +1,5 @@
 ---
-description: What's coming in the next few days, weeks, months.
+description: Where we come from, and were we are going.
 ---
 
 # Roadmap
@@ -17,13 +17,19 @@ description: What's coming in the next few days, weeks, months.
 
 **Metrics:**&#x20;
 
+**😇** 2 people full-time
+
+**🔂**  6 low-code features
+
+🏎 35 low-code drivers
+
 💚 +50 contributors&#x20;
 
 👨‍💻 +1500 free accounts&#x20;
 
 🌎 +70 countries&#x20;
 
-😎  +200 templates created
+😎  +200 templates&#x20;
 
 🚀 +300 people on Slack&#x20;
 
@@ -43,11 +49,46 @@ description: What's coming in the next few days, weeks, months.
 
 **Objective**: Create the most business-ready library of low-code data science templates.
 
-![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54 (1).png>)
+**Highlights:**&#x20;
+
+* Feb 2021: Meeting at Netflix about the need for more Data Science templates, and the importance of creating a standard framework and abstraction with low-code.&#x20;
+* Mar 2021:  Launch of the "Naas Templates Tournament" to create 2000 templates.&#x20;
+
+![](<../.gitbook/assets/Naas x Docstring copy copy.jpg>)
+
+**Domains:**&#x20;
+
+* Creators
+* Marketing&#x20;
+* Sales&#x20;
+* Product
+* Finance&#x20;
+* Investors
+* Open Data
+
+**Metrics (Target):**&#x20;
+
+💚 +200 contributors&#x20;
+
+👨‍💻 +5000 free accounts&#x20;
+
+🌎 +80 countries&#x20;
+
+😎  +2000 templates created
+
+🚀 +3000 people on Slack&#x20;
+
+...more? [Let's talk.](https://calendly.com/jeremyravenel)
 
 ### Phase 3: focus on AI experience
 
 **Objective**: Create a seemless decision-making experience between humans and machines.
+
+Want to learn more? [Let's talk.](https://calendly.com/jeremyravenel)
+
+![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54 (1).png>)
+
+###
 
 
 
