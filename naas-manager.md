@@ -16,7 +16,7 @@ Today, you need to :
 * Setup a cron job
 * Ask some technical help to maintain it in the long run
 
-With Naas, everything is setup. You just need to manage a Production folder.
+With Naas, everything is setup. You just need to manage a **Production folder.**
 
 ## How it works ?
 
