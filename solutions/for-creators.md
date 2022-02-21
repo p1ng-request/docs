@@ -4,6 +4,8 @@ description: Naas improve your content creation game.
 
 # for Creators
 
+This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
+
 ### Benefits
 
 * Centralize all your social media data&#x20;
