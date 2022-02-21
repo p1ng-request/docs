@@ -56,12 +56,12 @@ description: Where we come from, and were we are going.
 
 ![](<../.gitbook/assets/Naas and Zapier copy.jpg>)
 
-**Content :**&#x20;
+**Tournament content :**&#x20;
 
 Create 2000 templates inspired by:&#x20;
 
 * Zapier most popular workflows
-* A currated list of more than 100 private business metrics&#x20;
+* A curated list of more than 100 private business metrics&#x20;
 * A community-based project aggregating the most comprehensive list of the world public metrics to create a global indicator (the WHI: World Health Indicator)
 
 ![](<../.gitbook/assets/Naas x Docstring copy copy.jpg>)
