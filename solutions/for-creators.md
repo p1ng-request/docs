@@ -25,6 +25,20 @@ This documentation is in `beta`. It may change frequently. To propose changes or
 8. LinkedIn Data Content Creators (to be published)&#x20;
 9. Open Source Content Creators (to be done)
 
+### Metrics&#x20;
+
+* Views&#x20;
+* Likes
+* Comments&#x20;
+* Engagement rate&#x20;
+
+### AI-powered processes:
+
+* Prediction of trend
+* Classification of contents
+* Sentiment analysis
+* Complexity analysis
+
 ### Interfaces
 
 * Naas manager

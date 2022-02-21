@@ -12,12 +12,13 @@ description: Where we come from, and were we are going.
 
 **Highlights:**&#x20;
 
-* Nov 2019: Soft launch on Product Hunt
-* Jan 2020 - Jan 2021: Bootstrapping product dev and community building.
+* Feb 2020: R\&D of Naas low-code microservices deployed on AWS&#x20;
+* Nov 2020: Soft launch on Product Hunt
+* Dev 2020 - Feb 2021: Bootstrapping product dev and community building.
 
 **Metrics:**&#x20;
 
-**😇** 2 people full-time
+**😇** 2.5 people full-time
 
 **🔂**  6 low-code features
 
@@ -51,18 +52,18 @@ description: Where we come from, and were we are going.
 
 **Highlights:**&#x20;
 
-* Feb 2021: Meeting at Netflix about the need for more Data Science templates, and the importance of creating a standard framework and abstraction with low-code.&#x20;
-* Mar 2021:  Launch of the "Naas Templates Tournament" to create 2000 templates.&#x20;
+* Feb 2022: Meeting at Netflix about the need for more Data Science templates, and the importance of creating a standard framework and abstraction with low-code.&#x20;
+* Mar 2022:  Launch of the "Naas Templates Tournament" to create 2000 templates.&#x20;
 
 ![](<../.gitbook/assets/Naas and Zapier copy.jpg>)
 
-**Tournament content :**&#x20;
+**Tournament content:**&#x20;
 
-Create 2000 templates inspired by:&#x20;
+Create 2000 templates inspired by
 
 * Zapier most popular workflows
-* A curated list of more than 100 private business metrics&#x20;
-* A community-based project aggregating the most comprehensive list of the world public metrics to create a global indicator (the WHI: World Health Indicator)
+* A curated list of more than 100 **private business metrics**&#x20;
+* A community-based project aggregating the most comprehensive list of the **world public metrics** to create a global indicator (the WHI: World Health Indicator)
 
 ![](<../.gitbook/assets/Naas x Docstring copy copy.jpg>)
 
@@ -90,9 +91,13 @@ Create 2000 templates inspired by:&#x20;
 
 ...more? [Let's talk.](https://calendly.com/jeremyravenel)
 
-### Phase 3: focus on AI experience
+### Phase 3: focus on AI experience for decision making.
 
 **Objective**: Create a seemless decision-making experience between humans and machines.
+
+* No-code interface
+* Search for metrics (text, voice)
+* Arbitrage between human and machine-powered decisions.
 
 Want to learn more? [Let's talk.](https://calendly.com/jeremyravenel)
 
