@@ -47,12 +47,22 @@ description: Where we come from, and were we are going.
 
 ### Phase  2: focus on Templates
 
-**Objective**: Create the most business-ready library of low-code data science templates.
+**Objective**: Building the biggest business-ready library of low-code data science templates.
 
 **Highlights:**&#x20;
 
 * Feb 2021: Meeting at Netflix about the need for more Data Science templates, and the importance of creating a standard framework and abstraction with low-code.&#x20;
 * Mar 2021:  Launch of the "Naas Templates Tournament" to create 2000 templates.&#x20;
+
+![](<../.gitbook/assets/Naas and Zapier copy.jpg>)
+
+**Content :**&#x20;
+
+Create 2000 templates inspired by:&#x20;
+
+* Zapier most popular workflows
+* A currated list of more than 100 private business metrics&#x20;
+* A community-based project aggregating the most comprehensive list of the world public metrics to create a global indicator (the WHI: World Health Indicator)
 
 ![](<../.gitbook/assets/Naas x Docstring copy copy.jpg>)
 
@@ -88,15 +98,11 @@ Want to learn more? [Let's talk.](https://calendly.com/jeremyravenel)
 
 ![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54 (1).png>)
 
-###
-
-
-
-
-
 ## Community edition
 
-Check out our [Roadmap on GitHub.](https://github.com/orgs/jupyter-naas/projects/4?fullscreen=true) You'll see the features we're currently working on or about to. You may also give us insights, by adding your own issues and voting for specific features/drivers/templates.
+Check out our [Roadmap on GitHub.](https://github.com/orgs/jupyter-naas/projects/4?fullscreen=true) Filter by topic or domain to find the Template you need.&#x20;
+
+If the template is not here, simply [create an issue on Github](https://github.com/jupyter-naas/awesome-notebooks), we will come back to you.
 
 ![](<../.gitbook/assets/Feb-21-2022 01-43-08.gif>)
 
