@@ -1,3 +1,9 @@
 # for Open Data
 
-WIP
+### Benefits
+
+*
+
+### Templates
+
+*

@@ -1,3 +1,9 @@
 # for Marketing
 
-WIP
+### Benefits
+
+*
+
+### Templates
+
+*

@@ -1,3 +1,9 @@
 # for Investors
 
-WIP
+### Benefits
+
+*
+
+### Templates
+
+*
