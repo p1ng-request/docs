@@ -8,29 +8,46 @@ description: What's coming in the next few days, weeks, months.
 
 ### Phase 1: MVP launch&#x20;
 
-Nov 2019 : Soft launch on Product Hunt
+**Objective**: Validate the market need for low-code data science templates.
 
-Jan 2020 - Jan 2021 : Bootstrapping product dev and community building.
+**Highlights:**&#x20;
 
-**Stats:**&#x20;
+* Nov 2019: Soft launch on Product Hunt
+* Jan 2020 - Jan 2021: Bootstrapping product dev and community building.
 
-💚 52 contributors&#x20;
+**Metrics:**&#x20;
 
-👨‍💻 +1500 users&#x20;
+💚 +50 contributors&#x20;
+
+👨‍💻 +1500 free accounts&#x20;
 
 🌎 +70 countries&#x20;
 
-😎 + 200 templates created
+😎  +200 templates created
+
+🚀 +300 people on Slack&#x20;
+
+💰 +400 business leads identified
+
+⭐️ +1200 stars on Github
+
+⚡️ +3700 commits on Github
 
 🤖 +10k jobs created&#x20;
 
 🗓 +500k events managed&#x20;
 
-⚡️ 3701 commits on Github
+💬 +1m views on social medias
 
 ### Phase  2: focus on Templates
 
+**Objective**: Create the most business-ready library of low-code data science templates.
+
+![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54 (1).png>)
+
 ### Phase 3: focus on AI experience
+
+**Objective**: Create a seemless decision-making experience between humans and machines.
 
 
 
