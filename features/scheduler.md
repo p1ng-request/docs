@@ -50,6 +50,30 @@ naas.scheduler.add(cron="0 9 * * *", params=params)
 naas.scheduler.add(cron="0 9 * * *", debug=True)
 ```
 
+## Delete
+
+You can remove any scheduler capability like that, it takes optionally a path:&#x20;
+
+### Current
+
+```python
+naas.scheduler.delete()
+```
+
+### Other file
+
+```python
+naas.scheduler.delete(path="path/to/my/super/notebook.ipynb")
+```
+
+### Debug
+
+```python
+naas.scheduler.delete(debug=True)
+```
+
+
+
 ## List&#x20;
 
 You can list all version of a file pushed into the production folder:
@@ -152,28 +176,6 @@ naas.scheduler.clear_output()
 
 ```python
 naas.scheduler.clear_output(path="path/to/my/super/notebook.ipynb")
-```
-
-## Delete
-
-You can remove any scheduler capability like that, it takes optionally a path:&#x20;
-
-### Current
-
-```python
-naas.scheduler.delete()
-```
-
-### Other file
-
-```python
-naas.scheduler.delete(path="path/to/my/super/notebook.ipynb")
-```
-
-### Debug
-
-```python
-naas.scheduler.delete(debug=True)
 ```
 
 ## List Schedulers
