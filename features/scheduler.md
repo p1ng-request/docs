@@ -62,13 +62,11 @@ naas.scheduler.add(cron="0 9 * * *", debug=True)
 
 You can remove any scheduler capability like that, it takes optionally a path:&#x20;
 
-### Current
-
 ```python
 naas.scheduler.delete()
 ```
 
-### Other file
+### Other Notebook
 
 ```python
 naas.scheduler.delete(path="path/to/my/super/notebook.ipynb")
