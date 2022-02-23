@@ -1,9 +1,0 @@
-# for Investors
-
-### Benefits
-
-*
-
-### Templates
-
-*

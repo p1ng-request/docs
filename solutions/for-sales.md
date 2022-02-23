@@ -1,9 +1,0 @@
-# for Sales
-
-### Benefits
-
-*
-
-### Templates
-
-*

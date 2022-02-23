@@ -1,9 +1,0 @@
-# for Marketing
-
-### Benefits
-
-*
-
-### Templates
-
-*
