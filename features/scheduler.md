@@ -14,6 +14,14 @@ We use CRON tasks to schedule notebooks, find the syntax you need to on: [https:
 A job shouldn't last more than one hour, split your work :)
 {% endhint %}
 
+Important, by default the scheduler is set to the CET Timezone. If you are in another timezone, you would need to use the Timezone low-code formula to update your server
+
+Check how to set up in the section below:
+
+{% content-ref url="../advanced/advanced-usecases.md" %}
+[advanced-usecases.md](../advanced/advanced-usecases.md)
+{% endcontent-ref %}
+
 ## Add
 
 Send in production this notebook and run it, every day at 9:00 :
@@ -84,7 +92,7 @@ You can list all version of a file pushed into the production folder:
 naas.scheduler.list()
 ```
 
-### Other file&#x20;
+### Other Notebook&#x20;
 
 ```python
 naas.scheduler.list(path="path/to/my/super/notebook.ipynb")
