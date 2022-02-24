@@ -1,5 +1,0 @@
----
-description: Templates
----
-
-# Templates

@@ -2,6 +2,7 @@
 
 * [Welcome to Naas](README.md)
 * [😎 Templates](templates.md)
+  * [test](templates/test.md)
 * [⭐ Metric Store](metric-store/README.md)
   * [for Creators](metric-store/for-creators.md)
   * [for Marketing](metric-store/for-marketing.md)
