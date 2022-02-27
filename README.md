@@ -49,11 +49,13 @@ The data engines unlock the ability to follow live metrics across business domai
 
 ![](<.gitbook/assets/Screenshot 2022-02-27 at 01.29.24.png>)
 
-The platform is based on 3 elements: templates, drivers, features.
+The platform is based on 3 foundational elements: templates, drivers, features.
 
 * The templates enable the user to create “ready-to-use” automation and reports in minutes.
 * The low-code drivers act as lego blocks to facilitate interconnections between tools (databases, APIs, Machine Learning algorithms...).
 * The low-code features (scheduling, asset sharing, notifications...) enable distribution of insights to end-users in multiple channels.
+
+The additional element in the pyramid is the ability to summarize text and recommend actions.
 
 ![](<.gitbook/assets/Screenshot 2022-02-27 at 01.54.14 (1).png>)
 
