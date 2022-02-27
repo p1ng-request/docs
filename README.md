@@ -25,11 +25,13 @@ The main problem is that the data often sits in different silos. This situation 
 * Complex multi-channel distribution (email, chat, files, reports, social media)
 * Lack of accountability
 
-### **Opportunity**
+### **Naas is solving that with low-code.**
 
 In the past decade, the low-code and no-code solutions have become a multi-billion dollar industry. The promise of these solutions is that anyone can build applications and automation using templates. Yet, no standard has emerged in “low-code data science”.
 
 Naas was built to become this standard, comforted by Netflix publications explaining why they are investing in a Jupyter Notebook infrastructure to solve their data challenges.
+
+### **Naas and Jupyter Notebooks.**
 
 Naas leverages Jupyter Notebooks and its 10 million users. Jupyter Notebook is a web-based interactive computing platform for data science. A notebook is a document made with cells of live code, text and visualizations for data exploration, collaboration and storytelling.
 
@@ -43,21 +45,25 @@ Naas augments Jupyter Notebooks by adding micro-services accessible in low-code 
 
 Naas is an open-source platform that allows data professionals (business analysts, scientists and engineers) to create data engines combining automation, analytics and AI from the comfort of their Jupyter notebooks.
 
-The data engines unlock the ability to follow live metrics across business domains and generate micro-decisions recommendations.
+The data engines unlock the ability to follow live metrics across business domains and generate micro-decisions recommendations for non-tech users.
+
+![](<.gitbook/assets/Screenshot 2022-02-27 at 01.29.24.png>)
 
 The platform is based on 3 elements: templates, drivers, features.
 
 * The templates enable the user to create “ready-to-use” automation and reports in minutes.
 * The low-code drivers act as lego blocks to facilitate interconnections between tools (databases, APIs, Machine Learning algorithms...).
-* The low-code features (scheduling, asset sharing, notifications...) enable distribution of insights to end-users in multiple channels.\
+* The low-code features (scheduling, asset sharing, notifications...) enable distribution of insights to end-users in multiple channels.
 
+![
+](<.gitbook/assets/Screenshot 2022-02-27 at 01.41.32.png>)
 
 Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
 [👉Open your account](https://www.naas.ai/free-forever)&#x20;
 
-## Create data engines from Notebooks
+## How it works?
 
-Naas creates a dynamic production environment for your notebooks. Each time you run the following formulas in a notebook, it will be sent into the "⚡️ → Production" folder" for execution. &#x20;
+Naas creates a dynamic production environment for your Notebooks. Each time you run the following formulas in a notebook, it will be sent into the "⚡️ → Production" folder" for execution. &#x20;
 
 To get started, create a folder, open a notebook, and import Naas :
 
