@@ -55,13 +55,22 @@ The platform is based on 3 elements: templates, drivers, features.
 * The low-code drivers act as lego blocks to facilitate interconnections between tools (databases, APIs, Machine Learning algorithms...).
 * The low-code features (scheduling, asset sharing, notifications...) enable distribution of insights to end-users in multiple channels.
 
-![
-](<.gitbook/assets/Screenshot 2022-02-27 at 01.41.32.png>)
+![](<.gitbook/assets/Screenshot 2022-02-27 at 01.54.14 (1).png>)
 
 Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
 [👉Open your account](https://www.naas.ai/free-forever)&#x20;
 
-## How it works?
+## How does it work?
+
+### Start with templates&#x20;
+
+The easiest way to go is simply to find the right template for you.&#x20;
+
+{% content-ref url="templates.md" %}
+[templates.md](templates.md)
+{% endcontent-ref %}
+
+### Naas services
 
 Naas creates a dynamic production environment for your Notebooks. Each time you run the following formulas in a notebook, it will be sent into the "⚡️ → Production" folder" for execution. &#x20;
 
