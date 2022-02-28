@@ -25,7 +25,7 @@ The main problem is that the data often sits in different silos. This situation 
 * Complex multi-channel distribution (email, chat, files, reports, social media)
 * Lack of accountability
 
-### **Naas is solving that with low-code.**
+**Naas is solving that with low-code.**
 
 In the past decade, the low-code and no-code solutions have become a multi-billion dollar industry. The promise of these solutions is that anyone can build applications and automation using templates. Yet, no standard has emerged in “low-code data science”.
 
@@ -39,28 +39,15 @@ Thanks to Naas low-code formulas, notebooks become more readable, more accessibl
 
 Naas augments Jupyter Notebooks by adding micro-services accessible in low-code to easily access data, automation, and AI.
 
-![](<.gitbook/assets/Screenshot 2021-06-27 at 02.42.14.png>)
-
-
-
 Naas is an open-source platform that allows data professionals (business analysts, scientists and engineers) to create data engines combining automation, analytics and AI from the comfort of their Jupyter notebooks.
 
 The data engines unlock the ability to follow live metrics across business domains and generate micro-decisions recommendations for non-tech users.
-
-![](<.gitbook/assets/Screenshot 2022-02-27 at 01.29.24.png>)
 
 The platform is based on 3 foundational elements: templates, drivers, features.
 
 * The templates enable the user to create “ready-to-use” automation and reports in minutes.
 * The low-code drivers act as lego blocks to facilitate interconnections between tools (databases, APIs, Machine Learning algorithms...).
-* The low-code features (scheduling, asset sharing, notifications...) enable distribution of insights to end-users in multiple channels.
-
-The additional element in the pyramid is the ability to summarize text and recommend actions.
-
-![](<.gitbook/assets/Screenshot 2022-02-27 at 01.54.14 (1).png>)
-
-Naas is forever free to use with 100 credits/month on its hosted version [www.naas.ai](https://www.naas.ai).\
-[👉Open your account](https://www.naas.ai/free-forever)&#x20;
+* The low-code features (scheduling, asset sharing, notifications...) enable the distribution of insights to end-users in multiple channels.
 
 ## How does it work?
 
