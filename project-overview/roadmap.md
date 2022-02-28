@@ -55,6 +55,8 @@ description: Where we come from, and were we are going.
 * Feb 2022: Meeting at Netflix about the need for more Data Science templates, and the importance of creating a standard framework and abstraction with low-code.&#x20;
 * Mar 2022:  Launch of the "Naas Templates Tournament" to create 2000 templates.&#x20;
 
+&#x20;\_\_ COMING SOON \_\_
+
 ![](<../.gitbook/assets/Naas and Zapier copy.jpg>)
 
 **Tournament content:**&#x20;
@@ -76,20 +78,6 @@ Create 2000 templates inspired by
 * Finance&#x20;
 * Investors
 * Open Data
-
-**Metrics (Target):**&#x20;
-
-💚 +200 contributors&#x20;
-
-👨‍💻 +5000 free accounts&#x20;
-
-🌎 +80 countries&#x20;
-
-😎  +2000 templates created
-
-🚀 +3000 people on Slack&#x20;
-
-...more? [Let's talk.](https://calendly.com/jeremyravenel)
 
 ### Phase 3: focus on AI experience for decision making.
 

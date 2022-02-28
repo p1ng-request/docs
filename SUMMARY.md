@@ -2,7 +2,6 @@
 
 * [Welcome to Naas](README.md)
 * [😎 Templates](templates.md)
-  * [test](templates/test.md)
 * [🔄 Low-code features](features/README.md)
   * [⏰ Scheduler](features/scheduler.md)
   * [⚙ Webhook](features/api.md)
