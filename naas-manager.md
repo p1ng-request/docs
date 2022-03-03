@@ -16,7 +16,7 @@ Today, you need to :
 * Setup a cron job
 * Ask some technical help to maintain it in the long run
 
-With Naas, everything is setup. You just need to manage a **Production folder.**
+With Naas, everything is setup. You just need to manage a **Production folder, and follow what's going on in the Naas Manager interface.**
 
 ## How it works ?
 
@@ -30,3 +30,4 @@ Here will be kept:
 * Your files dependencies
 * Your history of each notebook with a timestamp
 * The output notebook (in case you need to debug, you will see here the error message)
+
