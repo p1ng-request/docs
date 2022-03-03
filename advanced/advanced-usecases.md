@@ -2,6 +2,8 @@
 
 ## Timezone
 
+If you are located in other countries than France, use those formulas to set up the time zone according to [your country's ISO code](https://timezonedb.com/time-zones).
+
 ### Set timezone
 
 ```python
@@ -15,6 +17,14 @@ naas.set_remote_timezone("Europe/Lisbon")
 import naas
 naas.get_remote_timezone()
 ```
+
+## Whitelist Naas&#x20;
+
+If you want to enable Naas to access your infrastructure. Here are the IPs to whitelist:
+
+* 15.236.83.113
+* 15.236.82.50
+* 15.236.53.238
 
 ## Download URL
 
