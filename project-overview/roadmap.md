@@ -63,7 +63,7 @@ description: Where we come from, and were we are going.
 
 Create 2000 templates inspired by
 
-* Zapier most popular workflows
+* Zapier's most popular workflows
 * A curated list of more than 100 **private business metrics**&#x20;
 * A community-based project aggregating the most comprehensive list of the **world public metrics** to create a global indicator (the WHI: World Health Indicator)
 
@@ -101,13 +101,4 @@ If the template is not here, simply [create an issue on Github](https://github.c
 
 ## Enterprise edition
 
-**Landing in March or so:**
-
-* Improved onboarding experience
-* \+100 new templates on "→ Metric Store" folder.
-* Naas API
-
-**Coming a bit later:**
-
-* Naas mobile app.&#x20;
-* Collaboration features from JupyterLab release 3.0.
+![](<../.gitbook/assets/Screenshot 2022-03-03 at 22.35.28.png>)

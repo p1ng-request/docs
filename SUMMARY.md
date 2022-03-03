@@ -47,7 +47,6 @@
   * [Zapier](drivers/zapier.md)
 * [🌎 Community](contributing-to-naas.md)
 * [Essentials](project-overview/README.md)
-  * [Naas as a Metric Layer](project-overview/naas-as-a-metric-layer.md)
   * [Roadmap](project-overview/roadmap.md)
   * [Release Notes](project-overview/changelog.md)
   * [Code of Conduct](project-overview/code-of-conduct.md)
