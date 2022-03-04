@@ -1,5 +1,5 @@
 ---
-description: The open platform for data science creators and consumers.
+description: The open platform democratizing data science with templates
 cover: >-
   https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHw1fHxzdGFyc3xlbnwwfHx8fDE2NDM3MDc0ODE&ixlib=rb-1.2.1&q=85
 coverY: 0
