@@ -1,8 +1,3 @@
-# EM-DAT - Natural disasters
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/EM-DAT/EM-DAT_natural_disasters.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #emdat #opendata
-
 In 1988, the Centre for Research on the Epidemiology of Disasters (CRED) launched the Emergency Events Database (EM-DAT). [EM-DAT](https://www.emdat.be/) was created with the initial support of the World Health Organisation (WHO) and the Belgian Government.
 
 **Tags:** #emdat #opendata

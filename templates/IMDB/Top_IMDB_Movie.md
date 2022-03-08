@@ -1,8 +1,3 @@
-# IMDB - Top  Movie
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/IMDB/Top_IMDB_Movie.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-This notebook will help you in getting the top movies on IMDB by genre
-
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)
 
 **Tags:** #python #webscraping #imdb 

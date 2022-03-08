@@ -1,8 +1,3 @@
-# YahooFinance - Display chart from ticker
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Display_chart_from_ticker.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #yahoofinance #trading #plotly #naas_drivers
-
 With this template, you can get data from any ticker available in [Yahoo finance](https://finance.yahoo.com/quote/TSLA/).<br> 
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)

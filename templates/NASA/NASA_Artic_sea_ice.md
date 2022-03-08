@@ -1,8 +1,3 @@
-# NASA - Artic sea ice
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA_Artic_sea_ice.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #naas #opendata
-
 AVERAGE SEPTEMBER MINIMUM EXTENT<br>
 Data source: Satellite observations. Credit: NSIDC/NASA
 

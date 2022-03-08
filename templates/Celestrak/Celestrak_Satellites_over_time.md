@@ -1,8 +1,3 @@
-# Celestrak - Satellites over time
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Celestrak/Celestrak_Satellites_over_time.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #celestrak #opendata #satelltes
-
 We analyze the number of satellites in the space from the first launch to now, and the part of them which became inactive.
 These data come from http://www.celestrak.com/. It provides free data as CSV files easily accessible.
 The CSV file we got contains many data as the name of the satellite, its owner, launch site, id, apogee and many others.

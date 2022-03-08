@@ -1,8 +1,3 @@
-# Naas - NLP Examples
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_NLP_Examples.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #naas #nlp
-
 ## How it works?
 Naas NLP formulas follow this format.
 ```

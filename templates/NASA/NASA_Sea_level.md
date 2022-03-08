@@ -1,8 +1,3 @@
-# NASA - Sea level
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA_Sea_level.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #naas #opendata
-
 Sea level rise is caused primarily by two factors related to global warming: the added water from melting ice sheets and glaciers and the expansion of seawater as it warms. The first graph tracks the change in sea level since 1993 as observed by satellites.
 
 The second graph, derived from coastal tide gauge and satellite data, shows how much sea level changed from about 1900 to 2018. Items with pluses (+) are factors that cause global mean sea level to increase, while minuses (-) are variables that cause sea levels to decrease. These items are displayed at the time they were affecting sea level.

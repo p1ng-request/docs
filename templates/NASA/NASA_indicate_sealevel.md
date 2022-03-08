@@ -1,43 +1,4 @@
 ```python
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
-from datetime import date, datetime, timedelta
-import math
-from sktime.utils.plotting import plot_series
-from sktime.forecasting.model_selection import (
-    ExpandingWindowSplitter,
-    ForecastingGridSearchCV,
-    SlidingWindowSplitter,
-    temporal_train_test_split,
-)
-from sktime.forecasting.arima import ARIMA, AutoARIMA
-from sktime.forecasting.compose import (
-    EnsembleForecaster,
-    MultiplexForecaster,
-    TransformedTargetForecaster,
-    make_reduction,
-)
-import matplotlib.pyplot as plt
-from sktime.forecasting.naive import NaiveForecaster
-from sktime.forecasting.base import ForecastingHorizon
-from sktime.performance_metrics.forecasting import (
-    MeanAbsolutePercentageError,
-    mean_absolute_percentage_error,
-)
-from scipy.interpolate import interp1d
-from sklearn.neighbors import KNeighborsRegressor
-import numpy as np
-import os
-import sys
-import tempfile
-import dateutil.parser
-import matplotlib.dates as mdates
-import naas
-```
-
-
-```python
 
 ```
 

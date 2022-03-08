@@ -1,6 +1,3 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Youtube - Extract and summarize transcript
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Youtube/Youtube_Extract_and_summarize_transcript.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 The objective is to summarize the transcript from Youtube with Hugging Face Naas drivers using T5small model.

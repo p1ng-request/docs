@@ -1,8 +1,3 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-
-## Plotly - Create a World Map
-
 **Tags:** #plotly #chart #worldmap #dataviz
 
 ## Input

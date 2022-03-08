@@ -1,8 +1,3 @@
-# Worldometer - World population evolution and projections
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Worldometer/Worldometer_World_population_evolution_and_projections.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #worldometer #opendata #population
-
 ## Input
 
 ### Import libraries

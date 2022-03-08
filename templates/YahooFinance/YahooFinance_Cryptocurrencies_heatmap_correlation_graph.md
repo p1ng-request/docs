@@ -1,8 +1,3 @@
-# YahooFinance - Cryptocurrencies heatmap correlation graph
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Cryptocurrencies_heatmap_correlation_graph.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #cryptocurrency #eth #btc #heatmap #finance #trading
-
 Get live data from the web and compute data viz and analysis about different cryptocurrencies.<br> 
 
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)

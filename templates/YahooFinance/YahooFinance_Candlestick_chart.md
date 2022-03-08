@@ -1,8 +1,3 @@
-# YahooFinance - Candlestick chart
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Candlestick_chart.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #yahoofinance #trading #yfin
-
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)
 
 ## Input

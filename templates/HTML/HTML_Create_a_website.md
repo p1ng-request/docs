@@ -1,8 +1,3 @@
-# HTML - Create a website
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HTML/HTML_Create_a_website.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #html #css #website #page #landing #custom
-
 The objective of this notebook is to create an end-to-end website in 5min. 
 
 ## Input 

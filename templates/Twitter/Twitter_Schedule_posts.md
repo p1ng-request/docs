@@ -1,8 +1,3 @@
-# Twitter - Schedule posts
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Twitter/Twitter_Schedule_posts.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #twitter #automation #ifttt #naas_drivers
-
 ## Input
 
 ### Import library

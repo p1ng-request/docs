@@ -1,8 +1,3 @@
-# Reddit - Get Hot Posts From Subreddit
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Reddit/Reddit_Get_Hot_Posts_From_Subreddit.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #reddit #subreddit #data #hottopics #rss #information
-
 This notebook explains how to get hot posts from a subreddit. A subreddit is a specific online community, and the posts associated with it, on the social media website Reddit
 
 **Author:** [Yaswanthkumar GOTHIREDDY](https://www.linkedin.com/in/yaswanthkumargothireddy/)

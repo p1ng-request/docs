@@ -1,8 +1,3 @@
-# YahooFinance - Send daily prediction to Email
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Send_daily_prediction_to_Email.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #yahoofinance #trading #markdown #prediction #plotly #slack #naas_drivers #scheduler #notification #asset #webhook #dependency #naas
-
 With this template, you can create daily email prediction bot on any ticker available in [Yahoo finance](https://finance.yahoo.com/quote/TSLA/).<br> 
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/j%C3%A9r%C3%A9my-ravenel-8a396910/)

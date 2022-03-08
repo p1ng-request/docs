@@ -1,8 +1,3 @@
-# Pandas - Merge Dataframes
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Pandas/Pandas_Merge_Dataframes.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #pandas #python #merging #merge #dataframes #consolidate
-
 This notebook will help you understand how to use the pandas merge function. It explains how to merge two datasets together and consolidate multiple dataset into one.
 
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)

@@ -1,8 +1,3 @@
-# IUCN - Extinct species
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/IUCN/IUCN_Extinct_species.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #iucn #opendata #extinctspecies
-
 Source : https://www.iucnredlist.org/statistics
 
 If you want another view of the data : Link : https://ourworldindata.org/extinctions

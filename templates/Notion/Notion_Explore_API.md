@@ -1,8 +1,3 @@
-# Notion - Explore API
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Notion/Notion_Explore_API.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #notion #productivity
-
 This notebook is an exploration of what you can do with the Notion's API.
 
 Resources: 

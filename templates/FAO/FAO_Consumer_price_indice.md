@@ -1,8 +1,3 @@
-# FAO - Consumer price indice
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/FAO/FAO_Consumer_price_indice.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #fao #opendata #food
-
 Food Balance Sheet presents a comprehensive picture of the pattern of a country's food supply during a specified reference period. The food balance sheet shows for each food item - i.e. each primary commodity and a number of processed commodities potentially available for human consumption - the sources of supply and its utilization. The total quantity of foodstuffs produced in a country added to the total quantity imported and adjusted to any change in stocks that may have occurred since the beginning of the reference period gives the supply available during that period. On the utilization side a distinction is made between the quantities exported, fed to livestock, used for seed, put to manufacture for food use and non-food uses, losses during storage and transportation, and food supplies available for human consumption. The per caput supply of each such food item available for human consumption is then obtained by dividing the respective quantity by the related data on the population actually partaking of it. Data on per caput food supplies are expressed in terms of quantity and - by applying appropriate food composition factors for all primary and processed products - also in terms of caloric value and protein and fat content.<br/>
 Source: http://www.fao.org/faostat/en/?#data/FBS
 
