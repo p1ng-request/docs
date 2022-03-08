@@ -1,7 +1,8 @@
-# WorldBank - GDP per capita and growth
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WorldBank/WorldBank_GDP_per_capita_and_growth.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #worldbank #opendata
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 **Objective** : allows to visualize a map of GDP per capita and the GDP growth of all the countries in the world. Click on the country on the map or select it to see the details info.
 

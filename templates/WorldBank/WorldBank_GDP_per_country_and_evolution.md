@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# WorldBank - GDP per country and evolution
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WorldBank/WorldBank_GDP_per_country_and_evolution.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #worldbank #opendata
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 Objective : allows to visualize the distribution of GDP per capita and the GDP growth in the world. Click on the country on the map or select it to see the details info
 

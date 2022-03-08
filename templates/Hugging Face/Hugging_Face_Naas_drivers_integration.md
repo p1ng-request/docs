@@ -1,14 +1,11 @@
-# Hugging Face - Naas drivers integration
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Hugging%20Face/Hugging_Face_Naas_drivers_integration.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
-
-**Tags:** #huggingface
-
-In this notebook, you will be able to explore the Hugging Face transformers package with minimal technical knowledge thanks to Naas low-code drivers.<br>
-Hugging Face is an immensely popular Python library providing pretrained models that are extraordinarily useful for a variety of natural language processing (NLP) tasks.
 
 **Tags**: #nlp #huggingface #api #models #transformers
 
-**Authors**: [Gagan Bhatia](https://www.linkedin.com/in/gbhatia30/), [Jeremy Ravenel](https://www.linkedin.com/in/j%C3%A9r%C3%A9my-ravenel-8a396910/), [Thomas Parenteau](https://www.linkedin.com/in/thomas-parenteau-0570b120a/)
+**Author**: [Gagan Bhatia](https://www.linkedin.com/in/gbhatia30/)
+
+In this notebook, you will be able to explore the Hugging Face transformers package with minimal technical knowledge thanks to Naas low-code drivers.<br>
+Hugging Face is an immensely popular Python library providing pretrained models that are extraordinarily useful for a variety of natural language processing (NLP) tasks.
 
 ## How it works?
 Naas drivers HuggingFace formulas follow this format.
@@ -29,6 +26,8 @@ The supported tasks are the following:
 We simply use [Hugging Face API](https://huggingface.co/models) under the hood to access the models.
 
 **Tags:** #huggingface
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

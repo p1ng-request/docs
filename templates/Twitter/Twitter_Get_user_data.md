@@ -1,7 +1,8 @@
-# Twitter - Get user data
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Twitter/Twitter_Get_user_data.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #twitter #automation #ifttt #naas_drivers
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

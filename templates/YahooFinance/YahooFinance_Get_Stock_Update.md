@@ -1,12 +1,11 @@
- # Yahoo Finance - Get USD/INR daily and create chart.
- <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Get_data_from_ticker.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Get_Stock_Update.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #yahoofinance #usdinr #plotly
 
 
- Description: With this template you will get INR USD rate visualized on a chart
-
 **Author:** [Megha Gupta](https://github.com/megha2907)
+
+ Description: With this template you will get INR USD rate visualized on a chart
 
 ## Input
 

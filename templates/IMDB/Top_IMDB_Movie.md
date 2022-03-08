@@ -1,12 +1,10 @@
-# IMDB - Top  Movie
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/IMDB/Top_IMDB_Movie.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-This notebook will help you in getting the top movies on IMDB by genre
+**Tags:** #python #webscraping #imdb #analytics
 
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)
 
-**Tags:** #python #webscraping #imdb 
-
+This notebook will help you in getting the top movies on IMDB by genre
 
 ## Input
 
@@ -14,14 +12,22 @@ This notebook will help you in getting the top movies on IMDB by genre
 
 
 ```python
-import scrapy
+try:
+    import scrapy
+except:
+    !pip install scrapy
+    import scrapy
 from scrapy.crawler import CrawlerProcess
 from scrapy.crawler import CrawlerRunner
-from crochet import setup, wait_for
+try:
+    from crochet import setup, wait_for
+except:
+    !pip install crochet
+    from crochet import setup, wait_for
 setup()
 ```
 
-### Model:
+## Model
 
 
 ```python
@@ -41,7 +47,7 @@ class IMDB(scrapy.Spider):
         for url in urls:
             yield scrapy.Request(url=url,callback=self.parse)
             
-    def parse(self,response):
+    def parse(self, response):
         """The method that is used for subseting and scraping the websites into acceptable formats""" 
         movies=response.css("div.lister-item-content")
         for movie in movies:
@@ -68,7 +74,7 @@ def run_spider():
     return result
 ```
 
-### Output
+## Output
 
 
 ```python

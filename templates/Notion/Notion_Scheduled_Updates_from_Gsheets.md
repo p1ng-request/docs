@@ -1,6 +1,3 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Notion - Scheduled Updates from Gsheets
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Notion/Notion_Scheduled_Updates_from_Gsheets.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 This notebook does the following tasks: 
@@ -11,12 +8,12 @@ This notebook does the following tasks:
 - Create new pages in Notion db for each row in the non matching list using the Notion Pages driver's create method
 - For each created page, add the properties and values from gsheet and update in notion using the Notion Pages driver's update methods
 
-**Tags:** #notion #Gsheets #productivity
-
 Pre-requisite: 
 1. Gsheets : Please share your Google Sheet with our service account
    For the driver to fetch the contents of your google sheet, you need to share it with the service account linked with Naas. 🔗 naas-share@naas-gsheets.iam.gserviceaccount.com 
 2. Notion : Create a notion integration and use the secret key to share the database. <a href = 'https://docs.naas.ai/Notion-7435020d01a549a9a0060c47ea808fd4'> Refer the documentation here</a>
+
+**Tags:** #notion #gsheet #productivity #naas_drivers
 
 **Author:** [Pooja Srivastava](https://www.linkedin.com/in/pooja-srivastava-bb037649/)
 
@@ -28,8 +25,7 @@ Pre-requisite:
 ```python
 import pandas as pd
 import naas
-from naas_drivers import notion
-from naas_drivers import gsheet
+from naas_drivers import notion, gsheet
 ```
 
 ### Scheduler

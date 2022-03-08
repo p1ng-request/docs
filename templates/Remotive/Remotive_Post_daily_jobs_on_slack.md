@@ -1,20 +1,10 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Remotive - Post daily jobs on slack
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Remotive/Remotive_Post_daily_jobs_on_slack.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #remotive #jobs #slack #gsheet #naas_drivers
+**Tags:** #remotive #jobs #slack #gsheet #naas_drivers #automation
+
+**Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
 ## Input
-
-### Set the Scheduler
-
-
-```python
-# import naas
-# naas.scheduler.add(recurrence="0 9 * * *")
-# # naas.scheduler.delete() # Uncomment this line to delete your scheduler if needed
-```
 
 ### Import libraries
 
@@ -26,15 +16,7 @@ import requests
 from datetime import datetime
 import time
 from naas_drivers import gsheet, slack
-```
-
-### Constantes
-
-
-```python
-REMOTIVE_API = "https://remotive.io/api/remote-jobs"
-REMOTIVE_DATETIME = "%Y-%m-%dT%H:%M:%S"
-NAAS_DATETIME = "%Y-%m-%d %H:%M:%S"
+import naas
 ```
 
 ### Setup slack channel configuration
@@ -53,14 +35,6 @@ spreadsheet_id = "1EBefhkbmqaXMZLRCiafabf6xxxxxxxxxxxxxxxxxxx"
 sheet_name = "SLACK_CHANNEL_POSTS"
 ```
 
-### Get the sheet log of jobs
-
-
-```python
-df_jobs_log = gsheet.connect(spreadsheet_id).get(sheet_name=sheet_name)
-df_jobs_log
-```
-
 ### Setup Remotive
 
 #### Get categories from Remotive
@@ -68,7 +42,7 @@ df_jobs_log
 
 ```python
 def get_remotejob_categories():
-    req_url = f"{REMOTIVE_API}/categories"
+    req_url = f"https://remotive.io/api/remote-jobs/categories"
     res = requests.get(req_url)
     try:
         res.raise_for_status()
@@ -92,7 +66,23 @@ categories = ['data'] # Pick the list of categories in columns "slug"
 date_from = - 10 # Choose date difference in days from now => must be negative
 ```
 
+### Set the Scheduler
+
+
+```python
+naas.scheduler.add(recurrence="0 9 * * *")
+# # naas.scheduler.delete() # Uncomment this line to delete your scheduler if needed
+```
+
 ## Model
+
+### Get the sheet log of jobs
+
+
+```python
+df_jobs_log = gsheet.connect(spreadsheet_id).get(sheet_name=sheet_name)
+df_jobs_log
+```
 
 ### Get all jobs posted after timestamp_date
 
@@ -101,6 +91,9 @@ In summary, we can set the value, in seconds, of 'search_data_from' to fetch all
 
 
 ```python
+REMOTIVE_DATETIME = "%Y-%m-%dT%H:%M:%S"
+NAAS_DATETIME = "%Y-%m-%d %H:%M:%S"
+
 def get_remotive_jobs_since(jobs, date):
     ret = []
     for job in jobs:
@@ -108,14 +101,14 @@ def get_remotive_jobs_since(jobs, date):
         if publication_date > date:
             ret.append({
                 'URL': job['url'],
-                'JOBS': job['title'],
+                'TITLE': job['title'],
                 'COMPANY': job['company_name'],
-                'PUBLISH_DATE': datetime.fromtimestamp(publication_date).strftime(NAAS_DATETIME)
+                'PUBLICATION_DATE': datetime.fromtimestamp(publication_date).strftime(NAAS_DATETIME)
             })
     return ret
 
 def get_category_jobs_since(category, date, limit):
-    url = f"{REMOTIVE_API}?category={category}&limit={limit}"
+    url = f"https://remotive.io/api/remote-jobs?category={category}&limit={limit}"
     res = requests.get(url)
     if res.json()['jobs']:
         publication_date = datetime.strptime(res.json()['jobs'][-1]['publication_date'], REMOTIVE_DATETIME).timestamp()
@@ -144,8 +137,6 @@ df_jobs = get_jobs_since(categories, date_from=date_from)
 df_jobs
 ```
 
-## Output
-
 ### Remove duplicate jobs
 
 
@@ -156,11 +147,13 @@ def remove_duplicates(df1, df2):
     
     # Exclude jobs already log from jobs
     df2 = df2[~df2.URL.isin(jobs_log)]
-    return df2.sort_values(by="PUBLISH_DATE")
+    return df2.sort_values(by="PUBLICATION_DATE")
 
 df_new_jobs = remove_duplicates(df_jobs_log, df_jobs)
 df_new_jobs
 ```
+
+## Output
 
 ### Add new jobs on the sheet log
 

@@ -1,7 +1,8 @@
-# Notion - Explore API
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Notion/Notion_Explore_API.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #notion #productivity
+
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 This notebook is an exploration of what you can do with the Notion's API.
 
@@ -9,7 +10,7 @@ Resources:
 - Notion official documentation : https://developers.notion.com/
 - Youtube video (not official) : https://www.youtube.com/watch?v=sdn1HgxLwEg
 
-# Input
+## Input
 
 
 ```python
@@ -18,7 +19,7 @@ import pandas as pd
 import json
 ```
 
-## Setting up Notion connections
+### Setting up Notion connections
 
 1. Create a page or a database on Notion.
 2. Create an integration in your workspace.
@@ -44,10 +45,9 @@ NOTION_PAGE_URL = "https://api.notion.com/v1/pages/"
 NOTION_PAGE_CONTENT = "https://api.notion.com/v1/blocks/"
 ```
 
-# Model
+## Model
 
-
-## Get database properties
+### Get database properties
 
 More information here: https://developers.notion.com/reference/get-database
 
@@ -97,7 +97,7 @@ The column properties contain a dictionary for each Notion record. We will exctr
 ```python
 list_dict = []
 for index, row in df_structure.iterrows():
-   list_dict.append(row['properties'])
+    list_dict.append(row['properties'])
 
 temp_df = pd.DataFrame.from_dict(list_dict)
 ```
@@ -134,7 +134,7 @@ All the properties contain an id and a type. The type will then be used to find 
 
 Sometimes, the data will be contained directly as a string, sometimes it will be a dict sometimes it will be a list of dict. 
 
-## Query database
+### Query database
 
 
 ```python
@@ -212,7 +212,7 @@ df_full = pd.concat([df_structure, df_content], axis=1)
 df_full
 ```
 
-## Get page properties
+### Get page properties
 
 There is two different API calls to interact with a page. 
 
@@ -229,7 +229,7 @@ response = requests.get(page_url, headers={"Authorization": f"{INTEGRATION_TOKEN
 print (response.json())
 ```
 
-## Retrieve a page content
+### Retrieve a page content
 
 
 ```python
@@ -247,7 +247,7 @@ Some unsupported types :
 * bookmarked link
 * other page (it has an unsupported type but it will be readable through its page id)
 
-## Create a record 
+### Create a record 
 
 
 ```python
@@ -305,7 +305,7 @@ to_do = {"object": "block",
                 }
 ```
 
-# Output
+## Output
 
 ### Setup object to post
 
@@ -333,8 +333,8 @@ data = json.dumps(myobj)
 response = requests.post(page_url, headers=headers, data=data)
 
 if 'status' in response.json().keys():
-  if response.json()['status'] != 200:
-    print ("Error:", response.json()['message'])
+    if response.json()['status'] != 200:
+        print ("Error:", response.json()['message'])
 elif 'object' in response.json().keys(): 
     print("✅ Your data was added to Notion")
     print(response.json())

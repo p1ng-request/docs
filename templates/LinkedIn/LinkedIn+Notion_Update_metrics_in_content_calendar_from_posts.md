@@ -1,9 +1,6 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# LinkedIn - +Notion Update metrics in content calendar from posts
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn%2BNotion_Update_metrics_in_content_calendar_from_posts.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #profile #post #feed #naas_drivers #notion
+**Tags:** #linkedin #profile #post #feed #naas_drivers #notion #automation #analytics #naas #scheduler
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -31,16 +28,6 @@ With this notebook, you can update your content calendar in Notion with all metr
 - **Last refresh:** Date of last refresh in Notion
 
 ## Input
-
-### Schedule your notebook
-This notebook can run on schedule. It will look for new data in LinkedIn and update accordingly to Notion.<br>
-Note: You need to remove the hashtag and run cell to activate the scheduler.
-
-
-```python
-# import naas
-# naas.scheduler.add(cron="0 8 * * *")
-```
 
 ### Import libraries
 Here below is the list of tools needed.
@@ -88,6 +75,18 @@ Please put your email so we get inform when your cookies need to renewed.
 ```python
 # Email
 EMAIL = "email"
+```
+
+### Schedule your notebook
+This notebook can run on schedule. It will look for new data in LinkedIn and update accordingly to Notion.<br>
+Note: You need to remove the hashtag and run cell to activate the scheduler.
+
+
+```python
+naas.scheduler.add(cron="0 8 * * *")
+
+#-> To delete your scheduler, please uncomment the line below and execute this cell
+# naas.scheduler.delete()
 ```
 
 ## Model
@@ -290,8 +289,14 @@ def update_content_notion(df, database_url):
                 page.select("Content type", row.CONTENT)
                 page.select("Platform", "LinkedIn")
                 page.select("Status", "Published ✨")
-                page.rich_text("Profile mention", row.PROFILE_MENTION)
-                page.rich_text("Company mention", row.COMPANY_MENTION)
+                profile_mention = row.COMPANY_MENTION
+                if profile_mention is not None:
+                    if len(profile_mention) > 2:
+                        page.rich_text("Profile mention", profile_mention)
+                company_mention = row.COMPANY_MENTION
+                if company_mention is not None:
+                    if len(company_mention) > 2:
+                        page.rich_text("Company mention", company_mention)
                 page.number("Nb tags", int(row.TAGS_COUNT))
                 tags = row.TAGS
                 if tags is None:

@@ -1,10 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-
-# Plotly - Create Linechart
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Plotly/Plotly_Create_Linechart.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #plotly #chart #linechart #trend #dataviz #yahoofinance #naas_drivers
+**Tags:** #plotly #chart #linechart #trend #dataviz #yahoofinance #naas_drivers #snippet
+
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 Learn more on the Plotly doc : https://plotly.com/python/line-charts/
 
@@ -68,4 +66,8 @@ fig.write_html(output_html)
 ```python
 link_image = naas.asset.add(output_image)
 link_html = naas.asset.add(output_html, {"inline":True})
+
+#-> Uncomment the line below to remove your assets
+# naas.asset.delete(output_image)
+# naas.asset.delete(output_html)
 ```

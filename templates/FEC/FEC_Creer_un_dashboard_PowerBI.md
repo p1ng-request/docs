@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# FEC - Creer un dashboard PowerBI
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/FEC/FEC_Creer_un_dashboard_PowerBI.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #fec #powerbi #dataviz
+**Tags:** #fec #powerbi #dataviz #analytics
+
+**Author:** [Alexandre STEVENS](https://www.linkedin.com/in/alexandrestevenspbix/)
 
 Ce Notebook permet de transformer des fichiers FEC de votre entreprise en un tableau de bord Microsoft Power BI.
 Le FEC (fichier des écritures comptables) est un export standard des logiciels de comptabilite et une obligation légale en france depuis 2014 afin de déposer ses comptes de manière electronique auprès des services fiscaux.
@@ -11,8 +10,6 @@ Le FEC (fichier des écritures comptables) est un export standard des logiciels 
 -Durée de l’installation = 5 minutes<br>
 -Support d’installation = [Page Notion](https://www.notion.so/Mode-d-emploi-FECthis-7fc142f2d7ae4a3889fbca28a83acba2/)<br>
 -Niveau = Facile<br>
-
-**Author:** [Alexandre STEVENS](https://www.linkedin.com/in/alexandrestevenspbix/)
 
 ## Input
 

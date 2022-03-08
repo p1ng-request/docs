@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Redshift - Connect with SQL Magic and IAM Credentials
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Redshift/Redshift_Connect_with_SQL_Magic_and_IAM_Credentials.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #redshift #database
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

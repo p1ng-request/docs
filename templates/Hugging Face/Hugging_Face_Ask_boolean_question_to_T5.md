@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Hugging Face - Ask boolean question to T5
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Hugging%20Face/Hugging_Face_Ask_boolean_question_to_T5.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #huggingface
+**Tags:** #huggingface #ml
+
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## T5-base finetuned on BoolQ (superglue task)
 This notebook is for demonstrating the training and use of the text-to-text-transfer-transformer (better known as T5) on boolean questions (BoolQ). The example use case is a validator indicating if an idea is environmentally friendly. Nearly any question can be passed into the `query` function (see below) as long as a context to a question is given.
@@ -34,8 +33,6 @@ tokenizer = T5Tokenizer.from_pretrained('t5-small')
 model = T5ForConditionalGeneration.from_pretrained('t5-small')
 ```
 where `t5-small` is one of the names in the table above.
-
-**Tags:** #huggingface
 
 ## Input
 

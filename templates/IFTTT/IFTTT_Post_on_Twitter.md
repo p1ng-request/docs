@@ -1,13 +1,14 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# IFTTT - Post on Twitter
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/IFTTT/IFTTT_Post_on_Twitter.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #ifttt #automation #nocode
 
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+
 See the tutorial video on Youtube: https://www.youtube.com/watch?v=FvAM1aS4GFM
 
 **Tags:** #ifttt #automation #nocode
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

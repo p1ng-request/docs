@@ -1,9 +1,6 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# HubSpot - Get new deals created weekly
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Get_new_deals_created_weekly.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #deal #naas_drivers #scheduler #asset
+**Tags:** #hubspot #crm #sales #deal #scheduler #asset #html #png #csv #naas_drivers #naas
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -53,6 +50,15 @@ df_pipelines
 pipeline_id = None
 ```
 
+### Setup Outputs
+
+
+```python
+csv_output = "HubSpot_new_deals_weekly.csv"
+image_output = "HubSpot_new_deals_weekly.html"
+html_output = "HubSpot_new_deals_weekly.png"
+```
+
 ## Model
 
 ### Get all deals
@@ -67,11 +73,10 @@ df_deals
 
 
 ```python
-def get_trend(df_deals, pipeline=None):
+def get_trend(df_deals, pipeline):
     df = df_deals.copy()
     # Filter data
-    if pipeline is not None:
-        df = df[df["pipeline"].astype(str) == str(pipeline)]
+    df = df[df["pipeline"].astype(str) == str(pipeline)]
     
     # Prep data
     df["createdate"] = pd.to_datetime(df["createdate"])
@@ -89,6 +94,8 @@ def get_trend(df_deals, pipeline=None):
         "value": "VALUE"
     }
     df = df.rename(columns=to_rename).replace("hs_object_id", "No of deals").replace("amount", "Amount")
+    df["YEAR"] = df["LABEL_ORDER"].dt.strftime("%Y")
+    df = df[df["YEAR"] == datetime.now().strftime("%Y")]
     df["LABEL"] = df["LABEL_ORDER"].dt.strftime("%Y-W%U")
     df["LABEL_ORDER"] = df["LABEL_ORDER"].dt.strftime("%Y%m%d")
     
@@ -103,39 +110,47 @@ def get_trend(df_deals, pipeline=None):
             else:
                 value_n1 = tmp.loc[tmp.index[idx-1], "VALUE"]
             tmp.loc[tmp.index[idx], "VALUE_COMP"] = value_n1
-        df_var = pd.concat([df_var, tmp])
+        df_var = pd.concat([df_var, tmp]).fillna(0).reset_index(drop=True)
     df_var["VARV"] = df_var["VALUE"] - df_var["VALUE_COMP"]
     df_var["VARP"] = df_var["VARV"] / abs(df_var["VALUE_COMP"])
-    return df_var.fillna(0).reset_index(drop=True)
+    
+    # Prep data
+    df_var["VALUE_D"] = df_var["VALUE"].map("{:,.0f}".format).str.replace(",", " ")
+    df_var["VARV_D"] = df_var["VARV"].map("{:,.0f}".format).str.replace(",", " ")
+    df_var.loc[df_var["VARV"] > 0, "VARV_D"] = "+" + df_var["VARV_D"]
+    df_var["VARP_D"] = df_var["VARP"].map("{:,.0%}".format).str.replace(",", " ")
+    df_var.loc[df_var["VARP"] > 0, "VARP_D"] = "+" + df_var["VARP_D"]
+    
+    # Create hovertext
+    df_var["TEXT"] = ("<b>Deal created as of " + df_var["LABEL"] + " : </b>" + 
+                      df_var["VALUE_D"] + "<br>" + 
+                      df_var["VARP_D"] + " vs last week (" + df_var["VARV_D"] + ")")
+    return df_var
 
-df_trend = get_trend(df_deals, "8432671")
+df_trend = get_trend(df_deals, pipeline_id)
 df_trend
 ```
 
 ## Output
 
-### Plotting a barchart with filters
+### Plotting a barchart
 
 
 ```python
-def create_barchart(df, label, group, value, varv, varp):
-    # Get last value
-    df["VALUE_D"] = df[value].map("{:,.0f}".format).str.replace(",", " ")
-    df["VARV_D"] = df[varv].map("{:,.0f}".format).str.replace(",", " ")
-    df.loc[df[varv] > 0, "VARV_D"] = "+" + df["VARV_D"]
-    df["VARP_D"] = df[varp].map("{:,.0%}".format).str.replace(",", " ")
-    df.loc[df[varp] > 0, "VARP_D"] = "+" + df["VARP_D"]
-    
-    # Create hovertext
-    df["TEXT"] = ("<b>Deal created as of " + df[label] + " : </b>" + 
-                  df["VALUE_D"] + "<br>" + 
-                  df["VARP_D"] + " vs last week (" + df["VARV_D"] + ")")
-    
+def create_barchart(df, label, group, value, varv, varp):    
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
     # Add traces
-    df1 = df[df[group] == "No of deals"].reset_index(drop=True)[-12:]
+    df1 = df[df[group] == "No of deals"].reset_index(drop=True)[:]
+    total_volume = "{:,.0f}".format(df1[value].sum()).replace(",", " ")
+    var_volume = df1.loc[df1.index[-1], varv]
+    positive = False
+    if var_volume > 0:
+        positive = True
+    var_volume = "{:,.0f}".format(var_volume).replace(",", " ")
+    if positive:
+        var_volume = f"+{var_volume}"
     fig.add_trace(
         go.Bar(
             name="No of deals",
@@ -143,30 +158,40 @@ def create_barchart(df, label, group, value, varv, varp):
             y=df1[value],
             offsetgroup=0,
             hoverinfo="text",
+            text=df1["VALUE_D"],
             hovertext=df1["TEXT"],
-            marker=dict(color="blue")
+            marker=dict(color="#33475b")
         ),
         secondary_y=False,
     )
     
-    df2 = df[df[group] == "Amount"].reset_index(drop=True)[-12:]
+    df2 = df[df[group] == "Amount"].reset_index(drop=True)[:]
+    total_value = "{:,.0f}".format(df2[value].sum()).replace(",", " ")
+    var_value = df2.loc[df2.index[-1], varv]
+    positive = False
+    if var_value > 0:
+        positive = True
+    var_value = "{:,.0f}".format(var_value).replace(",", " ")
+    if positive:
+        var_value = f"+{var_value}"
     fig.add_trace(
         go.Bar(
             name="Amount",
             x=df2[label],
             y=df2[value],
+            text=df2["VALUE_D"] + " K€",
             offsetgroup=1,
             hoverinfo="text",
             hovertext=df2["TEXT"],
-            marker=dict(color="orange")
+            marker=dict(color="#ff7a59")
         ),
         secondary_y=True,
     )
 
     # Add figure title
     fig.update_layout(
-        title=f"<b>Hubspot - Deals created last 12 weeks</b><br><span style='font-size: 13px;'></span>",
-        title_font=dict(family="Arial", size=18, color="black"),
+        title=f"<b>Hubspot - New deals created this year</b><br><span style='font-size: 14px;'>Total deals: {total_volume} ({total_value} K€) | This week: {var_volume} ({var_value} K€) vs last week</span>",
+        title_font=dict(family="Arial", size=20, color="black"),
         legend=None,
         plot_bgcolor="#ffffff",
         width=1200,
@@ -187,7 +212,7 @@ def create_barchart(df, label, group, value, varv, varp):
         title_font=dict(family="Arial", size=11, color="black"),
         secondary_y=True
     )
-
+#     fig.update_xaxes(rangeslider_visible=True)
     fig.show()
     return fig
 
@@ -199,12 +224,17 @@ fig = create_barchart(df_trend, "LABEL", "GROUP", "VALUE", "VARV", "VARP")
 
 ```python
 # Export in HTML
+df_trend.to_csv(csv_output, index=False)
+fig.write_image(image_output)
 fig.write_html(html_output)
 
 # Shave with naas
-#-> Uncomment the line below (by removing the hashtag) to share your asset with naas
-# naas.asset.add(html_output, params={"inline": True})
+naas.asset.add(csv_output)
+naas.asset.add(image_output)
+naas.asset.add(html_output, params={"inline": True})
 
 #-> Uncomment the line below (by removing the hashtag)  to delete your asset
+# naas.asset.delete(csv_output)
+# naas.asset.delete(image_output)
 # naas.asset.delete(html_output)
 ```

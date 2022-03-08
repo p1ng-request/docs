@@ -1,19 +1,20 @@
-# EM-DAT - Natural disasters
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/EM-DAT/EM-DAT_natural_disasters.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #emdat #opendata
+**Tags:** #emdat #opendata #analytics
+
+**Author:** [MyDigitalSchool](https://www.mydigitalschool.com/)
 
 In 1988, the Centre for Research on the Epidemiology of Disasters (CRED) launched the Emergency Events Database (EM-DAT). [EM-DAT](https://www.emdat.be/) was created with the initial support of the World Health Organisation (WHO) and the Belgian Government.
 
-**Tags:** #emdat #opendata
-
 ## Input
+
 In order to use this script, you need to download the dataset on this link :
 https://public.emdat.be/
 - Create an account and connect
 - Go to "Data" tab
 - Enter your filters criteria
 - Press "Download"
+
 ### Import librairies
 
 
@@ -53,7 +54,7 @@ types_df = types_df.append(total_line).sort_values(by=["Year"])
 count_by_countries = df[['Year', 'ISO', 'Country']].groupby(['Year', 'ISO', 'Country']).size().reset_index(name='counts')
 ```
 
-## Ouput
+## Output
 
 
 ```python

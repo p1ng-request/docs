@@ -1,7 +1,8 @@
-# NASA - Global temperature
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA_Global_temperature.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #nasa #opendata
+**Tags:** #nasa #opendata #snippet
+
+**Author:** [Colyn TIDMAN](https://www.linkedin.com/in/colyntidman/), [Dylan PICHON](https://www.linkedin.com/in/dylan-pichon/)
 
 This graph illustrates the change in global surface temperature relative to 1951-1980 average temperatures. Nineteen of the warmest years have occurred since 2000, with the exception of 1998. The year 2020 tied with 2016 for the warmest year on record since record-keeping began in 1880 (source: NASA/GISS). This research is broadly consistent with similar constructions prepared by the Climatic Research Unit and the National Oceanic and Atmospheric Administration.
 
@@ -120,7 +121,3 @@ fig.show()
 
 <br><br> **Idea to improve :**
 - *Predict with machine learning the delta for the next 50 years*
-
-**Authors :**
-- Colyn TIDMAN 
-- Dylan PICHON

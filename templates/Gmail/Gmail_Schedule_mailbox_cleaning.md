@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Gmail - Schedule mailbox cleaning
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Gmail/Gmail_Schedule_mailbox_cleaning.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #gmail #productivity
+**Tags:** #gmail #productivity #naas_drivers
+
+**Author:** [Sanjay Sabu](https://www.linkedin.com/in/sanjay-sabu-4205/)
 
 ## Input
 

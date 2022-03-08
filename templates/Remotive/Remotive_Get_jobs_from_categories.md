@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Remotive - Get jobs from categories
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Remotive/Remotive_Get_jobs_from_categories.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #remotive #jobs
+**Tags:** #remotive #jobs #csv #snippet
+
+**Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
 With this notebook, you will be able to get jobs offer from Remotive:
 - **URL:** Job offer url.
@@ -23,15 +22,6 @@ import time
 from datetime import datetime
 ```
 
-### Constantes
-
-
-```python
-REMOTIVE_API = "https://remotive.io/api/remote-jobs"
-REMOTIVE_DATETIME = "%Y-%m-%dT%H:%M:%S"
-NAAS_DATETIME = "%Y-%m-%d %H:%M:%S"
-```
-
 ### Setup Remotive
 
 #### Get categories from Remotive
@@ -39,7 +29,7 @@ NAAS_DATETIME = "%Y-%m-%d %H:%M:%S"
 
 ```python
 def get_remotejob_categories():
-    req_url = f"{REMOTIVE_API}/categories"
+    req_url = f"https://remotive.io/api/remote-jobs/categories"
     res = requests.get(req_url)
     try:
         res.raise_for_status()
@@ -63,6 +53,13 @@ categories = ['data'] # Pick the list of categories in columns "slug"
 date_from = - 10 # Choose date difference in days from now => must be negative
 ```
 
+### Variables
+
+
+```python
+csv_output = "REMOTIVE_JOBS.csv"
+```
+
 ## Model
 
 ### Get all jobs posted after timestamp_date
@@ -72,6 +69,9 @@ In summary, we can set the value, in seconds, of 'search_data_from' to fetch all
 
 
 ```python
+REMOTIVE_DATETIME = "%Y-%m-%dT%H:%M:%S"
+NAAS_DATETIME = "%Y-%m-%d %H:%M:%S"
+
 def get_remotive_jobs_since(jobs, date):
     ret = []
     for job in jobs:
@@ -86,7 +86,7 @@ def get_remotive_jobs_since(jobs, date):
     return ret
 
 def get_category_jobs_since(category, date, limit):
-    url = f"{REMOTIVE_API}?category={category}&limit={limit}"
+    url = f"https://remotive.io/api/remote-jobs?category={category}&limit={limit}"
     res = requests.get(url)
     if res.json()['jobs']:
         publication_date = datetime.strptime(res.json()['jobs'][-1]['publication_date'], REMOTIVE_DATETIME).timestamp()
@@ -112,18 +112,14 @@ def get_jobs_since(categories: list,
     return pd.DataFrame(jobs)
 
 df_jobs = get_jobs_since(categories, date_from=date_from)
+df_jobs.head(5)
 ```
 
 ## Output
 
-### Display result
+### Save dataframe in csv
 
 
 ```python
-df_jobs
-```
-
-
-```python
-
+df_jobs.to_csv(csv_output, index=False)
 ```

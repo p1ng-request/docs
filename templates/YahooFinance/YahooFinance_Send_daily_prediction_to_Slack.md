@@ -1,11 +1,10 @@
-# YahooFinance - Send daily prediction to Slack
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Send_daily_prediction_to_Slack.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #yahoofinance #trading #markdown #prediction #plotly #slack #naas_drivers #scheduler #asset #dependency #naas
 
-With this template, you can create daily Slack prediction bot on any ticker available in YahooFinance.<br> 
-
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/j%C3%A9r%C3%A9my-ravenel-8a396910/)
+
+With this template, you can create daily Slack prediction bot on any ticker available in YahooFinance.<br> 
 
 ## Input
 

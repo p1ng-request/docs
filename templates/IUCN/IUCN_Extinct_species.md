@@ -1,7 +1,8 @@
-# IUCN - Extinct species
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/IUCN/IUCN_Extinct_species.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #iucn #opendata #extinctspecies
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 Source : https://www.iucnredlist.org/statistics
 
@@ -22,6 +23,8 @@ But the data was heavy and not easy to use. Moreover, we thought that this would
 So we decided to take another datasource on a similar subject : *Extinct Species*, from this website : https://www.iucnredlist.org/statistics
 
 **Tags:** #iucn #opendata #extinctspecies
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ### Import library
 

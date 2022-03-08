@@ -1,13 +1,26 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Google Analytics - GoogleAnalytics Get unique visitors
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Google%20Analytics/GoogleAnalytics_Get_unique_visitors.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #googleanalytics #getuniquevisitors
+**Tags:** #googleanalytics #getuniquevisitors #plotly #barchart #naas_drivers #scheduler #asset #naas
+
+**Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 
 ## Input
+
+### Schedule your notebook
+
+
+```python
+#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
+# import naas
+# naas.scheduler.add(cron="0 8 * * *")
+
+#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# naas.scheduler.delete()
+```
 
 ### Import library
 
@@ -15,7 +28,7 @@ Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 ```python
 import pandas as pd
 import plotly.graph_objects as go
-
+import naas
 from naas_drivers import googleanalytics
 ```
 
@@ -23,65 +36,99 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = '/Users/charlesdemontigny/Desktop/naas-335023-90c733ba64dd.json'
+json_path = 'naas-googleanalytics.json'
 ```
 
 ### Get view id from google analytics
 
 
 ```python
-view_id = "236707574"
+view_id = "228952707"
 ```
 
-## Model
-
-### Report Website - Google Analytics performance
+### Setup your output paths
 
 
 ```python
-googleanalytics.connect(json_path=json_path)
+csv_output = "googleanalytics_unique_visitors.csv"
+html_output = "googleanalytics_unique_visitors.html"
 ```
+
+## Model
 
 ### Number of uniques visitors
 
 
 ```python
-unique_visitors = googleanalytics.views.get_unique_visitors(view_id)
+df_unique_visitors = googleanalytics.connect(json_path).views.get_unique_visitors(view_id)
+df_unique_visitors.tail(5)
 ```
 
 ## Output
 
-### Display result
+### Save dataframe in csv
 
 
 ```python
-unique_visitors.tail()
+df_unique_visitors.to_csv(csv_output, index=False)
 ```
 
+### Plotting barchart
+
 
 ```python
-def plot_unique_visitors(unique_visitors: pd.DataFrame):
+def plot_unique_visitors(df: pd.DataFrame):
     """
     Plot PageView in Plotly.
     """
-    data = go.Bar(x=pd.to_datetime(unique_visitors['Year Month'] + "01"),
-                  y=unique_visitors['Users'],
-                  text=unique_visitors['Users'],
-                  orientation="v")
-    layout = go.Layout(template="none", title="Number of Unique Visitors by Month")
+    # Prep dataframe
+    df["Date"] = pd.to_datetime(df['Year Month'] + "01")
+    
+    # Get last month value
+    value = "{:,.0f}".format(df.loc[df.index[-1], "Users"]).replace(",", " ")
+    
+    # Create data
+    data = go.Bar(
+        x=df["Date"],
+        y=df['Users'],
+        text=df['Users'],
+#         marker=dict(color="black"),
+        orientation="v"
+    )
+    # Create layout
+    layout = go.Layout(
+        yaxis={'categoryorder': 'total ascending'},
+        margin={"l":150, "pad": 20},
+        title=f"<b>Number of Unique Visitors by Month</b><br><span style='font-size: 13px;'>Unique visitors this month: {value}</span>",
+        title_font=dict(family="Arial", size=18, color="black"),
+        xaxis_title="Months",
+        xaxis_title_font=dict(family="Arial", size=11, color="black"),
+        yaxis_title="No visitors",
+        yaxis_title_font=dict(family="Arial", size=11, color="black"),
+        plot_bgcolor="#ffffff",
+        width=1200,
+        height=800,
+        margin_pad=10,
+    )
     fig = go.Figure(data=data, layout=layout)
-    fig.update_layout(yaxis={'categoryorder':'total ascending'},
-                      margin={"l":150, "pad": 20})
     fig.update_traces(textposition="outside")
     return fig
+
+fig = plot_unique_visitors(df_unique_visitors)
+fig.show()
 ```
+
+### Export and share graph
 
 
 ```python
-plot_unique_visitors(unique_visitors)
-```
+# Export in HTML
+fig.write_html(html_output)
 
+# Shave with naas
+#-> Uncomment the line below (by removing the hashtag) to share your asset with naas
+# naas.asset.add(html_output, params={"inline": True})
 
-```python
-
+#-> Uncomment the line below (by removing the hashtag)  to delete your asset
+# naas.asset.delete(html_output)
 ```

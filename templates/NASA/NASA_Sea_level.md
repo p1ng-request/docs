@@ -1,7 +1,8 @@
-# NASA - Sea level
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA_Sea_level.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #naas #opendata
+**Tags:** #naas #opendata #snippet
+
+**Author:** [Colyn TIDMAN](https://www.linkedin.com/in/colyntidman/), [Dylan PICHON](https://www.linkedin.com/in/dylan-pichon/)
 
 Sea level rise is caused primarily by two factors related to global warming: the added water from melting ice sheets and glaciers and the expansion of seawater as it warms. The first graph tracks the change in sea level since 1993 as observed by satellites.
 
@@ -32,7 +33,7 @@ Data source : nasa_sea_levels.txt downloaded earlier
 
 
 ```python
-uri_nasa_sea_level = "data/nasa_sea_levels.txt"
+uri_nasa_sea_level = "nasa-sea-level-data.txt"
 ```
 
 ## Model
@@ -118,7 +119,3 @@ fig.update_layout(title_x=0.5)
 
 fig.show()
 ```
-
-**Authors :**
-- Colyn TIDMAN 
-- Dylan PICHON

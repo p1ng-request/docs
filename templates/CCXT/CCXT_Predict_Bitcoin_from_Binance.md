@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# CCXT - Predict Bitcoin from Binance
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/CCXT/CCXT_Predict_Bitcoin_from_Binance.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #ccxt #bitcoin #trading
+
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## Input
 
@@ -11,7 +10,7 @@
 
 
 ```python
-pip install ccxt --user
+!pip install ccxt --user
 ```
 
 ### Import libraries
@@ -25,19 +24,38 @@ from datetime import datetime
 from naas_drivers import plotly, prediction
 ```
 
+### Setup Binance
+👉 <a href='https://www.binance.com/en/support/faq/360002502072'>How to create API ?</a>
+
+
+```python
+binance_api = ""
+binance_secret = ""
+```
+
+### Variables
+
+
+```python
+symbol = 'BTC/USDT'
+limit = 200
+timeframe = '1d'
+```
+
 ## Model
 
-### Recovery of the api secret keys
+### Get data
 
 
 ```python
 binance = ccxt.binance({
-    'apiKey': naas.secret.get('binance_api'),
-    'secret': naas.secret.get('binance_secret')
+    'apiKey': binance_api,
+    'secret': binance_secret
 }) 
-# binance['api'] = binance['test']
 
-data = binance.fetch_ohlcv(symbol = 'BTC/USDT', limit = 200, timeframe = '1d')
+data = binance.fetch_ohlcv(symbol=symbol,
+                           limit=limit,
+                           timeframe=timeframe)
 ```
 
 ### Mapping of the candlestick plot
@@ -76,8 +94,7 @@ df[f"MA{50}"] = df.Close.rolling(
 
 ```python
 pr = prediction.get(dataset=df)
-chart_stock = plotly.stock(pr, kind="linechart"
-)
+chart_stock = plotly.stock(pr, kind="linechart")
 ```
 
 ## Output

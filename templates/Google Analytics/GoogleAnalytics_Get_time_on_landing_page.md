@@ -1,23 +1,31 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Google Analytics - GoogleAnalytics Get time on landing page
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Google%20Analytics/GoogleAnalytics_Get_time_on_landing_page.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #googleanalytics #timeonlanding
 
+**Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
+
 Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 
 ## Input
+
+
+```python
+#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
+# import naas
+# naas.scheduler.add(cron="0 8 * * *")
+
+#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# naas.scheduler.delete()
+```
 
 ### Import library
 
 
 ```python
 from datetime import timedelta
-
 import pandas as pd
 import plotly.graph_objects as go
-
+import naas
 from naas_drivers import googleanalytics
 ```
 
@@ -25,30 +33,24 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = '/Users/charlesdemontigny/Desktop/naas-335023-90c733ba64dd.json'
+json_path = 'naas-googleanalytics.json'
 ```
 
 ### Get view id from google analytics
 
 
 ```python
-view_id = "236707574"
+view_id = "228952707"
 ```
 
 ## Model
-
-### Report Website - Google Analytics performance
-
-
-```python
-googleanalytics.connect(json_path=json_path)
-```
 
 ### Time spent on landing page
 
 
 ```python
-avg_time_on_landing = googleanalytics.views.get_time_landing(view_id=view_id, landing_path="/")
+df_avg_time = googleanalytics.connect(json_path=json_path).views.get_time_landing(view_id=view_id, landing_path="/")
+df_avg_time
 ```
 
 ## Output
@@ -60,7 +62,7 @@ avg_time_on_landing = googleanalytics.views.get_time_landing(view_id=view_id, la
 avg_time_on_landing['avg_time_landing']
 ```
 
-# Plot Time spent on landing page
+### Plot Time spent on landing page
 
 
 ```python

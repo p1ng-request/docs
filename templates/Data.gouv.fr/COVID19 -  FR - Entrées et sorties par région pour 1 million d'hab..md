@@ -1,7 +1,8 @@
-# Data.gouv.fr - COVID19 -  FR - Entrées et sorties par région pour 1 million d'hab.
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Data.gouv.fr/COVID19%20-%20%20FR%20-%20Entr%C3%A9es%20et%20sorties%20par%20r%C3%A9gion%20pour%201%20million%20d%27hab..ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #opendata #france
+**Tags:** #opendata #france #analytics
+
+**Author:** [MyDigitalSchool](https://www.mydigitalschool.com/)
 
 Sur géodes (https://geodes.santepubliquefrance.fr/#c=indicator&view=map2…), aller dans COVID>données hospitalières>Nombre quotidien de nouvelles personnes en réanimation
 
@@ -23,9 +24,9 @@ Le site de SP : https://santepubliquefrance.fr/maladies-et-traumatismes/maladies
 Video explicative : https://drive.google.com/file/d/1Mx7pEeH_3puzkDyicvRJ5opgiI3wZJ-d/view <br>
 Production : Nairobi Team, 2020/04/24 (MyDigitalSchool)
 
-**Tags:** #opendata #france
+## Input
 
-*** Imports :**
+### Import libraries
 
 
 ```python
@@ -37,7 +38,7 @@ from plotly.subplots import make_subplots
 import numpy as np
 ```
 
-*** Variables :**
+### Variables
 
 
 ```python
@@ -71,12 +72,13 @@ INDICES_COURANT = []
 INDICES_SORTIES = []
 ```
 
-*** Récupération des données :**
+## Model
+
+### Récupération des données
 
 
 ```python
 for i in range(LISSAGE_JOURS + 1):
-
   # Génération des dates
   DAY = (datetime.today() - timedelta(days = (LISSAGE_JOURS - i))).isoformat().split("T")[0]
   DATES.append(DAY)
@@ -99,7 +101,7 @@ for i in range(LISSAGE_JOURS + 1):
   INDICES_TEMP_REANIMATION.append(JSON['content']['distribution']['values'])
 ```
 
-*** Calcul des données :**
+### Calcul des données
 
 
 ```python
@@ -123,7 +125,7 @@ for value in INDICES_TEMP_COURANT:
   INDICES_COURANT.append(TOTAL_COURANT)
 ```
 
-*** Mise en forme des données :**
+### Mise en forme des données
 
 
 ```python
@@ -134,13 +136,15 @@ idx = pd.MultiIndex.from_product(iterables, names=['DATE', 'ZONE'])
 
 datas = []
 for i in range(len(iterables[1]) * len(iterables[0])) :
-  datas.append(np.array([INDICES_ENTREES[i], INDICES_SORTIES[i],INDICES_COURANT[i], datetime.today()]))
+    datas.append(np.array([INDICES_ENTREES[i], INDICES_SORTIES[i],INDICES_COURANT[i], datetime.today()]))
 
 df = pd.DataFrame(datas, index=idx, columns=['ENTREES', 'SORTIES', 'SOLDES', 'LAST UPDATE'])
 df
 ```
 
-*** Plotting :**
+## Output
+
+### Plotting
 
 
 ```python

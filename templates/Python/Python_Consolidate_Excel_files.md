@@ -1,9 +1,8 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Python - Consolidate Excel files
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Python/Python_Consolidate_Excel_files.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags**: #python #consolidate #files #productivity
+**Tags:** #python #consolidate #files #productivity #snippet
+
+**Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
 The objective of this notebook is to consolidate multiple Excel files (.xlsx) into one. 
 
@@ -18,6 +17,14 @@ import os
 import pandas as pd
 ```
 
+### Variables
+
+
+```python
+# Output
+excel_output = 'concatenate.xlsx'
+```
+
 ## Model
 Use a for loop to 
 - List all the files in the current directory with os.listdir().
@@ -29,8 +36,9 @@ Then
 
 
 ```python
+files = os.listdir()
 my_list = []
-for file in os.listdir():
+for file in files:
     if file.endswith('.xlsx'):
         df = pd.read_excel(file)
         my_list.append(df)
@@ -43,5 +51,5 @@ Export your dataframe to an Excel file.
 
 
 ```python
-df_concat.to_excel('concatenate.xlsx', index=False)
+df_concat.to_excel(excel_output, index=False)
 ```

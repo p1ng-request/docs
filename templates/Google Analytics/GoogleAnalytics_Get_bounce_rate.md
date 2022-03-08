@@ -1,13 +1,24 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# Google Analytics - GoogleAnalytics Get bounce rate
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Google%20Analytics/GoogleAnalytics_Get_bounce_rate.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #googleanalytics #bouncerate
+**Tags:** #googleanalytics #bouncerate #plotly #linechart #naas_drivers #scheduler #asset #naas
+
+**Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
+
+**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 
 ## Input
+
+
+```python
+#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
+# import naas
+# naas.scheduler.add(cron="0 8 * * *")
+
+#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# naas.scheduler.delete()
+```
 
 ### Import library
 
@@ -15,7 +26,7 @@ Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 ```python
 import pandas as pd
 import plotly.graph_objects as go
-
+import naas
 from naas_drivers import googleanalytics
 ```
 
@@ -23,67 +34,97 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = '/Users/charlesdemontigny/Desktop/naas-335023-90c733ba64dd.json'
+json_path = 'naas-googleanalytics.json'
 ```
 
 ### Get view id from google analytics
 
 
 ```python
-view_id = "236707574"
+view_id = "228952707"
 ```
 
-## Model
-
-### Report Website - Google Analytics performance
+### Setup your output paths
 
 
 ```python
-googleanalytics.connect(json_path=json_path)
+csv_output = "googleanalytics_bounce_rate.csv"
+html_output = "googleanalytics_bounce_rate.html"
 ```
+
+## Model
 
 ### Bounce Rate
 
 
 ```python
-bounce_rate = googleanalytics.views.get_bounce_rate(view_id=view_id)
+df_bounce_rate = googleanalytics.connect(json_path=json_path).views.get_bounce_rate(view_id=view_id)
+df_bounce_rate
 ```
 
 ## Output
 
-### Display result
+### Save dataframe in csv
 
 
 ```python
-bounce_rate
+df_bounce_rate.to_csv(csv_output, index=False)
 ```
 
-# Bounce Rate Plot
+### Bounce Rate Plot
 
 
 ```python
-def plot_bounce_rate(bounce_rate: pd.DataFrame):
+def plot_bounce_rate(df: pd.DataFrame):
     """
     Plot bounce rate as an area chart in Plotly.
     """
+    # Prep dataframe
+    df["Date"] = pd.to_datetime(df['Year Month'] + "01")
+    
+    # Get total views
+    value = "{:,.0%}".format(df["Bounce Rate"].mean())
+    
+    # Create data
     data = go.Scatter(
-        x=pd.to_datetime(bounce_rate['Year Month'] + "01"),
-        y=bounce_rate['Bounce Rate'],
+        x=df["Date"],
+        y=df['Bounce Rate'],
         stackgroup="one"
     )
-
-    fig = go.Figure(data=data)
+    
+    # Create layout
+    layout = go.Layout(
+        yaxis={"tickformat": ',.0%'},
+        title=f"<b>Bounce Rate</b><br><span style='font-size: 13px;'>Average bounce rate: {value}</span>",
+        title_font=dict(family="Arial", size=18, color="black"),
+        yaxis_title="Bounce rate %",
+        yaxis_title_font=dict(family="Arial", size=11, color="black"),
+        xaxis_title="Mounths",
+        xaxis_title_font=dict(family="Arial", size=11, color="black"),
+        plot_bgcolor="#ffffff",
+        width=1200,
+        height=800,
+        margin_pad=10,
+    )
+    fig = go.Figure(data=data, layout=layout)
     fig.update_traces(mode='lines+markers')
-    fig.update_layout(yaxis={"tickformat": ',.0%'}, title="Bounce Rate", template="none")
     return fig
+
+fig = plot_bounce_rate(df_bounce_rate)
+fig
 ```
+
+### Export and share graph
 
 
 ```python
-plot_bounce_rate(bounce_rate)
-```
+# Export in HTML
+fig.write_html(html_output)
 
+# Shave with naas
+#-> Uncomment the line below (by removing the hashtag) to share your asset with naas
+# naas.asset.add(html_output, params={"inline": True})
 
-```python
-
+#-> Uncomment the line below (by removing the hashtag)  to delete your asset
+# naas.asset.delete(html_output)
 ```

@@ -1,11 +1,10 @@
-<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>
-
-# CCXT - Calculate Support and Resistance
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/CCXT/CCXT_Calculate_Support_and_Resistance.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
 **Tags:** #ccxt #bitcoin #trading
 
-Prerequisite : get binance API Key
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
+
+## Input
 
 
 ```python
@@ -20,23 +19,56 @@ import pandas as pd
 from datetime import datetime
 import naas_drivers
 import trendln
+import plotly.tools as tls
+import plotly.graph_objects as go
 ```
+
+### Setup Binance
+👉 <a href='https://www.binance.com/en/support/faq/360002502072'>How to create API ?</a>
+
+
+```python
+binance_api = ""
+binance_secret = ""
+```
+
+### Variables
+
+
+```python
+symbol = 'BTC/USDT'
+limit = 180
+timeframe = '4h'
+```
+
+## Model
+
+### Get data
 
 
 ```python
 binance = ccxt.binance({
-    'apiKey': naas.secret.get('binance_api'),
-    'secret': naas.secret.get('binance_secret')
+    'apiKey': binance_api,
+    'secret': binance_secret
 }) 
-data = binance.fetch_ohlcv(symbol = 'BTC/USDT', limit = 180, timeframe = '4h')
+
+data = binance.fetch_ohlcv(symbol=symbol,
+                           limit=limit,
+                           timeframe=timeframe)
 ```
+
+### Data cleaning
 
 
 ```python
-df = pd.DataFrame(data, columns=["Date","Open","High","Low","Close","Volume"])
+df = pd.DataFrame(data, columns=["Date", "Open", "High", "Low", "Close", "Volume"])
 df['Date'] = [datetime.fromtimestamp(float(time)/1000) for time in df['Date']]
 df
 ```
+
+## Output
+
+### Plotting figure
 
 
 ```python
@@ -58,9 +90,6 @@ fig = trendln.plot_support_resistance(
 
 
 ```python
-import plotly.tools as tls
-import plotly.graph_objects as go
-
 plotly_fig = tls.mpl_to_plotly(fig)
 ```
 
@@ -78,9 +107,4 @@ new_data.pop(1)
 new_data.pop(1)
 fig = go.Figure(data=new_data, layout=layout)
 fig
-```
-
-
-```python
-
 ```

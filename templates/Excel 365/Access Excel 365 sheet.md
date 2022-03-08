@@ -1,5 +1,8 @@
-# Excel 365 - Access  sheet
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Excel%20365/Access%20Excel%20365%20sheet.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+
+**Tags:** #excel365 #snippet
+
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## Input
 
@@ -43,7 +46,7 @@ export = "xls"
 
 
 ```python
-df  = sharepoint_connector.connect(username,password,domain,path,sheet,export)
+df  = sharepoint_connector.connect(username, password, domain, path, sheet, export)
 ```
 
 ## Output
