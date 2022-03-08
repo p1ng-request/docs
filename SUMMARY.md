@@ -233,6 +233,7 @@
     * [Update page](templates/Notion/Notion_Update_page.md)
     * [Push data from Gsheets](templates/Notion/Notion_Push_data_from_Gsheets.md)
   * [OpenWeatherMap](templates/OpenWeatherMap/README.md)
+    * [Send daily email with predictions](templates/OpenWeatherMap/OpenWeatherMap_Send_daily_email_with_predictions.md)
     * [Get City Weather](templates/OpenWeatherMap/OpenWeatherMap_Get_City_Weather.md)
   * [OwnCloud](templates/OwnCloud/README.md)
     * [Download file](templates/OwnCloud/OwnCloud_Download_file.md)
