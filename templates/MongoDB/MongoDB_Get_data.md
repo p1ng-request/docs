@@ -1,8 +1,8 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/MongoDB/MongoDB_Get_data.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #mongodb #database #naas_drivers
+**Tags:** #mongodb #database #naas_drivers #snippet
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
 ## Input
 
@@ -10,35 +10,38 @@
 
 
 ```python
-import naas
+from naas_drivers import mongo
 ```
 
-### Variables
+### Setup your MongoDB
 
 
 ```python
+# Credentials
 user = "my user"
 passwd = "my passwd"
 host = "url"
 port = 9090
+
+# DB parameters
 collection_name = "col"
 db_name = "db_name"
 ```
 
 ## Model
 
-### Connect
+### Get data
 
 
 ```python
-ftp = naas_drivers.mongo.connect(host, port, user, passwd)
+df = naas_drivers.mongo.connect(host, port, user, passwd).get(collection_name, db_name)
 ```
 
 ## Output
 
-### Get Data
+### Display result
 
 
 ```python
-naas_drivers.mongo.get(collection_name, db_name)
+df
 ```

@@ -4,8 +4,6 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
-
 Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 
 ## Input

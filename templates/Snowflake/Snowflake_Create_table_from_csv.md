@@ -1,8 +1,8 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Snowflake/Snowflake_Create_table_from_csv.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #snowflake #database
+**Tags:** #snowflake #database #snippet
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Sanjay Sabu](https://www.linkedin.com/in/sanjay-sabu-4205/)
 
 ## Input
 
@@ -98,7 +98,3 @@ table_display_query = "SELECT * FROM " + table_name
 #Fetch records from Snowflake database
 instance.execute_query(table_display_query,query_type="pull")
 ```
-
-### Import library
-
-### Display result

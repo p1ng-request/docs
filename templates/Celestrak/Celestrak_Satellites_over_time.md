@@ -2,16 +2,12 @@
 
 **Tags:** #celestrak #opendata #satelltes
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Dumorya](https://github.com/Dumorya)
 
 We analyze the number of satellites in the space from the first launch to now, and the part of them which became inactive.
 These data come from http://www.celestrak.com/. It provides free data as CSV files easily accessible.
 The CSV file we got contains many data as the name of the satellite, its owner, launch site, id, apogee and many others.
 What interested us the most were the status code, the launch date and the decay date, in order to create a graph with years in X axis and number of satellites in Y axis.
-
-**Tags:** #celestrak #opendata #satelltes
-
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

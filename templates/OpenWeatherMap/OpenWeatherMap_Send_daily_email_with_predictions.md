@@ -1,3 +1,7 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/OpenWeatherMap/OpenWeatherMap_Send_daily_email_with_predictions.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+
+**Tags:** #openweathermap #weather #plotly #prediction #email #naas_drivers #automation
+
 **Author:** [Gautier Vivard](https://www.linkedin.com/in/gautier-vivard-1811b877/)
 
 ## Input
@@ -18,7 +22,7 @@ from naas_drivers import plotly, prediction
 
 
 ```python
-OPENWEATHER_KEY = '339f0179ed25a8fcdfaade4ae8fca25b'  # get your key from here https://home.openweathermap.org/api_keys (it takes couples of minutes)
+OPENWEATHER_KEY = '***************'  # get your key from here https://home.openweathermap.org/api_keys (it takes couples of minutes)
 city = 'rouen'
 country_code = 'fr' # if you don't want to specify a country code, let ''
 ```

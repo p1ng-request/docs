@@ -1,14 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Healthchecks/Healthcheks_Perfom_basic_actions.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #healthchecks
+**Tags:** #healthchecks #snippet
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
 Get notified of your Cron jobs
-
-**Tags:** #healthchecks
-
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

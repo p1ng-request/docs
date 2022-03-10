@@ -1,14 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/IFTTT/IFTTT_Post_on_Twitter.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #ifttt #automation #nocode
+**Tags:** #ifttt #nocode #snippet
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 See the tutorial video on Youtube: https://www.youtube.com/watch?v=FvAM1aS4GFM
-
-**Tags:** #ifttt #automation #nocode
-
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
 
 ## Input
 

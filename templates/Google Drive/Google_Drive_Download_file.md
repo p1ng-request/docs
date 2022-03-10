@@ -1,17 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Google%20Drive/Google_Drive_Download_file.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #googledrive
+**Tags:** #googledrive #snippet
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## Input
-
-### Install packages
-
-
-```python
-!pip install gdown
-```
 
 Pre-requisite : change file access rights to make sure Naas can access ("Allow anyone")
 If you need more specific user rights, just drop us an email hello@naas.ai
@@ -20,7 +13,11 @@ If you need more specific user rights, just drop us an email hello@naas.ai
 
 
 ```python
-import gdown
+try:
+    import gdown
+except:
+    !pip install gdown
+    import gdown
 ```
 
 ## Model

@@ -1,23 +1,20 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Google%20Search/Google_Search_Perform_search.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #googlesearch
+**Tags:** #googlesearch #snippet
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## Input
-
-### Install packages
-
-
-```python
-!pip install google
-```
 
 ### Import library
 
 
 ```python
-from googlesearch import search
+try:
+    from googlesearch import search
+except:
+    !pip install google
+    from googlesearch import search
 ```
 
 ### Variables

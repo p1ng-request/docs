@@ -25,10 +25,6 @@ The supported tasks are the following:
 
 We simply use [Hugging Face API](https://huggingface.co/models) under the hood to access the models.
 
-**Tags:** #huggingface
-
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
-
 ## Input
 
 ### Import library
