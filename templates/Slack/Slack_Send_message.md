@@ -2,7 +2,7 @@
 
 **Tags:** #slack #message #send
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
 ## Input
 
