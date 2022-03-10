@@ -2,7 +2,7 @@
 
 **Tags:** #worldbank #opendata
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 **Objective** : allows to visualize a map of GDP per capita and the GDP growth of all the countries in the world. Click on the country on the map or select it to see the details info.
 

@@ -1,8 +1,8 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Hugging%20Face/Hugging_Face_Naas_drivers_integration.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags**: #nlp #huggingface #api #models #transformers
+**Tags:** #nlp #huggingface #api #models #transformers
 
-**Author**: [Gagan Bhatia](https://www.linkedin.com/in/gbhatia30/)
+**Author:** [Gagan Bhatia](https://www.linkedin.com/in/gbhatia30/)
 
 In this notebook, you will be able to explore the Hugging Face transformers package with minimal technical knowledge thanks to Naas low-code drivers.<br>
 Hugging Face is an immensely popular Python library providing pretrained models that are extraordinarily useful for a variety of natural language processing (NLP) tasks.

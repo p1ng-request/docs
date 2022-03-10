@@ -2,9 +2,9 @@
 
 **Tags:** #reddit #subreddit #data #hottopics #rss #information
 
-This notebook explains how to get hot posts from a subreddit. A subreddit is a specific online community, and the posts associated with it, on the social media website Reddit
-
 **Author:** [Yaswanthkumar GOTHIREDDY](https://www.linkedin.com/in/yaswanthkumargothireddy/)
+
+This notebook explains how to get hot posts from a subreddit. A subreddit is a specific online community, and the posts associated with it, on the social media website Reddit
 
 ## Input
 

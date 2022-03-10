@@ -2,24 +2,38 @@
 
 **Tags:** #xml #file #tool
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-## Install needed library
+## Input
 
-
-```python
-pip install xmltodict
-```
-
-## Run the magic code
+### Import library
 
 
 ```python
+import naas
 import json 
-import xmltodict
+try:
+    import xmltodict
+except:
+    !pip install xmltodict
+    import xmltodict
 import pandas as pd
 import requests
+```
 
+### Choose the website you want
+
+
+```python
+website = "https://zapier.com"
+```
+
+## Model
+
+### Get your Dataframe
+
+
+```python
 def sitemap_to_df(url):
     df = None
     key = "urlset.url.url"
@@ -37,36 +51,21 @@ def sitemap_to_df(url):
     else:
         df = pd.DataFrame.from_dict(data=data_dict)
     return df
-
 ```
-
-## Input
-
-### Import library
-
-
-```python
-import naas
-```
-
-### Choose the website you want
-
-
-```python
-website = "https://zapier.com"
-```
-
-## Model
-
-### Get your Dataframe
 
 
 ```python
 df = sitemap_to_df(website)
-df
 ```
 
 ## Output
+
+### Display result
+
+
+```python
+df
+```
 
 ### Set the timezone
 

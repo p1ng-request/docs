@@ -2,7 +2,7 @@
 
 **Tags:** #owncloud #cloud #storage
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## Input
 

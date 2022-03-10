@@ -2,22 +2,19 @@
 
 **Tags:** #excel365 #snippet
 
-**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
+**Author:** [Ebin Paulose](https://www.linkedin.com/in/ebinpaulose/)
 
 ## Input
-
-### Install pip package
-
-
-```python
-!pip install sharepy
-```
 
 ### Import sharepoint connector
 
 
 ```python
-import sharepoint_connector
+try:
+    import sharepoint_connector
+except:
+    !pip install sharepy
+    import sharepoint_connector
 ```
 
 ### Set variables

@@ -1,15 +1,11 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Telegram/Telegram_Create_crypto_sentiment_bot.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #telegram
+**Tags:** #telegram #sentiment #bot #naas_drivers #ai
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Yaswanthkumar GOTHIREDDY](https://www.linkedin.com/in/yaswanthkumargothireddy/)
 
 This notebook is a demo of how you can use naas drivers and Telegram to create a Crypto sentiment bot. <br>
 Please note that if you stop the notebook, the bot will not work anymore.
-
-'#telegram #sentiment #bot #naas_drivers
-
-Author: Name Surname (email)
 
 ## Input
 
@@ -129,9 +125,6 @@ def handle_message(update, context):
 def error(update, context):
     # Logs errors
     logging.error(f'Update {update} caused error {context.error}')
-
-
-
 ```
 
 ## Output
