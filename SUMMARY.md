@@ -179,6 +179,7 @@
     * [Get identity from profile](templates/LinkedIn/LinkedIn_Get_identity_from_profile.md)
     * [Get messages from profile](templates/LinkedIn/LinkedIn_Get_messages_from_profile.md)
     * [Get stats from post](templates/LinkedIn/LinkedIn_Get_stats_from_post.md)
+    * [Generate leads from posts](templates/LinkedIn/LinkedIn_Generate_leads_from_posts.md)
   * [Matplotlib](templates/Matplotlib/README.md)
     * [Create Waterfall chart](templates/Matplotlib/Matplotlib_Create_Waterfall_chart.md)
   * [Metrics Store](templates/Metrics%20Store/README.md)

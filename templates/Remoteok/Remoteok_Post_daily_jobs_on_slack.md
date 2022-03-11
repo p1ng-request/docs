@@ -23,7 +23,7 @@ import naas
 
 ```python
 SLACK_TOKEN = "xoxb-1481042297777-3085654341191-xxxxxxxxxxxxxxxxxxxxxxxxx"
-SLACK_CHANNEL = "05_work"
+SLACK_CHANNEL = "05_jobs"
 ```
 
 ### Setup sheet log data
@@ -51,7 +51,7 @@ categories = ['machine learning',
               'data',
               'natural language processing',
               'data engineer']
-date_from  = -30 ### this is 30 days from now => must be negative
+date_from  = -10 ### this is 10 days from now => must be negative
 ```
 
 ### Set the Scheduler
@@ -116,13 +116,95 @@ def get_jobs(remoteok_url, categories):
                         df.loc[index, 'LOCATION'] = job.get('location')
                         df.loc[index, 'PUBLICATION_DATE'] = datetime.fromtimestamp(publication_time).strftime(NAAS_DATETIME)
                         index+=1
-                        
+    
+    df = df.drop_duplicates(subset = 'URL', keep='first')
     df = df.sort_values(by='PUBLICATION_DATE', ascending=False)
     return df
 
 df_jobs = get_jobs(REMOTEOK_API, categories)
 df_jobs.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>URL</th>
+      <th>TITLE</th>
+      <th>COMPANY</th>
+      <th>TAGS</th>
+      <th>LOCATION</th>
+      <th>PUBLICATION_DATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>https://remoteOK.com/remote-jobs/109456-remote...</td>
+      <td>Principal Software Engineer Data Scientist</td>
+      <td>Cardlytics</td>
+      <td>data science, golang, engineer, dev, digital n...</td>
+      <td></td>
+      <td>2022-03-09 01:15:04</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://remoteOK.com/remote-jobs/109342-remote...</td>
+      <td>Senior Backend Engineer</td>
+      <td>Narcissa</td>
+      <td>javascript, crypto, node, data science, senior...</td>
+      <td>Worldwide</td>
+      <td>2022-03-02 17:45:49</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://remoteOK.com/remote-jobs/109291-remote...</td>
+      <td>Data Science Lead Marketplace</td>
+      <td>Hipcamp</td>
+      <td>data science, marketing, engineer, exec</td>
+      <td>San Francisco, CA</td>
+      <td>2022-02-28 11:00:07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://remoteOK.com/remote-jobs/109261-remote...</td>
+      <td>Data Analyst</td>
+      <td>Kikoff</td>
+      <td>mobile, data science, marketing, engineer, bac...</td>
+      <td>Remote, United States</td>
+      <td>2022-02-27 18:00:07</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>https://remoteOK.com/remote-jobs/109238-remote...</td>
+      <td>Machine Learning Engineer</td>
+      <td>Generally Intelligent</td>
+      <td>machine learning, engineer</td>
+      <td>Remote-only</td>
+      <td>2022-02-27 07:00:01</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 ### Remove duplicate jobs
 
@@ -140,6 +222,42 @@ df_new_jobs = remove_duplicates(df_jobs_log, df_jobs)
 df_new_jobs
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>URL</th>
+      <th>TITLE</th>
+      <th>COMPANY</th>
+      <th>TAGS</th>
+      <th>LOCATION</th>
+      <th>PUBLICATION_DATE</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+
+
+
 ## Output
 
 ### Add new jobs on the sheet log
@@ -151,14 +269,24 @@ gsheet.connect(spreadsheet_id).send(sheet_name=sheet_name,
                                     append=True)
 ```
 
+
+
+
+    {}
+
+
+
 ### Send all job links to the slack channel
 
 
 ```python
 if len(df_new_jobs) > 0:
-    for _, row in df_jobs.iterrows():
+    for _, row in df_new_jobs.iterrows():
         url = row.url
         slack.connect(SLACK_TOKEN).send(SLACK_CHANNEL, f"<{url}>")
 else:
     print("Nothing to be published in Slack !")
 ```
+
+    Nothing to be published in Slack !
+
