@@ -83,7 +83,7 @@ Create 1000 templates inspired by
 
 **List of Templates to be developed**
 
-
+{% embed url="https://naas-official.notion.site/Templates-Box-eedecad69acc49c6a31d9e2f31d97ef8" %}
 
 ### Phase 3: focus on AI experience for decision making.
 
