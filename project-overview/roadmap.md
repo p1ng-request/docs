@@ -57,7 +57,7 @@ description: Where we come from, and were we are going.
 **Highlights:**&#x20;
 
 * Feb 2022: Meeting at Netflix about the need for more Data Science templates, and the importance of creating a standard framework and abstraction with low-code.&#x20;
-* Mar 2022:  Launch of the "Naas Templates Tournament" to create 2000 templates.&#x20;
+* Mar 2022:  Launch of the "Naas Templates Tournament" to create 1000 templates.&#x20;
 
 &#x20;\_\_ COMING SOON \_\_
 
@@ -65,13 +65,11 @@ description: Where we come from, and were we are going.
 
 **Tournament content:**&#x20;
 
-Create 2000 templates inspired by
+Create 1000 templates inspired by
 
 * Zapier's most popular workflows
 * A curated list of more than 100 **private business metrics**&#x20;
 * A community-based project aggregating the most comprehensive list of the **world public metrics** to create a global indicator (the WHI: World Health Indicator)
-
-![](<../.gitbook/assets/Naas x Docstring copy copy.jpg>)
 
 **Domains:**&#x20;
 
@@ -83,9 +81,13 @@ Create 2000 templates inspired by
 * Investors
 * Open Data
 
+**List of Templates to be developed**
+
+
+
 ### Phase 3: focus on AI experience for decision making.
 
-**Objective**: Create a seemless decision-making experience between humans and machines.
+**Objective**: Create a seamless decision-making experience between humans and machines.
 
 * No-code interface
 * Search for metrics (text, voice)
@@ -103,6 +105,14 @@ If the template is not here, simply [create an issue on Github](https://github.c
 
 ![](<../.gitbook/assets/Feb-21-2022 01-43-08.gif>)
 
+#### How to contribute?
+
+{% content-ref url="../contributing-to-naas.md" %}
+[contributing-to-naas.md](../contributing-to-naas.md)
+{% endcontent-ref %}
+
 ## Enterprise edition
+
+The Naas edition focused on companies specific needs.
 
 ![](<../.gitbook/assets/Screenshot 2022-03-03 at 22.35.28.png>)
