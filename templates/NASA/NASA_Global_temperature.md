@@ -1,4 +1,6 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA_Global_temperature.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+# Global temperature
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA\_Global\_temperature.ipynb)
 
 **Tags:** #nasa #opendata #snippet
 
@@ -12,33 +14,30 @@ The “Global Temperature” figure on the home page dashboard shows global temp
 
 Website : https://climate.nasa.gov/vital-signs/global-temperature/
 
-Data source: NASA's Goddard Institute for Space Studies (GISS). 
+Data source: NASA's Goddard Institute for Space Studies (GISS).
 
 Credit: NASA/GISS
 
-## Input
+### Input
 
-Data source : https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt
+Data source : https://data.giss.nasa.gov/gistemp/graphs/graph\_data/Global\_Mean\_Estimates\_based\_on\_Land\_and\_Ocean\_Data/graph.txt
 
-### Import libraries
-
+#### Import libraries
 
 ```python
 import pandas
 import plotly.graph_objects as go
 ```
 
-### URL
-
+#### URL
 
 ```python
 url_nasa_termperatures = "https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt"
 ```
 
-## Model
+### Model
 
-### Get the data and create the table
-
+#### Get the data and create the table
 
 ```python
 df = pandas.read_csv(url_nasa_termperatures, sep=r'     ', skiprows=5, names=["Year", "Delta", "Detla (Smoothed)"], engine="python")
@@ -46,14 +45,14 @@ df = pandas.read_csv(url_nasa_termperatures, sep=r'     ', skiprows=5, names=["Y
 df.tail(10)
 ```
 
-Here we can see the evolution of the average surface temperature anomaly from the last 10 years. <br>
+Here we can see the evolution of the average surface temperature anomaly from the last 10 years.\
+
 
 Now lets visualize this information with a graph using plotly.
 
-## Output
+### Output
 
-### Land-Ocean Temperature Index - Visualization
-
+#### Land-Ocean Temperature Index - Visualization
 
 ```python
 fig = go.Figure(layout_title="<b>Land-Ocean Temperature Index (°C)</b>")
@@ -92,14 +91,15 @@ fig.show()
 
 According to the Paris Agreement, the delta **should not be higher than 2**. As you can see here on the graph, it increasing quickly with the years specially since 1950.
 
-### Land-Ocean Temperature Index - Visualization with Industrial Revolution Dates
+#### Land-Ocean Temperature Index - Visualization with Industrial Revolution Dates
 
 We can now add the dates of the three last Industrial Revolutions :
 
-    - Second 1910 : gaz and petrol
-    - Third 1970 : internet
-    - Forth 2000 : AI
-
+```
+- Second 1910 : gaz and petrol
+- Third 1970 : internet
+- Forth 2000 : AI
+```
 
 ```python
 fig.add_vrect(x0="1910", x1="1911", annotation_text="2nd IR <br> 1910", annotation_position="top left",
@@ -119,5 +119,8 @@ fig.update_layout(title_x=0.5, title_text="<b>Land-Ocean Temperature Index (°C)
 fig.show()
 ```
 
-<br><br> **Idea to improve :**
-- *Predict with machine learning the delta for the next 50 years*
+\
+\
+**Idea to improve :**
+
+* _Predict with machine learning the delta for the next 50 years_

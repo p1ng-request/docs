@@ -29,7 +29,7 @@ Here is a list of easy [good first issues](https://github.com/jupyter-naas/aweso
 
 ### Naas Templates tournament
 
-![](<.gitbook/assets/Naas and Zapier copy (1).jpg>)
+![](<.gitbook/assets/Naas and Zapier copy.jpg>)
 
 ### Code of conduct
 
@@ -52,13 +52,19 @@ This commit convention applies to Naas and Naas drivers repository.
 
 ## Areas for contribution
 
-### Private metrics&#x20;
+### Templates Database
 
-{% embed url="https://naas-official.notion.site/Metrics-Store-58cc53d42f6d467284aca862b39ef636" %}
+{% embed url="https://naas-official.notion.site/Templates-Database-eedecad69acc49c6a31d9e2f31d97ef8" %}
 
-### Public metrics
+Other areas of contributions are:&#x20;
 
-{% embed url="https://naas-official.notion.site/World-Situation-Room-219f6162351a48f09f79e0348dedf7f5" %}
+* Documentation&#x20;
+* Naas drivers (python package for integrations)&#x20;
+* Naas features (micro-services on top of Jupyter Notebooks)
+* Product Management (scoping templates)
+* Marketing and communication
+
+Contact us on [Slack for more details](https://join.slack.com/t/naas-club/shared\_invite/zt-r187or6p-CwaKutBTxVeIIw6zJ0DHkw).
 
 ### **Documentation maintenance**
 

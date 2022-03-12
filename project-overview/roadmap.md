@@ -57,7 +57,7 @@ description: Where we come from, and were we are going.
 
 &#x20;\_\_ COMING SOON \_\_
 
-![](<../.gitbook/assets/Naas and Zapier copy.jpg>)
+![](<../.gitbook/assets/Naas and Zapier copy (1).jpg>)
 
 **Tournament content:**&#x20;
 
@@ -89,7 +89,7 @@ Create 2000 templates inspired by
 
 Want to learn more? [Let's talk.](https://calendly.com/jeremyravenel)
 
-![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54 (1).png>)
+![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54.png>)
 
 ## Community edition
 

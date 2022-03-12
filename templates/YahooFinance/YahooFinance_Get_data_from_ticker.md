@@ -1,23 +1,25 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Get_data_from_ticker.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+# Get data from ticker
 
-With this template, you can get data from any ticker available in [Yahoo finance](https://finance.yahoo.com/quote/TSLA/).<br> 
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance\_Get\_data\_from\_ticker.ipynb)
 
-**Tags:** #yahoofinance #trading #naas_drivers
+With this template, you can get data from any ticker available in [Yahoo finance](https://finance.yahoo.com/quote/TSLA/).\
+
+
+**Tags:** #yahoofinance #trading #naas\_drivers
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-## Input
+### Input
 
-### Import libraries
-
+#### Import libraries
 
 ```python
 from naas_drivers import yahoofinance
 ```
 
-### Input parameters
-👉 Here you can change the ticker, timeframe and add moving averages analysis
+#### Input parameters
 
+👉 Here you can change the ticker, timeframe and add moving averages analysis
 
 ```python
 ticker = "TSLA"
@@ -27,10 +29,9 @@ interval = '1d'
 moving_averages = [20, 50]
 ```
 
-## Model
+### Model
 
-### Get dataset from Yahoo Finance
-
+#### Get dataset from Yahoo Finance
 
 ```python
 df_yahoo = yahoofinance.get(ticker,
@@ -40,10 +41,9 @@ df_yahoo = yahoofinance.get(ticker,
                             moving_averages=moving_averages)
 ```
 
-## Output
+### Output
 
-### Display result
-
+#### Display result
 
 ```python
 df_yahoo
