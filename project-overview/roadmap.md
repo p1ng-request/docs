@@ -4,6 +4,10 @@ description: Where we come from, and were we are going.
 
 # Roadmap
 
+## Overview&#x20;
+
+![](<../.gitbook/assets/Screenshot 2022-03-12 at 17.03.03 (1).png>)
+
 ## Strategy&#x20;
 
 ### Phase 1: MVP launch&#x20;
