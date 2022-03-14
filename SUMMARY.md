@@ -208,6 +208,7 @@
     * [Domain demo](templates/Naas/Naas_Domain_demo.md)
     * [Get Transactions](templates/Naas/Naas_Get_Transactions.md)
     * [Remove Scheduler Outputs](templates/Naas/Naas_Remove_Scheduler_Outputs.md)
+    * [Reset Instance](templates/Naas/Naas_Reset_Instance.md)
     * [Notification demo](templates/Naas/Naas_Notification_demo.md)
     * [NLP Examples](templates/Naas/Naas_NLP_Examples.md)
     * [Secret demo](templates/Naas/Naas_Secret_demo.md)
