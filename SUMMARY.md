@@ -344,6 +344,7 @@
     * [Get tweets stats from profile](templates/Twitter/Twitter_Get_tweets_stats_from_profile.md)
   * [WSR](templates/WSR/README.md)
     * [Get daily Covid19 active cases worldmap JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.md)
+    * [Get daily Covid19 active cases trend JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_trend_JHU.md)
     * [WHI Create indicator](templates/WSR/WHI_Create_indicator.md)
   * [WorldBank](templates/WorldBank/README.md)
     * [GDP per capita and growth](templates/WorldBank/WorldBank_GDP_per_capita_and_growth.md)
