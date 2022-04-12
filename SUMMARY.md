@@ -362,7 +362,7 @@
     * [Send SMS](templates/Twilio/Twilio_Send_SMS.md)
   * [Twitter](templates/Twitter/README.md)
     * [Get user data](templates/Twitter/Twitter_Get_user_data.md)
-    * [Generate leads from posts](templates/Twitter/Twitter_Generate_leads_from_posts.md)
+    * [Get posts stats](templates/Twitter/Twitter_Get_posts_stats.md)
     * [Schedule posts](templates/Twitter/Twitter_Schedule_posts.md)
     * [Get tweets from search](templates/Twitter/Twitter_Get_tweets_from_search.md)
     * [Post text and image](templates/Twitter/Twitter_Post_text_and_image.md)
