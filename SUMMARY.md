@@ -44,6 +44,8 @@
     * [Visualize dataframe](templates/D-Tale/D-Tale_Visualize_dataframe.md)
   * [Data.gouv.fr](templates/Data.gouv.fr/README.md)
     * [COVID19 -  FR - Entrées et sorties par région pour 1 million d'hab.](templates/Data.gouv.fr/COVID19%20-%20%20FR%20-%20Entrées%20et%20sorties%20par%20région%20pour%201%20million%20d'hab..md)
+  * [Draft Kings](templates/Draft%20Kings/README.md)
+    * [Get NBA Moneylines](templates/Draft%20Kings/Draft_Kings_Get_NBA_Moneylines.md)
   * [EM-DAT](templates/EM-DAT/README.md)
     * [natural disasters](templates/EM-DAT/EM-DAT_natural_disasters.md)
   * [Elasticsearch](templates/Elasticsearch/README.md)
