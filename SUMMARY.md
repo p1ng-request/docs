@@ -174,6 +174,7 @@
     * [Get contact from profile](templates/LinkedIn/LinkedIn_Get_contact_from_profile.md)
     * [Get polls from post](templates/LinkedIn/LinkedIn_Get_polls_from_post.md)
     * [Get connections from network](templates/LinkedIn/LinkedIn_Get_connections_from_network.md)
+    * [Linkedin Follow total content views](templates/LinkedIn/Linkedin_Follow_total_content_views.md)
     * [Get invitations received](templates/LinkedIn/LinkedIn_Get_invitations_received.md)
     * [Get posts feed from profile](templates/LinkedIn/LinkedIn_Get_posts_feed_from_profile.md)
     * [Get stats from post](templates/LinkedIn/LinkedIn_Get_stats_from_post.md)
