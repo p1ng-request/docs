@@ -191,6 +191,7 @@
     * [Ignore invitation received](templates/LinkedIn/LinkedIn_Ignore_invitation_received.md)
     * [Get guests from event](templates/LinkedIn/LinkedIn_Get_guests_from_event.md)
     * [Send invitation to profile](templates/LinkedIn/LinkedIn_Send_invitation_to_profile.md)
+    * [Linkedin Follow number of content published](templates/LinkedIn/Linkedin_Follow_number_of_content_published.md)
     * [Send likes from post to gsheet](templates/LinkedIn/LinkedIn_Send_likes_from_post_to_gsheet.md)
     * [Get comments from post](templates/LinkedIn/LinkedIn_Get_comments_from_post.md)
     * [Send connections from network to gsheet](templates/LinkedIn/LinkedIn_Send_connections_from_network_to_gsheet.md)
