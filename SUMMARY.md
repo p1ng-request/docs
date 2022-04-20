@@ -337,6 +337,7 @@
     * [Send message](templates/SendGrid/SendGrid_Send_message.md)
   * [Slack](templates/Slack/README.md)
     * [Send message](templates/Slack/Slack_Send_message.md)
+    * [Follow Number Of Slack Users In Workspace](templates/Slack/Slack_Follow_Number_Of_Slack_Users_In_Workspace.md)
   * [Snowflake](templates/Snowflake/README.md)
     * [Read Table](templates/Snowflake/Snowflake_Read_Table.md)
     * [Delete table](templates/Snowflake/Snowflake_Delete_table.md)
