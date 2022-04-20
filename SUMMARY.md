@@ -336,6 +336,7 @@
     * [Get all messages](templates/SendGrid/SendGrid_Get_all_messages.md)
     * [Send message](templates/SendGrid/SendGrid_Send_message.md)
   * [Slack](templates/Slack/README.md)
+    * [Add New Slack User To Google Sheets](templates/Slack/Slack_Add_New_Slack_User_To_Google_Sheets.md)
     * [Send message](templates/Slack/Slack_Send_message.md)
     * [Follow Number Of Slack Users In Workspace](templates/Slack/Slack_Follow_Number_Of_Slack_Users_In_Workspace.md)
   * [Snowflake](templates/Snowflake/README.md)
