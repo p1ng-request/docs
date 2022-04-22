@@ -258,6 +258,7 @@
     * [Get users](templates/Notion/Notion_Get_users.md)
     * [Create page](templates/Notion/Notion_Create_page.md)
     * [Send LinkedIn invitations from database](templates/Notion/Notion_Send_LinkedIn_invitations_from_database.md)
+    * [Send Slack Messages For New Notion Database Items](templates/Notion/Notion_Send_Slack_Messages_For_New_Notion_Database_Items.md)
     * [Get database](templates/Notion/Notion_Get_database.md)
     * [Update page](templates/Notion/Notion_Update_page.md)
     * [Update pages from database](templates/Notion/Notion_Update_pages_from_database.md)
