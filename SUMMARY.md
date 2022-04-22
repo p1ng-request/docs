@@ -238,6 +238,7 @@
     * [Get number of downloads naas drivers package](templates/Naas/Naas_Get_number_of_downloads_naas_drivers_package.md)
     * [Doc demo](templates/Naas/Naas_Doc_demo.md)
     * [Remove Scheduler Outputs](templates/Naas/Naas_Remove_Scheduler_Outputs.md)
+    * [Configure Github with ssh](templates/Naas/Naas_Configure_Github_with_ssh.md)
     * [Emailbuilder demo](templates/Naas/Naas_Emailbuilder_demo.md)
     * [Set timezone](templates/Naas/Naas_Set_timezone.md)
     * [Get total downloads naas libraries](templates/Naas/Naas_Get_total_downloads_naas_libraries.md)
