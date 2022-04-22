@@ -42,6 +42,8 @@
     * [Get data from API](templates/Cityfalcon/Cityfalcon_Get_data_from_API.md)
   * [D-Tale](templates/D-Tale/README.md)
     * [Visualize dataframe](templates/D-Tale/D-Tale_Visualize_dataframe.md)
+  * [Dask](templates/Dask/README.md)
+    * [parallelize operations on multiple csvs](templates/Dask/Dask_parallelize_operations_on_multiple_csvs.md)
   * [Data.gouv.fr](templates/Data.gouv.fr/README.md)
     * [COVID19 -  FR - Entrées et sorties par région pour 1 million d'hab.](templates/Data.gouv.fr/COVID19%20-%20%20FR%20-%20Entrées%20et%20sorties%20par%20région%20pour%201%20million%20d'hab..md)
   * [Draft Kings](templates/Draft%20Kings/README.md)
