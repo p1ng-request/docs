@@ -1,0 +1,2 @@
+# Ignore invitation received
+

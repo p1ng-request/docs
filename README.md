@@ -7,8 +7,6 @@ coverY: 0
 
 # Welcome to Naas
 
-![](<.gitbook/assets/Untitled Design (1).jpg>)
-
 {% hint style="warning" %}
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
