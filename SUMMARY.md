@@ -158,6 +158,7 @@
   * [IUCN](templates/IUCN/README.md)
     * [Extinct species](templates/IUCN/IUCN_Extinct_species.md)
   * [Instagram](templates/Instagram/README.md)
+    * [Get stats from posts](templates/Instagram/Instagram_Get_stats_from_posts.md)
     * [Post image and caption](templates/Instagram/Instagram_Post_image_and_caption.md)
   * [Integromat](templates/Integromat/README.md)
     * [Trigger workflow](templates/Integromat/Integromat_Trigger_workflow.md)
