@@ -314,6 +314,8 @@
     * [Create Bubblechart](templates/Plotly/Plotly_Create_Bubblechart.md)
     * [Create Gantt chart](templates/Plotly/Plotly_Create_Gantt_chart.md)
     * [Create Vertical Barchart](templates/Plotly/Plotly_Create_Vertical_Barchart.md)
+  * [PostgresSQL](templates/PostgresSQL/README.md)
+    * [Get data from database](templates/PostgresSQL/PostgresSQL_Get_data_from_database.md)
   * [PyPI](templates/PyPI/README.md)
     * [- Get number of downloads any package](templates/PyPI/PyPI%20-%20Get_number_of_downloads_any_package.md)
   * [Python](templates/Python/README.md)
