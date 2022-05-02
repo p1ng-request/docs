@@ -115,7 +115,6 @@
     * [Send data](templates/Google%20Sheets/Google_Sheets_Send_data.md)
     * [Send LinkedIn invitations from spreadsheet](templates/Google%20Sheets/Google_Sheets_Send_LinkedIn_invitations_from_spreadsheet.md)
     * [Send emails from sheet](templates/Google%20Sheets/Google_Sheets_Send_emails_from_sheet.md)
-    * [Gsheets Send data to mongoDB](templates/Google%20Sheets/Gsheets_Send_data_to_mongoDB.md)
     * [Add items to Notion databases from new rows in Google Sheets](templates/Google%20Sheets/Google_Sheets_Add_items_to_Notion_databases_from_new_rows_in_Google_Sheets.md)
   * [HTML](templates/HTML/README.md)
     * [Create a website](templates/HTML/HTML_Create_a_website.md)
