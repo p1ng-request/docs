@@ -138,6 +138,7 @@
     * [Create Task](templates/HubSpot/HubSpot_Create_Task.md)
     * [Get new deals created weekly](templates/HubSpot/HubSpot_Get_new_deals_created_weekly.md)
     * [Send contacts to gsheet](templates/HubSpot/HubSpot_Send_contacts_to_gsheet.md)
+    * [Send LinkedIn invitations from contacts](templates/HubSpot/HubSpot_Send_LinkedIn_invitations_from_contacts.md)
     * [Update linkedinbio from google](templates/HubSpot/HubSpot_Update_linkedinbio_from_google.md)
     * [Delete deal](templates/HubSpot/HubSpot_Delete_deal.md)
     * [Get Task](templates/HubSpot/HubSpot_Get_Task.md)
