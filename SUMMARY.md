@@ -75,6 +75,7 @@
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
     * [Get issues from repo](templates/GitHub/GitHub_Get_issues_from_repo.md)
     * [Close issue](templates/GitHub/GitHub_Close_issue.md)
+    * [Github Add New Github Issues As Page In Notion Database](templates/GitHub/Github_Add_New_Github_Issues_As_Page_In_Notion_Database.md)
     * [Get pull requests from repository](templates/GitHub/GitHub_Get_pull_requests_from_repository.md)
     * [Get profiles from teams](templates/GitHub/GitHub_Get_profiles_from_teams.md)
     * [Get profile from user](templates/GitHub/GitHub_Get_profile_from_user.md)
