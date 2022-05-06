@@ -423,6 +423,7 @@
     * [Send daily prediction to Slack](templates/YahooFinance/YahooFinance_Send_daily_prediction_to_Slack.md)
     * [Candlestick chart](templates/YahooFinance/YahooFinance_Candlestick_chart.md)
     * [Cryptocurrencies heatmap correlation graph](templates/YahooFinance/YahooFinance_Cryptocurrencies_heatmap_correlation_graph.md)
+    * [Send daily prediction to Notion](templates/YahooFinance/YahooFinance_Send_daily_prediction_to_Notion.md)
     * [Display chart from ticker](templates/YahooFinance/YahooFinance_Display_chart_from_ticker.md)
   * [YouTube](templates/YouTube/README.md)
     * [Extract transcript from video](templates/YouTube/YouTube_Extract_transcript_from_video.md)
