@@ -190,6 +190,7 @@
   * [LinkedIn](templates/LinkedIn/README.md)
     * [Get connections from network](templates/LinkedIn/LinkedIn_Get_connections_from_network.md)
     * [Send message to profile from post likes](templates/LinkedIn/LinkedIn_Send_message_to_profile_from_post_likes.md)
+    * [Send weekly post engagement metrics by email](templates/LinkedIn/LinkedIn_Send_weekly_post_engagement_metrics_by_email.md)
     * [Send likes from post to gsheet](templates/LinkedIn/LinkedIn_Send_likes_from_post_to_gsheet.md)
     * [Get invitations sent](templates/LinkedIn/LinkedIn_Get_invitations_sent.md)
     * [Get company followers](templates/LinkedIn/LinkedIn_Get_company_followers.md)
