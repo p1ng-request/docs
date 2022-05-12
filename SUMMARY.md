@@ -278,6 +278,7 @@
     * [Run sentiment analysis](templates/Newsapi/Newsapi_Run_sentiment_analysis.md)
   * [Notion](templates/Notion/README.md)
     * [Get database](templates/Notion/Notion_Get_database.md)
+    * [Automate transcript generation from recording link in page property](templates/Notion/Notion_Automate_transcript_generation_from_recording_link_in_page_property.md)
     * [Create page](templates/Notion/Notion_Create_page.md)
     * [Update page](templates/Notion/Notion_Update_page.md)
     * [Add paragraph with link in page](templates/Notion/Notion_Add_paragraph_with_link_in_page.md)
