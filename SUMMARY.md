@@ -438,6 +438,8 @@
     * [Extract and summarize transcript](templates/YouTube/YouTube_Extract_and_summarize_transcript.md)
     * [Get statistics from video](templates/YouTube/YouTube_Get_statistics_from_video.md)
     * [Summarize video](templates/YouTube/YouTube_Summarize_video.md)
+  * [Youtube](templates/Youtube/README.md)
+    * [Send track to Spotify](templates/Youtube/Youtube_Send_track_to_Spotify.md)
   * [ZIP](templates/ZIP/README.md)
     * [Extract files](templates/ZIP/ZIP_Extract_files.md)
   * [Zapier](templates/Zapier/README.md)
