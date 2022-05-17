@@ -81,6 +81,7 @@
     * [Get profile from user](templates/GitHub/GitHub_Get_profile_from_user.md)
     * [Track issues on projects](templates/GitHub/GitHub_Track_issues_on_projects.md)
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
+    * [Remove member from team](templates/GitHub/GitHub_Remove_member_from_team.md)
     * [Download file from url](templates/GitHub/GitHub_Download_file_from_url.md)
     * [Peform basic actions](templates/GitHub/GitHub_Peform_basic_actions.md)
     * [Get weekly commits from repository](templates/GitHub/GitHub_Get_weekly_commits_from_repository.md)
