@@ -25,7 +25,7 @@ It prevents the "bad habits" people have in their notebook usage and emphasis a 
 
 ### Storage&#x20;
 
-When it's necessary (big amount of structured data to handle) we use are using parquet file + [https://duckdb.org/](https://duckdb.org) to query the dataset used in our data products.
+When it's necessary (big amount of structured data to handle) we use are using parquet file + [https://duckdb.org/](https://duckdb.org/) to query the dataset used in our data products.
 
 What's nice with that solution is that if at any time your dataset is becoming too big, then you can switch to storing everything in AWS S3 and then querying your parquets files with AWS Athena for example.
 

@@ -37,7 +37,7 @@ Any modification of the code base goes through a [Github Pull request](https://d
 
 * Have the code modifications being reviewed by peers before being applied.
 * Run automated tests (Humans are making errors when they need to repeat themselves)
-* Run Bugs, Vulneravilities, Security Hotspots, Code Smells scans thanks to [Sonarcloud](https://sonarcloud.io) and [Snyk](https://snyk.io).
+* Run Bugs, Vulneravilities, Security Hotspots, Code Smells scans thanks to [Sonarcloud](https://sonarcloud.io/) and [Snyk](https://snyk.io/).
 
 All of these are helping us build a more secure platform for you to use.
 
@@ -53,11 +53,11 @@ Please do enable [MFA](https://en.wikipedia.org/wiki/Multi-factor\_authenticatio
 
 ![](.gitbook/assets/infra.png)
 
-We chose to trust [AWS](https://aws.amazon.com) as our cloud hosting provider. AWS allows us to manage our infrastructure with a strong adoption of the Least Privilege Principle at each resource level. This means that in our infrastructure every resource only get the permissions to talks to what she needs to.
+We chose to trust [AWS](https://aws.amazon.com/) as our cloud hosting provider. AWS allows us to manage our infrastructure with a strong adoption of the Least Privilege Principle at each resource level. This means that in our infrastructure every resource only get the permissions to talks to what she needs to.
 
 If you want to see what kind of super powers AWS is giving us to make your journey with us as safe as possible: [Check this out](https://aws.amazon.com/products/security/)
 
-To manage AWS, we are using [Terraform](https://www.terraform.io) which allows us to manage our infrastructure through IaC (Infrastructure as Code). Thanks to that we can use all of the DevOps principles:
+To manage AWS, we are using [Terraform](https://www.terraform.io/) which allows us to manage our infrastructure through IaC (Infrastructure as Code). Thanks to that we can use all of the DevOps principles:
 
 If you know the source of this image, reach out to us please 🙏
 

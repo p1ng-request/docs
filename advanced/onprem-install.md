@@ -107,11 +107,11 @@ So as we saw earlier we are using Terraform to deploy the underlying infrastruct
 
 ### Helm
 
-[Helm](https://helm.sh) allows use to write [charts](https://helm.sh/docs/topics/charts/) that define how our applications (docker containers mainly) should work in Kubernetes. It's a very powerful tool and we are deploying everything in our EKS cluster with it. This allows us to version our deployments as well and keep track of every modifications.
+[Helm](https://helm.sh/) allows use to write [charts](https://helm.sh/docs/topics/charts/) that define how our applications (docker containers mainly) should work in Kubernetes. It's a very powerful tool and we are deploying everything in our EKS cluster with it. This allows us to version our deployments as well and keep track of every modifications.
 
 ### Skaffold
 
-As we have many charts, it can become complicated to deploy them, but also difficult to share values and secrets between charts. [Skaffold](https://skaffold.dev) allow us to easily create [profiles](https://skaffold.dev/docs/references/yaml/#profiles) for every chart and referencce `values.yaml` and `secrets.yaml`.
+As we have many charts, it can become complicated to deploy them, but also difficult to share values and secrets between charts. [Skaffold](https://skaffold.dev/) allow us to easily create [profiles](https://skaffold.dev/docs/references/yaml/#profiles) for every chart and referencce `values.yaml` and `secrets.yaml`.
 
 For example if we need to deploy a new version of our Jupyter deployment we simply need to run `skaffold deploy -p jupyter` and skaffold will handle everything.
 

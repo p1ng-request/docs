@@ -74,7 +74,7 @@ LAST_TRANSACTIONS = -7
 #### Configuration de l'automatisation
 
 Grâce à la formule ci-dessous, le notebook se lancera tous les lundis à 8h.\
-Si vous souhaitez modifier la fréquence d'envoi, vous devez modifier la synthaxe entre guillemets en [suivant la documentation officielle CRON](https://crontab.guru) (standard internationnal pour la programmation de tâches automatisées)
+Si vous souhaitez modifier la fréquence d'envoi, vous devez modifier la synthaxe entre guillemets en [suivant la documentation officielle CRON](https://crontab.guru/) (standard internationnal pour la programmation de tâches automatisées)
 
 ```python
 naas.scheduler.add(cron="0 8 * * 1")

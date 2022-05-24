@@ -1,0 +1,2 @@
+# Remove member from team
+

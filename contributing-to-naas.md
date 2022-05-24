@@ -9,7 +9,7 @@ coverY: 0
 
 Thank you for your interest in contributing! We love community contributions.&#x20;
 
-Contribution guidelines are listed below. If you're unsure about how to start contributing or have any questions even after reading them, feel free to ask us on [Slack](https://slack.airbyte.io) in the # 03\_contributions..
+Contribution guidelines are listed below. If you're unsure about how to start contributing or have any questions even after reading them, feel free to ask us on [Slack](https://slack.airbyte.io) in the #04\_questions channel.
 
 However, for those who want a bit more guidance on the best way to contribute to **Naas**, read on. This document will cover what we're looking for. By addressing the points below, the chances that we can quickly merge or address your contributions will increase.
 
@@ -21,15 +21,13 @@ However, for those who want a bit more guidance on the best way to contribute to
 
 We welcome first-time contributors and are happy to guide you in getting started. In case of questions, just reach out to us via [email](mailto:hello@naas.ai) or [Slack](https://slack.airbyte.io)!
 
-Here is a list of easy [good first issues](https://github.com/jupyter-naas/awesome-notebooks/labels/good%20first%20issue) to do.
+Here is a list of easy [good first issues](https://github.com/jupyter-naas/awesome-notebooks/labels/good%20first%20issue) to do and below the Notion page to the step-by-step contribution process.&#x20;
+
+{% embed url="https://naas-official.notion.site/How-to-contribute-b2cfde03e4254091814757752521ff1b" %}
 
 ### Naas Open Source contribution program
 
 {% embed url="https://docs.google.com/presentation/d/1dPVVKMsTBD_2TZ7BFj4bJrWOMAcc1UyRgQroLE5k3gM/edit#slide=id.g10769aa48fb_0_312" %}
-
-### Naas Templates tournament
-
-![](<.gitbook/assets/Naas and Zapier copy.jpg>)
 
 ### Code of conduct
 
@@ -52,9 +50,9 @@ This commit convention applies to Naas and Naas drivers repository.
 
 ## Areas for contribution
 
-### Templates Database
+### Templates&#x20;
 
-{% embed url="https://naas-official.notion.site/Templates-Database-eedecad69acc49c6a31d9e2f31d97ef8" %}
+{% embed url="https://github.com/jupyter-naas/awesome-notebooks" %}
 
 Other areas of contributions are:&#x20;
 
@@ -74,6 +72,4 @@ Our goal is to keep our docs comprehensive and updated. If you would like to hel
 * Fix errors in existing docs
 * Help us in adding to the docs
 
-
-
-### &#x20; **** &#x20;
+&#x20; **** &#x20;

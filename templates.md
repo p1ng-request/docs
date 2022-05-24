@@ -1,8 +1,8 @@
 ---
+description: You don't have to be a data scientist, to use data science.
 cover: >-
   https://images.unsplash.com/photo-1457364887197-9150188c107b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwzfHxyb2NrZXR8ZW58MHx8fHwxNjQzNzU4NDE2&ixlib=rb-1.2.1&q=85
 coverY: 0
-description: You don't have to be a data scientist, to use data science.
 ---
 
 # 😎 Templates
@@ -30,7 +30,7 @@ The repository is organized by source/tools. Managed by Naas core-team and commu
 
 ### How to contribute ?
 
-* Step 1: Open free account on [Naas.ai](https://www.naas.ai)
+* Step 1: Open free account on [Naas.ai](https://www.naas.ai/)
 * Step 2: Clone awesome-notebooks repo
 * Step 3: Change status of this Issue to “In progress” so we can know you are working on it
 * Step 4: Create new branch with a short name of the issue (ex: “gsheet-notion”)

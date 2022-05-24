@@ -6,7 +6,7 @@ description: Make your notebook run, even when you sleep.
 
 {% embed url="https://www.youtube.com/watch?v=ONiILHFItzs&t=48s" %}
 
-We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru)
+We use CRON tasks to schedule notebooks, find the syntax you need to on: [https://crontab.guru/](https://crontab.guru/)
 
 {% embed url="https://crontab.guru" %}
 
