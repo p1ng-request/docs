@@ -330,6 +330,7 @@
     * [Create Candlestick](templates/Plotly/Plotly_Create_Candlestick.md)
     * [Create Mapchart world](templates/Plotly/Plotly_Create_Mapchart_world.md)
     * [Create Vertical Barchart](templates/Plotly/Plotly_Create_Vertical_Barchart.md)
+    * [Create Barline chart](templates/Plotly/Plotly_Create_Barline_chart.md)
   * [PostgresSQL](templates/PostgresSQL/README.md)
     * [Get data from database](templates/PostgresSQL/PostgresSQL_Get_data_from_database.md)
   * [PyPI](templates/PyPI/README.md)
