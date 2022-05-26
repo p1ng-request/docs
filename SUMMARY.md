@@ -287,6 +287,7 @@
     * [Create page](templates/Notion/Notion_Create_page.md)
     * [Get database](templates/Notion/Notion_Get_database.md)
     * [Add paragraph with link in page](templates/Notion/Notion_Add_paragraph_with_link_in_page.md)
+    * [Duplicate page](templates/Notion/Notion_Duplicate_page.md)
     * [Send LinkedIn invitations from database](templates/Notion/Notion_Send_LinkedIn_invitations_from_database.md)
     * [Sent Gmail On New Item](templates/Notion/Notion_Sent_Gmail_On_New_Item.md)
     * [Send Slack Messages For New Notion Database Items](templates/Notion/Notion_Send_Slack_Messages_For_New_Notion_Database_Items.md)
