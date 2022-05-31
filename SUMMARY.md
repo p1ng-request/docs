@@ -134,6 +134,7 @@
     * [Create Task](templates/HubSpot/HubSpot_Create_Task.md)
     * [Get Task](templates/HubSpot/HubSpot_Get_Task.md)
     * [Get all pipelines and dealstages](templates/HubSpot/HubSpot_Get_all_pipelines_and_dealstages.md)
+    * [Create note](templates/HubSpot/HubSpot_Create_note.md)
     * [Get new deals created weekly](templates/HubSpot/HubSpot_Get_new_deals_created_weekly.md)
     * [Update followers from linkedin](templates/HubSpot/HubSpot_Update_followers_from_linkedin.md)
     * [Get contact](templates/HubSpot/HubSpot_Get_contact.md)
