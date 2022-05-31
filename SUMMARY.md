@@ -143,6 +143,7 @@
     * [Send LinkedIn invitations from contacts](templates/HubSpot/HubSpot_Send_LinkedIn_invitations_from_contacts.md)
     * [Associate contact to deal](templates/HubSpot/HubSpot_Associate_contact_to_deal.md)
     * [Update jobtitle country industry from linkedin](templates/HubSpot/HubSpot_Update_jobtitle_country_industry_from_linkedin.md)
+    * [Get notes from contact](templates/HubSpot/HubSpot_Get_notes_from_contact.md)
     * [Send sales brief](templates/HubSpot/HubSpot_Send_sales_brief.md)
     * [Get contacts associated to deal](templates/HubSpot/HubSpot_Get_contacts_associated_to_deal.md)
     * [Get closed deals weekly](templates/HubSpot/HubSpot_Get_closed_deals_weekly.md)
