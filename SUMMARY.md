@@ -102,6 +102,7 @@
     * [Get unique visitors](templates/Google%20Analytics/Google_Analytics_Get_unique_visitors.md)
     * [Follow average session duration daily](templates/Google%20Analytics/Google_Analytics_Follow_average_session_duration_daily.md)
     * [Get time on landing page](templates/Google%20Analytics/Google_Analytics_Get_time_on_landing_page.md)
+    * [Send visitors traffic graph and trends prediction to Slack channel](templates/Google%20Analytics/Google_Analytics_Send_visitors_traffic_graph_and_trends_prediction_to_Slack_channel.md)
     * [Get unique visitors by country](templates/Google%20Analytics/Google_Analytics_Get_unique_visitors_by_country.md)
     * [Get bounce rate](templates/Google%20Analytics/Google_Analytics_Get_bounce_rate.md)
     * [Follow number of visitors daily](templates/Google%20Analytics/Google_Analytics_Follow_number_of_visitors_daily.md)
