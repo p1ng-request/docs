@@ -8,6 +8,8 @@
     * [Upload file to S3 bucket](templates/AWS/AWS_Upload_file_to_S3_bucket.md)
     * [Daily biling notification to slack](templates/AWS/AWS_Daily_biling_notification_to_slack.md)
     * [Get files from S3 bucket](templates/AWS/AWS_Get_files_from_S3_bucket.md)
+  * [Affinity](templates/Affinity/README.md)
+    * [Sync with Notion database](templates/Affinity/Affinity_Sync_with_Notion_database.md)
   * [Airtable](templates/Airtable/README.md)
     * [Insert data](templates/Airtable/Airtable_Insert_data.md)
     * [Search data](templates/Airtable/Airtable_Search_data.md)
