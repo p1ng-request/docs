@@ -147,6 +147,7 @@
     * [Send sales brief](templates/HubSpot/HubSpot_Send_sales_brief.md)
     * [Get contacts associated to deal](templates/HubSpot/HubSpot_Get_contacts_associated_to_deal.md)
     * [Get closed deals weekly](templates/HubSpot/HubSpot_Get_closed_deals_weekly.md)
+    * [Delete note](templates/HubSpot/HubSpot_Delete_note.md)
     * [Get all deals](templates/HubSpot/HubSpot_Get_all_deals.md)
     * [Delete deal](templates/HubSpot/HubSpot_Delete_deal.md)
     * [Delete Task](templates/HubSpot/HubSpot_Delete_Task.md)
