@@ -265,6 +265,7 @@
     * [Artic sea ice](templates/NASA/NASA_Artic_sea_ice.md)
     * [Global temperature](templates/NASA/NASA_Global_temperature.md)
   * [Naas](templates/Naas/README.md)
+    * [Use SSH tunnel to reach network protected resources](templates/Naas/Naas_Use_SSH_tunnel_to_reach_network_protected_resources.md)
     * [Get number of downloads naas drivers package](templates/Naas/Naas_Get_number_of_downloads_naas_drivers_package.md)
     * [Get help](templates/Naas/Naas_Get_help.md)
     * [Webhook demo](templates/Naas/Naas_Webhook_demo.md)
