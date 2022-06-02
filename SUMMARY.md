@@ -209,6 +209,7 @@
     * [Count code lines](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Count_code_lines.md)
   * [LinkedIn](templates/LinkedIn/README.md)
     * [Get guests from event](templates/LinkedIn/LinkedIn_Get_guests_from_event.md)
+    * [Send profile followers by email](templates/LinkedIn/LinkedIn_Send_profile_followers_by_email.md)
     * [Get polls from post](templates/LinkedIn/LinkedIn_Get_polls_from_post.md)
     * [Get comments from post](templates/LinkedIn/LinkedIn_Get_comments_from_post.md)
     * [Get posts stats from profile](templates/LinkedIn/LinkedIn_Get_posts_stats_from_profile.md)
