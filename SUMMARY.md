@@ -463,6 +463,7 @@
     * [Get statistics from channel](templates/YouTube/YouTube_Get_statistics_from_channel.md)
     * [Extract transcript from video](templates/YouTube/YouTube_Extract_transcript_from_video.md)
     * [Get statistics from video](templates/YouTube/YouTube_Get_statistics_from_video.md)
+    * [Send video stats to Notion](templates/YouTube/YouTube_Send_video_stats_to_Notion.md)
     * [Extract and summarize transcript](templates/YouTube/YouTube_Extract_and_summarize_transcript.md)
     * [Get uploads from channel](templates/YouTube/YouTube_Get_uploads_from_channel.md)
     * [Send track to Spotify](templates/YouTube/YouTube_Send_track_to_Spotify.md)
