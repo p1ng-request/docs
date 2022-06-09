@@ -246,6 +246,7 @@
     * [Get contact from profile](templates/LinkedIn/LinkedIn_Get_contact_from_profile.md)
     * [Get connections from network](templates/LinkedIn/LinkedIn_Get_connections_from_network.md)
     * [Get invitations sent](templates/LinkedIn/LinkedIn_Get_invitations_sent.md)
+    * [Update metrics from company posts in Notion content calendar](templates/LinkedIn/LinkedIn_Update_metrics_from_company_posts_in_Notion_content_calendar.md)
     * [Get info from company](templates/LinkedIn/LinkedIn_Get_info_from_company.md)
   * [Matplotlib](templates/Matplotlib/README.md)
     * [Create Waterfall chart](templates/Matplotlib/Matplotlib_Create_Waterfall_chart.md)
