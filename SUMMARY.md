@@ -86,6 +86,7 @@
     * [Get issues from repo](templates/GitHub/GitHub_Get_issues_from_repo.md)
     * [Track issues on projects](templates/GitHub/GitHub_Track_issues_on_projects.md)
     * [Download file from url](templates/GitHub/GitHub_Download_file_from_url.md)
+    * [Get most starred repos](templates/GitHub/GitHub_Get_most_starred_repos.md)
     * [Get profiles from teams](templates/GitHub/GitHub_Get_profiles_from_teams.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
     * [Get stargazers from repository](templates/GitHub/GitHub_Get_stargazers_from_repository.md)
