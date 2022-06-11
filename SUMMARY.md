@@ -436,6 +436,8 @@
     * [Get user data](templates/Twitter/Twitter_Get_user_data.md)
     * [Post text and image](templates/Twitter/Twitter_Post_text_and_image.md)
     * [Get tweets stats from profile](templates/Twitter/Twitter_Get_tweets_stats_from_profile.md)
+  * [Typeform](templates/Typeform/README.md)
+    * [Log New Typeform Entries In Notion Databases](templates/Typeform/Typeform_Log_New_Typeform_Entries_In_Notion_Databases.md)
   * [WSR](templates/WSR/README.md)
     * [Get daily Covid19 active cases worldmap JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.md)
     * [WHI Create indicator](templates/WSR/WHI_Create_indicator.md)
