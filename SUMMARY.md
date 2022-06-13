@@ -217,6 +217,7 @@
     * [Get posts stats from profile](templates/LinkedIn/LinkedIn_Get_posts_stats_from_profile.md)
     * [Send company followers to Google Sheets](templates/LinkedIn/LinkedIn_Send_company_followers_to_Google_Sheets.md)
     * [Send message to profile from post likes](templates/LinkedIn/LinkedIn_Send_message_to_profile_from_post_likes.md)
+    * [Get age and gender from profile picture](templates/LinkedIn/LinkedIn_Get_age_and_gender_from_profile_picture.md)
     * [Send posts feed to gsheet](templates/LinkedIn/LinkedIn_Send_posts_feed_to_gsheet.md)
     * [Get network from profile](templates/LinkedIn/LinkedIn_Get_network_from_profile.md)
     * [Linkedin Follow content views monthly from company](templates/LinkedIn/Linkedin_Follow_content_views_monthly_from_company.md)
