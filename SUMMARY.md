@@ -218,6 +218,7 @@
     * [Send message to profile](templates/LinkedIn/LinkedIn_Send_message_to_profile.md)
     * [Send connections from network to gsheet](templates/LinkedIn/LinkedIn_Send_connections_from_network_to_gsheet.md)
     * [Get invitations sent](templates/LinkedIn/LinkedIn_Get_invitations_sent.md)
+    * [Get sentiment emotion irony offensiveness from comments](templates/LinkedIn/LinkedIn_Get_sentiment_emotion_irony_offensiveness_from_comments.md)
     * [Ignore invitation received](templates/LinkedIn/LinkedIn_Ignore_invitation_received.md)
     * [Get age and gender from profile picture](templates/LinkedIn/LinkedIn_Get_age_and_gender_from_profile_picture.md)
     * [Get contact from profile](templates/LinkedIn/LinkedIn_Get_contact_from_profile.md)
