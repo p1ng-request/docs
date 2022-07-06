@@ -3,7 +3,6 @@
 * [Start here 🏁](README.md)
 * [🌎 Contributing](contributing-to-naas.md)
 * [😎 Templates](templates.md)
-  * [Page 1](templates/page-1.md)
   * [AWS](templates/AWS/README.md)
     * [Upload file to S3 bucket](templates/AWS/AWS\_Upload\_file\_to\_S3\_bucket.md)
     * [Daily biling notification to slack](templates/AWS/AWS\_Daily\_biling\_notification\_to\_slack.md)
