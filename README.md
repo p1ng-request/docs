@@ -11,41 +11,46 @@ coverY: 0
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
 
-## **Why Naas?**
+## ****
 
-The ability to access live business insights from data provides a real competitive advantage.
+![Naas Logo](https://i.imgur.com/ZpcvnKi.jpg)
 
-Organizations collect a growing quantity of data across domains but only a few manage to connect the dots and extract the essential business value. This; is the purpose of data science.
+## :sparkles: Welcome to Naas!
 
-The main problem is that the data often sits in different silos. This situation generates :
+Notebooks as a service (Naas) is an open source platform that allows anyone touching data (business analysts, scientists and engineers) to create powerful data engines combining automation, analytics and AI from the comfort of their Jupyter notebooks.
 
-* Poor audibility
-* Complex multi-channel distribution (email, chat, files, reports, social media)
-* Lack of accountability
+Naas is an attempt to propose an alternative to Google Colab, powered by the community.
 
-**Naas is solving that with low-code.**
+In addition to Google Colab, Naas platform upgrade notebooks with with 3 low-code layers: features, drivers, templates.
 
-In the past decade, the low-code and no-code solutions have become a multi-billion dollar industry. The promise of these solutions is that anyone can build applications and automation using templates. Yet, no standard has emerged in “low-code data science”.
+* **Templates** enable the user to create automated data jobs and reports in minutes.
+* **Drivers** act as connectors to push and/or pull data from databases, APIs, and Machine Learning algorithms and more.
+* **Features** transform Jupyter in a production ready environment with scheduling, asset sharing, and notifications.
 
-Naas was built to become this standard, comforted by Netflix publications explaining why they are investing in a Jupyter Notebook infrastructure to solve their data challenges.
+## 🚀 Quick Start
 
-### **Naas and Jupyter Notebooks.**
+Try all of Naas's features for free using -- [Naas cloud](https://app.naas.ai/hub/login) -- a stable environment, without having to install anything.
 
-Naas leverages Jupyter Notebooks and its 10 million users. Jupyter Notebook is a web-based interactive computing platform for data science. A notebook is a document made with cells of live code, text and visualizations for data exploration, collaboration and storytelling.
+## ❤️ Contributing
 
-Thanks to Naas low-code formulas, notebooks become more readable, more accessible, and interconnected to support faster business decision-making.
+We value all kinds of contributions - not just code. We are paticularly motivated to support new contributors and people who are looking to learn and develop their skills.
 
-Naas augments Jupyter Notebooks by adding micro-services accessible in low-code to easily access data, automation, and AI.
+Please read our Contibuting guidelines on how to get started.
 
-Naas is an open-source platform that allows data professionals (business analysts, scientists and engineers) to create data engines combining automation, analytics and AI from the comfort of their Jupyter notebooks.
+## 🤔 Community Support
 
-The data engines unlock the ability to follow live metrics across business domains and generate micro-decisions recommendations for non-tech users.
+The naas [documentation](https://docs.naas.ai/) is a great place to start and to get answers for general questions.
 
-The platform is based on 3 foundational elements: templates, drivers, features.
+* [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-1970s5rie-dXXkigAdEJYc\~LPdQIEaLA) (Live Discussions)
+* [GitHub Issues](https://github.com/jupyter-naas/naas/issues/new) (Report Bugs)
+* [GitHub Discussions](https://github.com/jupyter-naas/naas/discussions) (Questions, Feature Requests)
+* [Twitter](https://twitter.com/JupyterNaas) (Latest News)
+* [YouTube](https://www.youtube.com/c/naas-ai) (Video Tutorials)
+* Community calls (Video call discussions with the naas team & other contributors.)
 
-* The templates enable the user to create “ready-to-use” automation and reports in minutes.
-* The low-code drivers act as lego blocks to facilitate interconnections between tools (databases, APIs, Machine Learning algorithms...).
-* The low-code features (scheduling, asset sharing, notifications...) enable the distribution of insights to end-users in multiple channels.
+## License
+
+The project is licensed under [AGPL-3.0](https://opensource.org/licenses/AGPL-3.0)
 
 ## How does it work?
 

@@ -1,0 +1,2 @@
+# Delete blocks from page
+

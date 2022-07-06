@@ -16,7 +16,7 @@ Send in production this notebook and get URL to run it when opened.
 naas.webhook.add()
 ```
 
-![screenshot-api-add](../.gitbook/assets/screenshot-2020-10-07-at-18.35.42.png)
+![screenshot-api-add](<../.gitbook/assets/Screenshot 2020-10-07 at 18.35.42.png>)
 
 ### Other files
 
@@ -56,13 +56,13 @@ They will be injected into a new cell in the first position in your notebook.
 If You want them to be added at a specific place add tag **parameters** in a cell and your **dynamic parameters** will be added in a new cell next to it.
 {% endhint %}
 
-![](../.gitbook/assets/screenshot-2021-03-02-at-14.38.47.png)
+![](<../.gitbook/assets/Screenshot 2021-03-02 at 14.38.47.png>)
 
 ### &#x20;Example of params
 
 In this screenshot below, you can see variables from our notebook in the first cell, and in the second cell, the **dynamic parameters** injected.
 
-![](../.gitbook/assets/screenshot-2020-11-14-at-14.34.13.png)
+![](<../.gitbook/assets/Screenshot 2020-11-14 at 14.34.13.png>)
 
 ### Debug
 
