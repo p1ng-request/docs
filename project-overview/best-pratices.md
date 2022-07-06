@@ -16,7 +16,7 @@ It prevents the "bad habits" people have in their notebook usage and emphasis a 
 * Description: a one-liner explaining the benefits of the notebooks for the user
 * Tags: hashtags of the topics the notebook is about
 
-**→ A repeatable structure. And if the functions can be packaged then create** [**a python wrapper on top.**](drivers/)****
+**→ A repeatable structure. And if the functions can be packaged then create** [**a python wrapper on top.**](../drivers/)****
 
 * Input: list of all the variables, credentials, that needs to be setup
 * Model: list the functions applied to the data

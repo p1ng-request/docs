@@ -5,23 +5,19 @@ cover: >-
 coverY: 0
 ---
 
-# Welcome to Naas
+# Start here 🏁
 
 {% hint style="warning" %}
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
 
-## ****
-
-![Naas Logo](https://i.imgur.com/ZpcvnKi.jpg)
-
 ## :sparkles: Welcome to Naas!
 
-Notebooks as a service (Naas) is an open source platform that allows anyone touching data (business analysts, scientists and engineers) to create powerful data engines combining automation, analytics and AI from the comfort of their Jupyter notebooks.
+Notebooks as a service (Naas) is an open source platform that allows anyone touching data (business analysts, scientists and engineers) to create powerful data solutions combining automation, analytics and AI from the comfort of their Jupyter notebooks.
 
-Naas is an attempt to propose an alternative to Google Colab, powered by the community.
+Naas is an alternative to Google Colab with superpowers.
 
-In addition to Google Colab, Naas platform upgrade notebooks with with 3 low-code layers: features, drivers, templates.
+The platform upgrade notebooks with with 3 low-code layers to get things done faster: features, drivers, templates.
 
 * **Templates** enable the user to create automated data jobs and reports in minutes.
 * **Drivers** act as connectors to push and/or pull data from databases, APIs, and Machine Learning algorithms and more.

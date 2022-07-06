@@ -22,7 +22,7 @@ With Naas, everything is setup. You just need to manage a **Production folder, a
 
 When you run Naas magic low code formulas (see the **Features section**), your notebook is automatically sent to the "⚡️→ Production" folder.
 
-![](<.gitbook/assets/Screenshot 2022-01-05 at 23.20.04.png>)
+![](<../.gitbook/assets/Screenshot 2022-01-05 at 23.20.04.png>)
 
 Here will be kept:
 
