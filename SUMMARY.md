@@ -210,6 +210,8 @@
     * [Get installs](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Get_installs.md)
     * [Get libraries](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Get_libraries.md)
     * [Count code lines](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Count_code_lines.md)
+  * [LeFigaro](templates/LeFigaro/README.md)
+    * [House Price analysis](templates/LeFigaro/LeFigaro_House_Price_analysis.md)
   * [LinkedIn](templates/LinkedIn/README.md)
     * [Send profile followers by email](templates/LinkedIn/LinkedIn_Send_profile_followers_by_email.md)
     * [Get conversations](templates/LinkedIn/LinkedIn_Get_conversations.md)
