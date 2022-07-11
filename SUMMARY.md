@@ -426,6 +426,7 @@
     * [Get all messages](templates/SendGrid/SendGrid_Get_all_messages.md)
     * [Send message](templates/SendGrid/SendGrid_Send_message.md)
   * [Sendinblue](templates/Sendinblue/README.md)
+    * [Get no of spam reports](templates/Sendinblue/Sendinblue_Get_no_of_spam_reports.md)
     * [Get no of emails opened](templates/Sendinblue/Sendinblue_Get_no_of_emails_opened.md)
     * [Get no of emails sent](templates/Sendinblue/Sendinblue_Get_no_of_emails_sent.md)
     * [Get no of undelivered emails](templates/Sendinblue/Sendinblue_Get_no_of_undelivered_emails.md)
