@@ -426,6 +426,7 @@
     * [Get all messages](templates/SendGrid/SendGrid_Get_all_messages.md)
     * [Send message](templates/SendGrid/SendGrid_Send_message.md)
   * [Sendinblue](templates/Sendinblue/README.md)
+    * [Get no of emails sent](templates/Sendinblue/Sendinblue_Get_no_of_emails_sent.md)
     * [Get no of undelivered emails](templates/Sendinblue/Sendinblue_Get_no_of_undelivered_emails.md)
   * [Slack](templates/Slack/README.md)
     * [Add new user to Google Sheets](templates/Slack/Slack_Add_new_user_to_Google_Sheets.md)
