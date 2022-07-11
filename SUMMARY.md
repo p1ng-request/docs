@@ -216,6 +216,7 @@
     * [Send profile followers by email](templates/LinkedIn/LinkedIn_Send_profile_followers_by_email.md)
     * [Get conversations](templates/LinkedIn/LinkedIn_Get_conversations.md)
     * [Follow company followers](templates/LinkedIn/LinkedIn_Follow_company_followers.md)
+    * [Send followers demographic data to a Google Sheets spreadsheet](templates/LinkedIn/LinkedIn_Send_followers_demographic_data_to_a_Google_Sheets_spreadsheet.md)
     * [Get info from company](templates/LinkedIn/LinkedIn_Get_info_from_company.md)
     * [Get invitations received](templates/LinkedIn/LinkedIn_Get_invitations_received.md)
     * [Get company followers](templates/LinkedIn/LinkedIn_Get_company_followers.md)
