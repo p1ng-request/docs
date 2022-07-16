@@ -477,6 +477,8 @@
     * [Get user data](templates/Twitter/Twitter_Get_user_data.md)
   * [Typeform](templates/Typeform/README.md)
     * [Log New Typeform Entries In Notion Databases](templates/Typeform/Typeform_Log_New_Typeform_Entries_In_Notion_Databases.md)
+  * [US Bureau of Labor Statistics](templates/US%20Bureau%20of%20Labor%20Statistics/README.md)
+    * [Follow CPI](templates/US%20Bureau%20of%20Labor%20Statistics/US_Bureau_of_Labor_Statistics_Follow_CPI.md)
   * [WSR](templates/WSR/README.md)
     * [Get daily Covid19 active cases trend JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_trend_JHU.md)
     * [Get daily Covid19 active cases worldmap JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.md)
