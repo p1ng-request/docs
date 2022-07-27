@@ -396,6 +396,8 @@
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
     * [Create dict from lists](templates/Python/Python_Create_dict_from_lists.md)
     * [Create dataframe from lists](templates/Python/Python_Create_dataframe_from_lists.md)
+  * [Pyvis](templates/Pyvis/README.md)
+    * [Create a network visualization](templates/Pyvis/Pyvis_Create_a_network_visualization.md)
   * [Qonto](templates/Qonto/README.md)
     * [Get organizations](templates/Qonto/Qonto_Get_organizations.md)
     * [Get positions](templates/Qonto/Qonto_Get_positions.md)
