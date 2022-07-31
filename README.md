@@ -1,54 +1,39 @@
 ---
-description: The open platform democratizing data science with templates
+description: >-
+  These Docs will help you get started with Naas quickly, guide you through
+  advanced features, and explain the core concepts that make Naas unique.
 cover: >-
   https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHw1fHxzdGFyc3xlbnwwfHx8fDE2NDM3MDc0ODE&ixlib=rb-1.2.1&q=85
 coverY: 0
 ---
 
-# Start here 🏁
+# Get Started
+
+
 
 {% hint style="warning" %}
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
 
-## :sparkles: Welcome to Naas!
+## Welcome to Naas!
 
-Notebooks as a service (Naas) is an open source platform that allows anyone touching data (business analysts, scientists and engineers) to create powerful data solutions combining automation, analytics and AI from the comfort of their Jupyter notebooks.
+Notebooks as a service (Naas) is an open source platform that allows anyone touching data (analysts, scientists and engineers) to create powerful data solutions combining automation, analytics and AI from the comfort of their Jupyter notebooks.
 
-Naas is an alternative to Google Colab with superpowers.
+Naas is an alternative to Google Colab, with superpowers.
 
-The platform upgrade notebooks with with 3 low-code layers to get things done faster: features, drivers, templates.
+The platform upgrades notebooks with 3 low-code layers to get things done faster: features, drivers, and templates.
 
-* **Templates** enable the user to create automated data jobs and reports in minutes.
-* **Drivers** act as connectors to push and/or pull data from databases, APIs, and Machine Learning algorithms and more.
-* **Features** transform Jupyter in a production ready environment with scheduling, asset sharing, and notifications.
+* ****[**Templates**](templates.md) enable the user to create automated data jobs and reports in minutes.
+* ****[**Drivers**](drivers/) act as connectors to push and/or pull data from databases, APIs, Machine Learning algorithms, and more.
+* ****[**Features**](features/) transform Jupyter in a production-ready environment with scheduling, asset sharing, and notifications.
 
-## 🚀 Quick Start
+## Naas Cloud
 
-Try all of Naas's features for free using -- [Naas cloud](https://app.naas.ai/hub/login) -- a stable environment, without having to install anything.
+Naas cloud is the fastest and easiest way to get you started!
 
-## ❤️ Contributing
+Try all of Naas's features for free using [Naas cloud](https://app.naas.ai/hub/login) a stable environment, without having to install anything.
 
-We value all kinds of contributions - not just code. We are paticularly motivated to support new contributors and people who are looking to learn and develop their skills.
-
-Please read our Contibuting guidelines on how to get started.
-
-## 🤔 Community Support
-
-The naas [documentation](https://docs.naas.ai/) is a great place to start and to get answers for general questions.
-
-* [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-1970s5rie-dXXkigAdEJYc\~LPdQIEaLA) (Live Discussions)
-* [GitHub Issues](https://github.com/jupyter-naas/naas/issues/new) (Report Bugs)
-* [GitHub Discussions](https://github.com/jupyter-naas/naas/discussions) (Questions, Feature Requests)
-* [Twitter](https://twitter.com/JupyterNaas) (Latest News)
-* [YouTube](https://www.youtube.com/c/naas-ai) (Video Tutorials)
-* Community calls (Video call discussions with the naas team & other contributors.)
-
-## License
-
-The project is licensed under [AGPL-3.0](https://opensource.org/licenses/AGPL-3.0)
-
-## How does it work?
+## How to use Naas Cloud?
 
 ### Start with templates&#x20;
 
@@ -160,7 +145,7 @@ naas.notifications.send(email=email, subject=subject, content=content)
 [notification.md](features/notification.md)
 {% endcontent-ref %}
 
-## Help
+### Help
 
 ### Open
 
@@ -182,7 +167,7 @@ import naas
 naas.close_help()
 ```
 
-## Documentation
+### Documentation
 
 Show a button to quickly open this documentation from Jupyter
 
@@ -190,3 +175,20 @@ Show a button to quickly open this documentation from Jupyter
 import naas
 naas.doc()
 ```
+
+## Contributing
+
+We value all kinds of contributions - not just code. We are particularly motivated to support new contributors and people who are looking to learn and develop their skills.
+
+Please read our [Contributing guidelines](contributing-to-naas/contributing.md) on how to get started.
+
+## Community Support
+
+You can reach out to us through the following channels:
+
+* [Slack](https://join.slack.com/t/naas-club/shared\_invite/zt-1970s5rie-dXXkigAdEJYc\~LPdQIEaLA) (Live Discussions)
+* [GitHub Issues](https://github.com/jupyter-naas/naas/issues/new) (Report Bugs)
+* [Twitter](https://twitter.com/JupyterNaas) (Latest News)
+* [YouTube](https://www.youtube.com/c/naas-ai) (Video Tutorials)
+* [Community calls ](https://calendar.google.com/calendar/u/0/embed?src=c\_aultg6lanla9l39k8f5fm7d264@group.calendar.google.com\&ctz=Europe/Paris)(Video call discussions with the naas team & other contributors.)
+
