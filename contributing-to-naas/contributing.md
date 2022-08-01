@@ -6,7 +6,7 @@ description: Welcome to naas's contributing guide!
 
 We value contributions of all kinds, not just code. Check out our [Community Roadmap](https://github.com/orgs/jupyter-naas/projects/4#card-84272657) for detailed overview of current and future work. We're here to assist you! Feel free to join our [Slack community](https://join.slack.com/t/naas-club/shared\_invite/zt-1970s5rie-dXXkigAdEJYc\~LPdQIEaLA) discussion if you have any questions as you progress as a contributor.
 
-Before continuing, please take a moment to read our full [Code of Conduct.](code-of-conduct.md)
+Before continuing, please take a moment to read our full [Code of Conduct.](../project-overview/code-of-conduct.md)
 
 ### Why should I participate in an open-source project?
 
@@ -58,7 +58,7 @@ By submitting issues and pull requests to the many GitHub repositories maintaine
 
 **Be a part of the community and support Naas on social media!**\
 \
-Feel free to drop by to introduce yourself and ask questions on our [community calls](community-calls.md) or over Slack.
+Feel free to drop by to introduce yourself and ask questions on our [community calls](community-events.md) or over Slack.
 
 We also really appreciate your support on social media (<-see links on the navigation bar). We try to push as much informative, educative, and entertaining but sometimes also provocative content as we can. Because communication comes first, code second.\
 

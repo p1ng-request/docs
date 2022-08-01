@@ -51,7 +51,7 @@ Please do enable [MFA](https://en.wikipedia.org/wiki/Multi-factor\_authenticatio
 
 ## Infrastructure
 
-![](.gitbook/assets/infra.png)
+![](../.gitbook/assets/infra.png)
 
 We chose to trust [AWS](https://aws.amazon.com/) as our cloud hosting provider. AWS allows us to manage our infrastructure with a strong adoption of the Least Privilege Principle at each resource level. This means that in our infrastructure every resource only get the permissions to talks to what she needs to.
 

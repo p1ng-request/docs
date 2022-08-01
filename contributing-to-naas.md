@@ -10,11 +10,11 @@ naas is a community led project and your help is extremely welcome. If you get s
 
 ## Contents of this section
 
-* [code-of-conduct.md](code-of-conduct.md "mention")
-* [contributing.md](contributing.md "mention")
-* [community-calls.md](community-calls.md "mention")
+* [code-of-conduct.md](project-overview/code-of-conduct.md "mention")
+* [contributing.md](contributing-to-naas/contributing.md "mention")
+* [community-events.md](contributing-to-naas/community-events.md "mention")
 
 [\
-](code-of-conduct.md)
+](project-overview/code-of-conduct.md)
 
 &#x20; **** &#x20;

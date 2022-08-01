@@ -107,8 +107,8 @@ If the template is not here, simply [create an issue on Github](https://github.c
 
 #### How to contribute?
 
-{% content-ref url="../contributing-to-naas/" %}
-[contributing-to-naas](../contributing-to-naas/)
+{% content-ref url="../contributing-to-naas.md" %}
+[contributing-to-naas.md](../contributing-to-naas.md)
 {% endcontent-ref %}
 
 ## Enterprise edition
