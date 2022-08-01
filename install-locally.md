@@ -4,7 +4,7 @@ description: >-
   locally.
 ---
 
-# 🐳 Install locally
+# 🐳 Install Locally
 
 ## Naas Prerequisites
 

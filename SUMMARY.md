@@ -584,7 +584,7 @@
   * [🔑 Secret key](features/secret.md)
   * [🏰 Domain (Alpha)](features/domain.md)
 * [⚡ Naas manager](naas-manager.md)
-* [🐳 Install locally](install-locally.md)
+* [🐳 Install Locally](install-locally.md)
 * [🌎 Get Involved](contributing-to-naas/README.md)
   * [Code of Conduct](contributing-to-naas/code-of-conduct.md)
   * [Contributing](contributing-to-naas/contributing.md)
