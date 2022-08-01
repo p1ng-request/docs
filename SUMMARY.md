@@ -46,6 +46,8 @@
     * [Get data from API](templates/Cityfalcon/Cityfalcon_Get_data_from_API.md)
   * [D-Tale](templates/D-Tale/README.md)
     * [Visualize dataframe](templates/D-Tale/D-Tale_Visualize_dataframe.md)
+  * [Dash](templates/Dash/README.md)
+    * [Deploy app in Naas](templates/Dash/Dash_Deploy_app_in_Naas.md)
   * [Dask](templates/Dask/README.md)
     * [parallelize operations on multiple csvs](templates/Dask/Dask_parallelize_operations_on_multiple_csvs.md)
   * [Data.gouv.fr](templates/Data.gouv.fr/README.md)
