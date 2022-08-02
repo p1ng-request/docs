@@ -295,7 +295,6 @@
     * [Secret demo](templates/Naas/Naas_Secret_demo.md)
     * [Notification demo](templates/Naas/Naas_Notification_demo.md)
     * [Get number of downloads naas drivers package](templates/Naas/Naas_Get_number_of_downloads_naas_drivers_package.md)
-    * [Content Engine Configuration](templates/Naas/Naas_Content_Engine_Configuration.md)
     * [Emailbuilder demo](templates/Naas/Naas_Emailbuilder_demo.md)
     * [Configure Github with ssh](templates/Naas/Naas_Configure_Github_with_ssh.md)
     * [Domain demo](templates/Naas/Naas_Domain_demo.md)
