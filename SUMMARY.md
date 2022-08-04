@@ -235,6 +235,7 @@
     * [Send weekly post engagement metrics by email](templates/LinkedIn/LinkedIn_Send_weekly_post_engagement_metrics_by_email.md)
     * [Send followers demographic data to a Google Sheets spreadsheet](templates/LinkedIn/LinkedIn_Send_followers_demographic_data_to_a_Google_Sheets_spreadsheet.md)
     * [Get stats from post](templates/LinkedIn/LinkedIn_Get_stats_from_post.md)
+    * [Get posts engagements](templates/LinkedIn/LinkedIn_Get_posts_engagements.md)
     * [Follow content comments monthly](templates/LinkedIn/LinkedIn_Follow_content_comments_monthly.md)
     * [Accept invitation received](templates/LinkedIn/LinkedIn_Accept_invitation_received.md)
     * [Follow content views monthly](templates/LinkedIn/LinkedIn_Follow_content_views_monthly.md)
