@@ -194,7 +194,7 @@
   * [Integromat](templates/Integromat/README.md)
     * [Trigger workflow](templates/Integromat/Integromat_Trigger_workflow.md)
   * [Ipywidgets](templates/Ipywidgets/README.md)
-    * [Setup naas secret](templates/Ipywidgets/Ipywidgets_Setup_naas_secret.md)
+    * [Create button](templates/Ipywidgets/Ipywidgets_Create_button.md)
   * [Johns Hopkins](templates/Johns%20Hopkins/README.md)
     * [Covid19 Active Cases](templates/Johns%20Hopkins/Johns_Hopkins_Covid19_Active_Cases.md)
     * [Get Covid19 data](templates/Johns%20Hopkins/Johns_Hopkins_Get_Covid19_data.md)
