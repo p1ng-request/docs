@@ -194,6 +194,7 @@
   * [Integromat](templates/Integromat/README.md)
     * [Trigger workflow](templates/Integromat/Integromat_Trigger_workflow.md)
   * [Ipywidgets](templates/Ipywidgets/README.md)
+    * [Create input text and submit button](templates/Ipywidgets/Ipywidgets_Create_input_text_and_submit_button.md)
     * [Create button](templates/Ipywidgets/Ipywidgets_Create_button.md)
   * [Johns Hopkins](templates/Johns%20Hopkins/README.md)
     * [Covid19 Active Cases](templates/Johns%20Hopkins/Johns_Hopkins_Covid19_Active_Cases.md)
