@@ -48,6 +48,7 @@
     * [Visualize dataframe](templates/D-Tale/D-Tale_Visualize_dataframe.md)
   * [Dash](templates/Dash/README.md)
     * [Create Navbar](templates/Dash/Dash_Create_Navbar.md)
+    * [Create Datatable With Dropdown](templates/Dash/Dash_Create_Datatable_With_Dropdown.md)
     * [Deploy app in Naas](templates/Dash/Dash_Deploy_app_in_Naas.md)
     * [Create Dropdown with multiples output callbacks](templates/Dash/Dash_Create_Dropdown_with_multiples_output_callbacks.md)
     * [Create Dropdown Callback](templates/Dash/Dash_Create_Dropdown_Callback.md)
