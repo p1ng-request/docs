@@ -8,6 +8,8 @@
     * [Send dataframe to S3](templates/AWS/AWS_Send_dataframe_to_S3.md)
     * [Get files from S3 bucket](templates/AWS/AWS_Get_files_from_S3_bucket.md)
     * [Read dataframe from S3](templates/AWS/AWS_Read_dataframe_from_S3.md)
+  * [AbstractAPI](templates/AbstractAPI/README.md)
+    * [Abstractapi Get IP Geolocation](templates/AbstractAPI/Abstractapi_Get_IP_Geolocation.md)
   * [Affinity](templates/Affinity/README.md)
     * [Sync with Notion database](templates/Affinity/Affinity_Sync_with_Notion_database.md)
   * [Airtable](templates/Airtable/README.md)
