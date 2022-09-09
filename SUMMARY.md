@@ -375,6 +375,7 @@
     * [ISO Date Conversion](templates/Pandas/Pandas_ISO_Date_Conversion.md)
     * [Transform dataframe to dict](templates/Pandas/Pandas_Transform_dataframe_to_dict.md)
     * [Convert datetime series](templates/Pandas/Pandas_Convert_datetime_series.md)
+    * [Pivot rows to columns](templates/Pandas/Pandas_Pivot_rows_to_columns.md)
     * [Create dataframe from dict](templates/Pandas/Pandas_Create_dataframe_from_dict.md)
   * [Pillow](templates/Pillow/README.md)
     * [Add data to image](templates/Pillow/Pillow_Add_data_to_image.md)
