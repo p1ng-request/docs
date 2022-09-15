@@ -52,6 +52,7 @@
   * [D-Tale](templates/D-Tale/README.md)
     * [Visualize dataframe](templates/D-Tale/D-Tale_Visualize_dataframe.md)
   * [Dash](templates/Dash/README.md)
+    * [Create Navbar Search](templates/Dash/Dash_Create_Navbar_Search.md)
     * [Create Navbar](templates/Dash/Dash_Create_Navbar.md)
     * [Create Datatable With Dropdown](templates/Dash/Dash_Create_Datatable_With_Dropdown.md)
     * [LinkedIn posts metrics dashboard](templates/Dash/Dash_LinkedIn_posts_metrics_dashboard.md)
