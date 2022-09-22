@@ -268,6 +268,7 @@
     * [Get messages from profile](templates/LinkedIn/LinkedIn_Get_messages_from_profile.md)
     * [Send invitation to profile from post likes](templates/LinkedIn/LinkedIn_Send_invitation_to_profile_from_post_likes.md)
     * [Get company followers](templates/LinkedIn/LinkedIn_Get_company_followers.md)
+    * [Withdraw pending profile invitations](templates/LinkedIn/LinkedIn_Withdraw_pending_profile_invitations.md)
     * [Send invitation to company followers](templates/LinkedIn/LinkedIn_Send_invitation_to_company_followers.md)
     * [Follow content likes weekly](templates/LinkedIn/LinkedIn_Follow_content_likes_weekly.md)
     * [Get sentiment emotion irony offensiveness from comments](templates/LinkedIn/LinkedIn_Get_sentiment_emotion_irony_offensiveness_from_comments.md)
