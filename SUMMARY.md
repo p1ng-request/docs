@@ -230,6 +230,8 @@
     * [Add tags in cells](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Add_tags_in_cells.md)
     * [Count code characters](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Count_code_characters.md)
     * [Get libraries](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Get_libraries.md)
+  * [Knative](templates/Knative/README.md)
+    * [Create command file](templates/Knative/Knative_Create_command_file.md)
   * [LeFigaro](templates/LeFigaro/README.md)
     * [House Price analysis](templates/LeFigaro/LeFigaro_House_Price_analysis.md)
   * [LinkedIn](templates/LinkedIn/README.md)
