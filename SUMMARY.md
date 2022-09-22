@@ -346,6 +346,7 @@
     * [connect](templates/Naas%20Auth/Naas_Auth_connect.md)
   * [Naas Dashboard](templates/Naas%20Dashboard/README.md)
     * [Social Media KPIs ScoreCard](templates/Naas%20Dashboard/Naas_Dashboard_Social_Media_KPIs_ScoreCard.md)
+    * [Revenue Cogs by Segment](templates/Naas%20Dashboard/Naas_Dashboard_Revenue_Cogs_by_Segment.md)
     * [Financial Consolidation](templates/Naas%20Dashboard/Naas_Dashboard_Financial_Consolidation.md)
   * [Neo](templates/Neo/README.md)
     * [Get currencies live prices](templates/Neo/Neo_Get_currencies_live_prices.md)
