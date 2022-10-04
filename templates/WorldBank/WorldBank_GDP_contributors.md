@@ -1,14 +1,13 @@
-# GDP contributors
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WorldBank/WorldBank_GDP_contributors.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WorldBank/WorldBank\_GDP\_contributors.ipynb)
-
-**Tags:** #worldbank #opendata
+**Tags:** #worldbank #opendata #snippet #plotly
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-### Input
+## Input
 
-#### Import libraries
+### Import libraries
+
 
 ```python
 import pandas as pd
@@ -16,9 +15,10 @@ from pandas_datareader import wb
 import plotly.graph_objects as go
 ```
 
-### Model
+## Model
 
-#### Data recovery
+### Data recovery
+
 
 ```python
 country = wb.get_countries()["iso2c"]
@@ -37,7 +37,8 @@ data_gdp_current_year = wb.download(indicator=['NY.GDP.PCAP.KD.ZG'], country=cou
 data_gdp_current_year
 ```
 
-#### Sort the data
+### Sort the data
+
 
 ```python
 data_gdp_biggest = data_gdp_current_year.sort_values('NY.GDP.PCAP.KD.ZG', ascending=False)
@@ -47,7 +48,8 @@ data_gdp_lowest = data_gdp_current_year.sort_values('NY.GDP.PCAP.KD.ZG', ascendi
 data_gdp_lowest = data_gdp_lowest.head(5)
 ```
 
-#### Formattage des données
+### Formattage des données
+
 
 ```python
 #Data formating
@@ -106,17 +108,19 @@ text.append(str(round(gdp_growth_2018,4)))
 y.append(gdp_growth_2018)
 x.append(str(endYear) + " Growth")
 
+
 ```
 
-### Output
+## Output
 
-#### Plot display
+### Plot display
 
 Quand on passe le curseur sur chaque partie du graphique, on peut voir le PIB de l'année courrante, l'année précédente et la différence entre les deux du pays sélectionné.
 
 Si la différence est positive, une flèche montante apparaite sinon une flèche descendante.
 
 Au dessus de chaque pays, le pourcentage de croissance est représenté.
+
 
 ```python
 fig = go.Figure(go.Waterfall(
@@ -136,7 +140,8 @@ fig.update_layout(title = "GDP growth with 5 top and lowest contributors (per ca
 fig.show()
 ```
 
-#### Refaire les étapes pour le PIB par pays
+### Refaire les étapes pour le PIB par pays
+
 
 ```python
 #Recupération des valeurs pour World (Initial - Final) GDP/country
@@ -152,13 +157,16 @@ data_gdp_current_year = wb.download(indicator=['NY.GDP.MKTP.KD.ZG'], country=cou
 data_gdp_current_year
 ```
 
+
 ```python
 data_gdp_biggest = data_gdp_current_year.sort_values('NY.GDP.MKTP.KD.ZG', ascending=False)
 data_gdp_biggest = data_gdp_biggest.head(5)
 
 data_gdp_lowest = data_gdp_current_year.sort_values('NY.GDP.MKTP.KD.ZG', ascending=True)
 data_gdp_lowest = data_gdp_lowest.head(5)
+
 ```
+
 
 ```python
 #Data formating
@@ -217,6 +225,7 @@ text.append(str(round(gdp_growth_2018,4)))
 y.append(gdp_growth_2018)
 x.append(str(endYear) + " Growth")
 ```
+
 
 ```python
 fig = go.Figure(go.Waterfall(

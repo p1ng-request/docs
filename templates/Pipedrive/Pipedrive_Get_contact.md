@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Pipedrive/Pipedrive_Get_contact.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #pipedrive #crm #contact #sales #snippet
+**Tags:** #pipedrive #crm #contact #sales #snippet #dataframe
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 

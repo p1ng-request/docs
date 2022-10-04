@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Update_followers_from_linkedin.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #contact #naas_drivers #linkedin #network #scheduler #naas
+**Tags:** #hubspot #crm #sales #contact #naas_drivers #linkedin #network #scheduler #naas #automation
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -32,13 +32,11 @@ LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
 JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
 ```
 
-### Schedule your notebook everyday
+### Setup Naas
 
 
 ```python
-#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
-# import naas
-# naas.scheduler.add(cron="0 8 * * *")
+naas.scheduler.add(cron="0 8 * * *")
 
 #-> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()

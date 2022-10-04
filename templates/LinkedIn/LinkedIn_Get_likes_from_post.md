@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_likes_from_post.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #post #likes #naas_drivers
+**Tags:** #linkedin #post #likes #naas_drivers #content #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -13,7 +13,7 @@
 from naas_drivers import linkedin
 ```
 
-### Get your cookies
+### Setup LinkedIn
 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
 
@@ -33,13 +33,17 @@ POST_URL = "POST_URL"
 
 Get the information return in a dataframe.<br><br>
 **Available columns :**
-- PROFILE_URN : LinkedIn unique profile id
-- PROFILE_ID : LinkedIn public profile PROFILE_ID
-- FIRSTNAME
-- LASTNAME
-- OCCUPATION
-- REACTION_TYPE
-- POST_URL
+- PROFILE_ID : LinkedIn unique profile ID
+- PROFILE_URL : LinkedIn unique profile URL
+- PUBLIC_ID : LinkedIn public profile ID
+- FIRSTNAME : First name of profile
+- LASTNAME : Last name of profile
+- FULLNAME : First name + Last name
+- OCCUPATION : Headline in profile description
+- PROFILE_PICTURE : Profile picture URL
+- BACKGROUND_PICTURE : Background picture URL
+- REACTION_TYPE : Post reaction type
+- POST_URL : Post URL
 
 
 ```python

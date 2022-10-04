@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/OpenWeatherMap/OpenWeatherMap_Send_daily_email_with_predictions.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #openweathermap #weather #plotly #prediction #email #naas_drivers #automation
+**Tags:** #openweathermap #weather #plotly #prediction #email #naas_drivers #automation #opendata #analytics #ai #image #html #text
 
 **Author:** [Gautier Vivard](https://www.linkedin.com/in/gautier-vivard-1811b877/)
 
@@ -49,6 +49,39 @@ subject = f'{city} predictions as of today'
 ```python
 # naas.scheduler.add(cron='0 8 * * *')
 # naas.scheduler.delete()
+```
+
+### Create markdown template
+
+
+```python
+%%writefile message.md
+Hey
+
+The *CITY* temperature on the last 5 days
+
+In +2 days, basic ML models predict the following temperature: 
+
+- *linear*: LINEAR
+
+    
+<img href=link_html target="_blank" src=link_image style="width:640px; height:360px;" /><br>
+[Open dynamic chart](link_html)<br>
+
+    
+Have a nice day.
+<br>
+
+PS: You can [send the email again](link_webhook) if you need a fresh update.<br>
+<div><strong>Full Name</strong></div>
+<div>Open source lover | <a href="http://www.naas.ai/" target="_blank">Naas</a></div>
+```
+
+### Add email template as a dependency 
+
+
+```python
+naas.dependency.add("message.md")
 ```
 
 ## Model
@@ -152,32 +185,6 @@ chart = plotly.linechart(df_predict,
 
 ## Output
 
-### Create markdown template
-
-
-```python
-%%writefile message.md
-Hey
-
-The *CITY* temperature on the last 5 days
-
-In +2 days, basic ML models predict the following temperature: 
-
-- *linear*: LINEAR
-
-    
-<img href=link_html target="_blank" src=link_image style="width:640px; height:360px;" /><br>
-[Open dynamic chart](link_html)<br>
-
-    
-Have a nice day.
-<br>
-
-PS: You can [send the email again](link_webhook) if you need a fresh update.<br>
-<div><strong>Full Name</strong></div>
-<div>Open source lover | <a href="http://www.naas.ai/" target="_blank">Naas</a></div>
-```
-
 ### Save as html and png
 
 
@@ -232,11 +239,4 @@ naas.notification.send(email_to=email_to,
                        html=content,
                        files=files,
                        email_from=email_from)
-```
-
-### Add email template as a dependency 
-
-
-```python
-naas.dependency.add("message.md")
 ```

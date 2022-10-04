@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HTML/HTML_Create_a_website.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #html #css #website #page #landing #custom #snippet
+**Tags:** #html #css #website #page #landing #custom #snippet #marketing
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
@@ -52,10 +52,10 @@ Use Google search to go further in the customization (I recommend using https://
 
 Use Naas asset formula to generate a shareable URL.
 
-
-```python
-naas.asset.add("site.html",{"inline": True})
-```
-
 Nb: if you want to use your own domain name, we will cover that in another version of this template.
 Contact us → hello@naas.ai
+
+
+```python
+naas.asset.add("site.html", {"inline": True})
+```

@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Create_contacts_from_linkedin_post_likes.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #contact #naas_drivers #linkedin #post #contact
+**Tags:** #hubspot #crm #sales #contact #naas_drivers #linkedin #post #contact #snippet
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

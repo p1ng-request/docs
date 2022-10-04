@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Canny/Canny_Github_issue_update.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #canny #product
+**Tags:** #canny #product #operations #snippet #github
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu)
 

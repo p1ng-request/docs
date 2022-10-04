@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Asset_demo.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #naas #asset #snippet
+**Tags:** #naas #asset #snippet #operations
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
@@ -17,20 +17,31 @@ Build notebooks that can communicate with third parties applications and run rem
 import naas 
 ```
 
-## Model
-
-### Path of your document
+### Setup Naas
 
 
 ```python
+# Add the path of the document you want to share (don't forget to put the extension)
 PATH = "PATH_OF_YOUR_DOCUMENT.png"
 ```
 
-## Output
+## Model
 
 ### Add your asset
 
 
 ```python
-naas.asset.add("YOUR_DOCUMENT.png")
+url = naas.asset.add(PATH)
+
+# To delete your asset, uncomment the line below and execute this cell
+# naas.asset.delete(PATH)
+```
+
+## Output
+
+### Display result
+
+
+```python
+url
 ```

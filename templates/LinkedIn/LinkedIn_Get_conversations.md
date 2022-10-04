@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_conversations.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #message #getconversations #naas_drivers
+**Tags:** #linkedin #message #getconversations #naas_drivers #content #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

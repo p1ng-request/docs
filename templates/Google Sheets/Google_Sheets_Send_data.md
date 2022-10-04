@@ -1,13 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Google%20Sheets/Google_Sheets_Send_data.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #gsheet #data #naas_drivers
+**Tags:** #googlesheets #gsheet #data #naas_drivers #operations #snippet
 
-**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
+**Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Pre-requisite: share your Google Sheet with our service account
-For the driver to fetch the contents of your google sheet, you need to share it with the service account linked with Naas.
-
-🔗 naas-share@naas-gsheets.iam.gserviceaccount.com
+This notebook send data to a Google Sheets spreadsheet.
 
 ## Input
 
@@ -16,33 +13,43 @@ For the driver to fetch the contents of your google sheet, you need to share it 
 
 ```python
 from naas_drivers import gsheet
+import pandas as pd
+```
+
+### Setup Google Sheets
+- Share your Google Sheets spreadsheet with our service account : 🔗 naas-share@naas-gsheets.iam.gserviceaccount.com
+
+
+```python
+SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1RdwdYXDFDSFSFxxxxxxxx/edit#gid=XXXXXXXX33"
+SHEET_NAME = "MY_SHEET"
 ```
 
 ### Variables
 
 
 ```python
-data = [{ "name": "Jean", "email": "jean@appleseed.com" }, { "name": "Bunny", "email": "bunny@appleseed.com" }]
-spreadsheet_id = "id"
+data = [{ "name": "Jean", "email": "jean@appleseed.com" },
+        { "name": "Bunny", "email": "bunny@appleseed.com" }]
+df = pd.DataFrame(data)
 ```
 
 ## Model
 
-### Connect to gsheet
+### Send dataframe to Google Sheets spreadsheet
 
 
 ```python
-gsheet.connect(spreadsheet_id)
+result = gsheet.connect(SPREADSHEET_URL).send(sheet_name=SHEET_NAME,
+                                              data=df,
+                                              append=False)
 ```
 
 ## Output
 
-### Send the data
+### Display result
 
 
 ```python
-gsheet.send(
-    sheet_name="TSLA",
-    data=data
-)
+result
 ```

@@ -1,25 +1,23 @@
-# Get USDEUR data and chart
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Get_USDEUR_data_and_chart.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance\_Get\_USDEUR\_data\_and\_chart.ipynb)
-
-With this template, you can get data from USD EUR ticker available in [Yahoo finance](https://finance.yahoo.com/quote/USDEUR=x/).\
-
-
-**Tags:** #yahoofinance #trading #plotly #naas\_drivers
+**Tags:** #yahoofinance #trading #plotly #naas_drivers #investors #analytics
 
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)
 
-### Input
+With this template, you can get data from USD EUR ticker available in [Yahoo finance](https://finance.yahoo.com/quote/USDEUR=x/).<br> 
 
-#### Import libraries
+## Input
+
+### Import libraries
+
 
 ```python
 from naas_drivers import yahoofinance, plotly
 ```
 
-#### Input parameters
-
+### Input parameters
 👉 Here you can change the ticker, timeframe and add moving averages analysiss
+
 
 ```python
 ticker = "EURUSD=X"
@@ -29,9 +27,10 @@ interval = '1d'
 moving_averages = [20, 50]
 ```
 
-### Model
+## Model
 
-#### Get dataset from Yahoo Finance
+### Get dataset from Yahoo Finance
+
 
 ```python
 df_yahoo = yahoofinance.get(ticker,
@@ -42,9 +41,10 @@ df_yahoo = yahoofinance.get(ticker,
 df_yahoo
 ```
 
-### Output
+## Output
 
-#### Display chart
+### Display chart
+
 
 ```python
 # Get last value

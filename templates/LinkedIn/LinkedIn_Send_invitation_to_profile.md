@@ -1,8 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_invitation_to_profile.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #invitation #naas_drivers
+**Tags:** #linkedin #invitation #naas_drivers #content #snippet #text
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
+
+Growth your network and send invitation to profile.
 
 ## Input
 
@@ -11,42 +13,52 @@
 
 ```python
 from naas_drivers import linkedin
+import naas
 ```
 
-### Get your cookies
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+### Setup LinkedIn
+
+If you are using the Chrome Extension:
+
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
+
+or <br>
+
+If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75) and set up the values below:
+- 🍪 li_at
+- 🍪 JSESSIONID
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
-```
+# Cookies
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or "li_at"
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "JSESSIONID"
 
-### Enter content and recipient URL
+# Profile URL you want to send the invitation to
+recipient_url = "https://www.linkedin.com/in/****/"
 
-
-```python
-# Optional
-CONTENT = "Hello !"
-
-RECIPIENTS_URL = "LINKEDIN_URL"
+# Message to add with your invitation
+message = "Hello, \nI will be happy to connect!"
 ```
 
 ## Model
 
-### Connect to Linkedin API
+### Send invitation
 
 
 ```python
-result = linkedin.connect(LI_AT, JSESSIONID)
+result = linkedin.invitation.send(recipient_url=RECIPIENT_URL, message=message)
 ```
 
 ## Output
 
-### Send the invitation
+### Display result
 
 
 ```python
-result = linkedin.invitation.send(content=CONTENT,
-                                  recipient_url=RECIPIENTS_URL)
+result
 ```

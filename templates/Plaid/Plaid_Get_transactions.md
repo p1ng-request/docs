@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Plaid/Plaid_Get_transactions.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #plaid #bank #transactions #snippet
+**Tags:** #plaid #bank #transactions #snippet #finance #dataframe
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 

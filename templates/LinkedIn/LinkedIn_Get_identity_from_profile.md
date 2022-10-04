@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_identity_from_profile.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #profile #identity #naas_drivers
+**Tags:** #linkedin #profile #identity #naas_drivers #content #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -33,8 +33,6 @@ PROFILE_URL = "PROFILE_URL"
 
 Get the information return in a dataframe.<br><br>
 **Available columns :**
-- PROFILE_URN : LinkedIn unique profile id
-- PROFILE_ID : LinkedIn public profile id
 - FIRSTNAME
 - LASTNAME
 - SUMMARY
@@ -45,6 +43,11 @@ Get the information return in a dataframe.<br><br>
 - COUNTRY
 - LOCATION
 - BIRTHDATE
+- PROFILE_ID
+- PROFILE_URL
+- PUBLIC_ID
+- BACKGROUND_PICTURE
+- PROFILE_PICTURE
 
 
 ```python

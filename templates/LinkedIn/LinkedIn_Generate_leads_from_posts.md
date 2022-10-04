@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Generate_leads_from_posts.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #post #comments #naas_drivers #automation
+**Tags:** #linkedin #post #comments #naas_drivers #content #snippet #dataframe
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 

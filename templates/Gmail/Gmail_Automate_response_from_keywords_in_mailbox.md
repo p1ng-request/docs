@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Gmail/Gmail_Automate_response_from_keywords_in_mailbox.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #gmail #productivity #naas_drivers
+**Tags:** #gmail #productivity #naas_drivers #operations #snippet
 
 **Author:** [Sanjay Sabu](https://www.linkedin.com/in/sanjay-sabu-4205/)
 
@@ -60,5 +60,4 @@ for df in dataframe["text"]:
         content = "Hi \n,Here I am attaching the sales report as per your request\n.With Regards\n,NAAS Team"
         files = ["Excel-Sales_Feb2020.csv"]
         naas.notifications.send(email_to=email_to, subject=subject, html=content, files=files)
-    
 ```

@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Qonto/Qonto_Get_transactions.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #qonto #bank #transactions #naas_drivers
+**Tags:** #qonto #bank #transactions #naas_drivers #finance #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

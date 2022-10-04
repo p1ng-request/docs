@@ -1,23 +1,20 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/AWS/AWS_Upload_file_to_S3_bucket.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #aws #cloud #storage #S3bucket
+**Tags:** #aws #cloud #storage #S3bucket #snippet #operations# AWS - Upload file to S3 bucket
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
 ## Input
 
-### Install packages
-
-
-```python
-!pip install boto3 getpass4
-```
-
 ### Import library
 
 
 ```python
-import boto3
+try:
+    import boto3
+except:
+    !pip install boto3 getpass4
+    import boto3
 ```
 
 ### Variables

@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/PDF/PDF_Transform_to_MP3.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #pdf #text2audio #snippet
+**Tags:** #pdf #text2audio #snippet #operations #mp3
 
 **Author:** [Sanjay Sabu](https://www.linkedin.com/in/sanjay-sabu-4205/)
 

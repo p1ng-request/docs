@@ -1,10 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Notion/Notion_Update_page.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-This notebook shows how to use Naas Notion driver to update a page (properties + content) inside a database.
-
-**Tags:** #notion #productivity #naas_drivers
+**Tags:** #notion #productivity #naas_drivers #operations #snippet
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
+
+This notebook shows how to use Naas Notion driver to update a page (properties + content) inside a database.
 
 ## Input
 

@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Twitter/Twitter_Get_tweets_from_search.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #twitter #automation #ifttt #naas_drivers #snippet
+**Tags:** #twitter #ifttt #naas_drivers #snippet #content #dataframe
 
 **Author:** [Dineshkumar Sundaram](https://github.com/dineshh912)
 

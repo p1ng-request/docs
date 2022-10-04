@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/FTP/FTP_Get_file.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #ftp #file #naas_drivers
+**Tags:** #ftp #file #naas_drivers #operations #snippet #dataframe
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
@@ -17,17 +17,26 @@ from naas_drivers import ftp
 
 
 ```python
+path = "/path/to/file/in/ftp"
 user = "my user"
 passwd = "my passwd"
 ```
 
 ## Model
 
-### Connect to FTP
+### Connect to ftp
 
 
 ```python
-ftp_get = ftp.connect(user, passwd, port=990, secure=True)
+ftp = ftp.connect(user, passwd)
 ```
 
 ## Output
+
+### Get the path
+
+
+```python
+ftp = ftp.connect(user, passwd)
+ftp.get(path)
+```

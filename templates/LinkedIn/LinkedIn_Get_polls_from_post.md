@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_polls_from_post.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #post #polls #naas_drivers
+**Tags:** #linkedin #post #polls #naas_drivers #content #analytics #image #html #plotly
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Telegram/Telegram_Create_crypto_sentiment_bot.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #telegram #sentiment #bot #naas_drivers #ai
+**Tags:** #telegram #sentiment #bot #naas_drivers #ai #investors
 
 **Author:** [Yaswanthkumar GOTHIREDDY](https://www.linkedin.com/in/yaswanthkumargothireddy/)
 

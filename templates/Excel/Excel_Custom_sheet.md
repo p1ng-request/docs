@@ -1,10 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Excel/Excel_Custom_sheet.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-Here below we will apply different formatting on an Excel sheet
-
-**Tags:** #excel #openpyxl #font #border #background #naas
+**Tags:** #excel #openpyxl #font #border #background #naas #finance #snippet
 
 **Author:** [Sébastien Grech](https://www.linkedin.com/in/s%C3%A9bastien-grech-4433a7150/)
+
+Here below we will apply different formatting on an Excel sheet
 
 ## Input
 

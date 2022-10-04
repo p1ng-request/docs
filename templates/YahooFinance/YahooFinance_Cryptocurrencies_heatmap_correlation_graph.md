@@ -1,17 +1,15 @@
-# Cryptocurrencies heatmap correlation graph
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance_Cryptocurrencies_heatmap_correlation_graph.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/YahooFinance/YahooFinance\_Cryptocurrencies\_heatmap\_correlation\_graph.ipynb)
-
-Get live data from the web and compute data viz and analysis about different cryptocurrencies.\
-
-
-**Tags:** #cryptocurrency #eth #btc #heatmap #finance #trading
+**Tags:** #yahoofinance #cryptocurrency #eth #btc #heatmap #finance #trading #investors #snippet #matplotlib
 
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)
 
-### Input
+Get live data from the web and compute data viz and analysis about different cryptocurrencies.<br> 
 
-#### Install and import libraries
+## Input
+
+### Install and import libraries
+
 
 ```python
 import datetime as dt
@@ -28,7 +26,8 @@ except:
     import yfinance as yfin
 ```
 
-#### Setup your variables
+### Setup your variables
+
 
 ```python
 # user settings (modify accordingly to Yahoo Finance parameters)
@@ -42,14 +41,16 @@ end = dt.datetime.now()
 
 👉 Insert a range of cryptocurrencies; here you'll have correlation and heatmap
 
+
 ```python
 # pick your favorite list of cryptocurrencies
 crypto = ['BTC', 'ETH', 'LTC', 'XRP', 'DASH', 'SC']
 ```
 
-### Model
+## Model
 
-#### Get combined data
+### Get combined data
+
 
 ```python
 yfin.pdr_override()
@@ -73,9 +74,10 @@ for ticker in crypto:
 combined
 ```
 
-### Output
+## Output
 
-#### Show heatmap and correlation
+### Show heatmap and correlation
+
 
 ```python
 plt.yscale('log') # first show linear

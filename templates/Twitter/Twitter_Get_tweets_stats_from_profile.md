@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Twitter/Twitter_Get_tweets_stats_from_profile.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #twitter #tweets #scrap #snippet
+**Tags:** #twitter #tweets #scrap #snippet #content #dataframe
 
 **Author:** [Tannia Dubon](https://www.linkedin.com/in/tanniadubon/)
 

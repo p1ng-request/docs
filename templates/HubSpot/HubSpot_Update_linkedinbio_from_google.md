@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Update_linkedinbio_from_google.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #contact #naas_drivers #googlesearch #scheduler #naas
+**Tags:** #hubspot #crm #sales #contact #naas_drivers #googlesearch #scheduler #naas #automation
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -26,15 +26,13 @@ import re
 HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
 ```
 
-### Schedule your notebook everyday
+### Setup Naas
 
 
 ```python
-#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
-# import naas
-# naas.scheduler.add(cron="0 8 * * *")
+naas.scheduler.add(cron="0 8 * * *")
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) and execute this cell to remove your scheduler
 # naas.scheduler.delete()
 ```
 

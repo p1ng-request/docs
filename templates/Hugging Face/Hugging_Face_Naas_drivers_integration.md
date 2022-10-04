@@ -1,54 +1,51 @@
-# Naas drivers integration
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Hugging%20Face/Hugging_Face_Naas_drivers_integration.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Hugging%20Face/Hugging\_Face\_Naas\_drivers\_integration.ipynb)
-
-**Tags:** #nlp #huggingface #api #models #transformers
+**Tags:** #huggingface #nlp #huggingface #api #models #transformers #sales #ai #text
 
 **Author:** [Gagan Bhatia](https://www.linkedin.com/in/gbhatia30/)
 
-In this notebook, you will be able to explore the Hugging Face transformers package with minimal technical knowledge thanks to Naas low-code drivers.\
+In this notebook, you will be able to explore the Hugging Face transformers package with minimal technical knowledge thanks to Naas low-code drivers.<br>
 Hugging Face is an immensely popular Python library providing pretrained models that are extraordinarily useful for a variety of natural language processing (NLP) tasks.
 
-### How it works?
-
+## How it works?
 Naas drivers HuggingFace formulas follow this format.
-
 ```
 huggingface.get(task, model, tokenizer)(inputs)
 ```
-
 The supported tasks are the following:
 
-* text-generation (model: GPT2)
-* summarization (model: t5-small)
-* fill-mask (model: distilroberta-base)
-* text-classification (model: distilbert-base-uncased-finetuned-sst-2-english)
-* feature-extraction (model: distilbert-base-cased)
-* token-classification (model: dslim/bert-base-NER)
-* question-answering
-* translation
+- text-generation (model: GPT2)
+- summarization (model: t5-small)
+- fill-mask (model: distilroberta-base)
+- text-classification (model: distilbert-base-uncased-finetuned-sst-2-english)
+- feature-extraction (model: distilbert-base-cased)
+- token-classification (model: dslim/bert-base-NER)
+- question-answering
+- translation
 
 We simply use [Hugging Face API](https://huggingface.co/models) under the hood to access the models.
 
-### Input
+## Input
 
-#### Import library
+### Import library
+
 
 ```python
 from naas_drivers import huggingface
 ```
 
-#### Text Generation
+### Text Generation
+
 
 ```python
 huggingface.get("text-generation", model="gpt2", tokenizer="gpt2")("What is the most important thing in your life right now?")
 ```
 
-### Model
+## Model
 
-#### Text Summarization
-
+### Text Summarization
 Summarize the text given, maximum lenght (number of tokens/words) is set to 200.
+
 
 ```python
 huggingface.get("summarization", model="t5-small", tokenizer="t5-small")('''
@@ -69,10 +66,10 @@ if you feel useless these are much that's a much harder problem to deal with.
 ''')
 ```
 
-#### Text Classification
-
-Basic sentiment analysis on a text.\
+### Text Classification
+Basic sentiment analysis on a text.<br>
 Returns a "label" (negative/neutral/positive), and score between -1 and 1.
+
 
 ```python
 huggingface.get("text-classification", 
@@ -87,10 +84,11 @@ To her surprise, she found what she least expected to see.
 ''')
 ```
 
-#### Fill Mask
+### Fill Mask
 
-Fill the blanks ('< mask >') in a sentence given with multiple proposals.\
-Each proposal has a score (confidence of accuracy), token value (proposed word in number), token\_str (proposed word)
+Fill the blanks ('< mask >') in a sentence given with multiple proposals. <br>
+Each proposal has a score (confidence of accuracy), token value (proposed word in number), token_str (proposed word)
+
 
 ```python
 huggingface.get("fill-mask",
@@ -102,38 +100,37 @@ It was a beautiful <mask>.
 ''')
 ```
 
-#### Feature extraction
-
-This generate a words embedding (extract numbers out of the text data).\
+### Feature extraction
+This generate a words embedding (extract numbers out of the text data).<br>
 Output is a list of numerical values.
+
 
 ```python
 huggingface.get("feature-extraction", model="distilbert-base-cased", tokenizer="distilbert-base-cased")("Life is a super cool thing")
 ```
 
-#### Token classification
-
-Basically NER. If you give names, location, or any "entity" it can detect it.\
-
+### Token classification
+Basically NER. If you give names, location, or any "entity" it can detect it.<br>
 
 | Entity abreviation | Description                                                                  |
-| ------------------ | ---------------------------------------------------------------------------- |
-| O                  | Outside of a named entity                                                    |
-| B-MIS              | Beginning of a miscellaneous entity right after another miscellaneous entity |
-| I-MIS              | Miscellaneous entity                                                         |
-| B-PER              | Beginning of a person’s name right after another person’s name               |
-| I-PER              | Person’s name                                                                |
-| B-ORG              | Beginning of an organization right after another organization                |
-| I-ORG              | organization                                                                 |
-| B-LOC              | Beginning of a location right after another location                         |
-| I-LOC              | Location                                                                     |
-
-Full documentation : https://huggingface.co/dslim/bert-base-NER.\
+|--------------|------------------------------------------------------------------------------|
+| O            | Outside of a named entity                                                    |
+| B-MIS        | Beginning of a miscellaneous entity right after another miscellaneous entity |
+| I-MIS        | Miscellaneous entity                                                         |
+| B-PER        | Beginning of a person’s name right after another person’s name               |
+| I-PER        | Person’s name                                                                |
+| B-ORG        | Beginning of an organization right after another organization                |
+| I-ORG        | organization                                                                 |
+| B-LOC        | Beginning of a location right after another location                         |
+| I-LOC        | Location                                                                     |
 
 
-### Output
+Full documentation : https://huggingface.co/dslim/bert-base-NER.<br>
 
-#### Display result
+## Output
+
+### Display result
+
 
 ```python
 huggingface.get("token-classification", model="dslim/bert-base-NER", tokenizer="dslim/bert-base-NER")('''

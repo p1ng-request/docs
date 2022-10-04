@@ -1,21 +1,20 @@
-# Creer un dashboard PowerBI
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/FEC/FEC_Creer_un_dashboard_PowerBI.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/FEC/FEC\_Creer\_un\_dashboard\_PowerBI.ipynb)
-
-**Tags:** #fec #powerbi #dataviz #analytics
+**Tags:** #fec #powerbi #dataviz #analytics #finance
 
 **Author:** [Alexandre STEVENS](https://www.linkedin.com/in/alexandrestevenspbix/)
 
-Ce Notebook permet de transformer des fichiers FEC de votre entreprise en un tableau de bord Microsoft Power BI. Le FEC (fichier des écritures comptables) est un export standard des logiciels de comptabilite et une obligation légale en france depuis 2014 afin de déposer ses comptes de manière electronique auprès des services fiscaux.\
-\
-\-Durée de l’installation = 5 minutes\
-\-Support d’installation = [Page Notion](https://www.notion.so/Mode-d-emploi-FECthis-7fc142f2d7ae4a3889fbca28a83acba2/)\
-\-Niveau = Facile\
+Ce Notebook permet de transformer des fichiers FEC de votre entreprise en un tableau de bord Microsoft Power BI.
+Le FEC (fichier des écritures comptables) est un export standard des logiciels de comptabilite et une obligation légale en france depuis 2014 afin de déposer ses comptes de manière electronique auprès des services fiscaux.
+<br><br>
+-Durée de l’installation = 5 minutes<br>
+-Support d’installation = [Page Notion](https://www.notion.so/Mode-d-emploi-FECthis-7fc142f2d7ae4a3889fbca28a83acba2/)<br>
+-Niveau = Facile<br>
 
+## Input
 
-### Input
+### Librairie
 
-#### Librairie
 
 ```python
 import pandas as pd
@@ -25,7 +24,8 @@ import re
 import naas
 ```
 
-#### Lien URL vers le logo de l'entreprise
+### Lien URL vers le logo de l'entreprise
+
 
 ```python
 LOGO = "https://landen.imgix.net/e5hx7wyzf53f/assets/26u7xg7u.png?w=400"
@@ -33,7 +33,8 @@ COLOR_1 = None
 COLOR_2 = None
 ```
 
-#### Lire les fichiers FEC
+### Lire les fichiers FEC
+
 
 ```python
 def get_all_fec(file_regex,
@@ -71,6 +72,7 @@ def get_all_fec(file_regex,
     return df
 ```
 
+
 ```python
 file_regex = "^\d{9}FEC\d{8}.txt"
 
@@ -82,11 +84,12 @@ db_init = get_all_fec(file_regex,
 db_init
 ```
 
-### Model
+## Model
 
-#### Base de donnée FEC
+### Base de donnée FEC
 
-**Nettoyage des données**
+#### Nettoyage des données
+
 
 ```python
 db_clean = db_init.copy()
@@ -129,7 +132,8 @@ db_clean["DATE"] = pd.to_datetime(db_clean["DATE"])
 db_clean.head(5)
 ```
 
-**Enrichissement de la base**
+#### Enrichissement de la base
+
 
 ```python
 db_enr = db_clean.copy()
@@ -149,6 +153,7 @@ db_enr["VALUE"] = (db_enr["DEBIT"]) - (db_enr["CREDIT"])
 
 db_enr.head(5)
 ```
+
 
 ```python
 # Calcul résultat pour équilibrage bilan dans capitaux propre
@@ -173,9 +178,10 @@ db_rn = db_rn[to_select]
 db_rn
 ```
 
-#### Base de données FEC aggrégée avec variation
+### Base de données FEC aggrégée avec variation
 
-**Aggrégation RUBRIQUE N3**
+#### Aggrégation RUBRIQUE N3
+
 
 ```python
 # Calcul var v = création de dataset avec Period_comp pour merge
@@ -198,7 +204,8 @@ db_var['PERIOD_COMP'] = (db_var['PERIOD'].str[:4].astype(int) - 1).astype(str) +
 db_var
 ```
 
-**Création de la base comparable**
+#### Création de la base comparable
+
 
 ```python
 db_comp = db_var.copy()
@@ -214,7 +221,8 @@ db_comp = db_comp.rename(columns=to_rename)
 db_comp.head(5)
 ```
 
-**Jointure des 2 tables et calcul des variations**
+#### Jointure des 2 tables et calcul des variations
+
 
 ```python
 # Jointure entre les 2 tables
@@ -232,6 +240,7 @@ db_var["VARP"] = db_var["VARV"] / db_var["VALUE_N-1"]
 
 db_var
 ```
+
 
 ```python
 db_cat = db_var.copy()
@@ -456,9 +465,10 @@ db_cat = db_cat[to_select]
 db_cat
 ```
 
-#### Modèles de données des graphiques
+### Modèles de données des graphiques
 
-**REF\_ENTITE**
+#### REF_ENTITE
+
 
 ```python
 # Creation du dataset ref_entite
@@ -473,7 +483,8 @@ dataset_entite = dataset_entite.groupby(to_group, as_index=False).agg(to_agg)
 dataset_entite
 ```
 
-**REF\_SCENARIO**
+#### REF_SCENARIO
+
 
 ```python
 # Creation du dataset ref_scenario
@@ -488,7 +499,8 @@ dataset_scenario = dataset_scenario.groupby(to_group, as_index=False).agg(to_agg
 dataset_scenario
 ```
 
-**KPIS**
+#### KPIS
+
 
 ```python
 # Creation du dataset KPIS (CA, MARGE, EBE, BFR, CC, DF)
@@ -652,6 +664,7 @@ dataset_kpis_final['PERIOD_COMP'] = (dataset_kpis_final['PERIOD'].str[:4].astype
 dataset_kpis_final
 ```
 
+
 ```python
 # creation base comparable pour dataset_kpis
 dataset_kpis_final_comp = dataset_kpis_final.copy()
@@ -665,6 +678,7 @@ to_rename = {'VALUE': "VALUE_N-1",
 dataset_kpis_final_comp = dataset_kpis_final_comp.rename(columns=to_rename)
 dataset_kpis_final_comp
 ```
+
 
 ```python
 # Jointure entre les 2 tables dataset_kpis_final et dataset_kpis_vf
@@ -682,7 +696,8 @@ dataset_kpis_final["VARP"] = dataset_kpis_final["VARV"] / dataset_kpis_final["VA
 dataset_kpis_final
 ```
 
-**EVOLUTION CA**
+#### EVOLUTION CA
+
 
 ```python
 # Creation du dataset evol_ca
@@ -712,7 +727,8 @@ dataset_evol_ca['VALUE_CUM'] = dataset_evol_ca.groupby(["ENTITY", "PERIOD"], as_
 dataset_evol_ca
 ```
 
-**CHARGES**
+#### CHARGES
+
 
 ```python
 #Creation du dataset charges
@@ -728,7 +744,8 @@ dataset_charges["VALUE"] = dataset_charges["VALUE"].abs()
 dataset_charges
 ```
 
-**POSITIONS TRESORERIE**
+#### POSITIONS TRESORERIE
+
 
 ```python
 # Creation du dataset trésorerie
@@ -763,7 +780,8 @@ dataset_treso["CASH_OUT"] = dataset_treso["CASH_OUT"].abs()
 dataset_treso
 ```
 
-**BILAN**
+#### BILAN
+
 
 ```python
 # Creation du dataset Bilan
@@ -798,9 +816,10 @@ dataset_bilan = dataset_bilan[to_select]
 dataset_bilan
 ```
 
-### Output
+## Output
 
-#### Sauvegarde des fichiers en csv
+### Sauvegarde des fichiers en csv
+
 
 ```python
 def df_to_csv(df, filename):
@@ -822,6 +841,7 @@ def df_to_csv(df, filename):
     return pd.DataFrame([data])
 ```
 
+
 ```python
 dataset_logo = {
     "OBJET": "Logo",
@@ -831,6 +851,7 @@ dataset_logo = {
 logo = pd.DataFrame([dataset_logo])
 logo
 ```
+
 
 ```python
 import json
@@ -850,47 +871,56 @@ pbi_color = pd.DataFrame([dataset_color])
 pbi_color
 ```
 
+
 ```python
 entite = df_to_csv(dataset_entite, "dataset_entite.csv")
 entite
 ```
+
 
 ```python
 scenario = df_to_csv(dataset_scenario, "dataset_scenario.csv")
 scenario
 ```
 
+
 ```python
 kpis = df_to_csv(dataset_kpis_final, "dataset_kpis_final.csv")
 kpis
 ```
+
 
 ```python
 evol_ca = df_to_csv(dataset_evol_ca, "dataset_evol_ca.csv")
 evol_ca
 ```
 
+
 ```python
 charges = df_to_csv(dataset_charges, "dataset_charges.csv")
 charges
 ```
+
 
 ```python
 treso = df_to_csv(dataset_treso, "dataset_treso.csv")
 treso
 ```
 
+
 ```python
 bilan = df_to_csv(dataset_bilan, "dataset_bilan.csv")
 bilan
 ```
 
-#### Création du fichier à intégrer dans PowerBI
+### Création du fichier à intégrer dans PowerBI
+
 
 ```python
 db_powerbi = pd.concat([logo, pbi_color, entite, scenario, kpis, evol_ca, charges, treso, bilan], axis=0)
 db_powerbi
 ```
+
 
 ```python
 df_to_csv(db_powerbi, "powerbi.csv")

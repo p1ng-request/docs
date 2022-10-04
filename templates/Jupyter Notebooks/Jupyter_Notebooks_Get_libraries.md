@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Jupyter%20Notebooks/Jupyter_Notebooks_Get_libraries.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #naas #jupyter-notebooks #read #libraries #snippet
+**Tags:** #jupyternotebooks #naas #jupyter-notebooks #read #libraries #snippet #operations #text
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

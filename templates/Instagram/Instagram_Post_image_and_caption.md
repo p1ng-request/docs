@@ -1,24 +1,34 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Instagram/Instagram_Post_image_and_caption.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #instagram
+**Tags:** #instagram #snippet #content
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 ## Input
 
-### Install packages
+### Import libraries
 
 
 ```python
-pip install instabot --user
+try:
+    from instabot import Bot
+except:
+    pip install instabot --user
+    from instabot import Bot
+import naas
 ```
 
-### Import library
+### Setup your Instagram
 
 
 ```python
-from instabot import Bot 
-import naas
+# Credentials
+username = "USERNAME"
+password = "PASSWORD"
+
+# Instragram outputs
+image_path = "demo.jpg"
+caption = "Naas is doing this."
 ```
 
 ## Model
@@ -27,9 +37,9 @@ import naas
 
 
 ```python
-bot = Bot() 
-bot.login(username = "USERNAME",  
-          password = "PASSWORD") 
+bot = Bot()
+bot.login(username=username,  
+          password=password) 
 ```
 
 ## Output
@@ -38,6 +48,6 @@ bot.login(username = "USERNAME",
 
 
 ```python
-bot.upload_photo("demo.jpg",
-                 caption ="Naas is doing this.") 
+bot.upload_photo(image_path,
+                 caption=caption) 
 ```

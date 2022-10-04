@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Bazimo/Bazimo_Get_export_Actifs.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #bazimo #pm #naas_drivers #asset #scheduler #naas #csv
+**Tags:** #bazimo #pm #naas_drivers #asset #scheduler #naas #csv #operations #automation
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

@@ -1,30 +1,21 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Get_new_deals_created_weekly.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #deal #scheduler #asset #html #png #csv #naas_drivers #naas
+**Tags:** #hubspot #crm #sales #deal #scheduler #asset #html #png #csv #naas_drivers #naas #analytics #automation #image #plotly #notification #email
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 ## Input
 
-
-```python
-#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
-# import naas
-# naas.scheduler.add(cron="0 8 * * *")
-
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
-# naas.scheduler.delete()
-```
-
 ### Import libraries
 
 
 ```python
-from naas_drivers import hubspot
-from datetime import timedelta
+from naas_drivers import hubspot, emailbuilder
+from datetime import datetime, timedelta
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import naas
 ```
 
 ### Setup your HubSpot
@@ -32,7 +23,7 @@ from plotly.subplots import make_subplots
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_API_KEY = "YOUR_API_KEY"
 ```
 
 ### Select your pipeline ID
@@ -47,16 +38,35 @@ df_pipelines
 
 
 ```python
-pipeline_id = None
+pipeline_id = "000000"
+```
+
+### Setup Naas
+
+
+```python
+# Scheduler at 08:00 on Monday and Friday.
+naas.scheduler.add(cron="0 8 * * 1,5")
+
+#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# naas.scheduler.delete()
+```
+
+
+```python
+# Email info
+EMAIL_TO = "YOUR_EMAIL"
+EMAIL_SUBJECT = "[HubSpot] Weekly update : New deals created"
 ```
 
 ### Setup Outputs
 
 
 ```python
-csv_output = "HubSpot_new_deals_weekly.csv"
-image_output = "HubSpot_new_deals_weekly.html"
-html_output = "HubSpot_new_deals_weekly.png"
+name_output = "HubSpot_new_deals_weekly"
+csv_output = f"{name_output}.csv"
+image_output = f"{name_output}.png"
+html_output = f"{name_output}.html"
 ```
 
 ## Model
@@ -131,8 +141,6 @@ df_trend = get_trend(df_deals, pipeline_id)
 df_trend
 ```
 
-## Output
-
 ### Plotting a barchart
 
 
@@ -190,7 +198,7 @@ def create_barchart(df, label, group, value, varv, varp):
 
     # Add figure title
     fig.update_layout(
-        title=f"<b>Hubspot - New deals created this year</b><br><span style='font-size: 14px;'>Total deals: {total_volume} ({total_value} K€) | This week: {var_volume} ({var_value} K€) vs last week</span>",
+        title=f"<b>Hubspot - New deals created per week</b><br><span style='font-size: 14px;'>Total deals: {total_volume} ({total_value} K€) | This week: {var_volume} ({var_value} K€) vs last week</span>",
         title_font=dict(family="Arial", size=20, color="black"),
         legend=None,
         plot_bgcolor="#ffffff",
@@ -212,7 +220,6 @@ def create_barchart(df, label, group, value, varv, varp):
         title_font=dict(family="Arial", size=11, color="black"),
         secondary_y=True
     )
-#     fig.update_xaxes(rangeslider_visible=True)
     fig.show()
     return fig
 
@@ -229,12 +236,52 @@ fig.write_image(image_output)
 fig.write_html(html_output)
 
 # Shave with naas
-naas.asset.add(csv_output)
-naas.asset.add(image_output)
-naas.asset.add(html_output, params={"inline": True})
+csv_url = naas.asset.add(csv_output)
+image_url = naas.asset.add(image_output)
+html_url = naas.asset.add(html_output, params={"inline": True})
 
 #-> Uncomment the line below (by removing the hashtag)  to delete your asset
 # naas.asset.delete(csv_output)
 # naas.asset.delete(image_output)
 # naas.asset.delete(html_output)
+```
+
+### Create email template
+
+
+```python
+def create_email():
+    content = {
+        "header": emailbuilder.image(src="https://lib.umso.co/lib_sluGpRGQOLtkyEpz/na1lz0v9ejyurau2.png?w=1200&h=900&fit=max&dpr=2",
+                                     link="https://www.hubspot.com/",
+                                     align="center",
+                                     width="100%"),
+        "txt_0": emailbuilder.text("Hi !<br><br>"
+                                   f"Here below your weekly update on new deal created as of {datetime.now().strftime('%Y-%m-%d')} :<br>"),
+        "image": emailbuilder.image(src=image_url,
+                                    link=html_url,
+                                    align="center",
+                                    width="100%"),
+        "button_1": emailbuilder.button(link="https://app.hubspot.com",
+                                        text="Go to HubSpot",
+                                        color="white",
+                                        background_color="#ff7a59"),
+        "txt_4": ("Interested to improve this template, please contact the Naas Core Team at hello@naas.ai.<br><br>"),
+        "heading_5": emailbuilder.text("Let's close those opportunities 💸!"),
+        "footer": emailbuilder.footer_company(naas=True)
+    }
+    return emailbuilder.generate(display='iframe', **content)
+
+email_content = create_email()
+```
+
+## Output
+
+### Send email
+
+
+```python
+naas.notification.send(EMAIL_TO,
+                       EMAIL_SUBJECT,
+                       email_content)
 ```

@@ -1,0 +1,43 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Automate_GitHub_Auth.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+
+**Tags:** #naas #asset #snippet #operations
+
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
+
+This notebook enable you to access your public key to push to GitHub without typing any username or password. This can make you save a ton of time if you use GitHub to version your data projects and products.<br>
+We highly recommend you to version your work, each little progress should be logged.
+
+## Input
+
+No input required.
+
+## Model
+Generate the public key:
+
+
+```python
+!ssh-keygen -b 2048 -t rsa -f /home/ftp/.ssh/id_rsa -q -N ""
+```
+
+## Output
+
+Retrieve the public key by running the cell below:
+
+
+```python
+cat /home/ftp/.ssh/id_rsa.pub
+```
+
+Then: 
+- go Github/Settings/SSH and GCP keys
+- create new SSH key
+- paste the public key in the key section
+- name the public key and save
+
+You just changed the way naas connects with GitHub for any repository. <br>
+It means you need to choose the SSH method to clone now but you can still use Git tab to push.
+
+- Click on File > New > Terminal 
+- Type : git clone git@github.com:jravenel/my_project.git
+
+This technique wil enable you to never use your Git username and password anymore.

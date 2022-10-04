@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Python/Python_Looping_Over_Dataframe.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #pandas #python #loops #dataframes #forloop #loop #snippet
+**Tags:** #python #pandas #python #loops #dataframes #forloop #loop #snippet #operations
 
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)
 

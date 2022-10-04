@@ -1,0 +1,43 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/GitHub/GitHub_Get_active_projects.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+
+**Tags:** #github #projects #operations #snippet #dataframe
+
+**Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
+
+The objective of the notebook is provide a list of active projects that an organization is working on
+
+## Input
+
+### Imports
+
+
+```python
+from naas_drivers import github
+```
+
+### Variables
+
+
+```python
+# Github project url
+PROJECT_URL = "https://github.com/orgs/jupyter-naas/projects"
+
+# Github token
+GITHUB_TOKEN = "ghp_COJiJEU4cQR4rjslUjM9Duxxxxxx"
+```
+
+## Model
+
+
+```python
+df_projects = github.connect(GITHUB_TOKEN).projects.get(PROJECT_URL)
+```
+
+## Output
+
+### Display result
+
+
+```python
+df_projects.head()
+```

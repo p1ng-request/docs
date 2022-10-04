@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Notion/Notion_Sent_Gmail_On_New_Item.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #notion #gsheet #productivity #naas_drivers
+**Tags:** #notion #gsheet #productivity #naas_drivers #operations #automation #email
 
 **Author:** [Arun K C](https://www.linkedin.com/in/arun-kc/)
 
@@ -35,6 +35,20 @@ item_list_sheet_name = "Sheet2"
 your_email = "YOUR_EMAIL_ID"
 ```
 
+### Setting up the scheduler
+
+Let's schedule the notebook for every 15mins ⏰
+
+Ps: to remove the "Scheduler", just replace .add by .delete
+
+
+```python
+#Schedule the notebook to run every 15 minutes
+naas.scheduler.add(cron="*/15 * * * *")
+```
+
+## Model
+
 ### Read the gsheet
 
 
@@ -64,8 +78,6 @@ def create_notion_connection():
     print(df_db)
     return df_db
 ```
-
-## Model
 
 ### Send data to Gsheet
 
@@ -164,16 +176,4 @@ if new_items_list:
     send_mail(new_items_list)
 else:
     print('No new items!!')
-```
-
-### Setting up the scheduler
-
-Let's schedule the notebook for every 15mins ⏰
-
-Ps: to remove the "Scheduler", just replace .add by .delete
-
-
-```python
-#Schedule the notebook to run every 15 minutes
-naas.scheduler.add(cron="*/15 * * * *")
 ```

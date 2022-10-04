@@ -1,12 +1,12 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Secret_demo.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #naas #secret #snippet
+**Tags:** #naas #secret #snippet #operations
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 Read the doc: https://naas.gitbook.io/naas/features/secret
 
-**Tags:** #naas #secret
+**Tags:** #naas #secret #operations #snippet
 
 ## Input
 

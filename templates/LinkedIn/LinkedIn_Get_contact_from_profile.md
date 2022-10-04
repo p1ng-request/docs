@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_contact_from_profile.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #profile #contact #naas_drivers
+**Tags:** #linkedin #profile #contact #naas_drivers #content #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -33,13 +33,15 @@ PROFILE_URL = "PROFILE_URL"
 
 Get the information return in a dataframe.<br><br>
 **Available columns :**
-- PROFILE_URN : LinkedIn unique profile id
-- PROFILE_ID : LinkedIn public profile id
+- PROFILE_ID
+- PROFILE_URL
+- PUBLIC_ID
 - EMAIL
 - CONNECTED_AT
 - BIRTHDATE
-- TWITER
 - ADDRESS
+- TWITER
+- PHONENUMBER
 - WEBSITES
 - INTERESTS
 

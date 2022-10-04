@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #wsr #covid #active-cases #analytics #plotly #automation #naas
+**Tags:** #wsr #covid #active-cases #analytics #plotly #automation #naas #opendata #image
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 

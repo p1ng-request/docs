@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_connections_from_network.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #network #connections #naas_drivers #csv #analytics
+**Tags:** #linkedin #network #connections #naas_drivers #analytics #csv #html #image #content #plotly
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -11,11 +11,14 @@
 
 ```python
 from naas_drivers import linkedin
+import pandas as pd
+from datetime import datetime
 import naas
+import plotly.graph_objects as go
 ```
 
-### Get your cookies
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+### Setup LinkedIn
+👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
 
 ```python
@@ -28,41 +31,47 @@ JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
 
 ```python
 # Outputs
-csv_output = "LinkedIn_connections.csv"
+title = "LinkedIn - Connections"
+name_output = "LinkedIn_connections"
+csv_output = f"{name_output}.csv"
+html_output = f"{name_output}.html"
+image_output = f"{name_output}.png"
 ```
 
 ## Model
 
-Get the information return in a dataframe.<br><br>
+### Get connections from LinkedIn network
 **Available columns :**
-- PROFILE_URN : LinkedIn unique profile id
-- CREATED_AT : Date of connection between and your connection
-- PROFILE_ID : LinkedIn public profile id
 - FIRSTNAME : First name
 - LASTNAME : Last name
 - OCCUPATION : Text below the name in the profile page
+- CREATED_AT : Date of connection between and your connection
+- PROFILE_URL : Profile URL
+- PROFILE_PICTURE : Profile picture URL
+- PROFILE_ID : LinkedIn profile id
+- PUBLIC_ID : LinkedIn public profile id
 
 
 ```python
-df = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(limit=-1)
-df
+df_connections = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(limit=-1)
+df_connections
 ```
 
 ## Output
 
-### Save dataframe in CSV
+### Save connections to CSV
 
 
 ```python
-df.to_csv(csv_output, index=False)
+df_connections.to_csv(csv_output, index=False)
 ```
 
-### Share output with naas
+### Share outputs with naas
 
 
 ```python
 naas.asset.add(csv_output)
 
-#-> to remove your output, uncomment this line and execute the cell
+#-> to remove your outputs, uncomment the lines and execute the cell
 # naas.asset.delete(csv_output)
 ```

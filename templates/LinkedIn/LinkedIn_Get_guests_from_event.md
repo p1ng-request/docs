@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_guests_from_event.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #linkedin #event #guests #naas_drivers
+**Tags:** #linkedin #event #guests #naas_drivers #content #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
@@ -26,7 +26,7 @@ JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
 
 
 ```python
-EVENT_URL = "EVENT_URL"
+EVENT_URL = "https://www.linkedin.com/events/6762355783188525056/"
 ```
 
 ## Model
@@ -35,12 +35,13 @@ Note : works only if you are in the attendees list
 
 Get the information returned in a dataframe.<br><br>
 **Available columns :**
-- PROFILE_URN : LinkedIn unique profile id
-- PROFILE_ID : LinkedIn public profile id
-- NAME : First and last name
-- OCCUPATION : Text below the name in the profile page
-- LOCATION : Text before the first comma in the location field below profile 
-- DISTANCE : Field next to the profile name
+- FULLNAME
+- PROFILE_ID
+- PROFILE_URL
+- PUBLIC_ID
+- OCCUPATION
+- LOCATION
+- DISTANCE
 
 
 ```python

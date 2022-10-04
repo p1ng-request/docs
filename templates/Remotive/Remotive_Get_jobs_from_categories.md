@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Remotive/Remotive_Get_jobs_from_categories.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #remotive #jobs #csv #snippet
+**Tags:** #remotive #jobs #csv #snippet #opendata #dataframe
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 

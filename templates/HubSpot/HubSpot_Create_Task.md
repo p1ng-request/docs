@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Create_Task.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #sales #crm #engagements #task
+**Tags:** #hubspot #sales #crm #engagements #task #snippet
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
@@ -28,13 +28,19 @@ HS_API_TOKEN = "YOUR_HUBSPOT_API_KEY"
 
 ```python
 # Assign owner ID
-owner_id = ""
+owner_id = 111111086
 
-# Time delay to set due date for tasks in days
+#Associated contact ID
+asso_contactids=1551
+
+# Time delay to
+
+#Associated contact IDset due date for tasks in days
 time_delay = 10
 
+
 # Task data
-subject = "My first task"
+subject = "My Third task"
 body = "Call contacts"
 status = "NOT_STARTED" # NOT_STARTED | COMPLETED | IN_PROGRESS | WAITING | DEFERRED
 ```
@@ -69,13 +75,13 @@ def create_task(owner_id,
             "active": 'true',
             "ownerId": owner_id,
             "type": engagement,
-            "timestamp": timestamp
+            "timestamp": tstamp
         },
         "associations": {
-            "contactIds": asso_contactids,
+            "contactIds": [1551],
             "companyIds": asso_companyids,
             "dealIds": asso_dealids,
-            "ownerIds": asso_ownerids,
+            "ownerIds": [owner_id],
         },
         "metadata": {
             "body": body,
@@ -115,4 +121,9 @@ create_task(owner_id,
             subject,
             body,
             status)
+```
+
+
+```python
+
 ```

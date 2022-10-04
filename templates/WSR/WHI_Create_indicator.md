@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WSR/WHI_Create_indicator.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #whi #indicators #opendata #worldsituationroom #analytics
+**Tags:** #wsr #whi #indicators #opendata #worldsituationroom #analytics #dataframe #image
 
 **Author:** [Peter Turner](https://www.linkedin.com/in/peter-turner-0839aa116/)
 

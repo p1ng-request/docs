@@ -1,10 +1,10 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Pandas/Pandas_ISO_Date_Conversion.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #pandas #python #date #conversion #isoformat #dateconversion
-
-This notebook will help you understand how to convert any date to ISO date format.
+**Tags:** #pandas #python #date #conversion #isoformat #dateconversion #operations #snippet #dataframe
 
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)
+
+This notebook will help you understand how to convert any date to ISO date format.
 
 ## Input
 

@@ -1,30 +1,21 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Get_closed_deals_weekly.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #deal #scheduler #asset #html #png #csv #naas_drivers #naas
+**Tags:** #hubspot #crm #sales #deal #scheduler #asset #html #png #csv #naas_drivers #naas #analytics #automation #image #plotly
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 ## Input
-
-
-```python
-#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
-# import naas
-# naas.scheduler.add(cron="0 8 * * *")
-
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
-# naas.scheduler.delete()
-```
 
 ### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
-from datetime import timedelta
+from datetime import datetime, timedelta
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import naas
 ```
 
 ### Setup your HubSpot
@@ -47,16 +38,27 @@ df_pipelines
 
 
 ```python
-pipeline_id = None
+pipeline_id = "8432671"
 ```
 
 ### Setup Outputs
 
 
 ```python
-csv_output = "HubSpot_closed_weekly.csv"
-image_output = "HubSpot_closed_weekly.html"
-html_output = "HubSpot_closed_weekly.png"
+name_output = "HubSpot_closed_weekly"
+csv_output = f"{name_output}.csv"
+image_output = f"{name_output}.png"
+html_output = f"{name_output}.htlm"
+```
+
+### Setup Naas
+
+
+```python
+naas.scheduler.add(cron="0 8 * * *")
+
+#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# naas.scheduler.delete()
 ```
 
 ## Model

@@ -1,0 +1,57 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Twilio/Twilio_Send_SMS.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
+
+**Tags:** #twilio #project #send #sms #snippet #operations #dataframe
+
+**Author:** [Sriniketh Jayasendil](https://www.linkedin.com/in/sriniketh-jayasendil/)
+
+Send SMS to a verfied Phone Number using Twilio
+
+## Input
+
+## Import Library
+
+
+```python
+try:
+    from twilio.rest import Client
+except:
+    ! pip install --user twilio
+    from twilio.rest import Client
+```
+
+### Setup Twilio
+- [Get your credentials](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them)
+
+
+```python
+# Credentials
+account_sid = ""    # From Twilio Console
+auth_token = ""     # From Twilio Console
+
+# Message
+from_number = ""    # Buy a new number if not available preferably starting with "+1" country code
+to_number = ""      # Could send messages only to verified Caller ID's
+message = ""        # Message to be Sent
+```
+
+## Model
+
+
+### Set Client
+
+
+```python
+client = Client(account_sid, auth_token)  # Set Client
+```
+
+## Output
+
+
+### Send message
+
+
+```python
+client.api.account.messages.create(to=to_number,
+                                   from_=from_number,
+                                   body=message)
+```

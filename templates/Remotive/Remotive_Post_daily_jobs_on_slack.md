@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Remotive/Remotive_Post_daily_jobs_on_slack.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #remotive #jobs #slack #gsheet #naas_drivers #automation
+**Tags:** #remotive #jobs #slack #gsheet #naas_drivers #automation #opendata #text
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 

@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/AWS/AWS_Get_files_from_S3_bucket.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #aws #cloud #storage #S3bucket
+**Tags:** #aws #cloud #storage #S3bucket #operations #snippet #url
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 

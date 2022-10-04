@@ -1,8 +1,8 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Data.gouv.fr/COVID19%20-%20%20FR%20-%20Entr%C3%A9es%20et%20sorties%20par%20r%C3%A9gion%20pour%201%20million%20d%27hab..ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #opendata #france #analytics
+**Tags:** #data.gouv.fr #opendata #france #analytics
 
-**Author:** [MyDigitalSchool](https://www.mydigitalschool.com/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 Sur géodes (https://geodes.santepubliquefrance.fr/#c=indicator&view=map2…), aller dans COVID>données hospitalières>Nombre quotidien de nouvelles personnes en réanimation
 

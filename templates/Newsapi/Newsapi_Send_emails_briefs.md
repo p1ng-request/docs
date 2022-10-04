@@ -1,8 +1,8 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Newsapi/Newsapi_Send_emails_briefs.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #newsapi #news #emailbrief
+**Tags:** #newsapi #news #emailbrief #automation #notification #opendata #email #image #html #text
 
-**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)
+**Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
 Source: https://newsapi.org/
 
@@ -12,16 +12,31 @@ Source: https://newsapi.org/
 
 
 ```python
-from naas_drivers import newsapi
+from naas_drivers import newsapi, emailbuilder
 import naas
 ```
 
-### Input your email and key words
+### Setup your variables
 
 
 ```python
+# Input
+query = "data, automation, AI" #newsapi query
+
+# Outputs
 your_email = "*********"
-query = "data, automation, AI"
+email_subject = "News scheduled from Naas dev"
+email_from = 'notifications@naas.ai'
+```
+
+### Schedule everyday at 8am CET
+
+
+```python
+naas.scheduler.add(recurrence="0 8 * * *")
+
+# Uncomment the line below and run the cell to delete your scheduler
+# naas.scheduler.delete()
 ```
 
 ## Model
@@ -62,7 +77,7 @@ ht_str = ht_str+"\n"+"</ul>"
 
 
 ```python
-email_content = naas_drivers.emailbuilder.generate( 
+email_content = emailbuilder.generate( 
         display='iframe',
         title=f'🌏 NewsAPI brief', 
         subtitle=f'<b>Topics</b>: {query}',         
@@ -77,15 +92,8 @@ email_content = naas_drivers.emailbuilder.generate(
 
 
 ```python
-naas.notification.send(email_to=your_email, subject="News scheduled from Naas dev", html=email_content, email_from='notifications@naas.ai')
+naas.notification.send(email_to=your_email,
+                       subject=email_subject,
+                       html=email_content,
+                       email_from=email_from)
 ```
-
-### Schedule everyday at 8am CET
-Uncomment the line.
-
-
-```python
-#naas.scheduler.add(recurrence="0 8 * * *")
-```
-
-### Display result

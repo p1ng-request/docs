@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Send_sales_brief.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #hubspot #crm #sales #deal #naas_drivers #notification #asset #emailbuilder #scheduler #naas
+**Tags:** #hubspot #crm #sales #deal #naas_drivers #notification #asset #emailbuilder #scheduler #naas #analytics #automation #email #text #plotly #html #image
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 

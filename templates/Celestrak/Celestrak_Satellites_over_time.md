@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Celestrak/Celestrak_Satellites_over_time.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-**Tags:** #celestrak #opendata #satelltes
+**Tags:** #celestrak #opendata #satellites #analytics #plotly
 
 **Author:** [Dumorya](https://github.com/Dumorya)
 

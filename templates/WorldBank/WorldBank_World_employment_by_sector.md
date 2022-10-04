@@ -1,8 +1,6 @@
-# World employment by sector
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WorldBank/WorldBank_World_employment_by_sector.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WorldBank/WorldBank\_World\_employment\_by\_sector.ipynb)
-
-**Tags:** #worldbank #opendata
+**Tags:** #worldbank #opendata #snippet #plotly
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
@@ -10,15 +8,19 @@
 
 This graph compares the world distribution of employment by sector with the country distribution. Select the country to visualize which sector is dominant.
 
-Data by countries, by region
+Data
+by countries, by region
 
-Source International Labour Organization, ILOSTAT database.
+Source
+International Labour Organization, ILOSTAT database.
 
-Video : https://drive.google.com/file/d/1AISsc-lc4-94Dj7LOQKBj3L7VgChkejG/view
+Video : 
+https://drive.google.com/file/d/1AISsc-lc4-94Dj7LOQKBj3L7VgChkejG/view
 
-### Input
+## Input
 
-#### Import library
+### Import library
+
 
 ```python
 import math
@@ -29,7 +31,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 ```
 
-#### Variables
+### Variables
+
 
 ```python
 URL = "https://www.ilo.org/ilostat-files/Documents/Excel/MBI_33_EN.xlsx"
@@ -37,9 +40,10 @@ URL = "https://www.ilo.org/ilostat-files/Documents/Excel/MBI_33_EN.xlsx"
 SELECTED_YEAR = 2019
 ```
 
-### Model
+## Model
 
-#### Retrieving data
+### Retrieving data
+
 
 ```python
 retrieved_data = pd.read_excel(URL, sep='\t', parse_dates=[0],
@@ -48,9 +52,11 @@ retrieved_data = pd.read_excel(URL, sep='\t', parse_dates=[0],
                             'REAL ESTATE - BUSINESS - ADMINISTRATION','PUBLIC ADMINISTRATION - DEFENCE - SOCIAL SECURITY','EDUCATION','HUMAN HEALTH - SOCIAL WORK',
                             'OTHER SERVICES','t','u','v','w','x','y','z','aa','ab','ac','ad','ae','af','ag','ah'])
 
+
 ```
 
-#### Data selection
+### Data selection
+
 
 ```python
 # Select only rows with data
@@ -72,9 +78,10 @@ df = df.set_index('COUNTRY')
 df
 ```
 
-### Output
+## Output
 
-#### Data formatting
+### Data formatting
+
 
 ```python
 # Initialization of variables and functions
@@ -142,5 +149,6 @@ fig.show()
 
 Tickets_plot = fig
 plot(Tickets_plot, filename="/content/gdrive/My Drive/datamining/employement_by_sector_and_country.html", auto_open=False)
+
 
 ```
