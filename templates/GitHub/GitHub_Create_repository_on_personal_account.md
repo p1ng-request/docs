@@ -4,7 +4,7 @@
 
 **Author:** [Kanishk Pareek](https://in.linkedin.com/in/kanishkpareek/)
 
-This notebook enable the creation of a repository on a Github personal acccount.
+This notebook enables the creation of a repository on a Github personal account.
 
 ## Input
 
