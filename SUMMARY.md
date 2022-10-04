@@ -325,7 +325,6 @@
     * [Reset Instance](templates/Naas/Naas_Reset_Instance.md)
     * [Doc demo](templates/Naas/Naas_Doc_demo.md)
     * [Emailbuilder demo](templates/Naas/Naas_Emailbuilder_demo.md)
-    * [Domain demo](templates/Naas/Naas_Domain_demo.md)
     * [Get Transactions](templates/Naas/Naas_Get_Transactions.md)
     * [Get help](templates/Naas/Naas_Get_help.md)
     * [Set timezone](templates/Naas/Naas_Set_timezone.md)
