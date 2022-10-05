@@ -384,6 +384,7 @@
     * [Download file](templates/OwnCloud/OwnCloud_Download_file.md)
     * [Upload file](templates/OwnCloud/OwnCloud_Upload_file.md)
   * [PDF](templates/PDF/README.md)
+    * [Merge Multipe PDFs](templates/PDF/PDF_Merge_Multipe_PDFs.md)
     * [Transform to MP3](templates/PDF/PDF_Transform_to_MP3.md)
   * [Pandas](templates/Pandas/README.md)
     * [Create dataframe from dict](templates/Pandas/Pandas_Create_dataframe_from_dict.md)
