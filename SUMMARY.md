@@ -437,6 +437,7 @@
     * [Create dict from lists](templates/Python/Python_Create_dict_from_lists.md)
     * [Looping Over Dataframe](templates/Python/Python_Looping_Over_Dataframe.md)
     * [Using datetime library](templates/Python/Python_Using_datetime_library.md)
+    * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
     * [Locate Addresses](templates/Python/Python_Locate_Addresses.md)
     * [Download PDF from URL](templates/Python/Python_Download_PDF_from_URL.md)
