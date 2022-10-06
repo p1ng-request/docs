@@ -397,6 +397,7 @@
     * [ISO Date Conversion](templates/Pandas/Pandas_ISO_Date_Conversion.md)
     * [Format number to string](templates/Pandas/Pandas_Format_number_to_string.md)
   * [Pillow](templates/Pillow/README.md)
+    * [Generate A Certificate Template](templates/Pillow/Pillow_Generate_A_Certificate_Template.md)
     * [Add data to image](templates/Pillow/Pillow_Add_data_to_image.md)
   * [Pipedrive](templates/Pipedrive/README.md)
     * [Get contact](templates/Pipedrive/Pipedrive_Get_contact.md)
