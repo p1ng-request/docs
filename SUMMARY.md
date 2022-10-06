@@ -378,6 +378,7 @@
     * [Explore API](templates/Notion/Notion_Explore_API.md)
     * [Send Slack Messages For New Notion Database Items](templates/Notion/Notion_Send_Slack_Messages_For_New_Notion_Database_Items.md)
   * [OpenWeatherMap](templates/OpenWeatherMap/README.md)
+    * [Get City temperature weather-type wind-speed](templates/OpenWeatherMap/OpenWeatherMap_Get_City_temperature_weather-type_wind-speed.md)
     * [Send daily email with predictions](templates/OpenWeatherMap/OpenWeatherMap_Send_daily_email_with_predictions.md)
     * [Get City Weather](templates/OpenWeatherMap/OpenWeatherMap_Get_City_Weather.md)
   * [OwnCloud](templates/OwnCloud/README.md)
