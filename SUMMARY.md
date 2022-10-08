@@ -385,6 +385,7 @@
     * [Download file](templates/OwnCloud/OwnCloud_Download_file.md)
     * [Upload file](templates/OwnCloud/OwnCloud_Upload_file.md)
   * [PDF](templates/PDF/README.md)
+    * [Extract Text from PDF](templates/PDF/PDF_Extract_Text_from_PDF.md)
     * [Merge multiple PDF documents](templates/PDF/PDF_Merge_multiple_PDF_documents.md)
     * [Transform to MP3](templates/PDF/PDF_Transform_to_MP3.md)
   * [Pandas](templates/Pandas/README.md)
