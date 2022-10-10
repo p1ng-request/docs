@@ -4,7 +4,7 @@
 
 **Author:** [Abraham Israel](https://www.linkedin.com/in/abraham-israel/)
 
-This template downloads an image from an URL.
+This template downloads an image from an URL and to display the results inside a notebook.
 
 ## Input
 
@@ -41,5 +41,13 @@ image_name = wget.download(image_url)
 
 
 ```python
-print("Image: ", image_name)
+print("Image downloaded: /", image_name)
+
+from IPython.display import Image
+Image(filename=image_name) 
+```
+
+
+```python
+
 ```
