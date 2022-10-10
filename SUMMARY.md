@@ -442,6 +442,7 @@
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
     * [Locate Addresses](templates/Python/Python_Locate_Addresses.md)
     * [Download PDF from URL](templates/Python/Python_Download_PDF_from_URL.md)
+    * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
   * [Pyvis](templates/Pyvis/README.md)
     * [Create a network visualization](templates/Pyvis/Pyvis_Create_a_network_visualization.md)
   * [Qonto](templates/Qonto/README.md)
