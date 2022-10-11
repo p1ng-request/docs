@@ -440,6 +440,7 @@
     * [Using datetime library](templates/Python/Python_Using_datetime_library.md)
     * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
+    * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
     * [Locate Addresses](templates/Python/Python_Locate_Addresses.md)
     * [Download PDF from URL](templates/Python/Python_Download_PDF_from_URL.md)
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
