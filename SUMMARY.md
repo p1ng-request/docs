@@ -507,6 +507,8 @@
     * [Get balances](templates/Stripe/Stripe_Get_balances.md)
   * [Telegram](templates/Telegram/README.md)
     * [Create crypto sentiment bot](templates/Telegram/Telegram_Create_crypto_sentiment_bot.md)
+  * [Text](templates/Text/README.md)
+    * [Reformat Text Without Spaces](templates/Text/Text_Reformat_Text_Without_Spaces.md)
   * [Thinkific](templates/Thinkific/README.md)
     * [Get users](templates/Thinkific/Thinkific_Get_users.md)
     * [Send users](templates/Thinkific/Thinkific_Send_users.md)
