@@ -94,6 +94,7 @@
     * [Download file from url](templates/GitHub/GitHub_Download_file_from_url.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
     * [Close issue](templates/GitHub/GitHub_Close_issue.md)
+    * [Send weekly newsletter based on issue PR activity](templates/GitHub/GitHub_Send_weekly_newsletter_based_on_issue_PR_activity.md)
     * [Add new issues as page in Notion database](templates/GitHub/GitHub_Add_new_issues_as_page_in_Notion_database.md)
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
     * [Remove member from team](templates/GitHub/GitHub_Remove_member_from_team.md)
