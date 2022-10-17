@@ -233,6 +233,8 @@
     * [Add cells in notebook json](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Add_cells_in_notebook_json.md)
     * [Count code lines](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Count_code_lines.md)
     * [Get installs](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Get_installs.md)
+  * [Kaggle](templates/Kaggle/README.md)
+    * [Download Data](templates/Kaggle/Kaggle_Download_Data.md)
   * [Knative](templates/Knative/README.md)
     * [Create command file](templates/Knative/Knative_Create_command_file.md)
   * [LeFigaro](templates/LeFigaro/README.md)
