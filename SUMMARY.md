@@ -525,6 +525,7 @@
     * [Get board data](templates/Trello/Trello_Get_board_data.md)
   * [Twilio](templates/Twilio/README.md)
     * [Send SMS](templates/Twilio/Twilio_Send_SMS.md)
+    * [Make Call](templates/Twilio/Twilio_Make_Call.md)
   * [Twitter](templates/Twitter/README.md)
     * [Get posts stats](templates/Twitter/Twitter_Get_posts_stats.md)
     * [Get user data](templates/Twitter/Twitter_Get_user_data.md)
