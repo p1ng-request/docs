@@ -454,6 +454,7 @@
     * [Using datetime library](templates/Python/Python_Using_datetime_library.md)
     * [Get Word Definition and Translation](templates/Python/Python_Get_Word_Definition_and_Translation.md)
     * [Download PDF from URL](templates/Python/Python_Download_PDF_from_URL.md)
+    * [Get all files from directory](templates/Python/Python_Get_all_files_from_directory.md)
   * [Pyvis](templates/Pyvis/README.md)
     * [Create a network visualization](templates/Pyvis/Pyvis_Create_a_network_visualization.md)
   * [Qonto](templates/Qonto/README.md)
