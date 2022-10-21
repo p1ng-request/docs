@@ -60,6 +60,7 @@
     * [LinkedIn posts metrics dashboard](templates/Dash/Dash_LinkedIn_posts_metrics_dashboard.md)
     * [Create Dropdown Callback](templates/Dash/Dash_Create_Dropdown_Callback.md)
     * [Create Dropdown with multiples output callbacks](templates/Dash/Dash_Create_Dropdown_with_multiples_output_callbacks.md)
+    * [Plotly Dynamic Link](templates/Dash/Dash_Plotly_Dynamic_Link.md)
   * [Dask](templates/Dask/README.md)
     * [parallelize operations on multiple csvs](templates/Dask/Dask_parallelize_operations_on_multiple_csvs.md)
   * [Data.gouv.fr](templates/Data.gouv.fr/README.md)
