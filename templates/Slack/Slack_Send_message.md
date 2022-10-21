@@ -2,7 +2,9 @@
 
 **Tags:** #slack #message #send #operations #snippet
 
-**Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
+**Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
+
+This notebook send message to a slack channel.
 
 ## Input
 
@@ -14,29 +16,32 @@ from naas_drivers import slack
 ```
 
 ### Setup Slack
-[Click here to discover how to get your token](https://naas.gitbook.io/drivers/automation/slack)
+- Create [Slack App](https://api.slack.com/apps)
+- Add OAuth & Permissions(chat:write, chat:write.public to send message in a public channel)
+- Install your App
+- Get your Bot Token
 
 
 ```python
-SLACK_TOKEN = "xoxb-232887839156-1673274923699-vTF6NOKOMosoPFI7qfnkCdRF"
+SLACK_TOKEN = "xoxb-XXXXXXXXXXXXXXXXXXXXXXX"
+SLACK_CHANNEL = "channel-name"
+SLACK_MESSAGE = "Hello World!"
 ```
 
 ## Model
 
-### Set your message 
+### Connect to Slack
 
 
 ```python
-channel = "-team-tech"
-message = "second test"
-image_url = "http://i.imgur.com/c4jt321l.png" # Set to None if you don't need it
+SLACK = slack.connect(SLACK_TOKEN)
 ```
 
 ## Output
 
-### Send it
+### Send your message 
 
 
 ```python
-slack.connect(token).send(channel, "second test", image=image_url)
+SLACK.send(SLACK_CHANNEL, SLACK_MESSAGE)
 ```
