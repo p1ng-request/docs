@@ -433,6 +433,7 @@
     * [Set portrait format](templates/PowerPoint/PowerPoint_Set_portrait_format.md)
     * [Add Slide With Image](templates/PowerPoint/PowerPoint_Add_Slide_With_Image.md)
     * [Add Slide With Textbox](templates/PowerPoint/PowerPoint_Add_Slide_With_Textbox.md)
+    * [Create Presentation](templates/PowerPoint/PowerPoint_Create_Presentation.md)
   * [PyCaret](templates/PyCaret/README.md)
     * [automl classification](templates/PyCaret/PyCaret_automl_classification.md)
     * [automl regression](templates/PyCaret/PyCaret_automl_regression.md)
