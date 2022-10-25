@@ -5,9 +5,10 @@ Description: Send simple emails to anyone directly from your notebook.
 # 🛎 Notification
 
 ### Introduction:
-A notification is an alert sent to others in order to notify about any changes that are done in a file.
+A notification is an alert sent to people.
 
 Run the notification machine to effortlessly send emails from your notebooks.
+
 Refer to the doc to install it.
 
 
