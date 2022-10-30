@@ -111,7 +111,6 @@
     * [Get commits ranking from repository](templates/GitHub/GitHub_Get_commits_ranking_from_repository.md)
     * [Add new issues as page in Notion database](templates/GitHub/GitHub_Add_new_issues_as_page_in_Notion_database.md)
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
-    * [Send weekly newsletter based on issue PR activity](templates/GitHub/GitHub_Send_weekly_newsletter_based_on_issue_PR_activity.md)
     * [Get active projects](templates/GitHub/GitHub_Get_active_projects.md)
     * [Create issue](templates/GitHub/GitHub_Create_issue.md)
   * [Gmail](templates/Gmail/README.md)
