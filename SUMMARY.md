@@ -430,6 +430,7 @@
   * [PowerPoint](templates/PowerPoint/README.md)
     * [Add Slide With Title Subtitle](templates/PowerPoint/PowerPoint_Add_Slide_With_Title_Subtitle.md)
     * [Set portrait format](templates/PowerPoint/PowerPoint_Set_portrait_format.md)
+    * [Add title + line in presentation](templates/PowerPoint/PowerPoint_Add_title_+_line_in_presentation.md)
     * [Add Slide With Image](templates/PowerPoint/PowerPoint_Add_Slide_With_Image.md)
     * [Add Slide With Textbox](templates/PowerPoint/PowerPoint_Add_Slide_With_Textbox.md)
     * [Create Presentation](templates/PowerPoint/PowerPoint_Create_Presentation.md)
