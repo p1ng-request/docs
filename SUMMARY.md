@@ -563,6 +563,8 @@
     * [GDP per country and evolution](templates/WorldBank/WorldBank_GDP_per_country_and_evolution.md)
   * [Worldometer](templates/Worldometer/README.md)
     * [World population evolution and projections](templates/Worldometer/Worldometer_World_population_evolution_and_projections.md)
+  * [XGBoost](templates/XGBoost/README.md)
+    * [Binary classification example with hyper-parameters optimization](templates/XGBoost/XGBoost_Binary_classification_example_with_hyper-parameters_optimization.md)
   * [XML](templates/XML/README.md)
     * [Transform sitemap to dataframe](templates/XML/XML_Transform_sitemap_to_dataframe.md)
   * [YahooFinance](templates/YahooFinance/README.md)
