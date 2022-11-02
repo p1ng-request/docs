@@ -197,6 +197,7 @@
     * [Create contacts from linkedin post likes](templates/HubSpot/HubSpot_Create_contacts_from_linkedin_post_likes.md)
   * [Hugging Face](templates/Hugging%20Face/README.md)
     * [Naas drivers integration](templates/Hugging%20Face/Hugging_Face_Naas_drivers_integration.md)
+    * [Question Answering from PDF](templates/Hugging%20Face/Hugging_Face_Question_Answering_from_PDF.md)
     * [Ask boolean question to T5](templates/Hugging%20Face/Hugging_Face_Ask_boolean_question_to_T5.md)
   * [IFTTT](templates/IFTTT/README.md)
     * [Post on Twitter](templates/IFTTT/IFTTT_Post_on_Twitter.md)
