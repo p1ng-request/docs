@@ -574,6 +574,7 @@
     * [Send daily prediction to Slack](templates/YahooFinance/YahooFinance_Send_daily_prediction_to_Slack.md)
     * [Cryptocurrencies heatmap correlation graph](templates/YahooFinance/YahooFinance_Cryptocurrencies_heatmap_correlation_graph.md)
     * [Get Stock Update](templates/YahooFinance/YahooFinance_Get_Stock_Update.md)
+    * [Get Brent Crude Oil trend and predictions](templates/YahooFinance/YahooFinance_Get_Brent_Crude_Oil_trend_and_predictions.md)
     * [Candlestick chart](templates/YahooFinance/YahooFinance_Candlestick_chart.md)
     * [Get USDEUR data and chart](templates/YahooFinance/YahooFinance_Get_USDEUR_data_and_chart.md)
     * [Send daily prediction to Email](templates/YahooFinance/YahooFinance_Send_daily_prediction_to_Email.md)
