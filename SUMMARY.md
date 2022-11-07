@@ -553,6 +553,8 @@
     * [Get daily Covid19 active cases trend JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_trend_JHU.md)
     * [WHI Create indicator](templates/WSR/WHI_Create_indicator.md)
     * [Get daily Covid19 active cases worldmap JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.md)
+  * [WindsorAI](templates/WindsorAI/README.md)
+    * [Create Dash app to query AP](templates/WindsorAI/WindsorAI_Create_Dash_app_to_query_AP.md)
   * [WorldBank](templates/WorldBank/README.md)
     * [World employment by sector](templates/WorldBank/WorldBank_World_employment_by_sector.md)
     * [Gini index](templates/WorldBank/WorldBank_Gini_index.md)
