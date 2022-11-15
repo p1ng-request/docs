@@ -453,6 +453,7 @@
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
     * [Locate Coordinates](templates/Python/Python_Locate_Coordinates.md)
+    * [Convert PNG Images To JPG](templates/Python/Python_Convert_PNG_Images_To_JPG.md)
     * [Create directory](templates/Python/Python_Create_directory.md)
     * [Looping Over Dataframe](templates/Python/Python_Looping_Over_Dataframe.md)
     * [Rename file](templates/Python/Python_Rename_file.md)
