@@ -447,6 +447,7 @@
     * [Copy files and subdir from directory to another directory](templates/Python/Python_Copy_files_and_subdir_from_directory_to_another_directory.md.md)
     * [Find Phone Number in string](templates/Python/Python_Find_Phone_Number_in_string.md)
     * [Create dict from lists](templates/Python/Python_Create_dict_from_lists.md)
+    * [Organize Directories based on file types](templates/Python/Python_Organize_Directories_based_on_file_types.md)
     * [Locate Addresses](templates/Python/Python_Locate_Addresses.md)
     * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
     * [Create dataframe from lists](templates/Python/Python_Create_dataframe_from_lists.md)
