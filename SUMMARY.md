@@ -57,6 +57,7 @@
     * [Deploy app in Naas](templates/Dash/Dash_Deploy_app_in_Naas.md)
     * [Create Navbar Search](templates/Dash/Dash_Create_Navbar_Search.md)
     * [Create Navbar Dashboard](templates/Dash/Dash_Create_Navbar_Dashboard.md)
+    * [Upload mutiples CSV Excel](templates/Dash/Dash_Upload_mutiples_CSV_Excel.md)
     * [Create Datatable With Dropdown](templates/Dash/Dash_Create_Datatable_With_Dropdown.md)
     * [Create Navbar](templates/Dash/Dash_Create_Navbar.md)
     * [LinkedIn posts metrics dashboard](templates/Dash/Dash_LinkedIn_posts_metrics_dashboard.md)
