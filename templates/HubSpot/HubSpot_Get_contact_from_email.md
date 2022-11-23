@@ -4,7 +4,12 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template get contact from HubSpot with email.
+**Description :** This notebook get a contact from HubSpot using its email. Data will be returned as json with keys: 
+- 'id': number,
+- 'properties': dict
+- 'createdAt': datetime
+- 'updatedAt': datetime
+- 'archived': boolean
 
 ## Input
 
@@ -12,23 +17,40 @@ This template get contact from HubSpot with email.
 
 
 ```python
-import requests
+from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-# Enter Token API
-HS_API_KEY = "ENTER_YOUR_HS_API_KEY_HERE" # EXAMPLE : "7865b95b-7731-7843-2537-34284HSKHEZ"
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter your contact email
+#### Enter your contact email
 
 
 ```python
-contact_email = "ENTER_CONTACT_EMAIL_HERE" # EXAMPLE : "florent@naas.ai"
+contact_email = "ENTER_CONTACT_EMAIL_HERE" # EXAMPLE : "email@gmail.com"
+```
+
+#### Enter your Contact properties
+List of properties you want to get from contact.<br>
+By default, you will get: 
+- email
+- firstname
+- lastname
+- createdate
+- lastmodifieddate
+- hs_object_id
+
+
+```python
+properties = []
 ```
 
 ## Model
@@ -37,23 +59,7 @@ contact_email = "ENTER_CONTACT_EMAIL_HERE" # EXAMPLE : "florent@naas.ai"
 
 
 ```python
-def get_contact_hubspot(hs_value, hs_key="email", hs_properties=None):
-    url = f"https://api.hubapi.com/crm/v3/objects/contacts/{hs_value}"
-    querystring = {
-        "archived": "false",
-        "hapikey": HS_API_KEY,
-        "idProperty": hs_key}
-    if hs_properties is not None:
-        querystring["properties"] = hs_properties
-    headers = {'accept': 'application/json'}
-    # Requests data
-    res = requests.get(url,
-                       headers=headers,
-                       params=querystring)
-    res.raise_for_status()
-    return res.json()
-
-contact = get_contact_hubspot(contact_email)
+contact = hubspot.connect(HS_ACCESS_TOKEN).contacts.get(contact_email, properties, idproperty="email")
 ```
 
 ## Output

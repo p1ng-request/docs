@@ -4,41 +4,69 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Get contact from HubSpot URL
+**Description :** This notebook get a contact from HubSpot using its URL. Data will be returned as json with keys: 
+- 'id': number,
+- 'properties': dict
+- 'createdAt': datetime
+- 'updatedAt': datetime
+- 'archived': boolean
 
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-# Enter Token API
-HS_API_KEY = "ENTER_YOUR_HS_API_KEY_HERE" # EXAMPLE : "7865b95b-7731-7843-2537-34284HSKHEZ"
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter your contact id
+#### Enter your Contact URL
 
 
 ```python
 contact_url =  "ENTER_CONTACT_URL_HERE" # EXAMPLE : "https://app.hubspot.com/contacts/0000011/contact/00001"
-contact_id = contact_url.split("/contact/")[-1]
+```
+
+#### Enter your Contact properties
+List of properties you want to get from contact.<br>
+By default, you will get: 
+- email
+- firstname
+- lastname
+- createdate
+- lastmodifieddate
+- hs_object_id
+
+
+```python
+properties = []
 ```
 
 ## Model
+
+### Split contact URL to get contact ID
+
+
+```python
+contact_id = contact_url.split("/contact/")[-1]
+```
 
 ### Get single contact
 
 
 ```python
-contact = hubspot.connect(HS_API_KEY).contacts.get(contact_id)
+contact = hubspot.connect(HS_ACCESS_TOKEN).contacts.get(contact_id)
 ```
 
 ## Output

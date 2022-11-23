@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template will create a note in HubSpot with the possibility of :
+**Description:** This template will create a note in HubSpot with the possibility of :
 - Add timestamp to follow history
 - Add associated contacts
 - Add associated companies
@@ -24,16 +24,17 @@ import json
 import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-# Enter Token API
-HS_API_KEY = "ENTER_YOUR_HS_API_KEY" # EXAMPLE : "7865b95b-7731-7843-2537-34284HSKHEZ"
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Setup your note
+#### Define your note
 
 
 ```python
@@ -102,13 +103,14 @@ def create_note(body,
         }
     })
     url = "https://api.hubapi.com/engagements/v1/engagements"
-    params = {"hapikey": HS_API_KEY}
-    headers = {'Content-Type': "application/json"}
+    headers = {
+        'Content-Type': "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+    }
     # Post requests
     res = requests.post(url,
                         data=payload,
-                        headers=headers,
-                        params=params)
+                        headers=headers)
     res.raise_for_status()
     res_json = res.json()
     # Note ID

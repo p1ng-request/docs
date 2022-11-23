@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook creates a contact in HubSpot from a LinkedIn profile URL with:
+**Description:** This notebook creates a contact in HubSpot from a LinkedIn profile URL with:
 - email
 - linkedinbio
 - phone and mobilephone
@@ -33,16 +33,13 @@ from naas_drivers import hubspot, linkedin
 from os import path, mkdir
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
 
 
 ```python
-# HubSpot API Key
-HS_API_KEY = naas.secret.get("HS_API_KEY") or 'YOUR_HUBSPOT_API_KEY'
-
-# Owner ID -> Go to Contact -> Manage properties -> Contact owner to find your owner ID
-HS_OWNER_ID = "158373005"
+# Enter Your Access Token
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
 ### Setup LinkedIn
@@ -157,7 +154,7 @@ def create_hubspot_contact(df, properties={}):
         properties["website"] = website
         properties["twitterhandle"] = twitterhandle
         
-    contact_id = hubspot.connect(HS_API_KEY).contacts.send({"properties": properties})
+    contact_id = hubspot.connect(HS_ACCESS_TOKEN).contacts.send({"properties": properties})
     print(f"✅ Contact {email} created in HubSpot: {properties}")
     return properties, contact_id, public_id
 ```
@@ -169,7 +166,7 @@ def create_hubspot_contact(df, properties={}):
 def update_hubspot_owner(owner_id, hs_object_id, hubspot_owner_id="", properties={}):
     if str(hubspot_owner_id) != owner_id:
         properties = {"hubspot_owner_id": owner_id}
-        hubspot.connect(HS_API_KEY).contacts.patch(hs_object_id, {"properties": properties})
+        hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
         print(f"✅ Contact owner updated in HubSpot: {owner_id}")
     else:
         print(f"👉 Contact owner already set in HubSpot: {owner_id}")
@@ -210,7 +207,7 @@ def update_hubspot_lk_identity(df, hs_object_id, properties={}):
         properties["state"] = state
         properties["country"] = country
         
-    hubspot.connect(HS_API_KEY).contacts.patch(hs_object_id, {"properties": properties})
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
     print(f"✅ Contact identity updated in HubSpot: {properties}")
     return properties
 ```
@@ -229,7 +226,7 @@ def update_hubspot_lk_network(df, hs_object_id, properties={}):
         properties["linkedinconnections"] = linkedinconnections
         properties["linkedin_distance"] = linkedin_distance
         
-    hubspot.connect(HS_API_KEY).contacts.patch(hs_object_id, {"properties": properties})
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
     print(f"✅ Contact network updated in HubSpot: {properties}")
     return properties
 ```
@@ -254,7 +251,7 @@ def update_hubspot_lk_resume(df, hs_object_id, dir_path=None, properties={}):
             # Field of study
             properties["field_of_study"] = str(df_study.iloc[0]['FIELD'])
         
-    hubspot.connect(HS_API_KEY).contacts.patch(hs_object_id, {"properties": properties})
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
     print(f"✅ Contact resume updated in HubSpot: {properties}")
     return properties
 ```

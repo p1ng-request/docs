@@ -4,6 +4,8 @@
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
+**Description:** This template will update a task in HubSpot. 
+
 ## Input
 
 ### Import libraries
@@ -14,17 +16,20 @@ from datetime import datetime, timedelta
 from naas_drivers import hubspot
 import requests, math
 import json
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_TOKEN = "YOUR_HUBSPOT_API_KEY" 
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Setup your task info
+#### Define your task info
 
 
 ```python
@@ -43,8 +48,10 @@ time_delay = 1
 ```python
 def patch(uid, data):
     #set headers
-    params = {"hapikey": HS_API_TOKEN}
-    headers = {'Content-Type': "application/json"}
+    headers = {
+        'Content-Type': "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+    }
     base_url = "https://api.hubapi.com/engagements/v1/engagements/"
     res = requests.patch(
          url=f"{base_url}/{uid}",

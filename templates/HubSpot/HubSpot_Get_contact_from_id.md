@@ -4,31 +4,53 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Get contact from HubSpot ID
+**Description :** This notebook get a contact from HubSpot using its ID. Data will be returned as json with keys: 
+- 'id': number,
+- 'properties': dict
+- 'createdAt': datetime
+- 'updatedAt': datetime
+- 'archived': boolean
 
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter your Access Token
 
 
 ```python
-# Enter Token API
-HS_API_KEY = "ENTER_YOUR_HS_API_KEY_HERE" # EXAMPLE : "7865b95b-7731-7843-2537-34284HSKHEZ"
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter your contact id
+#### Enter your Contact ID
 
 
 ```python
-contact_id =  "ENTER_CONTACT_ID_HERE" # EXAMPLE : "100001"
+contact_id = "ENTER_CONTACT_ID_HERE" # "580001"
+```
+
+#### Enter your Contact properties
+List of properties you want to get from contact.<br>
+By default, you will get: 
+- email
+- firstname
+- lastname
+- createdate
+- lastmodifieddate
+- hs_object_id
+
+
+```python
+properties = []
 ```
 
 ## Model
@@ -37,7 +59,7 @@ contact_id =  "ENTER_CONTACT_ID_HERE" # EXAMPLE : "100001"
 
 
 ```python
-contact = hubspot.connect(HS_API_KEY).contacts.get(contact_id)
+contact = hubspot.connect(HS_ACCESS_TOKEN).contacts.get(contact_id, properties)
 ```
 
 ## Output

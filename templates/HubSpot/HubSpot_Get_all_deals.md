@@ -4,28 +4,42 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook get all deals from HubSpot. Data will be returned as dataframe with columns equal to properties.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter deal properties you want to be returned
+#### Define Deal properties
+List of properties you want to get from deal.<br>
+By default, you will get: 
+- dealname
+- amount
+- dealstage
+- pipeline
+- createdate
+- closedate
+- hs_object_id
+- hs_lastmodifieddate
 
 
 ```python
-properties_list = []
+properties = []
 ```
 
 ## Model
@@ -34,7 +48,7 @@ properties_list = []
 
 
 ```python
-df_deals = hubspot.connect(HS_API_KEY).deals.get_all(properties_list)
+df_deals = hubspot.connect(HS_ACCESS_TOKEN).deals.get_all(properties)
 ```
 
 ## Output

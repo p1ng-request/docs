@@ -4,24 +4,29 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook create a deal in HubSpot.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter deal parameters
+#### Enter deal parameters
 
 
 ```python
@@ -31,11 +36,11 @@ amount = None
 hubspot_owner_id = None
 ```
 
-### Enter deal stage ID
+#### Enter deal stage ID
 
 
 ```python
-df_pipelines = hubspot.connect(HS_API_KEY).pipelines.get_all()
+df_pipelines = hubspot.connect(HS_ACCESS_TOKEN).pipelines.get_all()
 df_pipelines
 ```
 
@@ -46,13 +51,12 @@ dealstage = '5102584'
 
 ## Model
 
-### Create deal
-
-### Using send method
+### Create deal using send method
+This method will allow you to add any deal properties available in your HubSpot.
 
 
 ```python
-send_deal = {"properties": 
+deal1 = {"properties": 
                   {
                     "dealstage": dealstage,
                     "dealname": dealname,
@@ -62,14 +66,14 @@ send_deal = {"properties":
                    }
                  }
 
-deal1 = hubspot.connect(HS_API_KEY).deals.send(send_deal)
+deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.send(send_deal)
 ```
 
-### Using create method
+### Create deal using create method
 
 
 ```python
-deal2 = hubspot.connect(HS_API_KEY).deals.create(
+deal2 = hubspot.connect(HS_ACCESS_TOKEN).deals.create(
     dealname,
     dealstage,
     closedate

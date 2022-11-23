@@ -4,9 +4,11 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook send a sales brief based on your HubSpot activity.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
@@ -16,12 +18,13 @@ import pandas as pd
 from datetime import datetime
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+# Enter Your Access Token
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
 ### Email parameters
@@ -48,7 +51,7 @@ objective = 300000
 
 
 ```python
-df_pipelines = hubspot.connect(HS_API_KEY).pipelines.get_all()
+df_pipelines = hubspot.connect(HS_ACCESS_TOKEN).pipelines.get_all()
 df_pipelines
 ```
 
@@ -109,7 +112,7 @@ properties = [
     "closedate",
     "amount"
 ]
-df_deals = hubspot.connect(HS_API_KEY).deals.get_all(properties)
+df_deals = hubspot.connect(HS_ACCESS_TOKEN).deals.get_all(properties)
 
 # Filter on pipeline
 df_deals = df_deals[df_deals.pipeline == pipeline_id].reset_index(drop=True)

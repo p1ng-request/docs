@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This templates will extract all notes from a contact in HubSpot and return a dataframe
+**Description:** This templates will extract all notes from a contact in HubSpot and return a dataframe.
 
 ## Input
 
@@ -19,16 +19,17 @@ import naas
 import pandas as pd
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-# Enter Token API
-HS_API_KEY = "ENTER_YOUR_HS_API_KEY_HERE" # EXAMPLE : "7865b95b-7731-7843-2537-34284HSKHEZ"
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Setup your contact info
+#### Enter your contact ID
 
 
 ```python
@@ -55,10 +56,12 @@ def get_notes_from_contact(contact_id):
     url = f'https://api.hubapi.com/engagements/v1/engagements/associated/contact/{contact_id}/paged'
     querystring = {
         "archived": "false",
-        "hapikey": HS_API_KEY,
         "limit": 100,
     }
-    headers = {'accept': 'application/json'}
+    headers = {
+        'Content-Type': "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+    }
 
     # Get all notes
     df_notes = pd.DataFrame()

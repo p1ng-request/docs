@@ -4,9 +4,11 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook update HubSpot linkedin URL based on Google Search with firstname and lastname.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
@@ -18,12 +20,13 @@ import time
 import re
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+# Enter Your Access Token
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
 ### Setup Naas
@@ -48,7 +51,7 @@ properties_list = [
     "lastname",
     "linkedinbio",
 ]
-hubspot_contacts = hubspot.connect(HS_API_KEY).contacts.get_all(properties_list)
+hubspot_contacts = hubspot.connect(HS_ACCESS_TOKEN).contacts.get_all(properties_list)
 hubspot_contacts
 ```
 
@@ -125,5 +128,5 @@ for _, row in df_to_update.iterrows():
     # Update LK Bio
     if linkedinbio != None:
         data = {"properties": {"linkedinbio": linkedinbio}}
-    hubspot.connect(HS_API_KEY).contacts.patch(hs_object_id, data)
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, data)
 ```

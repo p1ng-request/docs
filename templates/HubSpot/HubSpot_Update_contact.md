@@ -4,24 +4,29 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook update a contact in HubSpot.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter contact parameters to update
+#### Enter contact parameters to update
 
 
 ```python
@@ -38,7 +43,8 @@ hubspot_owner_id = None
 
 ## Model
 
-### Using patch method
+### Update contact using send method
+This method will allow you to add any contact properties available in your HubSpot.
 
 
 ```python
@@ -56,15 +62,17 @@ update_contact = {"properties":
                    }
                  }
 
-contact_id1 = hubspot.connect(HS_API_KEY).contacts.patch(contact_id,
-                                                         update_contact)
+contact_id1 = hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(
+    contact_id,
+    update_contact
+)
 ```
 
-### Using update method
+### Update contact using update method
 
 
 ```python
-contact_id2 = hubspot.connect(HS_API_KEY).contacts.update(
+contact_id2 = hubspot.connect(HS_ACCESS_TOKEN).contacts.update(
     contact_id,
     email,
     firstname,

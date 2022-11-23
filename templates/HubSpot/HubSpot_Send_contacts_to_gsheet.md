@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook send all your contacts to a Google Sheets spreadsheet.
+
 ## Input
 
 ### Import libraries
@@ -11,33 +13,42 @@
 
 ```python
 from naas_drivers import hubspot, gsheet
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter contact properties you want to be returned
+#### Enter your Contact properties
+List of properties you want to get from contact.<br>
+By default, you will get: 
+- email
+- firstname
+- lastname
+- createdate
+- lastmodifieddate
+- hs_object_id
 
 
 ```python
-properties_list = []
+properties = []
 ```
 
-### Setup your Google Sheet
+### Setup your Google Sheets
 
-Pre-requisite: share your Google Sheet with our service account <br>
-For the driver to fetch the contents of your google sheet, you need to share it with the service account linked with Naas.<br>
-🔗 naas-share@naas-gsheets.iam.gserviceaccount.com
+Pre-requisite: share your Google Sheets with our service account: 🔗 naas-share@naas-gsheets.iam.gserviceaccount.com
 
 
 ```python
-spreadsheet_id = ""
-sheet_name = ""
+SPREADSHEET_URL = "ENTER_YOUR_SPREADSHEET_URL_HERE"
+SHEET_NAME = "ENTER_YOUR_SHEET_NAME_HERE"
 ```
 
 ## Model
@@ -46,7 +57,7 @@ sheet_name = ""
 
 
 ```python
-df_contacts = hubspot.connect(HS_API_KEY).contacts.get_all(properties_list)
+df_contacts = hubspot.connect(HS_ACCESS_TOKEN).contacts.get_all(properties_list)
 ```
 
 ## Output
@@ -55,8 +66,8 @@ df_contacts = hubspot.connect(HS_API_KEY).contacts.get_all(properties_list)
 
 
 ```python
-gsheet.connect(spreadsheet_id).send(
-    sheet_name=sheet_name,
+gsheet.connect(SPREADSHEET_URL).send(
+    sheet_name=SHEET_NAME,
     data=df_contacts,
     append=False
 )

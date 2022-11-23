@@ -4,9 +4,11 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook update the jobtitle, country and industry for a contact in HubSpot.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
@@ -15,21 +17,38 @@ import naas
 import pandas as pd
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+# Enter Your Access Token
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Setup your LinkedIn
-👉 Get <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>your cookies</a>
+### Setup LinkedIn
+If you are using the Chrome Extension:
+
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
+
+or <br>
+
+If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75) and set up the values below:
+- 🍪 li_at
+- 🍪 JSESSIONID
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+# Cookies
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
+
+# LinkedIn update limit
+LIMIT = 15
 ```
 
 ### Setup Naas
@@ -57,7 +76,7 @@ properties_list = [
     "country",
     "industry",
 ]
-hubspot_contacts = hubspot.connect(HS_API_KEY).contacts.get_all(properties_list)
+hubspot_contacts = hubspot.connect(HS_ACCESS_TOKEN).contacts.get_all(properties_list)
 hubspot_contacts
 ```
 
@@ -76,8 +95,8 @@ df_to_update = df_to_update[(df_to_update.linkedinbio != "Not Defined") &
                             (df_to_update.country == "Not Defined") & 
                             (df_to_update.industry == "Not Defined")]
 
-# Limit to last 50 contacts
-df_to_update = df_to_update.sort_values(by="createdate", ascending=False)[:50].reset_index(drop=True)
+# Limit to last x contacts
+df_to_update = df_to_update.sort_values(by="createdate", ascending=False)[:LIMIT].reset_index(drop=True)
 
 df_to_update
 ```
@@ -126,5 +145,5 @@ for _, row in df_to_update.iterrows():
                  "industry": industry,
                  "country": country}
                }
-    hubspot.connect(HS_API_KEY).contacts.patch(hs_object_id, data)
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, data)
 ```

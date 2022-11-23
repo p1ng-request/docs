@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-With this notebook, you can send LinkedIn invitation to your HubSpot contacts.
+**Description:** This notebook send LinkedIn invitation to your HubSpot contacts.
 
 ## Input
 
@@ -18,29 +18,35 @@ import pandas as pd
 import os
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
 
 
 ```python
-# Enter Token API
-HS_API_KEY = "YOUR_HUBSPOT_API_KEY"
-
-# Column with Linkedin URL (internal name in HubSpot)
-col_linkedin = 'linkedinbio'
-
-# Get list of properties you want to have from contacts (internal name in HubSpot)
-properties_list = ["email", "firstname", "lastname", col_linkedin]
+# Enter Your Access Token
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
 ### Setup LinkedIn
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+If you are using the Chrome Extension:
+
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
+
+or <br>
+
+If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75) and set up the values below:
+- 🍪 li_at
+- 🍪 JSESSIONID
 
 
 ```python
-# LinkedIn cookies
-LI_AT = naas.secret.get("LI_AT")
-JSESSIONID = naas.secret.get("JSESSIONID")
+# Cookies
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
 
 # LinkedIn limit invitations up to 100 per week (Becareful !)
 LIMIT = 15

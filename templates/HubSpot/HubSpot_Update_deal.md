@@ -4,24 +4,28 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook update a deal in HubSpot.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter deal parameters to update
+#### Enter deal parameters to update
 
 
 ```python
@@ -35,7 +39,8 @@ hubspot_owner_id = None
 
 ## Model
 
-### With patch method
+### Update deal using patch method
+This method will allow you to update any deal properties available in your HubSpot.
 
 
 ```python
@@ -49,15 +54,15 @@ update_deal = {"properties":
                    }
                  }
 
-deal1 = hubspot.connect(HS_API_KEY).deals.patch(deal_id,
-                                                update_deal)
+deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.patch(deal_id,
+                                                     update_deal)
 ```
 
-### With update method
+### Update deal using update method
 
 
 ```python
-deal2 = hubspot.connect(HS_API_KEY).deals.update(
+deal2 = hubspot.connect(HS_ACCESS_TOKEN).deals.update(
     deal_id,
     dealname,
     dealstage,

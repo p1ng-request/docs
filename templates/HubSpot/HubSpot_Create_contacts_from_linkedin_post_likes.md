@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook create new contacts based on LinkedIn post likes.
+
 ## Input
 
 ### Import librairies
@@ -15,23 +17,35 @@ import naas
 import requests
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+# Enter Your Access Token
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Setup your LinkedIn
+### Setup LinkedIn
+If you are using the Chrome Extension:
 
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
+
+or <br>
+
+If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75) and set up the values below:
+- 🍪 li_at
+- 🍪 JSESSIONID
 
 
 ```python
-# Coookies
-LI_AT = "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2" # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = "ajax:837990740022038xxxxx" # EXAMPLE ajax:8379907400220387585
+# Cookies
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
 
 # Post URL
 POST_URL = "----"
@@ -93,7 +107,7 @@ def create_contacts_from_post(df,
                 }
                }
         print(data)
-        hubspot.connect(HS_API_KEY).contacts.send(data)
+        hubspot.connect(HS_ACCESS_TOKEN).contacts.send(data)
 ```
 
 ## Output

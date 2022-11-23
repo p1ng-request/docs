@@ -4,28 +4,55 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook get a deal from HubSpot using its ID. Data will be returned as json with keys: 
+- 'id': number,
+- 'properties': dict
+- 'createdAt': datetime
+- 'updatedAt': datetime
+- 'archived': boolean
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter your deal ID
+#### Enter your Deal ID
 
 
 ```python
-deal_id = '70915045'
+deal_id = 'ENTER_DEAL_ID_HERE' # "70915045"
+```
+
+#### Enter your Deal properties
+List of properties you want to get from deal.<br>
+By default, you will get: 
+- dealname
+- amount
+- dealstage
+- pipeline
+- createdate
+- closedate
+- hs_object_id
+- hs_lastmodifieddate
+
+
+```python
+properties = []
 ```
 
 ## Model
@@ -34,7 +61,7 @@ deal_id = '70915045'
 
 
 ```python
-deal = hubspot.connect(HS_API_KEY).deals.get(deal_id)
+deal = hubspot.connect(HS_ACCESS_TOKEN).deals.get(deal_id, properties)
 ```
 
 ## Output

@@ -4,28 +4,41 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description :** This notebook get all contacts from HubSpot. Data will be returned as dataframe with columns equal to properties.
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 from naas_drivers import hubspot
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_KEY = 'YOUR_HUBSPOT_API_KEY'
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Enter contact properties you want to be returned
+#### Define Contact properties
+List of properties you want to get from contact.<br>
+By default, you will get: 
+- email
+- firstname
+- lastname
+- createdate
+- lastmodifieddate
+- hs_object_id
 
 
 ```python
-properties_list = []
+properties = []
 ```
 
 ## Model
@@ -34,7 +47,7 @@ properties_list = []
 
 
 ```python
-df_contacts = hubspot.connect(HS_API_KEY).contacts.get_all(properties_list)
+df_contacts = hubspot.connect(HS_ACCESS_TOKEN).contacts.get_all(properties)
 ```
 
 ## Output

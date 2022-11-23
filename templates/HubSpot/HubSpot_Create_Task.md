@@ -4,6 +4,8 @@
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
+**Description:** This template will create a task in HubSpot. 
+
 ## Input
 
 ### Import libraries
@@ -13,17 +15,20 @@
 from datetime import datetime, timedelta
 import requests
 import json
+import naas
 ```
 
-### Setup your HubSpot
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+### Setup HubSpot
+👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
+#### Enter Your Access Token
 
 
 ```python
-HS_API_TOKEN = "YOUR_HUBSPOT_API_KEY" 
+HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-### Setup your task info
+#### Setup your task info
 
 
 ```python
@@ -37,7 +42,6 @@ asso_contactids=1551
 
 #Associated contact IDset due date for tasks in days
 time_delay = 10
-
 
 # Task data
 subject = "My Third task"
@@ -90,18 +94,16 @@ def create_task(owner_id,
         }
     })
     url = "https://api.hubapi.com/engagements/v1/engagements"
-    params = {"hapikey": HS_API_TOKEN}
-    headers = {'Content-Type': "application/json"}
+    headers = {
+        'Content-Type': "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+    }
     # Post requests
     res = requests.post(url,
                         data=payload,
-                        headers=headers,
-                        params=params)
+                        headers=headers)
     # Check requests
-    try:
-        res.raise_for_status()
-    except requests.HTTPError as e:
-        raise (e)
+    res.raise_for_status()
     res_json = res.json()
     
     # Fetch the task id of the current task created
@@ -121,9 +123,4 @@ create_task(owner_id,
             subject,
             body,
             status)
-```
-
-
-```python
-
 ```
