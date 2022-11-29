@@ -404,6 +404,7 @@
     * [Keep Columns](templates/Pandas/Pandas_Keep_Columns.md)
     * [Create dataframe from dict](templates/Pandas/Pandas_Create_dataframe_from_dict.md)
     * [Transform dataframe to dict](templates/Pandas/Pandas_Transform_dataframe_to_dict.md)
+    * [Rename Columns](templates/Pandas/Pandas_Rename_Columns.md)
     * [Merge Dataframes](templates/Pandas/Pandas_Merge_Dataframes.md)
     * [Pivot rows to columns](templates/Pandas/Pandas_Pivot_rows_to_columns.md)
     * [Fill emtpy values](templates/Pandas/Pandas_Fill_emtpy_values.md)
