@@ -406,6 +406,7 @@
     * [Transform dataframe to dict](templates/Pandas/Pandas_Transform_dataframe_to_dict.md)
     * [Merge Dataframes](templates/Pandas/Pandas_Merge_Dataframes.md)
     * [Pivot rows to columns](templates/Pandas/Pandas_Pivot_rows_to_columns.md)
+    * [Fill emtpy values](templates/Pandas/Pandas_Fill_emtpy_values.md)
     * [Convert datetime series](templates/Pandas/Pandas_Convert_datetime_series.md)
     * [Drop First column](templates/Pandas/Pandas_Drop_First_column.md)
     * [ISO Date Conversion](templates/Pandas/Pandas_ISO_Date_Conversion.md)
