@@ -103,6 +103,7 @@
     * [Create issue](templates/GitHub/GitHub_Create_issue.md)
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
     * [Peform basic actions](templates/GitHub/GitHub_Peform_basic_actions.md)
+    * [Github Create newsletter based on repository activity](templates/GitHub/Github_Create_newsletter_based_on_repository_activity.md)
     * [Get most starred repos](templates/GitHub/GitHub_Get_most_starred_repos.md)
     * [Get profiles from teams](templates/GitHub/GitHub_Get_profiles_from_teams.md)
     * [Get commits ranking from repository](templates/GitHub/GitHub_Get_commits_ranking_from_repository.md)
