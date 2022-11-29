@@ -1,16 +1,20 @@
 ---
-description: Send simple email from your notebooks
+Description: Send simple emails to anyone directly from your notebook.
 ---
 
 # 🛎 Notification
 
-{% hint style="info" %}
-In local you need to run the notification machine to make it work. refer to the doc to install it.
-{% endhint %}
+### Introduction:
+A notification is an alert sent to people.
+
+Run the notification machine to effortlessly send emails from your notebooks.
+
+Refer to the doc to install it.
+
 
 ## Text
 
-Send an email notification to anyone, notify about data changes, alert on notebooks operations, etc...&#x20;
+Refer the below code to send an alert to anyone about the data changes and other notebook operations.
 
 ```python
 import naas
@@ -22,6 +26,8 @@ naas.notification.send(email_to=email_to, subject=subject, html=content)
 ```
 
 ## **Attachments**
+
+Send the attachments from your notebook with minimal effort.
 
 ```python
 import naas
@@ -35,6 +41,8 @@ naas.notification.send(email_to=email_to, subject=subject, html=content, files=f
 
 ## HTML &#x20;
 
+Run the below script to send an image as hyperlink.
+
 ```python
 import naas
 email_to = "elon@musk.com"
@@ -46,6 +54,8 @@ naas.notification.send(email_to=email_to, subject=subject, html=content)
 ```
 
 ## Custom sender&#x20;
+
+Execute the below program to send emails to others from your mail ID
 
 ```python
 import naas
@@ -61,7 +71,7 @@ naas.notification.send(email_to=email_to, subject=subject, html=content, email_f
 
 ## List
 
-Allows retrieving the details of emails/notifications sent by the user.
+Retrieve details of all the emails or notifications sent to you by the user.
 
 ```python
 import naas
@@ -70,7 +80,7 @@ naas.notification.list()
 
 ## List all (Admin)
 
-Allows retrieving the details of emails/notifications sent by all users as admin.
+Retrieve the information of emails or notifications sent by users as an Admin
 
 ```python
 import naas
