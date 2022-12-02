@@ -401,6 +401,7 @@
   * [Pandas](templates/Pandas/README.md)
     * [Drop Columns](templates/Pandas/Pandas_Drop_Columns.md)
     * [Format number to string](templates/Pandas/Pandas_Format_number_to_string.md)
+    * [Check Columns type](templates/Pandas/Pandas_Check_Columns_type.md)
     * [Keep Columns](templates/Pandas/Pandas_Keep_Columns.md)
     * [Create dataframe from dict](templates/Pandas/Pandas_Create_dataframe_from_dict.md)
     * [Transform dataframe to dict](templates/Pandas/Pandas_Transform_dataframe_to_dict.md)
