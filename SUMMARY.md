@@ -456,6 +456,7 @@
   * [Python](templates/Python/README.md)
     * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
     * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
+    * [Create Strong Random Password](templates/Python/Python_Create_Strong_Random_Password.md)
     * [Using datetime library](templates/Python/Python_Using_datetime_library.md)
     * [Rename file](templates/Python/Python_Rename_file.md)
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
