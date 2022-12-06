@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook creates and save an image using Pillow. You can setup its width, height and background color.
+**Description:** This notebook creates and saves an image using Pillow. You can setup its width, height and background color.
 
 <u>References:</u>
 - https://holypython.com/python-pil-tutorial/how-to-create-a-new-image-with-pil/
@@ -33,7 +33,7 @@ output_image = "new_image.png"
 
 ## Model
 
-### Create output image
+### Create new image
 
 
 ```python

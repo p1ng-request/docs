@@ -415,6 +415,7 @@
     * [ISO Date Conversion](templates/Pandas/Pandas_ISO_Date_Conversion.md)
     * [Create Pivot Table](templates/Pandas/Pandas_Create_Pivot_Table.md)
   * [Pillow](templates/Pillow/README.md)
+    * [Create indicator](templates/Pillow/Pillow_Create_indicator.md)
     * [Generate A Certificate Template](templates/Pillow/Pillow_Generate_A_Certificate_Template.md)
     * [Create new image](templates/Pillow/Pillow_Create_new_image.md)
     * [Add data to image](templates/Pillow/Pillow_Add_data_to_image.md)
