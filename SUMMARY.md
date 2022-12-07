@@ -116,6 +116,7 @@
     * [Download file from url](templates/GitHub/GitHub_Download_file_from_url.md)
     * [Get pull requests from repository](templates/GitHub/GitHub_Get_pull_requests_from_repository.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
+    * [Clone repository](templates/GitHub/GitHub_Clone_repository.md)
     * [Read issue](templates/GitHub/GitHub_Read_issue.md)
   * [Gmail](templates/Gmail/README.md)
     * [Clean mailbox](templates/Gmail/Gmail_Clean_mailbox.md)
