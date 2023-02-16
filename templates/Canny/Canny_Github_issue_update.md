@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu)
 
+**Description:** This notebook provides an automated way to keep track of Github issues and their updates.
+
 ## Input
 
 ### Install package
@@ -26,13 +28,15 @@ from github import Github
 
 
 ```python
-# For Github 
-gihub_personal_token = "YOUR_GITHUB_TOKEN"                        # Settings/Developer settings/Personal access tokens
-github_repo = "optimusprime2021/api-tester"                       # Github repository name
+# For Github
+gihub_personal_token = (
+    "YOUR_GITHUB_TOKEN"  # Settings/Developer settings/Personal access tokens
+)
+github_repo = "optimusprime2021/api-tester"  # Github repository name
 
 # For Canny
-canny_post_url = "https://canny.io/api/v1/posts/list"             # Canny post url
-canny_apikey = "CANNY_API_KEY"                                    # Canny api key
+canny_post_url = "https://canny.io/api/v1/posts/list"  # Canny post url
+canny_apikey = "CANNY_API_KEY"  # Canny api key
 ```
 
 ## Model
@@ -42,8 +46,8 @@ canny_apikey = "CANNY_API_KEY"                                    # Canny api ke
 
 ```python
 response = requests.get(canny_post_url)
-data = {"apiKey":canny_apikey,"id":"","limit":"100"}
-response = requests.post(canny_post_url,data)
+data = {"apiKey": canny_apikey, "id": "", "limit": "100"}
+response = requests.post(canny_post_url, data)
 post_details = response.json()
 ```
 
@@ -63,9 +67,10 @@ elif response.status_code == 404:
 
 ```python
 import pandas as pd
-pd.set_option('mode.chained_assignment', None)
-dd = post_details['posts']
-df = pd.DataFrame(columns = dd[0].keys()) 
+
+pd.set_option("mode.chained_assignment", None)
+dd = post_details["posts"]
+df = pd.DataFrame(columns=dd[0].keys())
 for i in range(len(dd)):
     df = df.append(dd[i], ignore_index=True)
 # df
@@ -74,22 +79,22 @@ board = []
 category = []
 tags = []
 for i in range(len(df)):
-    board.append(df['board'][i]['name'])
-    if not df['category'][i]:
-        category.append('Not assigned')
+    board.append(df["board"][i]["name"])
+    if not df["category"][i]:
+        category.append("Not assigned")
     else:
-        category.append(df['category'][i]['name'])    
-    if not df['tags'][i]:
-        tags.append('Not assigned')
+        category.append(df["category"][i]["name"])
+    if not df["tags"][i]:
+        tags.append("Not assigned")
     else:
-        tags.append(df['tags'][i][0]['name'])
-        
-        
-df = df[['title','status','details','url']]
-df['board'] = board
-df['category'] = category
-df['tags'] = tags
-df = df[(df["tags"] == "Awesome-notebooks")]          # tag name
+        tags.append(df["tags"][i][0]["name"])
+
+
+df = df[["title", "status", "details", "url"]]
+df["board"] = board
+df["category"] = category
+df["tags"] = tags
+df = df[(df["tags"] == "Awesome-notebooks")]  # tag name
 df
 ```
 
@@ -105,7 +110,7 @@ df
 issues = []
 g = Github(gihub_personal_token)
 repo = g.get_repo(github_repo)
-open_issues = repo.get_issues(state='open')
+open_issues = repo.get_issues(state="open")
 for issue in open_issues:
     issues.append(issue.title)
 ```
@@ -118,8 +123,11 @@ for issue in open_issues:
 ```python
 repo = g.get_repo(github_repo)
 for i in df.index:
-    if df['title'][i] not in issues:
-        repo.create_issue(title=df['title'][i], body=df['details'][i]+"\n canny url: "+df['url'][i])
+    if df["title"][i] not in issues:
+        repo.create_issue(
+            title=df["title"][i],
+            body=df["details"][i] + "\n canny url: " + df["url"][i],
+        )
 ```
 
 ### Close all issues

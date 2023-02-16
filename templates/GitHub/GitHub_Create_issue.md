@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides instructions on how to create an issue on GitHub.
+
 ## Input
 
 ### Import library
@@ -17,11 +19,11 @@ from github import Github
 
 
 ```python
-repo_name = "**********"                                           # Repository path
-git_key = "**********"                                             # Settings/Developer settings
-assignee = "**********"                                            # Asignee name (optional) or put ""
-issue_title = "This is a another issue"                            # Issue title
-issue_description = "This is another issue body created using api" # Issue description
+repo_name = "**********"  # Repository path
+git_key = "**********"  # Settings/Developer settings
+assignee = "**********"  # Asignee name (optional) or put ""
+issue_title = "This is a another issue"  # Issue title
+issue_description = "This is another issue body created using api"  # Issue description
 ```
 
 ## Model
@@ -30,7 +32,7 @@ issue_description = "This is another issue body created using api" # Issue descr
 
 
 ```python
-g = Github(git_key)   
+g = Github(git_key)
 ```
 
 ## Output
@@ -40,5 +42,5 @@ g = Github(git_key)
 
 ```python
 repo = g.get_repo(repo_name)
-repo.create_issue(title = issue_title, body = issue_description, assignee = assignee)
+repo.create_issue(title=issue_title, body=issue_description, assignee=assignee)
 ```

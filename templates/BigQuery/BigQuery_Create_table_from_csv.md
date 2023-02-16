@@ -4,7 +4,7 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
-This notebook loads data from a CSV file into a BigQuery table (the table will be created if it is not available already)
+**Description:** This notebook demonstrates how to create a BigQuery table from a CSV file.
 
 ## Input
 
@@ -19,11 +19,11 @@ from naas_drivers import bigquery
 
 
 ```python
-service_account_file = 'big-query-777777-ffffff777777.json'
-project_id = 'big-query-777777'
-dataset = 'example_ds'
-table_name = 'iris'
-csv_file = 'iris.csv'
+service_account_file = "big-query-777777-ffffff777777.json"
+project_id = "big-query-777777"
+dataset = "example_ds"
+table_name = "iris"
+csv_file = "iris.csv"
 ```
 
 ## Model

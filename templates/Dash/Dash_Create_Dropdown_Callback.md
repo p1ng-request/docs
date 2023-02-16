@@ -42,24 +42,26 @@ DASH_PORT = 8050
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+)
 
 app.layout = html.Div(
     [
-        dcc.Dropdown(['NYC', 'MTL', 'SF'], 'NYC', id='demo-dropdown'),
-        html.Div(id='dd-output-container')
+        dcc.Dropdown(["NYC", "MTL", "SF"], "NYC", id="demo-dropdown"),
+        html.Div(id="dd-output-container"),
     ]
 )
 
+
 @app.callback(
-    Output('dd-output-container', 'children'),
-    Input('demo-dropdown', 'value')
+    Output("dd-output-container", "children"), Input("demo-dropdown", "value")
 )
 def update_output(value):
-    return f'You have selected {value}'
+    return f"You have selected {value}"
 ```
 
 ## Output
@@ -68,6 +70,6 @@ def update_output(value):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

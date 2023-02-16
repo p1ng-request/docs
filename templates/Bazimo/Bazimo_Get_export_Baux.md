@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides an easy way to export data from Baux, allowing users to quickly and efficiently access their data.
+
 ## Input
 
 ### Import library
@@ -36,7 +38,7 @@ csv_output = f"Export_{bazimo_export}.csv"
 # Get your data updated everyday 15 min from 9 to 20 during week days.
 naas.scheduler.add(cron="*/15 9-20 * * 1-5")
 
-#-> Uncomment this line and run the cell to delete your scheduler
+# -> Uncomment this line and run the cell to delete your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -66,6 +68,6 @@ df_bazimo.to_csv(csv_output)
 ```python
 naas.asset.add(csv_output)
 
-#-> Uncomment this line and run the cell to delete your asset
+# -> Uncomment this line and run the cell to delete your asset
 # naas.asset.delete(csv_output)
 ```

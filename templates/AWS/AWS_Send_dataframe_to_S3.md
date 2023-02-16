@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
-Reference : [AWS Data Wrangler](https://github.com/awslabs/aws-data-wrangler)
+**Description:** This notebook demonstrates how to use AWS to send a dataframe to an S3 bucket.
 
 ## Input
 
@@ -49,11 +49,13 @@ BUCKET_PATH = f"s3://naas-data-lake/dataset/"
 
 
 ```python
-df = pd.DataFrame({
-    "id": [1, 2],
-    "value": ["foo", "boo"],
-    "date": [date(2020, 1, 1), date(2020, 1, 2)]
-})
+df = pd.DataFrame(
+    {
+        "id": [1, 2],
+        "value": ["foo", "boo"],
+        "date": [date(2020, 1, 1), date(2020, 1, 2)],
+    }
+)
 
 # Display dataframe
 df
@@ -69,10 +71,5 @@ Wrangler has 3 different write modes to store Parquet Datasets on Amazon S3.
 
 
 ```python
-wr.s3.to_parquet(
-    df=df,
-    path=BUCKET_PATH,
-    dataset=True,
-    mode="overwrite"
-)
+wr.s3.to_parquet(df=df, path=BUCKET_PATH, dataset=True, mode="overwrite")
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a guide to reading and manipulating CSV files.
+
 ## Input
 
 ### Import library
@@ -38,5 +40,5 @@ df = pandas.read_csv(csv_path)
 
 
 ```python
-df.head(5) #read the first 5 lines
+df.head(5)  # read the first 5 lines
 ```

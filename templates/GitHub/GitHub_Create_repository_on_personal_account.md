@@ -4,7 +4,7 @@
 
 **Author:** [Kanishk Pareek](https://in.linkedin.com/in/kanishkpareek/)
 
-This notebook enables the creation of a repository on a Github personal account.
+**Description:** This notebook provides instructions on how to create a repository on a personal GitHub account.
 
 ## Input
 
@@ -29,7 +29,7 @@ github_token = "**********"
 # Enter your repo name that you want to create
 repo_name = "test"
 
-#Enter Your repo description
+# Enter Your repo description
 repo_description = "This is another repo"
 ```
 
@@ -37,8 +37,12 @@ repo_description = "This is another repo"
 
 
 ```python
-payload = {'name': repo_name, 'description': repo_description, 'auto_init': 'true'}
-repo_request = requests.post('https://api.github.com/' + 'user/repos', auth=(user_name,github_token), data=json.dumps(payload))
+payload = {"name": repo_name, "description": repo_description, "auto_init": "true"}
+repo_request = requests.post(
+    "https://api.github.com/" + "user/repos",
+    auth=(user_name, github_token),
+    data=json.dumps(payload),
+)
 ```
 
 ## Output
@@ -50,5 +54,5 @@ if repo_request.status_code == 422:
 elif repo_request.status_code == 201:
     print("Github repo has created successfully.")
 elif repo_request.status_code == 401:
-    print("You are unauthorized user for this action.") 
+    print("You are unauthorized user for this action.")
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a guide to retrieving legal data from data.gouv.fr for businesses.
+
 ## Input
 
 ### Import libraries
@@ -33,7 +35,8 @@ def get_info(siren):
     res = requests.get(req_url)
     res.raise_for_status
     return res.json()
-    
+
+
 data = get_info(SIREN)
 ```
 

@@ -44,26 +44,22 @@ DASH_PORT = 8050
 
 ```python
 sample_data = {
-    'series': {
-        'data': [
-            {'title': 'Game of Thrones', 'score': 9.5},
-            {'title': 'Stranger Things', 'score': 8.9},
-            {'title': 'Vikings', 'score': 8.6}
+    "series": {
+        "data": [
+            {"title": "Game of Thrones", "score": 9.5},
+            {"title": "Stranger Things", "score": 8.9},
+            {"title": "Vikings", "score": 8.6},
         ],
-        'style': {
-            'backgroundColor': '#ff998a'
-        }
+        "style": {"backgroundColor": "#ff998a"},
     },
-    'movies': {
-        'data': [
-            {'title': 'Rambo', 'score': 7.7},
-            {'title': 'The Terminator', 'score': 8.0},
-            {'title': 'Alien', 'score': 8.5}
+    "movies": {
+        "data": [
+            {"title": "Rambo", "score": 7.7},
+            {"title": "The Terminator", "score": 8.0},
+            {"title": "Alien", "score": 8.5},
         ],
-        'style': {
-            'backgroundColor': '#fff289'
-        }
-    }
+        "style": {"backgroundColor": "#fff289"},
+    },
 }
 ```
 
@@ -72,67 +68,64 @@ sample_data = {
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+)
 
 app.layout = html.Div(
     [
-        html.H1('Multi output example'),
+        html.H1("Multi output example"),
         dcc.Dropdown(
-            id='data-dropdown',
+            id="data-dropdown",
             options=[
-                 {'label': 'Movies', 'value': 'movies'},
-                 {'label': 'Series', 'value': 'series'}
+                {"label": "Movies", "value": "movies"},
+                {"label": "Series", "value": "series"},
             ],
-            value='movies'
+            value="movies",
         ),
         html.Div(
             [
-                dcc.Graph(id='graph'),
+                dcc.Graph(id="graph"),
                 dt.DataTable(
-                    id='data-table',
+                    id="data-table",
                     columns=[
-                        {'name': 'Title', 'id': 'title'},
-                        {'name': 'Score', 'id': 'score'}
-                    ]
-                )
+                        {"name": "Title", "id": "title"},
+                        {"name": "Score", "id": "score"},
+                    ],
+                ),
             ]
-        )
+        ),
     ],
-    id='container'
+    id="container",
 )
+
 
 @app.callback(
     [
-        Output('graph', 'figure'),
-        Output('data-table', 'data'),
-        Output('data-table', 'columns'),
-        Output('container', 'style')
+        Output("graph", "figure"),
+        Output("data-table", "data"),
+        Output("data-table", "columns"),
+        Output("container", "style"),
     ],
-    [
-        Input('data-dropdown', 'value')
-    ]
+    [Input("data-dropdown", "value")],
 )
-
 def multi_outputs(value):
     if value is None:
         raise PreventUpdate
-    
+
     # Display table data
     selected = sample_data[value]
-    data = selected['data']
-    columns = [{'name': k.capitalize(), 'id': k} for k in data[0].keys()]
-    
+    data = selected["data"]
+    columns = [{"name": k.capitalize(), "id": k} for k in data[0].keys()]
+
     # Display figure
     figure = go.Figure(
-        data=[
-            go.Bar(x=[x['score']], text=x['title'], name=x['title'])
-            for x in data
-        ]
+        data=[go.Bar(x=[x["score"]], text=x["title"], name=x["title"]) for x in data]
     )
-    return figure, data, columns, selected['style']
+    return figure, data, columns, selected["style"]
 ```
 
 ## Output
@@ -141,7 +134,7 @@ def multi_outputs(value):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```
 

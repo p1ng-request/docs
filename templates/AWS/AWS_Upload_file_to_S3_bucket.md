@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
+**Description:** This notebook provides instructions on how to upload a file to an Amazon Web Services (AWS) S3 bucket, allowing for secure storage and easy access to the file. It is a simple and efficient way to store and manage data in the cloud.
+
 ## Input
 
 ### Import library
@@ -25,7 +27,7 @@ ACCESS_KEY_ID = "**********"
 SECRET_ACCESS_KEY = "**********"
 
 BUCKET_NAME = "naas-example"
-BUCKET_OBJECT_KEY = 'naas_happy_hour.mp3'
+BUCKET_OBJECT_KEY = "naas_happy_hour.mp3"
 ```
 
 ## Model
@@ -34,9 +36,9 @@ BUCKET_OBJECT_KEY = 'naas_happy_hour.mp3'
 
 
 ```python
-s3 = boto3.client('s3',
-                  aws_access_key_id=ACCESS_KEY_ID,
-                  aws_secret_access_key=SECRET_ACCESS_KEY)
+s3 = boto3.client(
+    "s3", aws_access_key_id=ACCESS_KEY_ID, aws_secret_access_key=SECRET_ACCESS_KEY
+)
 ```
 
 ## Output

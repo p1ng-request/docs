@@ -4,8 +4,7 @@
 
 **Author:** [Anthony Monthe](https://www.linkedin.com/in/anthonymonthe/)
 
-With this notebook, you will be able to get a table of all the major VMs using RAM and CPU as an input, and get all the pricing and billing options as output.<br>
-*Disclaimer: prices are the latest collected by Cloud-Mercato*
+**Description:** Cloud Mercato is an online platform that allows users to compare virtual machine pricing from different cloud providers.
 
 ## Input
 
@@ -27,7 +26,7 @@ import naas
 
 ```python
 # Input
-CPU = 4 #  in CPU number
+CPU = 4  #  in CPU number
 RAM = 2  # in GB
 # Anonymous users are limited
 TOKEN = None
@@ -71,9 +70,9 @@ COLUMN_PARAMS = {
 FILTER_PARAMS = {
     "cpu_number_min": CPU,
     "cpu_number_max": CPU,
-    "ram_min": RAM-1,
-    "ram_max": RAM+1,
-    "currency-currency": "USD"
+    "ram_min": RAM - 1,
+    "ram_max": RAM + 1,
+    "currency-currency": "USD",
 }
 ```
 
@@ -87,12 +86,17 @@ params.update(FILTER_PARAMS)
 
 headers = {}
 if TOKEN:
-    headers['Authorization'] = 'Token %s' % TOKEN
+    headers["Authorization"] = "Token %s" % TOKEN
 
-response = requests.get('https://p2p.cloud-mercato.com/flavors/csv', params=params, headers=headers, stream=True)
+response = requests.get(
+    "https://p2p.cloud-mercato.com/flavors/csv",
+    params=params,
+    headers=headers,
+    stream=True,
+)
 if response.status_code == 429:
     raise Exception("Download is limited for free users. Please wait or subscribe.")
-    
+
 df = pd.read_csv(response.raw)
 
 print("Shape: ", df.shape)
@@ -114,6 +118,6 @@ df.to_csv(csv_output, index=False)
 ```python
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete()
 ```

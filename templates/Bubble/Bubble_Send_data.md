@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
+**Description:** This notebook allows users to easily send data through a secure, cloud-based platform.
+
 ## Input
 
 ### Import library
@@ -18,9 +20,7 @@ from naas_drivers import bubble
 
 ```python
 url = "https://appname.bubbleapps.io/api/1.1/wf/endpoint_name"
-data = {"first_name":"Bryan",
-        "last_name":"Helmig",
-        "age": 27 }
+data = {"first_name": "Bryan", "last_name": "Helmig", "age": 27}
 ```
 
 ## Model

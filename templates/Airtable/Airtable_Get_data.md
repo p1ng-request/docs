@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides an introduction to Airtable, a cloud-based database platform that allows users to easily access and manage data. It provides step-by-step instructions on how to get data from Airtable into a notebook for further analysis.
+
 ## Input
 
 ### Import library
@@ -17,9 +19,9 @@ from naas_drivers import airtable
 
 
 ```python
-API_KEY = 'API_KEY'
-BASE_KEY = 'BASE_KEY'
-TABLE_NAME = 'TABLE_NAME'
+API_KEY = "API_KEY"
+BASE_KEY = "BASE_KEY"
+TABLE_NAME = "TABLE_NAME"
 ```
 
 ## Model
@@ -28,10 +30,9 @@ TABLE_NAME = 'TABLE_NAME'
 
 
 ```python
-df = airtable.connect(API_KEY,
-                                   BASE_KEY, 
-                                   TABLE_NAME).get(view='All opportunities',
-                                                   maxRecords=20)
+df = airtable.connect(API_KEY, BASE_KEY, TABLE_NAME).get(
+    view="All opportunities", maxRecords=20
+)
 ```
 
 ## Output

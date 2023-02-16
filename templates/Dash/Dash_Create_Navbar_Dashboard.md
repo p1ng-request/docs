@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-A simple app demonstrating how to create a dashboard navbar with 2 dropdowns.
+**Description:** This notebook allows users to create a customizable navigation bar for their website or application.
 
 ## Input
 
@@ -40,17 +40,12 @@ PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
 
 ```python
-entities = [
-    "Entity1",
-    "Entity2",
-    "Entity3",
-    "Entity4"
-]
+entities = ["Entity1", "Entity2", "Entity3", "Entity4"]
 
 dropdown_entity = dcc.Dropdown(
-    id='entity',
-    options=[{'label': i, 'value': i} for i in entities],
-    placeholder='Entity',
+    id="entity",
+    options=[{"label": i, "value": i} for i in entities],
+    placeholder="Entity",
     value=entities[0],
 )
 ```
@@ -59,17 +54,12 @@ dropdown_entity = dcc.Dropdown(
 
 
 ```python
-scenarios = [
-    "2022",
-    "2021",
-    "2020",
-    "2019"
-]
+scenarios = ["2022", "2021", "2020", "2019"]
 
 dropdown_scenario = dcc.Dropdown(
-    id='scenario',
-    options=[{'label': i, 'value': i} for i in scenarios],
-    placeholder='Scenario',
+    id="scenario",
+    options=[{"label": i, "value": i} for i in scenarios],
+    placeholder="Scenario",
     value=scenarios[0],
 )
 ```
@@ -103,10 +93,10 @@ navbar = dbc.Navbar(
                                 html.Div(className="w-100"),
                                 html.Div(className="w-100"),
                                 html.Div(dropdown_entity, className="w-100"),
-                                html.Div(dropdown_scenario, className="w-100")
+                                html.Div(dropdown_scenario, className="w-100"),
                             ],
-                            className="pt-1 pb-1 d-grid gap-2 d-md-flex w-100")
-
+                            className="pt-1 pb-1 d-grid gap-2 d-md-flex w-100",
+                        )
                     ],
                     className="ms-auto w-100",
                     navbar=True,
@@ -127,16 +117,15 @@ navbar = dbc.Navbar(
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
-
-app.layout = html.Div(
-    [
-        navbar
-    ]
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
 )
+
+app.layout = html.Div([navbar])
+
 
 @app.callback(
     Output("navbar-collapse", "is_open"),
@@ -155,6 +144,6 @@ def toggle_navbar_collapse(n, is_open):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

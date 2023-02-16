@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Create your Navbar search like Google using Dash App.
+**Description:** This notebook provides a tutorial on how to create a searchable navigation bar using the Dash library.
 
 ## Input
 
@@ -50,15 +50,12 @@ naas_logo_url = "https://github.com/jupyter-naas/naas-search-insights/blob/9ade3
 
 ```python
 input_search = dcc.Input(
-                    id="result",
-                    type="search",
-                    className="form-control rounded-pill",
-                    placeholder=placeholder,
-                    style={
-                        'marginRight':'10px',
-                        "padding-left": "20px"
-                    }
-                )
+    id="result",
+    type="search",
+    className="form-control rounded-pill",
+    placeholder=placeholder,
+    style={"marginRight": "10px", "padding-left": "20px"},
+)
 ```
 
 #### Create Navbar
@@ -73,25 +70,18 @@ navbar = dbc.Navbar(
                     src=naas_logo_url,
                     height="30px",
                     style={
-                        'marginLeft': 'auto',
-                        'marginRight': 'auto',
-                        'display': 'block',
-                    }
+                        "marginLeft": "auto",
+                        "marginRight": "auto",
+                        "display": "block",
+                    },
                 ),
                 xs=12,
                 sm=12,
                 md=2,
                 lg=2,
-                xl=2
+                xl=2,
             ),
-            dbc.Col(
-                input_search,
-                xs=12,
-                sm=12,
-                md=10,
-                lg=10,
-                xl=8
-            ),
+            dbc.Col(input_search, xs=12, sm=12, md=10, lg=10, xl=8),
             dbc.Col(
                 xs=0,
                 sm=0,
@@ -100,16 +90,13 @@ navbar = dbc.Navbar(
                 xl=2,
             ),
         ],
-        style={
-            "display": "contents"
-        },
+        style={"display": "contents"},
         align="center",
         className="g-3",
     ),
     color="white",
     dark=True,
     className="navbar border-bottom border-light",
-
 )
 ```
 
@@ -118,10 +105,12 @@ navbar = dbc.Navbar(
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+)
 app.title = APP_TITLE
 app.layout = html.Div(
     [
@@ -136,6 +125,6 @@ app.layout = html.Div(
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

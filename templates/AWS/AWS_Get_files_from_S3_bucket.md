@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
+**Description:** This notebook provides a step-by-step guide to retrieving files from an Amazon Web Services (AWS) S3 bucket, allowing users to easily access their data stored in the cloud.
+
 ## Input
 
 ### Install packages
@@ -28,7 +30,7 @@ ACCESS_KEY_ID = "**********"
 SECRET_ACCESS_KEY = "**********"
 
 BUCKET_NAME = "naas-example"
-BUCKET_OBJECT_KEY = 'naas_happy_hour.mp3'
+BUCKET_OBJECT_KEY = "naas_happy_hour.mp3"
 ```
 
 ## Model
@@ -37,7 +39,9 @@ BUCKET_OBJECT_KEY = 'naas_happy_hour.mp3'
 
 
 ```python
-s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY_ID, aws_secret_access_key=SECRET_ACCESS_KEY)
+s3 = boto3.client(
+    "s3", aws_access_key_id=ACCESS_KEY_ID, aws_secret_access_key=SECRET_ACCESS_KEY
+)
 fileObj = s3.get_object(Bucket=bucketname, Key=filename)
 ```
 
@@ -45,7 +49,11 @@ fileObj = s3.get_object(Bucket=bucketname, Key=filename)
 
 
 ```python
-file_url = s3.generate_presigned_url("get_object", Params={"Bucket": BUCKET_NAME, "Key": BUCKET_OBJECT_KEY}, ExpiresIn=604800)
+file_url = s3.generate_presigned_url(
+    "get_object",
+    Params={"Bucket": BUCKET_NAME, "Key": BUCKET_OBJECT_KEY},
+    ExpiresIn=604800,
+)
 ```
 
 ## Output

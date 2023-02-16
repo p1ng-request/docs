@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/jeremyravenel/)
 
-This notebook enables you to deploy a Dash app using Naas proxy.
+**Description:** This notebook provides a step-by-step guide to deploying an app with Dash on Naas.
 
 ## Input
 
@@ -42,19 +42,21 @@ DASH_PORT = 8050
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+)
 
-#app = dash.Dash() if you are not in Naas
+# app = dash.Dash() if you are not in Naas
 ```
 
 ### Get stock prices
 
 
 ```python
-df = px.data.stocks() #reading stock price dataset
+df = px.data.stocks()  # reading stock price dataset
 print("Data fetched:", len(df))
 df.head(1)
 ```
@@ -64,25 +66,24 @@ df.head(1)
 
 ```python
 def stock_prices(ticker, label):
-    # Function for creating line chart showing Google stock prices over time 
+    # Function for creating line chart showing Google stock prices over time
     fig = go.Figure(
         [
             go.Scatter(
-                x=df['date'],
+                x=df["date"],
                 y=df[ticker],
-                line=dict(color='firebrick', width=4),
-                name=label
+                line=dict(color="firebrick", width=4),
+                name=label,
             )
         ]
     )
     fig.update_layout(
-        title='Prices over time',
-        xaxis_title='Dates',
-        yaxis_title='Prices'
+        title="Prices over time", xaxis_title="Dates", yaxis_title="Prices"
     )
     return fig
 
-fig = stock_prices(ticker='GOOG', label="Google")
+
+fig = stock_prices(ticker="GOOG", label="Google")
 fig
 ```
 
@@ -91,22 +92,15 @@ fig
 
 ```python
 app.layout = html.Div(
-    id ='parent',
+    id="parent",
     children=[
         html.H1(
-            id='H1',
-            children='Deploy a Dash app in Naas',
-            style = {
-                'textAlign': 'center',
-                'marginTop': 40,
-                'marginBottom': 40
-            }
+            id="H1",
+            children="Deploy a Dash app in Naas",
+            style={"textAlign": "center", "marginTop": 40, "marginBottom": 40},
         ),
-        dcc.Graph(
-            id='line_plot', 
-            figure=fig
-        )    
-    ]
+        dcc.Graph(id="line_plot", figure=fig),
+    ],
 )
 ```
 
@@ -116,7 +110,7 @@ app.layout = html.Div(
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```
 

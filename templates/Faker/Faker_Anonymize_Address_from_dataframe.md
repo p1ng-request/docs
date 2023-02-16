@@ -4,13 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Faker is a Python package that generates fake data for you.<br>
-Whether you need to bootstrap your database, create good-looking XML documents, fill-in your persistence to stress test it, or anonymize data taken from a production service, Faker is for you.<br>
-This notebook shows how to anonymize address from a column within a dataframe.
-
-<u>References:</u>
-- https://pypi.org/project/Faker/
-- https://towardsdatascience.com/how-to-quickly-anonymize-personal-names-in-python-6e78115a125b
+**Description:** This notebook provides a way to anonymize address data from a dataframe using the Faker library.
 
 ## Input
 
@@ -59,7 +53,7 @@ Through use of the `.unique` property on the generator, you can guarantee that a
 ```python
 def fake_address(df, col_name):
     dict_names = {name: faker.unique.address() for name in df[col_name].unique()}
-    df['New Address'] = df[col_name].map(dict_names)
+    df["New Address"] = df[col_name].map(dict_names)
     return df
 ```
 

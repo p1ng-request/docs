@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-This notebook enables you to perform efficient queries on Abstract API using streaming techniques that temporarily store results and then transform them into a DataFrame at the end of the process.
+**Description:** This notebook provides a way to get the geolocation of an IP address using the AbstractAPI service.
 
 ## Input
 
@@ -58,8 +58,8 @@ ip_addresses = []
 
 for x in range(1, 41):
     for y in range(1, 251):
-        ip_addresses.append({'ip': f'77.205.{x}.{y}'})
-        
+        ip_addresses.append({"ip": f"77.205.{x}.{y}"})
+
 df = pd.DataFrame(ip_addresses)
 df
 ```
@@ -107,27 +107,33 @@ This function will be the worker taking jobs and calling the api.
 def limit_me():
     pass
 
+
 # We pre compute the url to only append the ip in the worker to not "format" the string everytime, doing this is 10 time faster.
-pre_computed_url = "https://ipgeolocation.abstractapi.com/v1/?api_key={API_KEY}&ip_address=".format(API_KEY = API_KEY)
+pre_computed_url = (
+    "https://ipgeolocation.abstractapi.com/v1/?api_key={API_KEY}&ip_address=".format(
+        API_KEY=API_KEY
+    )
+)
+
 
 def job_worker():
     # Initialize requests session.
     s = requests.Session()
-    
+
     while True:
         # Wait for a job to be availabe.
         item = job_queue.get()
-        
+
         # Limit
         limit_me()
-        
+
         try:
             # Query the api with our existing session.
             response = s.get(pre_computed_url + item)
-            
+
             # Raise for status if we have an error.
             response.raise_for_status()
-            
+
             # Send the result to the results_queue.
             results_queue.put(response.text)
         except Exception as e:
@@ -136,19 +142,18 @@ def job_worker():
                 redrive_queue.put(1)
             else:
                 print(e)
-                dead_letter_queue.put({
-                    'item': item,
-                    'error': e
-                })
+                dead_letter_queue.put({"item": item, "error": e})
                 ended_queue.put(1)
         job_queue.task_done()
-        
+
 
 workers = []
-        
+
+
 def start_a_new_worker():
-    print('🚀 Starting a new worker')
+    print("🚀 Starting a new worker")
     workers.append(threading.Thread(target=job_worker, daemon=True).start())
+
 
 # Start minimal workers count.
 for i in range(0, MIN_WORKERS):
@@ -170,15 +175,16 @@ def result_worker():
     while True:
         try:
             result = results_queue.get(block=True, timeout=10)
-            f.write(result + '\n')
+            f.write(result + "\n")
             results_queue.task_done()
             ended_queue.put(1)
         # We should except _queue.empty here instead of catching a generic exception.
         # It's fine for now.2
         except Exception as e:
-            print('Leaving result_worker')
+            print("Leaving result_worker")
             break
     f.close()
+
 
 # Start the result worker
 threading.Thread(target=result_worker, daemon=True).start()
@@ -195,24 +201,27 @@ It can also start new workers if we are not reaching the `CALL_PER_SECOND` targe
 def monitor_limiter():
     pass
 
+
 def queue_monitor():
     prev_queue_size = 0
     while True:
         ended_queue_size = ended_queue.qsize()
         jobs_per_seq = ended_queue_size - prev_queue_size
-        
+
         workers_number = len(workers)
         if jobs_per_seq < CALL_PER_SECOND and workers_number < MAX_WORKERS:
             start_a_new_worker()
-            
-        print(f"#jobqsize[{job_queue.qsize()}] #resultsqsize[{results_queue.qsize()}] #redriveqsize[{redrive_queue.qsize()}] #deadletterqsize[{dead_letter_queue.qsize()}] | ✅ {ended_queue.qsize()}/{nbr_of_jobs} jobs completed. ⚡ {jobs_per_seq}/sec. 👷‍♂️ Running workers: {workers_number}")
-        
+
+        print(
+            f"#jobqsize[{job_queue.qsize()}] #resultsqsize[{results_queue.qsize()}] #redriveqsize[{redrive_queue.qsize()}] #deadletterqsize[{dead_letter_queue.qsize()}] | ✅ {ended_queue.qsize()}/{nbr_of_jobs} jobs completed. ⚡ {jobs_per_seq}/sec. 👷‍♂️ Running workers: {workers_number}"
+        )
+
         prev_queue_size = ended_queue_size
-        
+
         if ended_queue_size >= nbr_of_jobs:
-            print('Jobs completed. Shuting down monitor.')
+            print("Jobs completed. Shuting down monitor.")
             return
-        
+
         monitor_limiter()
 ```
 
@@ -239,7 +248,7 @@ while True:
     print(nbr_of_jobs, ended_queue.qsize())
     time.sleep(0.1)
 
-print('🎉 All API calls has been completed!')
+print("🎉 All API calls has been completed!")
 ```
 
 ## Output
@@ -251,7 +260,7 @@ Load all results from the `RESULT_TMP_FILE` and load them in a Pandas DataFrame.
 results = []
 
 # Open file
-with open(RESULT_TMP_FILE, 'r') as results_file:
+with open(RESULT_TMP_FILE, "r") as results_file:
     # Read line by line
     for line in results_file:
         # Load json into results list

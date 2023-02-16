@@ -4,7 +4,7 @@
 
 **Author:** [Oguz Akif Tufekcioglu](https://www.linkedin.com/in/oguzakiftufekcioglu/)
 
-This notebook enables you to generate plotly plots with clickable data points that sends to their urls in the dataframe.
+**Description:** This notebook provides an interactive way to explore data with Dash and Plotly, allowing users to create dynamic links between visualizations.
 
 ## Input
 
@@ -46,20 +46,22 @@ DASH_PORT = 8050
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+)
 
 # if you are not in Naas
-# app = dash.Dash() 
+# app = dash.Dash()
 ```
 
 ### Get stock prices
 
 
 ```python
-df = px.data.stocks() #reading stock price dataset
+df = px.data.stocks()  # reading stock price dataset
 print("Data fetched:", len(df))
 df.head()
 ```
@@ -78,37 +80,27 @@ df.head()
 
 ```python
 app.layout = html.Div(
-    id ='parent',
+    id="parent",
     children=[
         html.H1(
-            id='H1',
-            children='Dynamic link on label click on plotly chart python',
-            style = {
-                'textAlign': 'center',
-                'marginTop': 40,
-                'marginBottom': 40
-            }
+            id="H1",
+            children="Dynamic link on label click on plotly chart python",
+            style={"textAlign": "center", "marginTop": 40, "marginBottom": 40},
         ),
         dcc.Graph(
-            id='line-plot', 
+            id="line-plot",
             figure=px.line(
                 data_frame=df,
-                x='date',
-                y='GOOG',
-                title='Google stock prices over time',
+                x="date",
+                y="GOOG",
+                title="Google stock prices over time",
                 hover_name="urls",
-                custom_data=("urls",)
-            )
+                custom_data=("urls",),
+            ),
         ),
-        dcc.Store(
-        id='clientside-data',
-        data=""
-        ),
-        dcc.Store(
-        id='redirected-url',
-        data=""
-        ),
-    ]
+        dcc.Store(id="clientside-data", data=""),
+        dcc.Store(id="redirected-url", data=""),
+    ],
 )
 ```
 
@@ -116,11 +108,11 @@ app.layout = html.Div(
 
 
 ```python
-@app.callback(Output('clientside-data', 'data'), [Input('line-plot', 'clickData')])
+@app.callback(Output("clientside-data", "data"), [Input("line-plot", "clickData")])
 def open_url(clickData):
     if clickData != None:
         print(clickData)
-        url = clickData['points'][0]['customdata'][0]
+        url = clickData["points"][0]["customdata"][0]
         return url
     else:
         raise PreventUpdate
@@ -138,8 +130,8 @@ app.clientside_callback(
       return data;
     }
     """,
-    Output("redirected-url", 'data'),
-    Input("clientside-data", 'data'),
+    Output("redirected-url", "data"),
+    Input("clientside-data", "data"),
 )
 ```
 
@@ -149,6 +141,6 @@ app.clientside_callback(
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

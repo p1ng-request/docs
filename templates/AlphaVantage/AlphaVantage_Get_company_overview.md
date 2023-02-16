@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides an overview of the AlphaVantage API, which allows users to access real-time and historical financial data for global equities, commodities, and currencies. It provides a comprehensive set of tools to analyze and visualize financial data for a variety of purposes.
+
 ## Input
 
 ### Import libraries
@@ -28,7 +30,9 @@ COMPANY = "IBM"
 
 
 ```python
-response = requests.get(f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={COMPANY}&apikey={API_KEY}')
+response = requests.get(
+    f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={COMPANY}&apikey={API_KEY}"
+)
 data = response.json()
 ```
 

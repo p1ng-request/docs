@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook allows users to save their Excel files quickly and easily.
+
 ## Input
 
 ### Import libraries
@@ -21,8 +23,8 @@ from naas_drivers import yahoofinance
 # Input yahoo
 ticker = "TSLA"
 date_from = -100
-date_to = 'today'
-interval = '1d'
+date_to = "today"
+interval = "1d"
 moving_averages = [20, 50]
 
 # Output
@@ -35,11 +37,13 @@ excel_file_path = f"{ticker}.xlsx"
 
 
 ```python
-df_yahoo = yahoofinance.get(ticker,
-                            date_from=date_from,
-                            date_to=date_to,
-                            interval=interval,
-                            moving_averages=moving_averages)
+df_yahoo = yahoofinance.get(
+    ticker,
+    date_from=date_from,
+    date_to=date_to,
+    interval=interval,
+    moving_averages=moving_averages,
+)
 ```
 
 ## Output

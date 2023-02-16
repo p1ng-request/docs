@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a guide to using the CCXT library to calculate support and resistance levels for cryptocurrency trading.
+
 ## Input
 
 
@@ -36,9 +38,9 @@ binance_secret = ""
 
 
 ```python
-symbol = 'BTC/USDT'
+symbol = "BTC/USDT"
 limit = 180
-timeframe = '4h'
+timeframe = "4h"
 ```
 
 ## Model
@@ -47,14 +49,9 @@ timeframe = '4h'
 
 
 ```python
-binance = ccxt.binance({
-    'apiKey': binance_api,
-    'secret': binance_secret
-}) 
+binance = ccxt.binance({"apiKey": binance_api, "secret": binance_secret})
 
-data = binance.fetch_ohlcv(symbol=symbol,
-                           limit=limit,
-                           timeframe=timeframe)
+data = binance.fetch_ohlcv(symbol=symbol, limit=limit, timeframe=timeframe)
 ```
 
 ### Data cleaning
@@ -62,7 +59,7 @@ data = binance.fetch_ohlcv(symbol=symbol,
 
 ```python
 df = pd.DataFrame(data, columns=["Date", "Open", "High", "Low", "Close", "Volume"])
-df['Date'] = [datetime.fromtimestamp(float(time)/1000) for time in df['Date']]
+df["Date"] = [datetime.fromtimestamp(float(time) / 1000) for time in df["Date"]]
 df
 ```
 
@@ -73,19 +70,20 @@ df
 
 ```python
 fig = trendln.plot_support_resistance(
-    df[-1000:].Close, #as per h for calc_support_resistance
-    xformatter = None, #x-axis data formatter turning numeric indexes to display output
-      # e.g. ticker.FuncFormatter(func) otherwise just display numeric indexes
-    numbest = 1, #number of best support and best resistance lines to display
-    fromwindows = True, #draw numbest best from each window, otherwise draw numbest across whole range
-    pctbound = 0.1, # bound trend line based on this maximum percentage of the data range above the high or below the low
-    extmethod = trendln.METHOD_NUMDIFF,
+    df[-1000:].Close,  # as per h for calc_support_resistance
+    xformatter=None,  # x-axis data formatter turning numeric indexes to display output
+    # e.g. ticker.FuncFormatter(func) otherwise just display numeric indexes
+    numbest=1,  # number of best support and best resistance lines to display
+    fromwindows=True,  # draw numbest best from each window, otherwise draw numbest across whole range
+    pctbound=0.1,  # bound trend line based on this maximum percentage of the data range above the high or below the low
+    extmethod=trendln.METHOD_NUMDIFF,
     method=trendln.METHOD_PROBHOUGH,
     window=125,
-    errpct = 0.005,
+    errpct=0.005,
     hough_prob_iter=50,
     sortError=False,
-    accuracy=1)
+    accuracy=1,
+)
 ```
 
 

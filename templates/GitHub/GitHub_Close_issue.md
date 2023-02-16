@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides instructions on how to close an issue on GitHub.
+
 ## Input
 
 ### Import library
@@ -17,8 +19,8 @@ from github import Github
 
 
 ```python
-repo_name = "**********"                # Repository path
-git_key = "**********"                  # Settings/Developer settings
+repo_name = "**********"  # Repository path
+git_key = "**********"  # Settings/Developer settings
 ```
 
 ## Model
@@ -27,7 +29,7 @@ git_key = "**********"                  # Settings/Developer settings
 
 
 ```python
-g = Github(git_key)   
+g = Github(git_key)
 ```
 
 ### See issue list
@@ -35,14 +37,15 @@ g = Github(git_key)
 
 ```python
 import pandas as pd
+
 repo = g.get_repo(repo_name)
-open_issues = repo.get_issues(state='open')
+open_issues = repo.get_issues(state="open")
 title = []
 number = []
 for issue in open_issues:
     title.append(issue.title)
     number.append(issue.number)
-data = {'Issue':title, 'Number':number} 
+data = {"Issue": title, "Number": number}
 df = pd.DataFrame(data)
 df
 ```
@@ -64,7 +67,7 @@ df
 
 ```python
 repo = g.get_repo(repo_name)
-open_issues = repo.get_issues(state='open')
+open_issues = repo.get_issues(state="open")
 for issue in open_issues:
-    issue.edit(state='closed')
+    issue.edit(state="closed")
 ```

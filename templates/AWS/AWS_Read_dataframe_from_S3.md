@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
-Reference : [AWS Data Wrangler](https://github.com/awslabs/aws-data-wrangler)
+**Description:** This notebook demonstrates how to read a dataframe from an Amazon Web Services (AWS) Simple Storage Service (S3) bucket.
 
 ## Input
 

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a way to access and analyze CDS data from Boursorama.
+
 ## Input
 
 ### Import library
@@ -43,5 +45,5 @@ df
 
 
 ```python
-df.to_excel(r'Get_CDS.csv', index = False)
+df.to_excel(r"Get_CDS.csv", index=False)
 ```

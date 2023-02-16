@@ -4,6 +4,8 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
+**Description:** This notebook demonstrates how to use Dask to efficiently process and analyze multiple CSV files in parallel.
+
 ## Input
 
 ### Imports
@@ -62,12 +64,16 @@ folder_path = "nycflights"
 # when the actual data types of given columns cannot be inferred from the first few examples
 # they need to be specified manually
 # this is where the dtype parameters comes in
-df = dd.read_csv(os.path.join(folder_path, '*.csv'), 
-                 parse_dates={'Date': [0, 1, 2]},
-                 dtype={'TailNum': str,
-                        'CRSElapsedTime': float,
-                        'Cancelled': bool,
-                        'dep_delay': float})
+df = dd.read_csv(
+    os.path.join(folder_path, "*.csv"),
+    parse_dates={"Date": [0, 1, 2]},
+    dtype={
+        "TailNum": str,
+        "CRSElapsedTime": float,
+        "Cancelled": bool,
+        "dep_delay": float,
+    },
+)
 ```
 
 ## Output
@@ -77,7 +83,7 @@ df = dd.read_csv(os.path.join(folder_path, '*.csv'),
 
 ```python
 # no operation is actually performed until the .compute() function is called
-df['dep_delay'].max().compute()
+df["dep_delay"].max().compute()
 ```
 
 ### Visualize the parallel execution of the operation

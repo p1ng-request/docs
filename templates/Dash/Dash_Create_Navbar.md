@@ -87,9 +87,7 @@ custom_default = dbc.Navbar(
             dbc.NavbarBrand("Custom default", href="#"),
             dbc.NavbarToggler(id="navbar-toggler1"),
             dbc.Collapse(
-                dbc.Nav(
-                    [nav_item, dropdown], className="ms-auto", navbar=True
-                ),
+                dbc.Nav([nav_item, dropdown], className="ms-auto", navbar=True),
                 id="navbar-collapse1",
                 navbar=True,
                 is_open=False,
@@ -153,13 +151,9 @@ search_navbar = dbc.Navbar(
             dbc.Collapse(
                 dbc.Row(
                     [
+                        dbc.Col(dbc.Input(type="search", placeholder="Search")),
                         dbc.Col(
-                            dbc.Input(type="search", placeholder="Search")
-                        ),
-                        dbc.Col(
-                            dbc.Button(
-                                "Search", color="primary", className="ms-2"
-                            ),
+                            dbc.Button("Search", color="primary", className="ms-2"),
                             # set width of button column to auto to allow
                             # search box to take up remaining space.
                             width="auto",
@@ -205,7 +199,6 @@ dashboard = dbc.Navbar(
     color="dark",
     dark=True,
 )
-
 ```
 
 ### Create app layout
@@ -213,20 +206,14 @@ dashboard = dbc.Navbar(
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
-) 
-
-app.layout = html.Div(
-    [
-        default,
-        custom_default,
-        logo,
-        search_navbar,
-        dashboard
-    ]
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
 )
+
+app.layout = html.Div([default, custom_default, logo, search_navbar, dashboard])
 
 # we use a callback to toggle the collapse on small screens
 def toggle_navbar_collapse(n, is_open):
@@ -250,6 +237,6 @@ for i in [1, 2, 3]:
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

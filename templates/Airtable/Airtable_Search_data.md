@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to search through data stored in Airtable, making it easy to find the information they need quickly and efficiently.
+
 ## Input
 
 ### Import library
@@ -17,9 +19,9 @@ from naas_drivers import airtable
 
 
 ```python
-API_KEY = 'API_KEY'
-BASE_KEY = 'BASE_KEY'
-TABLE_NAME = 'TABLE_NAME'
+API_KEY = "API_KEY"
+BASE_KEY = "BASE_KEY"
+TABLE_NAME = "TABLE_NAME"
 ```
 
 ## Model
@@ -28,9 +30,7 @@ TABLE_NAME = 'TABLE_NAME'
 
 
 ```python
-data = airtable.connect(API_KEY,
-                        BASE_KEY,
-                        TABLE_NAME).search('Name', 'Tom')
+data = airtable.connect(API_KEY, BASE_KEY, TABLE_NAME).search("Name", "Tom")
 ```
 
 ## Output

@@ -4,7 +4,7 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu)
 
-## Enter credentials
+**Description:** This notebook is a comprehensive guide to understanding and applying the Canny edge detection algorithm.
 
 ## Input
 
@@ -21,7 +21,7 @@ import pandas as pd
 
 
 ```python
-canny_api = "CANNY_API_KEY"   # api key of canny
+canny_api = "CANNY_API_KEY"  # api key of canny
 ```
 
 ## Model
@@ -31,56 +31,59 @@ canny_api = "CANNY_API_KEY"   # api key of canny
 
 ```python
 class canny:
-    def __init__(self,api_key):
+    def __init__(self, api_key):
         self.api_key = api_key
 
     def read(self):
         canny_api = self.api_key
         response = requests.get("https://canny.io/api/v1/posts/list")
-        api_key = {
-        "apiKey":canny_api          
-        }
-        board_id = {
-        "id":""                          
-        }
-        limit = {
-        "limit":"100"                          
-        }
+        api_key = {"apiKey": canny_api}
+        board_id = {"id": ""}
+        limit = {"limit": "100"}
         data = {**api_key, **board_id, **limit}
-        response = requests.post("https://canny.io/api/v1/posts/list",data)
+        response = requests.post("https://canny.io/api/v1/posts/list", data)
         post_details = response.json()
-        pd.set_option('mode.chained_assignment', None)
-        dd = post_details['posts']
-        df = pd.DataFrame(columns = dd[0].keys()) 
+        pd.set_option("mode.chained_assignment", None)
+        dd = post_details["posts"]
+        df = pd.DataFrame(columns=dd[0].keys())
         for i in range(len(dd)):
             df = df.append(dd[i], ignore_index=True)
-        df = df.rename(columns={'details': 'POST_DETAIL', 'status': 'STATUS', 'title': 'POST_NAME','board': 'BOARD','category': 'CATEGORY','id': 'BOARD_ID'})        
+        df = df.rename(
+            columns={
+                "details": "POST_DETAIL",
+                "status": "STATUS",
+                "title": "POST_NAME",
+                "board": "BOARD",
+                "category": "CATEGORY",
+                "id": "BOARD_ID",
+            }
+        )
         board = []
         category = []
         tags = []
         eta = []
         created = []
         for i in range(len(df)):
-            board.append(df['BOARD'][i]['name'])
-            created.append(df['BOARD'][i]['created'])
-            if not df['CATEGORY'][i]:
-                category.append('Not assigned')
+            board.append(df["BOARD"][i]["name"])
+            created.append(df["BOARD"][i]["created"])
+            if not df["CATEGORY"][i]:
+                category.append("Not assigned")
             else:
-                category.append(df['CATEGORY'][i]['name'])    
-            if not df['tags'][i]:
-                tags.append('Not assigned')
+                category.append(df["CATEGORY"][i]["name"])
+            if not df["tags"][i]:
+                tags.append("Not assigned")
             else:
-                tags.append(df['tags'][i][0]['name'])
-            if not df['eta'][i]:
-                eta.append('Not assigned')
+                tags.append(df["tags"][i][0]["name"])
+            if not df["eta"][i]:
+                eta.append("Not assigned")
             else:
-                eta.append(df['eta'][i])  
-        df1 = df[['POST_NAME','POST_DETAIL','STATUS','BOARD_ID']]
-        df1['BOARD'] = board
-        df1['CREATED'] = created
-        df1['ETA'] = eta
-        df1['CATEGORY'] = category
-        df1['TAGS'] = tags
+                eta.append(df["eta"][i])
+        df1 = df[["POST_NAME", "POST_DETAIL", "STATUS", "BOARD_ID"]]
+        df1["BOARD"] = board
+        df1["CREATED"] = created
+        df1["ETA"] = eta
+        df1["CATEGORY"] = category
+        df1["TAGS"] = tags
         return df1
 ```
 
@@ -97,5 +100,5 @@ canny(canny_api).read()
 
 
 ```python
-canny(canny_api).read().to_csv('naas_canny.csv') 
+canny(canny_api).read().to_csv("naas_canny.csv")
 ```

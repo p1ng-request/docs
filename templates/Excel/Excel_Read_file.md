@@ -4,13 +4,15 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook reads an Excel file and allows users to manipulate the data within it.
+
 ## Input
 
 ### Import libraries
 
 
 ```python
-import pandas as pd 
+import pandas as pd
 ```
 
 ### Variables

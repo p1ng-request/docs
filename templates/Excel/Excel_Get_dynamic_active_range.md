@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a method for dynamically retrieving the active range of an Excel worksheet.
+
 ## Input
 
 ### Import libraries
@@ -41,6 +43,7 @@ def get_active_range(ws):
     max_col = get_column_letter(ws.max_column)
     active_range = f"A1:{max_col}{max_row}"
     return active_range
+
 
 active_range = get_active_range(ws)
 ```

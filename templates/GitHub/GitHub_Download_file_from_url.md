@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides instructions on how to download a file from a URL using GitHub.
+
 ## Input
 
 ### Import needed library
@@ -41,12 +43,13 @@ print(raw_target)
 
 ```python
 import urllib.parse
+
 r = requests.get(raw_target)
 uid = uuid.uuid4().hex
 
-file_name = raw_target.split('/')[-1]
+file_name = raw_target.split("/")[-1]
 file_name = urllib.parse.unquote(file_name)
 
-with open(file_name, 'wb') as f:
+with open(file_name, "wb") as f:
     f.write(r.content)
 ```

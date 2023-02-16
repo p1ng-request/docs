@@ -80,10 +80,10 @@ instance = ElasticsearchConnector("sample_credentials.json")
 
 ```python
 # parameters = {'index':'< Name of the index >','type':' < Document name > '}
-parameters = {'index':'students','type':'engineering'}
+parameters = {"index": "students", "type": "engineering"}
 # data = { < Key value pairs > }
-data = {"Name": "Poul", "Age":20, "address": "New york"}
-result = instance.save_data(parameters,data)
+data = {"Name": "Poul", "Age": 20, "address": "New york"}
+result = instance.save_data(parameters, data)
 ```
 
 ### Search data from Elasticsearch server
@@ -91,7 +91,7 @@ result = instance.save_data(parameters,data)
 
 ```python
 # parameters = {'index':'< Name of the index >','type':' < Document name > '}
-parameters = {'index':'students','type':'engineering'}
+parameters = {"index": "students", "type": "engineering"}
 ```
 
 ## Output
@@ -101,8 +101,8 @@ parameters = {'index':'students','type':'engineering'}
 
 ```python
 # Single search
-q1 = {"query": {"match": {'Name':'Poul'}}}
-result = instance.search_data(parameters,[q1],search_type='search')
+q1 = {"query": {"match": {"Name": "Poul"}}}
+result = instance.search_data(parameters, [q1], search_type="search")
 print(result)
 ```
 
@@ -111,8 +111,8 @@ print(result)
 
 ```python
 # Multiple search
-q1 = {"query": {"match": {'Name':'Poul'}}}
-q2 = {"query": {"match": {'Age':27}}}
-result = instance.search_data(parameters,[q1,q2],search_type='msearch')
+q1 = {"query": {"match": {"Name": "Poul"}}}
+q2 = {"query": {"match": {"Age": 27}}}
+result = instance.search_data(parameters, [q1, q2], search_type="msearch")
 print(result)
 ```

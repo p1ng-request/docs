@@ -4,6 +4,8 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
+**Description:** D-Tale is a tool that allows users to quickly and easily visualize dataframes in an interactive and intuitive way.
+
 ## Input
 
 ### Install D-Tale

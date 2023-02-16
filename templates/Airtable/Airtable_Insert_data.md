@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a step-by-step guide on how to insert data into an Airtable database.
+
 ## Input
 
 ### Import library
@@ -17,9 +19,9 @@ from naas_drivers import airtable
 
 
 ```python
-API_KEY = 'API_KEY'
-BASE_KEY = 'BASE_KEY'
-TABLE_NAME = 'TABLE_NAME'
+API_KEY = "API_KEY"
+BASE_KEY = "BASE_KEY"
+TABLE_NAME = "TABLE_NAME"
 ```
 
 ## Model
@@ -28,10 +30,11 @@ TABLE_NAME = 'TABLE_NAME'
 
 
 ```python
-data = airtable.connect(API_KEY,
-                        BASE_KEY,
-                        TABLE_NAME).get(view='All opportunities',
-                                        maxRecords=20).insert({'Name': 'Brian'})
+data = (
+    airtable.connect(API_KEY, BASE_KEY, TABLE_NAME)
+    .get(view="All opportunities", maxRecords=20)
+    .insert({"Name": "Brian"})
+)
 ```
 
 ## Output

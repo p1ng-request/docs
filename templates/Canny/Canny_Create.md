@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu)
 
+**Description:** This notebook provides an easy-to-use interface for creating custom Canny edge detection filters.
+
 ## Input
 
 ### Import librairies
@@ -19,9 +21,9 @@ import pandas as pd
 
 
 ```python
-canny_api = "CANNY_API_KEY"                          # api key of canny
-post_title = "Post title"                            # Enter post title                    
-post_body = "Post body using canny api"              # Enter post body
+canny_api = "CANNY_API_KEY"  # api key of canny
+post_title = "Post title"  # Enter post title
+post_body = "Post body using canny api"  # Enter post body
 ```
 
 ## Model
@@ -30,21 +32,17 @@ post_body = "Post body using canny api"              # Enter post body
 
 
 ```python
-api_key = {
-"apiKey":canny_api          
-}
-limit = {
-"limit":"100"                          
-}
+api_key = {"apiKey": canny_api}
+limit = {"limit": "100"}
 response = requests.get("https://canny.io/api/v1/boards/list")
 response = requests.post("https://canny.io/api/v1/boards/list", api_key)
 post_details = response.json()
-db = post_details['boards']
-df = pd.DataFrame(columns = db[0].keys()) 
+db = post_details["boards"]
+df = pd.DataFrame(columns=db[0].keys())
 for i in range(len(db)):
     df = df.append(db[i], ignore_index=True)
-df = df[['name','id']]
-board_list = df.rename(columns={'name': 'BOARD_NAME', 'id': 'BOARD_ID'})
+df = df[["name", "id"]]
+board_list = df.rename(columns={"name": "BOARD_NAME", "id": "BOARD_ID"})
 board_list
 ```
 
@@ -52,14 +50,12 @@ board_list
 
 
 ```python
-board_name = "Requests"      #Enter board name
+board_name = "Requests"  # Enter board name
 for i in range(len(board_list)):
-    if board_list['BOARD_NAME'][i] == board_name:
-        board_id = board_list['BOARD_ID'][i]
+    if board_list["BOARD_NAME"][i] == board_name:
+        board_id = board_list["BOARD_ID"][i]
 board_id
-board_id = {
-"boardID":board_id                          
-}
+board_id = {"boardID": board_id}
 ```
 
 ### Using api and board name to get author list
@@ -72,11 +68,13 @@ response = requests.post("https://canny.io/api/v1/posts/list", data)
 post_details = response.json()
 # post_details['posts']
 author_list = pd.DataFrame()
-for i in range(len(post_details['posts'])):
-    author_list = author_list.append(post_details['posts'][i]['author'], ignore_index=True)
-author_list.drop_duplicates(subset ="email", keep = False, inplace = True)
-author_list = author_list[['name','id']]
-author_list = author_list.rename(columns={'name': 'AUTHOR_NAME', 'id': 'AUTHOR_ID'})
+for i in range(len(post_details["posts"])):
+    author_list = author_list.append(
+        post_details["posts"][i]["author"], ignore_index=True
+    )
+author_list.drop_duplicates(subset="email", keep=False, inplace=True)
+author_list = author_list[["name", "id"]]
+author_list = author_list.rename(columns={"name": "AUTHOR_NAME", "id": "AUTHOR_ID"})
 author_list
 ```
 
@@ -84,25 +82,19 @@ author_list
 
 
 ```python
-author_name = "Sanjay Sabu"  #Enter author name
-for i in author_list['AUTHOR_NAME'].index:
-    if author_list['AUTHOR_NAME'][i] == author_name:
-        author_id = author_list['AUTHOR_ID'][i]
-author_id = {
-"authorID":author_id                          
-}
+author_name = "Sanjay Sabu"  # Enter author name
+for i in author_list["AUTHOR_NAME"].index:
+    if author_list["AUTHOR_NAME"][i] == author_name:
+        author_id = author_list["AUTHOR_ID"][i]
+author_id = {"authorID": author_id}
 ```
 
 ### Creating post
 
 
 ```python
-post_title = {
-"title":post_title                                    
-}
-post_body = {
-"details":post_body                    
-}
+post_title = {"title": post_title}
+post_body = {"details": post_body}
 data = {**api_key, **author_id, **board_id, **post_body, **post_title}
 ```
 

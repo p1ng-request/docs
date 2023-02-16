@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a way to access income statement data from AlphaVantage, a financial data provider. It allows users to quickly and easily access financial information to make informed decisions.
+
 ## Input
 
 ### Import libraries
@@ -28,7 +30,9 @@ COMPANY = "IBM"
 
 
 ```python
-response = requests.get(f'https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={COMPANY}&apikey={API_KEY}')
+response = requests.get(
+    f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={COMPANY}&apikey={API_KEY}"
+)
 data = response.json()
 df = pd.DataFrame(data.get("annualReports"))
 ```

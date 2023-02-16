@@ -4,7 +4,7 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
-This notebook reads an entire table from BigQuery
+**Description:** This notebook provides an example of how to read data from a BigQuery table.
 
 ## Input
 
@@ -19,10 +19,10 @@ from naas_drivers import bigquery
 
 
 ```python
-service_account_file = 'big-query-777777-ffffff777777.json'
-project_id = 'big-query-777777'
-dataset = 'example_ds'
-table_name = 'iris'
+service_account_file = "big-query-777777-ffffff777777.json"
+project_id = "big-query-777777"
+dataset = "example_ds"
+table_name = "iris"
 ```
 
 ## Model

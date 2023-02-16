@@ -56,14 +56,20 @@ df
 
 
 ```python
-dropdown = dcc.Dropdown(['option1', 'option2', 'option3'], 'option1', id='demo-dropdown')
+dropdown = dcc.Dropdown(
+    ["option1", "option2", "option3"], "option1", id="demo-dropdown"
+)
 ```
 
 #### Create table
 
 
 ```python
-table = dash_table.DataTable(id='tbl', data=df.to_dict('records') , columns=[{"name": i, "id": i} for i in df.columns])
+table = dash_table.DataTable(
+    id="tbl",
+    data=df.to_dict("records"),
+    columns=[{"name": i, "id": i} for i in df.columns],
+)
 ```
 
 #### Create Layout
@@ -71,30 +77,24 @@ table = dash_table.DataTable(id='tbl', data=df.to_dict('records') , columns=[{"n
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
-    meta_tags=[{'name':'viewport', 'content':'width=device-width, initial-scale=1.0'}]
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
 )
 
-app.layout = html.Div(
-    [
-        dropdown,
-        table
-    ]
-)
+app.layout = html.Div([dropdown, table])
 
-@app.callback(
-    Output('tbl', 'data'),
-    Input('demo-dropdown', 'value')
-)
 
+@app.callback(Output("tbl", "data"), Input("demo-dropdown", "value"))
 def update_output(value):
     dff = df.copy()
-    if str(value) == 'option1':
-        dff = dff[dff['col1'] == 0]
-    elif str(value) == 'option2':
-        dff = dff[dff['col2'] == 3]
-    return dff.to_dict('records')
+    if str(value) == "option1":
+        dff = dff[dff["col1"] == 0]
+    elif str(value) == "option2":
+        dff = dff[dff["col2"] == 3]
+    return dff.to_dict("records")
 ```
 
 ## Output
@@ -103,6 +103,6 @@ def update_output(value):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

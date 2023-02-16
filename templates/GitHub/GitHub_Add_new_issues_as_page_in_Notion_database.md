@@ -4,9 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook is used to create Notion page in a database when a new Github issue is created.
-<br/>References :
-- Github SDK: [https://github.com/PyGithub/PyGithub](https://github.com/PyGithub/PyGithub)
+**Description:** This notebook allows users to add new GitHub issues as pages in a Notion database.
 
 ## Input
 
@@ -29,10 +27,10 @@ from naas_drivers import notion, github
 
 ```python
 # GitHub token
-GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE" # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********" 
+GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE"  # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
 
 # Github repo on which we want to create issues.
-REPO_URL = "ENTER_YOUR_REPO_URL_HERE" # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks/"
+REPO_URL = "ENTER_YOUR_REPO_URL_HERE"  # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks/"
 ```
 
 ### Setup Notion
@@ -41,10 +39,10 @@ REPO_URL = "ENTER_YOUR_REPO_URL_HERE" # EXAMPLE : "https://github.com/jupyter-na
 
 ```python
 # Notion token
-NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE" # EXAMPLE : "secret_xxskqjlodshfiqs"
+NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE"  # EXAMPLE : "secret_xxskqjlodshfiqs"
 
 # Notion database URL
-DATABASE_URL = "https://www.notion.so/naas-official/f42d6592949axxxxxxxxxxxxx" # EXAMPLE : "https://www.notion.so/naas-official/f42d6592949axxxxxxxxxxxxx" 
+DATABASE_URL = "https://www.notion.so/naas-official/f42d6592949axxxxxxxxxxxxx"  # EXAMPLE : "https://www.notion.so/naas-official/f42d6592949axxxxxxxxxxxxx"
 ```
 
 ### Setup Naas scheduler
@@ -54,7 +52,7 @@ DATABASE_URL = "https://www.notion.so/naas-official/f42d6592949axxxxxxxxxxxxx" #
 # Schedule your notebook every 15 minutes.
 naas.scheduler.add(cron="*/15 * * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -70,10 +68,10 @@ db_notion = notion.connect(NOTION_TOKEN).database.get(notion_database_id)
 df_notion = db_notion.df()
 
 for idx, row in df_notion.iterrows():
-    if row.Name=='':
-        df_notion.drop(index= idx, inplace=True)
+    if row.Name == "":
+        df_notion.drop(index=idx, inplace=True)
     try:
-        df_notion.drop(columns=['Tags'], inplace=True)
+        df_notion.drop(columns=["Tags"], inplace=True)
     except KeyError:
         pass
 
@@ -97,13 +95,17 @@ def notion_page_from_gh_issue(issue, notion_database_id):
         pass
     elif len(df_notion) != 0 and str(issue.issue_id) in df_notion.Issue_id.to_list():
         return "issue already exists in database"
-    
-    page = notion.connect(NOTION_TOKEN).page.create(database_id=notion_database_id,
-                                                    title=issue.issue_title)
-    page.rich_text("URL",issue.link_to_the_issue)
-    page.rich_text("Assignees",issue.issue_assignees)
-    page.number('Issue_id',issue.issue_id)
-    page.date('Last_created',str(issue.last_created_date)+'T'+str(issue.last_created_time))
+
+    page = notion.connect(NOTION_TOKEN).page.create(
+        database_id=notion_database_id, title=issue.issue_title
+    )
+    page.rich_text("URL", issue.link_to_the_issue)
+    page.rich_text("Assignees", issue.issue_assignees)
+    page.number("Issue_id", issue.issue_id)
+    page.date(
+        "Last_created",
+        str(issue.last_created_date) + "T" + str(issue.last_created_time),
+    )
     page.update()
     return "Done"
 ```
@@ -121,5 +123,5 @@ for idx, issue in df_issues.iterrows():
     if val == "issue already exists in database":
         print("Database up to date!")
         break
-    print(f'✅ Notion page created for issue {issue.link_to_the_issue}')
+    print(f"✅ Notion page created for issue {issue.link_to_the_issue}")
 ```
