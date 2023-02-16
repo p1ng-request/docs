@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a way to retrieve user information from Jupyter.
+
 ## Input
 
 ### Import libraries
@@ -19,7 +21,7 @@ from os import environ
 
 ```python
 # Jupyter token
-JUPYTER_TOKEN = environ.get('JUPYTERHUB_API_TOKEN')
+JUPYTER_TOKEN = environ.get("JUPYTERHUB_API_TOKEN")
 ```
 
 ## Model

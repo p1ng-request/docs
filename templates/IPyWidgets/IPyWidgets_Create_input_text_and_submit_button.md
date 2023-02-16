@@ -4,7 +4,7 @@
 
 **Author:** [Ismail CHIHAB](https://www.linkedin.com/in/ismail-chihab-4b0a04202/)
 
-This notebook creates an input text area and a submit button to get your input.
+**Description:** This notebook demonstrates how to use IPyWidgets to create an interactive input text box and submit button.
 
 ## Input
 
@@ -20,20 +20,18 @@ from ipywidgets import widgets
 
 
 ```python
-#Text area variables:
-input_description = 'Description' 
-style = {
-    'description_width': '150px'
-}
-layout = widgets.Layout(width='400px')
-value ='Enter your value here'
+# Text area variables:
+input_description = "Description"
+style = {"description_width": "150px"}
+layout = widgets.Layout(width="400px")
+value = "Enter your value here"
 
-#Button variables:
-button_description = 'Submit'
-button_style = 'success'
+# Button variables:
+button_description = "Submit"
+button_style = "success"
 
-#Result variables:
-result_message = 'Your input is:'
+# Result variables:
+result_message = "Your input is:"
 ```
 
 ## Model
@@ -44,17 +42,11 @@ result_message = 'Your input is:'
 ```python
 # Setup input text widget
 text = widgets.Text(
-    description=input_description,
-    value=value,
-    style=style,
-    layout=layout
+    description=input_description, value=value, style=style, layout=layout
 )
 
 # Setup button widget
-button = widgets.Button(
-    description=button_description,
-    button_style=button_style
-)
+button = widgets.Button(description=button_description, button_style=button_style)
 
 # Setup HBox to display widget horizontally
 Box = widgets.HBox([text, button])

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows you to send a message to a LinkedIn profile.
+
 ## Input
 
 ### Import library
@@ -18,8 +20,8 @@ from naas_drivers import linkedin
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Enter content and recipient URL
@@ -45,6 +47,5 @@ result = linkedin.connect(LI_AT, JSESSIONID)
 
 
 ```python
-result = linkedin.message.send(content=CONTENT,
-                               recipients_url=RECIPIENTS_URL)
+result = linkedin.message.send(content=CONTENT, recipients_url=RECIPIENTS_URL)
 ```

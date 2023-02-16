@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/jeremyravenel/)
 
-With this notebook, you can create a dynamic chart using [ipyvizzu](https://ipyvizzu.vizzuhq.com/), a library to build animated charts in Jupyter notebook using a simple Python synthax, and share it using Naas asset feature. The data presented is a simple example analysis of cash repartition by bank and maturity.
+**Description:** Vizzu enables users to create engaging, interactive data stories with ease.
 
 ## Input
 
@@ -62,38 +62,52 @@ story = Story(data=data)
 story.set_size("100%", "550px")
 
 slide1 = Slide(
-    Step( 
-        Style({
-            "legend": {"label": {"fontSize": "1.1em"}, "paddingRight": "-1em"},
-            "plot": { 
-                "marker": { "label": { "fontSize": "1.1em"}}, 
-                "paddingLeft": "10em",
-                "xAxis": {"title": { "color": "#00000000"}, "label": { "fontSize": "1.1em"}},
-                "yAxis": {"label": { "fontSize": "1.1em"}}},
-        }),
-        Config({
-            "x": {"set": ["Cash percentage [%]","Maturity"]}, 
-            "y": "Group",
-            "color": "Maturity",
-            "label": "Cash percentage [%]",
-            "title": "💰 What is the cash repartition and maturity per bank?"
-        })
+    Step(
+        Style(
+            {
+                "legend": {"label": {"fontSize": "1.1em"}, "paddingRight": "-1em"},
+                "plot": {
+                    "marker": {"label": {"fontSize": "1.1em"}},
+                    "paddingLeft": "10em",
+                    "xAxis": {
+                        "title": {"color": "#00000000"},
+                        "label": {"fontSize": "1.1em"},
+                    },
+                    "yAxis": {"label": {"fontSize": "1.1em"}},
+                },
+            }
+        ),
+        Config(
+            {
+                "x": {"set": ["Cash percentage [%]", "Maturity"]},
+                "y": "Group",
+                "color": "Maturity",
+                "label": "Cash percentage [%]",
+                "title": "💰 What is the cash repartition and maturity per bank?",
+            }
+        ),
     )
 )
 story.add_slide(slide1)
 
 slide2 = Slide(
     Step(
-        Style({ "plot": { "xAxis": { "label": { "color": "#00000000"}}}}),
-        Config({ "split": True, "title": "🗓 What's the ranking by maturity?"})
+        Style({"plot": {"xAxis": {"label": {"color": "#00000000"}}}}),
+        Config({"split": True, "title": "🗓 What's the ranking by maturity?"}),
     )
 )
 story.add_slide(slide2)
 
 slide3 = Slide(
     Step(
-        Style({ "plot": { "marker": { "label": { "fontSize": "0.916667em"}}}}),
-        Config({ "x": {"set": ["Cash amount","Maturity"]}, "label": "Cash amount", "title": "⚡️ What's the actual cash positon in M$ by maturity?"}),
+        Style({"plot": {"marker": {"label": {"fontSize": "0.916667em"}}}}),
+        Config(
+            {
+                "x": {"set": ["Cash amount", "Maturity"]},
+                "label": "Cash amount",
+                "title": "⚡️ What's the actual cash positon in M$ by maturity?",
+            }
+        ),
     )
 )
 story.add_slide(slide3)
@@ -101,15 +115,27 @@ story.add_slide(slide3)
 slide4 = Slide()
 slide4.add_step(
     Step(
-        Style({ "plot": { "yAxis": { "title": { "color": "#00000000"}}}}),
-        Config({ "x": "Maturity", "y": ["Group","Cash amount"], "split": False, "legend": "color"})
+        Style({"plot": {"yAxis": {"title": {"color": "#00000000"}}}}),
+        Config(
+            {
+                "x": "Maturity",
+                "y": ["Group", "Cash amount"],
+                "split": False,
+                "legend": "color",
+            }
+        ),
     )
 )
 
 slide4.add_step(
     Step(
-        Style({ "plot": { "marker": { "label": { "fontSize": "1.1em"}}}}),
-        Config({ "y": "Cash amount", "title": "👀 What's the total cash position in M$ by maturity?"}),
+        Style({"plot": {"marker": {"label": {"fontSize": "1.1em"}}}}),
+        Config(
+            {
+                "y": "Cash amount",
+                "title": "👀 What's the total cash position in M$ by maturity?",
+            }
+        ),
     )
 )
 story.add_slide(slide4)
@@ -117,19 +143,24 @@ story.add_slide(slide4)
 slide5 = Slide()
 slide5.add_step(
     Step(
-        Config({ "x": ["Interest rate [%]","Maturity"], "y": None, "label":"Cash amount"})
+        Config(
+            {"x": ["Interest rate [%]", "Maturity"], "y": None, "label": "Cash amount"}
+        )
     )
 )
 
 slide5.add_step(
     Step(
-        Style({ "plot": { "xAxis": {"label": {"color": "#00000000"}}}}),
-        Config({ "coordSystem": "polar", "title":"What's the cash repartition in M$ by maturity?"})
+        Style({"plot": {"xAxis": {"label": {"color": "#00000000"}}}}),
+        Config(
+            {
+                "coordSystem": "polar",
+                "title": "What's the cash repartition in M$ by maturity?",
+            }
+        ),
     )
 )
 story.add_slide(slide5)
-
-
 ```
 
 ## Output
@@ -152,7 +183,7 @@ story.export_to_html(filename="mystory.html")
 
 
 ```python
-naas.asset.add("mystory.html", params = {"inline": True})
+naas.asset.add("mystory.html", params={"inline": True})
 ```
 
 

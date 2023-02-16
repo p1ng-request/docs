@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to securely upload files to their own personal cloud storage.
+
 ## Input
 
 ### Install packages
@@ -27,30 +29,30 @@ import owncloud
 
 
 ```python
-oc = owncloud.Client('https://cloud.damken.com')
+oc = owncloud.Client("https://cloud.damken.com")
 
-oc.login('YOURNAME', 'YOURPASS')
+oc.login("YOURNAME", "YOURPASS")
 ```
 
 ### Create a folder
 
 
 ```python
-oc.mkdir('testdir')
+oc.mkdir("testdir")
 ```
 
 ### Upload this file to your ownCloud
 
 
 ```python
-oc.put_file('testdir/upload_to_owncloud.ipynb', 'upload_to_owncloud.ipynb')
+oc.put_file("testdir/upload_to_owncloud.ipynb", "upload_to_owncloud.ipynb")
 ```
 
 ### Get sharable link to the file
 
 
 ```python
-link_info = oc.share_file_with_link('testdir/upload_to_owncloud.ipynb')
+link_info = oc.share_file_with_link("testdir/upload_to_owncloud.ipynb")
 ```
 
 ## Output
@@ -59,7 +61,7 @@ link_info = oc.share_file_with_link('testdir/upload_to_owncloud.ipynb')
 
 
 ```python
-print ("Here is your link: " + link_info.get_link())
+print("Here is your link: " + link_info.get_link())
 ```
 
 

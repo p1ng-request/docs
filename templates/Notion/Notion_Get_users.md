@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-This notebook shows how to use Naas Notion driver to get user lists available in your workspace.
+**Description:** Notion is a powerful tool that helps users organize their thoughts, tasks, and projects.
 
 ## Input
 
@@ -12,7 +12,7 @@ This notebook shows how to use Naas Notion driver to get user lists available in
 
 
 ```python
-from naas_drivers import notion 
+from naas_drivers import notion
 ```
 
 ### Input variables

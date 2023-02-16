@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook update a deal in HubSpot.
+**Description:** This notebook allows users to update deals in HubSpot.
 
 ## Input
 
@@ -31,9 +31,9 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```python
 deal_id = "3501002068"
 dealname = "TEST"
-dealstage = '5102584'
-closedate = '2021-12-31' #date format must be %Y-%m-%d
-amount = '100.50'
+dealstage = "5102584"
+closedate = "2021-12-31"  # date format must be %Y-%m-%d
+amount = "100.50"
 hubspot_owner_id = None
 ```
 
@@ -44,18 +44,17 @@ This method will allow you to update any deal properties available in your HubSp
 
 
 ```python
-update_deal = {"properties": 
-                  {
-                    "dealstage": dealstage,
-                    "dealname": dealname,
-                    "amount": amount,
-                    "closedate": closedate,
-                    "hubspot_owner_id": hubspot_owner_id,
-                   }
-                 }
+update_deal = {
+    "properties": {
+        "dealstage": dealstage,
+        "dealname": dealname,
+        "amount": amount,
+        "closedate": closedate,
+        "hubspot_owner_id": hubspot_owner_id,
+    }
+}
 
-deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.patch(deal_id,
-                                                     update_deal)
+deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.patch(deal_id, update_deal)
 ```
 
 ### Update deal using update method
@@ -63,12 +62,7 @@ deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.patch(deal_id,
 
 ```python
 deal2 = hubspot.connect(HS_ACCESS_TOKEN).deals.update(
-    deal_id,
-    dealname,
-    dealstage,
-    closedate,
-    amount,
-    hubspot_owner_id
+    deal_id, dealname, dealstage, closedate, amount, hubspot_owner_id
 )
 ```
 

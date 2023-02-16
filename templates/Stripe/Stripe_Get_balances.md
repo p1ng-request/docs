@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
+**Description:** This notebook provides a way to view and manage Stripe account balances.
+
 ## Input
 
 ### Import libraries
@@ -45,5 +47,5 @@ balance = stripe.BalanceTransaction.list(limit=30)
 
 
 ```python
-pd.DataFrame(balance.get('data'))
+pd.DataFrame(balance.get("data"))
 ```

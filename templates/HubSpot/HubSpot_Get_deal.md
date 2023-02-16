@@ -4,12 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook get a deal from HubSpot using its ID. Data will be returned as json with keys: 
-- 'id': number,
-- 'properties': dict
-- 'createdAt': datetime
-- 'updatedAt': datetime
-- 'archived': boolean
+**Description:** This notebook provides a comprehensive overview of the HubSpot platform and its features to help you get the best deals.
 
 ## Input
 
@@ -35,7 +30,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-deal_id = 'ENTER_DEAL_ID_HERE' # "70915045"
+deal_id = "ENTER_DEAL_ID_HERE"  # "70915045"
 ```
 
 #### Enter your Deal properties

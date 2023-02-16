@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides an example of how to create a heatmap using the Plotly library.
+
 ## Input
 
 ### Import libraries
@@ -31,10 +33,12 @@ output_html = f"{title}.html"
 
 
 ```python
-data = [[54.25, 65, 52, 51, 49],
-        [20, 16, 60, 80, 30],
-        [30, 60, 51, 59, 20],
-        [40, 30, 12, 25, 20]]
+data = [
+    [54.25, 65, 52, 51, 49],
+    [20, 16, 60, 80, 30],
+    [30, 60, 51, 59, 20],
+    [40, 30, 12, 25, 20],
+]
 df = pd.DataFrame(data)
 df
 ```
@@ -45,51 +49,64 @@ df
 
 
 ```python
-config = {'displayModeBar': False}
+config = {"displayModeBar": False}
 
-def update_layout(fig, title=None, plot_bgcolor=None, width=1200, height=800, showlegend=None, margin=None):
+
+def update_layout(
+    fig,
+    title=None,
+    plot_bgcolor=None,
+    width=1200,
+    height=800,
+    showlegend=None,
+    margin=None,
+):
     fig.update_layout(
         title=title,
         plot_bgcolor=plot_bgcolor,
         width=width,
         margin=margin,
         height=height,
-        showlegend=showlegend)
+        showlegend=showlegend,
+    )
     return fig
 
-def heatmap(df,
-            x,
-            y,
-            x_label,
-            y_label,
-            color,
-            colorscale=[[0, "#d94228"],[0.5, "#d94228"],[0.5, "#5ee290"],[1.0, "#5ee290"]],
-            title=None,
-            margin=None):
+
+def heatmap(
+    df,
+    x,
+    y,
+    x_label,
+    y_label,
+    color,
+    colorscale=[[0, "#d94228"], [0.5, "#d94228"], [0.5, "#5ee290"], [1.0, "#5ee290"]],
+    title=None,
+    margin=None,
+):
     fig = go.Figure()
-    fig = px.imshow(df,
-                    labels=dict(x=x_label, y=y_label, color=color),
-                    x=x,
-                    y=y)
+    fig = px.imshow(df, labels=dict(x=x_label, y=y_label, color=color), x=x, y=y)
     fig.update_xaxes(side="top")
-    fig.update_traces(xgap=5, selector=dict(type='heatmap'))
-    fig.update_traces(ygap=5, selector=dict(type='heatmap'))
-    fig.update_traces(dict(showscale=False, 
-                           coloraxis=None, 
-                           colorscale=colorscale),
-                           selector={'type':'heatmap'})
+    fig.update_traces(xgap=5, selector=dict(type="heatmap"))
+    fig.update_traces(ygap=5, selector=dict(type="heatmap"))
+    fig.update_traces(
+        dict(showscale=False, coloraxis=None, colorscale=colorscale),
+        selector={"type": "heatmap"},
+    )
     fig = update_layout(fig, title=title, margin=margin)
     fig.show(config=config)
     return fig
 
-fig = heatmap(df,
-              x=['Global', 'Americas', 'EMEA', 'Asia', 'Oceania'],
-              y=['Product 1', 'Product 2', 'Product 3', 'Product 4'],
-              x_label="Business lines",
-              y_label="Products",
-              color="Sales",
-              title=title,
-              margin=dict(l=0, r=0, t=150, b=50))   
+
+fig = heatmap(
+    df,
+    x=["Global", "Americas", "EMEA", "Asia", "Oceania"],
+    y=["Product 1", "Product 2", "Product 3", "Product 4"],
+    x_label="Business lines",
+    y_label="Products",
+    color="Sales",
+    title=title,
+    margin=dict(l=0, r=0, t=150, b=50),
+)
 ```
 
 ## Output
@@ -107,9 +124,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

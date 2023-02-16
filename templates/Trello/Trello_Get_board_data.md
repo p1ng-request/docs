@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a way to access and analyze data from Trello boards.
+
 ## Input
 
 ### Import library
@@ -35,5 +37,5 @@ export = "xls"
 
 
 ```python
-df = trello_connector.main(key,token,board_id, export)
+df = trello_connector.main(key, token, board_id, export)
 ```

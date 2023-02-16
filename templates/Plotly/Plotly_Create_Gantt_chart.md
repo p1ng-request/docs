@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-Learn more on the Plotly doc : https://plotly.com/python/gantt/
+**Description:** This notebook provides instructions on how to create a Gantt chart using Plotly.
 
 ## Input
 
@@ -22,11 +22,13 @@ import pandas as pd
 
 
 ```python
-df = pd.DataFrame([
-    dict(Task="Job A", Start='2009-01-01', Finish='2009-02-28'),
-    dict(Task="Job B", Start='2009-03-05', Finish='2009-04-15'),
-    dict(Task="Job C", Start='2009-02-20', Finish='2009-05-30')
-])
+df = pd.DataFrame(
+    [
+        dict(Task="Job A", Start="2009-01-01", Finish="2009-02-28"),
+        dict(Task="Job B", Start="2009-03-05", Finish="2009-04-15"),
+        dict(Task="Job C", Start="2009-02-20", Finish="2009-05-30"),
+    ]
+)
 df
 ```
 
@@ -35,12 +37,9 @@ df
 
 ```python
 fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task")
-fig.update_yaxes(autorange="reversed") # otherwise tasks are listed from the bottom up
-fig.update_layout(
-    plot_bgcolor="#ffffff",
-    width=1200,
-    height=600)
-config = {'displayModeBar': False}
+fig.update_yaxes(autorange="reversed")  # otherwise tasks are listed from the bottom up
+fig.update_layout(plot_bgcolor="#ffffff", width=1200, height=600)
+config = {"displayModeBar": False}
 fig.show(config=config)
 ```
 
@@ -59,9 +58,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

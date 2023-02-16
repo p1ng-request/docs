@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides an example of how to create a candlestick chart using the Plotly library.
+
 ## Input
 
 ### Import libraries
@@ -31,7 +33,7 @@ output_html = f"{title}.html"
 
 
 ```python
-date_from = -360 # Date can be number or date or today
+date_from = -360  # Date can be number or date or today
 date_to = "today"
 df = yahoofinance.get("TSLA", date_from=date_from, date_to=date_to)
 df
@@ -44,11 +46,17 @@ df
 
 ```python
 fig = go.Figure()
-fig = go.Figure(data=[go.Candlestick(x=df['Date'],
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Close'])])
+fig = go.Figure(
+    data=[
+        go.Candlestick(
+            x=df["Date"],
+            open=df["Open"],
+            high=df["High"],
+            low=df["Low"],
+            close=df["Close"],
+        )
+    ]
+)
 
 fig.update_layout(
     title=title,
@@ -57,12 +65,12 @@ fig.update_layout(
     height=800,
     xaxis_tickfont_size=14,
     yaxis=dict(
-        title='Price in $',
+        title="Price in $",
         titlefont_size=16,
         tickfont_size=14,
-    )
+    ),
 )
-config = {'displayModeBar': False}
+config = {"displayModeBar": False}
 fig.show(config=config)
 ```
 
@@ -81,9 +89,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

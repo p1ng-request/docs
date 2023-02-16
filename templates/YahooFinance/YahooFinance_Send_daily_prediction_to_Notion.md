@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-With this template, you can get any ticker available in [Yahoo finance](https://finance.yahoo.com/quote/TSLA/), add predictions and update a Notion DB.<br> 
+**Description:** This notebook sends daily stock market predictions from YahooFinance to Notion.
 
 ## Input
 
@@ -25,7 +25,7 @@ import pytz
 
 ```python
 TICKER = "TSLA"
-date_from = -100 # 1OO days max to feed the naas_driver for prediction
+date_from = -100  # 1OO days max to feed the naas_driver for prediction
 date_to = "today"
 ```
 
@@ -68,7 +68,7 @@ html_output = f"{TICKER}.html"
 naas.scheduler.add(cron="0 9 * * *")
 
 # if you want to delete the scheduler, uncoment the line below and execute the cell
-# naas.scheduler.delete() 
+# naas.scheduler.delete()
 ```
 
 ## Model
@@ -77,9 +77,11 @@ naas.scheduler.add(cron="0 9 * * *")
 
 
 ```python
-df_yahoo = yahoofinance.get(tickers=TICKER,
-                            date_from=date_from,
-                            date_to=date_to).dropna().reset_index(drop=True)
+df_yahoo = (
+    yahoofinance.get(tickers=TICKER, date_from=date_from, date_to=date_to)
+    .dropna()
+    .reset_index(drop=True)
+)
 
 # Display dataframe
 df_yahoo.tail(5)
@@ -89,24 +91,32 @@ df_yahoo.tail(5)
 
 
 ```python
-df_predict = prediction.get(dataset=df_yahoo,
-                            date_column='Date',
-                            column="Close",
-                            data_points=DATA_POINT,
-                            prediction_type="all").sort_values("Date", ascending=False).reset_index(drop=True)
+df_predict = (
+    prediction.get(
+        dataset=df_yahoo,
+        date_column="Date",
+        column="Close",
+        data_points=DATA_POINT,
+        prediction_type="all",
+    )
+    .sort_values("Date", ascending=False)
+    .reset_index(drop=True)
+)
 # Display dataframe
-df_predict.head(int(DATA_POINT)+5)
+df_predict.head(int(DATA_POINT) + 5)
 ```
 
 ### Plot linechart
 
 
 ```python
-fig = plotly.linechart(df_predict,
-                       x="Date",
-                       y=["Close", "ARIMA", "SVR", "LINEAR", "COMPOUND"],
-                       showlegend=True,
-                       title=f"{TICKER} predictions as of today, for next {str(DATA_POINT)} days.")
+fig = plotly.linechart(
+    df_predict,
+    x="Date",
+    y=["Close", "ARIMA", "SVR", "LINEAR", "COMPOUND"],
+    showlegend=True,
+    title=f"{TICKER} predictions as of today, for next {str(DATA_POINT)} days.",
+)
 ```
 
 ### Set actual data and variation
@@ -115,15 +125,16 @@ fig = plotly.linechart(df_predict,
 ```python
 def get_variation(df):
     df = df.sort_values("Date", ascending=False).reset_index(drop=True)
-    
+
     # Get value and value comp
     datanow = df.loc[0, "Close"]
     datayesterday = df.loc[1, "Close"]
-    
+
     # Calc variation en value and %
     varv = datanow - datayesterday
-    varp = (varv / datanow)
+    varp = varv / datanow
     return datanow, datayesterday, varv, varp
+
 
 DATANOW, DATAYESTERDAY, VARV, VARP = get_variation(df_yahoo)
 print("Value today:", DATANOW)
@@ -141,7 +152,7 @@ df_predict.to_excel(excel_output)
 # Share output with naas
 link_excel = naas.asset.add(excel_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(excel_output)
 ```
 
@@ -155,7 +166,7 @@ fig.write_image(image_output)
 # Share output with naas
 link_image = naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```
 
@@ -169,7 +180,7 @@ fig.write_html(html_output)
 # Share output with naas
 link_html = naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -179,13 +190,22 @@ link_html = naas.asset.add(html_output, params={"inline": True})
 
 
 ```python
-def update_notion_db(database_url, title, value=0, varv=0, varp=0, image_link=None, html_link=None, excel_link=None):
+def update_notion_db(
+    database_url,
+    title,
+    value=0,
+    varv=0,
+    varp=0,
+    image_link=None,
+    html_link=None,
+    excel_link=None,
+):
     # Decode database id
     database_id = database_url.split("/")[-1].split("?v=")[0]
-    
+
     # Get pages from notion database
     pages = notion.connect(NOTION_TOKEN).database.query(database_id, query={})
-    
+
     # Create or update page
     page_new = True
     for page in pages:
@@ -196,9 +216,11 @@ def update_notion_db(database_url, title, value=0, varv=0, varp=0, image_link=No
             break
     try:
         if page_new:
-            page = notion.connect(NOTION_TOKEN).Page.new(database_id=database_id).create()
+            page = (
+                notion.connect(NOTION_TOKEN).Page.new(database_id=database_id).create()
+            )
             page.title("Name", title)
-            
+
         # Check if image already exists
         blocks = page.get_blocks()
         for block in blocks:
@@ -224,13 +246,16 @@ def update_notion_db(database_url, title, value=0, varv=0, varp=0, image_link=No
             res = page.paragraph("Download Excel")
             res.paragraph.text[0].href = excel_link
             res.paragraph.text[0].text.link = Link(excel_link)
-                                    
+
         # Update dynamic properties
         page.select("Status", "OK")
         page.number("Value", round(float(value), 0))
         page.number("Var (value)", round(float(varv), 0))
         page.number("Var (%)", round(float(varp), 4))
-        page.date("Updated at", datetime.now(pytz.timezone("Europe/Paris")).strftime("%Y-%m-%d %H:%M:%S%z"))
+        page.date(
+            "Updated at",
+            datetime.now(pytz.timezone("Europe/Paris")).strftime("%Y-%m-%d %H:%M:%S%z"),
+        )
 
         # Create page in Notion
         page.update()
@@ -238,8 +263,11 @@ def update_notion_db(database_url, title, value=0, varv=0, varp=0, image_link=No
     except Exception as e:
         print(f"❌ Error updating {title}")
         return e
-        
-update_notion_db(DATABASE_URL, PAGE_TITLE, DATANOW, VARV, VARP, link_image, link_html, link_excel)
+
+
+update_notion_db(
+    DATABASE_URL, PAGE_TITLE, DATANOW, VARV, VARP, link_image, link_html, link_excel
+)
 ```
 
 

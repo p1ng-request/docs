@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook send all your contacts to a Google Sheets spreadsheet.
+**Description:** This notebook allows you to send HubSpot contacts to a Google Sheet for easy tracking and organization.
 
 ## Input
 
@@ -67,8 +67,6 @@ df_contacts = hubspot.connect(HS_ACCESS_TOKEN).contacts.get_all(properties_list)
 
 ```python
 gsheet.connect(SPREADSHEET_URL).send(
-    sheet_name=SHEET_NAME,
-    data=df_contacts,
-    append=False
+    sheet_name=SHEET_NAME, data=df_contacts, append=False
 )
 ```

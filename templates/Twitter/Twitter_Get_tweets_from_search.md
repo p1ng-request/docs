@@ -4,6 +4,8 @@
 
 **Author:** [Dineshkumar Sundaram](https://github.com/dineshh912)
 
+**Description:** This notebook allows users to search and retrieve tweets from Twitter.
+
 ## Input
 
 ### Import libraries
@@ -32,7 +34,6 @@ consumer_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 
 ```python
-
 try:
     auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
     api = tweepy.API(auth)
@@ -45,16 +46,29 @@ except BaseException as e:
 
 ```python
 def getTweets(search_words, date_since, numTweets):
-    
+
     # Define a pandas dataframe to store the date:
-    tweets_df = pd.DataFrame(columns = ['username', 'desc', 'location', 'following',
-                                        'followers', 'totaltweets', 'usercreated', 'tweetcreated',
-                                        'retweetcount', 'text', 'hashtags']
-                                )
+    tweets_df = pd.DataFrame(
+        columns=[
+            "username",
+            "desc",
+            "location",
+            "following",
+            "followers",
+            "totaltweets",
+            "usercreated",
+            "tweetcreated",
+            "retweetcount",
+            "text",
+            "hashtags",
+        ]
+    )
 
     # Collect tweets using the Cursor object
     # .Cursor() returns an object that you can iterate or loop over to access the data collected.
-    tweets = tweepy.Cursor(api.search, q=search_words, lang="en", since=date_since, tweet_mode='extended').items(numTweets)
+    tweets = tweepy.Cursor(
+        api.search, q=search_words, lang="en", since=date_since, tweet_mode="extended"
+    ).items(numTweets)
     # Store tweets into a python list
     tweet_list = [tweet for tweet in tweets]
     for tweet in tweet_list:
@@ -67,18 +81,28 @@ def getTweets(search_words, date_since, numTweets):
         usercreated = tweet.user.created_at
         tweetcreated = tweet.created_at
         retweetcount = tweet.retweet_count
-        hashtags = tweet.entities['hashtags']
+        hashtags = tweet.entities["hashtags"]
         try:
             text = tweet.retweeted_status.full_text
         except AttributeError:
             text = tweet.full_text
-        
-        tweet_data = [username, desc, location, following, followers, totaltweets,
-                        usercreated, tweetcreated, retweetcount, text, hashtags]
-        
+
+        tweet_data = [
+            username,
+            desc,
+            location,
+            following,
+            followers,
+            totaltweets,
+            usercreated,
+            tweetcreated,
+            retweetcount,
+            text,
+            hashtags,
+        ]
+
         tweets_df.loc[len(tweets_df)] = tweet_data
-        
-    
+
     return tweets_df
 ```
 

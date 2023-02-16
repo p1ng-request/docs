@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook fetch data from a Google Sheets spreadsheet.
+**Description:** This notebook provides a guide to using Google Sheets to access and analyze data.
 
 ## Input
 
@@ -20,7 +20,9 @@ from naas_drivers import gsheet
 
 
 ```python
-SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1RdwdYXDFDSFSFxxxxxxxx/edit#gid=XXXXXXXX33"
+SPREADSHEET_URL = (
+    "https://docs.google.com/spreadsheets/d/1RdwdYXDFDSFSFxxxxxxxx/edit#gid=XXXXXXXX33"
+)
 SHEET_NAME = "MY_SHEET"
 ```
 

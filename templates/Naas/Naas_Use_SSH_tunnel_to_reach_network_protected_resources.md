@@ -4,12 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-The goal of this notebook is to show you how to create an SSH tunnel in Python and use it to access servers/databases/etc that are not directly publicly accessible.
-
-I am assuming that:
-- The ip address of the SSH server is: **1.2.3.4**
-- You want to reach a Postgres server on port **5432**
-- Postgres private ip address is **10.0.0.2**
+**Description:** This notebook provides instructions on how to use an SSH tunnel to securely access resources on a network that is otherwise protected.
 
 ## Input
 
@@ -37,12 +32,12 @@ except:
 
 ```python
 tunnel = sshtunnel.open_tunnel(
-    ("1.2.3.4", 22),             # The IP address of the SSH server you want to connect to.
-    ssh_username="user",         # SSH username
+    ("1.2.3.4", 22),  # The IP address of the SSH server you want to connect to.
+    ssh_username="user",  # SSH username
     ssh_pkey="path/to/ssh_key",  # SSH key to use
-    remote_bind_addresses=[      # List of remote servers. Lets say the database you
-        ('10.0.0.2', 5432)
-    ]
+    remote_bind_addresses=[  # List of remote servers. Lets say the database you
+        ("10.0.0.2", 5432)
+    ],
 )
 ```
 
@@ -69,7 +64,7 @@ The following output is telling us that we now have an SSH tunnel that we can co
 
 ```python
 local_listening_tunnels = list(tunnel.tunnel_is_up())
-local_port = local_listening_tunnels[0][1] # This is to get the local port.
+local_port = local_listening_tunnels[0][1]  # This is to get the local port.
 ```
 
 ### Connect to Postgres
@@ -80,8 +75,8 @@ conn = psycopg2.connect(
     dbname="myDatabase",
     user="myUser",
     password="myPassword",
-    host="127.0.0.1", # We are going through the tunnel here,
-    port=local_port
+    host="127.0.0.1",  # We are going through the tunnel here,
+    port=local_port,
 )
 
 # You can know use your connection

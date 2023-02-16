@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows users to get poll results from their LinkedIn posts.
+
 ## Input
 
 ### Import library
@@ -19,8 +21,8 @@ import plotly.express as px
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Enter post URL
@@ -58,29 +60,30 @@ print("💾 Poll results saved in csv")
 def create_polls_graph(df):
     poll_id = df.POLL_ID.unique()[0]
     title = df.POLL_QUESTION.unique()[0]
-    
+
     # Create dataframe
     df = df.groupby(["POLL_RESULT"], as_index=False).agg({"PROFILE_ID": "count"})
     df["VALUE"] = df["PROFILE_ID"] / df["PROFILE_ID"].sum() * 100
-    df["VALUE_D"] = df["VALUE"].map('{:.0f}%'.format)
-    
+    df["VALUE_D"] = df["VALUE"].map("{:.0f}%".format)
+
     # Count voters
     voters = df.PROFILE_ID.sum()
-    
+
     # Create fig
-    fig = px.bar(df,
-                 y="POLL_RESULT",
-                 x="PROFILE_ID",
-                 orientation='h',
-                 title=f"{title}<br><span style='font-size: 13px;'>Total amount of votes: {voters}</span>",
-                 text="VALUE_D",
-                 labels={
-                     "POLL_RESULT": "Options",
-                     "PROFILE_ID": "Nb of votes",
-                     "VALUE_D": "% of votes"
-                 },
-                 )
-    fig.update_traces(marker_color='black')
+    fig = px.bar(
+        df,
+        y="POLL_RESULT",
+        x="PROFILE_ID",
+        orientation="h",
+        title=f"{title}<br><span style='font-size: 13px;'>Total amount of votes: {voters}</span>",
+        text="VALUE_D",
+        labels={
+            "POLL_RESULT": "Options",
+            "PROFILE_ID": "Nb of votes",
+            "VALUE_D": "% of votes",
+        },
+    )
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         plot_bgcolor="#ffffff",
         width=600,
@@ -96,6 +99,7 @@ def create_polls_graph(df):
     fig.show()
     asset = naas.asset.add(f"{poll_id}.html")
     return asset
+
 
 create_polls_graph(df)
 ```

@@ -4,21 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-**Objective**
-
-The Gini index measures the equality per country. The closest to 0 the index is, the most equal the country is. The world average Gini index is at 38.
-
-**Data**
-
-GINI INDEX
-
-**Source**
-
-World Bank, Development Research Group.
-
-**Pitch**
-
-https://drive.google.com/file/d/10PXCX0Czck8QJwhinVEoKV3MZGvlAVDC/view
+**Description:** This notebook provides an analysis of the Gini index, a measure of income inequality, from the World Bank.
 
 ## Input
 
@@ -29,7 +15,7 @@ https://drive.google.com/file/d/10PXCX0Czck8QJwhinVEoKV3MZGvlAVDC/view
 import pandas as pd
 from pandas_datareader import wb
 import plotly.graph_objects as go
-import plotly.express as px 
+import plotly.express as px
 ```
 
 ## Model
@@ -39,8 +25,8 @@ import plotly.express as px
 
 ```python
 countries = wb.get_countries()
-countries = countries[['name', 'iso3c']]
-countries.columns = ['country', 'iso3c']
+countries = countries[["name", "iso3c"]]
+countries.columns = ["country", "iso3c"]
 countries
 ```
 
@@ -48,8 +34,8 @@ countries
 
 
 ```python
-indicators = wb.download(indicator=['SI.POV.GINI'], country='all', start=1967, end=2018)
-indicators.columns = ['GINI_INDEX']
+indicators = wb.download(indicator=["SI.POV.GINI"], country="all", start=1967, end=2018)
+indicators.columns = ["GINI_INDEX"]
 indicators
 ```
 
@@ -57,8 +43,10 @@ indicators
 
 
 ```python
-master_table = pd.merge(indicators.reset_index(), countries, left_on='country', right_on='country')
-master_table = master_table.set_index(['country', 'iso3c', 'year'])
+master_table = pd.merge(
+    indicators.reset_index(), countries, left_on="country", right_on="country"
+)
+master_table = master_table.set_index(["country", "iso3c", "year"])
 master_table
 ```
 
@@ -66,7 +54,9 @@ master_table
 
 
 ```python
-pivoted_table = pd.pivot_table(master_table, index=['country', 'iso3c'], columns='year', values='GINI_INDEX')
+pivoted_table = pd.pivot_table(
+    master_table, index=["country", "iso3c"], columns="year", values="GINI_INDEX"
+)
 pivoted_table = pivoted_table.ffill(axis=1)
 pivoted_table
 ```
@@ -75,7 +65,9 @@ pivoted_table
 
 
 ```python
-pivoted_table = pd.pivot_table(master_table, index=['country', 'iso3c'], columns='year', values='GINI_INDEX')
+pivoted_table = pd.pivot_table(
+    master_table, index=["country", "iso3c"], columns="year", values="GINI_INDEX"
+)
 pivoted_table = pivoted_table.ffill(axis=1)
 countries = list(pivoted_table.index.get_level_values(0))
 locations = list(pivoted_table.index.get_level_values(1))
@@ -84,42 +76,42 @@ data = []
 steps = []
 i = 0
 for year in pivoted_table.columns:
-  data.append(dict(
-    type='choropleth',
-    name='',
-    locations=locations,
-    z=pivoted_table[year],
-    hovertext=countries,
-    colorscale=px.colors.sequential.Reds,
-    visible=year=='2018'
-  ))
-  
-  step = dict(
-    method='restyle',
-    args=['visible', [False] * len(pivoted_table.columns)],
-    label=year)
-  step['args'][1][i] = True
-  steps.append(step)
+    data.append(
+        dict(
+            type="choropleth",
+            name="",
+            locations=locations,
+            z=pivoted_table[year],
+            hovertext=countries,
+            colorscale=px.colors.sequential.Reds,
+            visible=year == "2018",
+        )
+    )
 
-  i = i + 1
+    step = dict(
+        method="restyle",
+        args=["visible", [False] * len(pivoted_table.columns)],
+        label=year,
+    )
+    step["args"][1][i] = True
+    steps.append(step)
+
+    i = i + 1
 
 layout = go.Layout(
-  title=dict(
-    text='Evolution of the gini index from 1969 to 2018', 
-    x=0.5,
-    font=dict(
-      size=21,
-    )
-  ),
-  sliders=[dict(steps=steps, active=len(data) - 1)],
-  annotations=[dict(
-    text='Updated in 2018 from The World Bank',
-    showarrow=False,
-    x=1,
-    y=-0.05
-  )],
-  autosize=True,
-  height=800
+    title=dict(
+        text="Evolution of the gini index from 1969 to 2018",
+        x=0.5,
+        font=dict(
+            size=21,
+        ),
+    ),
+    sliders=[dict(steps=steps, active=len(data) - 1)],
+    annotations=[
+        dict(text="Updated in 2018 from The World Bank", showarrow=False, x=1, y=-0.05)
+    ],
+    autosize=True,
+    height=800,
 )
 
 fig = go.Figure(data, layout)

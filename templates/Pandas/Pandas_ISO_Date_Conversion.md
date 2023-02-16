@@ -4,7 +4,7 @@
 
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)
 
-This notebook will help you understand how to convert any date to ISO date format.
+**Description:** This notebook provides a guide to converting ISO dates into Pandas-compatible formats.
 
 ## Input
 
@@ -21,15 +21,21 @@ from dateutil.parser import parse
 
 ```python
 dict1 = {
-    "Name": ["Peter","Dolly","Maggie","David","Isabelle"],
-    "Date":["20/2/2021","19/8/2014","8/9/2000","4/3/2013","14/7/1995"],
-    "Second Date":["August 20,2011","September 16,1993","January 23,2009","October 17,2019","March 4,2021"]
+    "Name": ["Peter", "Dolly", "Maggie", "David", "Isabelle"],
+    "Date": ["20/2/2021", "19/8/2014", "8/9/2000", "4/3/2013", "14/7/1995"],
+    "Second Date": [
+        "August 20,2011",
+        "September 16,1993",
+        "January 23,2009",
+        "October 17,2019",
+        "March 4,2021",
+    ],
 }
 ```
 
 
 ```python
-data=pd.DataFrame(dict1)
+data = pd.DataFrame(dict1)
 ```
 
 
@@ -43,14 +49,14 @@ There are 2 date formats in the sample data and the conversion of both takes pla
 
 
 ```python
-# Converting the first Date into ISO Format 
-data["Date"]=pd.to_datetime(data["Date"]).dt.strftime('%Y-%m-%d')
+# Converting the first Date into ISO Format
+data["Date"] = pd.to_datetime(data["Date"]).dt.strftime("%Y-%m-%d")
 ```
 
 
 ```python
 # Converting the second date into ISO Format
-data["Second Date"]=data["Second Date"].apply(lambda i: parse(i))
+data["Second Date"] = data["Second Date"].apply(lambda i: parse(i))
 ```
 
 ## Output

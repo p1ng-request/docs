@@ -44,8 +44,8 @@ If you are not using the Google Chrome Extension, [learn how to get your cookies
 
 ```python
 # Cookies
-LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
-JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or "YOUR_COOKIE_LI_AT"
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "YOUR_COOKIE_JSESSIONID"
 
 # Post URL
 POST_URL = "----"
@@ -65,7 +65,7 @@ print("Number of likes: ", df_posts.PROFILE_URN.count())
 
 
 ```python
-# Show dataframe with list of profiles from likes 
+# Show dataframe with list of profiles from likes
 df_posts
 ```
 
@@ -73,11 +73,13 @@ df_posts
 
 
 ```python
-def create_contacts_from_post(df,
-                              c_profile_urn="PROFILE_URN",
-                              c_firstname="FIRSTNAME",
-                              c_lastname="LASTNAME",
-                              c_occupation="OCCUPATION"):
+def create_contacts_from_post(
+    df,
+    c_profile_urn="PROFILE_URN",
+    c_firstname="FIRSTNAME",
+    c_lastname="LASTNAME",
+    c_occupation="OCCUPATION",
+):
     for _, row in df.iterrows():
         profile_urn = row[c_profile_urn]
         firstname = row[c_firstname]
@@ -89,23 +91,25 @@ def create_contacts_from_post(df,
 
         # contact
         try:
-            contact = linkedin.connect(LI_AT, JSESSIONID).profile.get_contact(linkedinbio)
+            contact = linkedin.connect(LI_AT, JSESSIONID).profile.get_contact(
+                linkedinbio
+            )
             email = contact.loc[0, "EMAIL"]
             phone = contact.loc[0, "PHONENUMBER"]
         except:
             print("No contact info")
 
         # With send method
-        data = {"properties": 
-                {
-                    "linkedinbio": linkedinbio,
-                    "firstname": firstname,
-                    "lastname": lastname,
-                    "jobtitle": occupation,
-                    "email": email,
-                    "phone": phone,
-                }
-               }
+        data = {
+            "properties": {
+                "linkedinbio": linkedinbio,
+                "firstname": firstname,
+                "lastname": lastname,
+                "jobtitle": occupation,
+                "email": email,
+                "phone": phone,
+            }
+        }
         print(data)
         hubspot.connect(HS_ACCESS_TOKEN).contacts.send(data)
 ```

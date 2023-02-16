@@ -4,18 +4,7 @@
 
 **Author:** [Mateusz Polakowski](https://www.linkedin.com/in/polakowski/)
 
-To use your own data inside Snowflake DWH, first thing first, you need to ingest it.
-
-This notebook shows how to put <u>CSV</u> data from your local machine into Snowflake. Several objects and actions will be necessary to do so:
-
-- creating file format,
-- creating internal named stage (for other stages, please check [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-local-file-system-create-stage.html)),
-- putting file into stage,
-- copying data from stage to the table.
-
-All above steps are essential to make use of the data from your local machine inside Snowflake.
-
-You can try with your own JSON data, but to follow the notebook cells 1:1 please download `sales_data.csv` file from `awesome-notebooks/Snowflake` directory. Eventually, you may need to change your file location below in the ensuing cells.
+**Description:** This notebook demonstrates how to ingest CSV data from a local stage into Snowflake.
 
 ## Input
 
@@ -42,12 +31,12 @@ If you're proceeding with the trial account, it's highly probable that your ID w
 
 
 ```python
-# Here environment variables are used to pass Snowflake credentials, 
+# Here environment variables are used to pass Snowflake credentials,
 # but it's okay to do it in a different manner
 
-sf_username=os.environ['SNOWFLAKE_USER']
-sf_password=os.environ['SNOWFLAKE_PASSWORD']
-sf_account=os.environ['SNOWFLAKE_ACCOUNT']
+sf_username = os.environ["SNOWFLAKE_USER"]
+sf_password = os.environ["SNOWFLAKE_PASSWORD"]
+sf_account = os.environ["SNOWFLAKE_ACCOUNT"]
 ```
 
 ## Model
@@ -56,11 +45,7 @@ sf_account=os.environ['SNOWFLAKE_ACCOUNT']
 
 
 ```python
-snowflake.connect(
-    username=sf_username,
-    password=sf_password,
-    account=sf_account
-)
+snowflake.connect(username=sf_username, password=sf_password, account=sf_account)
 ```
 
 ### Environment setup
@@ -72,20 +57,20 @@ snowflake.database.get_current() is None
 
 
 ```python
-snowflake.warehouse.use('COMPUTE_WH')
+snowflake.warehouse.use("COMPUTE_WH")
 ```
 
 
 ```python
-snowflake.role.use('ACCOUNTADMIN')
+snowflake.role.use("ACCOUNTADMIN")
 ```
 
 
 ```python
-snowflake.database.create('NAAS', or_replace=True, silent=True)
-snowflake.database.use('NAAS', silent=True)
-snowflake.schema.create('NAAS_SCHEMA', or_replace=True, silent=True)
-snowflake.schema.use('NAAS_SCHEMA', silent=True)
+snowflake.database.create("NAAS", or_replace=True, silent=True)
+snowflake.database.use("NAAS", silent=True)
+snowflake.schema.create("NAAS_SCHEMA", or_replace=True, silent=True)
+snowflake.schema.use("NAAS_SCHEMA", silent=True)
 ```
 
 
@@ -100,11 +85,7 @@ snowflake.get_environment()
 
 ```python
 results_ff = snowflake.file_format.create(
-    'my_csv_format', 
-    'CSV', 
-    or_replace=True,
-    FIELD_DELIMITER="','",
-    SKIP_HEADER=1
+    "my_csv_format", "CSV", or_replace=True, FIELD_DELIMITER="','", SKIP_HEADER=1
 )
 
 results_ff
@@ -115,9 +96,11 @@ results_ff
 
 ```python
 try:
-    snowflake.file_format.create('my_invalid_csv_format', 'CSV', or_replace=True, ENABLE_OCTAL = "TRUE")
+    snowflake.file_format.create(
+        "my_invalid_csv_format", "CSV", or_replace=True, ENABLE_OCTAL="TRUE"
+    )
 except ProgrammingError as pe:
-    print('Something went wrong!')
+    print("Something went wrong!")
     print(pe)
 ```
 
@@ -133,9 +116,7 @@ except ProgrammingError as pe:
 
 ```python
 snowflake.stage.create(
-    stage_name='my_internal_stage', 
-    or_replace=True,
-    file_format_name='my_csv_format'
+    stage_name="my_internal_stage", or_replace=True, file_format_name="my_csv_format"
 )
 ```
 
@@ -144,9 +125,9 @@ snowflake.stage.create(
 
 ```python
 snowflake.stage.put(
-    filepath='file://~/Downloads/sales_data.csv',
-    internal_stage_name='@my_internal_stage',
-    silent=True
+    filepath="file://~/Downloads/sales_data.csv",
+    internal_stage_name="@my_internal_stage",
+    silent=True,
 )
 ```
 
@@ -154,9 +135,9 @@ snowflake.stage.put(
 
 
 ```python
-result_list_stage = snowflake.stage.list('@my_internal_stage')
+result_list_stage = snowflake.stage.list("@my_internal_stage")
 
-print(result_list_stage['results'])
+print(result_list_stage["results"])
 ```
 
 ### Creating a table
@@ -176,7 +157,7 @@ query_create_table = """
 """
 
 # No worries, Table API will be available soon too!
-snowflake.execute(query_create_table)['results']
+snowflake.execute(query_create_table)["results"]
 ```
 
 ### Loading data from internal stage to a table
@@ -184,9 +165,7 @@ snowflake.execute(query_create_table)['results']
 
 ```python
 snowflake.copy_into(
-    table_name='sales_data',
-    source_stage='@my_internal_stage',
-    silent=True
+    table_name="sales_data", source_stage="@my_internal_stage", silent=True
 )
 ```
 
@@ -197,9 +176,7 @@ No harm as `COPY INTO` tracks which files have been loaded already
 
 ```python
 snowflake.copy_into(
-    table_name='sales_data',
-    source_stage='@my_internal_stage',
-    silent=True
+    table_name="sales_data", source_stage="@my_internal_stage", silent=True
 )
 ```
 
@@ -207,6 +184,6 @@ snowflake.copy_into(
 
 
 ```python
-sales_data = snowflake.query_pd('SELECT * FROM sales_data')
+sales_data = snowflake.query_pd("SELECT * FROM sales_data")
 sales_data.head()
 ```

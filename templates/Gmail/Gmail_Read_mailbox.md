@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu)
 
+**Description:** This notebook allows you to read and manage your Gmail inbox.
+
 ## Input
 
 ### Import librairy
@@ -30,10 +32,7 @@ box = "INBOX"
 
 
 ```python
-emails = email.connect(username, 
-        password, 
-        username, 
-        smtp_server)
+emails = email.connect(username, password, username, smtp_server)
 ```
 
 ### Get email list
@@ -46,7 +45,7 @@ df
 
 
 ```python
-uid_list = df['uid'].tolist() 
+uid_list = df["uid"].tolist()
 uid_list
 ```
 

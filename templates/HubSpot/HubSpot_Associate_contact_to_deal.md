@@ -30,8 +30,8 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-deal_id = '3452242690'
-contact_id = '245201'
+deal_id = "3452242690"
+contact_id = "245201"
 ```
 
 ## Model
@@ -41,10 +41,7 @@ contact_id = '245201'
 
 ```python
 hubspot.connect(HS_ACCESS_TOKEN).associations.create(
-    "deal",
-    deal_id,
-    "contact",
-    contact_id
+    "deal", deal_id, "contact", contact_id
 )
 ```
 

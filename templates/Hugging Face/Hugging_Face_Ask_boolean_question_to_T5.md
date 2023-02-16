@@ -59,10 +59,14 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 
 ```python
-tokenizer = AutoTokenizer.from_pretrained('mrm8488/t5-base-finetuned-boolq')
-model = AutoModelForSeq2SeqLM.from_pretrained('mrm8488/t5-base-finetuned-boolq').to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
-try:model.parallelize()
-except:pass
+tokenizer = AutoTokenizer.from_pretrained("mrm8488/t5-base-finetuned-boolq")
+model = AutoModelForSeq2SeqLM.from_pretrained("mrm8488/t5-base-finetuned-boolq").to(
+    torch.device("cuda" if torch.cuda.is_available() else "cpu")
+)
+try:
+    model.parallelize()
+except:
+    pass
 ```
 
 ## Model
@@ -79,28 +83,40 @@ At last you have to adjust the number of epochs to be trained (see comment `# ep
 
 ```python
 srcs = [
-    { 'stream': lambda:open('boolq/train.jsonl', 'r'),
-      'keys': ['question', 'passage', 'answer'] },
-    { 'stream': lambda:open('boolq/dev.jsonl', 'r'),
-      'keys': ['question', 'passage', 'answer'] },
-    { 'stream': lambda:open('boolq-nat-perturb/train.jsonl', 'r'),
-      'keys': ['question', 'passage', 'roberta_hard'] }
+    {
+        "stream": lambda: open("boolq/train.jsonl", "r"),
+        "keys": ["question", "passage", "answer"],
+    },
+    {
+        "stream": lambda: open("boolq/dev.jsonl", "r"),
+        "keys": ["question", "passage", "answer"],
+    },
+    {
+        "stream": lambda: open("boolq-nat-perturb/train.jsonl", "r"),
+        "keys": ["question", "passage", "roberta_hard"],
+    },
 ]
 model.train()
-for _ in range(0): # epochs
+for _ in range(0):  # epochs
     for src in srcs:
-        with src['stream']() as s:
+        with src["stream"]() as s:
             for d in s:
-                q, p, a = itemgetter(src['keys'][0], src['keys'][1], src['keys'][2])(json.loads(d))
-                tokens = tokenizer('question:'+q+'\ncontext:'+p, return_tensors='pt')
+                q, p, a = itemgetter(src["keys"][0], src["keys"][1], src["keys"][2])(
+                    json.loads(d)
+                )
+                tokens = tokenizer(
+                    "question:" + q + "\ncontext:" + p, return_tensors="pt"
+                )
                 if len(tokens.input_ids[0]) > model.config.n_positions:
                     continue
-                model(input_ids=tokens.input_ids,
-                    labels=tokenizer(str(a), return_tensors='pt').input_ids,
+                model(
+                    input_ids=tokens.input_ids,
+                    labels=tokenizer(str(a), return_tensors="pt").input_ids,
                     attention_mask=tokens.attention_mask,
-                    use_cache=True
-                    ).loss.backward()
-model.eval(); # ; suppresses long output on jupyter
+                    use_cache=True,
+                ).loss.backward()
+model.eval()
+# ; suppresses long output on jupyter
 ```
 
 ### Define query function
@@ -108,14 +124,17 @@ As the model is ready, define the querying function.
 
 
 ```python
-def query(q='question', c='context'):
+def query(q="question", c="context"):
     return strtobool(
         tokenizer.decode(
             token_ids=model.generate(
-                input_ids=tokenizer.encode('question:'+q+'\ncontext:'+c, return_tensors='pt')
+                input_ids=tokenizer.encode(
+                    "question:" + q + "\ncontext:" + c, return_tensors="pt"
+                )
             )[0],
-        skip_special_tokens=True,
-        max_length=3)
+            skip_special_tokens=True,
+            max_length=3,
+        )
     )
 ```
 
@@ -126,28 +145,32 @@ Now the actual task begins: Query the model with your ideas (see list `ideas`).
 
 
 ```python
-if __name__ == '__main__':
-    ideas = [ 'The idea is to pollute the air instead of riding the bike.', # should be false
-              'The idea is to go cycling instead of driving the car.', # should be true
-              'The idea is to put your trash everywhere.', # should be false
-              'The idea is to reduce transport distances.', # should be true
-              'The idea is to put plants on all the roofs.', # should be true
-              'The idea is to forbid opensource vaccines.', # should be true
-              'The idea is to go buy an Iphone every five years.', # should be false 
-              'The idea is to walk once every week in the nature.', # should be true  
-              'The idea is to go buy Green bonds.', # should be true  
-              'The idea is to go buy fast fashion.', # should be false
-              'The idea is to buy single-use items.', # should be false
-              'The idea is to drink plastic bottled water.', # should be false
-              'The idea is to use import goods.', # should be false
-              'The idea is to use buy more food than you need.', # should be false
-              'The idea is to eat a lot of meat.', # should be false
-              'The idea is to eat less meat.', # should be false
-              'The idea is to always travel by plane.', # should be false
-              'The idea is to opensource vaccines.' # should be false
-             
-            ]
+if __name__ == "__main__":
+    ideas = [
+        "The idea is to pollute the air instead of riding the bike.",  # should be false
+        "The idea is to go cycling instead of driving the car.",  # should be true
+        "The idea is to put your trash everywhere.",  # should be false
+        "The idea is to reduce transport distances.",  # should be true
+        "The idea is to put plants on all the roofs.",  # should be true
+        "The idea is to forbid opensource vaccines.",  # should be true
+        "The idea is to go buy an Iphone every five years.",  # should be false
+        "The idea is to walk once every week in the nature.",  # should be true
+        "The idea is to go buy Green bonds.",  # should be true
+        "The idea is to go buy fast fashion.",  # should be false
+        "The idea is to buy single-use items.",  # should be false
+        "The idea is to drink plastic bottled water.",  # should be false
+        "The idea is to use import goods.",  # should be false
+        "The idea is to use buy more food than you need.",  # should be false
+        "The idea is to eat a lot of meat.",  # should be false
+        "The idea is to eat less meat.",  # should be false
+        "The idea is to always travel by plane.",  # should be false
+        "The idea is to opensource vaccines.",  # should be false
+    ]
     for idea in ideas:
-        print('🌏 Idea:', idea)
-        print('\t✅ Good idea' if query('Is the idea environmentally friendly?', idea) else '\t❌ Bad idea' )
+        print("🌏 Idea:", idea)
+        print(
+            "\t✅ Good idea"
+            if query("Is the idea environmentally friendly?", idea)
+            else "\t❌ Bad idea"
+        )
 ```

@@ -4,7 +4,7 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-Pre-requisite: Create your own <a href="">Google API JSON credential</a>
+**Description:** This notebook provides an analysis of the bounce rate of a website using Google Analytics.
 
 ## Input
 
@@ -22,7 +22,7 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 ```
 
 ### Get view id from google analytics
@@ -47,7 +47,7 @@ html_output = "googleanalytics_bounce_rate.html"
 naas.scheduler.add(cron="0 8 * * *")
 naas.dependency.add(json_path)
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -57,7 +57,9 @@ naas.dependency.add(json_path)
 
 
 ```python
-df_bounce_rate = googleanalytics.connect(json_path=json_path).views.get_bounce_rate(view_id=view_id)
+df_bounce_rate = googleanalytics.connect(json_path=json_path).views.get_bounce_rate(
+    view_id=view_id
+)
 df_bounce_rate
 ```
 
@@ -79,21 +81,17 @@ def plot_bounce_rate(df: pd.DataFrame):
     Plot bounce rate as an area chart in Plotly.
     """
     # Prep dataframe
-    df["Date"] = pd.to_datetime(df['Year Month'] + "01")
-    
+    df["Date"] = pd.to_datetime(df["Year Month"] + "01")
+
     # Get total views
     value = "{:,.0%}".format(df["Bounce Rate"].mean())
-    
+
     # Create data
-    data = go.Scatter(
-        x=df["Date"],
-        y=df['Bounce Rate'],
-        stackgroup="one"
-    )
-    
+    data = go.Scatter(x=df["Date"], y=df["Bounce Rate"], stackgroup="one")
+
     # Create layout
     layout = go.Layout(
-        yaxis={"tickformat": ',.0%'},
+        yaxis={"tickformat": ",.0%"},
         title=f"<b>Bounce Rate</b><br><span style='font-size: 13px;'>Average bounce rate: {value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
         yaxis_title="Bounce rate %",
@@ -106,8 +104,9 @@ def plot_bounce_rate(df: pd.DataFrame):
         margin_pad=10,
     )
     fig = go.Figure(data=data, layout=layout)
-    fig.update_traces(mode='lines+markers')
+    fig.update_traces(mode="lines+markers")
     return fig
+
 
 fig = plot_bounce_rate(df_bounce_rate)
 fig
@@ -121,9 +120,9 @@ fig
 fig.write_html(html_output)
 
 # Shave with naas
-#-> Uncomment the line below (by removing the hashtag) to share your asset with naas
+# -> Uncomment the line below (by removing the hashtag) to share your asset with naas
 # naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below (by removing the hashtag)  to delete your asset
+# -> Uncomment the line below (by removing the hashtag)  to delete your asset
 # naas.asset.delete(html_output)
 ```

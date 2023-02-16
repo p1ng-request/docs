@@ -4,6 +4,8 @@
 
 **Author:** [Sanjay Sabu](https://www.linkedin.com/in/sanjay-sabu-4205/)
 
+**Description:** This notebook converts PDF documents into MP3 audio files.
+
 ## Input
 
 ### Installing necessary packages
@@ -40,31 +42,31 @@ from gtts import gTTS
 ```python
 def convert_pdf_to_string(file_path):
 
-	output_string = StringIO()
-	with open(file_path, 'rb') as in_file:
-	    parser = PDFParser(in_file)
-	    doc = PDFDocument(parser)
-	    rsrcmgr = PDFResourceManager()
-	    device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
-	    interpreter = PDFPageInterpreter(rsrcmgr, device)
-	    for page in PDFPage.create_pages(doc):
-	        interpreter.process_page(page)
+    output_string = StringIO()
+    with open(file_path, "rb") as in_file:
+        parser = PDFParser(in_file)
+        doc = PDFDocument(parser)
+        rsrcmgr = PDFResourceManager()
+        device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
+        interpreter = PDFPageInterpreter(rsrcmgr, device)
+        for page in PDFPage.create_pages(doc):
+            interpreter.process_page(page)
 
-	return(output_string.getvalue())
+    return output_string.getvalue()
 
-                
+
 def convert_title_to_filename(title):
     filename = title.lower()
-    filename = filename.replace(' ', '_')
+    filename = filename.replace(" ", "_")
     return filename
 
 
 def split_to_title_and_pagenum(table_of_contents_entry):
     title_and_pagenum = table_of_contents_entry.strip()
-    
+
     title = None
     pagenum = None
-    
+
     if len(title_and_pagenum) > 0:
         if title_and_pagenum[-1].isdigit():
             i = -2
@@ -73,9 +75,8 @@ def split_to_title_and_pagenum(table_of_contents_entry):
 
             title = title_and_pagenum[:i].strip()
             pagenum = int(title_and_pagenum[i:].strip())
-        
+
     return title, pagenum
-    
 ```
 
 ## Output
@@ -84,7 +85,7 @@ def split_to_title_and_pagenum(table_of_contents_entry):
 
 
 ```python
-pdf_name = 'Installation_Guide.pdf' # .pdf file you want to convert
+pdf_name = "Installation_Guide.pdf"  # .pdf file you want to convert
 print(convert_pdf_to_string(pdf_name))
 ```
 
@@ -93,10 +94,10 @@ print(convert_pdf_to_string(pdf_name))
 
 ```python
 rr = convert_pdf_to_string(pdf_name)
-string_of_text = ''
+string_of_text = ""
 for text in rr:
     string_of_text += text
 
-final_file = gTTS(text=string_of_text, lang='en')  # store file in variable
+final_file = gTTS(text=string_of_text, lang="en")  # store file in variable
 final_file.save("Generated Speech.mp3")  # save file to computer
 ```

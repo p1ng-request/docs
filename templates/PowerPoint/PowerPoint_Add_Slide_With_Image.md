@@ -4,8 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template create a PowerPoint file in portrait format with an image. <br>
-Reference: https://python-pptx.readthedocs.io/en/latest/user/quickstart.html
+**Description:** This notebook provides instructions on how to add an image to a PowerPoint slide.
 
 ## Input
 
@@ -25,8 +24,8 @@ from pptx.util import Inches
 
 
 ```python
-output_pptx = 'MyPowerPoint_Slide_Image.pptx'
-img_path = '1664217502406.jfif'
+output_pptx = "MyPowerPoint_Slide_Image.pptx"
+img_path = "1664217502406.jfif"
 ```
 
 ## Model

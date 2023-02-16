@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-In this notebook, you will be able to ignore an invitation received
+**Description:** This notebook is for tracking invitations received on LinkedIn that have been ignored.
 
 ## Input
 
@@ -56,7 +56,9 @@ is_generic = False
 
 
 ```python
-result = linkedin.connect(LI_AT, JSESSIONID).invitation.ignore(invitation_id, shared_secret, is_generic)
+result = linkedin.connect(LI_AT, JSESSIONID).invitation.ignore(
+    invitation_id, shared_secret, is_generic
+)
 ```
 
 ## Output

@@ -4,6 +4,8 @@
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
+**Description:** This notebook provides an analysis of user statistics on the popular social media platform, TikTok.
+
 ## Input
 
 ### Import libraries
@@ -40,8 +42,8 @@ While logged into your tiktok account, Click F12 to open developer console in yo
 ```python
 # Cookies
 cookie = {
-  "s_v_web_id": "verify_l0ecjehXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  "tt_webid": "1%7CaSy-x8YGNmB_l9qsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    "s_v_web_id": "verify_l0ecjehXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "tt_webid": "1%7CaSy-x8YGNmB_l9qsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 }
 
 # Username
@@ -62,10 +64,10 @@ api = TikTokAPI(cookie=cookie)
 
 ```python
 def get_user_stats(username):
-    #Get user details
-    '''
+    # Get user details
+    """
     User detail fields : video count, follower count, following count, heart count
-    '''
+    """
 
     user_obj = api.getUserByName(username)
     user_video_count = user_obj["userInfo"]["stats"]["videoCount"]
@@ -77,8 +79,7 @@ def get_user_stats(username):
         "user_video_count": user_video_count,
         "user_follower_count": user_follower_count,
         "user_following_count": user_following_count,
-        "user_heart_count": user_heart_count
-
+        "user_heart_count": user_heart_count,
     }
     return user_stats
 ```

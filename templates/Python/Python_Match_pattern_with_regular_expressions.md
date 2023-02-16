@@ -26,9 +26,11 @@ You can build and test regular expression patterns using this [regex101.com](htt
 
 
 ```python
-email_regex = '''^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'''   # Pattern to match Email Address
+email_regex = (
+    """^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"""  # Pattern to match Email Address
+)
 
-phone_number_regex = ''''''   # Pattern to match Phone Number
+phone_number_regex = """"""  # Pattern to match Phone Number
 ```
 
 ## Model
@@ -38,10 +40,10 @@ phone_number_regex = ''''''   # Pattern to match Phone Number
 
 ```python
 def check_email(email):
-    if (re.fullmatch(email_regex, email)):
-        print('Valid Email✅')
+    if re.fullmatch(email_regex, email):
+        print("Valid Email✅")
     else:
-        print('Invalid Email❌')
+        print("Invalid Email❌")
 ```
 
 ### Check phone number function
@@ -51,11 +53,11 @@ def check_email(email):
 def check_phone_number(phone_number):
     phone_number = phonenumbers.parse(phone_number)
     possible = phonenumbers.is_valid_number(phone_number)
-    if (possible):
-        if (phonenumbers.is_possible_number(phone_number)):
-            print('Valid Phone Number✅')
+    if possible:
+        if phonenumbers.is_possible_number(phone_number):
+            print("Valid Phone Number✅")
     else:
-        print('Invalid Phone Number❌')
+        print("Invalid Phone Number❌")
 ```
 
 ## Output
@@ -64,9 +66,9 @@ def check_phone_number(phone_number):
 
 
 ```python
-input_email = input('Enter the Email-ID: ')
+input_email = input("Enter the Email-ID: ")
 check_email(input_email)
 
-input_phone_number = input('Enter the Phone Number: ')
+input_phone_number = input("Enter the Phone Number: ")
 check_phone_number(input_phone_number)
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
+**Description:** This notebook provides a weekly summary of commits made to a GitHub repository.
+
 ## Input
 
 
@@ -25,10 +27,10 @@ import naas
 
 ```python
 # GitHub token
-GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE" # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********" 
+GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE"  # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
 
 # Github repo on which we want to create issues.
-REPO_URL = "ENTER_YOUR_REPO_URL_HERE" # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks/"
+REPO_URL = "ENTER_YOUR_REPO_URL_HERE"  # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks/"
 ```
 
 ## Model
@@ -48,14 +50,19 @@ df_commits
 def get_weekly_commits(df):
     # Exclude Github commits
     df = df[(df.COMMITTER_EMAIL.str[-10:] != "github.com")]
-    
+
     # Groupby and count
-    df = df.groupby(pd.Grouper(freq='W', key='AUTHOR_DATE')).agg({"ID": "count"}).reset_index()
+    df = (
+        df.groupby(pd.Grouper(freq="W", key="AUTHOR_DATE"))
+        .agg({"ID": "count"})
+        .reset_index()
+    )
     df["WEEKS"] = df["AUTHOR_DATE"].dt.strftime("W%U-%Y")
-    
+
     # Cleaning
     df = df.rename(columns={"ID": "NB_COMMITS"})
     return df
+
 
 df_weekly = get_weekly_commits(df_commits)
 df_weekly
@@ -68,20 +75,19 @@ df_weekly
 def create_barchart(df, repository):
     # Get repository
     repository = repository.split("/")[-1]
-    
+
     # Calc commits
     commits = df.NB_COMMITS.sum()
-    
+
     # Create fig
-    fig = px.bar(df,
-           title=f"GitHub - {repository} : Weekly user commits <br><span style='font-size: 13px;'>Total commits: {commits}</span>",
-           x="WEEKS",
-           y="NB_COMMITS",
-           labels={
-               'WEEKS':'Weeks committed',
-               'NB_COMMITS':"Nb. commits"
-          })
-    fig.update_traces(marker_color='black')
+    fig = px.bar(
+        df,
+        title=f"GitHub - {repository} : Weekly user commits <br><span style='font-size: 13px;'>Total commits: {commits}</span>",
+        x="WEEKS",
+        y="NB_COMMITS",
+        labels={"WEEKS": "Weeks committed", "NB_COMMITS": "Nb. commits"},
+    )
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         plot_bgcolor="#ffffff",
         width=1200,
@@ -92,6 +98,7 @@ def create_barchart(df, repository):
     )
     fig.show()
     return fig
+
 
 fig = create_barchart(df_weekly, REPO_URL)
 ```

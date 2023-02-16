@@ -47,18 +47,18 @@ time_delay = 1
 
 ```python
 def patch(uid, data):
-    #set headers
+    # set headers
     headers = {
-        'Content-Type': "application/json",
-        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+        "Content-Type": "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}",
     }
     base_url = "https://api.hubapi.com/engagements/v1/engagements/"
     res = requests.patch(
-         url=f"{base_url}/{uid}",
-         headers=headers,
-         params=params,
-         json=data,
-         allow_redirects=False,
+        url=f"{base_url}/{uid}",
+        headers=headers,
+        params=params,
+        json=data,
+        allow_redirects=False,
     )
     try:
         res.raise_for_status()
@@ -71,29 +71,29 @@ def patch(uid, data):
 
 
 ```python
-def update_task(task_id,owner_id,subject,body,time_delay):
-    
-    #set headers
+def update_task(task_id, owner_id, subject, body, time_delay):
+
+    # set headers
     url = "https://api.hubapi.com/engagements/v1/engagements/"
     params = {"hapikey": HS_API_TOKEN}
-    headers = {'Content-Type': "application/json"}
-    
+    headers = {"Content-Type": "application/json"}
+
     # Calc timestamp to set delay
     tstampobj = datetime.now() + timedelta(days=time_delay)
     tstamp = tstampobj.timestamp() * 1000
 
-    #check if tasks already exist
-    
+    # check if tasks already exist
+
     get_task = requests.get(
-                url=f"{get_url}/{task_id}",
-                headers= headers,
-                params= params,
-                allow_redirects=False,    
+        url=f"{get_url}/{task_id}",
+        headers=headers,
+        params=params,
+        allow_redirects=False,
     )
-    
+
     if get_task.status_code == 200:
         print("Task found..Updating")
-        
+
         # Update Task
         data = {
             "engagement": {
@@ -101,16 +101,16 @@ def update_task(task_id,owner_id,subject,body,time_delay):
                 "timestamp": tstamp,
             },
             "metadata": {
-                #"type": "TASK",
+                # "type": "TASK",
                 "body": body,
-                #"status": "NOT_STARTED", # NOT_STARTED | COMPLETED | IN_PROGRESS | WAITING | DEFERRED
-                #"forObjectType": "CONTACT",
-                #"subject": subject,
-            }
+                # "status": "NOT_STARTED", # NOT_STARTED | COMPLETED | IN_PROGRESS | WAITING | DEFERRED
+                # "forObjectType": "CONTACT",
+                # "subject": subject,
+            },
         }
-       
-        patch(task_id,data)
-        
+
+        patch(task_id, data)
+
     else:
         print("Task not found. Unable to update")
 ```
@@ -121,5 +121,5 @@ def update_task(task_id,owner_id,subject,body,time_delay):
 
 
 ```python
-update_task(task_id,owner_id,subject,body,time_delay)
+update_task(task_id, owner_id, subject, body, time_delay)
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides helpful resources and guidance for navigating the Naas platform.
+
 ## Input
 
 ### Import needed library

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides live currency prices for various currencies.
+
 ## Input
 
 ### Install packages
@@ -28,11 +30,11 @@ import requests
 
 
 ```python
-ccy_pair = 'EUR/CHF'
+ccy_pair = "EUR/CHF"
 AUTH_HOST = "https://auth.getneo.com"
 DATA_HOST = "https://data.getneo.com"
-login_id = 'LOGIN'
-api_key = 'PASSWORD'
+login_id = "LOGIN"
+api_key = "PASSWORD"
 bearer_token = None
 ```
 
@@ -49,7 +51,10 @@ output_file = f"{ccy_pair.replace('/', '')}.csv"
 
 ```python
 if not bearer_token:
-    response = requests.get(f"{AUTH_HOST}/api/v1/auth/login/", params={"login_id": login_id, "api_key": api_key})
+    response = requests.get(
+        f"{AUTH_HOST}/api/v1/auth/login/",
+        params={"login_id": login_id, "api_key": api_key},
+    )
     if response.status_code != 200:
         raise PermissionError(f"Failed to authenticate as {login_id}")
     print(f"Authenticated as {login_id}")
@@ -61,7 +66,9 @@ if not bearer_token:
 
 
 ```python
-response = requests.get(f"{DATA_HOST}/api/v1/prices/{ccy_pair}", headers={"Authorization": bearer_token})
+response = requests.get(
+    f"{DATA_HOST}/api/v1/prices/{ccy_pair}", headers={"Authorization": bearer_token}
+)
 if response.status_code != 200:
     bearer_token = None
     raise ValueError(f"Failed to retrieve {ccy_pair} prices")

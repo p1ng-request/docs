@@ -35,7 +35,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```python
 # Get contact ID in HubSpot
 # If you are in HubSpot, a contact ID is the last part of the URL : https://app.hubspot.com/contacts/XXXX/contact/508201
-contact_id = 100001 # EXAMPLE = 100001 or "000001"
+contact_id = 100001  # EXAMPLE = 100001 or "000001"
 ```
 
 ## Model
@@ -46,21 +46,23 @@ contact_id = 100001 # EXAMPLE = 100001 or "000001"
 ```python
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
+
 def timestamp_to_date(d):
     result = None
     if d is not None:
         result = datetime.fromtimestamp(int(d) / 1000).strftime(DATETIME_FORMAT)
     return result
 
+
 def get_notes_from_contact(contact_id):
-    url = f'https://api.hubapi.com/engagements/v1/engagements/associated/contact/{contact_id}/paged'
+    url = f"https://api.hubapi.com/engagements/v1/engagements/associated/contact/{contact_id}/paged"
     querystring = {
         "archived": "false",
         "limit": 100,
     }
     headers = {
-        'Content-Type': "application/json",
-        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+        "Content-Type": "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}",
     }
 
     # Get all notes
@@ -71,11 +73,9 @@ def get_notes_from_contact(contact_id):
     while has_more:
         if offset is not None:
             querystring["offset"] = offset
-            
+
         # Requests data
-        res = requests.get(url,
-                           headers=headers,
-                           params=querystring)
+        res = requests.get(url, headers=headers, params=querystring)
         res.raise_for_status()
         res_json = res.json()
         results = res_json.get("results")
@@ -86,23 +86,32 @@ def get_notes_from_contact(contact_id):
                 metadata = {}
                 engagement = result.get("engagement")
                 if len(engagement) > 0:
-                    engagement['createdAt'] = timestamp_to_date(engagement.get("createdAt"))
-                    engagement['lastUpdated'] = timestamp_to_date(engagement.get("lastUpdated"))
-                    engagement['timestamp'] = timestamp_to_date(engagement.get("timestamp"))
+                    engagement["createdAt"] = timestamp_to_date(
+                        engagement.get("createdAt")
+                    )
+                    engagement["lastUpdated"] = timestamp_to_date(
+                        engagement.get("lastUpdated")
+                    )
+                    engagement["timestamp"] = timestamp_to_date(
+                        engagement.get("timestamp")
+                    )
                 associations = result.get("associations")
                 metadata = result.get("metadata")
                 engagement.update(associations)
                 engagement.update(metadata)
                 engagements.append(engagement)
-                
+
         has_more = res_json.get("hasMore")
         offset = res_json.get("offset")
-        
-    
+
     df_engagements = pd.DataFrame(engagements)
     if len(df_engagements) > 0:
         df_engagements.columns = df_engagements.columns.str.upper()
-        df_notes = df_engagements[df_engagements["TYPE"] == "NOTE"].sort_values("CREATEDAT").reset_index(drop=True)
+        df_notes = (
+            df_engagements[df_engagements["TYPE"] == "NOTE"]
+            .sort_values("CREATEDAT")
+            .reset_index(drop=True)
+        )
     print(f"✅ {len(df_notes)} notes fetched from contact {contact_id}")
     return df_notes
 ```

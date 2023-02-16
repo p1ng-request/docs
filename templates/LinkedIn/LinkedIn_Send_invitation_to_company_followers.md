@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows users to send invitations to their company's followers on LinkedIn.
+
 ## Input
 
 ### Import library
@@ -24,8 +26,8 @@ import os
 
 ```python
 # Credentials
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 
 # Company URL
 COMPANY_URL = "https://www.linkedin.com/company/naas-ai/"
@@ -42,9 +44,9 @@ LIMIT = 10
 csv_input = "LinkedIn_company_followers.csv"
 
 # Outputs
-csv_contact = "LINKEDIN_EXISTING_CONTACT.csv" # CSV to manage and remove profile already in your contact
-csv_not_valid = "LINKEDIN_NOT_VALID.csv" # CSV to manage URL not valid
-csv_invitation = "LINKEDIN_INVITATIONS_SENT.csv" # CSV to store invitations sent
+csv_contact = "LINKEDIN_EXISTING_CONTACT.csv"  # CSV to manage and remove profile already in your contact
+csv_not_valid = "LINKEDIN_NOT_VALID.csv"  # CSV to manage URL not valid
+csv_invitation = "LINKEDIN_INVITATIONS_SENT.csv"  # CSV to store invitations sent
 ```
 
 ### Setup Naas
@@ -54,7 +56,7 @@ csv_invitation = "LINKEDIN_INVITATIONS_SENT.csv" # CSV to store invitations sent
 # Schedule your notebook everyday at 9:00 AM
 naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -73,6 +75,7 @@ def get_company_followers(file_path):
         return pd.DataFrame()
     return df
 
+
 df_followers = get_company_followers(csv_input)
 df_followers
 ```
@@ -86,10 +89,9 @@ def get_new_followers(df, input_path):
         profiles = df.PROFILE_ID.unique()
     start = 0
     while True:
-        tmp_df = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(COMPANY_URL,
-                                                                           start=start,
-                                                                           limit=1,
-                                                                           sleep=False)
+        tmp_df = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(
+            COMPANY_URL, start=start, limit=1, sleep=False
+        )
         profile_id = None
         if "PROFILE_ID" in tmp_df.columns:
             profile_id = tmp_df.loc[0, "PROFILE_ID"]
@@ -100,6 +102,7 @@ def get_new_followers(df, input_path):
             df.to_csv(input_path, index=False)
             start += 1
     return df.reset_index(drop=True)
+
 
 merged_df = get_new_followers(df_followers, csv_input)
 merged_df
@@ -146,39 +149,36 @@ df_csv_invitations
 
 
 ```python
-def get_new_invitations(df,
-                        df_lk_invitations,
-                        df_csv_invitations,
-                        df_contacts):
-    
+def get_new_invitations(df, df_lk_invitations, df_csv_invitations, df_contacts):
+
     # Get list of pending LinkedIn invitations
     pending_lk_invitations = []
     if len(df_lk_invitations) > 0:
         pending_lk_invitations = df_lk_invitations["PUBLIC_ID"].unique().tolist()
     print("❌ Pending LinkedIn invitations :", len(pending_lk_invitations))
-    
+
     # Get list of CSV invitations
     pending_csv_invitations = []
     if len(df_csv_invitations) > 0:
         pending_csv_invitations = df_csv_invitations["PUBLIC_ID"].unique().tolist()
     print("❌ Pending CSV invitations :", len(pending_csv_invitations))
-    
+
     # Get profile already in network
     contacts = []
     if len(df_contacts) > 0:
         contacts = df_contacts["PUBLIC_ID"].unique().tolist()
     print("❌ Already in network :", len(contacts))
-    
-    # Remove pending invitations / already in network / not valid profile from dataframe 
-    exclude = (pending_lk_invitations + pending_csv_invitations + contacts)
+
+    # Remove pending invitations / already in network / not valid profile from dataframe
+    exclude = pending_lk_invitations + pending_csv_invitations + contacts
     df = df[~df["PUBLIC_ID"].isin(exclude)].dropna().reset_index(drop=True)
     print("➡️ New invitation:", len(df))
     return df
 
-df_new_invitations = get_new_invitations(merged_df,
-                                         df_lk_invitations,
-                                         df_csv_invitations,
-                                         df_contacts)
+
+df_new_invitations = get_new_invitations(
+    merged_df, df_lk_invitations, df_csv_invitations, df_contacts
+)
 df_new_invitations
 ```
 
@@ -186,20 +186,18 @@ df_new_invitations
 
 
 ```python
-def send_invitation(df,
-                    df_contacts=None,
-                    df_csv_invitations=None):
+def send_invitation(df, df_contacts=None, df_csv_invitations=None):
     # Check if new invitations to perform
     if len(df) == 0:
         print("🤙 No new invitations to send")
         return df
-    
+
     # Setup variables
     if df_contacts is None:
         df_contacts = pd.DataFrame()
     if df_csv_invitations is None:
         df_csv_invitations = pd.DataFrame()
-        
+
     # Loop
     count = 1
     df.PROFILE_ID = df.PROFILE_ID.fillna(0)
@@ -207,11 +205,13 @@ def send_invitation(df,
         df_network = pd.DataFrame()
         profile = row["PUBLIC_ID"]
         print(f"➡️ Checking :", profile)
-        
+
         # Get distance with profile
         if profile != 0:
-            df_network = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(profile)
-            
+            df_network = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(
+                profile
+            )
+
         # Check if profile is already in your network
         if len(df_network) > 0:
             distance = df_network.loc[0, "DISTANCE"]
@@ -219,7 +219,9 @@ def send_invitation(df,
             if distance not in ["SELF", "DISTANCE_1"]:
                 # => send invitation
                 try:
-                    linkedin.connect(LI_AT, JSESSIONID).invitation.send(recipient_url=profile)
+                    linkedin.connect(LI_AT, JSESSIONID).invitation.send(
+                        recipient_url=profile
+                    )
                     print(count, "- 🙌 Invitation successfully sent")
                     df_csv_invitations = pd.concat([df_csv_invitations, df_network])
                     df_csv_invitations.to_csv(csv_invitation, index=False)
@@ -231,16 +233,17 @@ def send_invitation(df,
                 df_contacts = pd.concat([df_contacts, df_network])
                 df_contacts.to_csv(csv_contact, index=False)
                 print(f"👍 Already in my network, 💾 saved in CSV")
-            
+
         # Manage LinkedIn limit
         if count > LIMIT:
             print("⚠️ LinkedIn invitation limit reached", LIMIT)
             return df_csv_invitations
     return df_csv_invitations
-        
-df_csv_invitations = send_invitation(df_new_invitations,
-                                     df_contacts,
-                                     df_csv_invitations)
+
+
+df_csv_invitations = send_invitation(
+    df_new_invitations, df_contacts, df_csv_invitations
+)
 ```
 
 ## Output

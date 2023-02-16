@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a step-by-step guide to creating an interactive mapchart of the world using Plotly.
+
 ## Input
 
 ### Import libraries
@@ -35,7 +37,9 @@ To use the built-in countries geometry, provide locations as [three-letter ISO c
 
 
 ```python
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv"
+)
 df
 ```
 
@@ -47,35 +51,36 @@ df
 ```python
 fig = go.Figure()
 
-fig = go.Figure(data=go.Choropleth(
-    locations = df['CODE'],
-    z = df['GDP (BILLIONS)'],
-    text = df['COUNTRY'],
-    colorscale = 'Blues',
-    autocolorscale=False,
-    reversescale=True,
-    marker_line_color='darkgray',
-    marker_line_width=0.5,
-    colorbar_tickprefix = '$',
-    colorbar_title = 'GDP<br>Billions US$',
-))
+fig = go.Figure(
+    data=go.Choropleth(
+        locations=df["CODE"],
+        z=df["GDP (BILLIONS)"],
+        text=df["COUNTRY"],
+        colorscale="Blues",
+        autocolorscale=False,
+        reversescale=True,
+        marker_line_color="darkgray",
+        marker_line_width=0.5,
+        colorbar_tickprefix="$",
+        colorbar_title="GDP<br>Billions US$",
+    )
+)
 
 fig.update_layout(
-    title=title ,
+    title=title,
     plot_bgcolor="#ffffff",
     legend_x=1,
     geo=dict(
         showframe=False,
         showcoastlines=False,
-        #projection_type='equirectangular'
+        # projection_type='equirectangular'
     ),
-    dragmode= False,
+    dragmode=False,
     width=1200,
     height=800,
-
 )
 
-config = {'displayModeBar': False}
+config = {"displayModeBar": False}
 fig.show(config=config)
 ```
 
@@ -94,9 +99,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

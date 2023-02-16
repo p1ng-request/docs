@@ -29,10 +29,10 @@ from pptx.util import Inches
 
 
 ```python
-#Create blank PowerPoint file
+# Create blank PowerPoint file
 prs = Presentation()
 
-#set slide template labels. This just makes is easier to read the code. The layout index can also be used.                   
+# set slide template labels. This just makes is easier to read the code. The layout index can also be used.
 SLD_LAYOUT_TITLE = 0
 SLD_LAYOUT_TITLE_AND_CONTENT = 1
 SLD_LAYOUT_TITLE_ONLY = 5
@@ -44,16 +44,16 @@ SLD_LAYOUT_TITLE_ONLY = 5
 
 
 ```python
-#Set title page text variables
+# Set title page text variables
 slide_title = "Jupyter Notebooks-as-a-service"
 # slide_subtitle = dt.datetime.today().strftime('%m/%d/%Y')
 
 # slide_subtitle = "All-in-one open source data platform, based on @jupyter"
-#Add a title slide
+# Add a title slide
 slide_layout = prs.slide_layouts[SLD_LAYOUT_TITLE]
 slide = prs.slides.add_slide(slide_layout)
 
-#Insert title slide text. There are two text shapes on the Title slide layout by default.
+# Insert title slide text. There are two text shapes on the Title slide layout by default.
 slide.shapes[0].text = slide_title
 # slide.shapes[1].text = slide_subtitle
 ```
@@ -62,30 +62,30 @@ slide.shapes[0].text = slide_title
 ```python
 # function to create slide with title and a line
 def pptx_slide(title="Title"):
-    #Create blank PowerPoint file
+    # Create blank PowerPoint file
     prs = Presentation()
 
-    #set slide template labels. This just makes is easier to read the code. The layout index can also be used.                   
+    # set slide template labels. This just makes is easier to read the code. The layout index can also be used.
     SLD_LAYOUT_TITLE = 0
     SLD_LAYOUT_TITLE_AND_CONTENT = 1
     SLD_LAYOUT_TITLE_ONLY = 5
-    
-    #Set title page text variables
+
+    # Set title page text variables
     slide_title = title
     # slide_subtitle = dt.datetime.today().strftime('%m/%d/%Y')
 
-    
-    #Add a title slide
+    # Add a title slide
     slide_layout = prs.slide_layouts[SLD_LAYOUT_TITLE_ONLY]
     slide = prs.slides.add_slide(slide_layout)
 
-    #Insert title slide text. There are two text shapes on the Title slide layout by default.
+    # Insert title slide text. There are two text shapes on the Title slide layout by default.
     slide.shapes[0].text = slide_title
-    
-       
+
     # Inserting the line
-    line1=slide.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(7.0), Inches(2.0), Inches(1.5), Inches(2.0))
-    
+    line1 = slide.shapes.add_connector(
+        MSO_CONNECTOR.STRAIGHT, Inches(7.0), Inches(2.0), Inches(1.5), Inches(2.0)
+    )
+
     # save the presentation
     prs.save("Presentation_Title_Line.pptx")
 ```

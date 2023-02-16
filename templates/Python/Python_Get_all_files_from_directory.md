@@ -20,7 +20,7 @@ from os import path
 
 
 ```python
-dir_path = "" #If dir path is "", it will returned files from current folder
+dir_path = ""  # If dir path is "", it will returned files from current folder
 ```
 
 ## Model

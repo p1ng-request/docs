@@ -4,8 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-This notebook enable you to access your public key to push to GitHub without typing any username or password. This can make you save a ton of time if you use GitHub to version your data projects and products.<br>
-We highly recommend you to version your work, each little progress should be logged.
+**Description:** This notebook provides an automated way to authenticate with GitHub using Naas.
 
 ## Input
 

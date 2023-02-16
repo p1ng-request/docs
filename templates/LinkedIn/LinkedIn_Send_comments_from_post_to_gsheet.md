@@ -4,16 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-In this template, you will extract comments from post and divide them in 2 categories :
-- People in your network
-- People not in your network
-
-Then, data will be sent in 3 sheets to trigger specific actions:
-- POST_COMMENTS : total of comments from post
-- MY_NETWORK : People in your network
-- NOT_MY_NETWORK : People not in your network
-
-Check the other templates to create a full workflow
+**Description:** This notebook allows users to automatically send comments from a LinkedIn post to a Google Sheet.
 
 ## Input
 
@@ -126,19 +117,25 @@ not_my_network.head(5)
 
 
 ```python
-gsheet.connect(SPREADSHEET_ID).send(df_posts, sheet_name=SHEET_POST_COMMENTS, append=False)
+gsheet.connect(SPREADSHEET_ID).send(
+    df_posts, sheet_name=SHEET_POST_COMMENTS, append=False
+)
 ```
 
 ### Save people from my network in gsheet
 
 
 ```python
-gsheet.connect(SPREADSHEET_ID).send(my_network, sheet_name=SHEET_MY_NETWORK, append=False)
+gsheet.connect(SPREADSHEET_ID).send(
+    my_network, sheet_name=SHEET_MY_NETWORK, append=False
+)
 ```
 
 ### Save people not in my network in gsheet
 
 
 ```python
-gsheet.connect(SPREADSHEET_ID).send(not_my_network, sheet_name=SHEET_NOT_MY_NETWORK, append=False)
+gsheet.connect(SPREADSHEET_ID).send(
+    not_my_network, sheet_name=SHEET_NOT_MY_NETWORK, append=False
+)
 ```

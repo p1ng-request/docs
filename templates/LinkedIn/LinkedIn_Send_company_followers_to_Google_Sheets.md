@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows users to export their LinkedIn company followers to a Google Sheets spreadsheet.
+
 ## Input
 
 ### Import library
@@ -21,8 +23,8 @@ import naas
 
 ```python
 # Credentials
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 
 # Company URL
 COMPANY_URL = "https://www.linkedin.com/company/naas-ai/"
@@ -45,7 +47,7 @@ SHEET_NAME = "NAAS_FOLLOWERS"
 # Schedule your notebook everyday at 9:00 AM
 naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -78,10 +80,9 @@ def get_new_followers(df):
         profiles = df.PROFILE_ID.unique()
     start = 0
     while True:
-        tmp_df = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(COMPANY_URL,
-                                                                           start=start,
-                                                                           limit=1,
-                                                                           sleep=False)
+        tmp_df = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(
+            COMPANY_URL, start=start, limit=1, sleep=False
+        )
         profile_id = None
         if "PROFILE_ID" in tmp_df.columns:
             profile_id = tmp_df.loc[0, "PROFILE_ID"]
@@ -91,6 +92,7 @@ def get_new_followers(df):
             df = pd.concat([tmp_df, df])
             start += 1
     return df.reset_index(drop=True)
+
 
 df_followers = get_new_followers(df_gsheet)
 df_followers
@@ -102,9 +104,9 @@ df_followers
 
 
 ```python
-gsheet.connect(SPREADSHEET_URL).send(data=df_followers,
-                                     sheet_name=SHEET_NAME,
-                                     append=False)
+gsheet.connect(SPREADSHEET_URL).send(
+    data=df_followers, sheet_name=SHEET_NAME, append=False
+)
 ```
 
 

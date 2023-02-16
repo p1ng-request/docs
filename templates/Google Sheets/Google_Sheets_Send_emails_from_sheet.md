@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to send emails directly from a Google Sheet.
+
 ## Input
 
 ### Import librairies
@@ -20,10 +22,10 @@ from naas_drivers import email
 ```python
 username = "USERNAME"
 password = "PASSWORD"
-email_from = "***@cashstory.com",
-smtp_server = "smtp.gmail.com",
-smtp_port = 465,
-smtp_type = "SSL",
+email_from = ("***@cashstory.com",)
+smtp_server = ("smtp.gmail.com",)
+smtp_port = (465,)
+smtp_type = ("SSL",)
 ```
 
 ## Model
@@ -32,12 +34,9 @@ smtp_type = "SSL",
 
 
 ```python
-gmail = emails.connect(username,
-                       password,
-                       email_from,
-                       smtp_server,
-                       smtp_port,
-                       smtp_type)
+gmail = emails.connect(
+    username, password, email_from, smtp_server, smtp_port, smtp_type
+)
 ```
 
 ### Get email list from Gsheet
@@ -53,7 +52,7 @@ df
 
 
 ```python
-emails = df['EMAIL'].drop_duplicates().values
+emails = df["EMAIL"].drop_duplicates().values
 print(emails)
 ```
 

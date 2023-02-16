@@ -20,11 +20,15 @@ import numpy as np
 
 
 ```python
-#create DataFrame
-df = pd.DataFrame({'team': ['A', 'A', 'A', 'B', 'B', np.NaN],
-                   'points': [11, 7, 8, 10, np.NaN, 13],
-                   'assists': [5, 7, 7, 9, 12, np.NaN],
-                   'rebounds': [np.NaN, 8, 10, 6, 6, np.NaN]})
+# create DataFrame
+df = pd.DataFrame(
+    {
+        "team": ["A", "A", "A", "B", "B", np.NaN],
+        "points": [11, 7, 8, 10, np.NaN, 13],
+        "assists": [5, 7, 7, 9, 12, np.NaN],
+        "rebounds": [np.NaN, 8, 10, 6, 6, np.NaN],
+    }
+)
 df
 ```
 
@@ -33,12 +37,7 @@ df
 
 ```python
 # dict of columns with value to fill
-to_fillna = {
-    'team': "Unknown team",
-    'points': 0,
-    'assists': 0,
-    'rebounds': 0
-}
+to_fillna = {"team": "Unknown team", "points": 0, "assists": 0, "rebounds": 0}
 ```
 
 ## Model

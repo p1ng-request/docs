@@ -4,6 +4,8 @@
 
 **Author:** [Asif Syed](https://www.linkedin.com/in/asifsyd/)
 
+**Description:** This notebook allows users to quickly and easily send LinkedIn invitations to people who have commented on their posts.
+
 ## Input
 
 ### Import library
@@ -20,8 +22,12 @@ import time
 
 
 ```python
-LI_AT = naas.secret.get("LI_AT") or 'ENTER_YOUR_COOKIE_LI_AT_HERE'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = naas.secret.get("JSESSIONID") or  'ENTER_YOUR_COOKIE_JSESSIONID_HERE'  # EXAMPLE ajax:8379907400220387585
+LI_AT = (
+    naas.secret.get("LI_AT") or "ENTER_YOUR_COOKIE_LI_AT_HERE"
+)  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = (
+    naas.secret.get("JSESSIONID") or "ENTER_YOUR_COOKIE_JSESSIONID_HERE"
+)  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Enter post URL
@@ -50,7 +56,7 @@ df = linkedin.connect(LI_AT, JSESSIONID).post.get_comments(POST_URL)
 
 
 ```python
-profiles = df['PROFILE_URL'] # storing the profile URLs of all the commenters
+profiles = df["PROFILE_URL"]  # storing the profile URLs of all the commenters
 ```
 
 ### Filter these profiles to include only people out of network
@@ -60,7 +66,7 @@ profiles = df['PROFILE_URL'] # storing the profile URLs of all the commenters
 filtered_profiles = []
 for i in profiles:
     distance = linkedin.profile.get_network(profile_url=i)["DISTANCE"]
-    if distance[0] != 'DISTANCE_1':
+    if distance[0] != "DISTANCE_1":
         filtered_profiles.append(i)
     time.sleep(3)
 ```
@@ -71,6 +77,8 @@ for i in profiles:
 
 
 ```python
-for i in filtered_profiles: # looping through each commenter's profile URL
-    linkedin.connect(LI_AT, JSESSIONID).invitation.send(recipient_url=i) # send invitation
+for i in filtered_profiles:  # looping through each commenter's profile URL
+    linkedin.connect(LI_AT, JSESSIONID).invitation.send(
+        recipient_url=i
+    )  # send invitation
 ```

@@ -64,7 +64,7 @@ SHEET_NAME = "Sheet1"
 # Schedule your notebook every hour
 naas.scheduler.add(cron="0 * * * *")
 
-#-> Uncomment the line below and execute this cell to delete your scheduler
+# -> Uncomment the line below and execute this cell to delete your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -78,15 +78,20 @@ naas.scheduler.add(cron="0 * * * *")
 ```python
 def list_users():
     df = pd.DataFrame()
-    idx=0
-    for user_data in client.users_list().data['members']:
-        if ('real_name' in user_data and user_data['real_name'] != 'Slackbot') and not user_data['is_bot']:
-            df.loc[idx,'NAME'] = user_data['profile']['real_name']
-            df.loc[idx,'ID'] = user_data['id']
-            df.loc[idx,'FIRST_VIEWED_AT'] = datetime.fromtimestamp(user_data['updated'])
-            idx+=1
-    
+    idx = 0
+    for user_data in client.users_list().data["members"]:
+        if (
+            "real_name" in user_data and user_data["real_name"] != "Slackbot"
+        ) and not user_data["is_bot"]:
+            df.loc[idx, "NAME"] = user_data["profile"]["real_name"]
+            df.loc[idx, "ID"] = user_data["id"]
+            df.loc[idx, "FIRST_VIEWED_AT"] = datetime.fromtimestamp(
+                user_data["updated"]
+            )
+            idx += 1
+
     return df
+
 
 df_slack = list_users()
 df_slack
@@ -111,11 +116,12 @@ def get_new_users(df_slack, df_gsheet):
         return df_slack
     else:
         historical_data = df_gsheet.ID.to_list()
-        df_new=pd.DataFrame()
+        df_new = pd.DataFrame()
         for idx, row in df_slack.iterrows():
-            if row['ID'] not in historical_data:
+            if row["ID"] not in historical_data:
                 df_new = df_new.append(row)
         return df_new
+
 
 df_new = get_new_users(df_slack, df_gsheet)
 df_new
@@ -130,9 +136,5 @@ df_new
 
 ```python
 # Send data to Google Sheets
-gsheet.connect(SPREADSHEET_URL).send(
-    sheet_name=SHEET_NAME,
-    data=df_new,
-	append=True
-)
+gsheet.connect(SPREADSHEET_URL).send(sheet_name=SHEET_NAME, data=df_new, append=True)
 ```

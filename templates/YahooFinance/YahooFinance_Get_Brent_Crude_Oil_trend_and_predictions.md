@@ -4,8 +4,7 @@
 
 **Author:** [Ayoub Berdeddouch](https://www.linkedin.com/in/ayoub-berdeddouch/)
 
-With this template, you will access to a linechart chart that shows the Brend Crude Oil trend from [Yahoo finance](https://finance.yahoo.com/quote/TSLA/) for the past 9 months, and different algorithms predictions options for the next 3 months.<br> 
-<u>Disclaimer:</u> The content of this notebook is not an investment advice and does not constitute any offer or solicitation to invest.
+**Description:** This notebook provides an analysis of the current trend and predictions for Brent Crude Oil prices using data from YahooFinance.
 
 ## Input
 
@@ -55,10 +54,10 @@ If you need to run this notebook on schedule, uncomment the first line of this c
 
 
 ```python
-#naas.scheduler.add(cron="0 9 * * *")
+# naas.scheduler.add(cron="0 9 * * *")
 
 # if you want to delete the scheduler, uncoment the line below and execute the cell
-#naas.scheduler.delete() 
+# naas.scheduler.delete()
 ```
 
 ## Model
@@ -67,9 +66,11 @@ If you need to run this notebook on schedule, uncomment the first line of this c
 
 
 ```python
-df_yahoo = yahoofinance.get(tickers=TICKER,
-                            date_from=date_from,
-                            date_to=date_to).dropna().reset_index(drop=True)
+df_yahoo = (
+    yahoofinance.get(tickers=TICKER, date_from=date_from, date_to=date_to)
+    .dropna()
+    .reset_index(drop=True)
+)
 
 # Display dataframe
 df_yahoo.tail(5)
@@ -79,24 +80,32 @@ df_yahoo.tail(5)
 
 
 ```python
-df_predict = prediction.get(dataset=df_yahoo,
-                            date_column='Date',
-                            column="Close",
-                            data_points=DATA_POINT,
-                            prediction_type="all").sort_values("Date", ascending=False).reset_index(drop=True)
+df_predict = (
+    prediction.get(
+        dataset=df_yahoo,
+        date_column="Date",
+        column="Close",
+        data_points=DATA_POINT,
+        prediction_type="all",
+    )
+    .sort_values("Date", ascending=False)
+    .reset_index(drop=True)
+)
 # Display dataframe
-df_predict.head(int(DATA_POINT)+5)
+df_predict.head(int(DATA_POINT) + 5)
 ```
 
 ### Plot linechart
 
 
 ```python
-fig = plotly.linechart(df_predict,
-                       x="Date",
-                       y=["Close", "ARIMA", "SVR", "LINEAR", "COMPOUND"],
-                       showlegend=True,
-                       title=f"{NAME} trend and predictions for the next {str(DATA_POINT)} days")
+fig = plotly.linechart(
+    df_predict,
+    x="Date",
+    y=["Close", "ARIMA", "SVR", "LINEAR", "COMPOUND"],
+    showlegend=True,
+    title=f"{NAME} trend and predictions for the next {str(DATA_POINT)} days",
+)
 ```
 
 ### Set actual data and variation
@@ -105,21 +114,22 @@ fig = plotly.linechart(df_predict,
 ```python
 def get_variation(df):
     df = df.sort_values("Date", ascending=False).reset_index(drop=True)
-    
+
     # Get value and value comp
     datanow = df.loc[0, "Close"]
     datayesterday = df.loc[1, "Close"]
-    
+
     # Calc variation en value and %
     varv = datanow - datayesterday
-    varp = (varv / datanow)
-    
+    varp = varv / datanow
+
     # Format result
     datanow = "${:,.2f}".format(round(datanow, 1))
     datayesterday = "${:,.2f}".format(round(datayesterday, 1))
     varv = "{:+,.2f}".format(varv)
     varp = "{:+,.2%}".format(varp)
     return datanow, datayesterday, varv, varp
+
 
 DATANOW, DATAYESTERDAY, VARV, VARP = get_variation(df_yahoo)
 print("Value today:", DATANOW)
@@ -134,10 +144,11 @@ print("Var. in %:", VARP)
 ```python
 def get_prediction(df, prediction):
     data = df.loc[0, prediction]
-    
+
     # Format result
     data = "${:,.2f}".format(round(data, 1))
     return data
+
 
 ARIMA = get_prediction(df_predict, "ARIMA")
 print("Value ARIMA:", ARIMA)
@@ -168,7 +179,7 @@ fig.write_image(image_output)
 # Share output with naas
 link_image = naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```
 
@@ -183,6 +194,6 @@ fig.write_html(html_output)
 # Share output with naas
 link_html = naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```

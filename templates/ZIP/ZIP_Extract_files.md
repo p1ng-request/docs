@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
+**Description:** This notebook allows users to extract files from a ZIP archive.
+
 ## Input
 
 ### Import libraries
@@ -25,14 +27,14 @@ def extract_zip(filepath):
     i = 0
     with zipfile.ZipFile(filepath, "r") as zfile:
         for name in zfile.namelist():
-            if re.search(r'\.zip$', name) is not None:
+            if re.search(r"\.zip$", name) is not None:
                 zfiledata = BytesIO(zfile.read(name))
                 with zipfile.ZipFile(zfiledata) as zfile2:
                     for name2 in zfile2.namelist():
                         zfile2.extract(name2, path="../", pwd=None)
-                        i=i+1
+                        i = i + 1
     zfile.close()
-    print("Processing Completed. "+str(i)+" file(s) extracted")
+    print("Processing Completed. " + str(i) + " file(s) extracted")
 ```
 
 ## Output
@@ -41,5 +43,5 @@ def extract_zip(filepath):
 
 
 ```python
-extract_zip('bilans_saisis_20181231.zip')
+extract_zip("bilans_saisis_20181231.zip")
 ```

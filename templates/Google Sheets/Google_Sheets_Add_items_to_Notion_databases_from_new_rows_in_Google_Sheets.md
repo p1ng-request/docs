@@ -36,8 +36,8 @@ from naas_drivers import notion, gsheet
 spreadsheet_id = "****"
 sheet_name = "YOUR_SHEET"
 
-#Unique column# for gsheets
-col_unique_gsheet = 'Name'
+# Unique column# for gsheets
+col_unique_gsheet = "Name"
 ```
 
 ### Setup Notion
@@ -48,18 +48,18 @@ col_unique_gsheet = 'Name'
 notion_token = "****"
 notion_database_url = "https://www.notion.so/YOURDB"
 
-#Unique column name for notion
-col_unique_notion = 'Name'
+# Unique column name for notion
+col_unique_notion = "Name"
 ```
 
 ### Setup Naas
 
 
 ```python
-#Schedule the notebook to run every 15 minutes
+# Schedule the notebook to run every 15 minutes
 naas.scheduler.add(cron="*/15 * * * *")
 
-# To delete your scheduler, uncomment the line below and execute the cell 
+# To delete your scheduler, uncomment the line below and execute the cell
 # naas.scheduler.delete()
 ```
 
@@ -69,14 +69,14 @@ naas.scheduler.add(cron="*/15 * * * *")
 
 
 ```python
-#Connect with Gsheet and get all data in a dataframe
+# Connect with Gsheet and get all data in a dataframe
 gsheet.connect(spreadsheet_id)
 df_gsheet = gsheet.get(sheet_name=sheet_name)
 ```
 
 
 ```python
-#Connect with Notion db and get all pages in a dataframe
+# Connect with Notion db and get all pages in a dataframe
 database = notion.connect(notion_token).database.get(notion_database_url)
 df_notion = database.df()
 ```
@@ -85,11 +85,11 @@ df_notion = database.df()
 
 
 ```python
-#Iterate through all rows in Gsheet and find match in Notion db
-#If no match is found then add data to df_difference dataframe
+# Iterate through all rows in Gsheet and find match in Notion db
+# If no match is found then add data to df_difference dataframe
 
 df_difference = pd.DataFrame()
-for index,row in df_gsheet.iterrows():
+for index, row in df_gsheet.iterrows():
     x = row[col_unique_gsheet]
     if not (x == df_notion[col_unique_notion]).any():
         df_difference = df_difference.append(df_gsheet.loc[index])
@@ -101,16 +101,18 @@ for index,row in df_gsheet.iterrows():
 
 
 ```python
-#Create a new page in notion db for each row in df_difference dataframe
-if(df_difference.empty == False):    
+# Create a new page in notion db for each row in df_difference dataframe
+if df_difference.empty == False:
     for index, row in df_difference.iterrows():
-        page = notion.connect(notion_token).page.create(database_id=notion_database_url, title=row[col_unique_gsheet])
-        #Add all properties here and map with respective column in row
-        page.select('Type', row['Type'])
-        page.select('Status', row['Status'])
-        page.rich_text('Summary', row['Summary'])
+        page = notion.connect(notion_token).page.create(
+            database_id=notion_database_url, title=row[col_unique_gsheet]
+        )
+        # Add all properties here and map with respective column in row
+        page.select("Type", row["Type"])
+        page.select("Status", row["Status"])
+        page.rich_text("Summary", row["Summary"])
         page.update()
     print("The gsheets rows synced successfuly to Notion DB")
-else:     
+else:
     print("No new rows in Gsheet to sync to Notion DB")
 ```

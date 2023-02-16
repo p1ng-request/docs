@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a demonstration of how to use the Naas Docs API to create, update, and delete documents.
+
 ## Input
 
 ### Import library

@@ -19,11 +19,15 @@ import pandas as pd
 
 
 ```python
-#create DataFrame
-df = pd.DataFrame({'team': ['A', 'A', 'A', 'B', 'B', 'B'],
-                   'points': [11, 7, 8, 10, 13, 13],
-                   'assists': [5, 7, 7, 9, 12, 9],
-                   'rebounds': [11, 8, 10, 6, 6, 5]})
+# create DataFrame
+df = pd.DataFrame(
+    {
+        "team": ["A", "A", "A", "B", "B", "B"],
+        "points": [11, 7, 8, 10, 13, 13],
+        "assists": [5, 7, 7, 9, 12, 9],
+        "rebounds": [11, 8, 10, 6, 6, 5],
+    }
+)
 df
 ```
 

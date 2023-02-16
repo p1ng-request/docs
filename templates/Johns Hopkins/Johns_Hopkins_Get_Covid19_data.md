@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides an easy way to access and analyze Covid19 data from Johns Hopkins University.
+
 ## Input
 
 ### Import libraries
@@ -20,9 +22,9 @@ import naas
 ```python
 # Input URLs of the raw csv dataset
 urls = [
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv',
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv',
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv",
 ]
 
 # Output paths
@@ -40,9 +42,12 @@ def get_data_url(urls):
     df = pd.DataFrame()
     for url in urls:
         tmp_df = pd.read_csv(url)
-        tmp_df["Indicator"] = url.split("/time_series_covid19_")[-1].split("_global.csv")[0].capitalize()
+        tmp_df["Indicator"] = (
+            url.split("/time_series_covid19_")[-1].split("_global.csv")[0].capitalize()
+        )
         df = pd.concat([df, tmp_df])
     return df
+
 
 df_init = get_data_url(urls)
 df_init
@@ -56,30 +61,35 @@ def get_all_data(df_init):
     df = df_init.copy()
     # Cleaning
     df = df.drop("Province/State", axis=1)
-    
+
     # Melt data
-    df = pd.melt(df,
-                 id_vars=["Country/Region", "Lat", "Long", "Indicator"],
-                 var_name="Date",
-                 value_name="Value").fillna(0)
+    df = pd.melt(
+        df,
+        id_vars=["Country/Region", "Lat", "Long", "Indicator"],
+        var_name="Date",
+        value_name="Value",
+    ).fillna(0)
     df["Date"] = pd.to_datetime(df["Date"])
-    
+
     # Calc active cases
     df_active = df.copy()
-    df_active.loc[df_active["Indicator"].isin(["Deaths", "Recovered"]), "Value"] = df_active["Value"] * (-1)
+    df_active.loc[
+        df_active["Indicator"].isin(["Deaths", "Recovered"]), "Value"
+    ] = df_active["Value"] * (-1)
     df_active["Indicator"] = "Active cases"
-    
+
     # Concat data
     df = pd.concat([df, df_active])
-    
+
     # Group by country/region
     to_group = ["Country/Region", "Lat", "Long", "Indicator", "Date"]
     df = df.groupby(to_group, as_index=False).agg({"Value": "sum"})
-    
+
     # Cleaning
     df = df.rename(columns={"Country/Region": "COUNTRY"})
     df.columns = df.columns.str.upper()
     return df.reset_index(drop=True)
+
 
 df_clean = get_all_data(df_init)
 df_clean

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides access to Societe.com's verification services through Verif.com.
+
 ## Input
 
 ### Import library
@@ -19,7 +21,9 @@ import pandas as pd
 
 
 ```python
-data = pd.read_html("https://www.verif.com/societe/CASHSTORY-880612569/", encoding="UTF-8")
+data = pd.read_html(
+    "https://www.verif.com/societe/CASHSTORY-880612569/", encoding="UTF-8"
+)
 ```
 
 

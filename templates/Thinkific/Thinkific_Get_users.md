@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a guide to acquiring and engaging users for the Thinkific platform.
+
 ## Input
 
 ### Import library

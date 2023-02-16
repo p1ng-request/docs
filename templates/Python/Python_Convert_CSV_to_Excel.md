@@ -4,7 +4,7 @@
 
 **Author:** [Sophia Iroegbu](www.linkedin.com/in/sophia-iroegbu)
 
-The objective of this notebook is to convert a CSV file into an Excel file.
+**Description:** This notebook provides a step-by-step guide to converting CSV files to Excel spreadsheets using Python.
 
 ## Input
 
@@ -23,7 +23,7 @@ import pandas as pd
 csv_input = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 
 # Name the XSLX spreasheet needed as an output
-excel_output = 'covid_dataset.xlsx' 
+excel_output = "covid_dataset.xlsx"
 ```
 
 ## Model

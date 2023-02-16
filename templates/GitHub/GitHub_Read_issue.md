@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides instructions on how to read and understand issues on GitHub.
+
 ## Input
 
 ### Import Library
@@ -17,8 +19,8 @@ from github import Github
 
 
 ```python
-repo_name = "**********"                # Repository path
-git_key = "**********"                  # Settings/Developer settings
+repo_name = "**********"  # Repository path
+git_key = "**********"  # Settings/Developer settings
 ```
 
 ## Model
@@ -27,7 +29,7 @@ git_key = "**********"                  # Settings/Developer settings
 
 
 ```python
-g = Github(git_key)   
+g = Github(git_key)
 ```
 
 ### See issue list
@@ -35,14 +37,15 @@ g = Github(git_key)
 
 ```python
 import pandas as pd
+
 repo = g.get_repo(repo_name)
-open_issues = repo.get_issues(state='open')
+open_issues = repo.get_issues(state="open")
 title = []
 number = []
 for issue in open_issues:
     title.append(issue.title)
     number.append(issue.number)
-data = {'Title':title,'Description':title, 'ID':number} 
+data = {"Title": title, "Description": title, "ID": number}
 df = pd.DataFrame(data)
 df
 ```

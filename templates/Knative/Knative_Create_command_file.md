@@ -4,8 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook create a command file to deploy your dashboard in production using Knative.<br>
-The deployment or your dashboard can only be realized by a member of Naas Core Team regarding your user plan.
+**Description:** This notebook provides instructions on how to create a command file for Knative.
 
 ## Input
 
@@ -63,7 +62,7 @@ content
 
 
 ```python
-with open(file_output, 'w') as f:
+with open(file_output, "w") as f:
     f.write(content)
 print("✅ Knative command file successfully created.")
 ```

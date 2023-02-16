@@ -4,7 +4,7 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-Pre-requisite: Create your own <a href="">Google API JSON credential</a>
+**Description:** This notebook provides a ranking of pageviews for a website using Google Analytics data.
 
 ## Input
 
@@ -22,7 +22,7 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 ```
 
 ### Get view id from google analytics
@@ -47,7 +47,7 @@ html_output = "googleanalytics_pages_views.html"
 naas.scheduler.add(cron="0 8 * * *")
 naas.dependency.add(json_path)
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -81,20 +81,22 @@ def plot_pageview(df: pd.DataFrame):
     # Prep dataframe
     df.loc[df.Pages == "/", "Pages"] = "landing"
     df.loc[df.Pages != "landing", "Pages"] = df.Pages.str[1:]
-    
+
     # Get total views
     value = "{:,.0f}".format(df["Pageview"].sum()).replace(",", " ")
-    
+
     # Create data
-    data = go.Bar(y=df['Pages'],
-                  x=df['Pageview'],
-                  text=df['Pageview'],
-#                   marker=dict(color="black"),
-                  orientation="h")
+    data = go.Bar(
+        y=df["Pages"],
+        x=df["Pageview"],
+        text=df["Pageview"],
+        #                   marker=dict(color="black"),
+        orientation="h",
+    )
     # Create layout
     layout = go.Layout(
-        yaxis={'categoryorder': 'total ascending'},
-        margin={"l":150, "pad": 20},
+        yaxis={"categoryorder": "total ascending"},
+        margin={"l": 150, "pad": 20},
         title=f"<b>Most visited web pages, by total visits</b><br><span style='font-size: 13px;'>Total visits: {value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
         xaxis_title="No of views",
@@ -108,6 +110,7 @@ def plot_pageview(df: pd.DataFrame):
     fig.update_traces(textposition="outside")
     return fig
 
+
 fig = plot_pageview(df_pageview)
 ```
 
@@ -119,9 +122,9 @@ fig = plot_pageview(df_pageview)
 fig.write_html(html_output)
 
 # Shave with naas
-#-> Uncomment the line below (by removing the hashtag) to share your asset with naas
+# -> Uncomment the line below (by removing the hashtag) to share your asset with naas
 # naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below (by removing the hashtag)  to delete your asset
+# -> Uncomment the line below (by removing the hashtag)  to delete your asset
 # naas.asset.delete(html_output)
 ```

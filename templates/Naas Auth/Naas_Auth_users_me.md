@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
+**Description:** This notebook provides a user-friendly interface for authenticating users with Naas.
+
 ## Input
 
 ### Import library

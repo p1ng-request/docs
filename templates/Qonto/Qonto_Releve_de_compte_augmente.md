@@ -30,13 +30,14 @@ import naas
 
 
 ```python
-QONTO_USER_ID = 'YOUR_USER_ID'
-QONTO_SECRET_KEY = 'YOUR_SECRET_KEY'
+QONTO_USER_ID = "YOUR_USER_ID"
+QONTO_SECRET_KEY = "YOUR_SECRET_KEY"
 ```
 
 
 ```python
 import naas
+
 QONTO_USER_ID = naas.secret.get("QONTO_USER_ID")
 QONTO_SECRET_KEY = naas.secret.get("QONTO_API_KEY")
 ```
@@ -94,13 +95,11 @@ TABLE_FILE = "account_statement.xlsx"
 
 ```python
 # Colonne to consolidate (DATE already included), if empty return only DATE, AMOUNT, POSITION
-to_group = ["TRANSACTION_ID",
-            "LABEL",
-            "OPERATION_TYPE"]
+to_group = ["TRANSACTION_ID", "LABEL", "OPERATION_TYPE"]
 
-df_statement = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.get(to_group=to_group,
-                                                                             date_from=DATE_FROM,
-                                                                             date_to=DATE_TO)
+df_statement = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.get(
+    to_group=to_group, date_from=DATE_FROM, date_to=DATE_TO
+)
 df_statement
 ```
 
@@ -108,8 +107,9 @@ df_statement
 
 
 ```python
-barline = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.barline(date_from=DATE_FROM,
-                                                                            date_to=DATE_TO)
+barline = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.barline(
+    date_from=DATE_FROM, date_to=DATE_TO
+)
 barline
 ```
 
@@ -117,10 +117,9 @@ barline
 
 
 ```python
-cash_summary = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.summary(summary_type="OPERATION_TYPE",
-                                                                                 language="FR",
-                                                                                 date_from=DATE_FROM,
-                                                                                 date_to=DATE_TO)
+cash_summary = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.summary(
+    summary_type="OPERATION_TYPE", language="FR", date_from=DATE_FROM, date_to=DATE_TO
+)
 cash_summary
 ```
 
@@ -128,8 +127,9 @@ cash_summary
 
 
 ```python
-df_last = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.transactions(date_from=LAST_TRANSACTIONS,
-                                                                                 date_to=DATE_TO)
+df_last = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.transactions(
+    date_from=LAST_TRANSACTIONS, date_to=DATE_TO
+)
 df_last
 ```
 
@@ -137,7 +137,7 @@ df_last
 
 
 ```python
-current_position = round(df_statement['POSITION'].tolist()[-1], 2)
+current_position = round(df_statement["POSITION"].tolist()[-1], 2)
 current_position
 ```
 
@@ -169,22 +169,22 @@ graph_link = naas.asset.add(GRAPH_FILE, params=params)
 
 
 ```python
-email_content = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.email(DATE_FROM,
-                                                                                DATE_TO,
-                                                                                current_position,
-                                                                                graph_img,
-                                                                                graph_link,
-                                                                                cash_summary,
-                                                                                LAST_TRANSACTIONS,
-                                                                                df_last,
-                                                                                statement_link)
+email_content = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.email(
+    DATE_FROM,
+    DATE_TO,
+    current_position,
+    graph_img,
+    graph_link,
+    cash_summary,
+    LAST_TRANSACTIONS,
+    df_last,
+    statement_link,
+)
 ```
 
 ### Envoi de l'email
 
 
 ```python
-naas.notification.send(EMAIL_TO,
-                       EMAIL_SUBJECT,
-                       email_content)
+naas.notification.send(EMAIL_TO, EMAIL_SUBJECT, email_content)
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to download videos from YouTube.
+
 ## Input
 
 ### Install packages 
@@ -24,7 +26,7 @@ from pytube import YouTube
 
 
 ```python
-youtube_video_url = 'https://www.youtube.com/watch?v=bleU_nrckr8'
+youtube_video_url = "https://www.youtube.com/watch?v=bleU_nrckr8"
 
 yt_obj = YouTube(youtube_video_url)
 ```
@@ -43,16 +45,16 @@ for stream in yt_obj.streams:
 
 
 ```python
-filters = yt_obj.streams.filter(progressive=True, file_extension='mp4')
- 
+filters = yt_obj.streams.filter(progressive=True, file_extension="mp4")
+
 for mp4_filter in filters:
     print(mp4_filter)
 ```
 
 
 ```python
-filters = yt_obj.streams.filter(progressive=True, file_extension='mp4')
- 
+filters = yt_obj.streams.filter(progressive=True, file_extension="mp4")
+
 filters.get_highest_resolution()
 filters.get_lowest_resolution()
 ```

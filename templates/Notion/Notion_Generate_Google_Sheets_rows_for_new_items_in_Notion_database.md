@@ -4,7 +4,7 @@
 
 **Author:** [Pooja Srivastava](https://www.linkedin.com/in/pooja-srivastava-in/)
 
-Here, you will create new row in your Google Sheets spreadsheet for new items your Notion database.
+**Description:** This notebook allows users to automatically generate Google Sheets rows for new items added to a database using Notion.
 
 ## Input
 
@@ -28,8 +28,8 @@ NOTION_TOKEN = "*****"
 # Enter Database URL
 DATABASE_URL = "https://www.notion.so/********"
 
-#Unique column name for notion
-col_unique_notion = 'Name'
+# Unique column name for notion
+col_unique_notion = "Name"
 ```
 
 ### Setup Google Sheets
@@ -43,8 +43,8 @@ SPREADSHEET_URL = "------"
 # Sheet name
 SHEET_NAME = "Sheet1"
 
-#Unique column# for gsheets
-col_unique_gsheet = 'Name'
+# Unique column# for gsheets
+col_unique_gsheet = "Name"
 ```
 
 ### Setup Naas
@@ -54,7 +54,7 @@ col_unique_gsheet = 'Name'
 # Schedule your notebook every hours
 naas.scheduler.add(cron="0 * * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -80,11 +80,11 @@ df_gsheet
 
 
 ```python
-#Iterate through all rows in Notion database and find match in Google Sheets
-#If no match is found then add data to df_difference dataframe
+# Iterate through all rows in Notion database and find match in Google Sheets
+# If no match is found then add data to df_difference dataframe
 
 df_difference = pd.DataFrame()
-for index,row in df_notion.iterrows():
+for index, row in df_notion.iterrows():
     x = row[col_unique_notion]
     if not (x == df_gsheet[col_unique_gsheet]).any():
         df_difference = df_difference.append(df_notion.loc[index])

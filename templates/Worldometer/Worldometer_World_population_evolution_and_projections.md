@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides an overview of the current and projected population of the world, as tracked by Worldometer.
+
 ## Input
 
 ### Import libraries
@@ -20,17 +22,20 @@ import requests
 
 
 ```python
-DATA_URLS = ["https://www.worldometers.info/world-population/world-population-by-year/",
-    "https://www.worldometers.info/world-population/world-population-projections/"
-    ]
+DATA_URLS = [
+    "https://www.worldometers.info/world-population/world-population-by-year/",
+    "https://www.worldometers.info/world-population/world-population-projections/",
+]
 
-TABLE_COLS = ['Year',
-    'World Population',
-    'YearlyChange',
-    'NetChange',
-    'Density(P/Km²)',
-    'UrbanPop',
-    'UrbanPop %']
+TABLE_COLS = [
+    "Year",
+    "World Population",
+    "YearlyChange",
+    "NetChange",
+    "Density(P/Km²)",
+    "UrbanPop",
+    "UrbanPop %",
+]
 ```
 
 ## Model
@@ -41,15 +46,17 @@ TABLE_COLS = ['Year',
 ```python
 # Generic functions
 
+
 def scrap_table(url, table_cloumns):
     page = requests.get(url)
-    soup = BeautifulSoup(page.text, 'html.parser')
+    soup = BeautifulSoup(page.text, "html.parser")
     dfs = pd.read_html(page.text)
 
     for df in dfs:
         if df.columns.to_list() == table_cloumns:
             return df
     return None
+
 
 def merge_tables_from_urls(urls, table_columns):
     table = None

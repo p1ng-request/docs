@@ -4,6 +4,8 @@
 
 **Author:** [Mohamed Abidi](https://www.linkedin.com/in/mohamed-abidi-919505192/)
 
+**Description:** This notebook provides an easy way to analyze Instagram posts and gain insights into their performance.
+
 ## Input
 
 ### Import libraries
@@ -50,15 +52,15 @@ ig_username = "naaslife"
 
 ```python
 params = dict()
-params['access_token'] = access_token        
-params['client_id'] = client_id
-params['client_secret'] = client_secret
-params['graph_domain'] = 'https://graph.facebook.com'
-params['graph_version'] = 'v13.0'
-params['endpoint_base'] = params['graph_domain'] + '/' + params['graph_version'] + '/'
-params['page_id'] = page_id           
-params['instagram_account_id'] = instagram_account_id
-params['ig_username'] = ig_username
+params["access_token"] = access_token
+params["client_id"] = client_id
+params["client_secret"] = client_secret
+params["graph_domain"] = "https://graph.facebook.com"
+params["graph_version"] = "v13.0"
+params["endpoint_base"] = params["graph_domain"] + "/" + params["graph_version"] + "/"
+params["page_id"] = page_id
+params["instagram_account_id"] = instagram_account_id
+params["ig_username"] = ig_username
 ```
 
 ### Check the expiration date of your token
@@ -67,21 +69,23 @@ params['ig_username'] = ig_username
 ```python
 # Define Endpoint Parameters
 endpointParams = dict()
-endpointParams['input_token'] = params['access_token']
-endpointParams['access_token'] = params['access_token']
+endpointParams["input_token"] = params["access_token"]
+endpointParams["access_token"] = params["access_token"]
 
 # Define URL
-url = params['graph_domain'] + '/debug_token'
+url = params["graph_domain"] + "/debug_token"
 # Requests Data
 try:
     data = requests.get(url, endpointParams)
     access_token_data = json.loads(data.content)
-    
+
 except Exception as err:
     print(err)
 
-print("Token Expires: ", datetime.datetime.fromtimestamp(
-    access_token_data['data']['expires_at']))
+print(
+    "Token Expires: ",
+    datetime.datetime.fromtimestamp(access_token_data["data"]["expires_at"]),
+)
 ```
 
 ## Model
@@ -91,12 +95,14 @@ print("Token Expires: ", datetime.datetime.fromtimestamp(
 
 ```python
 # Define URL
-url = params['endpoint_base'] + params['instagram_account_id'] + '/media'
+url = params["endpoint_base"] + params["instagram_account_id"] + "/media"
 
 # Define Endpoint Parameters
 endpointParams = dict()
-endpointParams['fields'] = 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username,like_count,comments_count'
-endpointParams['access_token'] = params['access_token']
+endpointParams[
+    "fields"
+] = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username,like_count,comments_count"
+endpointParams["access_token"] = params["access_token"]
 
 # Requests Data
 data = requests.get(url, endpointParams)
@@ -109,8 +115,17 @@ basic_insight = json.loads(data.content)
 
 
 ```python
-df = pd.DataFrame(basic_insight['data'])
-df.columns = ['id', 'Caption', 'Media_Type', 'Media_URL',
-              'Permalink', 'Timestamp', 'Username', 'Likes', 'Comments']
+df = pd.DataFrame(basic_insight["data"])
+df.columns = [
+    "id",
+    "Caption",
+    "Media_Type",
+    "Media_URL",
+    "Permalink",
+    "Timestamp",
+    "Username",
+    "Likes",
+    "Comments",
+]
 df.head()
 ```

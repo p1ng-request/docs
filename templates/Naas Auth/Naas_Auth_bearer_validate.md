@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
+**Description:** This notebook provides a way to validate Bearer tokens for authentication with the Naas API.
+
 ## Input
 
 ### Import library

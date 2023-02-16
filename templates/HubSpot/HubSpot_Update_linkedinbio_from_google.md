@@ -65,9 +65,11 @@ df_to_update = hubspot_contacts.copy()
 df_to_update = df_to_update.fillna("Not Defined")
 
 # Filter on "Not defined"
-df_to_update = df_to_update[(df_to_update.firstname != "Not Defined") & 
-                            (df_to_update.lastname != "Not Defined") &
-                            (df_to_update.linkedinbio == "Not Defined")].reset_index(drop=True)
+df_to_update = df_to_update[
+    (df_to_update.firstname != "Not Defined")
+    & (df_to_update.lastname != "Not Defined")
+    & (df_to_update.linkedinbio == "Not Defined")
+].reset_index(drop=True)
 
 df_to_update
 ```
@@ -79,11 +81,11 @@ df_to_update
 def get_bio(firstname, lastname):
     # Init linkedinbio
     linkedinbio = None
-    
+
     # Create query
     query = f"{firstname}+{lastname}+Linkedin"
     print("Google query: ", query)
-    
+
     # Search in Google
     for i in search(query, tld="com", num=10, stop=10, pause=2):
         pattern = "https:\/\/.+.linkedin.com\/in\/.([^?])+"
@@ -103,11 +105,11 @@ def get_bio(firstname, lastname):
 for _, row in df_to_update.iterrows():
     firstname = row.firstname
     lastname = row.lastname
-    
+
     # Get linkedinbio
     linkedinbio = get_bio(firstname, lastname)
     df_to_update.loc[_, "linkedinbio"] = linkedinbio
-    
+
 df_to_update
 ```
 
@@ -120,7 +122,7 @@ df_to_update
 for _, row in df_to_update.iterrows():
     # Init data
     data = {}
-    
+
     # Get data
     hs_object_id = row.hs_object_id
     linkedinbio = row.linkedinbio

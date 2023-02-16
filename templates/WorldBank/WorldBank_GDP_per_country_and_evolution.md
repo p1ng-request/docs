@@ -54,39 +54,54 @@ import plotly.graph_objects as go
 ```python
 from pandas_datareader import wb
 
-indicators = wb.download(indicator=['NY.GDP.PCAP.CD', 'NY.GDP.PCAP.KD.ZG'], country='all', start=2013, end=2018)
+indicators = wb.download(
+    indicator=["NY.GDP.PCAP.CD", "NY.GDP.PCAP.KD.ZG"],
+    country="all",
+    start=2013,
+    end=2018,
+)
 
 indicators = indicators.reset_index()
-indicators = indicators[['country', 'year', 'NY.GDP.PCAP.CD', 'NY.GDP.PCAP.KD.ZG']]
-indicators.columns = ['country', 'year', 'GDP_PER_CAPITAL', 'GDP_GROWTH_PER_CAPITAL']
+indicators = indicators[["country", "year", "NY.GDP.PCAP.CD", "NY.GDP.PCAP.KD.ZG"]]
+indicators.columns = ["country", "year", "GDP_PER_CAPITAL", "GDP_GROWTH_PER_CAPITAL"]
 
 indicators = indicators.fillna(0)
 
 countries = wb.get_countries()
-countries = countries[['name', 'region', 'iso3c']]
+countries = countries[["name", "region", "iso3c"]]
 
-master_table = pd.merge(indicators, countries, left_on='country', right_on='name')
+master_table = pd.merge(indicators, countries, left_on="country", right_on="name")
 
-master_table = master_table[master_table['region'] != 'Aggregates']
+master_table = master_table[master_table["region"] != "Aggregates"]
 
-master_table = master_table.drop(columns=['name'])
+master_table = master_table.drop(columns=["name"])
 
 master_table = master_table.dropna()
 
 # Création de l'ensemble final
-xls_formatted = pd.DataFrame(columns=['COUNTRY', 'YEAR', 'GDP_PER_CAPITAL', 'GDP_GROWTH_PER_CAPITAL', 'REGION', 'ISO3C'])
+xls_formatted = pd.DataFrame(
+    columns=[
+        "COUNTRY",
+        "YEAR",
+        "GDP_PER_CAPITAL",
+        "GDP_GROWTH_PER_CAPITAL",
+        "REGION",
+        "ISO3C",
+    ]
+)
 
 for index, line in master_table.iterrows():
-  xls_formatted = xls_formatted.append(
-    {
-        'COUNTRY': line['country'],
-        'YEAR': line['year'],
-        'GDP_PER_CAPITAL': line['GDP_PER_CAPITAL'],
-        'GDP_GROWTH_PER_CAPITAL': line['GDP_GROWTH_PER_CAPITAL'],
-        'REGION': line['region'],
-        'ISO3C': line['iso3c'],
-    }, ignore_index=True
-  )
+    xls_formatted = xls_formatted.append(
+        {
+            "COUNTRY": line["country"],
+            "YEAR": line["year"],
+            "GDP_PER_CAPITAL": line["GDP_PER_CAPITAL"],
+            "GDP_GROWTH_PER_CAPITAL": line["GDP_GROWTH_PER_CAPITAL"],
+            "REGION": line["region"],
+            "ISO3C": line["iso3c"],
+        },
+        ignore_index=True,
+    )
 
 master_table = xls_formatted
 
@@ -101,61 +116,79 @@ master_table
 ```python
 # Variable à changer pour avoir les autres années
 year = "2018"
-master_year_table = master_table[master_table['YEAR'] == year]
+master_year_table = master_table[master_table["YEAR"] == year]
 
 GDP_GROWTH_PER_CAPITAL = "GDP GROWTH PER CAPITAL"
 GDP_PER_CAPITAL = "GDP PER CAPITAL"
 
 fig = go.Figure()
 
-fig.add_trace(go.Choropleth(
-    locations=master_year_table['ISO3C'],
-    z = master_year_table['GDP_PER_CAPITAL'],
-    colorscale = [(0,"black"), (0.01,"red"),(0.1,"yellow"),(0.3,"green"),(1,"green")],
-    colorbar_title = "GDP PER CAPITAL",
-    customdata = master_year_table['COUNTRY'],
-    hovertemplate = '<b>%{customdata}: %{z:,.0f}</b><extra></extra>'
-))
+fig.add_trace(
+    go.Choropleth(
+        locations=master_year_table["ISO3C"],
+        z=master_year_table["GDP_PER_CAPITAL"],
+        colorscale=[
+            (0, "black"),
+            (0.01, "red"),
+            (0.1, "yellow"),
+            (0.3, "green"),
+            (1, "green"),
+        ],
+        colorbar_title="GDP PER CAPITAL",
+        customdata=master_year_table["COUNTRY"],
+        hovertemplate="<b>%{customdata}: %{z:,.0f}</b><extra></extra>",
+    )
+)
 
-fig.add_trace(go.Choropleth(
-    locations=master_year_table['ISO3C'],
-    visible= False,
-    z = master_year_table['GDP_GROWTH_PER_CAPITAL'],
-    colorscale = [(0,"red"),(0.5,"red"),(0.75,"rgb(240,230,140)"), (1,"green")],
-    colorbar_title = "GDP GROWTH PER CAPITAL",
-    customdata = master_year_table['COUNTRY'],
-    hovertemplate = '<b>%{customdata}: %{z:0.2f}%</b><extra></extra>'
-))
+fig.add_trace(
+    go.Choropleth(
+        locations=master_year_table["ISO3C"],
+        visible=False,
+        z=master_year_table["GDP_GROWTH_PER_CAPITAL"],
+        colorscale=[(0, "red"), (0.5, "red"), (0.75, "rgb(240,230,140)"), (1, "green")],
+        colorbar_title="GDP GROWTH PER CAPITAL",
+        customdata=master_year_table["COUNTRY"],
+        hovertemplate="<b>%{customdata}: %{z:0.2f}%</b><extra></extra>",
+    )
+)
 
 fig.update_layout(
     autosize=False,
-    width= 1600,
-    height= 900,
+    width=1600,
+    height=900,
     title=f"GDP per capital in {year}",
     title_x=0.5,
     updatemenus=[
         dict(
-            type = "buttons",
+            type="buttons",
             active=0,
-            buttons=list([
-                dict(
-                    args=[{"visible": [True, False]}, {"title": f"{GDP_PER_CAPITAL} in {year}"}],
-                    label=GDP_PER_CAPITAL,
-                    method="update"
-                ),
-                dict(
-                    args=[{"visible": [False, True]}, {"title": f"{GDP_GROWTH_PER_CAPITAL} in {year}"}],
-                    label=GDP_GROWTH_PER_CAPITAL,
-                    method="update"
-                )
-            ]),
+            buttons=list(
+                [
+                    dict(
+                        args=[
+                            {"visible": [True, False]},
+                            {"title": f"{GDP_PER_CAPITAL} in {year}"},
+                        ],
+                        label=GDP_PER_CAPITAL,
+                        method="update",
+                    ),
+                    dict(
+                        args=[
+                            {"visible": [False, True]},
+                            {"title": f"{GDP_GROWTH_PER_CAPITAL} in {year}"},
+                        ],
+                        label=GDP_GROWTH_PER_CAPITAL,
+                        method="update",
+                    ),
+                ]
+            ),
             showactive=True,
             x=1,
             xanchor="right",
             y=1.1,
-            yanchor="top"
+            yanchor="top",
         ),
-    ]
+    ],
 )
 
 fig.show()

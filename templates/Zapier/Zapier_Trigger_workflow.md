@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows you to create automated workflows that are triggered by specific events.
+
 ## Input
 
 ### Import library
@@ -20,7 +22,7 @@ import naas_drivers
 
 ```python
 url = "https://zapier.com/hooks/catch/n/Lx2RH/"
-data = { "first_name":"Bryan", "last_name":"Helmig", "age": 27 }
+data = {"first_name": "Bryan", "last_name": "Helmig", "age": 27}
 ```
 
 ## Output

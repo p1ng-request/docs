@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to post text and images to their Twitter account.
+
 ## Input
 
 ### Import libraries
@@ -20,7 +22,7 @@ import naas_drivers
 
 
 ```python
-data = naas_drivers.yahoofinance.get('^FCHI',date_from=-200, moving_averages=[50,20])
+data = naas_drivers.yahoofinance.get("^FCHI", date_from=-200, moving_averages=[50, 20])
 ```
 
 
@@ -37,7 +39,7 @@ naas_drivers.plotly.export(chart, name)
 
 
 ```python
-url = naas.assets.add(name, params={"inline":True})
+url = naas.assets.add(name, params={"inline": True})
 ```
 
 ### Let's write the post
@@ -54,7 +56,7 @@ PS : this post has been generated automatically with https://www.naas.ai/ 😎
 """
 event = "twitter-post"
 key = "ke4AigvXI5-EABaowdLt4fju1aOUxeMxSXQoN8FVyA"
-data = { "value1" : twitter_post,  "value2" : url}
+data = {"value1": twitter_post, "value2": url}
 ```
 
 ## Output

@@ -4,8 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template create a PowerPoint file in portrait format with a title and a subtitle.<br>
-Reference: https://python-pptx.readthedocs.io/en/latest/user/quickstart.html
+**Description:** This notebook allows users to quickly and easily create a new slide in PowerPoint with a title and subtitle.
 
 ## Input
 
@@ -25,7 +24,7 @@ from pptx.util import Inches
 
 
 ```python
-output_pptx = 'MyPowerPoint_Slide.pptx'
+output_pptx = "MyPowerPoint_Slide.pptx"
 title_text = "Hello, World!"
 subtitle_text = "python-pptx was here!"
 ```

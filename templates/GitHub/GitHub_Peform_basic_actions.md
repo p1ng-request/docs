@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides instructions on how to use GitHub to perform basic tasks.
+
 ## Input
 
 ### Import library
@@ -29,14 +31,14 @@ from git_lib import Git
 
 ```python
 config = {
-            'username':'< Your github username >',
-            'password':'< Your github password >',
-            'github_url':'< Github url >',
-            'branch':'< Github branch name >',
-            'target_folder':'< Folder name >',
-            'action':'< Github action >',
-            'commit_message':'< Your message for commit >'
-         }
+    "username": "< Your github username >",
+    "password": "< Your github password >",
+    "github_url": "< Github url >",
+    "branch": "< Github branch name >",
+    "target_folder": "< Folder name >",
+    "action": "< Github action >",
+    "commit_message": "< Your message for commit >",
+}
 ```
 
 ## Output

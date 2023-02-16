@@ -4,7 +4,7 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
-This notebook merges together multiple PDFs
+**Description:** This notebook allows users to combine multiple PDF documents into a single file.
 
 ## Input
 
@@ -28,7 +28,7 @@ except:
 ```python
 input_pdf_files = [
     "https://bitcoin.org/bitcoin.pdf",
-    "https://ethereum.org/669c9e2e2027310b6b3cdce6e1c52962/Ethereum_Whitepaper_-_Buterin_2014.pdf"
+    "https://ethereum.org/669c9e2e2027310b6b3cdce6e1c52962/Ethereum_Whitepaper_-_Buterin_2014.pdf",
 ]
 ouput_pdf_file = "merge.pdf"
 ```
@@ -57,9 +57,9 @@ def get_pdf(path):
         memory_file = io.BytesIO(remote_file)
         pdf_file = PdfFileReader(memory_file)
     else:
-        pdf_file_obj = open(path, 'rb')
+        pdf_file_obj = open(path, "rb")
         pdf_file = PdfFileReader(pdf_file_obj)
-        
+
     return pdf_file
 ```
 
@@ -78,7 +78,7 @@ pdf_writer = PdfFileWriter()
 ```python
 for pdf_file in input_pdf_files:
     pdf_reader = get_pdf(pdf_file)
-    
+
     for page_num in range(pdf_reader.numPages):
         page_obj = pdf_reader.getPage(page_num)
         pdf_writer.addPage(page_obj)
@@ -88,7 +88,7 @@ for pdf_file in input_pdf_files:
 
 
 ```python
-pdf_output_file = open(ouput_pdf_file, 'wb')
+pdf_output_file = open(ouput_pdf_file, "wb")
 pdf_writer.write(pdf_output_file)
 pdf_output_file.close()
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Riddhi Deshpande](https://www.linkedin.com/in/riddhideshpande/)
 
+**Description:** This notebook allows users to track connections related to content creation for the Metrics Store.
+
 ## Input
 
 ### Import library
@@ -37,7 +39,7 @@ db_notion = notion.connect(notion_token).database.get(notion_database)
 
 # Get database as dataframe
 df_notion = db_notion.df()
-df_notion.VALUE=df_notion.VALUE.astype(float)
+df_notion.VALUE = df_notion.VALUE.astype(float)
 df_notion
 ```
 
@@ -47,12 +49,9 @@ df_notion
 
 
 ```python
-fig = px.line(data_frame=df_notion,
-              x='DATE',
-              y='VALUE',
-              color='GROUP')
+fig = px.line(data_frame=df_notion, x="DATE", y="VALUE", color="GROUP")
 
-#add button control to chart
+# add button control to chart
 fig.update_layout(
     title=f"🚀<b> Number of Connections</b><br><span style='font-size: 13px;'></span>",
     title_font=dict(family="Arial", size=18, color="black"),
@@ -63,32 +62,31 @@ fig.update_layout(
     paper_bgcolor="white",
     xaxis_title="Date",
     xaxis_title_font=dict(family="Arial", size=11, color="black"),
-    yaxis_title='No. of connections',
+    yaxis_title="No. of connections",
     yaxis_title_font=dict(family="Arial", size=11, color="black"),
     margin_pad=10,
     updatemenus=[
         dict(
             active=0,
-            buttons=list([
-                dict(
-                    
-                    label="Both",
-                    method="update",
-                    args=[{"visible":[True,True]},
-                         {"title": "Both"}]),
-                dict(
-                    
-                    label="Twitter",
-                    method="update",
-                    args=[{"visible":[True,False]},
-                          {"title": "Twitter"}]),
-                dict(
-                   
-                    label="Linkedin",
-                    method="update",
-                     args=[{"visible":[False,True]},
-                          {"title": "Linkedin"}])
-            ]),
+            buttons=list(
+                [
+                    dict(
+                        label="Both",
+                        method="update",
+                        args=[{"visible": [True, True]}, {"title": "Both"}],
+                    ),
+                    dict(
+                        label="Twitter",
+                        method="update",
+                        args=[{"visible": [True, False]}, {"title": "Twitter"}],
+                    ),
+                    dict(
+                        label="Linkedin",
+                        method="update",
+                        args=[{"visible": [False, True]}, {"title": "Linkedin"}],
+                    ),
+                ]
+            ),
             pad={"r": -80, "t": -40},
             direction="down",
             x=1,
@@ -97,9 +95,10 @@ fig.update_layout(
             yanchor="top",
             borderwidth=1,
             bordercolor="black",
-            bgcolor=None
+            bgcolor=None,
         ),
-    ])
+    ],
+)
 ```
 
 ## Output

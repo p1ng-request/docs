@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook enables you to send email with SendGrid
+**Description:** This notebook allows you to send messages using SendGrid's email delivery service.
 
 ## Input
 
@@ -30,15 +30,15 @@ SENDGRID_API_KEY = ""
 
 ```python
 # Email senders and receivers
-email_from ="" 
-email_from_name = None #custom email from name, 24 char max
+email_from = ""
+email_from_name = None  # custom email from name, 24 char max
 email_to = ""
-email_to_name = None #custom email from name
-email_to_cc = None #emails in copy
+email_to_name = None  # custom email from name
+email_to_cc = None  # emails in copy
 
 # Email content
-subject="Test SendGrid"
-content="Hi there, Best regards!"
+subject = "Test SendGrid"
+content = "Hi there, Best regards!"
 ```
 
 ## Model
@@ -47,15 +47,17 @@ content="Hi there, Best regards!"
 
 
 ```python
-def send_email(email_from,
-               email_to,
-               subject,
-               content,
-               email_to_cc=None,
-               email_from_name=None,
-               email_to_name=None,
-               content_type="text/plain"):
-    
+def send_email(
+    email_from,
+    email_to,
+    subject,
+    content,
+    email_to_cc=None,
+    email_from_name=None,
+    email_to_name=None,
+    content_type="text/plain",
+):
+
     # Connect to SendGrid
     SG = SendGridAPIClient(api_key=SENDGRID_API_KEY)
 
@@ -72,7 +74,7 @@ def send_email(email_from,
         if res.status_code == 202:
             print(f"📧 Email successfully sent to {email_to}")
     except requests.HTTPError as e:
-        raise(e)
+        raise (e)
 ```
 
 ## Output
@@ -81,11 +83,13 @@ def send_email(email_from,
 
 
 ```python
-send_email(email_from=email_from,
-           email_to=email_to,
-           subject=subject,
-           content=content,
-           email_to_cc=email_to_cc,
-           email_from_name=email_from_name,
-           email_to_name=email_to_name)
+send_email(
+    email_from=email_from,
+    email_to=email_to,
+    subject=subject,
+    content=content,
+    email_to_cc=email_to_cc,
+    email_from_name=email_from_name,
+    email_to_name=email_to_name,
+)
 ```

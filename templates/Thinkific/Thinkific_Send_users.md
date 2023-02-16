@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows you to send users automated emails from Thinkific.
+
 ## Input
 
 ### Import library
@@ -35,7 +37,5 @@ thinkific.connect(api_key)
 
 
 ```python
-thinkific.users.send(
-    email="bob@cashstory.com"
-)
+thinkific.users.send(email="bob@cashstory.com")
 ```

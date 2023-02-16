@@ -4,6 +4,8 @@
 
 **Author:** [Gagan Bhatia](https://github.com/gagan3012)
 
+**Description:** This notebook provides a step-by-step guide to creating a Streamlit app that can make predictions based on user input.
+
 ## Input
 
 ### Import library

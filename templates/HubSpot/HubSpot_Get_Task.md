@@ -38,7 +38,7 @@ owner_id = 111111086
 # Time delay to get tasks created since N days, where N is no of days. For ex. Get tasks created since 1 day
 time_delay = 10
 
-#Number of tasks to be retrieved
+# Number of tasks to be retrieved
 no_of_tasks = 10
 ```
 
@@ -48,28 +48,27 @@ no_of_tasks = 10
 
 
 ```python
-def get_task(contact_id,owner_id,time_delay,no_of_tasks):
+def get_task(contact_id, owner_id, time_delay, no_of_tasks):
     """
-    Engagement type = TASK  
+    Engagement type = TASK
     """
-    
+
     # Calc timestamp
     Previous_Date = datetime.now() - timedelta(days=time_delay)
     Previous_tstamp = Previous_Date.timestamp() * 1000
     Previous_tstamp = math.trunc(Previous_tstamp)
-     
-    
+
     url = "https://api.hubapi.com/engagements/v1/engagements/recent/modified"
-    params = {"since":Previous_tstamp,"count":no_of_tasks}
+    params = {"since": Previous_tstamp, "count": no_of_tasks}
     headers = {
-        'Content-Type': "application/json",
-        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+        "Content-Type": "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}",
     }
     # Post requests
-    res = requests.get(url,headers=headers,params=params)
-    
+    res = requests.get(url, headers=headers, params=params)
+
     if res.status_code == 200:
-        
+
         res_json = res.json()
 
         # Check requests
@@ -82,7 +81,6 @@ def get_task(contact_id,owner_id,time_delay,no_of_tasks):
         return res_json
     else:
         print("Task not found")
-   
 ```
 
 ## Output
@@ -91,14 +89,14 @@ def get_task(contact_id,owner_id,time_delay,no_of_tasks):
 
 
 ```python
-results = get_task(contact_id,owner_id,time_delay,no_of_tasks)
+results = get_task(contact_id, owner_id, time_delay, no_of_tasks)
 ```
 
 
 ```python
 for key in results["results"]:
     print("---------------")
-    print(key['engagement']['id'])
+    print(key["engagement"]["id"])
 ```
 
 

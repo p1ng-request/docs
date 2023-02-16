@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook demonstrates how to convert an XML sitemap into a dataframe for further analysis.
+
 ## Input
 
 ### Import library
@@ -37,13 +39,13 @@ website = "https://zapier.com"
 def sitemap_to_df(url):
     df = None
     key = "urlset.url.url"
-    r = requests.get(f'{url}/sitemap.xml')
-    data_dict = xmltodict.parse(r.content) 
-    if key and len(key.split('.')) > 0:
-        keys = key.split('.')
+    r = requests.get(f"{url}/sitemap.xml")
+    data_dict = xmltodict.parse(r.content)
+    if key and len(key.split(".")) > 0:
+        keys = key.split(".")
         keys.reverse()
         data = data_dict.get(keys.pop())
-        while(len(keys) > 1):
+        while len(keys) > 1:
             data = data.get(keys.pop())
         df = pd.DataFrame.from_dict(data=data)
     elif key and data_dict.get(key):

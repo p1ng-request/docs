@@ -35,7 +35,9 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 email_to = ["your_email_adresse"]
 
 # Email subject
-email_subject = f"🚀 Hubspot - Sales Brief as of {datetime.now().strftime('%d/%m/%Y')} (Draft)"
+email_subject = (
+    f"🚀 Hubspot - Sales Brief as of {datetime.now().strftime('%d/%m/%Y')} (Draft)"
+)
 ```
 
 ### Sales target
@@ -76,11 +78,11 @@ DATE_FORMAT = "%Y-%m-%d"
 
 
 ```python
-#-> Uncomment the 2 lines below (by removing the hashtag) to schedule your job every monday at 8:00 AM (NB: you can choose the time of your scheduling bot)
+# -> Uncomment the 2 lines below (by removing the hashtag) to schedule your job every monday at 8:00 AM (NB: you can choose the time of your scheduling bot)
 # import naas
 # naas.scheduler.add(cron="0 8 * * 1")
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -110,7 +112,7 @@ properties = [
     "createdate",
     "hs_lastmodifieddate",
     "closedate",
-    "amount"
+    "amount",
 ]
 df_deals = hubspot.connect(HS_ACCESS_TOKEN).deals.get_all(properties)
 
@@ -150,11 +152,15 @@ def format_varv(num):
 
 
 ```python
-df_sales = pd.merge(df_deals.drop("pipeline", axis=1),
-                    df_dealstages.drop(["pipeline", "pipeline_id", "createdAt", "updatedAt", "archived"], axis=1),
-                    left_on="dealstage",
-                    right_on="dealstage_id",
-                    how="left")
+df_sales = pd.merge(
+    df_deals.drop("pipeline", axis=1),
+    df_dealstages.drop(
+        ["pipeline", "pipeline_id", "createdAt", "updatedAt", "archived"], axis=1
+    ),
+    left_on="dealstage",
+    right_on="dealstage_id",
+    how="left",
+)
 df_sales
 ```
 
@@ -168,7 +174,7 @@ df_sales_c.loc[df_sales_c["amount"] == "", "amount"] = "0"
 
 # Formatting
 df_sales_c["amount"] = df_sales_c["amount"].astype(float)
-df_sales_c["probability"] =  df_sales_c["probability"].astype(float)
+df_sales_c["probability"] = df_sales_c["probability"].astype(float)
 df_sales_c.createdate = pd.to_datetime(df_sales_c.createdate)
 df_sales_c.hs_lastmodifieddate = pd.to_datetime(df_sales_c.hs_lastmodifieddate)
 df_sales_c.closedate = pd.to_datetime(df_sales_c.closedate)
@@ -186,16 +192,8 @@ df_sales_c
 df_details = df_sales_c.copy()
 
 # Groupby
-to_group = [
-    "dealstage_label",
-    "probability",
-    "displayOrder"
-]
-to_agg = {
-    "amount": "sum",
-    "dealname": "count",
-    "forecasted": "sum"
-}
+to_group = ["dealstage_label", "probability", "displayOrder"]
+to_agg = {"amount": "sum", "dealname": "count", "forecasted": "sum"}
 df_details = df_details.groupby(to_group, as_index=False).agg(to_agg)
 
 # Sort
@@ -255,16 +253,16 @@ for _, row in df.iterrows():
     dealstage = row.dealstage_label
     probability = row.probability
     detail = f"{dealstage} ({format_pourcentage(probability)})"
-    
+
     # amount part
     amount = row.amount
     number = row.dealname
     forecasted_ = row.forecasted
-    if (probability < 1 and probability > 0):
+    if probability < 1 and probability > 0:
         detail = f"{detail}: <ul><li>Amount : {format_number(amount)}</li><li>Number : {number}</li><li>Weighted amount : <b>{format_number(forecasted_)}</b></li></ul>"
     else:
         detail = f"{detail}: {format_number(amount)}"
-        
+
     details += [detail]
 
 details
@@ -276,14 +274,24 @@ details
 ```python
 df_inactive = df_sales_c.copy()
 
-df_inactive.hs_lastmodifieddate = pd.to_datetime(df_inactive.hs_lastmodifieddate).dt.strftime(DATE_FORMAT)
+df_inactive.hs_lastmodifieddate = pd.to_datetime(
+    df_inactive.hs_lastmodifieddate
+).dt.strftime(DATE_FORMAT)
 
-df_inactive["inactive_time"] = (datetime.now() - pd.to_datetime(df_inactive.hs_lastmodifieddate, format=DATE_FORMAT)).dt.days
+df_inactive["inactive_time"] = (
+    datetime.now() - pd.to_datetime(df_inactive.hs_lastmodifieddate, format=DATE_FORMAT)
+).dt.days
 df_inactive.loc[(df_inactive["inactive_time"] > 30, "inactive")] = "inactive"
-df_inactive = df_inactive[(df_inactive.inactive == 'inactive') &
-                          (df_inactive.amount != 0) & 
-                          (df_inactive.probability > 0.) & 
-                          (df_inactive.probability < 1)].sort_values("amount", ascending=False).reset_index(drop=True)
+df_inactive = (
+    df_inactive[
+        (df_inactive.inactive == "inactive")
+        & (df_inactive.amount != 0)
+        & (df_inactive.probability > 0.0)
+        & (df_inactive.probability < 1)
+    ]
+    .sort_values("amount", ascending=False)
+    .reset_index(drop=True)
+)
 
 df_inactive
 ```
@@ -310,21 +318,30 @@ inactives
 ```python
 import plotly.graph_objects as go
 
-fig = go.Figure(go.Waterfall(name="20",
-                             orientation = "v",
-                             measure = ["relative", "relative", "total", "relative", "total"],
-                             x = ["Won", "Pipeline", "Forecast", "Missing", "Objective"],
-                             textposition = "outside",
-                             text = [format_number(won), format_varv(weighted), format_number(forecasted), format_varv(completion_v), format_number(objective)],
-                             y = [won, weighted, forecasted, completion_v, objective],
-                            decreasing = {"marker":{"color":"#33475b"}},
-                            increasing = {"marker":{"color":"#33475b"}},
-                            totals = {"marker":{"color":"#ff7a59"}}
-))
+fig = go.Figure(
+    go.Waterfall(
+        name="20",
+        orientation="v",
+        measure=["relative", "relative", "total", "relative", "total"],
+        x=["Won", "Pipeline", "Forecast", "Missing", "Objective"],
+        textposition="outside",
+        text=[
+            format_number(won),
+            format_varv(weighted),
+            format_number(forecasted),
+            format_varv(completion_v),
+            format_number(objective),
+        ],
+        y=[won, weighted, forecasted, completion_v, objective],
+        decreasing={"marker": {"color": "#33475b"}},
+        increasing={"marker": {"color": "#33475b"}},
+        totals={"marker": {"color": "#ff7a59"}},
+    )
+)
 
 
-fig.update_layout(title = "Sales Metrics", plot_bgcolor="#ffffff", hovermode='x')
-fig.update_yaxes(tickprefix="€", gridcolor='#eaeaea')
+fig.update_layout(title="Sales Metrics", plot_bgcolor="#ffffff", hovermode="x")
+fig.update_yaxes(tickprefix="€", gridcolor="#eaeaea")
 fig.show()
 ```
 
@@ -343,64 +360,91 @@ graph_image = naas.asset.add("GRAPH_IMG.png")
 
 
 ```python
-def email_brief(today,
-                forecasted,
-                won,
-                weighted,
-                objective,
-                completion_p,
-                completion_v,
-                details,
-                inactives
-                ):
+def email_brief(
+    today,
+    forecasted,
+    won,
+    weighted,
+    objective,
+    completion_p,
+    completion_v,
+    details,
+    inactives,
+):
     content = {
-        'title': (f"<a href='{NAAS_WEBSITE}'>"
-                   f"<img align='center' width='100%' target='_blank' style='border-radius:5px;'"
-                   f"src='{HUBSPOT_CARD}' alt={EMAIL_DESCRIPTION}/>"
-                   "</a>"),
-        
-        'txt_intro': (f"Hi there,<br><br>"
-                      f"Here is your weekly sales email as of {today}."),
-
-        'title_1': emailbuilder.text("Overview", font_size="27px", text_align="center", bold=True),
-        "text_1": emailbuilder.text(f"As of today, your yearly forecasted revenue is {format_number(forecasted)}."),
-        "list_1": emailbuilder.list([f"Won : {format_number(won)}",
-                                     f"Weighted pipeline : <b>{format_number(weighted)}</b>"]),
-        "text_1_2": emailbuilder.text(f"You need to find 👉 <u>{format_number(completion_v)}</u> to reach your goal !"),
-        "text_1_1": emailbuilder.text(f"Your yearly objective is {format_number(objective)} ({format_pourcentage(completion_p)} completion)."),
-        'image_1': emailbuilder.image(graph_image, link=graph_url),
-        
-        'title_2': emailbuilder.text("🚀 Pipeline", font_size="27px", text_align="center", bold=True),
+        "title": (
+            f"<a href='{NAAS_WEBSITE}'>"
+            f"<img align='center' width='100%' target='_blank' style='border-radius:5px;'"
+            f"src='{HUBSPOT_CARD}' alt={EMAIL_DESCRIPTION}/>"
+            "</a>"
+        ),
+        "txt_intro": (
+            f"Hi there,<br><br>" f"Here is your weekly sales email as of {today}."
+        ),
+        "title_1": emailbuilder.text(
+            "Overview", font_size="27px", text_align="center", bold=True
+        ),
+        "text_1": emailbuilder.text(
+            f"As of today, your yearly forecasted revenue is {format_number(forecasted)}."
+        ),
+        "list_1": emailbuilder.list(
+            [
+                f"Won : {format_number(won)}",
+                f"Weighted pipeline : <b>{format_number(weighted)}</b>",
+            ]
+        ),
+        "text_1_2": emailbuilder.text(
+            f"You need to find 👉 <u>{format_number(completion_v)}</u> to reach your goal !"
+        ),
+        "text_1_1": emailbuilder.text(
+            f"Your yearly objective is {format_number(objective)} ({format_pourcentage(completion_p)} completion)."
+        ),
+        "image_1": emailbuilder.image(graph_image, link=graph_url),
+        "title_2": emailbuilder.text(
+            "🚀 Pipeline", font_size="27px", text_align="center", bold=True
+        ),
         "list_2": emailbuilder.list(details),
-
-        'title_3': emailbuilder.text("🧐 Actions needed", font_size="27px", text_align="center", bold=True),
-        'text_3': emailbuilder.text("Here are deals where you need to take actions :"),
-        'list_3': emailbuilder.list(inactives),
-        'text_3_1': emailbuilder.text("If you need more details, connect to Hubspot with the link below."),
-        'button_1': emailbuilder.button(link="https://app.hubspot.com/",
-                                        text="Go to Hubspot",
-                                        background_color="#ff7a59"),
-        
-        'title_4': emailbuilder.text("Glossary", text_align="center", bold=True, underline=True),
-        'list_4': emailbuilder.list(["Yearly forecasted revenue :  Weighted amount + WON exclude LOST",
-                                     "Yearly objective : Input in script",
-                                     "Inactive deal : No activity for more than 30 days"]),
-        
-        'footer_cs': emailbuilder.footer_company(naas=True),
+        "title_3": emailbuilder.text(
+            "🧐 Actions needed", font_size="27px", text_align="center", bold=True
+        ),
+        "text_3": emailbuilder.text("Here are deals where you need to take actions :"),
+        "list_3": emailbuilder.list(inactives),
+        "text_3_1": emailbuilder.text(
+            "If you need more details, connect to Hubspot with the link below."
+        ),
+        "button_1": emailbuilder.button(
+            link="https://app.hubspot.com/",
+            text="Go to Hubspot",
+            background_color="#ff7a59",
+        ),
+        "title_4": emailbuilder.text(
+            "Glossary", text_align="center", bold=True, underline=True
+        ),
+        "list_4": emailbuilder.list(
+            [
+                "Yearly forecasted revenue :  Weighted amount + WON exclude LOST",
+                "Yearly objective : Input in script",
+                "Inactive deal : No activity for more than 30 days",
+            ]
+        ),
+        "footer_cs": emailbuilder.footer_company(naas=True),
     }
-    
-    email_content = emailbuilder.generate(display='iframe', **content)
+
+    email_content = emailbuilder.generate(display="iframe", **content)
     return email_content
 
-email_content = email_brief(today,
-                            forecasted,
-                            won,
-                            weighted,
-                            objective,
-                            completion_p,
-                            completion_v,
-                            details,
-                            inactives)
+
+email_content = email_brief(
+    today,
+    forecasted,
+    won,
+    weighted,
+    objective,
+    completion_p,
+    completion_v,
+    details,
+    inactives,
+)
 ```
 
 ## Output
@@ -409,7 +453,5 @@ email_content = email_brief(today,
 
 
 ```python
-naas.notification.send(email_to,
-                       email_subject,
-                       email_content)
+naas.notification.send(email_to, email_subject, email_content)
 ```

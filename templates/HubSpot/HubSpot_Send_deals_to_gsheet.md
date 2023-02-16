@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook send all your deals to a Google Sheets spreadsheet.
+**Description:** This notebook allows you to send HubSpot deals to a Google Sheet for easy tracking and analysis.
 
 ## Input
 
@@ -68,9 +68,5 @@ df_deals = hubspot.connect(HS_ACCESS_TOKEN).deals.get_all(properties)
 
 
 ```python
-gsheet.connect(SPREADSHEET_URL).send(
-    sheet_name=SHEET_NAME,
-    data=df_deals,
-    append=False
-)
+gsheet.connect(SPREADSHEET_URL).send(sheet_name=SHEET_NAME, data=df_deals, append=False)
 ```

@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook get all deals from HubSpot. Data will be returned as dataframe with columns equal to properties.
+**Description:** This notebook provides a comprehensive overview of all deals in HubSpot.
 
 ## Input
 

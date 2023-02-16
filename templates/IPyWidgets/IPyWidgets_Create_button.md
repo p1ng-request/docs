@@ -4,7 +4,7 @@
 
 **Author:** [Ismail CHIHAB](https://www.linkedin.com/in/ismail-chihab-4b0a04202/)
 
-This notebook uses ipywidgets to create a button.
+**Description:** This notebook demonstrates how to use IPyWidgets to create an interactive button.
 
 ## Input
 
@@ -20,13 +20,15 @@ from ipywidgets import widgets
 
 
 ```python
-#Button variables:
-button_description = 'Click me'
-button_style = 'info'  #You can also enter: 'success', 'info', 'warning', 'danger' or ''
-button_icon = 'check'
+# Button variables:
+button_description = "Click me"
+button_style = (
+    "info"  # You can also enter: 'success', 'info', 'warning', 'danger' or ''
+)
+button_icon = "check"
 
-#Result variables
-button_message = 'Button Clicked' #Message display on click
+# Result variables
+button_message = "Button Clicked"  # Message display on click
 ```
 
 ## Model
@@ -37,9 +39,7 @@ button_message = 'Button Clicked' #Message display on click
 ```python
 # Setup ipywidgets
 button = widgets.Button(
-    description=button_description,
-    button_style=button_style,
-    button_icon=button_icon
+    description=button_description, button_style=button_style, button_icon=button_icon
 )
 
 # Setup output

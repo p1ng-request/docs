@@ -4,6 +4,8 @@
 
 **Author:** [Peter Turner](https://www.linkedin.com/in/peter-turner-0839aa116/)
 
+**Description:** This notebook creates an indicator to measure the performance of the WSR-WHI portfolio.
+
 ## Input
 
 ### Import libraries
@@ -21,10 +23,30 @@ from datetime import date
 ```python
 # Input extracted from your open source data
 data = [
-    {'DATE_PROCESSED': '2021-05-28', 'INDICATOR': 'COVID-19 Active Cases', 'VALUE': 0.21, 'WEIGHT': 4},
-    {'DATE_PROCESSED': '2021-05-28', 'INDICATOR': 'Sea Level', 'VALUE': 4.951165245651996, 'WEIGHT': 2},
-    {'DATE_PROCESSED': '2021-06-10', 'INDICATOR': 'Delta global temperature', 'VALUE': 4.9, 'WEIGHT': 4},
-    {'DATE_PROCESSED': '2021-06-10', 'INDICATOR': 'Arctic Sea Ice level (million square km)', 'VALUE': 4.9, 'WEIGHT': 2}
+    {
+        "DATE_PROCESSED": "2021-05-28",
+        "INDICATOR": "COVID-19 Active Cases",
+        "VALUE": 0.21,
+        "WEIGHT": 4,
+    },
+    {
+        "DATE_PROCESSED": "2021-05-28",
+        "INDICATOR": "Sea Level",
+        "VALUE": 4.951165245651996,
+        "WEIGHT": 2,
+    },
+    {
+        "DATE_PROCESSED": "2021-06-10",
+        "INDICATOR": "Delta global temperature",
+        "VALUE": 4.9,
+        "WEIGHT": 4,
+    },
+    {
+        "DATE_PROCESSED": "2021-06-10",
+        "INDICATOR": "Arctic Sea Ice level (million square km)",
+        "VALUE": 4.9,
+        "WEIGHT": 2,
+    },
 ]
 
 # Input image
@@ -52,7 +74,8 @@ df
 
 ```python
 def whi(df):
-    return round((df['VALUE']*df['WEIGHT']).sum() / df['WEIGHT'].sum(), 2)
+    return round((df["VALUE"] * df["WEIGHT"]).sum() / df["WEIGHT"].sum(), 2)
+
 
 whi(df)
 ```
@@ -64,11 +87,18 @@ whi(df)
 def create_image(value, datetime):
     img = Image.open(input_image)
     d = ImageDraw.Draw(img)
-    
+
     font = ImageFont.truetype(input_font, 90)
-    fill = (255,255,255)
-    
-    d.text((50,900), "{indicator}/10, {date}".format(date=datetime.strftime("%d/%m/%Y"), indicator=value), font=font, fill=fill)
+    fill = (255, 255, 255)
+
+    d.text(
+        (50, 900),
+        "{indicator}/10, {date}".format(
+            date=datetime.strftime("%d/%m/%Y"), indicator=value
+        ),
+        font=font,
+        fill=fill,
+    )
     return img
 ```
 
@@ -78,7 +108,7 @@ def create_image(value, datetime):
 
 
 ```python
-img = create_image(f'{whi(df)}' , date.today())
+img = create_image(f"{whi(df)}", date.today())
 display(img)
 ```
 
@@ -90,6 +120,6 @@ img.save(output_image)
 
 naas.asset.add(output_image)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(output_image)
 ```

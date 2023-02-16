@@ -4,7 +4,7 @@
 
 **Author:** [Megha Gupta](https://github.com/megha2907)
 
- Description: With this template you will get INR USD rate visualized on a chart
+**Description:** This notebook provides a convenient way to access up-to-date stock information from Yahoo Finance.
 
 ## Input
 
@@ -12,7 +12,7 @@
 
 
 ```python
-import naas 
+import naas
 from naas_drivers import yahoofinance, plotly
 import markdown2
 from IPython.display import Markdown as md
@@ -27,9 +27,9 @@ from IPython.display import Markdown as md
 
 
 ```python
-TICKER = 'INR=X'
+TICKER = "INR=X"
 date_from = -30
-date_to = 'today'
+date_to = "today"
 ```
 
 ### Setup your email parameters
@@ -49,9 +49,9 @@ email_from = None
 
 
 ```python
-#data cleaning
-df = yahoofinance.get(TICKER, date_from=date_from, date_to = date_to)
-df = df.dropna()# drop the na values from the dataframe
+# data cleaning
+df = yahoofinance.get(TICKER, date_from=date_from, date_to=date_to)
+df = df.dropna()  # drop the na values from the dataframe
 df.reset_index(drop=True)
 df = df.sort_values("Date", ascending=False).reset_index(drop=True)
 df.head()
@@ -65,10 +65,10 @@ LASTOPEN = round(df.loc[0, "Open"], 2)
 LASTCLOSE = round(df.loc[0, "Close"], 2)
 YESTERDAYOPEN = round(df.loc[1, "Open"], 2)
 YESTERDAYCLOSE = round(df.loc[1, "Close"], 2)
-MAXRATE = round(df['Open'].max(),2)
-MXDATEOPEN = df.loc[df['Open'].idxmax(), "Date"].strftime("%Y-%m-%d")
-MINRATE = round(df['Open'].min(),2)
-MNDATEOPEN = df.loc[df['Open'].idxmin(), "Date"].strftime("%Y-%m-%d")
+MAXRATE = round(df["Open"].max(), 2)
+MXDATEOPEN = df.loc[df["Open"].idxmax(), "Date"].strftime("%Y-%m-%d")
+MINRATE = round(df["Open"].min(), 2)
+MNDATEOPEN = df.loc[df["Open"].idxmin(), "Date"].strftime("%Y-%m-%d")
 ```
 
 ### Plot the data
@@ -77,10 +77,12 @@ MNDATEOPEN = df.loc[df['Open'].idxmin(), "Date"].strftime("%Y-%m-%d")
 ```python
 last_date = df.loc[df.index[0], "Date"].strftime("%Y-%m-%d")
 
-output = plotly.linechart(df,
-                          x="Date",
-                          y=['Open','Close'],
-                          title=f"<b>INR USD rates of last month</b><br><span style='font-size: 13px;'>Last value as of {last_date}: Open={LASTOPEN}, Close={LASTCLOSE}</span>")
+output = plotly.linechart(
+    df,
+    x="Date",
+    y=["Open", "Close"],
+    title=f"<b>INR USD rates of last month</b><br><span style='font-size: 13px;'>Last value as of {last_date}: Open={LASTOPEN}, Close={LASTCLOSE}</span>",
+)
 ```
 
 ## Output
@@ -163,11 +165,9 @@ subject = f"📈 {TICKER} Open and close rates as of today"
 content = post
 files = [f"{TICKER}_LastMonth.csv"]
 
-naas.notification.send(email_to=email_to,
-                       subject=subject,
-                       html=content,
-                       email_from=email_from,
-                       files=files)
+naas.notification.send(
+    email_to=email_to, subject=subject, html=content, email_from=email_from, files=files
+)
 ```
 
 ### Schedule your notebook

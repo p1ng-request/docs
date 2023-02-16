@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a convenient way to generate barlines for Qonto statements.
+
 ## Input
 
 ### Import library
@@ -18,8 +20,8 @@ from naas_drivers import qonto
 
 
 ```python
-QONTO_USER_ID = 'YOUR_USER_ID'
-QONTO_SECRET_KEY = 'YOUR_SECRET_KEY'
+QONTO_USER_ID = "YOUR_USER_ID"
+QONTO_SECRET_KEY = "YOUR_SECRET_KEY"
 ```
 
 ### Parameters
@@ -52,15 +54,17 @@ cashout_color = "#ea484f"
 
 
 ```python
-barline = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.barline(date_from=date_from,
-                                                                            date_to=date_to,
-                                                                            title=title,
-                                                                            line_name=line_name,
-                                                                            line_color=line_color,
-                                                                            cashin_name=cashin_name,
-                                                                            cashin_color=cashin_color,
-                                                                            cashout_name=cashout_name,
-                                                                            cashout_color=cashout_color)
+barline = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.barline(
+    date_from=date_from,
+    date_to=date_to,
+    title=title,
+    line_name=line_name,
+    line_color=line_color,
+    cashin_name=cashin_name,
+    cashin_color=cashin_color,
+    cashout_name=cashout_name,
+    cashout_color=cashout_color,
+)
 ```
 
 ## Output

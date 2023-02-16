@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows users to export their LinkedIn connections to a Google Sheet for easy organization and tracking.
+
 ## Input
 
 ### Import libraries
@@ -45,7 +47,7 @@ SHEET_NAME = "LK_CONNECTIONS"
 ```python
 naas.scheduler.add(cron="0 8 * * *")
 
-#-> To delete your scheduler, please uncomment the line below and execute this cell
+# -> To delete your scheduler, please uncomment the line below and execute this cell
 # naas.scheduler.delete()
 ```
 
@@ -70,13 +72,15 @@ def get_new_connections(df_gsheet, key="PROFILE_URN"):
     else:
         df = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(limit=-1)
         return df
-    
+
     # Get new
     df_new = pd.DataFrame()
     update = True
     while update:
         start = 0
-        df = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(start=start, count=100, limit=100)
+        df = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(
+            start=start, count=100, limit=100
+        )
         new_profiles = df[key].unique()
         for i, p in enumerate(new_profiles):
             if p in profiles:
@@ -86,6 +90,7 @@ def get_new_connections(df_gsheet, key="PROFILE_URN"):
         start += 100
         df_new = pd.concat([df_new, df])
     return df_new
+
 
 df_new = get_new_connections(df_gsheet, key="PROFILE_URN")
 df_new
@@ -97,7 +102,5 @@ df_new
 
 
 ```python
-gsheet.connect(SPREADSHEET_URL).send(df_new,
-                                     sheet_name=SHEET_NAME,
-                                     append=True)
+gsheet.connect(SPREADSHEET_URL).send(df_new, sheet_name=SHEET_NAME, append=True)
 ```

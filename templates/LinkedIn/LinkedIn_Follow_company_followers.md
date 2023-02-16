@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows you to track and follow the followers of a company on LinkedIn.
+
 ## Input
 
 ### Import library
@@ -23,8 +25,8 @@ import plotly.graph_objects as go
 
 ```python
 # Credentials
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 
 # Company URL
 COMPANY_URL = "https://www.linkedin.com/company/naas-ai/"
@@ -53,7 +55,7 @@ image_output = f"{name_output}.png"
 # Schedule your notebook everyday at 9:00 AM
 naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -82,6 +84,7 @@ def get_company_followers(file_path):
         return pd.DataFrame()
     return df
 
+
 df_followers = get_company_followers(csv_input)
 df_followers
 ```
@@ -95,10 +98,9 @@ def get_new_followers(df, input_path):
         profiles = df.PROFILE_ID.unique()
     start = 0
     while True:
-        tmp_df = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(COMPANY_URL,
-                                                                           start=start,
-                                                                           limit=1,
-                                                                           sleep=False)
+        tmp_df = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(
+            COMPANY_URL, start=start, limit=1, sleep=False
+        )
         profile_id = None
         if "PROFILE_ID" in tmp_df.columns:
             profile_id = tmp_df.loc[0, "PROFILE_ID"]
@@ -110,6 +112,7 @@ def get_new_followers(df, input_path):
             start += 1
     return df.reset_index(drop=True)
 
+
 merged_df = get_new_followers(df_followers, csv_input)
 merged_df
 ```
@@ -118,29 +121,33 @@ merged_df
 
 
 ```python
-def get_trend(df,
-              date_col_name=None,
-              value_col_name=None,
-              date_order='asc'):
-    
+def get_trend(df, date_col_name=None, value_col_name=None, date_order="asc"):
+
     # Format date
     df[date_col_name] = pd.to_datetime(df[date_col_name]).dt.strftime("%Y-%m-%d")
     df = df.groupby(date_col_name, as_index=False).agg({value_col_name: "count"})
     d = datetime.now().date()
     d2 = df.loc[df.index[0], date_col_name]
     idx = pd.date_range(d2, d, freq="D")
-    
+
     df.set_index(date_col_name, drop=True, inplace=True)
     df.index = pd.DatetimeIndex(df.index)
     df = df.reindex(idx, fill_value=0)
     df[date_col_name] = pd.DatetimeIndex(df.index)
-    
+
     # Calc sum cum
     df["VALUE_CUM"] = df.agg({value_col_name: "cumsum"})
-    
-    df["TEXT"] = (df['VALUE_CUM'].astype(str) + " as of " + df[date_col_name].dt.strftime("%Y-%m-%d") +
-                  " (+" + df[value_col_name].astype(str) + " vs yesterday)")
+
+    df["TEXT"] = (
+        df["VALUE_CUM"].astype(str)
+        + " as of "
+        + df[date_col_name].dt.strftime("%Y-%m-%d")
+        + " (+"
+        + df[value_col_name].astype(str)
+        + " vs yesterday)"
+    )
     return df.reset_index(drop=True)
+
 
 df_trend = get_trend(merged_df, "FOLLOWED_AT", "PROFILE_ID")
 df_trend
@@ -153,7 +160,7 @@ df_trend
 def create_linechart(df, label, value, text, title):
     # Init
     fig = go.Figure()
-    
+
     # Create fig
     fig.add_trace(
         go.Scatter(
@@ -162,7 +169,7 @@ def create_linechart(df, label, value, text, title):
             text=df[text],
             hoverinfo="text",
             mode="lines",
-            stackgroup="one"
+            stackgroup="one",
         )
     )
     fig.update_layout(
@@ -176,6 +183,7 @@ def create_linechart(df, label, value, text, title):
     )
     fig.show()
     return fig
+
 
 fig = create_linechart(df_trend, "FOLLOWED_AT", "VALUE_CUM", "TEXT", title)
 ```
@@ -197,7 +205,7 @@ fig.write_image(image_output)
 ```python
 naas.asset.add(csv_output)
 
-#-> to remove your outputs, uncomment the lines and execute the cell
+# -> to remove your outputs, uncomment the lines and execute the cell
 # naas.asset.delete(csv_output)
 ```
 
@@ -207,7 +215,7 @@ naas.asset.add(csv_output)
 ```python
 naas.asset.add(html_output, params={"inline": True})
 
-#-> to remove your outputs, uncomment the lines and execute the cell
+# -> to remove your outputs, uncomment the lines and execute the cell
 # naas.asset.delete(html_output)
 ```
 
@@ -217,6 +225,6 @@ naas.asset.add(html_output, params={"inline": True})
 ```python
 naas.asset.add(image_output, params={"inline": True})
 
-#-> to remove your outputs, uncomment the lines and execute the cell
+# -> to remove your outputs, uncomment the lines and execute the cell
 # naas.asset.delete(image_output)
 ```

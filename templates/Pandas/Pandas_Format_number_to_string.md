@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-With this template, you can convert a series of number nicely using pandas.map
+**Description:** This notebook provides an example of how to convert numerical values to strings using the Pandas library.
 
 ## Input
 
@@ -21,7 +21,7 @@ from naas_drivers import yahoofinance
 ```python
 ticker = "TSLA"
 date_from = -100
-date_to = 'today'
+date_to = "today"
 ```
 
 ## Model
@@ -30,8 +30,7 @@ date_to = 'today'
 
 
 ```python
-df_yahoo = yahoofinance.get(ticker,
-                            date_from=-5)
+df_yahoo = yahoofinance.get(ticker, date_from=-5)
 df_yahoo
 ```
 
@@ -42,7 +41,7 @@ Get more information in the doc [here](https://pandas.pydata.org/docs/reference/
 
 
 ```python
-df_yahoo['VALUE'] = df_yahoo['Close'].map("€ {:,.2f}".format).str.replace(",", " ")
+df_yahoo["VALUE"] = df_yahoo["Close"].map("€ {:,.2f}".format).str.replace(",", " ")
 df_yahoo
 ```
 

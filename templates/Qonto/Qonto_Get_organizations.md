@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** Qonto is a financial service that helps organizations manage their finances and get organized.
+
 ## Input
 
 ### Import library
@@ -18,8 +20,8 @@ from naas_drivers import qonto
 
 
 ```python
-QONTO_USER_ID = 'YOUR_USER_ID'
-QONTO_SECRET_KEY = 'YOUR_SECRET_KEY'
+QONTO_USER_ID = "YOUR_USER_ID"
+QONTO_SECRET_KEY = "YOUR_SECRET_KEY"
 ```
 
 ## Model

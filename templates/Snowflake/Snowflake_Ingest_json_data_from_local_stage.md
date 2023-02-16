@@ -4,18 +4,7 @@
 
 **Author:** [Mateusz Polakowski](https://www.linkedin.com/in/polakowski/)
 
-To use your own data inside Snowflake DWH, first thing first, you need to ingest it.
-
-This notebook shows how to put <u>JSON</u> data from your local machine into Snowflake. Several objects and actions will be necessary to do so:
-
-- creating file format,
-- creating internal named stage (for other stages, please check [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-local-file-system-create-stage.html)),
-- putting file into stage,
-- copying data from stage to the table.
-
-All above steps are essential to make use of the data from your local machine inside Snowflake.
-
-You can try with your own JSON data, but to follow the notebook cells 1:1 please download `reviews_dev.json` file from `awesome-notebooks/Snowflake` directory. Eventually, you may need to change your file location below in the ensuing cells.
+**Description:** This notebook demonstrates how to ingest JSON data from a local stage into Snowflake.
 
 ## Input
 
@@ -42,12 +31,12 @@ If you're proceeding with the trial account, it's highly probable that your ID w
 
 
 ```python
-# Here environment variables are used to pass Snowflake credentials, 
+# Here environment variables are used to pass Snowflake credentials,
 # but it's okay to do it in a different manner
 
-sf_username=os.environ['SNOWFLAKE_USER']
-sf_password=os.environ['SNOWFLAKE_PASSWORD']
-sf_account=os.environ['SNOWFLAKE_ACCOUNT']
+sf_username = os.environ["SNOWFLAKE_USER"]
+sf_password = os.environ["SNOWFLAKE_PASSWORD"]
+sf_account = os.environ["SNOWFLAKE_ACCOUNT"]
 ```
 
 ## Model
@@ -56,11 +45,7 @@ sf_account=os.environ['SNOWFLAKE_ACCOUNT']
 
 
 ```python
-snowflake.connect(
-    username=sf_username,
-    password=sf_password,
-    account=sf_account
-)
+snowflake.connect(username=sf_username, password=sf_password, account=sf_account)
 ```
 
 ### Environment setup
@@ -72,18 +57,15 @@ snowflake.database.get_current() is None
 
 
 ```python
-snowflake.set_environment(
-    warehouse='COMPUTE_WH',
-    role='ACCOUNTADMIN'
-)
+snowflake.set_environment(warehouse="COMPUTE_WH", role="ACCOUNTADMIN")
 ```
 
 
 ```python
-snowflake.database.create('NAAS', or_replace=True, silent=True)
-snowflake.database.use('NAAS', silent=True)
-snowflake.schema.create('NAAS_SCHEMA', or_replace=True, silent=True)
-snowflake.schema.use('NAAS_SCHEMA', silent=True)
+snowflake.database.create("NAAS", or_replace=True, silent=True)
+snowflake.database.use("NAAS", silent=True)
+snowflake.schema.create("NAAS_SCHEMA", or_replace=True, silent=True)
+snowflake.schema.use("NAAS_SCHEMA", silent=True)
 ```
 
 
@@ -100,10 +82,7 @@ snowflake.get_environment()
 # It's possible to add extra parameters to the function
 # They will be passed as additional variables at the end of the query statement
 results_ff = snowflake.file_format.create(
-    'my_json_format', 
-    'JSON', 
-    or_replace=True,
-    TRIM_SPACE = 'TRUE'
+    "my_json_format", "JSON", or_replace=True, TRIM_SPACE="TRUE"
 )
 
 results_ff
@@ -112,7 +91,7 @@ results_ff
 
 ```python
 # Let's not forget about `snowflake.execute` functionality
-snowflake.execute('SHOW FILE FORMATS;')['results']
+snowflake.execute("SHOW FILE FORMATS;")["results"]
 ```
 
 ### Creating file format with wrong parameter (not applicable for JSON file format, see [docs](https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html))
@@ -120,9 +99,11 @@ snowflake.execute('SHOW FILE FORMATS;')['results']
 
 ```python
 try:
-    snowflake.file_format.create('my_invalid_son_format', 'JSON', or_replace=True, ESCAPE = '"\\"')
+    snowflake.file_format.create(
+        "my_invalid_son_format", "JSON", or_replace=True, ESCAPE='"\\"'
+    )
 except ProgrammingError as pe:
-    print('Something went wrong!')
+    print("Something went wrong!")
     print(pe)
 ```
 
@@ -138,9 +119,7 @@ except ProgrammingError as pe:
 
 ```python
 snowflake.stage.create(
-    stage_name='my_internal_stage', 
-    or_replace=True,
-    file_format_name='my_json_format'
+    stage_name="my_internal_stage", or_replace=True, file_format_name="my_json_format"
 )
 ```
 
@@ -149,9 +128,9 @@ snowflake.stage.create(
 
 ```python
 snowflake.stage.put(
-    filepath='file://~/Downloads/reviews_data.json',
-    internal_stage_name='@my_internal_stage',
-    silent=True
+    filepath="file://~/Downloads/reviews_data.json",
+    internal_stage_name="@my_internal_stage",
+    silent=True,
 )
 ```
 
@@ -159,10 +138,10 @@ snowflake.stage.put(
 
 
 ```python
-result_list_stage = snowflake.stage.list('@my_internal_stage')
+result_list_stage = snowflake.stage.list("@my_internal_stage")
 
-print(result_list_stage['results'])
-print(result_list_stage['statement'])
+print(result_list_stage["results"])
+print(result_list_stage["statement"])
 ```
 
 ### Creating table with query execution
@@ -183,7 +162,7 @@ query_create_table = """
 """
 
 # No worries, Table API will be available soon too!
-snowflake.execute(query_create_table)['results']
+snowflake.execute(query_create_table)["results"]
 ```
 
 ### Loading data from internal stage to a table
@@ -206,9 +185,7 @@ transformation_statement = """
 """
 
 snowflake.copy_into(
-    table_name='reviews_dev',
-    source_stage=transformation_statement,
-    silent=True
+    table_name="reviews_dev", source_stage=transformation_statement, silent=True
 )
 ```
 
@@ -216,6 +193,6 @@ snowflake.copy_into(
 
 
 ```python
-reviews_dev = snowflake.query_pd('SELECT * FROM reviews_dev')
+reviews_dev = snowflake.query_pd("SELECT * FROM reviews_dev")
 reviews_dev.head()
 ```

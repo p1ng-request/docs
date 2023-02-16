@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides an introduction to querying a MySQL database.
+
 ## Input
 
 ### Import libraries
@@ -19,11 +21,11 @@ import pandas as pd
 
 
 ```python
-host = os.getenv('MYSQL_HOST')
-port = os.getenv('MYSQL_PORT')
-user = os.getenv('MYSQL_USER')
-password = os.getenv('MYSQL_PASSWORD')
-database = os.getenv('MYSQL_DATABASE')
+host = os.getenv("MYSQL_HOST")
+port = os.getenv("MYSQL_PORT")
+user = os.getenv("MYSQL_USER")
+password = os.getenv("MYSQL_PASSWORD")
+database = os.getenv("MYSQL_DATABASE")
 ```
 
 ## Model
@@ -38,7 +40,8 @@ conn = pymysql.connect(
     user=user,
     passwd=password,
     db=database,
-    charset='utf8mb4')
+    charset="utf8mb4",
+)
 ```
 
 ### Send the query
@@ -47,7 +50,8 @@ conn = pymysql.connect(
 ```python
 df = pd.read_sql_query(
     "SELECT DATE(created_at) AS date, COUNT(*) AS count FROM user GROUP BY date HAVING date >= '2017-04-01' ",
-    conn)
+    conn,
+)
 df.tail(10)
 ```
 

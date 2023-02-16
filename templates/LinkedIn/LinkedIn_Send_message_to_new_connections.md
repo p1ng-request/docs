@@ -4,7 +4,7 @@
 
 **Author:** [Asif Syed](https://www.linkedin.com/in/www.linkedin.com/in/asifsyd/)
 
-Using this notebook, you can automate the task of sending introductory messages to the people you newly connected with on LinkedIn today. 
+**Description:** This notebook allows users to quickly and easily send messages to their new LinkedIn connections.
 
 ## Input
 
@@ -23,8 +23,12 @@ import naas
 
 
 ```python
-LI_AT = naas.secret.get("LI_AT") or 'ENTER_YOUR_COOKIE_LI_AT_HERE'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = naas.secret.get("JSESSIONID") or  'ENTER_YOUR_COOKIE_JSESSIONID_HERE'  # EXAMPLE ajax:8379907400220387585
+LI_AT = (
+    naas.secret.get("LI_AT") or "ENTER_YOUR_COOKIE_LI_AT_HERE"
+)  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = (
+    naas.secret.get("JSESSIONID") or "ENTER_YOUR_COOKIE_JSESSIONID_HERE"
+)  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Setup custom message
@@ -58,9 +62,14 @@ df.head(5)
 
 ```python
 def filter_data(df):
-    df['CREATED_AT'] = pd.to_datetime(df['CREATED_AT']).dt.date # changing the CREATED_AT column data to datetime format
-    df = df[df['CREATED_AT'] == date.today()] # restricting the dataframe to hold only the details of people connected today
+    df["CREATED_AT"] = pd.to_datetime(
+        df["CREATED_AT"]
+    ).dt.date  # changing the CREATED_AT column data to datetime format
+    df = df[
+        df["CREATED_AT"] == date.today()
+    ]  # restricting the dataframe to hold only the details of people connected today
     return df
+
 
 df_profiles = filter_data(df)
 print("✅ New connections today:", len(df_profiles))
@@ -73,10 +82,18 @@ df_profiles
 
 
 ```python
-for index, row in df_profiles.iterrows(): # looping through each profile in the dataframe of new connections
-    firstname = row['FIRSTNAME']
-    lastname = row['LASTNAME']
-    profile_url = row['PROFILE_URL']
-    result = linkedin.message.send(content= Greeting + " " + firstname + "," + " " + Message, recipients_url=profile_url)
+for (
+    index,
+    row,
+) in (
+    df_profiles.iterrows()
+):  # looping through each profile in the dataframe of new connections
+    firstname = row["FIRSTNAME"]
+    lastname = row["LASTNAME"]
+    profile_url = row["PROFILE_URL"]
+    result = linkedin.message.send(
+        content=Greeting + " " + firstname + "," + " " + Message,
+        recipients_url=profile_url,
+    )
     print(f"✅ Message sent to {firstname} {lastname}")
 ```

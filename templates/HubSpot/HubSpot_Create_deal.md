@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook create a deal in HubSpot.
+**Description:** This notebook allows users to create deals in HubSpot, helping them to manage their sales pipeline.
 
 ## Input
 
@@ -31,7 +31,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 ```python
 dealname = "TEST"
-closedate = None #must be in format %Y-%m-%d
+closedate = None  # must be in format %Y-%m-%d
 amount = None
 hubspot_owner_id = None
 ```
@@ -46,7 +46,7 @@ df_pipelines
 
 
 ```python
-dealstage = '5102584'
+dealstage = "5102584"
 ```
 
 ## Model
@@ -56,15 +56,15 @@ This method will allow you to add any deal properties available in your HubSpot.
 
 
 ```python
-deal1 = {"properties": 
-                  {
-                    "dealstage": dealstage,
-                    "dealname": dealname,
-                    "amount": amount,
-                    "closedate": closedate,
-                    "hubspot_owner_id": hubspot_owner_id,
-                   }
-                 }
+deal1 = {
+    "properties": {
+        "dealstage": dealstage,
+        "dealname": dealname,
+        "amount": amount,
+        "closedate": closedate,
+        "hubspot_owner_id": hubspot_owner_id,
+    }
+}
 
 deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.send(send_deal)
 ```
@@ -73,11 +73,7 @@ deal1 = hubspot.connect(HS_ACCESS_TOKEN).deals.send(send_deal)
 
 
 ```python
-deal2 = hubspot.connect(HS_ACCESS_TOKEN).deals.create(
-    dealname,
-    dealstage,
-    closedate
-)
+deal2 = hubspot.connect(HS_ACCESS_TOKEN).deals.create(dealname, dealstage, closedate)
 ```
 
 ## Output

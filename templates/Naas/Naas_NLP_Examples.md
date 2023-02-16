@@ -4,23 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-## How it works?
-Naas NLP formulas follow this format.
-```
-nlp.get(task, model, tokenizer)(inputs)
-```
-The supported tasks are the following:
-
-- text-generation (model: GPT2)
-- summarization (model: t5-small)
-- fill-mask (model: distilroberta-base)
-- text-classification (model: distilbert-base-uncased-finetuned-sst-2-english)
-- feature-extraction (model: distilbert-base-cased)
-- token-classification (model: dslim/bert-base-NER)
-- question-answering
-- translation
-
-We use [Hugging Face API](https://huggingface.co/models) under the hood to access the models.
+**Description:** This notebook provides examples of Natural Language Processing (NLP) using the Naas framework.
 
 ## Input
 
@@ -37,7 +21,9 @@ from naas_drivers import nlp
 
 
 ```python
-nlp.get("text-generation", model="gpt2", tokenizer="gpt2")("What is the most important thing in your life right now?")
+nlp.get("text-generation", model="gpt2", tokenizer="gpt2")(
+    "What is the most important thing in your life right now?"
+)
 ```
 
 ### Text Summarization
@@ -45,7 +31,8 @@ Summarize the text given, maximum lenght (number of tokens/words) is set to 200.
 
 
 ```python
-nlp.get("summarization", model="t5-small", tokenizer="t5-small")('''
+nlp.get("summarization", model="t5-small", tokenizer="t5-small")(
+    """
 
 There will be fewer and fewer jobs that a robot cannot do better. 
 What to do about mass unemployment this is gonna be a massive social challenge and 
@@ -60,7 +47,8 @@ they find meaning from their employment so if you don't have if you're not neede
 there's not a need for your labor how do you what's the meaning if you have meaning 
 if you feel useless these are much that's a much harder problem to deal with. 
 
-''')
+"""
+)
 ```
 
 ### Text Classification
@@ -69,16 +57,20 @@ Returns a "label" (negative/neutral/positive), and score between -1 and 1.
 
 
 ```python
-nlp.get("text-classification", 
-        model="distilbert-base-uncased-finetuned-sst-2-english",
-        tokenizer="distilbert-base-uncased-finetuned-sst-2-english")('''
+nlp.get(
+    "text-classification",
+    model="distilbert-base-uncased-finetuned-sst-2-english",
+    tokenizer="distilbert-base-uncased-finetuned-sst-2-english",
+)(
+    """
 
 It was a weird concept. Why would I really need to generate a random paragraph? 
 Could I actually learn something from doing so? 
 All these questions were running through her head as she pressed the generate button. 
 To her surprise, she found what she least expected to see.
 
-''')
+"""
+)
 ```
 
 ### Fill Mask
@@ -88,13 +80,13 @@ Each proposal has a score (confidence of accuracy), token value (proposed word i
 
 
 ```python
-nlp.get("fill-mask",
-        model="distilroberta-base",
-        tokenizer="distilroberta-base")('''
+nlp.get("fill-mask", model="distilroberta-base", tokenizer="distilroberta-base")(
+    """
 
 It was a beautiful <mask>.
 
-''')
+"""
+)
 ```
 
 ### Feature extraction
@@ -103,7 +95,11 @@ Output is a list of numerical values.
 
 
 ```python
-nlp.get("feature-extraction", model="distilbert-base-cased", tokenizer="distilbert-base-cased")("Life is a super cool thing")
+nlp.get(
+    "feature-extraction",
+    model="distilbert-base-cased",
+    tokenizer="distilbert-base-cased",
+)("Life is a super cool thing")
 ```
 
 ### Token classification
@@ -130,9 +126,13 @@ Full documentation : https://huggingface.co/dslim/bert-base-NER.<br>
 
 
 ```python
-nlp.get("token-classification", model="dslim/bert-base-NER", tokenizer="dslim/bert-base-NER")('''
+nlp.get(
+    "token-classification", model="dslim/bert-base-NER", tokenizer="dslim/bert-base-NER"
+)(
+    """
 
 My name is Wolfgang and I live in Berlin
 
-''')
+"""
+)
 ```

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides instructions on how to retrieve data from a MongoDB database.
+
 ## Input
 
 ### Import library

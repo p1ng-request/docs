@@ -4,9 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template create a PowerPoint file in portrait format with multiples text boxes.<br>
-This template also show how to manage font size and font weight.<br>
-Reference: https://python-pptx.readthedocs.io/en/latest/user/quickstart.html
+**Description:** This notebook allows users to create a new slide in PowerPoint with a textbox.
 
 ## Input
 
@@ -26,7 +24,7 @@ from pptx.util import Inches, Pt
 
 
 ```python
-output_pptx = 'MyPowerPoint_Slide_Textbox.pptx'
+output_pptx = "MyPowerPoint_Slide_Textbox.pptx"
 text1 = "This is text inside a textbox"
 text2 = "This is a second paragraph that's bold"
 text3 = "This is a third paragraph that's big"

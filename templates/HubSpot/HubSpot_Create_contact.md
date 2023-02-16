@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook create a deal in HubSpot.
+**Description:** This notebook allows users to create contacts in HubSpot, enabling them to store and manage customer information.
 
 ## Input
 
@@ -32,11 +32,11 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```python
 email = "test@cashstory.com"
 firstname = "Test"
-lastname ='CASHSTORY'
+lastname = "CASHSTORY"
 phone = "+33600000000"
 jobtitle = "Consultant"
 website = "www.cashstory.com"
-company = 'CASHSTORY'
+company = "CASHSTORY"
 hubspot_owner_id = None
 ```
 
@@ -47,19 +47,19 @@ This method will allow you to add any contact properties available in your HubSp
 
 
 ```python
-create_contact = {"properties": 
-                  {
-                    "email": email,
-                    "firstname": firstname,
-                    "lastname": lastname,
-                    "phone": phone,
-                    "jobtitle": jobtitle,
-                    "website": website,
-                    "company": company,
-                    "url": "test",
-                    "hubspot_owner_id": hubspot_owner_id,
-                   }
-                 }
+create_contact = {
+    "properties": {
+        "email": email,
+        "firstname": firstname,
+        "lastname": lastname,
+        "phone": phone,
+        "jobtitle": jobtitle,
+        "website": website,
+        "company": company,
+        "url": "test",
+        "hubspot_owner_id": hubspot_owner_id,
+    }
+}
 
 contact1 = hubspot.connect(HS_ACCESS_TOKEN).contacts.send(create_contact)
 ```
@@ -69,14 +69,7 @@ contact1 = hubspot.connect(HS_ACCESS_TOKEN).contacts.send(create_contact)
 
 ```python
 contact2 = hubspot.connect(HS_ACCESS_TOKEN).contacts.create(
-    email,
-    firstname,
-    lastname,
-    phone,
-    jobtitle,
-    website,
-    company,
-    hubspot_owner_id
+    email, firstname, lastname, phone, jobtitle, website, company, hubspot_owner_id
 )
 ```
 

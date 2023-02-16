@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook enables you to get a plot of number of downloads of any package since past 180 days
+**Description:** This notebook provides a way to track the number of downloads of the Naas package.
 
 ## Input
 
@@ -57,20 +57,27 @@ df.head()
 ```python
 # Gives us the cumulative number of downloads over a period of 180 days
 def get_cumulative_dataframe(df):
-    
-    data = df.groupby('category').get_group('with_mirrors').sort_values(
-        'date').reset_index(drop='index').groupby(
-        'date').agg({'downloads':'sum'}).reset_index()
-    
-    cum_sum = 0
-    for idx, num in enumerate(data['downloads']):
-        cum_sum+=num
-        data.loc[idx, 'cumulative_downloads'] = cum_sum
 
-    data['cumulative_downloads'] = data.cumulative_downloads.astype('int')
-    data.drop(columns = 'downloads', inplace=True)
-    
+    data = (
+        df.groupby("category")
+        .get_group("with_mirrors")
+        .sort_values("date")
+        .reset_index(drop="index")
+        .groupby("date")
+        .agg({"downloads": "sum"})
+        .reset_index()
+    )
+
+    cum_sum = 0
+    for idx, num in enumerate(data["downloads"]):
+        cum_sum += num
+        data.loc[idx, "cumulative_downloads"] = cum_sum
+
+    data["cumulative_downloads"] = data.cumulative_downloads.astype("int")
+    data.drop(columns="downloads", inplace=True)
+
     return data
+
 
 df_downloads = get_cumulative_dataframe(df)
 df_downloads.tail(5)
@@ -85,10 +92,10 @@ df_downloads.tail(5)
 def create_linechart(df, package, date, value):
     # Get last value
     last_value = "{:,.0f}".format(df.loc[df.index[-1], value]).replace(",", " ")
-    
+
     # Init
     fig = go.Figure()
-    
+
     # Create fig
     fig.add_trace(
         go.Scatter(
@@ -98,7 +105,7 @@ def create_linechart(df, package, date, value):
             line=dict(color="black"),
         )
     )
-    fig.update_traces(marker_color='black')
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         title=f"⭐<b> Number of downloads for {package} </b><br><span style='font-size: 13px;'> Total Downloads as of today: {last_value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
@@ -108,12 +115,13 @@ def create_linechart(df, package, date, value):
         paper_bgcolor="white",
         xaxis_title="Date",
         xaxis_title_font=dict(family="Arial", size=13, color="black"),
-        yaxis_title='No. of downloads',
+        yaxis_title="No. of downloads",
         yaxis_title_font=dict(family="Arial", size=13, color="black"),
         margin_pad=10,
     )
     fig.show()
     return fig
+
 
 fig = create_linechart(df_downloads, package, "date", "cumulative_downloads")
 ```
@@ -128,7 +136,7 @@ df_downloads.to_csv(csv_output, index=False)
 # Share output with naas
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -142,7 +150,7 @@ fig.write_html(html_output)
 # Share output with naas
 naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -156,6 +164,6 @@ fig.write_image(image_output)
 # Share output with naas
 naas.asset.add(image_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

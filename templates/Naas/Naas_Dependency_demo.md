@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-Read the doc on https://naas.gitbook.io/naas/features/asset
+**Description:** This notebook demonstrates how to use Naas to manage dependencies in a project.
 
 ## Input
 
@@ -12,7 +12,7 @@ Read the doc on https://naas.gitbook.io/naas/features/asset
 
 
 ```python
-import naas 
+import naas
 ```
 
 ## Model

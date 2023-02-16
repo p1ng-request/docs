@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
+**Description:** This notebook allows users to easily update Notion pages with data from a database.
+
 ## Input
 
 ### Import library
@@ -44,15 +46,15 @@ print("📊 Pages in Notion DB:", len(pages))
 ```python
 for page in pages:
     print(page)
-#     page.title("Name","Page updated")
-#     page.rich_text("Text","Ceci est toto")
-#     page.number("Number", 42)
-#     page.select("Select","Value3") 
-#     page.multi_select("Muti Select",["Value1","Value2","Value3"])
-#     page.date("Date","2021-10-03T17:01:26") #Follow ISO 8601 format
-#     page.people("People", ["6e3bab71-beeb-484b-af99-ea30fdef4773"]) #list of ID of users
-#     page.checkbox("Checkbox", False)
-#     page.email("Email","jeremy@naas.ai")
+    #     page.title("Name","Page updated")
+    #     page.rich_text("Text","Ceci est toto")
+    #     page.number("Number", 42)
+    #     page.select("Select","Value3")
+    #     page.multi_select("Muti Select",["Value1","Value2","Value3"])
+    #     page.date("Date","2021-10-03T17:01:26") #Follow ISO 8601 format
+    #     page.people("People", ["6e3bab71-beeb-484b-af99-ea30fdef4773"]) #list of ID of users
+    #     page.checkbox("Checkbox", False)
+    #     page.email("Email","jeremy@naas.ai")
     page.update()
     print(f"✅ Page updated in Notion.")
 ```

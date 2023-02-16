@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides instructions on how to create a bubble chart using Plotly.
+
 ## Input
 
 ### Import libraries
@@ -42,13 +44,13 @@ df
 ```python
 fig = px.scatter(
     df.query("year==2007"),
-    x="gdpPercap", 
+    x="gdpPercap",
     y="lifeExp",
     size="pop",
     color="continent",
     hover_name="country",
     log_x=True,
-    size_max=60
+    size_max=60,
 )
 
 fig.update_layout(
@@ -58,20 +60,21 @@ fig.update_layout(
     height=800,
     showlegend=False,
     xaxis_nticks=36,
-    title= title,
+    title=title,
     xaxis=dict(
-        title='GDP per capita (dollars)',
-        gridcolor='white',
-        type='log',
+        title="GDP per capita (dollars)",
+        gridcolor="white",
+        type="log",
         gridwidth=2,
     ),
     yaxis=dict(
-        title='Life Expectancy (years)',
-        gridcolor='white',
+        title="Life Expectancy (years)",
+        gridcolor="white",
         gridwidth=2,
-    ))
+    ),
+)
 
-config = {'displayModeBar': False}
+config = {"displayModeBar": False}
 fig.show(config=config)
 ```
 
@@ -90,9 +93,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

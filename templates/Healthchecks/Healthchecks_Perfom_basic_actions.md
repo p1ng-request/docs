@@ -4,7 +4,7 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
-Get notified of your Cron jobs
+**Description:** This notebook provides a set of basic actions to help monitor and maintain the health of a system.
 
 ## Input
 

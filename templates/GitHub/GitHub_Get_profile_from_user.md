@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook enables you to get a dataframe of all the stargazers of a particular Github repository.
+**Description:** This notebook provides a way to retrieve a user's profile information from GitHub.
 
 ## Input
 

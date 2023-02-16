@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a guide to retrieving data from CSV files using the Quandl API.
+
 ## Input
 
 ### Import librairies
@@ -12,7 +14,7 @@
 ```python
 import matplotlib.pyplot as plt
 import pandas as pd
-import os 
+import os
 ```
 
 ## Model
@@ -21,7 +23,9 @@ import os
 
 
 ```python
-data = pd.read_csv('https://www.quandl.com/api/v3/datasets/BITFINEX/BTCUSD.csv?api_key=bxrSXWimkiknuCcV71uL')
+data = pd.read_csv(
+    "https://www.quandl.com/api/v3/datasets/BITFINEX/BTCUSD.csv?api_key=bxrSXWimkiknuCcV71uL"
+)
 data
 ```
 

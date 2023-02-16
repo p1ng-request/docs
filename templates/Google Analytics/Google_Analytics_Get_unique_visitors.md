@@ -4,7 +4,7 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-Pre-requisite: Create your own <a href="">Google API JSON credential</a>
+**Description:** This notebook provides an analysis of unique visitors to a website using Google Analytics.
 
 ## Input
 
@@ -22,7 +22,7 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 ```
 
 ### Get view id from google analytics
@@ -47,7 +47,7 @@ html_output = "googleanalytics_unique_visitors.html"
 naas.scheduler.add(cron="0 8 * * *")
 naas.dependency.add(json_path)
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -57,7 +57,9 @@ naas.dependency.add(json_path)
 
 
 ```python
-df_unique_visitors = googleanalytics.connect(json_path).views.get_unique_visitors(view_id)
+df_unique_visitors = googleanalytics.connect(json_path).views.get_unique_visitors(
+    view_id
+)
 df_unique_visitors.tail(5)
 ```
 
@@ -79,23 +81,23 @@ def plot_unique_visitors(df: pd.DataFrame):
     Plot PageView in Plotly.
     """
     # Prep dataframe
-    df["Date"] = pd.to_datetime(df['Year Month'] + "01")
-    
+    df["Date"] = pd.to_datetime(df["Year Month"] + "01")
+
     # Get last month value
     value = "{:,.0f}".format(df.loc[df.index[-1], "Users"]).replace(",", " ")
-    
+
     # Create data
     data = go.Bar(
         x=df["Date"],
-        y=df['Users'],
-        text=df['Users'],
-#         marker=dict(color="black"),
-        orientation="v"
+        y=df["Users"],
+        text=df["Users"],
+        #         marker=dict(color="black"),
+        orientation="v",
     )
     # Create layout
     layout = go.Layout(
-        yaxis={'categoryorder': 'total ascending'},
-        margin={"l":150, "pad": 20},
+        yaxis={"categoryorder": "total ascending"},
+        margin={"l": 150, "pad": 20},
         title=f"<b>Number of Unique Visitors by Month</b><br><span style='font-size: 13px;'>Unique visitors this month: {value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
         xaxis_title="Months",
@@ -111,6 +113,7 @@ def plot_unique_visitors(df: pd.DataFrame):
     fig.update_traces(textposition="outside")
     return fig
 
+
 fig = plot_unique_visitors(df_unique_visitors)
 fig.show()
 ```
@@ -123,9 +126,9 @@ fig.show()
 fig.write_html(html_output)
 
 # Shave with naas
-#-> Uncomment the line below (by removing the hashtag) to share your asset with naas
+# -> Uncomment the line below (by removing the hashtag) to share your asset with naas
 # naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below (by removing the hashtag)  to delete your asset
+# -> Uncomment the line below (by removing the hashtag)  to delete your asset
 # naas.asset.delete(html_output)
 ```

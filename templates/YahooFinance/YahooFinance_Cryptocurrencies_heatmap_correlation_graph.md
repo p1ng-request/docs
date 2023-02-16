@@ -4,7 +4,7 @@
 
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)
 
-Get live data from the web and compute data viz and analysis about different cryptocurrencies.<br> 
+**Description:** This notebook provides a graphical representation of the correlation between different cryptocurrencies using a heatmap from YahooFinance.
 
 ## Input
 
@@ -35,7 +35,7 @@ currency = "USD"
 metric = "Close"
 
 # Date
-start = dt.datetime(2018,1,1)
+start = dt.datetime(2018, 1, 1)
 end = dt.datetime.now()
 ```
 
@@ -44,7 +44,7 @@ end = dt.datetime.now()
 
 ```python
 # pick your favorite list of cryptocurrencies
-crypto = ['BTC', 'ETH', 'LTC', 'XRP', 'DASH', 'SC']
+crypto = ["BTC", "ETH", "LTC", "XRP", "DASH", "SC"]
 ```
 
 ## Model
@@ -70,7 +70,7 @@ for ticker in crypto:
         combined = combined.join(data[metric])
         colnames.append(ticker)
         combined.columns = colnames
-        
+
 combined
 ```
 
@@ -80,20 +80,23 @@ combined
 
 
 ```python
-plt.yscale('log') # first show linear
+plt.yscale("log")  # first show linear
 for ticker in crypto:
     plt.plot(combined[ticker], label=ticker)
-    
-plt.tick_params(axis="x", width = 2)
-plt.xticks(rotation = "vertical", )
+
+plt.tick_params(axis="x", width=2)
+plt.xticks(
+    rotation="vertical",
+)
 plt.margins(0.01)
-plt.subplots_adjust(bottom = 0.15)
-plt.legend(loc='lower center', bbox_to_anchor=(0.5, 1.05),
-          ncol=6, fancybox=True, shadow=False)
+plt.subplots_adjust(bottom=0.15)
+plt.legend(
+    loc="lower center", bbox_to_anchor=(0.5, 1.05), ncol=6, fancybox=True, shadow=False
+)
 plt.show()
 
 # Correlation Heat Map
-combined = combined.pct_change().corr(method='pearson')
+combined = combined.pct_change().corr(method="pearson")
 
 sns.heatmap(combined, annot=True, cmap="coolwarm")
 plt.show()

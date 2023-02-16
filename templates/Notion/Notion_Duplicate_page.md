@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook duplicates a page in Notion. The page will be duplicated with the same parent.
+**Description:** This notebook allows you to quickly and easily duplicate a page in Notion.
 
 ## Input
 
@@ -22,7 +22,7 @@ from naas_drivers import notion
 
 ```python
 # Enter Token API
-NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE" # EXAMPLE: "secret_xxxxxxxxxxxxxxxxxx"
+NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE"  # EXAMPLE: "secret_xxxxxxxxxxxxxxxxxx"
 
 # Enter Page URL
 PAGE_URL = "ENTER_YOUR_PAGE_URL_HERE"  # EXAMPLE: "https://www.notion.so/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

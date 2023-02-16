@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu)
 
+**Description:** This notebook helps you quickly and easily organize your Gmail inbox by removing unwanted emails.
+
 ## Input
 
 ### Import libraries
@@ -35,10 +37,7 @@ Note: You need to create an application password following this procedure - http
 
 
 ```python
-emails = naas_drivers.email.connect(username, 
-        password, 
-        username, 
-        smtp_server)
+emails = naas_drivers.email.connect(username, password, username, smtp_server)
 ```
 
 ### Get email list
@@ -56,9 +55,9 @@ dataframe
 sender_name = []
 sender_email = []
 for df in dataframe["from"]:
-    sender_name.append(df['name'])
-    sender_email.append(df['email'])
-result = pd.DataFrame(columns = ['SENDER_NAME','SENDER_EMAIL','COUNT','PERCENTAGE'])
+    sender_name.append(df["name"])
+    sender_email.append(df["email"])
+result = pd.DataFrame(columns=["SENDER_NAME", "SENDER_EMAIL", "COUNT", "PERCENTAGE"])
 indexes = np.unique(sender_name, return_index=True)[1]
 [sender_name[index] for index in sorted(indexes)]
 
@@ -67,11 +66,16 @@ indexes = np.unique(sender_email, return_index=True)[1]
 total_email = len(emails.get(criteria="ALL"))
 c = 0
 for i in sender_email:
-    new_row = {'SENDER_NAME':sender_name[c],'SENDER_EMAIL':i,'COUNT':sender_email.count(i),'PERCENTAGE':round(((sender_email.count(i))/total_email)*100)}
+    new_row = {
+        "SENDER_NAME": sender_name[c],
+        "SENDER_EMAIL": i,
+        "COUNT": sender_email.count(i),
+        "PERCENTAGE": round(((sender_email.count(i)) / total_email) * 100),
+    }
     result = result.append(new_row, ignore_index=True)
-    c+=1
+    c += 1
 result = result.drop_duplicates()
-result.sort_values(by=['COUNT'], inplace=True, ascending=False)
+result.sort_values(by=["COUNT"], inplace=True, ascending=False)
 result
 ```
 
@@ -79,7 +83,7 @@ result
 
 
 ```python
-fig = px.bar(x=result['COUNT'], y=result['SENDER_EMAIL'], orientation='h')
+fig = px.bar(x=result["COUNT"], y=result["SENDER_EMAIL"], orientation="h")
 fig.show()
 ```
 
@@ -102,11 +106,11 @@ for i in uid:
 
 ```python
 d_email = "notifications@naas.ai"  # email id to be deleted
-data_from = dataframe['from']
-data_uid = dataframe['uid']
+data_from = dataframe["from"]
+data_uid = dataframe["uid"]
 uid = []
 for i in range(len(dataframe)):
-    if data_from[i]['email'] == d_email:
+    if data_from[i]["email"] == d_email:
         uid.append(data_uid[i])
 ```
 

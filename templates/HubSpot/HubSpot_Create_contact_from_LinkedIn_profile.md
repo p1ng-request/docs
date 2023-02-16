@@ -60,15 +60,15 @@ If you are not using the Google Chrome Extension, [learn how to get your cookies
 
 ```python
 # Cookies
-LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
-JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or "YOUR_COOKIE_LI_AT"
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "YOUR_COOKIE_JSESSIONID"
 
 # LinkedIn profile to be created
 LINKEDIN_PROFILE_URL = "https://www.linkedin.com/in/xxxxxxxxxx/"
 
 # Directory to stored data extracted from LinkedIn
 # By default data will be stored in a folder named with the LinkedIn public ID on the same folder of your notebook
-DIR_PATH = None #EXAMPLE: 'outputs/contact-name'
+DIR_PATH = None  # EXAMPLE: 'outputs/contact-name'
 ```
 
 ## Model
@@ -106,7 +106,7 @@ def get_linkedin_info(url, info, dir_path=None):
         df = linkedin.connect(LI_AT, JSESSIONID).profile.get_resume(url)
     elif info == "company":
         df = linkedin.connect(LI_AT, JSESSIONID).company.get_info(url)
-        
+
     if len(df) > 0:
         if "PROFILE_ID" in df.columns:
             linkedin_id = df.loc[0, "PROFILE_ID"]
@@ -115,13 +115,13 @@ def get_linkedin_info(url, info, dir_path=None):
         # Setup directory path
         if dir_path is None:
             dir_path = linkedin_id
-            
+
         # Create directory
         create_dir(dir_path)
-        
+
         # File path
         file_path = f"LINKEDIN_{info.upper()}_{linkedin_id}.csv"
-        
+
         # Save dataframe in csv
         df.to_csv(path.join(dir_path, file_path), index=False)
     return df
@@ -134,18 +134,18 @@ def get_linkedin_info(url, info, dir_path=None):
 def create_hubspot_contact(df, properties={}):
     if len(df) > 0:
         # Init variables
-        email = str(df.iloc[0]['EMAIL'])
-        public_id = str(df.iloc[0]['PUBLIC_ID'])
-        profile_id = str(df.iloc[0]['PROFILE_ID'])
-        linkedinbio = str(df.iloc[0]['PROFILE_URL'])
-        phone = str(df.iloc[0]['PHONENUMBER'])
-        website = str(df.iloc[0]['WEBSITES'])
-        twitterhandle = str(df.iloc[0]['TWITTER'])
-        
+        email = str(df.iloc[0]["EMAIL"])
+        public_id = str(df.iloc[0]["PUBLIC_ID"])
+        profile_id = str(df.iloc[0]["PROFILE_ID"])
+        linkedinbio = str(df.iloc[0]["PROFILE_URL"])
+        phone = str(df.iloc[0]["PHONENUMBER"])
+        website = str(df.iloc[0]["WEBSITES"])
+        twitterhandle = str(df.iloc[0]["TWITTER"])
+
         # If the email is not in LinkedIn profile then populate LINKEDIN_ID@TBD.com
         if email == "None":
             email = f"{public_id}@unknown-email.com"
-        
+
         # Update json properties
         properties["email"] = email
         properties["linkedinbio"] = linkedinbio
@@ -153,8 +153,10 @@ def create_hubspot_contact(df, properties={}):
         properties["mobilephone"] = phone
         properties["website"] = website
         properties["twitterhandle"] = twitterhandle
-        
-    contact_id = hubspot.connect(HS_ACCESS_TOKEN).contacts.send({"properties": properties})
+
+    contact_id = hubspot.connect(HS_ACCESS_TOKEN).contacts.send(
+        {"properties": properties}
+    )
     print(f"✅ Contact {email} created in HubSpot: {properties}")
     return properties, contact_id, public_id
 ```
@@ -166,7 +168,9 @@ def create_hubspot_contact(df, properties={}):
 def update_hubspot_owner(owner_id, hs_object_id, hubspot_owner_id="", properties={}):
     if str(hubspot_owner_id) != owner_id:
         properties = {"hubspot_owner_id": owner_id}
-        hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
+        hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(
+            hs_object_id, {"properties": properties}
+        )
         print(f"✅ Contact owner updated in HubSpot: {owner_id}")
     else:
         print(f"👉 Contact owner already set in HubSpot: {owner_id}")
@@ -180,14 +184,14 @@ def update_hubspot_owner(owner_id, hs_object_id, hubspot_owner_id="", properties
 def update_hubspot_lk_identity(df, hs_object_id, properties={}):
     if len(df) > 0:
         # Init variables
-        firstname = str(df.iloc[0]['FIRSTNAME'])
-        lastname = str(df.iloc[0]['LASTNAME'])
-        info = str(df.iloc[0]['SUMMARY'])
-        jobtitle = str(df.iloc[0]['OCCUPATION'])
-        industry = str(df.iloc[0]['INDUSTRY_NAME'])
+        firstname = str(df.iloc[0]["FIRSTNAME"])
+        lastname = str(df.iloc[0]["LASTNAME"])
+        info = str(df.iloc[0]["SUMMARY"])
+        jobtitle = str(df.iloc[0]["OCCUPATION"])
+        industry = str(df.iloc[0]["INDUSTRY_NAME"])
         city = "None"
         state = "None"
-        region = str(df.iloc[0]['REGION'])
+        region = str(df.iloc[0]["REGION"])
         if region != "None":
             r = region.split(",")
             if len(r) > 1:
@@ -195,8 +199,8 @@ def update_hubspot_lk_identity(df, hs_object_id, properties={}):
                 state = region.split(",")[1].strip()
             else:
                 state = region
-        country = str(df.iloc[0]['COUNTRY'])
-        
+        country = str(df.iloc[0]["COUNTRY"])
+
         # Update json properties
         properties["firstname"] = firstname
         properties["lastname"] = lastname
@@ -206,8 +210,10 @@ def update_hubspot_lk_identity(df, hs_object_id, properties={}):
         properties["city"] = city
         properties["state"] = state
         properties["country"] = country
-        
-    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
+
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(
+        hs_object_id, {"properties": properties}
+    )
     print(f"✅ Contact identity updated in HubSpot: {properties}")
     return properties
 ```
@@ -219,14 +225,16 @@ def update_hubspot_lk_identity(df, hs_object_id, properties={}):
 def update_hubspot_lk_network(df, hs_object_id, properties={}):
     if len(df) > 0:
         # Init variables
-        linkedinconnections = df.iloc[0]['FOLLOWERS_COUNT']
-        linkedin_distance = df.iloc[0]['DISTANCE']
-        
+        linkedinconnections = df.iloc[0]["FOLLOWERS_COUNT"]
+        linkedin_distance = df.iloc[0]["DISTANCE"]
+
         # Update json properties
         properties["linkedinconnections"] = linkedinconnections
         properties["linkedin_distance"] = linkedin_distance
-        
-    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
+
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(
+        hs_object_id, {"properties": properties}
+    )
     print(f"✅ Contact network updated in HubSpot: {properties}")
     return properties
 ```
@@ -240,18 +248,20 @@ def update_hubspot_lk_resume(df, hs_object_id, dir_path=None, properties={}):
         df_exp = df[df["CATEGORY"] == "Experience"].reset_index(drop=True)
         if len(df_exp) > 0:
             # Job function
-            properties["job_function"] = str(df_exp.iloc[0]['TITLE'])
+            properties["job_function"] = str(df_exp.iloc[0]["TITLE"])
             # Company
-            properties["company"] = str(df_exp.iloc[0]['PLACE'])
-            company_id = str(df_exp.iloc[0]['PLACE_ID'])
+            properties["company"] = str(df_exp.iloc[0]["PLACE"])
+            company_id = str(df_exp.iloc[0]["PLACE_ID"])
             get_linkedin_info(company_id, "company", dir_path=dir_path)
 
         df_study = df[df["CATEGORY"] == "Education"].reset_index(drop=True)
         if len(df_study) > 0:
             # Field of study
-            properties["field_of_study"] = str(df_study.iloc[0]['FIELD'])
-        
-    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(hs_object_id, {"properties": properties})
+            properties["field_of_study"] = str(df_study.iloc[0]["FIELD"])
+
+    hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(
+        hs_object_id, {"properties": properties}
+    )
     print(f"✅ Contact resume updated in HubSpot: {properties}")
     return properties
 ```
@@ -291,6 +301,7 @@ def create_contact_husbpot(linkedin_url, owner_id, dir_path=None):
     p_r = update_hubspot_lk_resume(df_resume, hs_object_id, dir_path)
     properties.update(p_r)
     print(f"\n✅ Contact successfully created in HubSpot: {linkedin_url}", properties)
-        
+
+
 create_contact_husbpot(LINKEDIN_PROFILE_URL, HS_OWNER_ID, DIR_PATH)
 ```

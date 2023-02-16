@@ -21,11 +21,15 @@ import pandas as pd
 
 
 ```python
-#create DataFrame
-df = pd.DataFrame({'team': ['A', 'A', 'A', 'B', 'B', 'B'],
-                   'points': [11, 7, 8, 10, 13, 13],
-                   'assists': [5, 7, 7, 9, 12, 9],
-                   'rebounds': [11, 8, 10, 6, 6, 5]})
+# create DataFrame
+df = pd.DataFrame(
+    {
+        "team": ["A", "A", "A", "B", "B", "B"],
+        "points": [11, 7, 8, 10, 13, 13],
+        "assists": [5, 7, 7, 9, 12, 9],
+        "rebounds": [11, 8, 10, 6, 6, 5],
+    }
+)
 df
 ```
 
@@ -34,7 +38,7 @@ df
 
 ```python
 # list of columns to keep in dataframe
-to_keep = ['team', 'points', "blocks"]
+to_keep = ["team", "points", "blocks"]
 ```
 
 ## Model
@@ -48,7 +52,9 @@ def keep_columns(df, to_keep):
     # Check if all columns exist in dataframe
     for i, x in enumerate(to_keep):
         if not x in df.columns:
-            print(f"🚨 Columns '{x}' does not exist in DataFrame -> removed from your list!")
+            print(
+                f"🚨 Columns '{x}' does not exist in DataFrame -> removed from your list!"
+            )
             to_keep.pop(i)
     df1 = df[to_keep]
     return df1

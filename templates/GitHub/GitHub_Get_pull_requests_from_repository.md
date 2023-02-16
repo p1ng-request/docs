@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-The objective of this notebook is to maintain a track of open pull requests that have been pending a review since more than 7 days within a repository
+**Description:** This notebook provides instructions on how to use GitHub to retrieve pull requests from a repository.
 
 ## Input
 
@@ -26,10 +26,10 @@ from naas_drivers import github
 
 ```python
 # GitHub token
-GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE" # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
+GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE"  # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
 
 # Github repo on which we want to create issues.
-REPO_URL = "ENTER_YOUR_REPO_URL_HERE" # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks"
+REPO_URL = "ENTER_YOUR_REPO_URL_HERE"  # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks"
 ```
 
 ## Model

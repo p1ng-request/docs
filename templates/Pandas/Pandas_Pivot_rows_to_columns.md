@@ -4,7 +4,7 @@
 
 **Author:** [Ismail Chihab](https://www.linkedin.com/in/ismail-chihab-4b0a04202/)
 
-With this template, you can pivot a rows to columns.
+**Description:** This notebook demonstrates how to use the Pandas library to transform data by pivoting rows into columns.
 
 ## Input
 
@@ -20,9 +20,19 @@ import pandas as pd
 
 ```python
 data = {
-    'LABEL' : ["Sales", "Sales", "Sales", "Gross Profit", "Gross Profit", "Gross Profit", "EBIT", "EBIT", "EBIT"],
-    'DATE' : ['Jan', 'Feb', 'Mar', 'Jan', 'Feb', 'Mar', 'Jan', 'Feb', 'Mar'],
-    'VALUE' : [0, 2, 3, 4, 5, 6, 7, 8, 9]
+    "LABEL": [
+        "Sales",
+        "Sales",
+        "Sales",
+        "Gross Profit",
+        "Gross Profit",
+        "Gross Profit",
+        "EBIT",
+        "EBIT",
+        "EBIT",
+    ],
+    "DATE": ["Jan", "Feb", "Mar", "Jan", "Feb", "Mar", "Jan", "Feb", "Mar"],
+    "VALUE": [0, 2, 3, 4, 5, 6, 7, 8, 9],
 }
 df = pd.DataFrame(data)
 df
@@ -51,16 +61,13 @@ def pivot_data(df_init, col_pivot, col_value, cols_index):
     df = df_init.copy()
     df = df.drop_duplicates()
     columns = df[col_pivot].unique().tolist()
-    
-    # Pivot 
-    df = pd.pivot(df,
-                  index=cols_index,
-                  values=col_value,
-                  columns=col_pivot)
+
+    # Pivot
+    df = pd.pivot(df, index=cols_index, values=col_value, columns=col_pivot)
     for col in cols_index:
         df.loc[:, col] = df.index.get_level_values(0)
     df = df.reset_index(drop=True)
-    df = df.reindex(columns=cols_index+columns)
+    df = df.reindex(columns=cols_index + columns)
     return df
 ```
 

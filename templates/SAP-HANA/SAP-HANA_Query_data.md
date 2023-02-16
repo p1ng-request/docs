@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides an introduction to querying data in SAP HANA.
+
 ## Input
 
 ### Install packages
@@ -24,12 +26,12 @@ import sap_hana_connector
 
 
 ```python
-type: 'SapHana'
-name: 'JPAK_LIVE'
-user: 'USER'
-password: 'PASSWORD'
+type: "SapHana"
+name: "JPAK_LIVE"
+user: "USER"
+password: "PASSWORD"
 port: 30015
-host: 'HOST'
+host: "HOST"
 ```
 
 ## Model
@@ -38,7 +40,7 @@ host: 'HOST'
 
 
 ```python
-query: 'SELECT * FROM JPAK_LIVE.OINV T0'
+query: "SELECT * FROM JPAK_LIVE.OINV T0"
 ```
 
 ## Output

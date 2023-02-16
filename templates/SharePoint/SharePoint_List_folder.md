@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook gives you the content of your folder in SharePoint.
+**Description:** This notebook provides a guide to managing and organizing files in a SharePoint List folder.
 
 ## Input
 
@@ -36,7 +36,9 @@ FOLDER_PATH = "ENTER_YOUR_FOLDER_PATH_HERE"
 
 
 ```python
-folder = sharepoint.connect(SP_ENDPOINT, SP_USERNAME, SP_PASSWORD, SP_SITE).list_folder(FOLDER_PATH)
+folder = sharepoint.connect(SP_ENDPOINT, SP_USERNAME, SP_PASSWORD, SP_SITE).list_folder(
+    FOLDER_PATH
+)
 ```
 
 ## Output

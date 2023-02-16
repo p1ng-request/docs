@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides instructions on how to restart a Jupyter server.
+
 ## Input
 
 ### Import libraries
@@ -19,7 +21,7 @@ from os import environ
 
 ```python
 # Jupyter token stored in your env
-JUPYTER_TOKEN = environ.get('JUPYTERHUB_API_TOKEN')
+JUPYTER_TOKEN = environ.get("JUPYTERHUB_API_TOKEN")
 
 # Username => email address linked to your jupyter account
 username = "wsr@naas.ai"

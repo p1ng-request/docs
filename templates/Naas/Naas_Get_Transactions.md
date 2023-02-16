@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
+**Description:** This notebook provides an easy way to access and analyze transaction data.
+
 ## Input
 
 ### Import library
@@ -37,5 +39,5 @@ df
 
 
 ```python
-df.to_csv('billing.csv')
+df.to_csv("billing.csv")
 ```

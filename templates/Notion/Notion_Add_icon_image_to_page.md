@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-This notebook add icon image to page with external url
+**Description:** This notebook allows users to add an icon image to a Notion page.
 
 ## Input
 
@@ -12,7 +12,7 @@ This notebook add icon image to page with external url
 
 
 ```python
-from naas_drivers import notion 
+from naas_drivers import notion
 ```
 
 ### Setup Notion
@@ -22,7 +22,7 @@ from naas_drivers import notion
 
 ```python
 # Enter Token API
-NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE" # EXAMPLE: "secret_xxxxxxxxxxxxxxxxxx"
+NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE"  # EXAMPLE: "secret_xxxxxxxxxxxxxxxxxx"
 
 # Enter Page URL
 PAGE_URL = "ENTER_YOUR_PAGE_URL_HERE"  # EXAMPLE: "https://www.notion.so/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -44,7 +44,9 @@ page = notion.connect(NOTION_TOKEN).page.get(PAGE_URL)
 
 
 ```python
-notion.client.pages.update(page_id=page.id, icon={'type': 'external', 'external': {'url': IMAGE_URL}})
+notion.client.pages.update(
+    page_id=page.id, icon={"type": "external", "external": {"url": IMAGE_URL}}
+)
 ```
 
 ## Output

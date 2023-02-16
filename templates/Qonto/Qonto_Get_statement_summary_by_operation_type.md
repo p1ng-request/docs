@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a summary of financial operations by type for Qonto users.
+
 ## Input
 
 ### Import library
@@ -18,8 +20,8 @@ from naas_drivers import qonto
 
 
 ```python
-QONTO_USER_ID = 'YOUR_USER_ID'
-QONTO_SECRET_KEY = 'YOUR_SECRET_KEY'
+QONTO_USER_ID = "YOUR_USER_ID"
+QONTO_SECRET_KEY = "YOUR_SECRET_KEY"
 ```
 
 ### Parameters
@@ -39,9 +41,7 @@ date_to = None
 
 ```python
 df_summary = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.summary(
-    summary_type="OPERATION_TYPE",
-    date_from=date_from,
-    date_to=date_to
+    summary_type="OPERATION_TYPE", date_from=date_from, date_to=date_to
 )
 ```
 

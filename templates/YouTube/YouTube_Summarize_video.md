@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a summary of a YouTube video, allowing users to quickly understand the content of the video.
+
 ## Input
 
 ### Import library

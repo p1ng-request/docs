@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook displays the number of content published on your LinkedIn posts by weekdays and by months.
+**Description:** This notebook allows you to track and follow content published on LinkedIn by day of the week and month.
 
 <div class="alert alert-info" role="info" style="margin: 10px">
 <b>Requirements:</b><br>
@@ -31,8 +31,8 @@ from dateutil.relativedelta import relativedelta
 
 ```python
 # Input
-csv_input = f"LINKEDIN_PROFILE_POSTS.csv" # CSV path with your posts stats generated with 'LinkedIn_Get_profile_posts_stats.ipynb' or 'LinkedIn_Get_company_posts_stats.ipynb'
-TITLE = "Content published frequency" # Chart title
+csv_input = f"LINKEDIN_PROFILE_POSTS.csv"  # CSV path with your posts stats generated with 'LinkedIn_Get_profile_posts_stats.ipynb' or 'LinkedIn_Get_company_posts_stats.ipynb'
+TITLE = "Content published frequency"  # Chart title
 
 # Outputs
 name_output = "LINKEDIN_FOLLOW_CONTENT_VIEWS_REACH"
@@ -47,7 +47,7 @@ image_output = f"{name_output}.png"
 ```python
 naas.dependency.add()
 
-#-> Uncomment the line below to remove your dependency
+# -> Uncomment the line below to remove your dependency
 # naas.dependency.delete()
 ```
 
@@ -66,6 +66,7 @@ def read_csv(file_path):
         return pd.DataFrame()
     return df
 
+
 df_posts = read_csv(csv_input)
 print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
@@ -77,22 +78,17 @@ df_posts.head(1)
 ```python
 MONTH_ROLLING = 12
 
-def get_frequency(df_init,
-                  col_date,
-                  x_axis,
-                  y_axis,
-                  col_value,
-                  type_value
-                 ):
+
+def get_frequency(df_init, col_date, x_axis, y_axis, col_value, type_value):
     # Init variable
     df = df_init.copy()
-    
+
     # Setup date column and create X and Y axis analysis
     df[col_date] = pd.to_datetime(df[col_date].str[:18])
     df["X_AXIS"] = df[col_date].dt.strftime(x_axis)
     df["Y_AXIS"] = df[col_date].dt.strftime(y_axis)
     df = df.rename(columns={col_value: "VALUE"})
-    
+
     # Groupby
     to_group = [
         "X_AXIS",
@@ -117,49 +113,67 @@ def get_frequency(df_init,
         ]
         tmp_df = pd.DataFrame(data)
         df = pd.concat([tmp_df, df])
-        
+
     # Group by with empty values
     df = df.groupby(to_group, as_index=False).agg({"VALUE": "sum"})
-        
+
     # Sort values
     month_min = datetime.now() + relativedelta(months=-MONTH_ROLLING)
-    df = df[df["X_AXIS"].str.replace("-", "").astype(int) >= int(month_min.strftime("%Y%m"))]
+    df = df[
+        df["X_AXIS"].str.replace("-", "").astype(int) >= int(month_min.strftime("%Y%m"))
+    ]
     df = df.sort_values(by=["X_AXIS", "Y_AXIS"], ascending=[True, False])
     return df.reset_index(drop=True)
 
-df_plotly = get_frequency(df_posts,
-                          col_date="PUBLISHED_DATE",
-                          x_axis="%Y-%m",
-                          y_axis="%u",
-                          col_value="ACTIVITY_ID",
-                          type_value="count")
-df_plotly#.tail(10)
+
+df_plotly = get_frequency(
+    df_posts,
+    col_date="PUBLISHED_DATE",
+    x_axis="%Y-%m",
+    y_axis="%u",
+    col_value="ACTIVITY_ID",
+    type_value="count",
+)
+df_plotly  # .tail(10)
 ```
 
 ### Plot Heatmap
 
 
 ```python
-LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png" # Chart logo
-COLOR = "#1293d2" # Chart primary color
+LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png"  # Chart logo
+COLOR = "#1293d2"  # Chart primary color
 
-def create_heatmap(df,
-                   x_value="X_AXIS",
-                   y_value="Y_AXIS",
-                   z_value="VALUE",
-                   x_format="%H",
-                   x_format_d="%H",
-                   text="views",
-                   ):
-    
+
+def create_heatmap(
+    df,
+    x_value="X_AXIS",
+    y_value="Y_AXIS",
+    z_value="VALUE",
+    x_format="%H",
+    x_format_d="%H",
+    text="views",
+):
+
     # Add display values
-    df["X_AXIS_D"] = pd.to_datetime(df[x_value], format=x_format).dt.strftime(x_format_d)
-    df["Y_AXIS_D"] = df.apply(lambda row: calendar.day_name[int(row[y_value]) - 1], axis=1)
-    df["TEXT"] = df[z_value].astype(str) + f" {text} on " + df["Y_AXIS_D"] + "s, " + df["X_AXIS_D"]
+    df["X_AXIS_D"] = pd.to_datetime(df[x_value], format=x_format).dt.strftime(
+        x_format_d
+    )
+    df["Y_AXIS_D"] = df.apply(
+        lambda row: calendar.day_name[int(row[y_value]) - 1], axis=1
+    )
+    df["TEXT"] = (
+        df[z_value].astype(str)
+        + f" {text} on "
+        + df["Y_AXIS_D"]
+        + "s, "
+        + df["X_AXIS_D"]
+    )
 
     # Create graph data
     x = sorted(df[x_value].unique().tolist())
     y = sorted(df[y_value].unique().tolist(), reverse=True)
+
     def get_values(df, y, value):
         values = []
         for i in y:
@@ -167,16 +181,17 @@ def create_heatmap(df,
             data = tmp[value].tolist()
             values.append(data)
         return values
+
     z = get_values(df, y, z_value)
     hovertext = get_values(df, y, "TEXT")
-    
+
     # Colors
     colors = [
         [0.00, "#e7f4fa"],
         [0.01, "#b7def1"],
         [0.25, "#88c9e8"],
         [0.50, "#59b3df"],
-        [1.00, "#1293d2"]
+        [1.00, "#1293d2"],
     ]
 
     # Create fig
@@ -187,7 +202,7 @@ def create_heatmap(df,
             z=z,
             text=hovertext,
             hoverinfo="text",
-            type='heatmap',
+            type="heatmap",
             colorscale=colors,
             hoverongaps=False,
         )
@@ -202,30 +217,27 @@ def create_heatmap(df,
             sizex=0.12,
             sizey=0.12,
             xanchor="right",
-            yanchor="bottom"
+            yanchor="bottom",
         )
     )
-    fig.update_traces(xgap=10,
-                      ygap=10,
-                      selector=dict(type='heatmap'),
-                      showscale=False)
+    fig.update_traces(xgap=10, ygap=10, selector=dict(type="heatmap"), showscale=False)
     total_value = "{:,.0f}".format(df[z_value].sum()).replace(",", " ")
     fig.update_layout(
-        title = f"<b><span style='font-size: 20px;'>{TITLE}</span></b><br><span style='font-size: 18px;'>Total {text}: {total_value}</span>",
+        title=f"<b><span style='font-size: 20px;'>{TITLE}</span></b><br><span style='font-size: 18px;'>Total {text}: {total_value}</span>",
         title_x=0.08,
         title_font=dict(family="Arial", size=20, color="black"),
         plot_bgcolor="#ffffff",
         width=1200,
         height=600,
-        yaxis_scaleanchor="x"
+        yaxis_scaleanchor="x",
     )
     fig.show()
     return fig
 
-fig = create_heatmap(df_plotly,
-                     x_format="%Y-%m",
-                     x_format_d="%b %Y",
-                     text="contents published")
+
+fig = create_heatmap(
+    df_plotly, x_format="%Y-%m", x_format_d="%b %Y", text="contents published"
+)
 ```
 
 ## Output
@@ -241,7 +253,7 @@ df_plotly.to_csv(csv_output, index=False)
 # Share output with naas
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -255,7 +267,7 @@ fig.write_html(html_output)
 # Share output with naas
 naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -269,6 +281,6 @@ fig.write_image(image_output)
 # Share output with naas
 naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

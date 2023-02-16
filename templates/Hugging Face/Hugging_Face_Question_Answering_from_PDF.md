@@ -4,9 +4,7 @@
 
 **Author:** [Muhammad Talha Khan](https://www.linkedin.com/in/muhtalhakhan/)
 
-**Description**: This Transformers QA Pipeline shows a Question Answering models that can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. This specific example is set with the Bitcoin white paper but you can put any PDF.
-
-The PDF will server as context which will used for questions answering.
+**Description:** This notebook provides a way to answer questions from PDF documents using Hugging Face's natural language processing capabilities.
 
 ## Input
 
@@ -49,8 +47,8 @@ import io
 
 
 ```python
-URL = 'https://bitcoin.org/bitcoin.pdf'
-req = urllib.request.Request(URL, headers={'User-Agent' : "Chrome"})
+URL = "https://bitcoin.org/bitcoin.pdf"
+req = urllib.request.Request(URL, headers={"User-Agent": "Chrome"})
 remote_file = urllib.request.urlopen(req).read()
 remote_file_bytes = io.BytesIO(remote_file)
 pdfdoc_remote = PyPDF2.PdfFileReader(remote_file_bytes)
@@ -64,13 +62,13 @@ You can change the URL path to the desired one relating to any of the PDF.
 
 
 ```python
-pdf_text = ""    
-    
+pdf_text = ""
+
 for i in range(pdfdoc_remote.getNumPages()):
     print(i)
     page = pdfdoc_remote.getPage(i)
     page_content = page.extractText()
-    pdf_text += page_content    
+    pdf_text += page_content
 ```
 
 ### Generate the text data from the pdf file 
@@ -85,7 +83,11 @@ Import Pipeline from Transformer after installing the transformers and tensorflo
 
 
 ```python
-nlp = pipeline('question-answering', model='deepset/roberta-base-squad2', tokenizer='deepset/roberta-base-squad2')
+nlp = pipeline(
+    "question-answering",
+    model="deepset/roberta-base-squad2",
+    tokenizer="deepset/roberta-base-squad2",
+)
 ```
 
 ## Output
@@ -94,13 +96,10 @@ nlp = pipeline('question-answering', model='deepset/roberta-base-squad2', tokeni
 
 
 ```python
-context = pdf_text 
-question = input('Enter your question:\n')
+context = pdf_text
+question = input("Enter your question:\n")
 
-question_set = {
-        'context': context,
-        'question': question
-    }
+question_set = {"context": context, "question": question}
 
 results = nlp(question_set)
 ```
@@ -113,5 +112,5 @@ This will print the answer to the question you have asked before.
 
 
 ```python
-print("\nAnswer: " + results['answer'])
+print("\nAnswer: " + results["answer"])
 ```

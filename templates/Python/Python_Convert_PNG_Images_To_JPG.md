@@ -30,14 +30,14 @@ file_path = "Put your file path here / Make sure it's withing this notebook dire
 
 ```python
 img_png = Image.open(file_path)
-img_png = img_png.convert('RGB')
+img_png = img_png.convert("RGB")
 ```
 
 Replacing file name extensions
 
 
 ```python
-new_file_path = file_path.replace("png", 'jpg')
+new_file_path = file_path.replace("png", "jpg")
 ```
 
 ## Output

@@ -4,31 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-With this notebook, you can update your content calendar in Notion with all metrics from your company posts in LinkedIn:
-- **Publication date:** When the post has been published.
-- **Name:** First sentence of post.
-- **Author:** Name of post author.
-- **Content type:** Content type of post (Image, Text, Video, Article, Polls).
-- **Platform:** "LinkedIn" by default.
-- **Status:** "Published ✨" by default.
-- **Engagment score:** Ratio between views and likes/comments (It will be at 0 if you are not the author of the post)
-- **Views:** Amount of people who saw the content (Only available on your profile)
-- **Likes:** Amount of people who pushed the like (or other reaction) button
-- **Comments:** Amount of people who wrote something in the comment section.
-- **Shares:** Amount of people who shared the content.
-- **Profile mention:** People mentioned in post.  
-- **Company mention:** Companies mentioned in post.
-- **Nb Tags:** Number of hashtags.
-- **Tags:** List of the hashtags.  
-- **Nb emojis:** Number of emojis.
-- **Emojis:** List of emojis.
-- **Nb links:** Number of links.
-- **Links:** Links used in posts.
-- **Nb characters:** Number of characters in post.  
-- **Content URL:** URL of the content 
-- **Last refresh:** Date of last refresh
-
-*NB: You must be adminstrator of your company page to extract the data*
+**Description:** This notebook allows users to track the performance of their company's posts on LinkedIn by updating metrics in Notion's content calendar.
 
 ## Input
 
@@ -52,11 +28,11 @@ import requests
 
 ```python
 # LinkedIn cookies
-LI_AT = "ENTER_YOUR_COOKIE_HERE" # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
-JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE" # EXAMPLE : "ajax:8379907400220387585"
+LI_AT = "ENTER_YOUR_COOKIE_HERE"  # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
+JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE"  # EXAMPLE : "ajax:8379907400220387585"
 
 # LinkedIn profile url
-COMPANY_URL = "ENTER_YOUR_LINKEDIN_COMPANY_URL_HERE" # EXAMPLE "https://www.linkedin.com/company/XXXXXX/"
+COMPANY_URL = "ENTER_YOUR_LINKEDIN_COMPANY_URL_HERE"  # EXAMPLE "https://www.linkedin.com/company/XXXXXX/"
 ```
 
 ### Setup Notion
@@ -67,8 +43,10 @@ COMPANY_URL = "ENTER_YOUR_LINKEDIN_COMPANY_URL_HERE" # EXAMPLE "https://www.link
 
 ```python
 # Notion parameters
-NOTION_TOKEN = "ENTER_YOUR_NOTION_TOKEN_HERE" # EXAMPLE : "secret_eaLtxxxxxxxzuBPQvParsFxxxxxxx"
-NOTION_DATABASE_URL = "ENTER_YOUR_NOTION_DATABASE_URL_HERE" # EXAMPLE : "https://www.notion.so/naas-official/fc64df2aae7f4796963d14edec816xxxxx"
+NOTION_TOKEN = (
+    "ENTER_YOUR_NOTION_TOKEN_HERE"  # EXAMPLE : "secret_eaLtxxxxxxxzuBPQvParsFxxxxxxx"
+)
+NOTION_DATABASE_URL = "ENTER_YOUR_NOTION_DATABASE_URL_HERE"  # EXAMPLE : "https://www.notion.so/naas-official/fc64df2aae7f4796963d14edec816xxxxx"
 ```
 
 ### Setup Outputs
@@ -88,10 +66,10 @@ Schedule your notebook with the naas scheduler feature
 
 ```python
 # the default settings below will make the notebook run everyday at 8:00
-# for information on changing this setting, please check https://crontab.guru/ for information on the required CRON syntax 
+# for information on changing this setting, please check https://crontab.guru/ for information on the required CRON syntax
 naas.scheduler.add(cron="0 8 * * *")
 
-# to de-schedule this notebook, simply run the following command: 
+# to de-schedule this notebook, simply run the following command:
 # naas.scheduler.delete()
 ```
 
@@ -110,6 +88,7 @@ def read_csv(file_path):
         return pd.DataFrame()
     return df
 
+
 df_posts = read_csv(csv_output)
 df_posts
 ```
@@ -120,31 +99,34 @@ PS: On the first execution all posts will be retrieved.
 
 
 ```python
-def get_last_posts(df_posts,
-                   csv_output,
-                   key="POST_URL",
-                   no_posts=10,
-                   min_updated_time=60):
+def get_last_posts(
+    df_posts, csv_output, key="POST_URL", no_posts=10, min_updated_time=60
+):
     # Init output
     df_new = pd.DataFrame()
-    
+
     # Init df posts is empty then return entire database
     if len(df_posts) > 0:
         if "DATE_EXTRACT" in df_posts.columns:
             last_update_date = df_posts["DATE_EXTRACT"].max()
-            time_last_update = datetime.now() - datetime.strptime(last_update_date, "%Y-%m-%d %H:%M:%S")
+            time_last_update = datetime.now() - datetime.strptime(
+                last_update_date, "%Y-%m-%d %H:%M:%S"
+            )
             minute_last_update = time_last_update.total_seconds() / 60
             if minute_last_update > min_updated_time:
                 # If df posts not empty get the last X posts (new and already existing)
-                df_new = linkedin.connect(LI_AT, JSESSIONID).company.get_posts_feed(COMPANY_URL,
-                                                                                    limit=no_posts,
-                                                                                    sleep=False)
+                df_new = linkedin.connect(LI_AT, JSESSIONID).company.get_posts_feed(
+                    COMPANY_URL, limit=no_posts, sleep=False
+                )
             else:
-                print(f"🛑 Nothing to update. Last update done {round(minute_last_update, 0)} minutes ago.")
+                print(
+                    f"🛑 Nothing to update. Last update done {round(minute_last_update, 0)} minutes ago."
+                )
                 return df_new
     else:
-        df_new = linkedin.connect(LI_AT, JSESSIONID).company.get_posts_feed(COMPANY_URL,
-                                                                            limit=-1)
+        df_new = linkedin.connect(LI_AT, JSESSIONID).company.get_posts_feed(
+            COMPANY_URL, limit=-1
+        )
 
     # Concat, save database in CSV and dependency in production
     df = pd.concat([df_new, df_posts]).drop_duplicates(key, keep="first")
@@ -154,8 +136,8 @@ def get_last_posts(df_posts,
     # Return only last post retrieved
     return df_new.reset_index(drop=True)
 
-df_update = get_last_posts(df_posts,
-                           csv_output)
+
+df_update = get_last_posts(df_posts, csv_output)
 df_update
 ```
 
@@ -170,18 +152,18 @@ def create_polls_graph(uid, title, data):
     df = pd.melt(pd.DataFrame([data]))
     df = df.sort_values(by="value")
     voters = df.value.sum()
-    
+
     # Create fig
-    fig = px.bar(df,
-                 y="variable",
-                 x="value",
-                 orientation='h',
-                 title=f"{title}<br><span style='font-size: 13px;'>Total amount of votes: {voters}</span>",
-                 text="value",
-                 labels={"variable": "Poll options",
-                         "value": "Poll results"}
-                 )
-    fig.update_traces(marker_color='black')
+    fig = px.bar(
+        df,
+        y="variable",
+        x="value",
+        orientation="h",
+        title=f"{title}<br><span style='font-size: 13px;'>Total amount of votes: {voters}</span>",
+        text="value",
+        labels={"variable": "Poll options", "value": "Poll results"},
+    )
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         plot_bgcolor="#ffffff",
         width=600,
@@ -197,9 +179,10 @@ def create_polls_graph(uid, title, data):
     asset = naas.asset.add(f"{uid}.html", params={"inline": True})
     return asset
 
+
 def update_poll_graph(row):
     poll_graph = None
-    
+
     # Add polls
     poll_id = row.POLL_ID
     poll_question = row.POLL_QUESTION
@@ -226,15 +209,15 @@ def update_dynamic_properties(page, row):
 def update_content_notion(df, database_url):
     # Decode database id
     database_id = database_url.split("/")[-1].split("?v=")[0]
-    
+
     # Get pages from notion database
     pages = notion.connect(NOTION_TOKEN).database.query(database_id, query={})
-    
+
     # Manage dataframe empty
     if len(df) == 0:
         print(f"🛑 Nothing to update in Notion.")
         return
-    
+
     # Loop in data
     df.COMPANY_MENTION = df.COMPANY_MENTION.fillna("")
     df.PROFILE_MENTION = df.PROFILE_MENTION.fillna("")
@@ -247,7 +230,7 @@ def update_content_notion(df, database_url):
             title = "Repost"
         post_url = row.POST_URL
         print(post_url)
-        
+
         # Create or update page
         page_new = True
         for page in pages:
@@ -299,7 +282,7 @@ def update_content_notion(df, database_url):
                         page.link("Links", links)
                 page.number("Nb characters", int(row.CHARACTER_COUNT))
                 page.link("Content URL", post_url)
-                
+
                 # Page blocks text
                 page.heading_1("Text")
                 text = row.TEXT
@@ -307,50 +290,50 @@ def update_content_notion(df, database_url):
                     split_text = text.split("\n")
                     for t in split_text:
                         page.paragraph(t)
-                    
+
                 # Page blocks content
                 image_url = row.IMAGE_URL
                 content_url = row.CONTENT_URL
                 poll_question = row.POLL_QUESTION
                 if image_url or content_title or content_url or poll_question:
                     page.heading_1("Content")
-                
+
                 # Add image in content section
                 if image_url:
                     page.heading_2("Image")
                     page.paragraph(image_url)
-                    
+
                 # Add post in content section
                 if content_title:
                     page.heading_2("Media")
                     page.heading_3(content_title)
-                
+
                 if content_url:
                     page.paragraph(content_url)
-                
+
                 # Add poll graph in content section
                 if poll_question:
                     page.heading_3("Poll")
                     poll_graph = update_poll_graph(row)
                     if poll_graph:
                         page.embed(poll_graph)
-                
+
                 # Page properties : dynamic
                 page = update_dynamic_properties(page, row)
-                
+
                 # Create page in Notion
                 page.update()
-                print(f"✅ Page '{title}' created in Notion.", '\n')
+                print(f"✅ Page '{title}' created in Notion.", "\n")
             else:
                 # Update poll graph
                 update_poll_graph(row)
-                
+
                 # Page properties : dynamic
                 page = update_dynamic_properties(page, row)
-                
+
                 # Update page
                 page.update()
-                print(f"📈 Post stats updated in notion for page '{title}'.", '\n')
+                print(f"📈 Post stats updated in notion for page '{title}'.", "\n")
         except Exception as e:
             print(f"❌ Error creating page '{title}' in Notion", e)
             print(row)

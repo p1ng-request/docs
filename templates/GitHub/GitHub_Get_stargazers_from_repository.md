@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook enables you to get a dataframe of all the stargazers of a particular Github repository.
+**Description:** This notebook provides a way to retrieve the list of users who have starred a given GitHub repository.
 
 ## Input
 
@@ -30,10 +30,10 @@ import naas
 
 ```python
 # GitHub token
-GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE" # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********" 
+GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE"  # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
 
 # Github repo on which we want to create issues.
-REPO_URL = "ENTER_YOUR_REPO_URL_HERE" # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks"
+REPO_URL = "ENTER_YOUR_REPO_URL_HERE"  # EXAMPLE : "https://github.com/jupyter-naas/awesome-notebooks"
 ```
 
 ### Setup Outputs
@@ -61,26 +61,24 @@ df_stargazers
 
 
 ```python
-def get_trend(df,
-              date_col_name='STARRED_AT',
-              value_col_name="ID",
-              date_order='asc'):
-    
+def get_trend(df, date_col_name="STARRED_AT", value_col_name="ID", date_order="asc"):
+
     # Format date
     df[date_col_name] = pd.to_datetime(df[date_col_name]).dt.strftime("%Y-%m-%d")
     df = df.groupby(date_col_name, as_index=False).agg({value_col_name: "count"})
     d = datetime.now().date()
     d2 = df.loc[df.index[0], date_col_name]
-    idx = pd.date_range(d2, d, freq = "D")
-    
+    idx = pd.date_range(d2, d, freq="D")
+
     df.set_index(date_col_name, drop=True, inplace=True)
     df.index = pd.DatetimeIndex(df.index)
     df = df.reindex(idx, fill_value=0)
     df[date_col_name] = pd.DatetimeIndex(df.index)
-    
+
     # Calc sum cum
     df["value_cum"] = df.agg({value_col_name: "cumsum"})
     return df.reset_index(drop=True)
+
 
 df_trend = get_trend(df_stargazers)
 df_trend.tail(1)
@@ -93,13 +91,13 @@ df_trend.tail(1)
 def create_linechart(df, date, value, repo_url):
     # Get repo name
     repo_name = repo_url.split("https://github.com/")[-1].split("/")[-1]
-    
+
     # Get last value
     last_value = df.loc[df.index[-1], value]
-    
+
     # Init
     fig = go.Figure()
-    
+
     # Create fig
     fig.add_trace(
         go.Scatter(
@@ -109,7 +107,7 @@ def create_linechart(df, date, value, repo_url):
             line=dict(color="black"),
         )
     )
-    fig.update_traces(marker_color='black')
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         title=f"⭐<b> Stars - {repo_name}</b><br><span style='font-size: 13px;'>Total stars as of today: {last_value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
@@ -119,12 +117,13 @@ def create_linechart(df, date, value, repo_url):
         paper_bgcolor="white",
         xaxis_title="Date",
         xaxis_title_font=dict(family="Arial", size=11, color="black"),
-        yaxis_title='No. of stars',
+        yaxis_title="No. of stars",
         yaxis_title_font=dict(family="Arial", size=11, color="black"),
         margin_pad=10,
     )
     fig.show()
     return fig
+
 
 fig = create_linechart(df_trend, "STARRED_AT", "value_cum", REPO_URL)
 ```
@@ -141,7 +140,7 @@ df_trend.to_csv(csv_output, index=False)
 # Share output with naas
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -155,7 +154,7 @@ fig.write_html(html_output)
 # Share output with naas
 naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -169,6 +168,6 @@ fig.write_image(image_output)
 # Share output with naas
 naas.asset.add(image_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

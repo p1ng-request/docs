@@ -4,6 +4,8 @@
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
+**Description:** This notebook provides an analysis of video statistics on the popular social media platform, TikTok.
+
 ## Input
 
 ### Import libraries
@@ -40,20 +42,20 @@ While logged into your tiktok account, Click F12 to open developer console in yo
 ```python
 # Cookies
 cookie = {
-  "s_v_web_id": "verify_l0ecjehXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  "tt_webid": "1%7CaSy-x8YGNmB_l9qsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    "s_v_web_id": "verify_l0ecjehXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "tt_webid": "1%7CaSy-x8YGNmB_l9qsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 }
 
 # Username
 username = "tiktester04"
 
-#setup count of videos to be retrieved ( preferred count by api is 30)
+# setup count of videos to be retrieved ( preferred count by api is 30)
 video_count = 30
 
-#set hashtag to identify and extract videos
+# set hashtag to identify and extract videos
 user_hastag = "#teslatok"
 
-#set application type. This is used to distinguish data for application in master data model
+# set application type. This is used to distinguish data for application in master data model
 APP_TYPE = "TikTok"
 ```
 
@@ -71,19 +73,19 @@ api = TikTokAPI(cookie=cookie)
 
 ```python
 def get_videos_by_user(username):
-    #Get videos by userName
-    '''
+    # Get videos by userName
+    """
     Video ID
 
-    '''
+    """
     userVideoIdList = []
-    #userVideos = api.getVideosByUserName(user_name=username, count=video_count,cursor=0)
-    userVideos = api.getVideosByHashTag(user_hastag,count=video_count)
+    # userVideos = api.getVideosByUserName(user_name=username, count=video_count,cursor=0)
+    userVideos = api.getVideosByHashTag(user_hastag, count=video_count)
     userVideoList = userVideos["itemList"]
 
     for userVideo in userVideoList:
         userVideoIdList.append(userVideo["video"]["id"])
-    
+
     return userVideoIdList
 ```
 
@@ -125,9 +127,37 @@ def get_video_stats_by_id(userVideoIdList):
         videoAuthorTotalHeartCount = videoAuthorStats["heartCount"]
 
         video_stats[videoId] = video_stats_obj
-        data=[[videoId,videoCreateTime,videoAuthorName,videoTitle,videoDesc,videoLink,videoPlayCount,videoCommentCount,videoLikeCount,videoShareCount,APP_TYPE]]
-        df = pd.DataFrame(data,columns=["ACTIVITY_ID","PUBLISHED_DATE","AUTHOR_NAME","TITLE","TEXT","POST_URL","VIEWS","COMMENTS","LIKES","SHARES","APPLICATION_TYPE"
-        ])
+        data = [
+            [
+                videoId,
+                videoCreateTime,
+                videoAuthorName,
+                videoTitle,
+                videoDesc,
+                videoLink,
+                videoPlayCount,
+                videoCommentCount,
+                videoLikeCount,
+                videoShareCount,
+                APP_TYPE,
+            ]
+        ]
+        df = pd.DataFrame(
+            data,
+            columns=[
+                "ACTIVITY_ID",
+                "PUBLISHED_DATE",
+                "AUTHOR_NAME",
+                "TITLE",
+                "TEXT",
+                "POST_URL",
+                "VIEWS",
+                "COMMENTS",
+                "LIKES",
+                "SHARES",
+                "APPLICATION_TYPE",
+            ],
+        )
         tiktokDF = tiktokDF.append(df)
     return tiktokDF
 ```

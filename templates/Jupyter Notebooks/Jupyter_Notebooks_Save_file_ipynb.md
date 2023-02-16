@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows users to save their work in an interactive, web-based format (.ipynb).
+
 ## Input
 
 ### Import libraries
@@ -39,7 +41,7 @@ with open(notebook_path) as f:
 
 
 ```python
-with open(notebook_output, 'w') as f:
+with open(notebook_output, "w") as f:
     json.dump(nb, f)
 ```
 

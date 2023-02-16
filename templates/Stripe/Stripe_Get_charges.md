@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
+**Description:** This notebook provides an overview of Stripe charges and their associated data.
+
 ## Input
 
 ### Import libraries
@@ -43,5 +45,5 @@ charges = stripe.Charge.list(limit=30)
 
 
 ```python
-pd.DataFrame(charges.get('data'))
+pd.DataFrame(charges.get("data"))
 ```

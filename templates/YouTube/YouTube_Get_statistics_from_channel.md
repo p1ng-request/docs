@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a way to access and analyze data from a YouTube channel to gain insights into its performance.
+
 ## Input
 
 ### Import library
@@ -19,7 +21,7 @@ from naas_drivers import youtube
 
 ```python
 # Youtube api Key
-YOUTUBE_API_KEY = naas.secret.get('YOUTUBE_API_KEY')
+YOUTUBE_API_KEY = naas.secret.get("YOUTUBE_API_KEY")
 
 # Channel ID
 channel_url = "https://www.youtube.com/channel/UCKKG5hzjXXU_rRdHHWQ8JHQ"

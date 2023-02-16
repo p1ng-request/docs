@@ -4,6 +4,8 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
+**Description:** This notebook demonstrates how to use PyCaret's automated machine learning capabilities to perform regression tasks.
+
 ## Input
 
 ### Import libraries
@@ -26,7 +28,7 @@ except:
 
 ```python
 csv_path = "https://raw.githubusercontent.com/MinuraPunchihewa/pycaret-automl/main/data/wine-quality.csv"
-target_column = 'quality'
+target_column = "quality"
 ```
 
 ## Model
@@ -104,14 +106,14 @@ final_model = finalize_model(best_model)
 
 
 ```python
-save_model(final_model, 'regression_model')
+save_model(final_model, "regression_model")
 ```
 
 ### Load saved model from pickle file
 
 
 ```python
-model = load_model('regression_model')
+model = load_model("regression_model")
 ```
 
 ### Create Dockerfile for model
@@ -119,5 +121,5 @@ model = load_model('regression_model')
 
 ```python
 # also creates a requirements.txt file for dependencies
-create_docker('regression_model')
+create_docker("regression_model")
 ```

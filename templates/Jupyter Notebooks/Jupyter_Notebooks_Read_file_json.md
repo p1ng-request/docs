@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a guide to reading and manipulating JSON files using Jupyter Notebooks.
+
 ## Input
 
 ### Import libraries

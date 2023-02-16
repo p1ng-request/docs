@@ -4,7 +4,7 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
-This notebook get the number of undelivered emails
+**Description:** This notebook provides a way to track the number of emails sent through Sendinblue.
 
 ## Input
 
@@ -22,7 +22,9 @@ import naas
 
 
 ```python
-SENDINBLUE_API_KEY = naas.secret.get(name="SENDINBLUE_API_KEY") or "ENTER_YOUR_SENDINBLUE_API_KEY"
+SENDINBLUE_API_KEY = (
+    naas.secret.get(name="SENDINBLUE_API_KEY") or "ENTER_YOUR_SENDINBLUE_API_KEY"
+)
 ```
 
 ### Variable
@@ -39,11 +41,8 @@ campaign_name = "Minura's Campaign"
 
 ```python
 response = requests.get(
-    'https://api.sendinblue.com/v3/emailCampaigns',
-    headers={
-        'Accept': 'application/json',
-        'api-key': SENDINBLUE_API_KEY
-    }
+    "https://api.sendinblue.com/v3/emailCampaigns",
+    headers={"Accept": "application/json", "api-key": SENDINBLUE_API_KEY},
 )
 ```
 
@@ -53,12 +52,16 @@ response = requests.get(
 
 
 ```python
-campaign = next(item for item in json.loads(response.text)['campaigns'] if item["name"] == campaign_name)
+campaign = next(
+    item
+    for item in json.loads(response.text)["campaigns"]
+    if item["name"] == campaign_name
+)
 ```
 
 ### Get the number of emails sent
 
 
 ```python
-campaign['statistics']['globalStats']['sent']
+campaign["statistics"]["globalStats"]["sent"]
 ```

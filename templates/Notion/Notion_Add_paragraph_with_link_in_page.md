@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-This notebook shows how to add a paragraph with link in a Notion page
+**Description:** This notebook allows you to add a paragraph with a link to a page in Notion.
 
 ## Input
 
@@ -12,7 +12,7 @@ This notebook shows how to add a paragraph with link in a Notion page
 
 
 ```python
-from naas_drivers import notion 
+from naas_drivers import notion
 from naas_drivers.tools.notion import Link
 ```
 
@@ -25,7 +25,9 @@ from naas_drivers.tools.notion import Link
 token = "*****"
 
 # Enter Database URL
-page_url = "https://www.notion.so/naas-official/Daily-med-03952fcb93c045bba519a7564a64045e"
+page_url = (
+    "https://www.notion.so/naas-official/Daily-med-03952fcb93c045bba519a7564a64045e"
+)
 
 # Link
 link = "https://app.naas.ai/"

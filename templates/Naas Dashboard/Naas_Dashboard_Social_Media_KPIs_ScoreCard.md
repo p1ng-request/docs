@@ -4,7 +4,7 @@
 
 **Author:** [Ismail CHIHAB](https://www.linkedin.com/in/ismail-chihab-4b0a04202/)
 
-This notebook creates a dashboard to follow your social media kpis on LinkedIn, YouTube, Instagram and Twitter.
+**Description:** This notebook provides a comprehensive scorecard of key performance indicators for social media platforms.
 
 ## Input
 
@@ -65,7 +65,7 @@ sh_twitter = "004"
 
 
 ```python
-linkedin_df = gsheet.connect(spreadsheet_url).get(sheet_name=sh_linkedin) 
+linkedin_df = gsheet.connect(spreadsheet_url).get(sheet_name=sh_linkedin)
 print("☑️ Number of rows:", len(linkedin_df))
 linkedin_df.head(1)
 ```
@@ -74,7 +74,7 @@ linkedin_df.head(1)
 
 
 ```python
-youtube_df = gsheet.connect(spreadsheet_url).get(sheet_name=sh_youtube) 
+youtube_df = gsheet.connect(spreadsheet_url).get(sheet_name=sh_youtube)
 print("☑️ Number of rows:", len(youtube_df))
 youtube_df.head(1)
 ```
@@ -83,7 +83,7 @@ youtube_df.head(1)
 
 
 ```python
-instagram_df = gsheet.connect(spreadsheet_url).get(sheet_name=sh_instagram) 
+instagram_df = gsheet.connect(spreadsheet_url).get(sheet_name=sh_instagram)
 print("☑️ Number of rows:", len(instagram_df))
 instagram_df.head(1)
 ```
@@ -106,36 +106,44 @@ def update_data(df_init):
     df = df_init.copy()
     df = df.drop_duplicates()
 
-    # Pivot 
-    df = pd.pivot(df, index=['ROWS', 'SCENARIO'], values='VALUE', columns='COLUMNS')
+    # Pivot
+    df = pd.pivot(df, index=["ROWS", "SCENARIO"], values="VALUE", columns="COLUMNS")
     df.loc[:, "SCENARIO"] = df.index.get_level_values(1)
     df.loc[:, "ROWS"] = df.index.get_level_values(0)
     df = df.reset_index(drop=True)
-    
-    
-    #Re format values with a comma in columns to target and to previous
-    to_target=[]       
-    for e in df['To Target']:
+
+    # Re format values with a comma in columns to target and to previous
+    to_target = []
+    for e in df["To Target"]:
         if "," in str(e):
-            e = e.replace(',', '.')
-            
+            e = e.replace(",", ".")
+
         to_target.append(e)
     df["To Target"] = to_target
-    
-    to_previous=[]       
-    for e in df['To Previous']:
+
+    to_previous = []
+    for e in df["To Previous"]:
         if "," in str(e):
-            e = e.replace(',', '.')
-            
+            e = e.replace(",", ".")
+
         to_previous.append(e)
     df["To Previous"] = to_previous
-    
-    
-    #Re arranging the columns
-    df = df.reindex( columns = ['ROWS','Actual','Target','To Target','Prev Period', 'To Previous','SCENARIO'])
+
+    # Re arranging the columns
+    df = df.reindex(
+        columns=[
+            "ROWS",
+            "Actual",
+            "Target",
+            "To Target",
+            "Prev Period",
+            "To Previous",
+            "SCENARIO",
+        ]
+    )
     df.reset_index(drop=True)
-    df.rename(columns={'ROWS': ''}, inplace=True)
-    return df 
+    df.rename(columns={"ROWS": ""}, inplace=True)
+    return df
 ```
 
 
@@ -150,7 +158,7 @@ twitter_dff = update_data(twitter_df)
 
 
 ```python
-table_columns = [{'id': c, 'name': c} for c in linkedin_dff.iloc[:, 0:6].columns]
+table_columns = [{"id": c, "name": c} for c in linkedin_dff.iloc[:, 0:6].columns]
 table_columns
 ```
 
@@ -160,13 +168,7 @@ table_columns
 
 
 ```python
-entities = [
-    "All Platforms",
-    "Linkedin",
-    "Youtube",
-    "Instagram",
-    "Twitter"
-]
+entities = ["All Platforms", "Linkedin", "Youtube", "Instagram", "Twitter"]
 
 scenarios = [
     "2022",
@@ -175,23 +177,23 @@ scenarios = [
 ]
 
 dropdown_entity = dcc.Dropdown(
-    id='entity',
-    options=[{'label': i, 'value': i} for i in entities],
-    placeholder='Entity',
+    id="entity",
+    options=[{"label": i, "value": i} for i in entities],
+    placeholder="Entity",
     value=entities[0],
     style={
         "text-align": "center",
-    }
+    },
 )
 
 dropdown_scenario = dcc.Dropdown(
-    id='scenario',
-    options=[{'label': i, 'value': i} for i in scenarios],
-    placeholder='Scenario',
+    id="scenario",
+    options=[{"label": i, "value": i} for i in scenarios],
+    placeholder="Scenario",
     value=scenarios[0],
     style={
         "text-align": "center",
-    }
+    },
 )
 ```
 
@@ -206,7 +208,7 @@ navbar = dbc.Navbar(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row(
                     [
-                        #dbc.Col(html.Img(src=APP_LOGO, height="30px")),
+                        # dbc.Col(html.Img(src=APP_LOGO, height="30px")),
                         dbc.Col(dbc.NavbarBrand(APP_TITLE, className="ms-2")),
                     ],
                     align="center",
@@ -224,10 +226,10 @@ navbar = dbc.Navbar(
                                 html.Div(className="w-100"),
                                 html.Div(className="w-100"),
                                 html.Div(dropdown_entity, className="w-100"),
-                                html.Div(dropdown_scenario, className="w-100")
+                                html.Div(dropdown_scenario, className="w-100"),
                             ],
-                            className="pt-1 pb-1 d-grid gap-2 d-md-flex w-100")
-
+                            className="pt-1 pb-1 d-grid gap-2 d-md-flex w-100",
+                        )
                     ],
                     className="ms-auto w-100",
                     navbar=True,
@@ -247,149 +249,126 @@ navbar = dbc.Navbar(
 
 
 ```python
-def inner_navbar(platform_name, logo, brand_hex_color): 
+def inner_navbar(platform_name, logo, brand_hex_color):
     inner_navbar = dbc.Navbar(
-            dbc.Container(
-                [
-                    html.A(
-                        # Use row and col to control vertical alignment of logo / brand
-                        dbc.Row(
-                            [
-                                dbc.Col(html.Img(src=logo, height="30px")),
-                                dbc.Col(dbc.NavbarBrand(platform_name, className="ms-2")),
-                            ],
-                            align="center",
-                            className="g-0",
-                        ),
-                        style={"textDecoration": "none"},
-                    )
-                ]
-            ),
-            color=str(brand_hex_color),
-            dark=True,
-        )
+        dbc.Container(
+            [
+                html.A(
+                    # Use row and col to control vertical alignment of logo / brand
+                    dbc.Row(
+                        [
+                            dbc.Col(html.Img(src=logo, height="30px")),
+                            dbc.Col(dbc.NavbarBrand(platform_name, className="ms-2")),
+                        ],
+                        align="center",
+                        className="g-0",
+                    ),
+                    style={"textDecoration": "none"},
+                )
+            ]
+        ),
+        color=str(brand_hex_color),
+        dark=True,
+    )
     return inner_navbar
 ```
 
 
 ```python
-LinkedIn_navbar =  inner_navbar("LinkedIn", linkedin_logo, "#0E76A8")
-Instagram_navbar =  inner_navbar("Instagram", instagram_logo, "#ed5a9c")
-Twitter_navbar =  inner_navbar("Twitter", twitter_logo, "#6cd5f7")
-Youtube_navbar =  inner_navbar("Youtube", youtube_logo, "#ed494a")
+LinkedIn_navbar = inner_navbar("LinkedIn", linkedin_logo, "#0E76A8")
+Instagram_navbar = inner_navbar("Instagram", instagram_logo, "#ed5a9c")
+Twitter_navbar = inner_navbar("Twitter", twitter_logo, "#6cd5f7")
+Youtube_navbar = inner_navbar("Youtube", youtube_logo, "#ed494a")
 ```
 
 #### Create Tables
 
 
 ```python
-def create_table(df, table_id):    
-    table = dash_table.DataTable( 
+def create_table(df, table_id):
+    table = dash_table.DataTable(
         id=table_id,
-        data=df.to_dict('records'),
+        data=df.to_dict("records"),
         columns=table_columns,
-        
         # Style
         style_data={
-             'whiteSpace': 'normal',
-             'height':'16px',
-             'lineHeight': '13px',
-             'border': '7px solid white'
-         },
+            "whiteSpace": "normal",
+            "height": "16px",
+            "lineHeight": "13px",
+            "border": "7px solid white",
+        },
         style_cell_conditional=[
-            {
-                'if': {'column_id': ''},
-                'textAlign': 'left',
-                'width': '150px'
-            },
-            {
-                'if': {'column_id': 'Actual'},
-             'width': '150px'
-            }, 
-             {
-                 'if': {'column_id': 'Target'},
-              'width': '150px'
-             },
-             {
-                 'if': {'column_id': 'To Target'},
-              'width': '150px'
-             },
-             {
-                 'if': {'column_id': 'Prev Period'},
-              'width': '150px'
-             },
-             {
-                 'if': {'column_id': 'To Previous'},
-              'width': '150px'
-             },
+            {"if": {"column_id": ""}, "textAlign": "left", "width": "150px"},
+            {"if": {"column_id": "Actual"}, "width": "150px"},
+            {"if": {"column_id": "Target"}, "width": "150px"},
+            {"if": {"column_id": "To Target"}, "width": "150px"},
+            {"if": {"column_id": "Prev Period"}, "width": "150px"},
+            {"if": {"column_id": "To Previous"}, "width": "150px"},
         ],
-
-        style_data_conditional=([
-             {
-              'if': {
-                  'column_id': 'Target', 
-              },  
-              'backgroundColor': '#f9f9f9',
-              'color': 'black'
-            },
-            {
-              'if': {
-                  'column_id': 'Prev Period', 
-              },  
-              'backgroundColor': '#f9f9f9',
-              'color': 'black'
-            },
-            {
-              'if': {
-                  'filter_query': '{To Target} < 0',
-                  'column_id': 'To Target', 
-              },  
-              'backgroundColor': '#ebc7c3',
-              'color': '#cf8076'
-            },
-            {
-              'if': {
-                  'filter_query': '{To Target} >= 0',
-                  'column_id': 'To Target', 
-              },  
-              'backgroundColor': '#d5e6d1',
-              'color': 'rgba(146,170,107,255)'
-            },
-            {
-              'if': {
-                  'filter_query': '{To Previous} < 0',
-                  'column_id': 'To Previous', 
-              },  
-              'backgroundColor': '#ebc7c3',
-              'color': '#cf8076'
-            },
-            {
-              'if': {
-                  'filter_query': '{To Previous} >= 0',
-                  'column_id': 'To Previous', 
-              },  
-              'backgroundColor': '#d5e6d1',
-              'color': '#92aa6b'
-            },
-
-        ]),
-
+        style_data_conditional=(
+            [
+                {
+                    "if": {
+                        "column_id": "Target",
+                    },
+                    "backgroundColor": "#f9f9f9",
+                    "color": "black",
+                },
+                {
+                    "if": {
+                        "column_id": "Prev Period",
+                    },
+                    "backgroundColor": "#f9f9f9",
+                    "color": "black",
+                },
+                {
+                    "if": {
+                        "filter_query": "{To Target} < 0",
+                        "column_id": "To Target",
+                    },
+                    "backgroundColor": "#ebc7c3",
+                    "color": "#cf8076",
+                },
+                {
+                    "if": {
+                        "filter_query": "{To Target} >= 0",
+                        "column_id": "To Target",
+                    },
+                    "backgroundColor": "#d5e6d1",
+                    "color": "rgba(146,170,107,255)",
+                },
+                {
+                    "if": {
+                        "filter_query": "{To Previous} < 0",
+                        "column_id": "To Previous",
+                    },
+                    "backgroundColor": "#ebc7c3",
+                    "color": "#cf8076",
+                },
+                {
+                    "if": {
+                        "filter_query": "{To Previous} >= 0",
+                        "column_id": "To Previous",
+                    },
+                    "backgroundColor": "#d5e6d1",
+                    "color": "#92aa6b",
+                },
+            ]
+        ),
         style_table={
-            'overflowX':'scroll',
+            "overflowX": "scroll",
         },
         style_cell={
-            'padding': '5px',
-            'textAlign': 'center',
-            'font-family':'sans-serif'
-
+            "padding": "5px",
+            "textAlign": "center",
+            "font-family": "sans-serif",
         },
         style_header={
-            'backgroundColor': 'white',
-            'fontWeight': 'bold',
-            'border': '7px solid white'
-
+            "backgroundColor": "white",
+            "fontWeight": "bold",
+            "border": "7px solid white",
         },
-        #style_as_list_view=True,
+        # style_as_list_view=True,
     )
     return table
 ```
@@ -398,11 +377,9 @@ def create_table(df, table_id):
 
 
 ```python
-responsive = {  'xs':12,
-                'sm':12,
-                'md':12,
-                'lg':6,
-                'xl':6 }
+responsive = {"xs": 12, "sm": 12, "md": 12, "lg": 6, "xl": 6}
+
+
 def card_table(navbar, df, uid, responsive):
     card = dbc.Col(
         dbc.Card(
@@ -410,7 +387,6 @@ def card_table(navbar, df, uid, responsive):
                 [
                     navbar,
                     create_table(df, uid),
-
                 ]
             ),
         ),
@@ -424,26 +400,20 @@ def card_table(navbar, df, uid, responsive):
 
 ```python
 app = dash.Dash(
-    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     meta_tags=[
-        {
-            'name':'viewport',
-            'content': 'width=device-width, initial-scale=1.0'
-        }
-    ]
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
 )
 
 app.title = APP_TITLE
 app.layout = html.Div(
     [
-        #Navbar:
+        # Navbar:
         navbar,
-        
-        #The page content:
-        dbc.Container(
-            id = 'main_container'
-        )
+        # The page content:
+        dbc.Container(id="main_container"),
     ]
 )
 
@@ -458,114 +428,114 @@ def toggle_navbar_collapse(n, is_open):
         return not is_open
     return is_open
 
+
 # add callback to display interactive data
 @app.callback(
-    Output('main_container', 'children'), 
-    [
-        Input('entity', 'value'),
-        Input('scenario', 'value')
-    ]
-    
+    Output("main_container", "children"),
+    [Input("entity", "value"), Input("scenario", "value")],
 )
-
 def multi_outputs(entity, scenario):
     if entity is None or scenario is None:
         raise PreventUpdate
-    
+
     # Get dataframes
     lk_df = linkedin_dff.copy()
     yt_df = youtube_dff.copy()
     ig_df = instagram_dff.copy()
     tit_df = twitter_dff.copy()
-    
-    
-    rows=['Followers', 'Impressions', 'Link Clicks', 'Engagement', 'Engagement Rate', 'Avg order Value', 'Avg Time to Conversion']
+
+    rows = [
+        "Followers",
+        "Impressions",
+        "Link Clicks",
+        "Engagement",
+        "Engagement Rate",
+        "Avg order Value",
+        "Avg Time to Conversion",
+    ]
     # Filter tables
-    if str(scenario) == '2021':
-        lk_df = lk_df[lk_df['SCENARIO'] == 2021]
-        yt_df = yt_df[yt_df['SCENARIO'] == 2021]
-        ig_df = ig_df[ig_df['SCENARIO'] == 2021]
-        tit_df = tit_df[tit_df['SCENARIO'] == 2021]
-        
-        #lk_df_a = lk_df_a[lk_df_a['SCENARIO'] == 2021]
-        
-    elif str(scenario) == '2022':
-        lk_df = lk_df[lk_df['SCENARIO'] == 2022]
-        yt_df = yt_df[yt_df['SCENARIO'] == 2022]
-        ig_df = ig_df[ig_df['SCENARIO'] == 2022]
-        tit_df = tit_df[tit_df['SCENARIO'] == 2022]
-        
-        #lk_df_a = lk_df[lk_df['SCENARIO'] == 2022]
-        
-    elif str(scenario) =='2020':
-        lk_df = lk_df[lk_df['SCENARIO'] == 2020]
-        yt_df = yt_df[yt_df['SCENARIO'] == 2020]
-        ig_df = ig_df[ig_df['SCENARIO'] == 2020]
-        tit_df = tit_df[tit_df['SCENARIO'] == 2020]
-        
-    
+    if str(scenario) == "2021":
+        lk_df = lk_df[lk_df["SCENARIO"] == 2021]
+        yt_df = yt_df[yt_df["SCENARIO"] == 2021]
+        ig_df = ig_df[ig_df["SCENARIO"] == 2021]
+        tit_df = tit_df[tit_df["SCENARIO"] == 2021]
+
+        # lk_df_a = lk_df_a[lk_df_a['SCENARIO'] == 2021]
+
+    elif str(scenario) == "2022":
+        lk_df = lk_df[lk_df["SCENARIO"] == 2022]
+        yt_df = yt_df[yt_df["SCENARIO"] == 2022]
+        ig_df = ig_df[ig_df["SCENARIO"] == 2022]
+        tit_df = tit_df[tit_df["SCENARIO"] == 2022]
+
+        # lk_df_a = lk_df[lk_df['SCENARIO'] == 2022]
+
+    elif str(scenario) == "2020":
+        lk_df = lk_df[lk_df["SCENARIO"] == 2020]
+        yt_df = yt_df[yt_df["SCENARIO"] == 2020]
+        ig_df = ig_df[ig_df["SCENARIO"] == 2020]
+        tit_df = tit_df[tit_df["SCENARIO"] == 2020]
+
     # Rearrange row order
-    lk_df[''] = pd.Categorical(lk_df[''], categories=rows, ordered=True)
-    lk_df = lk_df.sort_values('', axis=0)
-    
-    yt_df[''] = pd.Categorical(yt_df[''], categories=rows, ordered=True)
-    yt_df = lk_df.sort_values('', axis=0)
-    
-    ig_df[''] = pd.Categorical(ig_df[''], categories=rows, ordered=True)
-    ig_df = lk_df.sort_values('', axis=0)
-    
-    tit_df[''] = pd.Categorical(tit_df[''], categories=rows, ordered=True)
-    tit_df = lk_df.sort_values('', axis=0)
-    
-    
+    lk_df[""] = pd.Categorical(lk_df[""], categories=rows, ordered=True)
+    lk_df = lk_df.sort_values("", axis=0)
+
+    yt_df[""] = pd.Categorical(yt_df[""], categories=rows, ordered=True)
+    yt_df = lk_df.sort_values("", axis=0)
+
+    ig_df[""] = pd.Categorical(ig_df[""], categories=rows, ordered=True)
+    ig_df = lk_df.sort_values("", axis=0)
+
+    tit_df[""] = pd.Categorical(tit_df[""], categories=rows, ordered=True)
+    tit_df = lk_df.sort_values("", axis=0)
+
     # Drop the SCENARIO column
-    lk_df.drop(['SCENARIO'], axis=1, inplace=True) 
-    yt_df.drop(['SCENARIO'], axis=1, inplace=True)  
-    ig_df.drop(['SCENARIO'], axis=1, inplace=True) 
-    tit_df.drop(['SCENARIO'], axis=1, inplace=True)
-    
+    lk_df.drop(["SCENARIO"], axis=1, inplace=True)
+    yt_df.drop(["SCENARIO"], axis=1, inplace=True)
+    ig_df.drop(["SCENARIO"], axis=1, inplace=True)
+    tit_df.drop(["SCENARIO"], axis=1, inplace=True)
 
     # Switch between pages:
-    responsive = {  
-                 'xs':12,
-                 'sm':12,
-                 'md':12,
-                 'lg':12,
-                 'xl':12 }
-    children=[]
+    responsive = {"xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12}
+    children = []
     children.append(html.Br())
-    if str(entity) == 'Linkedin':
-        children.append(dbc.Row([card_table(LinkedIn_navbar, lk_df, "linkedin_table", responsive)])) 
-    if str(entity) == 'Youtube':
-        children.append(dbc.Row([card_table(Youtube_navbar, yt_df, "youtube_table", responsive)]))
-    if str(entity) == 'Instagram':
-        children.append(dbc.Row([card_table(Instagram_navbar, ig_df, "instagram_table", responsive)]))
-    if str(entity) == 'Twitter':
-        children.append(dbc.Row([card_table(Twitter_navbar, tit_df, "twitter_table", responsive)]))
-    if str(entity) == 'All Platforms':
-        responsive = {  
-                 'xs':12,
-                 'sm':12,
-                 'md':6,
-                 'lg':6,
-                 'xl':6 }
+    if str(entity) == "Linkedin":
+        children.append(
+            dbc.Row([card_table(LinkedIn_navbar, lk_df, "linkedin_table", responsive)])
+        )
+    if str(entity) == "Youtube":
+        children.append(
+            dbc.Row([card_table(Youtube_navbar, yt_df, "youtube_table", responsive)])
+        )
+    if str(entity) == "Instagram":
         children.append(
             dbc.Row(
-                    [
-                        card_table(LinkedIn_navbar, lk_df, "linkedin_table", responsive),
-                        card_table(Instagram_navbar, ig_df, "instagram_table", responsive)
-                    ]
-                )
+                [card_table(Instagram_navbar, ig_df, "instagram_table", responsive)]
+            )
+        )
+    if str(entity) == "Twitter":
+        children.append(
+            dbc.Row([card_table(Twitter_navbar, tit_df, "twitter_table", responsive)])
+        )
+    if str(entity) == "All Platforms":
+        responsive = {"xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6}
+        children.append(
+            dbc.Row(
+                [
+                    card_table(LinkedIn_navbar, lk_df, "linkedin_table", responsive),
+                    card_table(Instagram_navbar, ig_df, "instagram_table", responsive),
+                ]
+            )
         )
         children.append(
             dbc.Row(
-                    [
-                        card_table(Twitter_navbar, tit_df, "twitter_table", responsive),
-                        card_table(Youtube_navbar, yt_df, "youtube_table", responsive)
-                    ]
-                )
+                [
+                    card_table(Twitter_navbar, tit_df, "twitter_table", responsive),
+                    card_table(Youtube_navbar, yt_df, "youtube_table", responsive),
+                ]
+            )
         )
-        
+
     return children
 ```
 
@@ -575,6 +545,6 @@ def multi_outputs(entity, scenario):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```

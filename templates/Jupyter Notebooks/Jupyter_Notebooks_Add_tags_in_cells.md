@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a guide to adding tags to cells in Jupyter Notebooks.
+
 ## Input
 
 ### Import library
@@ -35,27 +37,28 @@ new_tags = [f"awesome-notebooks/{notebook_path}"]
 def add_tags(notebook_path, new_tags):
     with open(notebook_path) as f:
         nb = json.load(f)
-        
+
     new_cells = []
     cells = nb.get("cells")
-    
+
     # Apply change
     for cell in cells:
-        tags = cell.get('metadata').get('tags')
+        tags = cell.get("metadata").get("tags")
         if len(tags) == 0:
             tags = new_tags
         else:
             tags += new_tags
         cell["metadata"]["tags"] = tags
         new_cells.append(cell)
-        
+
     # Save notebook
     nb_new = nb.copy()
     nb_new["cells"] = new_cells
-    with open(notebook_path, 'w') as f:
+    with open(notebook_path, "w") as f:
         json.dump(nb_new, f)
     print(f"✔️ {notebook_path} saved in Naas.")
     return nb_new
+
 
 nb = add_tags(notebook_path, new_tags)
 ```

@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-Learn more on the Plotly doc : https://plotly.com/python/line-charts/
+**Description:** This notebook provides instructions on how to create a line chart using Plotly.
 
 ## Input
 
@@ -31,11 +31,9 @@ output_html = f"{title}.html"
 
 
 ```python
-date_from = -360 # Date can be number or date or today
+date_from = -360  # Date can be number or date or today
 date_to = "today"
-df = yahoofinance.get("TSLA",
-                      date_from=date_from,
-                      date_to=date_to)
+df = yahoofinance.get("TSLA", date_from=date_from, date_to=date_to)
 df
 ```
 
@@ -43,11 +41,9 @@ df
 
 
 ```python
-fig = plotly.linechart(df,
-                       x="Date",
-                       y=["Open", "Close"],
-                       title=title,
-                       yaxis_title="Price in $")
+fig = plotly.linechart(
+    df, x="Date", y=["Open", "Close"], title=title, yaxis_title="Price in $"
+)
 ```
 
 ## Output
@@ -65,9 +61,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

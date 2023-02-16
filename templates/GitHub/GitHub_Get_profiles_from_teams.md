@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook enables you to get a dataframe of all the team members in a Github organization.
+**Description:** This notebook allows users to retrieve profiles from teams on GitHub.
 
 ## Input
 
@@ -44,6 +44,6 @@ df_teams = github.connect(GITHUB_TOKEN).teams.get_profiles(TEAM_URL)
 
 
 ```python
-print(f'Dataset size -> {df_teams.shape}')
+print(f"Dataset size -> {df_teams.shape}")
 df_teams.head(25)
 ```

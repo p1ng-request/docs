@@ -29,7 +29,6 @@ import psycopg2
 import getpass
 import pandas as pd
 from urllib import parse
-
 ```
 
 ## Model
@@ -43,28 +42,41 @@ The SQL Magic, powered by SQL ALchemy, needs the connection string in a specific
 
 
 ```python
-def rs_connect(dbname, dbhost, clusterid, dbport, dbuser, region_name='us-east-1'):
+def rs_connect(dbname, dbhost, clusterid, dbport, dbuser, region_name="us-east-1"):
 
-    ''' Connect to redshift using AIM credentials'''
-    aaki = getpass.getpass('aws_access_key_id')
-    asak = getpass.getpass('aws_secret_access_key')
-    aws_session = boto3.session.Session(aws_access_key_id=aaki, aws_secret_access_key=asak, region_name=region_name)
-    aaki = ''; asak = ''
-    
-    aws_rs = aws_session.client('redshift')
-    response = aws_rs.get_cluster_credentials(DbUser=dbuser, DbName=dbname, ClusterIdentifier=clusterid, AutoCreate=False)
-    
-    ''' Convert those credentials into Database user credentials '''
-    dbuser = response['DbUser']
-    dbpwd = response['DbPassword']
-    
-    ''' Generate the SQLAlchemy Connection string '''
-    connectionString = 'redshift+psycopg2://{username}:{password}@{host}:{port}/{db}?sslmode=prefer'.format(username=parse.quote_plus(dbuser), password=parse.quote_plus(dbpwd), host=dbhost, port=dbport, db=dbname)
+    """Connect to redshift using AIM credentials"""
+    aaki = getpass.getpass("aws_access_key_id")
+    asak = getpass.getpass("aws_secret_access_key")
+    aws_session = boto3.session.Session(
+        aws_access_key_id=aaki, aws_secret_access_key=asak, region_name=region_name
+    )
+    aaki = ""
+    asak = ""
 
-    dbuser = None; dbpwd = None; conn_str = None; response = None;
-    
+    aws_rs = aws_session.client("redshift")
+    response = aws_rs.get_cluster_credentials(
+        DbUser=dbuser, DbName=dbname, ClusterIdentifier=clusterid, AutoCreate=False
+    )
+
+    """ Convert those credentials into Database user credentials """
+    dbuser = response["DbUser"]
+    dbpwd = response["DbPassword"]
+
+    """ Generate the SQLAlchemy Connection string """
+    connectionString = "redshift+psycopg2://{username}:{password}@{host}:{port}/{db}?sslmode=prefer".format(
+        username=parse.quote_plus(dbuser),
+        password=parse.quote_plus(dbpwd),
+        host=dbhost,
+        port=dbport,
+        db=dbname,
+    )
+
+    dbuser = None
+    dbpwd = None
+    conn_str = None
+    response = None
+
     return connectionString
-
 ```
 
 ## Output
@@ -73,14 +85,14 @@ Run the below and replace the parameters with your own server's information.
 
 
 ```python
-connectionString = rs_connect('database_name', 'host', 'cluster_id', 5439, 'database_user')
-
+connectionString = rs_connect(
+    "database_name", "host", "cluster_id", 5439, "database_user"
+)
 ```
 
 
 ```python
 %sql $connectionString
-
 ```
 
 
@@ -94,7 +106,6 @@ select
     here
 from
   your.brain
-
 ```
 
 

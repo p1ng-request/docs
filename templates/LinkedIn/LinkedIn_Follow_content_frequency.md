@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook enables to follow the number of content views monthly on LinkedIn on your company page, cumulated since first activity.
+**Description:** This notebook allows users to track how often they post content on LinkedIn and follow the frequency of their posts.
 
 <div class="alert alert-info" role="info" style="margin: 10px">
     <p><b>Requirements:</b><br>To run this notebook, you must have already run one of this notebook to get your company post stats in CSV:
@@ -56,7 +56,7 @@ company_logo = "https://media-exp2.licdn.com/dms/image/C560BAQEOzG0TtTclXw/compa
 ```python
 naas.dependency.add()
 
-#-> Uncomment the line below to remove your dependency
+# -> Uncomment the line below to remove your dependency
 # naas.dependency.delete()
 ```
 
@@ -75,6 +75,7 @@ def read_csv(file_path):
         return pd.DataFrame()
     return df
 
+
 df_posts = read_csv(csv_input)
 df_posts
 ```
@@ -86,87 +87,112 @@ df_posts
 def get_trend(df_init, col_date, col_value, label):
     # Init variable
     df = df_init.copy()
-    
+
     # By period
     df[col_value] = df[col_value].astype(float)
     df[col_date] = pd.to_datetime(df[col_date].str[:-6]).dt.strftime(PERIOD)
     df = df.groupby(col_date, as_index=False).agg({col_value: "sum"})
-    
+
     # Calc sum cum
-    to_rename = {
-        col_date: "DATE",
-        col_value: "VARV"
-    }
+    to_rename = {col_date: "DATE", col_value: "VARV"}
     df = df.rename(columns=to_rename)
     df["VALUE"] = df.agg({"VARV": "cumsum"})
-    
+
     # Add last month
     if df.loc[df.index[-1], "DATE"] != datetime.now().strftime(PERIOD):
         tmp_df = df[-1:].reset_index(drop=True)
         tmp_df.loc[0, "DATE"] = datetime.now().strftime(PERIOD)
         tmp_df.loc[0, "VARV"] = 0
         df = pd.concat([df, tmp_df]).reset_index(drop=True)
-        
+
     # Calc order
     df["ORDER"] = pd.to_datetime(df["DATE"]).dt.strftime("%Y%m%d")
-    
+
     # Filter data
     df = df[df.ORDER.astype(int) >= 20210228]
     df = df.drop("ORDER", axis=1)
-    
+
     # Calc var
     df["VALUE_COMP"] = df["VALUE"] - df["VARV"]
     df["VARP"] = df["VARV"] / abs(df["VALUE_COMP"])
     df["LABEL"] = label
-    df = df[["DATE", "LABEL", "VALUE", "VALUE_COMP", "VARV", "VARP"]].reset_index(drop=True)
-    
+    df = df[["DATE", "LABEL", "VALUE", "VALUE_COMP", "VARV", "VARP"]].reset_index(
+        drop=True
+    )
+
     # Prep data
     df["VALUE_D"] = df["VALUE"].map("{:,.0f}".format).str.replace(",", " ")
     df["VARV_D"] = df["VARV"].map("{:,.0f}".format).str.replace(",", " ")
     df.loc[df["VARV"] >= 0, "VARV_D"] = "+" + df["VARV_D"]
     df["VARP_D"] = df["VARP"].map("{:,.0%}".format).str.replace(",", " ")
     df.loc[df["VARP"] >= 0, "VARP_D"] = "+" + df["VARP_D"]
-    
+
     # Create hovertext
-    df["TEXT"] = ("<b><span style='font-size: 14px;'>" + df["LABEL"].astype(str)  + " " + df["DATE"].astype(str) + " : " + df["VALUE_D"] + "</span></b><br>"
-                  "<span style='font-size: 12px;'>" + df["VARV_D"] + " this month (" + df["VARP_D"] + ")</span>")
-    df["TITLE"] = ("<b><span style='font-size: 20px;'>" + df["LABEL"].astype(str)  + " " + df["DATE"].astype(str)  + " : " + df["VALUE_D"] + "</span></b><br>"
-                  "<span style='font-size: 18px;'>" + df["VARV_D"] + " this month (" + df["VARP_D"] + ")</span>")
+    df["TEXT"] = (
+        "<b><span style='font-size: 14px;'>"
+        + df["LABEL"].astype(str)
+        + " "
+        + df["DATE"].astype(str)
+        + " : "
+        + df["VALUE_D"]
+        + "</span></b><br>"
+        "<span style='font-size: 12px;'>"
+        + df["VARV_D"]
+        + " this month ("
+        + df["VARP_D"]
+        + ")</span>"
+    )
+    df["TITLE"] = (
+        "<b><span style='font-size: 20px;'>"
+        + df["LABEL"].astype(str)
+        + " "
+        + df["DATE"].astype(str)
+        + " : "
+        + df["VALUE_D"]
+        + "</span></b><br>"
+        "<span style='font-size: 18px;'>"
+        + df["VARV_D"]
+        + " this month ("
+        + df["VARP_D"]
+        + ")</span>"
+    )
     for index, row in df.iterrows():
         if index > 0:
             n = df.loc[df.index[index], "VARV"]
-            n_1 = df.loc[df.index[index-1], "VARV"]
+            n_1 = df.loc[df.index[index - 1], "VARV"]
             df.loc[df.index[index], "VARV_COMP"] = n_1
             df.loc[df.index[index], "VARV_VARV"] = n - n_1
             if n_1 > 0:
                 df.loc[df.index[index], "VARP_VARV"] = (n - n_1) / abs(n_1)
     return df.reset_index(drop=True)
 
-df_actual = get_trend(df_posts,
-                      col_date="PUBLISHED_DATE",
-                      col_value="VIEWS",
-                      label="LinkedIn Posts views")
 
-df_actual#.tail(5)
+df_actual = get_trend(
+    df_posts, col_date="PUBLISHED_DATE", col_value="VIEWS", label="LinkedIn Posts views"
+)
+
+df_actual  # .tail(5)
 ```
 
 ### Plotting a barlinechart to get trend
 
 
 ```python
-def create_barlinechart(df,
-                        label="DATE",
-                        value="VALUE",
-                        varv="VARV",
-                        varp="VARP",
-                        text="TEXT",
-                        title="TITLE",
-                        xaxis_title="Weeks",
-                        yaxis_title_r=None,
-                        yaxis_title_l=None,
-                        primary_color=None,
-                        secundary_color=None,
-                        company_logo=None,):    
+def create_barlinechart(
+    df,
+    label="DATE",
+    value="VALUE",
+    varv="VARV",
+    varp="VARP",
+    text="TEXT",
+    title="TITLE",
+    xaxis_title="Weeks",
+    yaxis_title_r=None,
+    yaxis_title_l=None,
+    primary_color=None,
+    secundary_color=None,
+    company_logo=None,
+):
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -206,8 +232,8 @@ def create_barlinechart(df,
         legend=None,
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-#         width=1200,
-#         height=800,
+        #         width=1200,
+        #         height=800,
         autosize=False,
         margin=dict(
             l=100,
@@ -228,7 +254,7 @@ def create_barlinechart(df,
             sizex=0.12,
             sizey=0.12,
             xanchor="right",
-            yanchor="bottom"
+            yanchor="bottom",
         )
     )
 
@@ -236,24 +262,27 @@ def create_barlinechart(df,
     fig.update_yaxes(
         title_text=yaxis_title_r,
         title_font=dict(family="Arial", size=14, color="black"),
-        secondary_y=False
+        secondary_y=False,
     )
     fig.update_yaxes(
         title_text=yaxis_title_l,
         title_font=dict(family="Arial", size=14, color="black"),
-        secondary_y=True
+        secondary_y=True,
     )
     fig.update_traces(showlegend=False)
     fig.show()
     return fig
 
-fig = create_barlinechart(df_actual,
-                          primary_color=primary_color,
-                          secundary_color=secundary_color,
-                          company_logo=company_logo,
-                          xaxis_title="Months",
-                          yaxis_title_r="New views",
-                          yaxis_title_l="Total views")
+
+fig = create_barlinechart(
+    df_actual,
+    primary_color=primary_color,
+    secundary_color=secundary_color,
+    company_logo=company_logo,
+    xaxis_title="Months",
+    yaxis_title_r="New views",
+    yaxis_title_l="Total views",
+)
 ```
 
 ## Output
@@ -269,7 +298,7 @@ df_actual.to_csv(csv_output, index=False)
 # Share output with naas
 csv_link = naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -283,7 +312,7 @@ fig.write_html(html_output)
 # Share output with naas
 html_link = naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -297,6 +326,6 @@ fig.write_image(image_output)
 # Share output with naas
 image_link = naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

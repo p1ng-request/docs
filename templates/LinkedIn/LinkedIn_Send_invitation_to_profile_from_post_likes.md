@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows users to send LinkedIn invitations to profiles based on post likes.
+
 ## Input
 
 ### Import libraries
@@ -22,8 +24,8 @@ import time
 
 ```python
 # Credentials
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 
 # Post url
 POST_URL = "POST_URL"
@@ -34,7 +36,9 @@ POST_URL = "POST_URL"
 
 ```python
 # Post likes
-csv_post_likes = f"LINKEDIN_POST_LIKES_{POST_URL.split('activity-')[1].split('-')[0]}.csv"
+csv_post_likes = (
+    f"LINKEDIN_POST_LIKES_{POST_URL.split('activity-')[1].split('-')[0]}.csv"
+)
 ```
 
 ## Model
@@ -57,17 +61,20 @@ def get_connections(df):
         df_network = pd.DataFrame()
         profile = row["PUBLIC_ID"]
         print(f"➡️ Checking :", profile)
-        
+
         # Get distance with profile
         if profile != 0:
-            df_network = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(profile)
-            
+            df_network = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(
+                profile
+            )
+
         # Check if profile is already in your network
         if len(df_network) > 0:
             distance = df_network.loc[0, "DISTANCE"]
             df.loc[index, "DISTANCE"] = distance
             df.to_csv(csv_post_likes, index=False)
     return df
+
 
 df_profile = get_connections(df_post_likes)
 df_profile
@@ -85,7 +92,7 @@ def send_invitation(df):
         fullname = row["FULLNAME"]
         profile_id = row["PROFILE_ID"]
         print(f"➡️ Sending to :", fullname)
-        
+
         # Get distance with profile
         try:
             linkedin.invitation.send(recipient_url=profile_id)
@@ -93,6 +100,7 @@ def send_invitation(df):
             print("❌ Invitation not sent", e)
         time.sleep(3)
     return df
+
 
 df_invitation = send_invitation(df_profile)
 df_invitation

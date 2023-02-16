@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
+**Description:** Notion is a powerful database tool that helps you organize and store your data in an intuitive and efficient way.
+
 ## Input
 
 ### Import library

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows you to follow connections from a LinkedIn profile to build your network.
+
 ## Input
 
 ### Import library
@@ -22,8 +24,8 @@ import plotly.graph_objects as go
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Variables
@@ -61,29 +63,35 @@ df_connections
 
 
 ```python
-def get_trend(df,
-              date_col_name='CREATED_AT',
-              value_col_name="PROFILE_ID",
-              date_order='asc'):
-    
+def get_trend(
+    df, date_col_name="CREATED_AT", value_col_name="PROFILE_ID", date_order="asc"
+):
+
     # Format date
     df[date_col_name] = pd.to_datetime(df[date_col_name]).dt.strftime("%Y-%m-%d")
     df = df.groupby(date_col_name, as_index=False).agg({value_col_name: "count"})
     d = datetime.now().date()
     d2 = df.loc[df.index[0], date_col_name]
-    idx = pd.date_range(d2, d, freq = "D")
-    
+    idx = pd.date_range(d2, d, freq="D")
+
     df.set_index(date_col_name, drop=True, inplace=True)
     df.index = pd.DatetimeIndex(df.index)
     df = df.reindex(idx, fill_value=0)
     df[date_col_name] = pd.DatetimeIndex(df.index)
-    
+
     # Calc sum cum
     df["VALUE_CUM"] = df.agg({value_col_name: "cumsum"})
-    
-    df["TEXT"] = (df['VALUE_CUM'].astype(str) + " as of " + df[date_col_name].dt.strftime("%Y-%m-%d") +
-                  " (+" + df[value_col_name].astype(str) + " vs yesterday)")
+
+    df["TEXT"] = (
+        df["VALUE_CUM"].astype(str)
+        + " as of "
+        + df[date_col_name].dt.strftime("%Y-%m-%d")
+        + " (+"
+        + df[value_col_name].astype(str)
+        + " vs yesterday)"
+    )
     return df.reset_index(drop=True)
+
 
 df_trend = get_trend(df_connections)
 df_trend
@@ -96,7 +104,7 @@ df_trend
 def create_linechart(df, label, value, text, title):
     # Init
     fig = go.Figure()
-    
+
     # Create fig
     fig.add_trace(
         go.Scatter(
@@ -105,10 +113,10 @@ def create_linechart(df, label, value, text, title):
             text=df[text],
             hoverinfo="text",
             mode="lines",
-#             line=dict(color="black"),
+            #             line=dict(color="black"),
         )
     )
-    fig.update_traces(marker_color='black')
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         title=f"<b>{title}</b><br><span style='font-size: 13px;'>{df.loc[df.index[-1], 'TEXT']}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
@@ -118,12 +126,13 @@ def create_linechart(df, label, value, text, title):
         paper_bgcolor="white",
         xaxis_title="Date",
         xaxis_title_font=dict(family="Arial", size=11, color="black"),
-        yaxis_title='No. of connections',
+        yaxis_title="No. of connections",
         yaxis_title_font=dict(family="Arial", size=11, color="black"),
         margin_pad=10,
     )
     fig.show()
     return fig
+
 
 fig = create_linechart(df_trend, "CREATED_AT", "VALUE_CUM", "TEXT", title)
 ```
@@ -140,7 +149,7 @@ df_trend.to_csv(csv_output, index=False)
 # Share output with naas
 csv_link = naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -154,7 +163,7 @@ fig.write_html(html_output)
 # Share output with naas
 html_link = naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -168,6 +177,6 @@ fig.write_image(image_output)
 # Share output with naas
 image_link = naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

@@ -46,7 +46,7 @@ password = []
 for i in range(word_length):
     rchar = random.choice(chars)
     password.append(rchar)
-    
+
 # Return the composed password as a string
 generated_password = "".join(password)
 ```

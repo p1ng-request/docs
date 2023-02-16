@@ -4,7 +4,7 @@
 
 **Author:** [Oketunji Oludolapo](https://www.linkedin.com/in/oludolapo-oketunji/)
 
-This notebook will help you in looping over your tables and getting concise information
+**Description:** This notebook provides an overview of how to use loops to iterate over a dataframe in Python.
 
 ## Input
 
@@ -25,8 +25,19 @@ Loopring over dataframes can be a a lifesaver when there are lots of columns and
 ```python
 dict1 = {
     "student_id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    "student_name": ["Peter", "Dolly", "Maggie", "David", "Isabelle", "Harry", "Akin", "Abbey", "Victoria", "Sam"],
-    "student_course": np.random.choice(["Biology", "Physics", "Chemistry"], size=10)
+    "student_name": [
+        "Peter",
+        "Dolly",
+        "Maggie",
+        "David",
+        "Isabelle",
+        "Harry",
+        "Akin",
+        "Abbey",
+        "Victoria",
+        "Sam",
+    ],
+    "student_course": np.random.choice(["Biology", "Physics", "Chemistry"], size=10),
 }
 ```
 

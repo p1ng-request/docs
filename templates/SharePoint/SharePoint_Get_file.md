@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook get file from your SharePoint.
+**Description:** This notebook provides a guide to retrieving files from a SharePoint server.
 
 ## Input
 
@@ -30,7 +30,7 @@ SP_SITE = naas.secret.get("SP_SITE") or "ENTER_YOUR_SP_SITE_HERE"
 FILE_PATH_SOURCE = "ENTER_YOUR_FILE_PATH_SOURCE_HERE"
 
 # File path in your local
-FILE_PATH_DESTINATION = "ENTER_YOUR_FILE_PATH_DESTINATION_HERE" 
+FILE_PATH_DESTINATION = "ENTER_YOUR_FILE_PATH_DESTINATION_HERE"
 ```
 
 ## Model
@@ -39,7 +39,9 @@ FILE_PATH_DESTINATION = "ENTER_YOUR_FILE_PATH_DESTINATION_HERE"
 
 
 ```python
-file = sharepoint.connect(SP_ENDPOINT, SP_USERNAME, SP_PASSWORD, SP_SITE).get_file(FILE_PATH_SOURCE, FILE_PATH_DESTINATION)
+file = sharepoint.connect(SP_ENDPOINT, SP_USERNAME, SP_PASSWORD, SP_SITE).get_file(
+    FILE_PATH_SOURCE, FILE_PATH_DESTINATION
+)
 ```
 
 ## Output

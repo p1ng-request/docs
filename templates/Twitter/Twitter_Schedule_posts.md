@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows you to plan and schedule posts to your Twitter account.
+
 ## Input
 
 ### Import library
@@ -28,9 +30,7 @@ spreadsheet_id = "1rFzw8eeVNXyD5CEUjnpxVn_iA2hzabYKU6pRdmnZ3FQ"
 
 
 ```python
-df = naas_drivers.gsheet.connect(spreadsheet_id).get(
-    sheet_name="Sheet1"
-)
+df = naas_drivers.gsheet.connect(spreadsheet_id).get(sheet_name="Sheet1")
 df
 ```
 
@@ -38,14 +38,18 @@ df
 
 
 ```python
-now = datetime.now().replace(second=0, microsecond=0) #the Naas scheduler only allow minutes
+now = datetime.now().replace(
+    second=0, microsecond=0
+)  # the Naas scheduler only allow minutes
 now
 ```
 
 
 ```python
 # dd/mm/YY H:M:S
-dt_string = now.strftime("%d/%m/%Y %H:%M:%S") # To mach date time format in google sheet
+dt_string = now.strftime(
+    "%d/%m/%Y %H:%M:%S"
+)  # To mach date time format in google sheet
 dt_string
 ```
 
@@ -54,8 +58,8 @@ If BROADCAST_DATE matches the current time then send twit from text column.
 
 
 ```python
-#naas.scheduler.delete()
-naas.scheduler.add(recurrence="* * * * *") # to run every minute
+# naas.scheduler.delete()
+naas.scheduler.add(recurrence="* * * * *")  # to run every minute
 ```
 
 ## Output
@@ -65,11 +69,11 @@ naas.scheduler.add(recurrence="* * * * *") # to run every minute
 
 ```python
 for i in range(len(df)):
-    print(dt_string, df['BROADCAST_DATE'][i])
-    if dt_string == df['BROADCAST_DATE'][i]:
-        twitter_post = df['TEXT'][i]
+    print(dt_string, df["BROADCAST_DATE"][i])
+    if dt_string == df["BROADCAST_DATE"][i]:
+        twitter_post = df["TEXT"][i]
         event = "naas_demo"
         key = "ke4AigvXI5-EABaowdLt4fju1aOUxeMxSXQoN8FVyA"
-        data = { "value1": twitter_post }
-        result = naas_drivers.ifttt.connect(key).send(event, data)   
+        data = {"value1": twitter_post}
+        result = naas_drivers.ifttt.connect(key).send(event, data)
 ```

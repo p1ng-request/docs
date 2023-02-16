@@ -54,14 +54,17 @@ df.tail(10)
 def create_linechart(df, label, value):
     # Init
     fig = go.Figure()
-    
+
     # Create fig
     fig.add_trace(
         go.Scatter(
             x=df[label],
             y=df[value],
             hoverinfo="text",
-            hovertext=df[label].astype(str) + "<br>" + df[value].astype(str) + " million square km",
+            hovertext=df[label].astype(str)
+            + "<br>"
+            + df[value].astype(str)
+            + " million square km",
             mode="lines+text",
         )
     )
@@ -74,12 +77,13 @@ def create_linechart(df, label, value):
         paper_bgcolor="white",
         xaxis_title="Year",
         xaxis_title_font=dict(family="Arial", size=11, color="black"),
-        yaxis_title='million square km',
+        yaxis_title="million square km",
         yaxis_title_font=dict(family="Arial", size=11, color="black"),
         margin_pad=10,
     )
     fig.show()
     return fig
+
 
 fig = create_linechart(df, "year", "extent")
 ```
@@ -99,7 +103,7 @@ fig.write_image(image_output)
 naas.asset.add(html_output, params={"inline": True})
 naas.asset.add(image_output)
 
-#-> Uncomment lines below to remove your assets
+# -> Uncomment lines below to remove your assets
 # naas.asset.delete(html_output)
 # naas.asset.delete(image_output)
 ```

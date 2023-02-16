@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-This notebook shows how to use Naas Notion driver to update a page (properties + content) inside a database.
+**Description:** This page allows you to update existing content in Notion.
 
 ## Input
 
@@ -12,7 +12,7 @@ This notebook shows how to use Naas Notion driver to update a page (properties +
 
 
 ```python
-from naas_drivers import notion 
+from naas_drivers import notion
 ```
 
 ### Input variables
@@ -24,7 +24,9 @@ from naas_drivers import notion
 token = "*****"
 
 # Enter Database URL
-page_url = "https://www.notion.so/naas-official/Daily-med-03952fcb93c045bba519a7564a64045e"
+page_url = (
+    "https://www.notion.so/naas-official/Daily-med-03952fcb93c045bba519a7564a64045e"
+)
 ```
 
 ## Model
@@ -43,16 +45,16 @@ Properties are associated with the database. If you put a page type that is not 
 
 
 ```python
-page.title("Name","Page updated")
-page.rich_text("Text","Ceci est toto")
+page.title("Name", "Page updated")
+page.rich_text("Text", "Ceci est toto")
 page.number("Number", 42)
-page.select("Select","Value3") 
-page.multi_select("Muti Select",["Value1","Value2","Value3"])
-page.date("Date","2021-10-03T17:01:26") #Follow ISO 8601 format
-page.people("People", ["6e3bab71-beeb-484b-af99-ea30fdef4773"]) #list of ID of users
+page.select("Select", "Value3")
+page.multi_select("Muti Select", ["Value1", "Value2", "Value3"])
+page.date("Date", "2021-10-03T17:01:26")  # Follow ISO 8601 format
+page.people("People", ["6e3bab71-beeb-484b-af99-ea30fdef4773"])  # list of ID of users
 page.checkbox("Checkbox", False)
-page.email("Email","jeremy@naas.ai")
-page.phone_number("Phone number","+33 6 21 83 11 12")
+page.email("Email", "jeremy@naas.ai")
+page.phone_number("Phone number", "+33 6 21 83 11 12")
 page.update()
 ```
 

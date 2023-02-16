@@ -4,7 +4,7 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-Pre-requisite: Create your own <a href="">Google API JSON credential</a>
+**Description:** This notebook provides an analysis of the amount of time visitors spend on a landing page using Google Analytics.
 
 ## Input
 
@@ -23,7 +23,7 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 ```
 
 ### Get view id from google analytics
@@ -40,7 +40,7 @@ view_id = "228952707"
 naas.scheduler.add(cron="0 8 * * *")
 naas.dependency.add(json_path)
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -50,7 +50,9 @@ naas.dependency.add(json_path)
 
 
 ```python
-df_avg_time = googleanalytics.connect(json_path=json_path).views.get_time_landing(view_id=view_id, landing_path="/")
+df_avg_time = googleanalytics.connect(json_path=json_path).views.get_time_landing(
+    view_id=view_id, landing_path="/"
+)
 df_avg_time
 ```
 
@@ -60,7 +62,7 @@ df_avg_time
 
 
 ```python
-avg_time_on_landing['avg_time_landing']
+avg_time_on_landing["avg_time_landing"]
 ```
 
 ### Plot Time spent on landing page
@@ -78,18 +80,18 @@ def gen_tickvals(avg_time_landing: pd.Series) -> tuple:
     ticktext = [str(timedelta(seconds=v)) for v in tickvals]
     return tickvals, ticktext
 
+
 def plot_time_spent_on_landing(df: pd.DataFrame):
     """
     Plot time spent on landing page in Plotly.
     """
-    tickvals, ticktext = gen_tickvals(df['avg_time_landing'])
+    tickvals, ticktext = gen_tickvals(df["avg_time_landing"])
     data = go.Scatter(
-        x=pd.to_datetime(df['Year Month'] + "01"),
-        y=df['avg_time_landing']
+        x=pd.to_datetime(df["Year Month"] + "01"), y=df["avg_time_landing"]
     )
 
     fig = go.Figure(data=data)
-    fig.update_traces(mode='lines+markers')
+    fig.update_traces(mode="lines+markers")
     fig.update_layout(title="Avg. Time on Landing Page (in seconds)", template="none")
     fig.update_yaxes(ticktext=ticktext, tickvals=tickvals)
     return fig
@@ -102,7 +104,7 @@ plot_time_spent_on_landing(avg_time_on_landing)
 
 
 ```python
-avg_time_on_landing['avg_time_landing']
+avg_time_on_landing["avg_time_landing"]
 ```
 
 

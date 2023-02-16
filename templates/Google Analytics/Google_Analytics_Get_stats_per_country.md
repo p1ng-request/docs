@@ -4,7 +4,7 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-Pre-requisite: Create your own <a href="">Google API JSON credential</a>
+**Description:** This notebook provides a comprehensive analysis of website traffic by country using Google Analytics.
 
 ## Input
 
@@ -27,7 +27,7 @@ from naas_drivers import googleanalytics
 
 
 ```python
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 ```
 
 ### Get view id from google analytics
@@ -44,7 +44,7 @@ view_id = "228952707"
 naas.scheduler.add(cron="0 8 * * *")
 naas.dependency.add(json_path)
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -61,14 +61,16 @@ df_country = googleanalytics.connect(json_path=json_path).views.get_data(
     dimensions="ga:month",
     start_date=None,
     end_date=None,
-    format_type="pivot"
+    format_type="pivot",
 )
 df_country
 ```
 
 
 ```python
-sessions_per_country = googleanalytics.connect(json_path=json_path).views.get_country(view_id) # default: metrics="ga:sessions"
+sessions_per_country = googleanalytics.connect(json_path=json_path).views.get_country(
+    view_id
+)  # default: metrics="ga:sessions"
 ```
 
 
@@ -78,7 +80,7 @@ sessions_per_country
 
 
 ```python
-users_per_country = googleanalytics.views.get_country(view_id, metrics="ga:users")  
+users_per_country = googleanalytics.views.get_country(view_id, metrics="ga:users")
 ```
 
 ## Output
@@ -97,9 +99,13 @@ users_per_country.head()
 
 
 ```python
-sessions_per_country = sessions_per_country.reset_index().rename(columns={"index": "Country"})
+sessions_per_country = sessions_per_country.reset_index().rename(
+    columns={"index": "Country"}
+)
 mapping = {country.name: country.alpha_3 for country in pycountry.countries}
-sessions_per_country['iso_alpha'] = sessions_per_country['Country'].apply(lambda x: mapping.get(x))
+sessions_per_country["iso_alpha"] = sessions_per_country["Country"].apply(
+    lambda x: mapping.get(x)
+)
 ```
 
 
@@ -109,10 +115,13 @@ sessions_per_country
 
 
 ```python
-fig = px.choropleth(sessions_per_country, locations="iso_alpha",
-                    color="Sessions", 
-                    hover_name="Country",
-                    color_continuous_scale="Greens")
+fig = px.choropleth(
+    sessions_per_country,
+    locations="iso_alpha",
+    color="Sessions",
+    hover_name="Country",
+    color_continuous_scale="Greens",
+)
 fig.show()
 ```
 

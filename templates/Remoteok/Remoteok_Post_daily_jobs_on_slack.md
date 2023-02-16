@@ -4,6 +4,8 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
+**Description:** This notebook allows you to post daily jobs from Remoteok to your Slack workspace.
+
 ## Input
 
 ### Import libraries
@@ -43,15 +45,17 @@ sheet_name = "REMOTEOK_POSTS"
 
 
 ```python
-categories = ['machine learning',
-              'data science',
-              'nlp',
-              'deep learning',
-              'computer vision',
-              'data',
-              'natural language processing',
-              'data engineer']
-date_from  = -10 ### this is 10 days from now => must be negative
+categories = [
+    "machine learning",
+    "data science",
+    "nlp",
+    "deep learning",
+    "computer vision",
+    "data",
+    "natural language processing",
+    "data engineer",
+]
+date_from = -10  ### this is 10 days from now => must be negative
 ```
 
 ### Set the Scheduler
@@ -71,7 +75,7 @@ naas.scheduler.add(recurrence="0 9 * * *")
 try:
     df_jobs_log = gsheet.connect(spreadsheet_id).get(sheet_name=sheet_name)
 except KeyError as e:
-    print('Gsheet is empty!!')
+    print("Gsheet is empty!!")
     df_jobs_log = pd.DataFrame()
 ```
 
@@ -83,12 +87,13 @@ REMOTEOK_API = "https://remoteok.com/api"
 REMOTEOK_DATETIME = "%Y-%m-%dT%H:%M:%S"
 NAAS_DATETIME = "%Y-%m-%d %H:%M:%S"
 
+
 def get_jobs(remoteok_url, categories):
     df = pd.DataFrame()
     headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-        }
-    index=0
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
+    }
+    index = 0
     for tag in categories:
         url = remoteok_url + f"?tag={tag}"
         res = requests.get(url, headers=headers)
@@ -96,30 +101,37 @@ def get_jobs(remoteok_url, categories):
             res.raise_for_status()
         except requests.HTTPError as e:
             return e
-        
+
         job_details = res.json()
-        
-        if len(job_details)==1:
+
+        if len(job_details) == 1:
             continue
         else:
             for idx, job in enumerate(job_details):
-                if idx!=0:
-                    date = job['date'].split('+')[0]
-                    publication_time = datetime.strptime(date, REMOTEOK_DATETIME).timestamp()
-                    required_time = time.time() + date_from* 24 * 60 * 60  ### time in seconds
-                    
+                if idx != 0:
+                    date = job["date"].split("+")[0]
+                    publication_time = datetime.strptime(
+                        date, REMOTEOK_DATETIME
+                    ).timestamp()
+                    required_time = (
+                        time.time() + date_from * 24 * 60 * 60
+                    )  ### time in seconds
+
                     if publication_time >= required_time:
-                        df.loc[index, 'URL'] = job.get('url')
-                        df.loc[index, 'TITLE'] = job.get('position')
-                        df.loc[index, 'COMPANY'] = job.get('company')
-                        df.loc[index, 'TAGS'] = ", ".join(job.get('tags'))
-                        df.loc[index, 'LOCATION'] = job.get('location')
-                        df.loc[index, 'PUBLICATION_DATE'] = datetime.fromtimestamp(publication_time).strftime(NAAS_DATETIME)
-                        index+=1
-    
-    df = df.drop_duplicates(subset = 'URL', keep='first')
-    df = df.sort_values(by='PUBLICATION_DATE', ascending=False)
+                        df.loc[index, "URL"] = job.get("url")
+                        df.loc[index, "TITLE"] = job.get("position")
+                        df.loc[index, "COMPANY"] = job.get("company")
+                        df.loc[index, "TAGS"] = ", ".join(job.get("tags"))
+                        df.loc[index, "LOCATION"] = job.get("location")
+                        df.loc[index, "PUBLICATION_DATE"] = datetime.fromtimestamp(
+                            publication_time
+                        ).strftime(NAAS_DATETIME)
+                        index += 1
+
+    df = df.drop_duplicates(subset="URL", keep="first")
+    df = df.sort_values(by="PUBLICATION_DATE", ascending=False)
     return df
+
 
 df_jobs = get_jobs(REMOTEOK_API, categories)
 df_jobs.head()
@@ -132,10 +144,11 @@ df_jobs.head()
 def remove_duplicates(df1, df2):
     # Get jobs log
     jobs_log = df1.URL.unique()
-    
+
     # Exclude jobs already log from jobs
     df2 = df2[~df2.URL.isin(jobs_log)]
     return df2.sort_values(by="PUBLICATION_DATE")
+
 
 df_new_jobs = remove_duplicates(df_jobs_log, df_jobs)
 df_new_jobs
@@ -147,9 +160,9 @@ df_new_jobs
 
 
 ```python
-gsheet.connect(spreadsheet_id).send(sheet_name=sheet_name,
-                                    data=df_new_jobs,
-                                    append=True)
+gsheet.connect(spreadsheet_id).send(
+    sheet_name=sheet_name, data=df_new_jobs, append=True
+)
 ```
 
 ### Send all job links to the slack channel

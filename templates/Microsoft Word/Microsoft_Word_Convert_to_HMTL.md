@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to convert Microsoft Word documents into HTML format.
+
 ## Input
 
 ### Import library
@@ -25,8 +27,8 @@ except:
 ```python
 with open("naas.docx", "rb") as docx_file:
     result = mammoth.convert_to_html(docx_file)
-    html = result.value # The generated HTML
-    messages = result.messages # Any messages, such as warnings during conversion
+    html = result.value  # The generated HTML
+    messages = result.messages  # Any messages, such as warnings during conversion
 ```
 
 ## Output

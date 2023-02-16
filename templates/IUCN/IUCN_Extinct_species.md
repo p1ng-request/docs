@@ -63,56 +63,62 @@ csv_input = "Table 3  Species by kingdom and class - show all.csv"
 
 ```python
 # We load the csv file
-data = pd.read_csv(csv_input, ',')
+data = pd.read_csv(csv_input, ",")
 
 # We set the column Name as index
-data.set_index('Name', inplace = True)
+data.set_index("Name", inplace=True)
 
 # Then we select the columns EX, EW and Name, and all the lines we want in the graph
-table = data.loc[["Total",
-                  "GASTROPODA",
-                  "BIVALVIA",
-                  "AVES",
-                  "MAMMALIA",
-                  "ACTINOPTERYGII",
-                  "CEPHALASPIDOMORPHI",
-                  "INSECTA",
-                  "AMPHIBIA",
-                  "REPTILIA",
-                  "ARACHNIDA",
-                  "CLITELLATA",
-                  "DIPLOPODA",
-                  "ENOPLA",
-                  "TURBELLARIA",
-                 "MALACOSTRACA",
-                 "MAXILLOPODA",
-                 "OSTRACODA"]# add species here
-                 ,"EX":"EW"]
+table = data.loc[
+    [
+        "Total",
+        "GASTROPODA",
+        "BIVALVIA",
+        "AVES",
+        "MAMMALIA",
+        "ACTINOPTERYGII",
+        "CEPHALASPIDOMORPHI",
+        "INSECTA",
+        "AMPHIBIA",
+        "REPTILIA",
+        "ARACHNIDA",
+        "CLITELLATA",
+        "DIPLOPODA",
+        "ENOPLA",
+        "TURBELLARIA",
+        "MALACOSTRACA",
+        "MAXILLOPODA",
+        "OSTRACODA",
+    ],  # add species here
+    "EX":"EW",
+]
 table
 ```
 
 
 ```python
 # We add a new column 'CATEGORY' to our Dataframe
-table["CATEGORY"] = ["Total",
-                     "Molluscs",
-                     "Molluscs",
-                     "Birds",
-                     "Mammals",
-                     "Fishes",
-                     "Fishes",
-                     "Insects",
-                     "Amphibians",
-                     "Reptiles",
-                      "Others",
-                      "Others",
-                      "Others",
-                      "Others",
-                      "Others",
-                    "Crustaceans",
-                    "Crustaceans",
-                    "Crustaceans"]
-table = table.loc[:,["CATEGORY","EX"]] # we drop the column "EW"
+table["CATEGORY"] = [
+    "Total",
+    "Molluscs",
+    "Molluscs",
+    "Birds",
+    "Mammals",
+    "Fishes",
+    "Fishes",
+    "Insects",
+    "Amphibians",
+    "Reptiles",
+    "Others",
+    "Others",
+    "Others",
+    "Others",
+    "Others",
+    "Crustaceans",
+    "Crustaceans",
+    "Crustaceans",
+]
+table = table.loc[:, ["CATEGORY", "EX"]]  # we drop the column "EW"
 table
 # ---NOTE : If you want to add new species, you have to also add his category
 ```
@@ -121,8 +127,8 @@ table
 ```python
 # We groupby CATEGORIES :
 table.reset_index(drop=True, inplace=True)
-table = table.groupby(['CATEGORY']).sum().reset_index()
-table.rename(columns = {'EX':'Extincted'}, inplace=True)
+table = table.groupby(["CATEGORY"]).sum().reset_index()
+table.rename(columns={"EX": "Extincted"}, inplace=True)
 table
 ```
 
@@ -134,21 +140,21 @@ table
 ```python
 # We use plotly to show datas with an horizontal bar chart
 def create_barchart(table):
-    Graph = table.sort_values('Extincted', ascending=False)
-    fig = px.bar(Graph,
-                 x="Extincted",
-                 y="CATEGORY",
-                 color="CATEGORY",
-                 orientation="h")
-    fig.update_layout(title_text="Number of species that have gone extinct since 1500",
-                      title_x=0.5)
-    fig.add_annotation(x=800,
-                       y=0,
-                       text="Source : IUCN Red List of Threatened Species<br>https://www.iucnredlist.org/statistics",
-                       showarrow=False)
+    Graph = table.sort_values("Extincted", ascending=False)
+    fig = px.bar(Graph, x="Extincted", y="CATEGORY", color="CATEGORY", orientation="h")
+    fig.update_layout(
+        title_text="Number of species that have gone extinct since 1500", title_x=0.5
+    )
+    fig.add_annotation(
+        x=800,
+        y=0,
+        text="Source : IUCN Red List of Threatened Species<br>https://www.iucnredlist.org/statistics",
+        showarrow=False,
+    )
     fig.show()
     return fig
-    
+
+
 fig = create_barchart(table)
 ```
 

@@ -4,6 +4,8 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
+**Description:** This notebook demonstrates how to use PyCaret to quickly and easily build and evaluate machine learning models for classification tasks.
+
 ## Input
 
 ### Import libraries
@@ -26,7 +28,7 @@ except:
 
 ```python
 csv_path = "https://raw.githubusercontent.com/MinuraPunchihewa/pycaret-automl/main/data/iris.csv"
-target_column = 'variety'
+target_column = "variety"
 ```
 
 ## Model
@@ -103,14 +105,14 @@ final_model = finalize_model(best_model)
 
 
 ```python
-save_model(final_model, 'classification_model')
+save_model(final_model, "classification_model")
 ```
 
 ### Load saved model from pickle file
 
 
 ```python
-model = load_model('classification_model')
+model = load_model("classification_model")
 ```
 
 ### Create Dockerfile for model
@@ -118,5 +120,5 @@ model = load_model('classification_model')
 
 ```python
 # also creates a requirements.txt file for dependencies
-create_docker('classification_model')
+create_docker("classification_model")
 ```

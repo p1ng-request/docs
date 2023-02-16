@@ -4,6 +4,8 @@
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
+**Description:** This notebook provides a guide to leveraging LinkedIn posts to generate leads for your business.
+
 ## Input
 
 ### Import libraries
@@ -45,19 +47,19 @@ HS_API_TOKEN = "<YOUR_HUBSPOT_API_TOKEN>"
 # Your company located after "reports-dashboard/" when you are connected in HubSpot https://app.hubspot.com/reports-dashboard/2474088/view/244930
 HS_COMPANY_ID = "<YOUR_HUBSPOT_COMPANY_ID>"
 
-#Hubspot contact URL
-HS_CONTACT_URL = "https://app.hubspot.com/contacts/"+HS_COMPANY_ID+"/contact/"
+# Hubspot contact URL
+HS_CONTACT_URL = "https://app.hubspot.com/contacts/" + HS_COMPANY_ID + "/contact/"
 
 # Contact owner => contact id to whom task needs to be assigned
-HS_OWNER_ID = "<YOUR_HUBSPOT_API_TOKEN>" #remove double quotes from owner id (to be added as integer value)
+HS_OWNER_ID = "<YOUR_HUBSPOT_API_TOKEN>"  # remove double quotes from owner id (to be added as integer value)
 
 # Time delay to set due date for tasks in days
 time_delay = 10
-    
+
 # Calc timestamp
 tstampobj = datetime.now() + timedelta(days=time_delay)
 tstamp = tstampobj.timestamp() * 1000
-     
+
 hs = hubspot.connect(HS_API_TOKEN)
 ```
 
@@ -74,7 +76,9 @@ SEND_EMAIL_TO = "<YOUR_EMAIL_ID>"
 
 
 ```python
-df_posts = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(PROFILE_URL, count=100)
+df_posts = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(
+    PROFILE_URL, count=100
+)
 df_posts.head()
 ```
 
@@ -85,7 +89,7 @@ df_posts.head()
 def get_likes(df_posts):
     DF_all_post_likes = pd.DataFrame()
     for index, row in df_posts.iterrows():
-        df = linkedin.connect(LI_AT, JSESSIONID).post.get_likes(row['POST_URL'])
+        df = linkedin.connect(LI_AT, JSESSIONID).post.get_likes(row["POST_URL"])
         DF_all_post_likes = DF_all_post_likes.append(df)
 ```
 
@@ -99,14 +103,17 @@ get_likes(df_posts)
 
 ```python
 def count_likes(df):
-    to_group = ["PROFILE_URN",
-                "PROFILE_ID",
-                "FIRSTNAME",
-                "LASTNAME"]
-    #df = df.groupby(to_group, as_index=False).agg({"PROFILE_ID": "count"}).reset_index(name='count')
-    #df = df.sort_values(by="PROFILE_ID", ascending=False)
-    df2 = df.groupby(['PROFILE_ID']).size().sort_values(ascending=False).reset_index(name='LIKE_COUNT')
+    to_group = ["PROFILE_URN", "PROFILE_ID", "FIRSTNAME", "LASTNAME"]
+    # df = df.groupby(to_group, as_index=False).agg({"PROFILE_ID": "count"}).reset_index(name='count')
+    # df = df.sort_values(by="PROFILE_ID", ascending=False)
+    df2 = (
+        df.groupby(["PROFILE_ID"])
+        .size()
+        .sort_values(ascending=False)
+        .reset_index(name="LIKE_COUNT")
+    )
     return df2
+
 
 df_counts = count_likes(DF_all_post_likes)
 df_counts
@@ -131,15 +138,15 @@ conditions = [
     (df_counts["LIKE_COUNT"] <= cluster_1),
     (df_counts["LIKE_COUNT"] > cluster_1) & (df_counts["LIKE_COUNT"] <= cluster_2),
     (df_counts["LIKE_COUNT"] > cluster_2) & (df_counts["LIKE_COUNT"] <= cluster_3),
-    (df_counts["LIKE_COUNT"] > cluster_3)
-    ]
+    (df_counts["LIKE_COUNT"] > cluster_3),
+]
 
-values = ['L4', 'L3', 'L2', 'L1']
+values = ["L4", "L3", "L2", "L1"]
 ```
 
 
 ```python
-df_counts['POTENTIAL_LEAD'] = np.select(conditions, values)
+df_counts["POTENTIAL_LEAD"] = np.select(conditions, values)
 df_counts
 ```
 
@@ -150,30 +157,46 @@ df_counts
 
 
 ```python
-df_leads = df_counts.loc[df_counts['POTENTIAL_LEAD'].isin(["L1", "L2"])]
+df_leads = df_counts.loc[df_counts["POTENTIAL_LEAD"].isin(["L1", "L2"])]
 df_leads
 ```
 
 
 ```python
-leads_list = [];
+leads_list = []
 
 r_count = 1
 
 for index, row in df_leads.iterrows():
-    profileid = row['PROFILE_ID']
-    profileurl = "https://www.linkedin.com/in/"+profileid+"/"
-       
-    PROFILECONTACTS = linkedin.connect(LI_AT, JSESSIONID).profile.get_contact(profileurl)
-    PROFILEIDENTITY = linkedin.connect(LI_AT, JSESSIONID).profile.get_identity(profileurl)
-        
-    profileemail = PROFILECONTACTS.at[0,'EMAIL']
-    profilephoneno = PROFILECONTACTS.at[0,'PHONENUMBER']
-    profilename = PROFILEIDENTITY.at[0,'FIRSTNAME'] + " "+ PROFILEIDENTITY.at[0,'LASTNAME']
-    profilefirstname = PROFILEIDENTITY.at[0,'FIRSTNAME']
-    profilelastname = PROFILEIDENTITY.at[0,'LASTNAME']
-    profileoccupation = PROFILEIDENTITY.at[0,'OCCUPATION']
-    leads_list.append([profilename, profilefirstname, profilelastname, profileemail, profilephoneno, profileoccupation, profileurl])
+    profileid = row["PROFILE_ID"]
+    profileurl = "https://www.linkedin.com/in/" + profileid + "/"
+
+    PROFILECONTACTS = linkedin.connect(LI_AT, JSESSIONID).profile.get_contact(
+        profileurl
+    )
+    PROFILEIDENTITY = linkedin.connect(LI_AT, JSESSIONID).profile.get_identity(
+        profileurl
+    )
+
+    profileemail = PROFILECONTACTS.at[0, "EMAIL"]
+    profilephoneno = PROFILECONTACTS.at[0, "PHONENUMBER"]
+    profilename = (
+        PROFILEIDENTITY.at[0, "FIRSTNAME"] + " " + PROFILEIDENTITY.at[0, "LASTNAME"]
+    )
+    profilefirstname = PROFILEIDENTITY.at[0, "FIRSTNAME"]
+    profilelastname = PROFILEIDENTITY.at[0, "LASTNAME"]
+    profileoccupation = PROFILEIDENTITY.at[0, "OCCUPATION"]
+    leads_list.append(
+        [
+            profilename,
+            profilefirstname,
+            profilelastname,
+            profileemail,
+            profilephoneno,
+            profileoccupation,
+            profileurl,
+        ]
+    )
     r_count = r_count + 1
 ```
 
@@ -183,33 +206,33 @@ for index, row in df_leads.iterrows():
 
 
 ```python
-#to store the resulting output of create contact method
+# to store the resulting output of create contact method
 contact_id = ""
 HS_CONTACT_ID_LIST = []
 for i in leads_list:
-        profilename = i[0]
-        profilefirstname = i[1]
-        profilelastname = i[2]
-        profileemail = i[3]
-        profilephoneno = i[4]
-        profileoccupation = i[5]
-        profileurl = i[6]
-        # With send method
-        data = {"properties": 
-                {
-                    "linkedinbio": profileurl,
-                    "firstname": profilefirstname,
-                    "lastname": profilelastname,
-                    "jobtitle": profileoccupation,
-                    "email": profileemail,
-                    "phone": profilephoneno,
-                     "hubspot_owner_id": 111111086,
-                }
-               }
-        #write data to CRM ( create new contact in CRM)
-       
-        contact_id = hs.contacts.send(data)
-        HS_CONTACT_ID_LIST.append([contact_id, profileurl])
+    profilename = i[0]
+    profilefirstname = i[1]
+    profilelastname = i[2]
+    profileemail = i[3]
+    profilephoneno = i[4]
+    profileoccupation = i[5]
+    profileurl = i[6]
+    # With send method
+    data = {
+        "properties": {
+            "linkedinbio": profileurl,
+            "firstname": profilefirstname,
+            "lastname": profilelastname,
+            "jobtitle": profileoccupation,
+            "email": profileemail,
+            "phone": profilephoneno,
+            "hubspot_owner_id": 111111086,
+        }
+    }
+    # write data to CRM ( create new contact in CRM)
+
+    contact_id = hs.contacts.send(data)
+    HS_CONTACT_ID_LIST.append([contact_id, profileurl])
 ```
 
 <h4>Build Email Template</h4> 
@@ -218,18 +241,29 @@ for i in leads_list:
 
 ```python
 table_header = f'<table style="border-collapse:collapse;border-spacing:0;font-family:Arial"><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;text-align:left">Contact ID</th><th style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;text-align:left">Hubspot URL</th><th style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;text-align:left">LinkedIN URL</th></tr></thead><tbody>'
-table_body = ''
-table_footer = '</tbody></table>'
+table_body = ""
+table_footer = "</tbody></table>"
 
 for i in HS_CONTACT_ID_LIST:
     hs_contact_url = HS_CONTACT_URL + i[0]
     linkedin_url = i[1]
-    tablerow = '<tr><td style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;">'+i[0]+'</td><td style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;">'+hs_contact_url+'</td><td style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;">'+linkedin_url+'</td></tr>'
+    tablerow = (
+        '<tr><td style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;">'
+        + i[0]
+        + '</td><td style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;">'
+        + hs_contact_url
+        + '</td><td style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;">'
+        + linkedin_url
+        + "</td></tr>"
+    )
     table_body = table_body + tablerow
 
 table = table_header + table_body + table_footer
 
-email_body = f'<p style="font-family:Arial">Hi there,</p><br/><p style="font-family:Arial">Following new task(s) has been created for you :</p><br/>'+table
+email_body = (
+    f'<p style="font-family:Arial">Hi there,</p><br/><p style="font-family:Arial">Following new task(s) has been created for you :</p><br/>'
+    + table
+)
 ```
 
 ## Output
@@ -238,19 +272,26 @@ email_body = f'<p style="font-family:Arial">Hi there,</p><br/><p style="font-fam
 
 
 ```python
-def create_task(owner_id,
-                tstamp,
-                contact_id,contact_props,contact_linkedin_url,hs_contact_url,engagement="TASK"):
-    """ owner_id=HS_OWNER_ID, tstamp=tstamp, subject=subject, body=body, status=status, engagement="TASK"
-    Engagement type = TASK | NOTE | EMAIL | MEETING | CALL 
+def create_task(
+    owner_id,
+    tstamp,
+    contact_id,
+    contact_props,
+    contact_linkedin_url,
+    hs_contact_url,
+    engagement="TASK",
+):
+    """owner_id=HS_OWNER_ID, tstamp=tstamp, subject=subject, body=body, status=status, engagement="TASK"
+    Engagement type = TASK | NOTE | EMAIL | MEETING | CALL
     """
-   
-    payload = json.dumps({
+
+    payload = json.dumps(
+        {
             "engagement": {
-                "active": 'true',
+                "active": "true",
                 "ownerId": 111111086,
                 "type": "TASK",
-                "timestamp": tstamp
+                "timestamp": tstamp,
             },
             "associations": {
                 "contactIds": [1551],
@@ -258,20 +299,25 @@ def create_task(owner_id,
                 "dealIds": [],
                 "ownerIds": [],
             },
-
             "metadata": {
-                "body": "Hi there, you need to contact following user & task is already assigned to you.<br/>" + "Name :" +contact_props['firstname']+ contact_props['lastname'] + " Contact URL : " + hs_contact_url,
-                "subject": "Task created for Contact ID :"+ contact_id,
+                "body": "Hi there, you need to contact following user & task is already assigned to you.<br/>"
+                + "Name :"
+                + contact_props["firstname"]
+                + contact_props["lastname"]
+                + " Contact URL : "
+                + hs_contact_url,
+                "subject": "Task created for Contact ID :" + contact_id,
                 "status": "NOT_STARTED",
-                "forObjectType": "CONTACT"
-            }
-        });
+                "forObjectType": "CONTACT",
+            },
+        }
+    )
     url = "https://api.hubapi.com/engagements/v1/engagements"
     params = {"hapikey": HS_API_TOKEN}
-    headers = {'Content-Type': "application/json"}
+    headers = {"Content-Type": "application/json"}
     # Post requests
-    res = requests.post(url,data=payload,headers=headers,params=params)
-        
+    res = requests.post(url, data=payload, headers=headers, params=params)
+
     # Check requests
     try:
         res.raise_for_status()
@@ -282,7 +328,7 @@ def create_task(owner_id,
     # Fetch the task id of the current task created
     task_id = res_json.get("engagement").get("id")
     print("🎆 Task created successfully: ", task_id)
-        
+
     return res_json
 ```
 
@@ -292,17 +338,19 @@ TASK_ID_LIST = []
 for i in HS_CONTACT_ID_LIST:
     contact_id = i[0]
     contact = hs.contacts.get(contact_id)
-    contact_props = contact.get('properties')
+    contact_props = contact.get("properties")
     contact_linkedin_url = i[1]
     hs_contact_url = HS_CONTACT_URL + contact_id
-    #print(hs_contact_url)
-    result = create_task(owner_id=HS_OWNER_ID, 
-                tstamp=tstamp, 
-                contact_id=contact_id ,
-                contact_props = contact_props,
-                contact_linkedin_url=contact_linkedin_url,
-                hs_contact_url = hs_contact_url, 
-                engagement="TASK")
+    # print(hs_contact_url)
+    result = create_task(
+        owner_id=HS_OWNER_ID,
+        tstamp=tstamp,
+        contact_id=contact_id,
+        contact_props=contact_props,
+        contact_linkedin_url=contact_linkedin_url,
+        hs_contact_url=hs_contact_url,
+        engagement="TASK",
+    )
     TASK_ID_LIST.append(result.get("engagement").get("id"))
 ```
 
@@ -311,7 +359,7 @@ for i in HS_CONTACT_ID_LIST:
 if not TASK_ID_LIST:
     print("No tasks created")
 else:
-    email_to = SEND_EMAIL_TO #to send the report
+    email_to = SEND_EMAIL_TO  # to send the report
     subject = "LinkedIN Leads Alert"
     content = email_body
 

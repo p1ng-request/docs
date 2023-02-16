@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-The objective of the notebook is to maintain a track of issues that are open in the community roadmap
+**Description:** This notebook allows users to track and manage issues related to their projects on GitHub.
 
 ## Input
 
@@ -70,15 +70,12 @@ def create_barchart(df, title, labels):
     for index, s in enumerate(STATUS_ORDER):
         if s in status:
             status_order += [s]
-    
+
     # Create fig
-    fig = px.bar(df,
-                 title=title,
-                 x=status_order,
-                 y="count",
-                 text="count",
-                 labels=labels)
-    fig.update_traces(marker_color='black')
+    fig = px.bar(
+        df, title=title, x=status_order, y="count", text="count", labels=labels
+    )
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         plot_bgcolor="#ffffff",
         width=1000,
@@ -109,16 +106,18 @@ df_issues.to_csv(csv_output, index=False)
 
 ```python
 # Dataframe
-issues = df_issues.groupby('issue_status').agg({'issue_number':'count'}).reset_index().rename(columns={"issue_number":"count"})
+issues = (
+    df_issues.groupby("issue_status")
+    .agg({"issue_number": "count"})
+    .reset_index()
+    .rename(columns={"issue_number": "count"})
+)
 
 # Chart title
-title =  f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total issues: {issues['count'].sum()}</span>"
+title = f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total issues: {issues['count'].sum()}</span>"
 
 # Hover labels
-labels = {
-    'issue_status':'Issue status',
-    'count':"Number of Issues"
-}
+labels = {"issue_status": "Issue status", "count": "Number of Issues"}
 fig = create_barchart(issues, title, labels)
 ```
 
@@ -127,16 +126,19 @@ fig = create_barchart(issues, title, labels)
 
 ```python
 # Dataframe
-open_issues = df_issues[df_issues['issue_state']=='open'].groupby('issue_status').agg({"issue_number":'count'}).reset_index().rename(columns={'issue_number':'count'})
+open_issues = (
+    df_issues[df_issues["issue_state"] == "open"]
+    .groupby("issue_status")
+    .agg({"issue_number": "count"})
+    .reset_index()
+    .rename(columns={"issue_number": "count"})
+)
 
 # Chart title
-title =  f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total open issues: {open_issues['count'].sum()}</span>"
+title = f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total open issues: {open_issues['count'].sum()}</span>"
 
 # Hover labels
-labels = {
-               'issue_status':'Issue status',
-               'count':"Number of Open issues"
-          }
+labels = {"issue_status": "Issue status", "count": "Number of Open issues"}
 fig = create_barchart(open_issues, title, labels)
 ```
 
@@ -145,16 +147,19 @@ fig = create_barchart(open_issues, title, labels)
 
 ```python
 # Dataframe
-closed_issues = df_issues[df_issues['issue_state']=='closed'].groupby('issue_status').agg({"issue_number":'count'}).reset_index().rename(columns={'issue_number':'count'})
+closed_issues = (
+    df_issues[df_issues["issue_state"] == "closed"]
+    .groupby("issue_status")
+    .agg({"issue_number": "count"})
+    .reset_index()
+    .rename(columns={"issue_number": "count"})
+)
 
 # Chart title
-title =  f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total closed issues: {closed_issues['count'].sum()}</span>"
+title = f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total closed issues: {closed_issues['count'].sum()}</span>"
 
 # Hover labels
-labels = {
-               'issue_status':'Issue status',
-               'count':"Number of Closed issues"
-          }
+labels = {"issue_status": "Issue status", "count": "Number of Closed issues"}
 
 fig = create_barchart(closed_issues, title, labels)
 ```
@@ -165,25 +170,31 @@ fig = create_barchart(closed_issues, title, labels)
 ```python
 stale_issues = []
 for item in df_issues.stale_issue:
-    if item!='None':
-        stale_issues.append(int(item.split()[-2])>=7)
+    if item != "None":
+        stale_issues.append(int(item.split()[-2]) >= 7)
     else:
-         stale_issues.append(False)
-            
-df_issues['stale_bool'] = stale_issues
-temp = df_issues[df_issues['stale_bool']==True]
-temp[temp['issue_state']=='open']
+        stale_issues.append(False)
+
+df_issues["stale_bool"] = stale_issues
+temp = df_issues[df_issues["stale_bool"] == True]
+temp[temp["issue_state"] == "open"]
 
 # Dataframe
-open_stale_issues = temp[temp['issue_state']=='open'].groupby('issue_status').agg({"stale_bool":'count'}).reset_index().rename(columns={'stale_bool':'count'})
+open_stale_issues = (
+    temp[temp["issue_state"] == "open"]
+    .groupby("issue_status")
+    .agg({"stale_bool": "count"})
+    .reset_index()
+    .rename(columns={"stale_bool": "count"})
+)
 
 # Chart title
-title =  f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total open stale issues: {open_stale_issues['count'].sum()}</span>"
+title = f"Github Project - {PROJECT_URL.split('/')[-2]} : {df_issues['project_name'].unique()[0]} <br><span style='font-size: 13px;'>Total open stale issues: {open_stale_issues['count'].sum()}</span>"
 
 # Hover labels
 labels = {
-               'issue_status':'Issue status',
-               'count':"Number of Open issues with no activity since more than 7 days"
-          }
+    "issue_status": "Issue status",
+    "count": "Number of Open issues with no activity since more than 7 days",
+}
 fig = create_barchart(open_stale_issues, title, labels)
 ```

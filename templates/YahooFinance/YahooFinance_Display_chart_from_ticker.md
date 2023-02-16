@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-With this template, you can get data from any ticker available in [Yahoo finance](https://finance.yahoo.com/quote/TSLA/).<br> 
+**Description:** This notebook provides a graphical representation of stock market data from a given ticker symbol using the YahooFinance API.
 
 ## Input
 
@@ -23,7 +23,7 @@ from naas_drivers import yahoofinance, plotly
 ticker = "TSLA"
 date_from = -365
 date_to = "today"
-interval = '1d'
+interval = "1d"
 moving_averages = [20, 50]
 ```
 
@@ -33,11 +33,13 @@ moving_averages = [20, 50]
 
 
 ```python
-df_yahoo = yahoofinance.get(ticker,
-                            date_from=date_from,
-                            date_to=date_to,
-                            interval=interval,
-                            moving_averages=moving_averages)
+df_yahoo = yahoofinance.get(
+    ticker,
+    date_from=date_from,
+    date_to=date_to,
+    interval=interval,
+    moving_averages=moving_averages,
+)
 ```
 
 ## Output
@@ -46,9 +48,11 @@ df_yahoo = yahoofinance.get(ticker,
 
 
 ```python
-chart = plotly.linechart(df_yahoo,
-                         x="Date",
-                         y=["Close", "MA20", "MA50"],
-                         showlegend=True,
-                         title=f"{ticker} stock as of today")
+chart = plotly.linechart(
+    df_yahoo,
+    x="Date",
+    y=["Close", "MA20", "MA50"],
+    showlegend=True,
+    title=f"{ticker} stock as of today",
+)
 ```

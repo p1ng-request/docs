@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maxime-jublou)
 
-This notebook is aimed to help you to get insight about your website traffic right into your Slack Workspace.
+**Description:** This notebook allows users to send Google Analytics visitor traffic graphs and trends predictions to a Slack channel.
 
 ## Input
 
@@ -47,23 +47,23 @@ import json
 
 ```python
 # Get your credential from Google Cloud Platform
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 
 # Get view id from google analytics
 view_id = "228952707"
 
 # Setup your data parameters
-dimensions = "daily" #hourly, daily, weekly, monthly
-start_date = "30daysAgo" #XdaysAgo or date in ISO format %Y-%m-%d
-end_date = "today" #Today or date in ISO format %Y-%m-%d
+dimensions = "daily"  # hourly, daily, weekly, monthly
+start_date = "30daysAgo"  # XdaysAgo or date in ISO format %Y-%m-%d
+end_date = "today"  # Today or date in ISO format %Y-%m-%d
 ```
 
 ### Setup Slack
 
 
 ```python
-SLACK_TOKEN = 'xoxb-111111111111-111111111111-abcdef123'
-SLACK_CHANNEL = '#operation-notifications'
+SLACK_TOKEN = "xoxb-111111111111-111111111111-abcdef123"
+SLACK_CHANNEL = "#operation-notifications"
 ```
 
 ### Setup Prediction
@@ -99,7 +99,7 @@ naas.dependency.add(path=json_path)
 naas.scheduler.add(cron="0 9 * * *")
 
 # this notebook will run each week until de-scheduled
-# to de-schedule this notebook, simply run the following command: 
+# to de-schedule this notebook, simply run the following command:
 # naas.scheduler.delete()
 ```
 
@@ -109,7 +109,9 @@ naas.scheduler.add(cron="0 9 * * *")
 
 
 ```python
-df = googleanalytics.connect(json_path, view_id).users.get_trend(dimensions, start_date, end_date)
+df = googleanalytics.connect(json_path, view_id).users.get_trend(
+    dimensions, start_date, end_date
+)
 df
 ```
 
@@ -117,45 +119,54 @@ df
 
 
 ```python
-df_predict = prediction.get(dataset=df,
-                            date_column='DATE',
-                            column="VALUE",
-                            data_points=DATA_POINT,
-                            prediction_type="all").sort_values("DATE", ascending=False).reset_index(drop=True)
+df_predict = (
+    prediction.get(
+        dataset=df,
+        date_column="DATE",
+        column="VALUE",
+        data_points=DATA_POINT,
+        prediction_type="all",
+    )
+    .sort_values("DATE", ascending=False)
+    .reset_index(drop=True)
+)
 # Display dataframe
-df_predict.head(int(DATA_POINT)+5)
+df_predict.head(int(DATA_POINT) + 5)
 ```
 
 ### Plot linechart
 
 
 ```python
-fig = plotly.linechart(df_predict,
-                       x="DATE",
-                       y=["VALUE", "ARIMA", "SVR", "LINEAR", "COMPOUND"],
-                       showlegend=True,
-                       title=f"predictions as of today, for next {str(DATA_POINT)} days.")
+fig = plotly.linechart(
+    df_predict,
+    x="DATE",
+    y=["VALUE", "ARIMA", "SVR", "LINEAR", "COMPOUND"],
+    showlegend=True,
+    title=f"predictions as of today, for next {str(DATA_POINT)} days.",
+)
 ```
 
 
 ```python
 def get_variation(df):
     df = df.sort_values("DATE", ascending=False).reset_index(drop=True)
-    
+
     # Get value and value comp
     datanow = df.loc[0, "VALUE"]
     datayesterday = df.loc[1, "VALUE"]
-    
+
     # Calc variation en value and %
     varv = datanow - datayesterday
-    varp = (varv / datanow)
-    
+    varp = varv / datanow
+
     # Format result
     datanow = "{:,.2f}".format(round(datanow, 1))
     datayesterday = "{:,.2f}".format(round(datayesterday, 1))
     varv = "{:+,.2f}".format(varv)
     varp = "{:+,.2%}".format(varp)
     return datanow, datayesterday, varv, varp
+
 
 DATANOW, DATAYESTERDAY, VARV, VARP = get_variation(df)
 variations = f"Value today: {DATANOW}\nValue yesterday: {DATAYESTERDAY}\nVar. in value: {VARV}\nVar. in %: {VARP}"
@@ -168,10 +179,11 @@ print(variations)
 ```python
 def get_prediction(df, prediction):
     data = df.loc[0, prediction]
-    
+
     # Format result
     data = "{:,.2f}".format(round(data, 1))
     return data
+
 
 predictions = f'Value ARIMA: {get_prediction(df_predict, "ARIMA")}\nValue SVR: {get_prediction(df_predict, "SVR")}\nValue LINEAR: {get_prediction(df_predict, "LINEAR")}\nValue COMPOUND: {get_prediction(df_predict, "COMPOUND")}'
 print(predictions)
@@ -196,7 +208,7 @@ fig.write_html(html_output)
 # Share output with naas
 link_html = naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -210,7 +222,7 @@ fig.write_image(image_output)
 # Share output with naas
 link_image = naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```
 
@@ -226,59 +238,42 @@ link_webhook = naas.webhook.add()
 
 ```python
 slack_blocks = [
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "👋 Hello your daily informations about your site traffic is freshly baked!\n\n"
-			}
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": variations
-			}
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": predictions
-			}
-		},
-		{
-			"type": "image",
-			"title": {
-				"type": "plain_text",
-				"text": "Website traffic statistics and prediction.",
-				"emoji": True
-			},
-			"image_url": link_image,
-			"alt_text": "Predictions"
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "Open interactive graph in full screen"
-			},
-			"accessory": {
-				"type": "button",
-				"text": {
-					"type": "plain_text",
-					"text": "Open 👆",
-					"emoji": True
-				},
-				"value": "Open interactive graph",
-				"url": link_html,
-				"action_id": "button-action"
-			}
-		}
-	]
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "👋 Hello your daily informations about your site traffic is freshly baked!\n\n",
+        },
+    },
+    {"type": "section", "text": {"type": "mrkdwn", "text": variations}},
+    {"type": "section", "text": {"type": "mrkdwn", "text": predictions}},
+    {
+        "type": "image",
+        "title": {
+            "type": "plain_text",
+            "text": "Website traffic statistics and prediction.",
+            "emoji": True,
+        },
+        "image_url": link_image,
+        "alt_text": "Predictions",
+    },
+    {
+        "type": "section",
+        "text": {"type": "mrkdwn", "text": "Open interactive graph in full screen"},
+        "accessory": {
+            "type": "button",
+            "text": {"type": "plain_text", "text": "Open 👆", "emoji": True},
+            "value": "Open interactive graph",
+            "url": link_html,
+            "action_id": "button-action",
+        },
+    },
+]
 ```
 
 
 ```python
-slack.connect(SLACK_TOKEN).send(SLACK_CHANNEL, '', blocks=json.dumps(slack_blocks, ensure_ascii=False))
+slack.connect(SLACK_TOKEN).send(
+    SLACK_CHANNEL, "", blocks=json.dumps(slack_blocks, ensure_ascii=False)
+)
 ```

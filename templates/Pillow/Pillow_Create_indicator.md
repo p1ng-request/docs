@@ -27,17 +27,17 @@ import urllib
 ```python
 # Inputs
 title = "My title"
-title_font_name = "https://github.com/jupyter-naas/awesome-notebooks/blob/master/Pillow/ArchivoBlack-Regular.ttf" #font in Local or GitHub link
+title_font_name = "https://github.com/jupyter-naas/awesome-notebooks/blob/master/Pillow/ArchivoBlack-Regular.ttf"  # font in Local or GitHub link
 title_font_size = 40
 
 indicator = "My indicator"
-indicator_font_name = "https://github.com/jupyter-naas/awesome-notebooks/blob/master/Pillow/ArchivoBlack-Regular.ttf" #font in Local or GitHub link
+indicator_font_name = "https://github.com/jupyter-naas/awesome-notebooks/blob/master/Pillow/ArchivoBlack-Regular.ttf"  # font in Local or GitHub link
 indicator_font_size = 90
 
-pad = 50 # additional space between title and indicator
+pad = 50  # additional space between title and indicator
 width = 1200
 height = 600
-background_color= "#00004c"
+background_color = "#00004c"
 
 # Outputs
 output_image = "Pillow_indicator.png"
@@ -54,7 +54,7 @@ def download_github_file(url):
         url = f"{url}?raw=true"
     response = urllib.request.urlopen(url)
     filepath = url.split("/")[-1].split("?raw=true")[0]
-    file = open(filepath, 'wb')
+    file = open(filepath, "wb")
     file.write(response.read())
     file.close()
     return filepath
@@ -79,9 +79,9 @@ def create_indicator(
     # Download font if not in local
     title_font_name = download_github_file(title_font_name)
     indicator_font_name = download_github_file(indicator_font_name)
-    
+
     # Create image background
-    img = Image.new('RGB', (width, height), background_color)
+    img = Image.new("RGB", (width, height), background_color)
     draw = ImageDraw.Draw(img)
 
     # Title
@@ -91,7 +91,7 @@ def create_indicator(
     # indicator
     font_2 = ImageFont.truetype(indicator_font_name, indicator_font_size)
     w2, h2 = draw.textsize(indicator, font=font_2)
-    
+
     # Text position
     x1 = width / 2
     y1 = (height / 2) - h1 - (h2 / 2)
@@ -102,6 +102,7 @@ def create_indicator(
     draw.text((x1, y1), title, font=font_1, anchor="mm")
     draw.text((x2, y2), indicator, font=font_2, anchor="mm")
     return img
+
 
 img = create_indicator(
     title,

@@ -4,7 +4,7 @@
 
 **Author:** [Abraham Israel](https://www.linkedin.com/in/abraham-israel/)
 
-This template downloads an image from an URL and to display the results inside a notebook.
+**Description:** This notebook provides a step-by-step guide to downloading an image from a URL using Python.
 
 ## Input
 
@@ -44,7 +44,8 @@ image_name = wget.download(image_url)
 print("Image downloaded: /", image_name)
 
 from IPython.display import Image
-Image(filename=image_name) 
+
+Image(filename=image_name)
 ```
 
 

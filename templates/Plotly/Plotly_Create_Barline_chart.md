@@ -4,16 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel)
 
-As a business user, I want to see a graph with 2 y-axis. This can show for example the evolution and variation of sales.
-
-- one is a line with a trend (1000 → 100000)
-- one is a bar with variation (100 → x)
-
-The notebook is divided in 3 parts: 
-
-- Input : setup data frame with one column with DATE, VALUE, VAR
-- Model: create barline chart from plotly library
-- Output: generate PNG and HTML files via URL link.
+**Description:** This notebook provides instructions on how to create a barline chart using Plotly.
 
 ## Input
 
@@ -56,13 +47,15 @@ image_output = "Barline.png"
 
 
 ```python
-def create_barlinechart(df,
-                        label="DATE",
-                        value="VALUE",
-                        varv="VARV",
-                        xaxis_title="Months",
-                        yaxis_title_r=None,
-                        yaxis_title_l=None):    
+def create_barlinechart(
+    df,
+    label="DATE",
+    value="VALUE",
+    varv="VARV",
+    xaxis_title="Months",
+    yaxis_title_r=None,
+    yaxis_title_l=None,
+):
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -102,20 +95,19 @@ def create_barlinechart(df,
     fig.update_yaxes(
         title_text=yaxis_title_r,
         title_font=dict(family="Arial", size=10, color="black"),
-        secondary_y=False
+        secondary_y=False,
     )
     fig.update_yaxes(
         title_text=yaxis_title_l,
         title_font=dict(family="Arial", size=10, color="black"),
-        secondary_y=True
+        secondary_y=True,
     )
     fig.update_traces(showlegend=False)
     fig.show()
     return fig
 
-fig = create_barlinechart(df,
-                          yaxis_title_r="Variation",
-                          yaxis_title_l="Value")
+
+fig = create_barlinechart(df, yaxis_title_r="Variation", yaxis_title_l="Value")
 ```
 
 ## Output
@@ -130,7 +122,7 @@ fig.write_html(html_output)
 # Share output with naas
 naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -144,7 +136,7 @@ fig.write_image(image_output)
 # Share output with naas
 naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```
 

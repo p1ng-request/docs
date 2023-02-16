@@ -4,7 +4,7 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
-This notebook extract the text from a PDF.
+**Description:** This notebook provides a way to extract text from PDF files.
 
 ## Input
 
@@ -53,9 +53,9 @@ def get_pdf(path):
         memory_file = io.BytesIO(remote_file)
         pdf_file = PdfFileReader(memory_file)
     else:
-        pdf_file_obj = open(path, 'rb')
+        pdf_file_obj = open(path, "rb")
         pdf_file = PdfFileReader(pdf_file_obj)
-        
+
     return pdf_file
 ```
 
@@ -66,8 +66,8 @@ def get_pdf(path):
 
 ```python
 texts = []
-pdf_reader = get_pdf(pdf_file)    
-    
+pdf_reader = get_pdf(pdf_file)
+
 for page_num in range(pdf_reader.numPages):
     page_obj = pdf_reader.getPage(page_num)
     texts.append(page_obj.extractText())
@@ -77,6 +77,6 @@ for page_num in range(pdf_reader.numPages):
 
 
 ```python
-extract_texts = ''.join(texts)
+extract_texts = "".join(texts)
 print(extract_texts)
 ```

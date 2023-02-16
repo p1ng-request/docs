@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template gives you an overview of your LinkedIn connections over the last 12 months, making it easier to track your efforts in connecting with your LinkedIn network.<br>
+**Description:** This notebook tracks the number of connections made on LinkedIn each month.
 
 ## Input
 
@@ -26,8 +26,8 @@ from plotly.subplots import make_subplots
 
 ```python
 # LinkedIn cookies
-LI_AT = "ENTER_YOUR_COOKIE_HERE" # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
-JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE" # EXAMPLE : "ajax:8379907400220387585"
+LI_AT = "ENTER_YOUR_COOKIE_HERE"  # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
+JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE"  # EXAMPLE : "ajax:8379907400220387585"
 ```
 
 ### Setup Outputs
@@ -38,7 +38,7 @@ PS: This CSV could be used in others LinkedIn templates.
 ```python
 # Inputs
 csv_input = f"LINKEDIN_CONNECTIONS.csv"
-no_rolling_months = 12 # number of rolling months
+no_rolling_months = 12  # number of rolling months
 
 # Outputs
 name_output = f"LINKEDIN_CONNECTIONS_MONTHLY_{str(no_rolling_months)}R"
@@ -55,7 +55,7 @@ image_output = f"{name_output}.png"
 naas.scheduler.add(cron="0 9 * * *")
 
 # this notebook will run each week until de-scheduled
-# to de-schedule this notebook, simply run the following command: 
+# to de-schedule this notebook, simply run the following command:
 # naas.scheduler.delete()
 ```
 
@@ -87,24 +87,23 @@ PS: On the first execution all connections will be retrieved. The execution coul
 
 
 ```python
-def update_connections(df,
-                       csv_input):
+def update_connections(df, csv_input):
     # Init variables
     profiles = []
     new_connections = 0
-    
+
     # Get existing connections if not get all connections
     if len(df) > 0:
         profiles = df["PROFILE_ID"].unique()
-        
+
         # Get new connections
         update = True
-        
+
         while update:
             start = 0
-            df_new = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(start=start,
-                                                                                 count=100,
-                                                                                 limit=100)
+            df_new = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(
+                start=start, count=100, limit=100
+            )
             df_new["DATE_EXTRACT"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             new_profiles = df_new["PROFILE_ID"].unique()
             for i, p in enumerate(new_profiles):
@@ -115,12 +114,16 @@ def update_connections(df,
                     break
             start += 100
             new_connections += i
-            df = pd.concat([df_new, df]).drop_duplicates("PROFILE_ID", keep="first").reset_index(drop=True)
+            df = (
+                pd.concat([df_new, df])
+                .drop_duplicates("PROFILE_ID", keep="first")
+                .reset_index(drop=True)
+            )
             df.to_csv(csv_input, index=False)
     else:
         df = linkedin.connect(LI_AT, JSESSIONID).network.get_connections(limit=-1)
         df["DATE_EXTRACT"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
+
     # Concat, save database in CSV and dependency in production
     if new_connections > 0:
         print(f"🚀 {new_connections} new connections found in LinkedIn.")
@@ -128,9 +131,10 @@ def update_connections(df,
         print(f"🛑 No new connections found in LinkedIn.")
     df.to_csv(csv_input, index=False)
     naas.dependency.add(csv_input)
-    
+
     print("Total LinkedIn connections:", len(df))
     return df.reset_index(drop=True)
+
 
 df_connections = update_connections(df_connections, csv_input)
 df_connections
@@ -141,48 +145,55 @@ Create dataframe with number of LinkedIn views cumulated by monthly with variati
 
 
 ```python
-def get_trend(df_init,
-              col_date,
-              col_value,
-              label,
-              months_limit=12):
+def get_trend(df_init, col_date, col_value, label, months_limit=12):
     # Init variable
     df = df_init.copy()
-    
+
     # By week
     df[col_date] = pd.to_datetime(df[col_date].str[:-6]).dt.strftime("%Y-%m")
     df = df.groupby([col_date], as_index=False).agg({col_value: "count"})
-    
+
     # Calc sum cum
     df["VALUE"] = df.agg({col_value: "cumsum"})
-    
+
     # Cleaning
-    to_rename = {
-        col_date: "DATE",
-        col_value: "VARV"
-    }
+    to_rename = {col_date: "DATE", col_value: "VARV"}
     df = df.rename(columns=to_rename)
-    
+
     # Calc var
     df["VALUE_COMP"] = df["VALUE"] - df["VARV"]
     df["VARP"] = df["VARV"] / abs(df["VALUE_COMP"])
     df["LABEL"] = label
-    df = df[["DATE", "LABEL", "VALUE", "VALUE_COMP", "VARV", "VARP"]].reset_index(drop=True)
-    
+    df = df[["DATE", "LABEL", "VALUE", "VALUE_COMP", "VARV", "VARP"]].reset_index(
+        drop=True
+    )
+
     # Prep data
     df["VALUE_D"] = df["VALUE"].map("{:,.0f}".format).str.replace(",", " ")
     df["VARV_D"] = df["VARV"].map("{:,.0f}".format).str.replace(",", " ")
     df.loc[df["VARV"] > 0, "VARV_D"] = "+" + df["VARV_D"]
     df["VARP_D"] = df["VARP"].map("{:,.0%}".format).str.replace(",", " ")
     df.loc[df["VARP"] > 0, "VARP_D"] = "+" + df["VARP_D"]
-    
+
     # Create hovertext
-    df["TEXT"] = ("<b>" + df["LABEL"] + " as of " + df["DATE"] + ": " + df["VALUE_D"] + "</b> <span style='font-size: 14px;'>(" + df["VARP_D"] + " growth)</span><br>"
-                  "<span style='font-size: 14px;'>" + df["VARV_D"] + " connections this month</span>")
+    df["TEXT"] = (
+        "<b>"
+        + df["LABEL"]
+        + " as of "
+        + df["DATE"]
+        + ": "
+        + df["VALUE_D"]
+        + "</b> <span style='font-size: 14px;'>("
+        + df["VARP_D"]
+        + " growth)</span><br>"
+        "<span style='font-size: 14px;'>"
+        + df["VARV_D"]
+        + " connections this month</span>"
+    )
     for index, row in df.iterrows():
         if index > 0:
             n = df.loc[df.index[index], "VARV"]
-            n_1 = df.loc[df.index[index-1], "VARV"]
+            n_1 = df.loc[df.index[index - 1], "VARV"]
             df.loc[df.index[index], "VARV_COMP"] = n_1
             df.loc[df.index[index], "VARV_VARV"] = n - n_1
             df.loc[df.index[index], "VARP_VARV"] = 0
@@ -190,11 +201,14 @@ def get_trend(df_init,
                 df.loc[df.index[index], "VARP_VARV"] = (n - n_1) / abs(n_1)
     return df[-months_limit:].reset_index(drop=True)
 
-df_trend = get_trend(df_connections,
-                     col_date="CREATED_AT",
-                     col_value="PROFILE_ID",
-                     label="LinkedIn connections",
-                     months_limit=no_rolling_months)
+
+df_trend = get_trend(
+    df_connections,
+    col_date="CREATED_AT",
+    col_value="PROFILE_ID",
+    label="LinkedIn connections",
+    months_limit=no_rolling_months,
+)
 
 df_trend.tail(5)
 ```
@@ -203,15 +217,17 @@ df_trend.tail(5)
 
 
 ```python
-def create_barlinechart(df,
-                        label="DATE",
-                        value="VALUE",
-                        varv="VARV",
-                        varp="VARP",
-                        text="TEXT",
-                        xaxis_title="Months",
-                        yaxis_title_r=None,
-                        yaxis_title_l=None):    
+def create_barlinechart(
+    df,
+    label="DATE",
+    value="VALUE",
+    varv="VARV",
+    varp="VARP",
+    text="TEXT",
+    xaxis_title="Months",
+    yaxis_title_r=None,
+    yaxis_title_l=None,
+):
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -257,20 +273,21 @@ def create_barlinechart(df,
     fig.update_yaxes(
         title_text=yaxis_title_r,
         title_font=dict(family="Arial", size=10, color="black"),
-        secondary_y=False
+        secondary_y=False,
     )
     fig.update_yaxes(
         title_text=yaxis_title_l,
         title_font=dict(family="Arial", size=10, color="black"),
-        secondary_y=True
+        secondary_y=True,
     )
     fig.update_traces(showlegend=False)
     fig.show()
     return fig
 
-fig = create_barlinechart(df_trend,
-                          yaxis_title_r="Monthly connections",
-                          yaxis_title_l="Total connections")
+
+fig = create_barlinechart(
+    df_trend, yaxis_title_r="Monthly connections", yaxis_title_l="Total connections"
+)
 ```
 
 ## Output
@@ -285,7 +302,7 @@ df_trend.to_csv(csv_output, index=False)
 # Share output with naas
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -299,7 +316,7 @@ fig.write_html(html_output)
 # Share output with naas
 naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -313,6 +330,6 @@ fig.write_image(image_output)
 # Share output with naas
 naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

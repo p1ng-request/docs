@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook helps you to build your professional network on LinkedIn by connecting with people in your network.
+
 ## Input
 
 ### Import library
@@ -22,8 +24,8 @@ import plotly.graph_objects as go
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Variables
@@ -72,6 +74,6 @@ df_connections.to_csv(csv_output, index=False)
 ```python
 naas.asset.add(csv_output)
 
-#-> to remove your outputs, uncomment the lines and execute the cell
+# -> to remove your outputs, uncomment the lines and execute the cell
 # naas.asset.delete(csv_output)
 ```

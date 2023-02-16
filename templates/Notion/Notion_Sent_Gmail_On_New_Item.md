@@ -4,6 +4,8 @@
 
 **Author:** [Arun K C](https://www.linkedin.com/in/arun-kc/)
 
+**Description:** This notebook allows you to quickly send an email notification when a new item is added to Notion.
+
 ## Input
 
 ### Import librairies
@@ -43,7 +45,7 @@ Ps: to remove the "Scheduler", just replace .add by .delete
 
 
 ```python
-#Schedule the notebook to run every 15 minutes
+# Schedule the notebook to run every 15 minutes
 naas.scheduler.add(cron="*/15 * * * *")
 ```
 
@@ -53,9 +55,11 @@ naas.scheduler.add(cron="*/15 * * * *")
 
 
 ```python
-email_list_data = gsheet.connect(spreadsheet_id).get(sheet_name = mail_list_sheet_name)
+email_list_data = gsheet.connect(spreadsheet_id).get(sheet_name=mail_list_sheet_name)
 try:
-    item_list_history = gsheet.connect(spreadsheet_id).get(sheet_name = item_list_sheet_name)
+    item_list_history = gsheet.connect(spreadsheet_id).get(
+        sheet_name=item_list_sheet_name
+    )
 except:
     item_list_history = []
 ```
@@ -64,8 +68,8 @@ except:
 
 
 ```python
-firstname_list = email_list_data['FIRSTNAME']
-email_list = email_list_data['EMAIL']
+firstname_list = email_list_data["FIRSTNAME"]
+email_list = email_list_data["EMAIL"]
 ```
 
 ### Get database from notion
@@ -83,13 +87,10 @@ def create_notion_connection():
 
 
 ```python
-#Send data to Gsheet
+# Send data to Gsheet
 def send_data_to_gsheet(data):
     gsheet.connect(spreadsheet_id)
-    gsheet.send(
-        sheet_name = item_list_sheet_name,
-        data = data
-    )
+    gsheet.send(sheet_name=item_list_sheet_name, data=data)
 ```
 
 ### Get new items from Notion
@@ -100,47 +101,46 @@ Here our unique key is **Id**
 
 
 ```python
-#Get new notion items list 
+# Get new notion items list
 def get_new_items_list(df_db):
-    
+
     if not list(item_list_history):
         new_items = df_db
     else:
-        item_list_history['Id'] = item_list_history['Id'].astype(int)
-        df_db['Id'] = df_db['Id'].astype(int)
+        item_list_history["Id"] = item_list_history["Id"].astype(int)
+        df_db["Id"] = df_db["Id"].astype(int)
 
         common = df_db.merge(item_list_history, on=["Id"])
-        new_items = df_db[~df_db.Id.isin(common.Id)]  
-        
-    data = [] 
-    
+        new_items = df_db[~df_db.Id.isin(common.Id)]
+
+    data = []
+
     for i in range(len(new_items.index)):
         dictionary = {}
         for col in new_items.columns:
-            dictionary[col] = str(new_items.iloc[i][col])          
+            dictionary[col] = str(new_items.iloc[i][col])
         data.append(dictionary)
-    
+
     send_data_to_gsheet(data)
-    
+
     return data
-    
 ```
 
 ### Create email content
 
 
 ```python
-#Get email contents
+# Get email contents
 def get_mail_content():
-    email_content = html.generate( 
-            display = 'iframe',
-            title = 'Updates here!!',
-            heading = 'Hi {first_name}, you have some new items in you notion list',
-            text_1 = 'Following are the new list of items seperated by comma : ',
-            text_2 = '{new_items_list}',
-            text_3 = 'Have a great day!!'          
+    email_content = html.generate(
+        display="iframe",
+        title="Updates here!!",
+        heading="Hi {first_name}, you have some new items in you notion list",
+        text_1="Following are the new list of items seperated by comma : ",
+        text_2="{new_items_list}",
+        text_3="Have a great day!!",
     )
-    #print(email_content)
+    # print(email_content)
     return email_content
 ```
 
@@ -148,13 +148,17 @@ def get_mail_content():
 
 
 ```python
-#Send mail to recipients
+# Send mail to recipients
 def send_mail(new_items_list):
     email_content = get_mail_content()
     for i in range(len(email_list_data)):
         subject = "Update on Notion items"
-        content = email_content.replace("{first_name}",firstname_list[i]).replace("{new_items_list}",new_items_list)
-        naas.notifications.send(email_to=email_list[i], subject=subject, html=content, email_from=your_email)
+        content = email_content.replace("{first_name}", firstname_list[i]).replace(
+            "{new_items_list}", new_items_list
+        )
+        naas.notifications.send(
+            email_to=email_list[i], subject=subject, html=content, email_from=your_email
+        )
 ```
 
 ## Output
@@ -167,7 +171,7 @@ df = create_notion_connection()
 
 ```python
 new_items_list = get_new_items_list(df)
-new_items_list = ', '.join([data['Books'] for data in new_items_list])
+new_items_list = ", ".join([data["Books"] for data in new_items_list])
 ```
 
 
@@ -175,5 +179,5 @@ new_items_list = ', '.join([data['Books'] for data in new_items_list])
 if new_items_list:
     send_mail(new_items_list)
 else:
-    print('No new items!!')
+    print("No new items!!")
 ```

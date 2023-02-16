@@ -10,7 +10,8 @@ You can then, trigger it with the generated URL.
 
 
 ```python
-import naas 
+import naas
+
 naas.webhook.add()
 ```
 
@@ -100,6 +101,7 @@ In this example, I want to send an email with the notebook template to the subsc
 
 ```python
 import naas
+
 email_to = ["jeremy.ravenel@cashstory.com", EMAIL]
 subject = "Get Naas Webhook tutorial template"
 content = f"Hey {EMAIL},<br>Here is the Naas webhook tutorial template : https://public.naas.ai/amVyZW15LTJFbmFhczQyLTQwZ21haWwtMkVjb20=/asset/7c9359cbc967afd01d8e45b68659b3b0db4179582561f6fab70f156c460a"

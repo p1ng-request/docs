@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
+**Description:** This notebook provides instructions on how to query a PostgreSQL database and retrieve data.
+
 ## Input
 
 ### Import librairies
@@ -31,7 +33,7 @@ PG_DBNAME = "YOUR_PG_DBNAME"
 
 # Database
 DATABASE = "YOUR_DATABASE"
-SELECTED_FIELD = "*" # "*" or list of columns
+SELECTED_FIELD = "*"  # "*" or list of columns
 
 # SQL Requests
 SQL_REQUEST = f"SELECT {SELECTED_FIELD} FROM {DATABASE}"
@@ -43,7 +45,9 @@ SQL_REQUEST = f"SELECT {SELECTED_FIELD} FROM {DATABASE}"
 
 
 ```python
-PG = psycopg2.connect(f"user={PG_USER} password={PG_PASSWORD} dbname={PG_DBNAME} host={PG_HOST}")
+PG = psycopg2.connect(
+    f"user={PG_USER} password={PG_PASSWORD} dbname={PG_DBNAME} host={PG_HOST}"
+)
 ```
 
 ### Get naas users
@@ -57,6 +61,7 @@ def get_data():
     cur.close()
     df = pd.DataFrame(res)
     return df
+
 
 df = get_data()
 ```

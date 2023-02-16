@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to download files from their Google Drive account.
+
 ## Input
 
 Pre-requisite : change file access rights to make sure Naas can access ("Allow anyone")
@@ -26,8 +28,8 @@ except:
 
 
 ```python
-url = 'https://drive.google.com/uc?id=1-3UlYEPKgL4E197umEh6d58jWknodSm5'
-output = 'naas_happy_hour.mp4'
+url = "https://drive.google.com/uc?id=1-3UlYEPKgL4E197umEh6d58jWknodSm5"
+output = "naas_happy_hour.mp4"
 ```
 
 ## Output

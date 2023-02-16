@@ -4,6 +4,8 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
+**Description:** This notebook provides a way to categorize jobs posted on Remotive.
+
 ## Input
 
 ### Imports
@@ -28,10 +30,11 @@ def get_remotejob_categories():
     except requests.HTTPError as e:
         return e
     res_json = res.json()
-    
+
     # Get categories
-    jobs = res_json.get('jobs')
+    jobs = res_json.get("jobs")
     return pd.DataFrame(jobs)
+
 
 df_categories = get_remotejob_categories()
 ```

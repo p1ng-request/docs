@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook automates the process of sending LinkedIn posts to a Google Sheet for easy tracking and analysis.
+
 ## Input
 
 ### Import libraries
@@ -51,7 +53,7 @@ SHEET_NAME = "LK_POSTS_FEED"
 ```python
 naas.scheduler.add(cron="0 8 * * *")
 
-#-> To delete your scheduler, please uncomment the line below and execute this cell
+# -> To delete your scheduler, please uncomment the line below and execute this cell
 # naas.scheduler.delete()
 ```
 
@@ -74,13 +76,18 @@ def get_new_posts(df_gsheet, key, limit=LIMIT, sleep=False):
     if len(df_gsheet) > 0:
         posts = df_gsheet[key].unique()
     else:
-        df_posts_feed = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(PROFILE_URL, limit=-1, sleep=sleep)
+        df_posts_feed = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(
+            PROFILE_URL, limit=-1, sleep=sleep
+        )
         return df_posts_feed
-    
+
     # Get new
-    df_posts_feed = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(PROFILE_URL, limit=LIMIT, sleep=sleep)
+    df_posts_feed = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(
+        PROFILE_URL, limit=LIMIT, sleep=sleep
+    )
     df_new = pd.concat([df_posts_feed, df_gsheet]).drop_duplicates(key, keep="first")
     return df_new
+
 
 df_new = get_new_posts(df_gsheet, "POST_URL", limit=LIMIT)
 df_new
@@ -92,7 +99,5 @@ df_new
 
 
 ```python
-gsheet.connect(SPREADSHEET_URL).send(df_new,
-                                     sheet_name=SHEET_NAME,
-                                     append=False)
+gsheet.connect(SPREADSHEET_URL).send(df_new, sheet_name=SHEET_NAME, append=False)
 ```

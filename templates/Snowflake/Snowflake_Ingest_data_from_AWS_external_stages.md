@@ -4,19 +4,7 @@
 
 **Author:** [Mateusz Polakowski](https://www.linkedin.com/in/polakowski/)
 
-To use your own data inside Snowflake DWH, first thing first, you need to ingest it.
-
-This notebook shows how to ingest data from AWS S3 to Snowflake. Several objects and actions will be necessary to do so:
-
-- creating file format,
-- creating external stage for public AWS S3 bucket,
-- creating storage integration,
-- creating external stage for private AWS S3 bucket using storage integration,
-- copying data from stages to the tables.
-
-You can try with your own data (as well as other file formats), but to follow the notebook cells 1:1 please download `reviews_data.json` file from `awesome-notebooks/Snowflake` directory and put it somewhere inside your private AWS account. 
-
-For fetching data from public AWS S3 bucket (`s3://amazon-reviews-ml/json/dev/dataset_en_dev.json`), you don't need any permission, mentioned bucket's URI is sufficient.
+**Description:** This notebook demonstrates how to ingest data from AWS external stages into Snowflake.
 
 ## Input
 
@@ -43,12 +31,12 @@ If you're proceeding with the trial account, it's highly probable that your ID w
 
 
 ```python
-# Here environment variables are used to pass Snowflake credentials, 
+# Here environment variables are used to pass Snowflake credentials,
 # but it's okay to do it in a different manner
 
-sf_username=os.environ['SNOWFLAKE_USER']
-sf_password=os.environ['SNOWFLAKE_PASSWORD']
-sf_account=os.environ['SNOWFLAKE_ACCOUNT']
+sf_username = os.environ["SNOWFLAKE_USER"]
+sf_password = os.environ["SNOWFLAKE_PASSWORD"]
+sf_account = os.environ["SNOWFLAKE_ACCOUNT"]
 ```
 
 ## Model
@@ -57,23 +45,19 @@ sf_account=os.environ['SNOWFLAKE_ACCOUNT']
 
 
 ```python
-snowflake.connect(
-    username=sf_username,
-    password=sf_password,
-    account=sf_account
-)
+snowflake.connect(username=sf_username, password=sf_password, account=sf_account)
 ```
 
 ### Environment setup
 
 
 ```python
-snowflake.role.use('ACCOUNTADMIN', silent=True)
-snowflake.warehouse.use('COMPUTE_WH', silent=True)
-snowflake.database.create('NAAS', or_replace=True, silent=True)
-snowflake.database.use('NAAS', silent=True)
-snowflake.schema.create('NAAS_SCHEMA', or_replace=True, silent=True)
-snowflake.schema.use('NAAS_SCHEMA', silent=True)
+snowflake.role.use("ACCOUNTADMIN", silent=True)
+snowflake.warehouse.use("COMPUTE_WH", silent=True)
+snowflake.database.create("NAAS", or_replace=True, silent=True)
+snowflake.database.use("NAAS", silent=True)
+snowflake.schema.create("NAAS_SCHEMA", or_replace=True, silent=True)
+snowflake.schema.use("NAAS_SCHEMA", silent=True)
 ```
 
 
@@ -87,11 +71,7 @@ snowflake.get_environment()
 
 
 ```python
-results_ff = snowflake.file_format.create(
-    'my_json_format', 
-    'JSON',
-    or_replace=True
-)
+results_ff = snowflake.file_format.create("my_json_format", "JSON", or_replace=True)
 
 results_ff
 ```
@@ -101,10 +81,10 @@ results_ff
 
 ```python
 snowflake.stage.create(
-    stage_name='external_aws_stage_public',
+    stage_name="external_aws_stage_public",
     or_replace=True,
-    file_format_name='my_json_format',
-    url="'s3://amazon-reviews-ml/json/dev/dataset_en_dev.json'"
+    file_format_name="my_json_format",
+    url="'s3://amazon-reviews-ml/json/dev/dataset_en_dev.json'",
 )
 ```
 
@@ -126,7 +106,7 @@ query_create_table = """
 """
 
 # No worries, Table API will be available soon too!
-snowflake.execute(query_create_table)['results']
+snowflake.execute(query_create_table)["results"]
 ```
 
 ### Loading data from public external stage to a table
@@ -149,9 +129,7 @@ transformation_statement = """
 """
 
 snowflake.copy_into(
-    table_name='reviews_dev_public',
-    source_stage=transformation_statement,
-    silent=True
+    table_name="reviews_dev_public", source_stage=transformation_statement, silent=True
 )
 ```
 
@@ -159,7 +137,7 @@ snowflake.copy_into(
 
 
 ```python
-reviews_dev_public = snowflake.query_pd('SELECT * FROM reviews_dev_public')
+reviews_dev_public = snowflake.query_pd("SELECT * FROM reviews_dev_public")
 reviews_dev_public.head()
 ```
 
@@ -183,12 +161,12 @@ Some of the parameters are dummy, for security reasons, although cells were exec
 
 ```python
 snowflake.storage_integration.create(
-    storage_integration_name='storage_integration_aws_naas_sf_data',
-    storage_provider='S3',
-    storage_allowed_locations=['s3://naas-snowflake-data/'],
+    storage_integration_name="storage_integration_aws_naas_sf_data",
+    storage_provider="S3",
+    storage_allowed_locations=["s3://naas-snowflake-data/"],
     STORAGE_AWS_ROLE_ARN="'arn:aws:iam::112233445566:role/NaasDummyRole'",
     or_replace=True,
-    silent=True
+    silent=True,
 )
 ```
 
@@ -199,10 +177,13 @@ Policy code is taken directly from [Snowflake documentation](https://docs.snowfl
 
 ```python
 import pandas as pd
-pd.set_option('display.max_colwidth', None) # useful to copy-paste parameters
+
+pd.set_option("display.max_colwidth", None)  # useful to copy-paste parameters
 
 # Remove `head()` to see all necessary values
-snowflake.query_pd('DESC INTEGRATION storage_integration_aws_naas_sf_data;').iloc[:, [0, 2]].head(2)
+snowflake.query_pd("DESC INTEGRATION storage_integration_aws_naas_sf_data;").iloc[
+    :, [0, 2]
+].head(2)
 ```
 
 According to values returned by storage integration description, please go to AWS console and alter your IAM Role's Trust Policy.
@@ -214,11 +195,11 @@ When this is done, you can proceed forward.
 
 ```python
 snowflake.stage.create(
-    stage_name='external_aws_stage_private',
-    STORAGE_INTEGRATION='storage_integration_aws_naas_sf_data',
+    stage_name="external_aws_stage_private",
+    STORAGE_INTEGRATION="storage_integration_aws_naas_sf_data",
     url="'s3://naas-snowflake-data/'",
-    file_format_name='my_json_format',
-    or_replace=True
+    file_format_name="my_json_format",
+    or_replace=True,
 )
 ```
 
@@ -226,7 +207,7 @@ snowflake.stage.create(
 
 
 ```python
-snowflake.query_pd('LIST @external_aws_stage_private')
+snowflake.query_pd("LIST @external_aws_stage_private")
 ```
 
 ### Creating a table
@@ -246,7 +227,7 @@ query_create_table = """
     );
 """
 
-snowflake.execute(query_create_table)['results']
+snowflake.execute(query_create_table)["results"]
 ```
 
 ### Loading data from private external stage to a table
@@ -267,9 +248,7 @@ transformation_statement = """
 """
 
 snowflake.copy_into(
-    table_name='reviews_dev_private',
-    source_stage=transformation_statement,
-    silent=True
+    table_name="reviews_dev_private", source_stage=transformation_statement, silent=True
 )
 ```
 
@@ -277,8 +256,8 @@ snowflake.copy_into(
 
 
 ```python
-pd.set_option('display.max_colwidth', 100)
-reviews_dev_public = snowflake.query_pd('SELECT * FROM reviews_dev_private')
+pd.set_option("display.max_colwidth", 100)
+reviews_dev_public = snowflake.query_pd("SELECT * FROM reviews_dev_private")
 reviews_dev_public.head()
 ```
 
@@ -286,5 +265,5 @@ reviews_dev_public.head()
 
 
 ```python
-snowflake.storage_integration.drop('storage_integration_aws_naas_sf_data')
+snowflake.storage_integration.drop("storage_integration_aws_naas_sf_data")
 ```

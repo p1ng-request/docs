@@ -4,11 +4,7 @@
 
 **Author:** [Asif Syed](https://www.linkedin.com/in/asifsyd/)
 
-Pre-requisite: Google Sheet needs to be shared with NAAS' service account (mentioned below)
-
-🔗 naas-share@naas-gsheets.iam.gserviceaccount.com
-
-Go to the Google Sheet -> File -> Share -> Share with others -> Enter the above service account.
+**Description:** This notebook allows users to easily export demographic data about their LinkedIn followers to a Google Sheets spreadsheet.
 
 ## Input
 
@@ -29,8 +25,12 @@ import naas
 
 ```python
 # LinkedIn cookies
-LI_AT = naas.secret.get("LI_AT") or "ENTER_YOUR_COOKIE_HERE" # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
-JSESSIONID = naas.secret.get("JSESSIONID") or "ENTER_YOUR_JSESSIONID_HERE" # EXAMPLE : "ajax:8379907400220387585"
+LI_AT = (
+    naas.secret.get("LI_AT") or "ENTER_YOUR_COOKIE_HERE"
+)  # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
+JSESSIONID = (
+    naas.secret.get("JSESSIONID") or "ENTER_YOUR_JSESSIONID_HERE"
+)  # EXAMPLE : "ajax:8379907400220387585"
 ```
 
 ### Setup Google Sheets
@@ -38,7 +38,7 @@ Share your spreadsheet with 🔗 naas-share@naas-gsheets.iam.gserviceaccount.com
 
 
 ```python
-SPREADSHEET_URL =  "ENTER_YOUR_SPREADSHEET_URL_HERE"
+SPREADSHEET_URL = "ENTER_YOUR_SPREADSHEET_URL_HERE"
 SHEET_NAME = "ENTER_YOUR_SHEET_NAME_HERE"
 ```
 
@@ -67,7 +67,7 @@ These initial rows refer to the most recent profiles, hence it is by default mai
 
 ```python
 df = linkedin.network.get_followers(start=0, limit=1)
-profiles = df['PROFILE_URL']
+profiles = df["PROFILE_URL"]
 ```
 
 ### Get Industry name and country details for each profile
@@ -77,7 +77,9 @@ profiles = df['PROFILE_URL']
 df_identity = pd.DataFrame()
 df1 = pd.DataFrame()
 for counter, profile in enumerate(profiles):
-    df1 = linkedin.profile.get_identity(profile_url=profile).loc[:,['PROFILE_ID', 'COUNTRY', 'INDUSTRY_NAME']]
+    df1 = linkedin.profile.get_identity(profile_url=profile).loc[
+        :, ["PROFILE_ID", "COUNTRY", "INDUSTRY_NAME"]
+    ]
     df_identity = df_identity.append(df1)
 ```
 
@@ -87,17 +89,19 @@ for counter, profile in enumerate(profiles):
 ```python
 df_resume = pd.DataFrame()
 df1 = pd.DataFrame()
-for counter,profile in enumerate(profiles):
-    df1 = linkedin.profile.get_resume(profile_url = profile)
+for counter, profile in enumerate(profiles):
+    df1 = linkedin.profile.get_resume(profile_url=profile)
     df_resume = df_resume.append(df1)
-df_resume = df_resume[df_resume['CATEGORY'] == 'Experience'].loc[:,['PROFILE_ID','TITLE','DATE_START','DATE_END','PLACE', 'FIELD']]
+df_resume = df_resume[df_resume["CATEGORY"] == "Experience"].loc[
+    :, ["PROFILE_ID", "TITLE", "DATE_START", "DATE_END", "PLACE", "FIELD"]
+]
 ```
 
 ### Merge two data frames.
 
 
 ```python
-df_final = pd.merge(df_identity, df_resume, how='inner', on='PROFILE_ID')
+df_final = pd.merge(df_identity, df_resume, how="inner", on="PROFILE_ID")
 df_final
 ```
 
@@ -107,8 +111,5 @@ df_final
 
 
 ```python
-gsheet.send(
-    sheet_name=SHEET_NAME,
-    data=df_final
-)
+gsheet.send(sheet_name=SHEET_NAME, data=df_final)
 ```

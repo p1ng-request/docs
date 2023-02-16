@@ -4,7 +4,7 @@
 
 **Author:** [Sriniketh Jayasendil](https://www.linkedin.com/in/sriniketh-jayasendil/)
 
-Send SMS to a verfied Phone Number using Twilio
+**Description:** This notebook allows you to send SMS messages using the Twilio API.
 
 ## Input
 
@@ -25,13 +25,15 @@ except:
 
 ```python
 # Credentials
-account_sid = ""    # From Twilio Console
-auth_token = ""     # From Twilio Console
+account_sid = ""  # From Twilio Console
+auth_token = ""  # From Twilio Console
 
 # Message
-from_number = ""    # Buy a new number if not available preferably starting with "+1" country code
-to_number = ""      # Could send messages only to verified Caller ID's
-message = ""        # Message to be Sent
+from_number = (
+    ""  # Buy a new number if not available preferably starting with "+1" country code
+)
+to_number = ""  # Could send messages only to verified Caller ID's
+message = ""  # Message to be Sent
 ```
 
 ## Model
@@ -51,7 +53,5 @@ client = Client(account_sid, auth_token)  # Set Client
 
 
 ```python
-client.api.account.messages.create(to=to_number,
-                                   from_=from_number,
-                                   body=message)
+client.api.account.messages.create(to=to_number, from_=from_number, body=message)
 ```

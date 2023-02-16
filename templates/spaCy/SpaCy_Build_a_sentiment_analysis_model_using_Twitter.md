@@ -4,11 +4,7 @@
 
 **Author:** [Tannia Dubon](https://www.linkedin.com/in/tanniadubon/)
 
-Tweets are retrieved using the Twitter Developer Platform and spaCy models are used for natural language processing.
-
-Binary classification is used to score the sentiment of the tweets; 1 designated as positive, 0 as negative and a .5 threshold. <br>
-
-Use this Notebook to update the query and conduct your own research! 
+**Description:** This notebook demonstrates how to use spaCy to build a sentiment analysis model using Twitter data.
 
 ## Input
 
@@ -62,7 +58,9 @@ BEARER_TOKEN = "..."
 
 ```python
 # Twitter query to fetch tweets. Learn how to build one here: https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query
-TWITTER_QUERY = '(Putin OR Lukashenka OR Russia OR "Vladimir Putin") -is:retweet lang:en'
+TWITTER_QUERY = (
+    '(Putin OR Lukashenka OR Russia OR "Vladimir Putin") -is:retweet lang:en'
+)
 
 # Number of tweets to fetch (max 100).
 TWITTER_MAX_RESULTS = 100
@@ -78,12 +76,16 @@ See https://tinyurl.com/2j5phrhu for instructions on customizing your query synt
 ```python
 def create_url(query, max_results=100):
     tweet_fields = "tweet.fields=created_at,public_metrics,context_annotations,text,possibly_sensitive,geo"
-    url = "https://api.twitter.com/2/tweets/search/recent?max_results={}&query={}&{}".format(max_results, query, tweet_fields)
+    url = "https://api.twitter.com/2/tweets/search/recent?max_results={}&query={}&{}".format(
+        max_results, query, tweet_fields
+    )
     return url
+
 
 def create_headers(bearer_token):
     headers = {"Authorization": "Bearer {}".format(bearer_token)}
     return headers
+
 
 def connect_to_endpoint(url, headers):
     response = requests.request("GET", url, headers=headers)
@@ -97,7 +99,7 @@ def connect_to_endpoint(url, headers):
 
 
 ```python
-url= create_url(TWITTER_QUERY, TWITTER_MAX_RESULTS)
+url = create_url(TWITTER_QUERY, TWITTER_MAX_RESULTS)
 bearer_token = BEARER_TOKEN
 headers = create_headers(bearer_token)
 json_response = connect_to_endpoint(url, headers)
@@ -108,9 +110,9 @@ json_response
 
 
 ```python
-#Initialize Lists
+# Initialize Lists
 id_data = []
-date_data = [] 
+date_data = []
 rtwt_data = []
 reply_data = []
 text_data = []
@@ -123,31 +125,35 @@ def get_id():
         id_record = data["id"]
         id_data.append(id_record)
 
+
 def get_created_at():
     for data in json_response["data"]:
         date_record = data["created_at"]
         date_data.append(date_record)
 
+
 def retweet_count():
     for retweets in json_response["data"]:
-        rtwt_count=retweets["public_metrics"]["retweet_count"] 
+        rtwt_count = retweets["public_metrics"]["retweet_count"]
         rtwt_data.append(rtwt_count)
+
 
 def reply_count():
     for reply in json_response["data"]:
         reply_count = reply["public_metrics"]["reply_count"]
         reply_data.append(reply_count)
 
-        
+
 def get_text():
     for data in json_response["data"]:
         text_record = data["text"]
         text_data.append(text_record)
-        
-get_id() 
-get_created_at() 
+
+
+get_id()
+get_created_at()
 retweet_count()
-reply_count() 
+reply_count()
 get_text()
 ```
 
@@ -158,7 +164,7 @@ def get_domain():
     d_name = []
     d_desc = []
     d_twt_id = []
-    
+
     for j in json_response["data"]:
         for i in j:
             if i == "context_annotations":
@@ -167,12 +173,12 @@ def get_domain():
                     d_name.append(d["domain"]["name"])
                     d_desc.append(d["domain"]["description"])
                     d_twt_id.append(j["id"])
-                    
-    domain = {"id": d_id, "name": d_name, "desc": d_desc,"tweet id": d_twt_id}
+
+    domain = {"id": d_id, "name": d_name, "desc": d_desc, "tweet id": d_twt_id}
     return domain
 
 
-def get_entity():    
+def get_entity():
     e_id = []
     e_name = []
     e_desc = []
@@ -185,14 +191,14 @@ def get_entity():
                     e_id.append(d["entity"]["id"])
                     e_name.append(d["entity"]["name"])
                     e_twt_id.append(j["id"])
-                
-    entity = {"id": e_id, "name": e_name, "desc": e_desc,"tweet id": e_twt_id}
+
+    entity = {"id": e_id, "name": e_name, "desc": e_desc, "tweet id": e_twt_id}
     return entity
 ```
 
 
 ```python
-#inspect output
+# inspect output
 print(get_entity())
 ```
 
@@ -210,8 +216,14 @@ print(len(id_data), len(date_data), len(rtwt_data), len(reply_data), len(text_da
 
 
 ```python
-#saved tweet fields doe not include entity or domain data
-save_data = {"id": id_data, "date": date_data, "retweet count": rtwt_data, "reply count": reply_data, "text": text_data}
+# saved tweet fields doe not include entity or domain data
+save_data = {
+    "id": id_data,
+    "date": date_data,
+    "retweet count": rtwt_data,
+    "reply count": reply_data,
+    "text": text_data,
+}
 df = pd.DataFrame(save_data)
 df.to_csv("pol_tweet_data.csv")
 df
@@ -228,7 +240,7 @@ def cleanup_text(file, rem_item):
 
 
 ```python
-#remove handles
+# remove handles
 df["clean text"] = np.vectorize(cleanup_text)(df["text"], "@[\w]*")
 df["clean text"].head()
 ```
@@ -257,7 +269,7 @@ doc = nlp(text)
 
 
 ```python
-tokens_list = [] 
+tokens_list = []
 for token in doc:
     tokens_list.append(token)
 
@@ -266,26 +278,27 @@ tokens_list
 
 
 ```python
-#Review entities recognized
+# Review entities recognized
 for ent in doc.ents:
     print(ent.text, ent.label_)
 ```
 
 
 ```python
-#Add a category for entities of interest, if needed. 
-from spacy.matcher import PhraseMatcher 
-matcher = PhraseMatcher(nlp.vocab) 
+# Add a category for entities of interest, if needed.
+from spacy.matcher import PhraseMatcher
 
-#define politicians as entities 
-terms = ["Putin", "Zelensky"] 
-patterns = [nlp.make_doc(term) for term in terms] 
-matcher.add("politiciansList", None, *patterns) 
+matcher = PhraseMatcher(nlp.vocab)
 
-matches = matcher(doc) 
+# define politicians as entities
+terms = ["Putin", "Zelensky"]
+patterns = [nlp.make_doc(term) for term in terms]
+matcher.add("politiciansList", None, *patterns)
 
-#this prints out the spans where the instances are found and the entity identified
-for mid, start, end in matches: 
+matches = matcher(doc)
+
+# this prints out the spans where the instances are found and the entity identified
+for mid, start, end in matches:
     print(start, end, doc[start:end])
 ```
 
@@ -293,35 +306,58 @@ for mid, start, end in matches:
 
 
 ```python
-config = {
-    "threshold": 0.5,
-    "model": DEFAULT_SINGLE_TEXTCAT_MODEL }
+config = {"threshold": 0.5, "model": DEFAULT_SINGLE_TEXTCAT_MODEL}
 
-textcat = nlp.add_pipe("textcat", config=config) 
+textcat = nlp.add_pipe("textcat", config=config)
 ```
 
 
 ```python
-#create training data for your example consisting of examples of positive and negative sentiment
-train_data = [("Helping refugees. This is what kindness looks like.", {"cats": {"POS": True}}),
-              ("In this time of uncertainty, we have a clear way forward: Help Ukraine defend itself. Support the Ukrainian people. Hold Russia accountable.", {"cats": {"POS": True}}),
-              ("Priests demand head of Ukrainian Orthodox Church Moscow Patriarchate be brought to church tribunal for position on war.", {"cats": {"POS": True}}),
-              ("Mayor of the most northern village in Ukraine Hremiach Hanna Havrylina was released after yesterday’s prisoners’ swap.", {"cats": {"POS": True}}),
-              ("Look at this female volunteer from Belarus fighting alongside Ukrainians.", {"cats": {"POS": True}}),
-              ("Russian soldiers: They're animals... Humans don't behave like this. My parents told me about WW2 & the fascists didn't even do such things.", {"cats": {"NEG": True}}),
-              ("All Russians are evil", {"cats": {"NEG": True}}),
-              ("The West is pushing Ukraine toward a conflict.", {"cats": {"NEG": True}}),
-              ("Cowards", {"cats": {"NEG": True}}),
-              ("Russia’s deployment of combat forces is a mere repositioning of troops on its own territory.", {"cats": {"NEG": True}}),
-              ("Ukraine and Ukrainian government officials are the aggressor in the Russia-Ukraine relationship.", {"cats": {"NEG": True}})] 
+# create training data for your example consisting of examples of positive and negative sentiment
+train_data = [
+    ("Helping refugees. This is what kindness looks like.", {"cats": {"POS": True}}),
+    (
+        "In this time of uncertainty, we have a clear way forward: Help Ukraine defend itself. Support the Ukrainian people. Hold Russia accountable.",
+        {"cats": {"POS": True}},
+    ),
+    (
+        "Priests demand head of Ukrainian Orthodox Church Moscow Patriarchate be brought to church tribunal for position on war.",
+        {"cats": {"POS": True}},
+    ),
+    (
+        "Mayor of the most northern village in Ukraine Hremiach Hanna Havrylina was released after yesterday’s prisoners’ swap.",
+        {"cats": {"POS": True}},
+    ),
+    (
+        "Look at this female volunteer from Belarus fighting alongside Ukrainians.",
+        {"cats": {"POS": True}},
+    ),
+    (
+        "Russian soldiers: They're animals... Humans don't behave like this. My parents told me about WW2 & the fascists didn't even do such things.",
+        {"cats": {"NEG": True}},
+    ),
+    ("All Russians are evil", {"cats": {"NEG": True}}),
+    ("The West is pushing Ukraine toward a conflict.", {"cats": {"NEG": True}}),
+    ("Cowards", {"cats": {"NEG": True}}),
+    (
+        "Russia’s deployment of combat forces is a mere repositioning of troops on its own territory.",
+        {"cats": {"NEG": True}},
+    ),
+    (
+        "Ukraine and Ukrainian government officials are the aggressor in the Russia-Ukraine relationship.",
+        {"cats": {"NEG": True}},
+    ),
+]
 ```
 
 
 ```python
 textcat.add_label("POS")
 textcat.add_label("NEG")
-    
-train_examples = [Example.from_dict(nlp.make_doc(text), label) for text,label in train_data] 
+
+train_examples = [
+    Example.from_dict(nlp.make_doc(text), label) for text, label in train_data
+]
 ```
 
 
@@ -331,56 +367,60 @@ textcat.initialize(lambda: train_examples, nlp=nlp)
 
 
 ```python
-#Define training example
+# Define training example
 
 epochs = 20
 
-#Disable other pipe components & define training loop to incorporate statistical information
+# Disable other pipe components & define training loop to incorporate statistical information
 
 with nlp.select_pipes(enable="textcat"):
-    optimizer = nlp.resume_training() #Creates optimizer object
+    optimizer = nlp.resume_training()  # Creates optimizer object
     for i in range(epochs):
         random.shuffle(train_data)
         for text, label in train_data:
             doc = nlp.make_doc(text)
-            example = Example.from_dict(doc, label) 
+            example = Example.from_dict(doc, label)
             print(nlp.update([example], sgd=optimizer))
 ```
 
 
 ```python
-#enter an example tweet to test results
-doc2 = nlp("As Russia continues to commit horrific atrocities against the Ukrainian people, we must take additional steps to cut off")
+# enter an example tweet to test results
+doc2 = nlp(
+    "As Russia continues to commit horrific atrocities against the Ukrainian people, we must take additional steps to cut off"
+)
 
 print(doc2.cats)
 ```
 
 
 ```python
-#enter another example
-doc3 = nlp("One of the captured Russian soldiers who was sent by Putin to “denazify” Ukraine")
+# enter another example
+doc3 = nlp(
+    "One of the captured Russian soldiers who was sent by Putin to “denazify” Ukraine"
+)
 print(doc3.cats)
 ```
 
 
 ```python
-#process each row in clean text column
+# process each row in clean text column
 df["nlp_proc"] = [nlp(i) for i in df["clean text"]]
 ```
 
 
 ```python
-#save positive/negative predictions to cats column
+# save positive/negative predictions to cats column
 df["cats"] = [i.cats for i in df["nlp_proc"]]
 ```
 
 
 ```python
-#assign value of 1 to positive classification, 0 to negative
+# assign value of 1 to positive classification, 0 to negative
 sc_val = []
 
 for i in df["cats"]:
-    if i["POS"] >= .5:
+    if i["POS"] >= 0.5:
         sc_val.append(1)
     else:
         sc_val.append(0)
@@ -388,19 +428,19 @@ for i in df["cats"]:
 
 
 ```python
-#append classification score to dataframe
+# append classification score to dataframe
 df["score"] = sc_val
 ```
 
 
 ```python
-#check dataframe
+# check dataframe
 df
 ```
 
 
 ```python
-#print out tweet id, text and score = to review results
+# print out tweet id, text and score = to review results
 for index, i in enumerate(df["score"]):
     if i == 1:
         print(df["id"][index], df["clean text"][index], df["score"][index])
@@ -412,8 +452,8 @@ for index, i in enumerate(df["score"]):
 
 
 ```python
-#wordcloud
-wordcloud = WordCloud(stopwords = STOPWORDS, collocations=True).generate(str(tokens_list))
+# wordcloud
+wordcloud = WordCloud(stopwords=STOPWORDS, collocations=True).generate(str(tokens_list))
 
 plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
@@ -433,7 +473,9 @@ plt.show()
 
 ```python
 from pathlib import Path
-output_dir=Path("spaCy_models")
+
+output_dir = Path("spaCy_models")
+
 
 def save_model(output_dir):
     if output_dir is not None:
@@ -442,12 +484,13 @@ def save_model(output_dir):
             output_dir.mkdir()
         nlp.to_disk(output_dir)
         print("Saved model to", output_dir)
-        
+
+
 save_model(output_dir)
 ```
 
 
 ```python
 ### To load trained, custom model on new data use:
-#nlp = spacy.load("spaCy_models")
+# nlp = spacy.load("spaCy_models")
 ```

@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook uses ipywidgets to set your naas secret.
+**Description:** This notebook provides instructions for setting up a secure connection to a NaaS (Network-as-a-Service) using IPyWidgets.
 
 ## Input
 
@@ -31,8 +31,8 @@ DEFAULT_VALUE = "https://www.linkedin.com/in/my-profile/"
 
 
 ```python
-style = {'description_width': '150px'}
-layout = widgets.Layout(width='500px')
+style = {"description_width": "150px"}
+layout = widgets.Layout(width="500px")
 
 value = DEFAULT_VALUE
 
@@ -41,12 +41,10 @@ if naas.secret.get(SECRET_KEY):
     value = naas.secret.get(SECRET_KEY)
 
 # Setup ipywidgets
-text = widgets.Text(description='Profile URL:',
-                    display='flex',
-                    value=value,
-                    style=style,
-                    layout=layout)
-save_button = widgets.Button(description="Save profile", button_style='success')
+text = widgets.Text(
+    description="Profile URL:", display="flex", value=value, style=style, layout=layout
+)
+save_button = widgets.Button(description="Save profile", button_style="success")
 connect_button = widgets.Button(description="Connect LinkedIn")
 Box = widgets.HBox([text, save_button])
 

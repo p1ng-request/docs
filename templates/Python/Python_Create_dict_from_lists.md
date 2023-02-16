@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-Here below you will find how to create a dictionary from two lists in Python.
+**Description:** This notebook provides instructions on how to create a dictionary from two lists in Python.
 
 ## Input
 
@@ -12,8 +12,46 @@ Here below you will find how to create a dictionary from two lists in Python.
 
 
 ```python
-keys = [1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012]
-value = [219, 146, 112, 127, 124, 180, 236, 207, 236, 263, 350, 430, 474, 526, 488, 537, 500, 439]
+keys = [
+    1995,
+    1996,
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+]
+value = [
+    219,
+    146,
+    112,
+    127,
+    124,
+    180,
+    236,
+    207,
+    236,
+    263,
+    350,
+    430,
+    474,
+    526,
+    488,
+    537,
+    500,
+    439,
+]
 ```
 
 ## Model

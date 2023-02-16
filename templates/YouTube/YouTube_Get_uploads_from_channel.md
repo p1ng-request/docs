@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook allows you to retrieve all the videos uploaded to a specific YouTube channel.
+
 ## Input
 
 ### Import library
@@ -21,7 +23,7 @@ To know how to generate a YouTube api key you can [watch this video](https://www
 
 ```python
 # Youtube api Key
-YOUTUBE_API_KEY = naas.secret.get('YOUTUBE_API_KEY')
+YOUTUBE_API_KEY = naas.secret.get("YOUTUBE_API_KEY")
 
 # Channel ID
 channel_url = "https://www.youtube.com/channel/UCKKG5hzjXXU_rRdHHWQ8JHQ"

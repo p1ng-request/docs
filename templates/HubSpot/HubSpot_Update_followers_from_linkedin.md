@@ -44,8 +44,8 @@ If you are not using the Google Chrome Extension, [learn how to get your cookies
 
 ```python
 # Cookies
-LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
-JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or "YOUR_COOKIE_LI_AT"
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "YOUR_COOKIE_JSESSIONID"
 
 # LinkedIn update limit
 LIMIT = 15
@@ -57,7 +57,7 @@ LIMIT = 15
 ```python
 naas.scheduler.add(cron="0 8 * * *")
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -88,11 +88,15 @@ df_to_update = hubspot_contacts.copy()
 df_to_update = df_to_update.fillna("Not Defined")
 
 # Filter on "Not defined"
-df_to_update = df_to_update[(df_to_update.linkedinbio != "Not Defined") &
-                            (df_to_update.linkedinconnections == "Not Defined")]
+df_to_update = df_to_update[
+    (df_to_update.linkedinbio != "Not Defined")
+    & (df_to_update.linkedinconnections == "Not Defined")
+]
 
 # Limit to last x contacts
-df_to_update = df_to_update.sort_values(by="createdate", ascending=False)[:LIMIT].reset_index(drop=True)
+df_to_update = df_to_update.sort_values(by="createdate", ascending=False)[
+    :LIMIT
+].reset_index(drop=True)
 
 df_to_update
 ```
@@ -103,14 +107,14 @@ df_to_update
 ```python
 for _, row in df_to_update.iterrows():
     linkedinbio = row.linkedinbio
-    
+
     # Get followers
     df = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(linkedinbio)
     linkedinconnections = df.loc[0, "FOLLOWERS_COUNT"]
-        
+
     # Get linkedinbio
     df_to_update.loc[_, "linkedinconnections"] = linkedinconnections
-    
+
 df_to_update
 ```
 
@@ -123,7 +127,7 @@ df_to_update
 for _, row in df_to_update.iterrows():
     # Init data
     data = {}
-    
+
     # Get data
     hs_object_id = row.hs_object_id
     linkedinconnections = row.linkedinconnections

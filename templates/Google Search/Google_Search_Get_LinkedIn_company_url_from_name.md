@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a method to quickly obtain the LinkedIn URL of a company from its name using Google Search.
+
 ## Input
 
 ### Import library
@@ -34,11 +36,11 @@ company = "Tesla"
 def get_linkedin_url(company):
     # Init linkedinbio
     linkedinbio = None
-    
+
     # Create query
     query = f"{company}+Linkedin"
     print("Google query: ", query)
-    
+
     # Search in Google
     for i in search(query, tld="com", num=10, stop=10, pause=2):
         pattern = "https:\/\/.+.linkedin.com\/company\/.([^?])+"
@@ -49,6 +51,7 @@ def get_linkedin_url(company):
             linkedinbio = result.group(0).replace(" ", "")
             return linkedinbio
     return linkedinbio
+
 
 linkedin_url = get_linkedin_url(company)
 ```

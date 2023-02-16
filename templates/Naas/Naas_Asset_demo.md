@@ -14,7 +14,7 @@ Build notebooks that can communicate with third parties applications and run rem
 
 
 ```python
-import naas 
+import naas
 ```
 
 ### Setup Naas

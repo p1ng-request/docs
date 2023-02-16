@@ -4,6 +4,8 @@
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
+**Description:** This notebook provides a way to quickly and easily get contact information from Pipedrive.
+
 ## Input
 
 ### Import libraries
@@ -44,15 +46,15 @@ client.set_api_token(API_KEY)
 
 
 ```python
-response = client.persons.get_all_persons() #returns all the records present in CRM
-dataKey = response.get("data", None) #the key with all records
-userInfo = {} #empty dictionary for storing data in user object
-users = [] #empty list to store multiple user objects
+response = client.persons.get_all_persons()  # returns all the records present in CRM
+dataKey = response.get("data", None)  # the key with all records
+userInfo = {}  # empty dictionary for storing data in user object
+users = []  # empty list to store multiple user objects
 ```
 
 
 ```python
-for dataKeyItem in dataKey: #Iterate through each record
+for dataKeyItem in dataKey:  # Iterate through each record
     phonelist = []
     emaillist = []
     for phone in dataKeyItem["phone"]:
@@ -67,7 +69,9 @@ for dataKeyItem in dataKey: #Iterate through each record
         "Phone": phonelist,
         "Email": emaillist,
         "Company": dataKeyItem["org_name"],
-        "Job" : dataKeyItem["your_field_api_key"] #once you create a field you will find the resepect field api key in Accounts - Data Fields section
+        "Job": dataKeyItem[
+            "your_field_api_key"
+        ],  # once you create a field you will find the resepect field api key in Accounts - Data Fields section
     }
     users.append(userInfo)
 ```
@@ -78,10 +82,10 @@ for dataKeyItem in dataKey: #Iterate through each record
 
 
 ```python
-#use below line to adjust the display of columns and rows
+# use below line to adjust the display of columns and rows
 pd.set_option("display.max_rows", None, "display.max_columns", 4)
 
-#the below dataframe has sample data from Pipedrive CRM.
+# the below dataframe has sample data from Pipedrive CRM.
 personsDF = pd.DataFrame(users)
 print(personsDF)
 ```

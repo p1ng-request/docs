@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a demonstration of the Naas Emailbuilder, a tool for creating and managing email campaigns.
+
 ## Input
 
 ### Import libraries
@@ -35,44 +37,47 @@ subject = "My Object"
 
 
 ```python
-table = pd.DataFrame({
-    "Table Header 1": ["Left element 1", "Left element 2", "Left element 3"],
-    "Table Header 2": ["Right element 1", "Right element 2", "Right element 3"]
-})
+table = pd.DataFrame(
+    {
+        "Table Header 1": ["Left element 1", "Left element 2", "Left element 3"],
+        "Table Header 2": ["Right element 1", "Right element 2", "Right element 3"],
+    }
+)
 
 link = "https://www.naas.ai/"
 
 img = "https://gblobscdn.gitbook.com/spaces%2F-MJ1rzHSMrn3m7xaPUs_%2Favatar-1602072063433.png?alt=media"
 
-list_bullet = ["First element",
-               "Second element",
-               "Third element",
-               naas_drivers.emailbuilder.link(link, "Fourth element"),
-              ]
+list_bullet = [
+    "First element",
+    "Second element",
+    "Third element",
+    naas_drivers.emailbuilder.link(link, "Fourth element"),
+]
 
-footer_icons = [{
-    "img_src": img,
-    "href": link
-}]
+footer_icons = [{"img_src": img, "href": link}]
 
 email_content = {
-    'element': naas_drivers.emailbuilder.title("This is a title"),
-    'heading': naas_drivers.emailbuilder.heading("This is a heading"),
-    'subheading': naas_drivers.emailbuilder.subheading("This is a subheading"),
-    'text': naas_drivers.emailbuilder.text("This is a text"),
-    'link': naas_drivers.emailbuilder.link(link, "This is a link"),
-    'button': naas_drivers.emailbuilder.button(link, "This is a button"),
-    'list': naas_drivers.emailbuilder.list(list_bullet),
-    'table': naas_drivers.emailbuilder.table(table, header=True, border=True),
-    'image': naas_drivers.emailbuilder.image(img),
-    'footer': naas_drivers.emailbuilder.footer_company(networks=footer_icons, company=["Company informations"], legal=["Legal informations"])
+    "element": naas_drivers.emailbuilder.title("This is a title"),
+    "heading": naas_drivers.emailbuilder.heading("This is a heading"),
+    "subheading": naas_drivers.emailbuilder.subheading("This is a subheading"),
+    "text": naas_drivers.emailbuilder.text("This is a text"),
+    "link": naas_drivers.emailbuilder.link(link, "This is a link"),
+    "button": naas_drivers.emailbuilder.button(link, "This is a button"),
+    "list": naas_drivers.emailbuilder.list(list_bullet),
+    "table": naas_drivers.emailbuilder.table(table, header=True, border=True),
+    "image": naas_drivers.emailbuilder.image(img),
+    "footer": naas_drivers.emailbuilder.footer_company(
+        networks=footer_icons,
+        company=["Company informations"],
+        legal=["Legal informations"],
+    ),
 }
 ```
 
 
 ```python
-content = naas_drivers.emailbuilder.generate(display='iframe',
-                              **email_content)
+content = naas_drivers.emailbuilder.generate(display="iframe", **email_content)
 ```
 
 ## Output
@@ -81,8 +86,7 @@ content = naas_drivers.emailbuilder.generate(display='iframe',
 
 
 ```python
-naas.notification.send(email_to=email_to,
-                       subject=subject,
-                       html=content,
-                       email_from=email_from)
+naas.notification.send(
+    email_to=email_to, subject=subject, html=content, email_from=email_from
+)
 ```

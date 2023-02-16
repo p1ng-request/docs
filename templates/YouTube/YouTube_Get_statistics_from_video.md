@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a way to get detailed statistics from YouTube videos.
+
 ## Input
 
 ### Import library
@@ -21,7 +23,7 @@ To know how to generate a YouTube api key you can [watch this video](https://www
 
 ```python
 # Youtube api Key
-YOUTUBE_API_KEY = naas.secret.get('YOUTUBE_API_KEY')
+YOUTUBE_API_KEY = naas.secret.get("YOUTUBE_API_KEY")
 
 # Channel ID
 video_url = "https://www.youtube.com/watch?v=W8H57kam9kg&t=3685s"

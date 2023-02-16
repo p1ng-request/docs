@@ -19,11 +19,15 @@ import pandas as pd
 
 
 ```python
-#create DataFrame
-df = pd.DataFrame({'team': ['A', 'A', 'A', 'B', 'B', 'B'],
-                   'points': [11, 7, 8, 10, 21, 13],
-                   'assists': [5, 7, 7, 9, 12, 0],
-                   'rebounds': [5, 8, 10, 6, 6, 22]})
+# create DataFrame
+df = pd.DataFrame(
+    {
+        "team": ["A", "A", "A", "B", "B", "B"],
+        "points": [11, 7, 8, 10, 21, 13],
+        "assists": [5, 7, 7, 9, 12, 0],
+        "rebounds": [5, 8, 10, 6, 6, 22],
+    }
+)
 df
 ```
 
@@ -34,11 +38,11 @@ This function will not throw an error if column does not exist in dataframe.
 ```python
 # dict of columns with new names
 to_rename = {
-    'team': "equipo",
-    'points': "puntos",
-    'assists': "asistancias",
-    'rebounds': "rebotes",
-    "col": "new_col"
+    "team": "equipo",
+    "points": "puntos",
+    "assists": "asistancias",
+    "rebounds": "rebotes",
+    "col": "new_col",
 }
 ```
 

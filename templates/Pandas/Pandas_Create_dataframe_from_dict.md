@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-Here below you will find how to create a pandas DataFrame from a simple dict
+**Description:** This notebook provides a step-by-step guide to creating a dataframe from a dictionary using the Pandas library.
 
 ## Input
 

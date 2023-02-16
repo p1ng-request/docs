@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to post images and captions to their Instagram account.
+
 ## Input
 
 ### Import libraries
@@ -38,8 +40,7 @@ caption = "Naas is doing this."
 
 ```python
 bot = Bot()
-bot.login(username=username,  
-          password=password) 
+bot.login(username=username, password=password)
 ```
 
 ## Output
@@ -48,6 +49,5 @@ bot.login(username=username,
 
 
 ```python
-bot.upload_photo(image_path,
-                 caption=caption) 
+bot.upload_photo(image_path, caption=caption)
 ```

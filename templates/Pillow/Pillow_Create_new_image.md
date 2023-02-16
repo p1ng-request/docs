@@ -37,7 +37,7 @@ output_image = "new_image.png"
 
 
 ```python
-img = Image.new('RGB', (width, height), background_color)
+img = Image.new("RGB", (width, height), background_color)
 display(img)
 ```
 

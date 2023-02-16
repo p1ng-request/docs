@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook follows the evolution of content engagements (comments + likes) on LinkedIn.
+**Description:** This notebook helps you track and analyze your weekly content engagements on LinkedIn.
 
 <div class="alert alert-info" role="info" style="margin: 10px">
 <b>Requirements:</b><br>
@@ -28,9 +28,9 @@ import plotly.graph_objects as go
 
 ```python
 # Input
-csv_input = f"LINKEDIN_PROFILE_POSTS.csv" # CSV path with your posts stats generated with 'LinkedIn_Get_profile_posts_stats.ipynb' or 'LinkedIn_Get_company_posts_stats.ipynb'
-TITLE = "Engagements" # Chart title
-COL_VALUE = ["LIKES", "COMMENTS"] # Column to sum
+csv_input = f"LINKEDIN_PROFILE_POSTS.csv"  # CSV path with your posts stats generated with 'LinkedIn_Get_profile_posts_stats.ipynb' or 'LinkedIn_Get_company_posts_stats.ipynb'
+TITLE = "Engagements"  # Chart title
+COL_VALUE = ["LIKES", "COMMENTS"]  # Column to sum
 
 # Outputs
 name_output = "LINKEDIN_FOLLOW_CONTENT_ENGAGEMENTS_WEEKLY"
@@ -45,7 +45,7 @@ image_output = f"{name_output}.png"
 ```python
 naas.dependency.add()
 
-#-> Uncomment the line below to remove your dependency
+# -> Uncomment the line below to remove your dependency
 # naas.dependency.delete()
 ```
 
@@ -64,6 +64,7 @@ def read_csv(file_path):
         return pd.DataFrame()
     return df
 
+
 df_posts = read_csv(csv_input)
 print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
@@ -78,79 +79,90 @@ PERIOD = "%Y%U"
 PERIOD_D = "%Y-W%U"
 PERIOD_TEXT = "This week"
 
-def get_trend(df_init,
-              col_date,
-              col_value,
-              agg_value,
-              period_rolling=12):
+
+def get_trend(df_init, col_date, col_value, agg_value, period_rolling=12):
     # Init variable
     df = df_init.copy()
-    
+
     # Groupby period
     if isinstance(col_value, list):
         df["VALUE"] = 0
         for c in col_value:
             df[c] = df[c].astype(float)
-            df["VALUE"] = df["VALUE"] + df[c]    
+            df["VALUE"] = df["VALUE"] + df[c]
         col_value = "VALUE"
     elif agg_value == "sum":
         df[col_value] = df[col_value].astype(float)
     df[col_date] = pd.to_datetime(df[col_date].str[:-6]).dt.strftime(DATE_FORMAT)
     df = df.groupby(col_date, as_index=False).agg({col_value: agg_value})
-    
+
     # Rename column
-    to_rename = {
-        col_date: "DATE_ISO",
-        col_value: "VALUE"
-    }
+    to_rename = {col_date: "DATE_ISO", col_value: "VALUE"}
     df = df.rename(columns=to_rename)
-    
+
     # Reindex value
     d = datetime.now().date()
     d2 = df.loc[df.index[0], "DATE_ISO"]
-    idx = pd.date_range(d2, d, freq = "D")    
+    idx = pd.date_range(d2, d, freq="D")
     df.set_index("DATE_ISO", drop=True, inplace=True)
     df.index = pd.DatetimeIndex(df.index)
     df = df.reindex(idx, fill_value=0)
     df["DATE_ISO"] = pd.DatetimeIndex(df.index)
-    
+
     # Groupby month
     df["DATE"] = pd.to_datetime(df["DATE_ISO"], format=DATE_FORMAT).dt.strftime(PERIOD)
     # Plotly: Date display
-    df["DATE_D"] = pd.to_datetime(df["DATE_ISO"], format=DATE_FORMAT).dt.strftime(PERIOD_D)
+    df["DATE_D"] = pd.to_datetime(df["DATE_ISO"], format=DATE_FORMAT).dt.strftime(
+        PERIOD_D
+    )
     df = df.groupby(["DATE", "DATE_D"], as_index=False).agg({"VALUE": agg_value})
 
     # Calc variation
     for index, row in df.iterrows():
         if index > 0:
             n = df.loc[df.index[index], "VALUE"]
-            n_1 = df.loc[df.index[index-1], "VALUE"]
+            n_1 = df.loc[df.index[index - 1], "VALUE"]
             df.loc[df.index[index], "VALUE_COMP"] = n_1
             df.loc[df.index[index], "VARV"] = n - n_1
             if n_1 > 0:
                 df.loc[df.index[index], "VARP"] = (n - n_1) / abs(n_1)
     df = df.fillna(0)
-    
+
     # Plotly: Value display
-    df["VALUE_D"] = "<b><span style='font-family: Arial;'>" + df["VALUE"].map("{:,.0f}".format).str.replace(",", " ") + "</span></b>"
-    
+    df["VALUE_D"] = (
+        "<b><span style='font-family: Arial;'>"
+        + df["VALUE"].map("{:,.0f}".format).str.replace(",", " ")
+        + "</span></b>"
+    )
+
     # Plotly: Variation display
     df["VARV_D"] = df["VARV"].map("{:,.0f}".format).str.replace(",", " ")
     df.loc[df["VARV"] >= 0, "VARV_D"] = "+" + df["VARV_D"]
     df["VARP_D"] = df["VARP"].map("{:,.0%}".format).str.replace(",", " ")
     df.loc[df["VARP"] >= 0, "VARP_D"] = "+" + df["VARP_D"]
-    
+
     # Plotly: hovertext
-    df["TEXT"] = ("<b><span style='font-size: 14px;'>" + df["DATE_D"].astype(str) + ": " + df["VALUE_D"] + "</span></b><br>"
-                  "<span style='font-size: 12px;'>" + f"{PERIOD_TEXT}: " + df["VARV_D"] + " (" + df["VARP_D"] + ")</span>")
-    
+    df["TEXT"] = (
+        "<b><span style='font-size: 14px;'>"
+        + df["DATE_D"].astype(str)
+        + ": "
+        + df["VALUE_D"]
+        + "</span></b><br>"
+        "<span style='font-size: 12px;'>"
+        + f"{PERIOD_TEXT}: "
+        + df["VARV_D"]
+        + " ("
+        + df["VARP_D"]
+        + ")</span>"
+    )
+
     # Return month rolling
     return df[-period_rolling:].reset_index(drop=True)
 
-df_trend = get_trend(df_posts,
-                     col_date="PUBLISHED_DATE",
-                     col_value=COL_VALUE,
-                     agg_value="sum")
+
+df_trend = get_trend(
+    df_posts, col_date="PUBLISHED_DATE", col_value=COL_VALUE, agg_value="sum"
+)
 df_trend
 ```
 
@@ -160,17 +172,14 @@ df_trend
 
 
 ```python
-LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png" # Chart logo
-COLOR = "#1293d2" # Chart primary color
+LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png"  # Chart logo
+COLOR = "#1293d2"  # Chart primary color
 
-def create_barchart(df,
-                    label="DATE_D",
-                    value="VALUE",
-                    value_d="VALUE_D",
-                    text="TEXT"):
+
+def create_barchart(df, label="DATE_D", value="VALUE", value_d="VALUE_D", text="TEXT"):
     # Init
     fig = go.Figure()
-    
+
     # Create fig
     fig.add_trace(
         go.Bar(
@@ -180,7 +189,7 @@ def create_barchart(df,
             textposition="outside",
             hoverinfo="text",
             hovertext=df[text],
-            marker=dict(color=COLOR)
+            marker=dict(color=COLOR),
         )
     )
     # Add logo
@@ -194,7 +203,7 @@ def create_barchart(df,
             sizex=0.12,
             sizey=0.12,
             xanchor="right",
-            yanchor="bottom"
+            yanchor="bottom",
         )
     )
     fig.update_traces(showlegend=False)
@@ -221,6 +230,7 @@ def create_barchart(df,
     fig.show()
     return fig
 
+
 fig = create_barchart(df_trend)
 ```
 
@@ -234,7 +244,7 @@ df_trend.to_csv(csv_output, index=False)
 # Share output with naas
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(csv_output)
 ```
 
@@ -249,7 +259,7 @@ fig.write_html(html_output)
 # Share output with naas
 naas.asset.add(html_output, params={"inline": True})
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(html_output)
 ```
 
@@ -264,6 +274,6 @@ fig.write_image(image_output)
 # Share output with naas
 naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

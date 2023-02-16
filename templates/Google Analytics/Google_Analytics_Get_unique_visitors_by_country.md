@@ -4,7 +4,7 @@
 
 **Author:** [Charles Demontigny](https://www.linkedin.com/in/charles-demontigny/)
 
-Pre-requisite: Create your own <a href="">Google API JSON credential</a>
+**Description:** This notebook provides a breakdown of unique visitors to a website by country using Google Analytics data.
 
 ## Input
 
@@ -15,6 +15,7 @@ Pre-requisite: Create your own <a href="">Google API JSON credential</a>
 import plotly.graph_objects as go
 import plotly.express as px
 import naas
+
 # Using a dropin driver in a cell for now. (Faster iterations)
 # from naas_drivers import googleanalytics
 ```
@@ -28,7 +29,7 @@ import naas
 
 
 ```python
-json_path = 'naas-googleanalytics.json'
+json_path = "naas-googleanalytics.json"
 ```
 
 ### Get view id from google analytics
@@ -51,7 +52,7 @@ df = googleanalytics.connect(json_path=json_path).views.get_data(
     dimensions="ga:date",
     format_type="pivot",
     start_date="30daysAgo",
-    end_date="today"
+    end_date="today",
 )
 df
 ```

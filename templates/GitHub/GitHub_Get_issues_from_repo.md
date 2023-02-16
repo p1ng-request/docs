@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-The objective of the notebook is to maintain a track of issues that are open in a particular repository
+**Description:** This notebook allows users to retrieve issues from a GitHub repository.
 
 ## Input
 

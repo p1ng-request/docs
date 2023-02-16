@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a daily world map of active Covid-19 cases based on data from the Johns Hopkins University.
+
 ## Input
 
 ### Import libraries
@@ -34,9 +36,9 @@ title = "COVID 19 - Active cases (in milions)"
 ```python
 # Input URLs of the raw csv dataset
 urls = [
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv',
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv',
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv",
 ]
 
 # Output paths
@@ -51,7 +53,7 @@ output_html = f"{title}.html"
 # Schedule your job everyday at 8:00 AM (NB: you can choose the time of your scheduling bot)
 naas.scheduler.add(cron="0 8 * * *")
 
-#-> Uncomment the line below (by removing the hashtag) to remove your scheduler
+# -> Uncomment the line below (by removing the hashtag) to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -65,9 +67,12 @@ def get_data_url(urls):
     df = pd.DataFrame()
     for url in urls:
         tmp_df = pd.read_csv(url)
-        tmp_df["Indicator"] = url.split("/time_series_covid19_")[-1].split("_global.csv")[0].capitalize()
+        tmp_df["Indicator"] = (
+            url.split("/time_series_covid19_")[-1].split("_global.csv")[0].capitalize()
+        )
         df = pd.concat([df, tmp_df])
     return df
+
 
 df_init = get_data_url(urls)
 df_init
@@ -81,30 +86,35 @@ def get_all_data(df_init):
     df = df_init.copy()
     # Cleaning
     df = df.drop("Province/State", axis=1)
-    
+
     # Melt data
-    df = pd.melt(df,
-                 id_vars=["Country/Region", "Lat", "Long", "Indicator"],
-                 var_name="Date",
-                 value_name="Value").fillna(0)
+    df = pd.melt(
+        df,
+        id_vars=["Country/Region", "Lat", "Long", "Indicator"],
+        var_name="Date",
+        value_name="Value",
+    ).fillna(0)
     df["Date"] = pd.to_datetime(df["Date"])
-    
+
     # Calc active cases
     df_active = df.copy()
-    df_active.loc[df_active["Indicator"].isin(["Deaths", "Recovered"]), "Value"] = df_active["Value"] * (-1)
+    df_active.loc[
+        df_active["Indicator"].isin(["Deaths", "Recovered"]), "Value"
+    ] = df_active["Value"] * (-1)
     df_active["Indicator"] = "Active cases"
-    
+
     # Concat data
     df = pd.concat([df, df_active])
-    
+
     # Group by country/region
     to_group = ["Country/Region", "Lat", "Long", "Indicator", "Date"]
     df = df.groupby(to_group, as_index=False).agg({"Value": "sum"})
-    
+
     # Cleaning
     df = df.rename(columns={"Country/Region": "COUNTRY"})
     df.columns = df.columns.str.upper()
     return df.reset_index(drop=True)
+
 
 df_clean = get_all_data(df_init)
 df_clean
@@ -118,16 +128,15 @@ def prep_data(df_init):
     df = df_init.copy()
     # Filter
     date_max = df["DATE"].max()
-    df = df[
-        (df["INDICATOR"] == "Active cases") & 
-        (df["DATE"] == date_max)
-    ].reset_index(drop=True)
-
+    df = df[(df["INDICATOR"] == "Active cases") & (df["DATE"] == date_max)].reset_index(
+        drop=True
+    )
 
     # Clean country
-    df = clean_country(df, 'COUNTRY', output_format='alpha-3').dropna()
-    df = df.rename(columns={'COUNTRY_clean': 'COUNTRY_ISO'})
+    df = clean_country(df, "COUNTRY", output_format="alpha-3").dropna()
+    df = df.rename(columns={"COUNTRY_clean": "COUNTRY_ISO"})
     return df.reset_index(drop=True)
+
 
 df_worldmap = prep_data(df_clean)
 df_worldmap
@@ -140,19 +149,24 @@ df_worldmap
 def create_worldmap(df):
     fig = go.Figure()
 
-    fig = go.Figure(data=go.Choropleth(
-        locations=df['COUNTRY_ISO'],
-        z=df['VALUE'],
-        text=df["COUNTRY"] + ": " + df['VALUE'].map("{:,.0f}".format).str.replace(",", " ") + " active cases",
-        hoverinfo="text",
-        colorscale='Blues',
-        autocolorscale=False,
-        reversescale=False,
-        marker_line_color='darkgray',
-        marker_line_width=0.5,
-        colorbar_tickprefix='',
-        colorbar_title='Active cases',
-    ))
+    fig = go.Figure(
+        data=go.Choropleth(
+            locations=df["COUNTRY_ISO"],
+            z=df["VALUE"],
+            text=df["COUNTRY"]
+            + ": "
+            + df["VALUE"].map("{:,.0f}".format).str.replace(",", " ")
+            + " active cases",
+            hoverinfo="text",
+            colorscale="Blues",
+            autocolorscale=False,
+            reversescale=False,
+            marker_line_color="darkgray",
+            marker_line_width=0.5,
+            colorbar_tickprefix="",
+            colorbar_title="Active cases",
+        )
+    )
 
     fig.update_layout(
         title=title,
@@ -161,16 +175,16 @@ def create_worldmap(df):
         geo=dict(
             showframe=False,
             showcoastlines=False,
-            #projection_type='equirectangular'
+            # projection_type='equirectangular'
         ),
-        dragmode= False,
+        dragmode=False,
         width=1200,
         height=800,
-
     )
-    config = {'displayModeBar': False}
+    config = {"displayModeBar": False}
     fig.show(config=config)
     return fig
+
 
 fig = create_worldmap(df_worldmap)
 ```
@@ -190,9 +204,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

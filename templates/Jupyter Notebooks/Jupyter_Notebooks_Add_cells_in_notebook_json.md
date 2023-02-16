@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides instructions on how to add cells to a Jupyter Notebook using JSON.
+
 ## Input
 
 ### Import libraries
@@ -38,15 +40,15 @@ def add_cells(notebook_path):
     check_tags = False
     check_author = False
     check_input = False
-    check_model = False 
+    check_model = False
     check_output = False
     no_markdown = 0
-    
+
     cells = nb.get("cells")
     # Check each cells
     for cell in cells:
-        cell_type = cell.get('cell_type')
-        sources = cell.get('source')    
+        cell_type = cell.get("cell_type")
+        sources = cell.get("source")
         if cell_type == "markdown":
             for source in sources:
                 if source.startswith("<img") and no_markdown == 0:
@@ -67,7 +69,7 @@ def add_cells(notebook_path):
                     check_model = True
                 if source.startswith("## Output"):
                     check_output = True
-                
+
     # Check
     add_logo = False
     add_author = False
@@ -77,31 +79,35 @@ def add_cells(notebook_path):
     if not check_author and check_tags:
         print("Author to be added below tags")
         add_author = True
-        
+
     # Apply change
     new_cells = []
     if add_logo:
-        cell_logo = {'cell_type': 'markdown',
-                     'id': 'naas-logo',
-                     'metadata': {'papermill': {}, 'tags': ["naas"]},
-                     'source': '<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>'}
+        cell_logo = {
+            "cell_type": "markdown",
+            "id": "naas-logo",
+            "metadata": {"papermill": {}, "tags": ["naas"]},
+            "source": '<img width="10%" alt="Naas" src="https://landen.imgix.net/jtci2pxwjczr/assets/5ice39g4.png?w=160"/>',
+        }
         new_cells.append(cell_logo)
     for cell in cells:
         new_cells.append(cell)
-        cell_type = cell.get('cell_type')
-        source = cell.get('source')
+        cell_type = cell.get("cell_type")
+        source = cell.get("source")
 
         if cell_type == "markdown":
             if "**Tags:**" in source and add_author:
-                cell_author = {'cell_type': 'markdown',
-                               'id': 'naas-author',
-                               'metadata': {'papermill': {}, 'tags': ["naas"]},
-                               'source': '**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)'}
+                cell_author = {
+                    "cell_type": "markdown",
+                    "id": "naas-author",
+                    "metadata": {"papermill": {}, "tags": ["naas"]},
+                    "source": "**Author:** [Unknown](https://www.linkedin.com/company/naas-ai/)",
+                }
                 new_cells.append(cell_author)
     if add_logo or add_author:
         nb_new = nb.copy()
         nb_new["cells"] = new_cells
-        with open(notebook_path, 'w') as f:
+        with open(notebook_path, "w") as f:
             json.dump(nb_new, f)
         print(f"{notebook_path} saved in Naas.")
         return nb_new

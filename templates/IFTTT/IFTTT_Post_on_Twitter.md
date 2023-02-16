@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-See the tutorial video on Youtube: https://www.youtube.com/watch?v=FvAM1aS4GFM
+**Description:** This notebook allows you to post messages to Twitter using IFTTT.
 
 ## Input
 
@@ -24,7 +24,7 @@ twitter_post = """Hello world, this is my first automated post
                 """
 event = "naas_demo"
 key = "ke4AigvXI5-EABaowdLt4fju1aOUxeMxSXQoN***"
-data = { "value1": twitter_post }
+data = {"value1": twitter_post}
 ```
 
 ## Model

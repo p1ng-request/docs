@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
+**Description:** This notebook provides a guide to retrieving financial transaction data from Plaid.
+
 ## Input
 
 ### Install packages
@@ -34,12 +36,12 @@ import json
 
 
 ```python
-PLAID_CLIENT_ID = "*************" 
-PLAID_SECRET = "*************" 
-PLAID_ENV = 'sandbox'
+PLAID_CLIENT_ID = "*************"
+PLAID_SECRET = "*************"
+PLAID_ENV = "sandbox"
 
-PLAID_PRODUCTS = ['transactions']
-PLAID_COUNTRY_CODES = ['FR']
+PLAID_PRODUCTS = ["transactions"]
+PLAID_COUNTRY_CODES = ["FR"]
 start_transaction = "2020-09-01"
 end_transaction = "2020-10-01"
 ```
@@ -50,26 +52,26 @@ end_transaction = "2020-10-01"
 
 
 ```python
-client = plaid.Client(client_id=PLAID_CLIENT_ID,
-                      secret=PLAID_SECRET,
-                      environment=PLAID_ENV)
+client = plaid.Client(
+    client_id=PLAID_CLIENT_ID, secret=PLAID_SECRET, environment=PLAID_ENV
+)
 ```
 
 
 ```python
 def create_link_token():
     response = client.LinkToken.create(
-      {
-        'user': {
-          # This should correspond to a unique id for the current user.
-          'client_user_id': 'user-id',
-        },
-        'client_name': "Plaid Quickstart",
-        'products': PLAID_PRODUCTS,
-        'country_codes': PLAID_COUNTRY_CODES,
-        'language': "en",
-        'redirect_uri': None,
-      }
+        {
+            "user": {
+                # This should correspond to a unique id for the current user.
+                "client_user_id": "user-id",
+            },
+            "client_name": "Plaid Quickstart",
+            "products": PLAID_PRODUCTS,
+            "country_codes": PLAID_COUNTRY_CODES,
+            "language": "en",
+            "redirect_uri": None,
+        }
     )
     return response
 ```
@@ -111,9 +113,9 @@ const handler_{uid} = Plaid.create({
 handler_{uid}.open();
 </script>
 """
-iframe = iframe.replace('{uid}', uid)
-iframe = iframe.replace('{CALLBACK_URL}', cb_url.get('url'))
-iframe = iframe.replace('{GENERATED_LINK_TOKEN}', token.get('link_token'))
+iframe = iframe.replace("{uid}", uid)
+iframe = iframe.replace("{CALLBACK_URL}", cb_url.get("url"))
+iframe = iframe.replace("{GENERATED_LINK_TOKEN}", token.get("link_token"))
 IPython.core.display.display(IPython.core.display.HTML(iframe))
 ```
 
@@ -121,7 +123,7 @@ IPython.core.display.display(IPython.core.display.HTML(iframe))
 
 
 ```python
-cb_data = naas.callback.get(cb_url.get('uuid'))
+cb_data = naas.callback.get(cb_url.get("uuid"))
 cb_data = json.loads(cb_data)
 public_token = cb_data.get("public_token")
 public_token
@@ -132,8 +134,8 @@ public_token
 
 ```python
 exchange_response = client.Item.public_token.exchange(public_token)
-access_token = exchange_response['access_token']
-item_id = exchange_response['item_id']
+access_token = exchange_response["access_token"]
+item_id = exchange_response["item_id"]
 ```
 
 ## Output
@@ -142,18 +144,16 @@ item_id = exchange_response['item_id']
 
 
 ```python
-response = client.Transactions.get(access_token,
-                                   start_date=start_transaction,
-                                   end_date=end_transaction)
-transactions = response['transactions']
+response = client.Transactions.get(
+    access_token, start_date=start_transaction, end_date=end_transaction
+)
+transactions = response["transactions"]
 
-while len(transactions) < response['total_transactions']:
-    response = client.Transactions.get(access_token,
-                                       start_date=start,
-                                       end_date=end,
-                                       offset=len(transactions)
-                                      )
-    transactions.extend(response['transactions'])
+while len(transactions) < response["total_transactions"]:
+    response = client.Transactions.get(
+        access_token, start_date=start, end_date=end, offset=len(transactions)
+    )
+    transactions.extend(response["transactions"])
 transaction_df = pd.DataFrame.from_records(transactions)
 transaction_df
 ```
@@ -162,7 +162,7 @@ transaction_df
 
 
 ```python
-transaction_df.to_csv('transactions.csv')
+transaction_df.to_csv("transactions.csv")
 ```
 
 #### If you need more data check the api doc 

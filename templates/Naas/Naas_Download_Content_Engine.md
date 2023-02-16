@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook download the [Content Engine](https://github.com/jupyter-naas/naas-content-engine) data product to your naas.
+**Description:** Naas is a content engine that enables users to easily download and manage digital content.
 
 ## Input
 

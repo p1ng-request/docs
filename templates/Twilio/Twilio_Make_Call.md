@@ -26,10 +26,12 @@ except ModuleNotFoundError:
 
 
 ```python
-account_sid = naas.secret.get(name="account_sid")    # From Twilio Console
-auth_token = naas.secret.get(name="auth_token")     # From Twilio Console
-from_number = naas.secret.get(name="from_number")    # From Twilio Console
-to_number = naas.secret.get(name="to_number")      # Could send messages only to verified Caller ID's
+account_sid = naas.secret.get(name="account_sid")  # From Twilio Console
+auth_token = naas.secret.get(name="auth_token")  # From Twilio Console
+from_number = naas.secret.get(name="from_number")  # From Twilio Console
+to_number = naas.secret.get(
+    name="to_number"
+)  # Could send messages only to verified Caller ID's
 ```
 
 ## Model
@@ -50,10 +52,8 @@ client = Client(account_sid, auth_token)  # Set Client
 
 ```python
 call = client.calls.create(
-                        url='http://demo.twilio.com/docs/voice.xml',
-                        to=to_number,
-                        from_=from_number
-                    )
+    url="http://demo.twilio.com/docs/voice.xml", to=to_number, from_=from_number
+)
 
 time.sleep(5)
 print(call.sid)

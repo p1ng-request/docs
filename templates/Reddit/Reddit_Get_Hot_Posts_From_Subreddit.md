@@ -4,7 +4,7 @@
 
 **Author:** [Yaswanthkumar GOTHIREDDY](https://www.linkedin.com/in/yaswanthkumargothireddy/)
 
-This notebook explains how to get hot posts from a subreddit. A subreddit is a specific online community, and the posts associated with it, on the social media website Reddit
+**Description:** This notebook allows users to retrieve the hottest posts from a specified subreddit on Reddit.
 
 ## Input
 
@@ -27,7 +27,7 @@ from datetime import datetime
 
 
 ```python
-SUBREDDIT = "Python" #example: "CryptoCurrency"
+SUBREDDIT = "Python"  # example: "CryptoCurrency"
 ```
 
 ### Setup App to connect to Reddit API
@@ -43,9 +43,9 @@ If you need help on setting up and getting your API credentials, please visit --
 
 
 ```python
-MY_CLIENT_ID = 'EtAr0o-oKbVuEnPOFbrRqQ'
-MY_CLIENT_SECRET = 'LmNpsZuFM-WXyZULAayVyNsOhMd_ug'
-MY_USER_AGENT = 'script by u/naas'
+MY_CLIENT_ID = "EtAr0o-oKbVuEnPOFbrRqQ"
+MY_CLIENT_SECRET = "LmNpsZuFM-WXyZULAayVyNsOhMd_ug"
+MY_USER_AGENT = "script by u/naas"
 ```
 
 ## Model
@@ -54,18 +54,43 @@ MY_USER_AGENT = 'script by u/naas'
 
 
 ```python
-reddit = praw.Reddit(client_id=MY_CLIENT_ID, client_secret=MY_CLIENT_SECRET, user_agent=MY_USER_AGENT)
+reddit = praw.Reddit(
+    client_id=MY_CLIENT_ID, client_secret=MY_CLIENT_SECRET, user_agent=MY_USER_AGENT
+)
 ```
 
 #### Get the subreddit level data
 
 
 ```python
-posts =[]
+posts = []
 for post in reddit.subreddit(SUBREDDIT).hot(limit=50):
-    
-    posts.append([post.title, post.score, post.id, post.subreddit, post.url, post.num_comments, post.selftext, post.created])
-posts = pd.DataFrame(posts,columns=['title', 'score', 'id', 'subreddit', 'url', 'num_comments', 'body', 'created'])
+
+    posts.append(
+        [
+            post.title,
+            post.score,
+            post.id,
+            post.subreddit,
+            post.url,
+            post.num_comments,
+            post.selftext,
+            post.created,
+        ]
+    )
+posts = pd.DataFrame(
+    posts,
+    columns=[
+        "title",
+        "score",
+        "id",
+        "subreddit",
+        "url",
+        "num_comments",
+        "body",
+        "created",
+    ],
+)
 ```
 
 * If you need more variables, check "vars()" function``
@@ -75,7 +100,7 @@ posts = pd.DataFrame(posts,columns=['title', 'score', 'id', 'subreddit', 'url', 
 
 
 ```python
-posts['created']=pd.to_datetime(posts["created"],unit='s')
+posts["created"] = pd.to_datetime(posts["created"], unit="s")
 ```
 
 ## Output

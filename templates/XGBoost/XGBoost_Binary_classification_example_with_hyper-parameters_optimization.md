@@ -4,9 +4,7 @@
 
 **Author:** [Oussama El Bahaoui](https://www.linkedin.com/in/oelbahaoui/)
 
-[XGBoost outperforms ML/DL models ](https://arxiv.org/pdf/2106.03253.pdf) when it comes to tabular data.
-
-This is a recipe for a sample training code of a XGBoost binary classification model, including hyper-parameters optimization using a grid search.
+**Description:** This notebook provides an example of using XGBoost to perform binary classification with hyper-parameter optimization.
 
 ## Input
 
@@ -42,14 +40,13 @@ SEED = 42
 
 # A parameters grid for XGBoost classifier.
 PARAMS = {
-    'objective': ['binary:logistic'],
-    'nthread': [-1],
-    'random_state': [SEED],
-    
-    'min_child_weight': [1, 5, 10],
-    'max_depth': [3, 4, 5],
-    'learning_rate': [0.01, 0.02, 0.3],
-    'n_estimators': [100, 200, 500],
+    "objective": ["binary:logistic"],
+    "nthread": [-1],
+    "random_state": [SEED],
+    "min_child_weight": [1, 5, 10],
+    "max_depth": [3, 4, 5],
+    "learning_rate": [0.01, 0.02, 0.3],
+    "n_estimators": [100, 200, 500],
 }
 ```
 
@@ -78,7 +75,9 @@ y = data["target"]
 ```python
 # Use 70% of the data for training and 30% for testing.
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=SEED)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=SEED
+)
 ```
 
 ### Create a model
@@ -103,10 +102,10 @@ A good practice is to perform a [cross-validation training](https://scikit-learn
 grid_search = GridSearchCV(
     estimator=model,
     param_grid=PARAMS,
-    scoring = 'accuracy',
-    n_jobs = -1,
-    cv = 2,
-    verbose=True
+    scoring="accuracy",
+    n_jobs=-1,
+    cv=2,
+    verbose=True,
 ).fit(X_train, y_train)
 ```
 

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides instructions on how to send data to a MongoDB database.
+
 ## Input
 
 ### Import library
@@ -46,5 +48,7 @@ df
 
 
 ```python
-mongo.connect(host, port, user, passwd).send(df, collection_name, db_name, replace=False)
+mongo.connect(host, port, user, passwd).send(
+    df, collection_name, db_name, replace=False
+)
 ```

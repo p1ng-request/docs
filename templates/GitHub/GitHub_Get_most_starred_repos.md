@@ -4,17 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190)
 
-This notebook get the most starred repos in GitHub and return a dataframe with:
-- repo_id
-- name
-- url
-- stars
-- forks
-- issues_open
-- created_at
-- updated_at
-- topics
-- description
+**Description:** This notebook provides a list of the most popular GitHub repositories based on the number of stars they have received.
 
 ## Input
 
@@ -37,7 +27,7 @@ import naas
 
 ```python
 # Query number of repositories with stars greater than the given threshold
-threshold = 500 #provides list of repos with stars greater than 500
+threshold = 500  # provides list of repos with stars greater than 500
 
 # Setup how many top repository results are to be shown
 top_n = 250
@@ -46,7 +36,7 @@ top_n = 250
 # given threshold instead of top_n number, then put in top_n value to 'all'
 
 # Github token
-GITHUB_TOKEN = None or naas.secret.get('GITHUB_TOKEN')
+GITHUB_TOKEN = None or naas.secret.get("GITHUB_TOKEN")
 ```
 
 ## Model
@@ -56,53 +46,68 @@ GITHUB_TOKEN = None or naas.secret.get('GITHUB_TOKEN')
 
 ```python
 def fetch_results(top_n, threshold, token):
-    URL = f"https://api.github.com/search/repositories?q=stars:%3E{threshold}&sort=stars"
+    URL = (
+        f"https://api.github.com/search/repositories?q=stars:%3E{threshold}&sort=stars"
+    )
     headers = {"Authorization": f"token {token}"}
     df = pd.DataFrame()
-    cnt, page= 0,1
-    
+    cnt, page = 0, 1
+
     while True:
         params = {
-                    "state": "open",
-                    "per_page": "100",
-                    "page": page,
-                }
-        res = requests.get(URL, headers = headers, params = params)
+            "state": "open",
+            "per_page": "100",
+            "page": page,
+        }
+        res = requests.get(URL, headers=headers, params=params)
         try:
             res.raise_for_status()
         except requests.HTTPError as e:
             if "422 Client Error: Unprocessable Entity for url:" in str(e):
-                print('Github Search API limit reached!')
-                print('Collecting the search results')
+                print("Github Search API limit reached!")
+                print("Collecting the search results")
                 break
         res_json = res.json()
 
-        for r in res_json['items']:
-            df.loc[cnt, 'repo_id'] = r['id']
-            df.loc[cnt, 'name'], df.loc[cnt, 'url'] = r['name'], r['html_url']
-            df.loc[cnt,'stars'], df.loc[cnt, 'forks'], df.loc[cnt, 'issues_open'] = r['watchers'], r['forks'], r['open_issues']
-            df.loc[cnt,'created_at'], df.loc[cnt, 'updated_at'] = r['created_at'], r['updated_at']
-            if len(r['topics']):
-                df.loc[cnt, 'topics'] = ",".join(r['topics'])
+        for r in res_json["items"]:
+            df.loc[cnt, "repo_id"] = r["id"]
+            df.loc[cnt, "name"], df.loc[cnt, "url"] = r["name"], r["html_url"]
+            df.loc[cnt, "stars"], df.loc[cnt, "forks"], df.loc[cnt, "issues_open"] = (
+                r["watchers"],
+                r["forks"],
+                r["open_issues"],
+            )
+            df.loc[cnt, "created_at"], df.loc[cnt, "updated_at"] = (
+                r["created_at"],
+                r["updated_at"],
+            )
+            if len(r["topics"]):
+                df.loc[cnt, "topics"] = ",".join(r["topics"])
             else:
-                df.loc[cnt,'topics'] = 'None'
+                df.loc[cnt, "topics"] = "None"
 
-            if r['description']:
-                df.loc[cnt,'description'] = r['description']
+            if r["description"]:
+                df.loc[cnt, "description"] = r["description"]
             else:
-                df.loc[cnt,'description'] = 'None'
+                df.loc[cnt, "description"] = "None"
 
-            cnt+=1
+            cnt += 1
             if cnt == top_n:
                 break
-        
+
         if cnt == top_n:
             break
-        
-        page+=1
-        
-    df.stars, df.forks, df.issues_open, df.repo_id = df.stars.astype('int'), df.forks.astype('int'), df.issues_open.astype('int'), df.repo_id.astype('int')
+
+        page += 1
+
+    df.stars, df.forks, df.issues_open, df.repo_id = (
+        df.stars.astype("int"),
+        df.forks.astype("int"),
+        df.issues_open.astype("int"),
+        df.repo_id.astype("int"),
+    )
     return df
+
 
 df_results = fetch_results(top_n, threshold, GITHUB_TOKEN)
 df_results.shape

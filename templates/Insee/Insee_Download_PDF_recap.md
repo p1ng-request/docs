@@ -4,9 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Ce document récupère les informations établies d'une société au REGISTRE NATIONAL DU COMMERCE ET DES SOCIÉTÉS :
-- Description de l'entreprise
-- Description de l'établissement
+**Description:** This notebook downloads PDF summaries of data from the French National Institute of Statistics and Economic Studies (INSEE).
 
 ## Input
 
@@ -36,11 +34,11 @@ PDF_OUTPUT = f"RECAPITULATIF_INSEE_{SIRET}.pdf"
 ```python
 def download_pdf(siret, filepath):
     url = f"https://api.avis-situation-sirene.insee.fr/identification/pdf/{siret}"
-    response = urllib.request.urlopen(url)    
-    file = open(filepath, 'wb')
+    response = urllib.request.urlopen(url)
+    file = open(filepath, "wb")
     file.write(response.read())
     file.close()
-    print("File saved:", filepath) 
+    print("File saved:", filepath)
 ```
 
 ## Output

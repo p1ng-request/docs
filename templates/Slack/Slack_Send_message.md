@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook send message to a slack channel.
+**Description:** This notebook allows you to quickly and easily send messages through Slack.
 
 ## Input
 

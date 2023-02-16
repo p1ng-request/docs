@@ -4,12 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook get a contact from HubSpot using its email. Data will be returned as json with keys: 
-- 'id': number,
-- 'properties': dict
-- 'createdAt': datetime
-- 'updatedAt': datetime
-- 'archived': boolean
+**Description:** This notebook allows you to extract contact information from emails sent through HubSpot.
 
 ## Input
 
@@ -35,7 +30,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-contact_email = "ENTER_CONTACT_EMAIL_HERE" # EXAMPLE : "email@gmail.com"
+contact_email = "ENTER_CONTACT_EMAIL_HERE"  # EXAMPLE : "email@gmail.com"
 ```
 
 #### Enter your Contact properties
@@ -59,7 +54,9 @@ properties = []
 
 
 ```python
-contact = hubspot.connect(HS_ACCESS_TOKEN).contacts.get(contact_email, properties, idproperty="email")
+contact = hubspot.connect(HS_ACCESS_TOKEN).contacts.get(
+    contact_email, properties, idproperty="email"
+)
 ```
 
 ## Output

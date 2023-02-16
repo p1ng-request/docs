@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
+**Description:** This notebook allows users to send messages through Microsoft Teams.
+
 ## Input
 
 ### Import library
@@ -28,7 +30,7 @@ webhook = "https://forgr.webhook.office.com/webhookb2/83bcbd92-7095-48e9-bc59-60
 
 ```python
 message = "second test"
-image_url = "http://i.imgur.com/c4jt321l.png" # Set to None if you don't need it
+image_url = "http://i.imgur.com/c4jt321l.png"  # Set to None if you don't need it
 ```
 
 ## Output

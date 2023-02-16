@@ -4,6 +4,8 @@
 
 **Author:** [Martin Donadieu](https://www.linkedin.com/in/martindonadieu/)
 
+**Description:** This notebook provides a guide to acquiring customers through Stripe.
+
 ## Input
 
 ### Import libraries
@@ -45,5 +47,5 @@ customers = stripe.Customer.list(limit=30)
 
 
 ```python
-pd.DataFrame(customers.get('data'))
+pd.DataFrame(customers.get("data"))
 ```

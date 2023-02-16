@@ -25,11 +25,15 @@ import pandas as pd
 
 
 ```python
-#create DataFrame
-df = pd.DataFrame({'team': ['A', 'A', 'A', 'B', 'B', 'B'],
-                   'points': [11, 7, 8, 10, 21, 13],
-                   'assists': [5, 7, 7, 9, 12, 0],
-                   'rebounds': [5, 8, 10, 6, 6, 22]})
+# create DataFrame
+df = pd.DataFrame(
+    {
+        "team": ["A", "A", "A", "B", "B", "B"],
+        "points": [11, 7, 8, 10, 21, 13],
+        "assists": [5, 7, 7, 9, 12, 0],
+        "rebounds": [5, 8, 10, 6, 6, 22],
+    }
+)
 df
 ```
 
@@ -38,9 +42,7 @@ df
 
 ```python
 # list of columns to group
-to_group = [
-    "team"
-]
+to_group = ["team"]
 ```
 
 ### Define columns to aggregate
@@ -56,9 +58,9 @@ Here, we are going to use dict of axis labels -> functions
 ```python
 # dict of columns to aggregate
 to_agg = {
-    'points': "sum",
-    'assists': "sum",
-    'rebounds': "sum",
+    "points": "sum",
+    "assists": "sum",
+    "rebounds": "sum",
 }
 ```
 

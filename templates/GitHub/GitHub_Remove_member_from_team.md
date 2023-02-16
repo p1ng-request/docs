@@ -5,6 +5,8 @@
 **Author:** [Sanjeet Attili](https://linkedin.com/in/sanjeet-attili-760bab190/)
 
 
+**Description:** This notebook provides instructions on how to remove a member from a GitHub team.
+
 ## Input
 
 ### Import libraries
@@ -26,13 +28,13 @@ from naas_drivers import github
 
 ```python
 # GitHub token
-GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE" # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
+GITHUB_TOKEN = "ENTER_YOUR_GITHUB_TOKEN_HERE"  # EXAMPLE : "ghp_fUYP0Z5i29AG4ggX8owctGnHU**********"
 
 # GitHub teams url
-GITHUB_TEAMS_URL = "ENTER_YOUR_GITHUB_TEAMS_URL_HERE" # EXAMPLE : "https://github.com/orgs/jupyter-naas/teams/opensource-contributors"
+GITHUB_TEAMS_URL = "ENTER_YOUR_GITHUB_TEAMS_URL_HERE"  # EXAMPLE : "https://github.com/orgs/jupyter-naas/teams/opensource-contributors"
 
 # members to remove : str or list of members
-GITHUB_MEMBERS = "ENTER_YOUR_USERS_TO_BE_DELETED_HERE" # EXAMPLE : "FlorentLvr" or ["FlorentLvr", "Dr0p42"]
+GITHUB_MEMBERS = "ENTER_YOUR_USERS_TO_BE_DELETED_HERE"  # EXAMPLE : "FlorentLvr" or ["FlorentLvr", "Dr0p42"]
 ```
 
 ## Model
@@ -44,18 +46,20 @@ GITHUB_MEMBERS = "ENTER_YOUR_USERS_TO_BE_DELETED_HERE" # EXAMPLE : "FlorentLvr" 
 def remove_members(team_url, members):
     # Init output
     members = []
-    
+
     # Get org id and team id
     team_id = team_url.split("/teams/")[-1].split("/")[0]
     team_org = team_url.split("https://github.com/orgs/")[-1].split("/")[0]
-    
+
     # Headers
-    headers = {'Authorization': f'token {GITHUB_TOKEN}',
-                   "Accept": "application/vnd.github.v3+json"}
-    
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
     if isinstance(members, str):
         members = [members]
-    
+
     # Remove members from team
     for member in members:
         member = member.split("https://github.com/")[-1].split("/")[0]
@@ -63,15 +67,11 @@ def remove_members(team_url, members):
         res = requests.delete(req_url, headers=headers)
         res.raise_for_status()
         if res.status_code == 204:
-            print(f'✅ Member {member} successfully removed from your team {team_id}')
-            data = {
-                "MEMBER": member,
-                "TEAM": team_id,
-                "STATUS": "Removed"
-            }
+            print(f"✅ Member {member} successfully removed from your team {team_id}")
+            data = {"MEMBER": member, "TEAM": team_id, "STATUS": "Removed"}
             members.appen(member)
     return pd.DataFrame(members)
-    
+
 
 df_remove = remove_members(GITHUB_TEAMS_URL, GITHUB_MEMBERS)
 ```

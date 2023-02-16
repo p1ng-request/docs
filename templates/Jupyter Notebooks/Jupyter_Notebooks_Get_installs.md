@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides instructions for installing Jupyter Notebooks.
+
 ## Input
 
 ### Import libraries
@@ -32,12 +34,12 @@ def get_installs(notebook_path):
     with open(notebook_path) as f:
         nb = json.load(f)
     data = []
-    
+
     cells = nb.get("cells")
     # Check each cells
     for cell in cells:
-        cell_type = cell.get('cell_type')
-        sources = cell.get('source')
+        cell_type = cell.get("cell_type")
+        sources = cell.get("source")
         for source in sources:
             if cell_type == "code":
                 if "pip install" in source:

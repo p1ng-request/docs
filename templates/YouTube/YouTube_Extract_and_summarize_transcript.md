@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-The objective is to summarize the transcript from Youtube with Hugging Face Naas drivers using T5small model.
+**Description:** This notebook provides a method to extract and summarize the transcript of a YouTube video.
 
 ## Input
 
@@ -45,7 +45,7 @@ json = YouTubeTranscriptApi.get_transcript(video_id)
 
 ```python
 para = ""
-for i in json :
+for i in json:
     para += i["text"]
     para += " "
 para

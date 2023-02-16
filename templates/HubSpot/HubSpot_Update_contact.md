@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook update a contact in HubSpot.
+**Description:** This notebook allows users to update contact information in HubSpot.
 
 ## Input
 
@@ -33,11 +33,11 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 contact_id = "280751"
 email = "test@cashstory.com"
 firstname = "Jean test"
-lastname ='CASHSTOrY'
+lastname = "CASHSTOrY"
 phone = "+336.00.00.00.00"
 jobtitle = "Consultant"
 website = "www.cashstory.com"
-company = 'CASHSTORY'
+company = "CASHSTORY"
 hubspot_owner_id = None
 ```
 
@@ -48,23 +48,22 @@ This method will allow you to add any contact properties available in your HubSp
 
 
 ```python
-update_contact = {"properties": 
-                  {
-                    "email": email,
-                    "firstname": firstname,
-                    "lastname": lastname,
-                    "phone": phone,
-                    "jobtitle": jobtitle,
-                    "website": website,
-                    "company": company,
-                    "url": "test3",
-                    "hubspot_owner_id": hubspot_owner_id,
-                   }
-                 }
+update_contact = {
+    "properties": {
+        "email": email,
+        "firstname": firstname,
+        "lastname": lastname,
+        "phone": phone,
+        "jobtitle": jobtitle,
+        "website": website,
+        "company": company,
+        "url": "test3",
+        "hubspot_owner_id": hubspot_owner_id,
+    }
+}
 
 contact_id1 = hubspot.connect(HS_ACCESS_TOKEN).contacts.patch(
-    contact_id,
-    update_contact
+    contact_id, update_contact
 )
 ```
 
@@ -81,7 +80,7 @@ contact_id2 = hubspot.connect(HS_ACCESS_TOKEN).contacts.update(
     jobtitle,
     website,
     company,
-    hubspot_owner_id
+    hubspot_owner_id,
 )
 ```
 

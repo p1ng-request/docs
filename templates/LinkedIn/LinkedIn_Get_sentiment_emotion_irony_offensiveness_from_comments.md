@@ -65,7 +65,9 @@ import naas
 
 ```python
 # LinkedIn credentials
-LI_AT = None or naas.secret.get("LI_AT") # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+LI_AT = None or naas.secret.get(
+    "LI_AT"
+)  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
 JSESSIONID = None or naas.secret.get("JSESSIONID")  # EXAMPLE ajax:8379907400220387585
 
 # Enter post URL
@@ -109,14 +111,14 @@ Get the post comments and return them in a dataframe. <br> Colums are added for 
 df = linkedin.connect(LI_AT, JSESSIONID).post.get_comments(POST_URL)
 
 # add columns for classification output
-df.insert(loc=11, column='SENTIMENT', value=None)
-df.insert(loc=12, column='SENTIMENT_SCORE', value=None)
-df.insert(loc=13, column='IRONY', value=None)
-df.insert(loc=14, column='IRONY_SCORE', value=None)
-df.insert(loc=15, column='OFFENSIVE', value=None)
-df.insert(loc=16, column='OFFENSIVE_SCORE', value=None)
-df.insert(loc=17, column='EMOTION', value=None)
-df.insert(loc=18, column='EMOTION_SCORE', value=None)
+df.insert(loc=11, column="SENTIMENT", value=None)
+df.insert(loc=12, column="SENTIMENT_SCORE", value=None)
+df.insert(loc=13, column="IRONY", value=None)
+df.insert(loc=14, column="IRONY_SCORE", value=None)
+df.insert(loc=15, column="OFFENSIVE", value=None)
+df.insert(loc=16, column="OFFENSIVE_SCORE", value=None)
+df.insert(loc=17, column="EMOTION", value=None)
+df.insert(loc=18, column="EMOTION_SCORE", value=None)
 ```
 
 
@@ -127,10 +129,11 @@ def preprocess(text):
     """
     new_text = []
     for t in text.split(" "):
-        t = '@user' if t.startswith('@') and len(t) > 1 else t
-        t = 'http' if t.startswith('http') else t
+        t = "@user" if t.startswith("@") and len(t) > 1 else t
+        t = "http" if t.startswith("http") else t
         new_text.append(t)
     return " ".join(new_text)
+
 
 def classify(text, task, tokenizers, models, task_labels):
     """Classifies text using task classifier
@@ -141,7 +144,7 @@ def classify(text, task, tokenizers, models, task_labels):
     tokenizer = tokenizers[task]
     model = models[task]
     labels = task_labels[task]
-    encoded_input = tokenizer(text, return_tensors='pt')
+    encoded_input = tokenizer(text, return_tensors="pt")
     output = model(**encoded_input)
     scores = output[0][0].detach().numpy()
     scores = softmax(scores)
@@ -149,8 +152,8 @@ def classify(text, task, tokenizers, models, task_labels):
     ranking = ranking[::-1]
     idx = ranking[0]
     label = str(labels[idx])
-    score =np.round(float(scores[idx]), 4)
-    return {"label":label, "score":score}
+    score = np.round(float(scores[idx]), 4)
+    return {"label": label, "score": score}
 ```
 
 
@@ -158,7 +161,12 @@ def classify(text, task, tokenizers, models, task_labels):
 # selected subset of available tasks
 tasks = ["sentiment", "emotion", "irony", "offensive"]
 # these labels are slightly modified to improve readibility
-labels = {"sentiment":['negative', 'neutral', 'positive'], "emotion":['anger', 'joy', 'optimism', 'sadness'], "irony":['not-ironic', 'ironic'], "offensive":['not-offensive', 'offensive']}
+labels = {
+    "sentiment": ["negative", "neutral", "positive"],
+    "emotion": ["anger", "joy", "optimism", "sadness"],
+    "irony": ["not-ironic", "ironic"],
+    "offensive": ["not-offensive", "offensive"],
+}
 # models and tokenizers will be loaded from huggingface
 models = {}
 tokenizers = {}
@@ -168,22 +176,22 @@ for task in tasks:
     MODEL = f"cardiffnlp/twitter-roberta-base-{task}"
     # on first run, tokenizer and model are loaded from hugging face
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL)  
-    
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL)
+
     # save tokenizer and models to local disk
     tokenizer.save_pretrained(MODEL)
     model.save_pretrained(MODEL)
-    
+
     models[task] = model
     tokenizers[task] = tokenizer
-    
+
     # execution time is not a concern, so we can just use .apply() to apply classifier
-    result = df["TEXT"].apply(classify, args=(task,tokenizers, models, labels))
-    
+    result = df["TEXT"].apply(classify, args=(task, tokenizers, models, labels))
+
     # keep only winning label and score, inspect result to see full classifier output
-    df[str.upper(task)] = [d['label'] for d in result]
-    df[str.upper(task)+"_SCORE"] = [d['score'] for d in result]
-    
+    df[str.upper(task)] = [d["label"] for d in result]
+    df[str.upper(task) + "_SCORE"] = [d["score"] for d in result]
+
 df.head(5)
 ```
 
@@ -195,5 +203,7 @@ df.head(5)
 ```python
 # shows only text and classification output
 for index, row in df.iterrows():
-    print(f"{row['TEXT']}\n\t{row['SENTIMENT']}({row['SENTIMENT_SCORE']})\n\t{row['IRONY']}({row['IRONY_SCORE']})\n\t{row['OFFENSIVE']}({row['OFFENSIVE_SCORE']})\n\t{row['EMOTION']}({row['EMOTION_SCORE']})\n\t\n\n")
+    print(
+        f"{row['TEXT']}\n\t{row['SENTIMENT']}({row['SENTIMENT_SCORE']})\n\t{row['IRONY']}({row['IRONY_SCORE']})\n\t{row['OFFENSIVE']}({row['OFFENSIVE_SCORE']})\n\t{row['EMOTION']}({row['EMOTION_SCORE']})\n\t\n\n"
+    )
 ```

@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-In this notebook, you will get all invitations received
+**Description:** This notebook provides an overview of invitations received on LinkedIn.
 
 ## Input
 

@@ -38,7 +38,9 @@ from naas_drivers import huggingface
 
 
 ```python
-huggingface.get("text-generation", model="gpt2", tokenizer="gpt2")("What is the most important thing in your life right now?")
+huggingface.get("text-generation", model="gpt2", tokenizer="gpt2")(
+    "What is the most important thing in your life right now?"
+)
 ```
 
 ## Model
@@ -48,7 +50,8 @@ Summarize the text given, maximum lenght (number of tokens/words) is set to 200.
 
 
 ```python
-huggingface.get("summarization", model="t5-small", tokenizer="t5-small")('''
+huggingface.get("summarization", model="t5-small", tokenizer="t5-small")(
+    """
 
 There will be fewer and fewer jobs that a robot cannot do better. 
 What to do about mass unemployment this is gonna be a massive social challenge and 
@@ -63,7 +66,8 @@ they find meaning from their employment so if you don't have if you're not neede
 there's not a need for your labor how do you what's the meaning if you have meaning 
 if you feel useless these are much that's a much harder problem to deal with. 
 
-''')
+"""
+)
 ```
 
 ### Text Classification
@@ -72,16 +76,20 @@ Returns a "label" (negative/neutral/positive), and score between -1 and 1.
 
 
 ```python
-huggingface.get("text-classification", 
-        model="distilbert-base-uncased-finetuned-sst-2-english",
-        tokenizer="distilbert-base-uncased-finetuned-sst-2-english")('''
+huggingface.get(
+    "text-classification",
+    model="distilbert-base-uncased-finetuned-sst-2-english",
+    tokenizer="distilbert-base-uncased-finetuned-sst-2-english",
+)(
+    """
 
 It was a weird concept. Why would I really need to generate a random paragraph? 
 Could I actually learn something from doing so? 
 All these questions were running through her head as she pressed the generate button. 
 To her surprise, she found what she least expected to see.
 
-''')
+"""
+)
 ```
 
 ### Fill Mask
@@ -91,13 +99,15 @@ Each proposal has a score (confidence of accuracy), token value (proposed word i
 
 
 ```python
-huggingface.get("fill-mask",
-        model="distilroberta-base",
-        tokenizer="distilroberta-base")('''
+huggingface.get(
+    "fill-mask", model="distilroberta-base", tokenizer="distilroberta-base"
+)(
+    """
 
 It was a beautiful <mask>.
 
-''')
+"""
+)
 ```
 
 ### Feature extraction
@@ -106,7 +116,11 @@ Output is a list of numerical values.
 
 
 ```python
-huggingface.get("feature-extraction", model="distilbert-base-cased", tokenizer="distilbert-base-cased")("Life is a super cool thing")
+huggingface.get(
+    "feature-extraction",
+    model="distilbert-base-cased",
+    tokenizer="distilbert-base-cased",
+)("Life is a super cool thing")
 ```
 
 ### Token classification
@@ -133,9 +147,13 @@ Full documentation : https://huggingface.co/dslim/bert-base-NER.<br>
 
 
 ```python
-huggingface.get("token-classification", model="dslim/bert-base-NER", tokenizer="dslim/bert-base-NER")('''
+huggingface.get(
+    "token-classification", model="dslim/bert-base-NER", tokenizer="dslim/bert-base-NER"
+)(
+    """
 
 My name is Wolfgang and I live in Berlin
 
-''')
+"""
+)
 ```

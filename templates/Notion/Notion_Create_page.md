@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-This notebook shows how to use Naas Notion driver to create a page inside a database
+**Description:** Notion is a powerful tool for creating and organizing digital pages to help you stay organized and productive.
 
 ## Input
 
@@ -12,7 +12,7 @@ This notebook shows how to use Naas Notion driver to create a page inside a data
 
 
 ```python
-from naas_drivers import notion 
+from naas_drivers import notion
 ```
 
 ### Input variables

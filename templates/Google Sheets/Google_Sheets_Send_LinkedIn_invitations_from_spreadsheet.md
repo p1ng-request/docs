@@ -4,6 +4,8 @@
 
 **Author:** [Valentin Goulet](https://www.linkedin.com/in/valentin-goulet-3a3070152/)
 
+**Description:** This notebook allows users to quickly and easily send LinkedIn invitations to contacts stored in a Google Sheets spreadsheet.
+
 ## Input
 
 ### Import libraries
@@ -30,11 +32,11 @@ profile_col_name = "url"
 
 ```python
 # LinkedIn cookies
-LI_AT = 'YOUR_COOKIE_LI_AT'
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'
+LI_AT = "YOUR_COOKIE_LI_AT"
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"
 
 # LinkedIn limit invitations up to 100 per week (Becareful !)
-add_per_launch = 4 
+add_per_launch = 4
 ```
 
 ### Schedule your notebook
@@ -64,7 +66,11 @@ df = gsheet.connect(spreadsheet_id).get(sheet_name=sheet_name)
 # Alert when last than 20 urls remains in the gsheet
 if len(df) < 20:
     email_to = "YOUR_EMAIL"
-    subject = "Invite LinkedIn alert : " + str(len(df)) + " lines left in the Linkedin's url database"
+    subject = (
+        "Invite LinkedIn alert : "
+        + str(len(df))
+        + " lines left in the Linkedin's url database"
+    )
     content = "You can add more lines to the gsheet or update the Notebook to set a new spreadsheet !"
     naas.notification.send(email_to=email_to, subject=subject, html=content)
 

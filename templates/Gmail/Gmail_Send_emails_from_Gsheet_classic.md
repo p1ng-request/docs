@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-Example : to a list of people in Gmail.
+**Description:** This notebook allows users to send emails from Google Sheets Classic using their Gmail account.
 
 ## Input
 
@@ -30,8 +30,8 @@ data = naas_drivers.gsheet.connect(spreadsheet_id).get(sheet_name="Sheet1")
 
 ```python
 your_email = "jeremy.ravenel@cashstory.com"
-firstname_list = data['FIRST NAME']
-email_list = data['EMAIL']
+firstname_list = data["FIRST NAME"]
+email_list = data["EMAIL"]
 ```
 
 ## Model
@@ -41,17 +41,17 @@ email_list = data['EMAIL']
 
 ```python
 import naas
+
 url_image = naas.assets.add("2020.gif")
-email_content = naas_drivers.html.generate( 
-        display='iframe',
-        title='🎅 Merry Christmas',
-        heading= '& Happy new year {first_name} 🍾',
-        image = f"{url_image}",
-        text_1= "Even if 2020 has been extremely difficult year, let's make 2021 better!",
-        text_2= "Keep smiling,",
-        text_3= "Keep laughing,",
-        text_4= "Spread love ❤️",
-        
+email_content = naas_drivers.html.generate(
+    display="iframe",
+    title="🎅 Merry Christmas",
+    heading="& Happy new year {first_name} 🍾",
+    image=f"{url_image}",
+    text_1="Even if 2020 has been extremely difficult year, let's make 2021 better!",
+    text_2="Keep smiling,",
+    text_3="Keep laughing,",
+    text_4="Spread love ❤️",
 )
 ```
 
@@ -63,6 +63,8 @@ email_content = naas_drivers.html.generate(
 ```python
 for i in range(len(data)):
     subject = "Merry Christmas & spread love for 2021 ❤️"
-    content = email_content.replace("{first_name}",firstname_list[i])
-    naas.notifications.send(email_to=email_list[i], subject=subject, html=content, email_from=your_email)
+    content = email_content.replace("{first_name}", firstname_list[i])
+    naas.notifications.send(
+        email_to=email_list[i], subject=subject, html=content, email_from=your_email
+    )
 ```

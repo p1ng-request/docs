@@ -14,7 +14,7 @@ The objective of this notebook is to create an end-to-end website in 5min.
 ```python
 from urllib.request import urlopen
 from IPython.display import IFrame
-import naas 
+import naas
 ```
 
 ## Model 
@@ -23,7 +23,7 @@ import naas
 
 
 ```python
-html = urlopen("http://www.example.com/").read().decode('utf-8')
+html = urlopen("http://www.example.com/").read().decode("utf-8")
 print(html)
 ```
 
@@ -32,7 +32,7 @@ Click right to open + edit the file downloaded
 
 
 ```python
-html_file = open("site.html","w")
+html_file = open("site.html", "w")
 html_file.write(html)
 html_file.close()
 ```
@@ -41,7 +41,9 @@ html_file.close()
 
 
 ```python
-IFrame("https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf", width=900, height=600)
+IFrame(
+    "https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf", width=900, height=600
+)
 ```
 
 ### Manually change the content of the file to make it your own. 

@@ -59,9 +59,8 @@ SLACK_CHANNEL = "channel-name"
 # Schedule your notebook every 15min
 naas.scheduler.add(cron="*/15 * * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
-
 ```
 
 ## Model
@@ -86,27 +85,33 @@ pages = notion.connect(NOTION_TOKEN).database.query(DATABASE_ID, query={})
 def send_message():
 
     for page in pages:
-        # For the first time ever if there is no property/column named 'slack notification sent' in database 
+        # For the first time ever if there is no property/column named 'slack notification sent' in database
         if "Slack notification sent" not in page.properties.keys():
             page_name = page.properties["Name"]
             page_url = page.url
 
-            slack.connect(SLACK_TOKEN).send(SLACK_CHANNEL, f'New notion page created "{page_name}" here: {page_url}')
-            page.select('Slack notification sent', "True")
+            slack.connect(SLACK_TOKEN).send(
+                SLACK_CHANNEL, f'New notion page created "{page_name}" here: {page_url}'
+            )
+            page.select("Slack notification sent", "True")
             page.update()
 
-            print(f'✅ Notification sent for {page_name}: {page_url}')
-        
+            print(f"✅ Notification sent for {page_name}: {page_url}")
+
         # If there is a column present then checks if it is False or None and updates
         else:
-            if str(page.properties['Slack notification sent'])!='True':
+            if str(page.properties["Slack notification sent"]) != "True":
                 page_name = page.properties["Name"]
                 page_url = page.url
 
-                slack.connect(SLACK_TOKEN).send(SLACK_CHANNEL, f'New notion page created "{page_name}" here: {page_url}')
-                page.select('Slack notification sent', "True")
+                slack.connect(SLACK_TOKEN).send(
+                    SLACK_CHANNEL,
+                    f'New notion page created "{page_name}" here: {page_url}',
+                )
+                page.select("Slack notification sent", "True")
                 page.update()
-                print(f'✅ Notification sent for {page_name}: {page_url}')
-                
+                print(f"✅ Notification sent for {page_name}: {page_url}")
+
+
 send_message()
 ```

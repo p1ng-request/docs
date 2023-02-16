@@ -35,18 +35,18 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 # Assign owner ID
 owner_id = 111111086
 
-#Associated contact ID
-asso_contactids=1551
+# Associated contact ID
+asso_contactids = 1551
 
 # Time delay to
 
-#Associated contact IDset due date for tasks in days
+# Associated contact IDset due date for tasks in days
 time_delay = 10
 
 # Task data
 subject = "My Third task"
 body = "Call contacts"
-status = "NOT_STARTED" # NOT_STARTED | COMPLETED | IN_PROGRESS | WAITING | DEFERRED
+status = "NOT_STARTED"  # NOT_STARTED | COMPLETED | IN_PROGRESS | WAITING | DEFERRED
 ```
 
 ## Model
@@ -55,57 +55,59 @@ status = "NOT_STARTED" # NOT_STARTED | COMPLETED | IN_PROGRESS | WAITING | DEFER
 
 
 ```python
-def create_task(owner_id,
-                time_delay,
-                subject,
-                body,
-                status,
-                asso_contactids=[],
-                asso_companyids=[],
-                asso_dealids=[],
-                asso_ownerids=[],
-                engagement="TASK"):
+def create_task(
+    owner_id,
+    time_delay,
+    subject,
+    body,
+    status,
+    asso_contactids=[],
+    asso_companyids=[],
+    asso_dealids=[],
+    asso_ownerids=[],
+    engagement="TASK",
+):
     """
-    Engagement type = TASK | NOTE | EMAIL | MEETING | CALL 
+    Engagement type = TASK | NOTE | EMAIL | MEETING | CALL
     """
-    
+
     # Calc timestamp
     tstampobj = datetime.now() + timedelta(days=time_delay)
     tstamp = tstampobj.timestamp() * 1000
-     
+
     # Create payload
-    payload = json.dumps({
-        "engagement": {
-            "active": 'true',
-            "ownerId": owner_id,
-            "type": engagement,
-            "timestamp": tstamp
-        },
-        "associations": {
-            "contactIds": [1551],
-            "companyIds": asso_companyids,
-            "dealIds": asso_dealids,
-            "ownerIds": [owner_id],
-        },
-        "metadata": {
-            "body": body,
-            "subject": subject,
-            "status": status,
+    payload = json.dumps(
+        {
+            "engagement": {
+                "active": "true",
+                "ownerId": owner_id,
+                "type": engagement,
+                "timestamp": tstamp,
+            },
+            "associations": {
+                "contactIds": [1551],
+                "companyIds": asso_companyids,
+                "dealIds": asso_dealids,
+                "ownerIds": [owner_id],
+            },
+            "metadata": {
+                "body": body,
+                "subject": subject,
+                "status": status,
+            },
         }
-    })
+    )
     url = "https://api.hubapi.com/engagements/v1/engagements"
     headers = {
-        'Content-Type': "application/json",
-        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+        "Content-Type": "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}",
     }
     # Post requests
-    res = requests.post(url,
-                        data=payload,
-                        headers=headers)
+    res = requests.post(url, data=payload, headers=headers)
     # Check requests
     res.raise_for_status()
     res_json = res.json()
-    
+
     # Fetch the task id of the current task created
     task_id = res_json.get("engagement").get("id")
     print("🎆 Task created successfully: ", task_id)
@@ -118,9 +120,5 @@ def create_task(owner_id,
 
 
 ```python
-create_task(owner_id,
-            time_delay,
-            subject,
-            body,
-            status)
+create_task(owner_id, time_delay, subject, body, status)
 ```

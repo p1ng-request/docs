@@ -4,9 +4,7 @@
 
 **Author:** [Muhammad Waqar Gul](https://www.linkedin.com/in/waqar-gul)
 
-This notebook allows you to directly download the datasets from Kaggle inside your notebook directory, without the need of downloading them manually.
-
-**Tutorial Link**: https://www.loom.com/share/440e07838b534fe28f95fc57ae6cab89
+**Description:** This notebook provides instructions on how to download data from Kaggle for use in data analysis.
 
 ## Input
 
@@ -27,8 +25,8 @@ from os import path
 
 
 ```python
-url = ''                    ### kaggle dataset url here
-data_dir = ''               ### directory where you want to save data
+url = ""  ### kaggle dataset url here
+data_dir = ""  ### directory where you want to save data
 ```
 
 ## Model
@@ -60,10 +58,12 @@ For getting access to the Kaggle username and key, inside your Kaggle profile:
     as an argument to the function.
 """
 
-def download_data(url, data_dir): 
+
+def download_data(url, data_dir):
     od.download(url, data_dir)
-    
-download_data(url, data_dir) 
+
+
+download_data(url, data_dir)
 ```
 
 ## Output
@@ -75,6 +75,8 @@ Downloaded file path csv needs to be set manually.
 ```python
 downloaded_file_path_csv = ""
 if path.exists(downloaded_file_path_csv):
-    df = pd.read_csv(downloaded_file_path_csv) # pass downloaded filepath as an argument here
+    df = pd.read_csv(
+        downloaded_file_path_csv
+    )  # pass downloaded filepath as an argument here
     df.head()
 ```

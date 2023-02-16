@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-Learn more on the Plotly doc : https://plotly.com/python/horizontal-bar-charts/
+**Description:** This notebook provides an example of how to create a leaderboard using Plotly's stacked bar chart visualization.
 
 ## Input
 
@@ -56,14 +56,19 @@ df
 # Calc VALUE TOTAL by LABEL to sort bar
 def prep_data(df):
     # Calc total
-    df_tot = df.groupby(["LABEL"], as_index=False).agg({"VALUE": "sum"}).rename(columns={"VALUE": "VALUE_TOT"})
-    
+    df_tot = (
+        df.groupby(["LABEL"], as_index=False)
+        .agg({"VALUE": "sum"})
+        .rename(columns={"VALUE": "VALUE_TOT"})
+    )
+
     # Merge dataframe
     df = pd.merge(df, df_tot, on="LABEL")
 
     # Sort values
     df = df.sort_values(by=["VALUE_TOT", "LABEL"])
     return df
+
 
 df_plot = prep_data(df)
 df_plot
@@ -74,18 +79,20 @@ df_plot
 
 ```python
 def create_barchart(df, label, groups, value):
-    last_value = '{:,.0f}'.format(df[value].sum())
+    last_value = "{:,.0f}".format(df[value].sum())
     colors = {
         "1": "blue",
         "2": "green",
     }
-    fig = px.bar(df,
-                 y=label,
-                 color=groups,
-                 x=value,
-                 orientation='h',
-                 color_discrete_map=colors,
-                 text=value)
+    fig = px.bar(
+        df,
+        y=label,
+        color=groups,
+        x=value,
+        orientation="h",
+        color_discrete_map=colors,
+        text=value,
+    )
     fig.update_layout(
         title=f"<b>Ranking by label</b><br><span style='font-size: 13px;'>Total value: {last_value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
@@ -103,10 +110,11 @@ def create_barchart(df, label, groups, value):
         margin_t=100,
     )
     fig.update_yaxes(categoryarray=df[label].unique())
-    # Display fig        
-    config = {'displayModeBar': False}
+    # Display fig
+    config = {"displayModeBar": False}
     fig.show(config=config)
     return fig
+
 
 fig = create_barchart(df_plot, "LABEL", "GROUPS", "VALUE")
 ```
@@ -126,9 +134,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

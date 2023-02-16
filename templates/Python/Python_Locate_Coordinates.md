@@ -4,7 +4,7 @@
 
 **Author:** [Suhas B](https://www.linkedin.com/in/suhasbrao/)
 
-This notebook allows you to easily find the ***any address from any set of coordinates***.
+**Description:** This notebook provides a way to find the geographic coordinates of a given location using Python.
 
 ## Input
 

@@ -4,7 +4,7 @@
 
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)
 
-With this template, you can get data from USD EUR ticker available in [Yahoo finance](https://finance.yahoo.com/quote/USDEUR=x/).<br> 
+**Description:** This notebook provides a way to access and visualize the current exchange rate between the US Dollar and the Euro.
 
 ## Input
 
@@ -23,7 +23,7 @@ from naas_drivers import yahoofinance, plotly
 ticker = "EURUSD=X"
 date_from = -365
 date_to = "today"
-interval = '1d'
+interval = "1d"
 moving_averages = [20, 50]
 ```
 
@@ -33,11 +33,13 @@ moving_averages = [20, 50]
 
 
 ```python
-df_yahoo = yahoofinance.get(ticker,
-                            date_from=date_from,
-                            date_to=date_to,
-                            interval=interval,
-                            moving_averages=moving_averages)
+df_yahoo = yahoofinance.get(
+    ticker,
+    date_from=date_from,
+    date_to=date_to,
+    interval=interval,
+    moving_averages=moving_averages,
+)
 df_yahoo
 ```
 
@@ -52,11 +54,13 @@ last_date = df_yahoo.loc[df_yahoo.index[-1], "Date"].strftime("%Y-%m-%d")
 last_value = df_yahoo.loc[df_yahoo.index[-1], "Close"]
 
 # Create chart
-chart = plotly.linechart(df_yahoo,
-                         x="Date",
-                         y=["Close", "MA20", "MA50"],
-                         showlegend=True,
-                         title=f"<b>{ticker} rate as of {last_date}</b><br><span style='font-size: 13px;'>Last value: {last_value}</span>")
+chart = plotly.linechart(
+    df_yahoo,
+    x="Date",
+    y=["Close", "MA20", "MA50"],
+    showlegend=True,
+    title=f"<b>{ticker} rate as of {last_date}</b><br><span style='font-size: 13px;'>Last value: {last_value}</span>",
+)
 
 chart.update_layout(
     title_font=dict(family="Arial", size=18, color="black"),

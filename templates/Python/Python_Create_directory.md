@@ -4,7 +4,7 @@
 
 **Author:** [Moemen Ebdelli](https://www.linkedin.com/in/moemen-ebdelli)
 
-This notebook helps you create a directory inside any given path using python.
+**Description:** This notebook provides instructions on how to create a directory in Python.
 
 ## Input
 
@@ -21,10 +21,10 @@ import os
 ```python
 # Directory name
 directory = "MyDir"
-  
+
 # Parent Directory path: provide an absolute or relative path
 parent_dir = "./"
-  
+
 # Prepare the Path
 path = os.path.join(parent_dir, directory)
 ```
@@ -36,10 +36,10 @@ path = os.path.join(parent_dir, directory)
 
 ```python
 # Create the directory MyDir under awesome-notebooks/Python
-try: 
-    os.mkdir(path) 
+try:
+    os.mkdir(path)
     msg = "Directory " + directory + " is created under " + parent_dir
-except OSError as error: 
+except OSError as error:
     msg = "Directory was not created  : " + str(error)
 ```
 

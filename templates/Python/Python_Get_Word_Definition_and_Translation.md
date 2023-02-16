@@ -25,8 +25,10 @@ except ModuleNotFoundError:
 
 
 ```python
-word = input('-> Enter the word to get all details: ')   # Get the word from the user
-lang_code = input('-> Enter the language that needs to be translated: ')  # Available language codes: https://developers.google.com/admin-sdk/directory/v1/languages [EN, FR, ES]
+word = input("-> Enter the word to get all details: ")  # Get the word from the user
+lang_code = input(
+    "-> Enter the language that needs to be translated: "
+)  # Available language codes: https://developers.google.com/admin-sdk/directory/v1/languages [EN, FR, ES]
 ```
 
 ## Model
@@ -35,7 +37,7 @@ lang_code = input('-> Enter the language that needs to be translated: ')  # Avai
 
 
 ```python
-dictionary = PyDictionary()   # Create a PyDictionary Model
+dictionary = PyDictionary()  # Create a PyDictionary Model
 ```
 
 ## Output

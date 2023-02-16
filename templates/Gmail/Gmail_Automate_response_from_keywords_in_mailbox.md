@@ -4,6 +4,8 @@
 
 **Author:** [Sanjay Sabu](https://www.linkedin.com/in/sanjay-sabu-4205/)
 
+**Description:** This notebook automates the process of responding to emails in Gmail based on keywords found in the mailbox.
+
 ## Input
 
 ### Import librairies
@@ -32,10 +34,7 @@ box = "INBOX"
 
 
 ```python
-emails = email.connect(username, 
-        password, 
-        username, 
-        smtp_server)
+emails = email.connect(username, password, username, smtp_server)
 ```
 
 ### Get email list
@@ -54,10 +53,12 @@ df
 ```python
 for df in dataframe["text"]:
     text = df.lower()
-    if search("sales report", text): 
+    if search("sales report", text):
         email_to = "naas.sanjay22@gmail.com"
         subject = "Sales Report"
         content = "Hi \n,Here I am attaching the sales report as per your request\n.With Regards\n,NAAS Team"
         files = ["Excel-Sales_Feb2020.csv"]
-        naas.notifications.send(email_to=email_to, subject=subject, html=content, files=files)
+        naas.notifications.send(
+            email_to=email_to, subject=subject, html=content, files=files
+        )
 ```

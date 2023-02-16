@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-In this notebook, you will be able to automically accept all invitations from LinkedIn
+**Description:** This notebook helps you quickly and easily accept all LinkedIn invitations and send a personalized introductory message to each new connection.
 
 ## Input
 
@@ -39,7 +39,7 @@ FIRST_MESSAGE = "Hello, Nice to connect!"
 # Schedule your notebook every hour
 naas.scheduler.add(cron="0 * * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -59,7 +59,7 @@ df_invitation
 ```python
 def accept_new_contact(df):
     df_accept = pd.DataFrame()
-    
+
     # Loop
     for index, row in df.iterrows():
         fullname = row.FULLNAME
@@ -68,9 +68,12 @@ def accept_new_contact(df):
         shared_secret = row.SHARED_SECRET
         if status == "PENDING":
             print(fullname)
-            tmp_df = linkedin.connect(LI_AT, JSESSIONID).invitation.accept(invitation_id, shared_secret)
+            tmp_df = linkedin.connect(LI_AT, JSESSIONID).invitation.accept(
+                invitation_id, shared_secret
+            )
             df_accept = pd.concat([df_accept, tmp_df])
     return df_accept
+
 
 df_accept = accept_new_contact(df_invitation)
 df_accept
@@ -87,6 +90,7 @@ def send_first_message(df):
         profile_id = row.PROFILE_ID
         print(fullname)
         linkedin.connect(LI_AT, JSESSIONID).message.send(FIRST_MESSAGE, profile_id)
+
 
 send_first_message(df_accept)
 ```

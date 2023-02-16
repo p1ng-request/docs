@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou/)
 
+**Description:** Naas Auth - Connect is a notebook that allows users to securely authenticate and connect to their Naas account.
+
 ## Input
 
 ### Import library
@@ -21,8 +23,8 @@ When calling connect() you can either pass a token generated [here](https://app.
 
 
 ```python
-#naasauth.connect(token="yourjupyterhubtoken")
-#naasauth.connect("yourjupyterhubtoken")
+# naasauth.connect(token="yourjupyterhubtoken")
+# naasauth.connect("yourjupyterhubtoken")
 naasauth.connect()
 ```
 

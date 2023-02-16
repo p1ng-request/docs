@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
+**Description:** This notebook provides a way to view the balance of credits available for use in the Naas platform.
+
 ## Input
 
 ### Import library

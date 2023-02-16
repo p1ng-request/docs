@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a step-by-step guide to downloading a PDF file from a URL using Python.
+
 ## Input
 
 ### Import libraries
@@ -31,11 +33,11 @@ pdf_output = "2021 Annual Report.pdf"
 
 ```python
 def download_pdf(url, filepath):
-    response = urllib.request.urlopen(url)    
-    file = open(filepath, 'wb')
+    response = urllib.request.urlopen(url)
+    file = open(filepath, "wb")
     file.write(response.read())
     file.close()
-    print("File saved:", filepath) 
+    print("File saved:", filepath)
 ```
 
 ## Output

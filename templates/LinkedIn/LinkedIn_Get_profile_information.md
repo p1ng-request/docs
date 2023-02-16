@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook allows you to access and analyze profile information from LinkedIn.
+
 ## Input
 
 ### Import library

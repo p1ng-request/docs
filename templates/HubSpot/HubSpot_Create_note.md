@@ -39,22 +39,22 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 ```python
 # Note content => HTML format can be used to create custom notes (Required)
-body = "My new note" # EXAMPLE: "My new notes"
+body = "My new note"  # EXAMPLE: "My new notes"
 
 # Note timestamp in format "%Y-%m-%d %H:%M:%S" (Not mandatory)
-timestamp = "2022-05-31 08:13:00" # EXAMPLE: "2022-05-31 08:13:00"
+timestamp = "2022-05-31 08:13:00"  # EXAMPLE: "2022-05-31 08:13:00"
 
 # Associated contacts ID (Required)
-asso_contactids = [] # EXAMPLE: [00001] or [00001, 00002, 000003]
+asso_contactids = []  # EXAMPLE: [00001] or [00001, 00002, 000003]
 
 # Associated companies ID (Not mandatory)
-asso_companyids = [] # EXAMPLE: [00001] or [00001, 00002, 000003]
+asso_companyids = []  # EXAMPLE: [00001] or [00001, 00002, 000003]
 
 # Associated deals ID (Not mandatory)
-asso_dealids = [] # EXAMPLE: [00001] or [00001, 00002, 000003]
+asso_dealids = []  # EXAMPLE: [00001] or [00001, 00002, 000003]
 
 # Associated owners ID (Not mandatory)
-asso_ownerids = [] # EXAMPLE: [00001] or [00001, 00002, 000003]
+asso_ownerids = []  # EXAMPLE: [00001] or [00001, 00002, 000003]
 
 # Creator ID (Not mandatory)
 owner_id = None
@@ -66,51 +66,56 @@ owner_id = None
 
 
 ```python
-def create_note(body,
-                timestamp=None,
-                owner_id=None,
-                asso_contactids=[],
-                asso_companyids=[],
-                asso_dealids=[],
-                asso_ownerids=[],
-                engagement="NOTE"):
+def create_note(
+    body,
+    timestamp=None,
+    owner_id=None,
+    asso_contactids=[],
+    asso_companyids=[],
+    asso_dealids=[],
+    asso_ownerids=[],
+    engagement="NOTE",
+):
     """
     Engagement type = NOTE
     """
-    
+
     # Calc timestamp
     if timestamp is not None:
-        timestamp = str(int(datetime.strptime(timestamp[:19], "%Y-%m-%d %H:%M:%S").timestamp())) + "000"
+        timestamp = (
+            str(int(datetime.strptime(timestamp[:19], "%Y-%m-%d %H:%M:%S").timestamp()))
+            + "000"
+        )
     else:
         timestamp = str(int(datetime.now().timestamp())) + "000"
-     
+
     # Create payload
-    payload = json.dumps({
-        "engagement": {
-            "active": 'true',
-            "ownerId": owner_id,
-            "type": engagement,
-            "timestamp": timestamp
-        },
-        "associations": {
-            "contactIds": asso_contactids,
-            "companyIds": asso_companyids,
-            "dealIds": asso_dealids,
-            "ownerIds": asso_ownerids,
-        },
-        "metadata": {
-            "body": body,
+    payload = json.dumps(
+        {
+            "engagement": {
+                "active": "true",
+                "ownerId": owner_id,
+                "type": engagement,
+                "timestamp": timestamp,
+            },
+            "associations": {
+                "contactIds": asso_contactids,
+                "companyIds": asso_companyids,
+                "dealIds": asso_dealids,
+                "ownerIds": asso_ownerids,
+            },
+            "metadata": {
+                "body": body,
+            },
         }
-    })
+    )
     url = "https://api.hubapi.com/engagements/v1/engagements"
     headers = {
-        'Content-Type': "application/json",
-        "authorization": f"Bearer {HS_ACCESS_TOKEN}"
+        "Content-Type": "application/json",
+        "authorization": f"Bearer {HS_ACCESS_TOKEN}",
     }
     # Post requests
-    res = requests.post(url,
-                        data=payload,
-                        headers=headers)
+    res = requests.post(url, data=payload, headers=headers)
     res.raise_for_status()
     res_json = res.json()
     # Note ID
@@ -133,6 +138,6 @@ note_id = create_note(
     asso_companyids=asso_companyids,
     asso_dealids=asso_dealids,
     asso_ownerids=asso_ownerids,
-    owner_id=owner_id
+    owner_id=owner_id,
 )
 ```

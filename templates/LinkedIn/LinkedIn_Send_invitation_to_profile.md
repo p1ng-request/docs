@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Growth your network and send invitation to profile.
+**Description:** This notebook allows users to send invitations to connect on LinkedIn to other profiles.
 
 ## Input
 

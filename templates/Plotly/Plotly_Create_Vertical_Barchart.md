@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides instructions on how to create a vertical barchart using Plotly.
+
 ## Input
 
 ### Import libraries
@@ -30,8 +32,46 @@ output_html = f"{title}.html"
 
 
 ```python
-x_axis = [1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012]
-y_axis = [219, 146, 112, 127, 124, 180, 236, 207, 236, 263, 350, 430, 474, 526, 488, 537, 500, 439]
+x_axis = [
+    1995,
+    1996,
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+]
+y_axis = [
+    219,
+    146,
+    112,
+    127,
+    124,
+    180,
+    236,
+    207,
+    236,
+    263,
+    350,
+    430,
+    474,
+    526,
+    488,
+    537,
+    500,
+    439,
+]
 value_dict = zip(x_axis, y_axis)
 
 df = pd.DataFrame(value_dict, columns=["LABEL", "VALUE"])
@@ -47,9 +87,7 @@ df
 def create_barchart(df, label, value, title):
     fig = go.Figure()
 
-    fig.add_trace(go.Bar(x=df[label],
-                         y= df[value],
-                         marker_color='#5ee290'))
+    fig.add_trace(go.Bar(x=df[label], y=df[value], marker_color="#5ee290"))
     fig.update_layout(
         title=title,
         plot_bgcolor="#ffffff",
@@ -57,12 +95,13 @@ def create_barchart(df, label, value, title):
         height=800,
         xaxis_tickfont_size=14,
         legend=None,
-        bargap=0.1, # gap between bars of adjacent location coordinates.
-        bargroupgap=0.1 # gap between bars of the same location coordinate.
+        bargap=0.1,  # gap between bars of adjacent location coordinates.
+        bargroupgap=0.1,  # gap between bars of the same location coordinate.
     )
-    config = {'displayModeBar': False}
+    config = {"displayModeBar": False}
     fig.show(config=config)
     return fig
+
 
 fig = create_barchart(df, label="LABEL", value="VALUE", title=title)
 ```
@@ -82,9 +121,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

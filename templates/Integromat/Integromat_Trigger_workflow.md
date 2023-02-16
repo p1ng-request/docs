@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows you to create automated workflows that are triggered by specific events.
+
 ## Input
 
 ### Import libraries
@@ -19,8 +21,7 @@ from naas_drivers import integromat
 ```python
 URL = "https://hook.integromat.com/7edtlwmn8foer0r9i9ainjvsz3vxmwos"
 
-DATA = {"first_name": "Bryan",
-        "last_name":"Helmig", "age": 27 }
+DATA = {"first_name": "Bryan", "last_name": "Helmig", "age": 27}
 ```
 
 ## Model

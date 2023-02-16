@@ -4,10 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook send invitations to your event from your post engagements.
-
-*NB: You must to organized the event to be able to send invitations!*<br>
-*NB2: You will be able to send invitations only to people you are connected!*
+**Description:** This notebook allows users to send event invitations and post engagements on LinkedIn.
 
 ## Input
 
@@ -28,14 +25,20 @@ import time
 
 ```python
 # Credentials
-LI_AT = naas.secret.get("LI_AT") or 'ENTER_YOUR_COOKIE_LI_AT_HERE'  # EXAMPLE: AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = naas.secret.get("JSESSIONID") or 'ENTER_YOUR_COOKIE_JSESSIONID_HERE'  # EXAMPLE: ajax:8379907400220387585
+LI_AT = (
+    naas.secret.get("LI_AT") or "ENTER_YOUR_COOKIE_LI_AT_HERE"
+)  # EXAMPLE: AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = (
+    naas.secret.get("JSESSIONID") or "ENTER_YOUR_COOKIE_JSESSIONID_HERE"
+)  # EXAMPLE: ajax:8379907400220387585
 
 # Event URL
-EVENT_URL = "ENTER_YOUR_EVENT_URL_HERE" # EXAMPLE: https://www.linkedin.com/events/XXXXXXXXXXXX/
+EVENT_URL = "ENTER_YOUR_EVENT_URL_HERE"  # EXAMPLE: https://www.linkedin.com/events/XXXXXXXXXXXX/
 
 # Post URL
-POST_URL = "ENTER_YOUR_POST_URL_HERE" # EXAMPLE: https://www.linkedin.com/posts/XXXXXXXXXXXX/
+POST_URL = (
+    "ENTER_YOUR_POST_URL_HERE"  # EXAMPLE: https://www.linkedin.com/posts/XXXXXXXXXXXX/
+)
 ```
 
 ## Model
@@ -57,10 +60,15 @@ def get_engagements(post_url):
     # Get engagements
     df_likes = linkedin.connect(LI_AT, JSESSIONID).post.get_likes(post_url)
     df_comments = linkedin.connect(LI_AT, JSESSIONID).post.get_comments(post_url)
-    
+
     # Concat
-    df = pd.concat([df_likes, df_comments]).drop_duplicates("PROFILE_ID", keep="last").reset_index(drop=True)
+    df = (
+        pd.concat([df_likes, df_comments])
+        .drop_duplicates("PROFILE_ID", keep="last")
+        .reset_index(drop=True)
+    )
     return df
+
 
 df_engagements = get_engagements(POST_URL)
 print("✅ Engagements fetched:", len(df_engagements))
@@ -75,6 +83,7 @@ def get_new_invitations(df_attendees, df_engagements):
     attendees_list = df_attendees.PROFILE_ID.unique()
     df = df_engagements[~df_engagements.PROFILE_ID.isin(attendees_list)]
     return df
+
 
 df_new_invitations = get_new_invitations(df_attendees, df_engagements)
 print("✅ New invitations fetched:", len(df_new_invitations))
@@ -91,20 +100,26 @@ LinkedIn = linkedin.connect(LI_AT, JSESSIONID)
 cookies = LinkedIn.cookies
 headers = LinkedIn.headers
 
+
 def send_invitations(profile_id, event_url):
     event_id = event_url.split("/events/")[-1].split("/")[0]
-    payload = {"invitations":
-               [{"emberEntityName":"growth/invitation/norm-invitation",
-                 "invitee":{"com.linkedin.voyager.growth.invitation.GenericInvitee":
-                            {"inviteeUrn": f"urn:li:fs_miniProfile:{profile_id}"}},
-                 "trackingId":"4T5tesDXQDqC9ArO15TLag==",
-                 "inviterUrn": f"urn:li:fs_professionalEvent:{event_id}"}],
-               "defaultCountryCode":""}
+    payload = {
+        "invitations": [
+            {
+                "emberEntityName": "growth/invitation/norm-invitation",
+                "invitee": {
+                    "com.linkedin.voyager.growth.invitation.GenericInvitee": {
+                        "inviteeUrn": f"urn:li:fs_miniProfile:{profile_id}"
+                    }
+                },
+                "trackingId": "4T5tesDXQDqC9ArO15TLag==",
+                "inviterUrn": f"urn:li:fs_professionalEvent:{event_id}",
+            }
+        ],
+        "defaultCountryCode": "",
+    }
     req_url = f"https://www.linkedin.com/voyager/api/growth/normInvitations?action=batchCreate"
-    res = requests.post(req_url,
-                        cookies=cookies,
-                        headers=headers,
-                        json=payload)
+    res = requests.post(req_url, cookies=cookies, headers=headers, json=payload)
     res.raise_for_status()
     return res
 ```
@@ -118,13 +133,13 @@ def send_invitation(df):
     if len(df) == 0:
         print("🤙 No new invitations to send")
         return df
-    
+
     # Loop
     for index, row in df.iterrows():
         profile = row["FULLNAME"]
         profile_id = row["PROFILE_ID"]
         print(f"➡️ Checking :", profile, profile_id)
-        
+
         # Get distance with profile
         try:
             send_invitations(profile_id, EVENT_URL)
@@ -132,6 +147,7 @@ def send_invitation(df):
         except Exception as e:
             print("❌ Invitation not sent", e)
         time.sleep(3)
-            
+
+
 send_invitation(df_new_invitations)
 ```

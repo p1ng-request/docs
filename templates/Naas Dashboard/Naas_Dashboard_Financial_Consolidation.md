@@ -4,7 +4,7 @@
 
 **Author:** [Meriem Si](https://www.linkedin.com/in/meriem-si-104236181/)
 
-This notebook enables you to generate a dashboard to follow the financial consolidation.
+**Description:** This notebook provides a comprehensive dashboard for financial consolidation and analysis.
 
 ## Input
 
@@ -55,52 +55,38 @@ SHEET_NAME_5 = "INCOME_STATEMENT"
 
 
 ```python
-APP_TITLE = 'Financial Consolidation'
+APP_TITLE = "Financial Consolidation"
 APP_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 ```
 
 
 ```python
 # Style used for card
-CARD_COL_STYLE1= {
-    "className": "g-2",
-    "xs": 12,
-    "sm": 12,
-    "md": 12,
-    "lg": 2,
-    "xl": 2
-}
+CARD_COL_STYLE1 = {"className": "g-2", "xs": 12, "sm": 12, "md": 12, "lg": 2, "xl": 2}
 
-CARD_COL_STYLE2= {
-#     "className": "gx-5",
+CARD_COL_STYLE2 = {
+    #     "className": "gx-5",
     "xs": 12,
     "sm": 12,
     "md": 12,
     "lg": 12,
-    "xl": 12
+    "xl": 12,
 }
 
-CARD_COL_STYLE3= {
-#     "className": "gx-5",
+CARD_COL_STYLE3 = {
+    #     "className": "gx-5",
     "xs": 12,
     "sm": 12,
     "md": 12,
     "lg": 6,
-    "xl": 6
+    "xl": 6,
 }
 ```
 
 
 ```python
 # Color used for card
-CARD_COLOR = [
-    "#163b78",
-    "#4c718f",
-    "#62a0a6",
-    "#64abbd",
-    "#45a127",
-    "success"
-]
+CARD_COLOR = ["#163b78", "#4c718f", "#62a0a6", "#64abbd", "#45a127", "success"]
 BACKGROUND_COLOR = "#f8f9fa"
 ```
 
@@ -113,16 +99,9 @@ BACKGROUND_COLOR = "#f8f9fa"
 
 ```python
 # Lists used for dropdowns intractiveness
-entities = [
-    "Entity1",
-    "Entity2"
-]
+entities = ["Entity1", "Entity2"]
 
-scenarios = [
-    "2022",
-    "2021",
-    "2020"
-]
+scenarios = ["2022", "2021", "2020"]
 ```
 
 #### Get Kpis data
@@ -130,7 +109,9 @@ scenarios = [
 
 ```python
 df_hkpis = gsheet.connect(SPREADSHEET_URL).get(SHEET_NAME)
-df_hkpis["VALUE_D"] = df_hkpis["VALUE"].astype(str) + " " + df_hkpis["UNITS"].astype(str)
+df_hkpis["VALUE_D"] = (
+    df_hkpis["VALUE"].astype(str) + " " + df_hkpis["UNITS"].astype(str)
+)
 print("Nb row:", len(df_hkpis))
 df_hkpis.head(6)
 ```
@@ -149,7 +130,7 @@ df_revenue.head(6)
 
 ```python
 df_operational_expenses = gsheet.connect(SPREADSHEET_URL).get(SHEET_NAME_3)
-print("Nb row:", len(df_operational_expenses ))
+print("Nb row:", len(df_operational_expenses))
 df_operational_expenses.head(6)
 ```
 
@@ -167,9 +148,13 @@ df_earningBIT.head(6)
 
 ```python
 df_income_statement = gsheet.connect(SPREADSHEET_URL).get(SHEET_NAME_5)
-df_income_statement["VALUE_D"] = df_income_statement["VALUE"].astype(str) + " " + df_income_statement["UNITS"].astype(str)
-print("Nb row:", len(df_income_statement ))
-df_income_statement .head(6)
+df_income_statement["VALUE_D"] = (
+    df_income_statement["VALUE"].astype(str)
+    + " "
+    + df_income_statement["UNITS"].astype(str)
+)
+print("Nb row:", len(df_income_statement))
+df_income_statement.head(6)
 ```
 
 ### Charts
@@ -178,14 +163,16 @@ df_income_statement .head(6)
 
 
 ```python
-def create_barlinechart(df,
-                        label="DATE",
-                        value_bar="VALUE_BAR",
-                        value_scatter="VAlUE_LINE1",
-                        value_scatter_dot="VAlUE_LINE2",
-                        xaxis_title=None,
-                        yaxis_title_r=None,
-                        yaxis_title_l=None):    
+def create_barlinechart(
+    df,
+    label="DATE",
+    value_bar="VALUE_BAR",
+    value_scatter="VAlUE_LINE1",
+    value_scatter_dot="VAlUE_LINE2",
+    xaxis_title=None,
+    yaxis_title_r=None,
+    yaxis_title_l=None,
+):
     fig = go.Figure()
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
@@ -215,7 +202,7 @@ def create_barlinechart(df,
             x=df[label],
             y=df[value_scatter_dot],
             name="Target",
-            line=dict(color='green', width=4, dash='dot'),
+            line=dict(color="green", width=4, dash="dot"),
         ),
         secondary_y=True,
     )
@@ -228,17 +215,11 @@ def create_barlinechart(df,
         paper_bgcolor="white",
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=False),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=20, r=20, t=20, b=20),
     )
-    
+
     fig.update_layout(
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.02,
-            xanchor="right",
-            x=1
-        )
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
     )
 
     fig.show()
@@ -254,47 +235,48 @@ def create_barlinechart(df,
 
 
 ```python
-def stacked_bar(df,
-                labels,
-                values):
-    fig2 = px.bar(df,
-                  x="DATE",
-                  y="COUNT",
-                  color="VALUE",
-#                   width=520,
-                  height=300,
-                  color_discrete_map={
-                      'General': '#5ac73c',
-                      'Marketing': '#6dabc7',
-                      'Sales':'#307a37',
-                      'IT':'#30337a'
-                  }
-                 )
-    
+def stacked_bar(df, labels, values):
+    fig2 = px.bar(
+        df,
+        x="DATE",
+        y="COUNT",
+        color="VALUE",
+        #                   width=520,
+        height=300,
+        color_discrete_map={
+            "General": "#5ac73c",
+            "Marketing": "#6dabc7",
+            "Sales": "#307a37",
+            "IT": "#30337a",
+        },
+    )
+
     fig2.update_traces(width=0.5)
 
-    fig2.update_layout(yaxis_tickformat = ',',
-                       legend_title="",
-                       legend=dict(orientation="h"),
-                       plot_bgcolor="white",
-                       paper_bgcolor="white",
-                       xaxis=dict(showgrid=False),
-                       yaxis=dict(showgrid=False),
-                       margin=dict(l=20, r=20, t=20, b=20)
-                      )    
-    
     fig2.update_layout(
-    legend=dict(
-        orientation="h",
-        yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=1
-    ))
+        yaxis_tickformat=",",
+        legend_title="",
+        legend=dict(orientation="h"),
+        plot_bgcolor="white",
+        paper_bgcolor="white",
+        xaxis=dict(showgrid=False),
+        yaxis=dict(showgrid=False),
+        margin=dict(l=20, r=20, t=20, b=20),
+    )
+
+    fig2.update_layout(
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
     # Set the visibility OFF
-    fig2.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis_title=None, yaxis_title=None)
+    fig2.update_layout(
+        uniformtext_minsize=8,
+        uniformtext_mode="hide",
+        xaxis_title=None,
+        yaxis_title=None,
+    )
 
     return fig2
+
 
 # stacked_bar = stacked_bar(df2, None, None)
 ```
@@ -303,11 +285,9 @@ def stacked_bar(df,
 
 
 ```python
-def create_doublelinechart(df,
-                        label="DATE",
-                        value1="VALUE1",
-                        value2="VALUE2",
-                        xaxis_title="Months"):    
+def create_doublelinechart(
+    df, label="DATE", value1="VALUE1", value2="VALUE2", xaxis_title="Months"
+):
     fig3 = go.Figure()
     # Add traces
 
@@ -320,45 +300,46 @@ def create_doublelinechart(df,
             line=dict(color="#0A66C2", width=2.5),
         ),
     )
-    
+
     fig3.add_trace(
         go.Scatter(
             x=df[label],
             y=df[value2],
             mode="lines",
             name="EBIT Target",
-            line=dict(color='green', width=4, dash='dot'),
+            line=dict(color="green", width=4, dash="dot"),
         ),
-    )  
+    )
 
     # Add figure title
     fig3.update_layout(
         legend=dict(orientation="h"),
         plot_bgcolor="white",
         height=300,
-#         width=520,
+        #         width=520,
         paper_bgcolor="white",
         xaxis_title=xaxis_title,
         xaxis_title_font=dict(family="Arial", size=10, color="black"),
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=False),
-        margin=dict(l=20, r=20, t=20, b=40)
+        margin=dict(l=20, r=20, t=20, b=40),
     )
-    
+
     # Set the visibility OFF
-    fig3.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis_title=None, yaxis_title=None)
-    
     fig3.update_layout(
-    legend=dict(
-        orientation="h",
-        yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=1
-    ))
-    
+        uniformtext_minsize=8,
+        uniformtext_mode="hide",
+        xaxis_title=None,
+        yaxis_title=None,
+    )
+
+    fig3.update_layout(
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+
     fig3.show()
     return fig3
+
 
 # doubleline = create_doublelinechart(df3)
 ```
@@ -371,17 +352,17 @@ def create_doublelinechart(df,
 ```python
 # Entity's dropdown list
 dropdown_entity = dcc.Dropdown(
-    id='entity',
-    options=[{'label': i, 'value': i} for i in entities],
-    placeholder='Entity',
+    id="entity",
+    options=[{"label": i, "value": i} for i in entities],
+    placeholder="Entity",
     value=entities[0],
 )
 
 # Scenario's dropdown list
 dropdown_scenario = dcc.Dropdown(
-    id='scenario',
-    options=[{'label': i, 'value': i} for i in scenarios],
-    placeholder='Scenario',
+    id="scenario",
+    options=[{"label": i, "value": i} for i in scenarios],
+    placeholder="Scenario",
     value=scenarios[0],
 )
 ```
@@ -404,12 +385,7 @@ navbar = dbc.Navbar(
                     className="g-0",
                 ),
             ),
-            
-            dbc.NavbarToggler(
-                id="navbar-toggler",
-                n_clicks=0
-            ),
-            
+            dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav(
                     [
@@ -418,10 +394,10 @@ navbar = dbc.Navbar(
                                 html.Div(className="w-100"),
                                 html.Div(className="w-100"),
                                 html.Div(dropdown_entity, className="w-100"),
-                                html.Div(dropdown_scenario, className="w-100")
+                                html.Div(dropdown_scenario, className="w-100"),
                             ],
-                            className="pt-1 pb-1 d-grid gap-2 d-md-flex w-100")
-
+                            className="pt-1 pb-1 d-grid gap-2 d-md-flex w-100",
+                        )
                     ],
                     className="ms-auto w-100",
                     navbar=True,
@@ -441,7 +417,7 @@ navbar = dbc.Navbar(
 
 
 ```python
-#Function to create card
+# Function to create card
 def create_card_col(uid, card_title, card_paragraph, card_color):
     card = dbc.Col(
         dbc.Card(
@@ -450,26 +426,23 @@ def create_card_col(uid, card_title, card_paragraph, card_color):
                     html.P(
                         card_title,
                         className="card-title",
-                       style={
-                           "font-size": "15px",
-                           "padding-bottom": "5px",
-                           'text-align':'center',
-                           "font-weight": "bold"
-                       }
+                        style={
+                            "font-size": "15px",
+                            "padding-bottom": "5px",
+                            "text-align": "center",
+                            "font-weight": "bold",
+                        },
                     ),
                     html.P(
                         card_paragraph,
                         className="card-text",
-                        style={
-                            "font-size": "16px",
-                            'text-align':'center'
-                        },
-                        id=uid
-                    )
+                        style={"font-size": "16px", "text-align": "center"},
+                        id=uid,
+                    ),
                 ]
             ),
-            color= card_color,
-            inverse=True
+            color=card_color,
+            inverse=True,
         ),
         **CARD_COL_STYLE1,
     )
@@ -489,27 +462,23 @@ def create_chart(title, chart_id, CARD_COL_STYLE):
                         title,
                         style={
                             "padding-top": "20px",
-                            "margin-left": "20px", 
+                            "margin-left": "20px",
                             "font-weight": "bold",
                             "font-size": "17px",
-                        }
+                        },
                     ),
                     dcc.Graph(
-                        id=chart_id,
-                        config={
-                            'displayModeBar': True,
-                            "staticPlot": True
-                        }
+                        id=chart_id, config={"displayModeBar": True, "staticPlot": True}
                     ),
                 ],
             ),
             color=CARD_COLOR,
-            inverse=False
+            inverse=False,
         ),
         style={
             "background-color": BACKGROUND_COLOR,
             "display": "inline",
-            "padding": "0px"
+            "padding": "0px",
         },
         **CARD_COL_STYLE
     )
@@ -521,286 +490,342 @@ def create_chart(title, chart_id, CARD_COL_STYLE):
 
 ```python
 income_statement_card = dbc.Col(
-        dbc.Card(
-            dbc.CardBody(
-                [
-                    html.H5(
-                        "INCOME STATEMENT",
-                        className="card-title",
-                        style={"font-weight": "bold", "padding-top": "15px","font-size": "18px"}
-                    ),
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                    html.P(
-                                        "Revenue",
-                                        className="card-text",
-                                        style={"font-weight": "bold", 
-                                               "padding-top": "20px",
-                                               "font-size": "18px"}
-                                    )
-                            ),
-                            dbc.Col(
-                                    html.P(
-                                        "1,305,507 €",
-                                        style={'text-align':'right',"padding-top": "20px","font-size": "18px"},
-                                        id="nb1"
-                                    )
-                            ),
-                        ]
-                    ),
-                    
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                html.P(
-                                    "COGS",
-                                    className="card-text",
-                                    style={"font-weight": "bold","padding-top": "2px","font-size": "18px"}
-                                ) 
-                            ),
-                            dbc.Col(
-                                    html.P(
-                                        "208,453 €",
-                                        style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                        id="nb2"
-                                    )
-                            ),
-                        ]
-                    ),
-                    html.Hr(
-                        style={
-                            'borderWidth': "0.5vh",
-                            "width": "100%",
-                            "color": "black"
-                        }
-                    ),
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                html.P(
-                                    "GROSS PROFIT",
-                                    className="card-text",
-                                    style={"font-weight": "bold", "padding-top": "2px","font-size": "18px"}
-                                )
-                            ),
-                            dbc.Col(
-                                html.P(
-                                    "1,097,054 €",
-                                    style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                    id="nb3"
-                                )
+    dbc.Card(
+        dbc.CardBody(
+            [
+                html.H5(
+                    "INCOME STATEMENT",
+                    className="card-title",
+                    style={
+                        "font-weight": "bold",
+                        "padding-top": "15px",
+                        "font-size": "18px",
+                    },
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                "Revenue",
+                                className="card-text",
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "20px",
+                                    "font-size": "18px",
+                                },
                             )
-                        ]
-                    ),                              
-
-
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                html.P(
-                                    "OPEX",
-                                    className="card-text",
-                                    style={"font-weight": "bold", "padding-top": "2px","font-size": "18px"}
-                                )
-                            ),
-                            dbc.Col(
-                                html.P(
-                                    "815,306 €",
-                                    style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                    id="nb4"
-                                )
+                        ),
+                        dbc.Col(
+                            html.P(
+                                "1,305,507 €",
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "20px",
+                                    "font-size": "18px",
+                                },
+                                id="nb1",
                             )
-                        ]
-                    ),
-
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                html.P(
-                                    "Sales",
-                                    className="card-text",
-                                    style={'margin-left':25, "padding-top": "2px"}
-                                )
-                            ),
-                            dbc.Col(
-                                html.P(
-                                    "279,886 €",
-                                    style={'text-align':'right', "padding-top": "2px"},
-                                    id="nb5"
-                                )
+                        ),
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                "COGS",
+                                className="card-text",
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
                             )
-                        ]
-                    ),
-                    
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                html.P(
-                                    "Marketing",
-                                    className="card-text",
-                                    style={'margin-left':25, "padding-top": "2px"}
-                                )
-                            ),
-                            dbc.Col(
-                                html.P(
-                                    "192,710 €",
-                                    style={'text-align':'right', "padding-top": "2px"},
-                                    id="nb6"
-                                )
+                        ),
+                        dbc.Col(
+                            html.P(
+                                "208,453 €",
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb2",
                             )
-                        ]
-                    ),
-
+                        ),
+                    ]
+                ),
+                html.Hr(
+                    style={"borderWidth": "0.5vh", "width": "100%", "color": "black"}
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                "GROSS PROFIT",
+                                className="card-text",
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                            )
+                        ),
+                        dbc.Col(
+                            html.P(
+                                "1,097,054 €",
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb3",
+                            )
+                        ),
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                "OPEX",
+                                className="card-text",
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                            )
+                        ),
+                        dbc.Col(
+                            html.P(
+                                "815,306 €",
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb4",
+                            )
+                        ),
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                "Sales",
+                                className="card-text",
+                                style={"margin-left": 25, "padding-top": "2px"},
+                            )
+                        ),
+                        dbc.Col(
+                            html.P(
+                                "279,886 €",
+                                style={"text-align": "right", "padding-top": "2px"},
+                                id="nb5",
+                            )
+                        ),
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                "Marketing",
+                                className="card-text",
+                                style={"margin-left": 25, "padding-top": "2px"},
+                            )
+                        ),
+                        dbc.Col(
+                            html.P(
+                                "192,710 €",
+                                style={"text-align": "right", "padding-top": "2px"},
+                                id="nb6",
+                            )
+                        ),
+                    ]
+                ),
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "IT",
                                 className="card-text",
-                                style={'margin-left':25, "padding-top": "2px"}
+                                style={"margin-left": 25, "padding-top": "2px"},
                             )
                         ),
                         dbc.Col(
                             html.P(
                                 "192,656 €",
-                                style={'text-align':'right', "padding-top": "2px"},
-                                id="nb7"
+                                style={"text-align": "right", "padding-top": "2px"},
+                                id="nb7",
                             )
-                        )
+                        ),
                     ]
                 ),
-
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "General & Admin ",
                                 className="card-text",
-                                style={'margin-left':25, "padding-top": "2px"}
+                                style={"margin-left": 25, "padding-top": "2px"},
                             )
                         ),
                         dbc.Col(
                             html.P(
                                 "150,054 €",
-                                style={'text-align':'right', "padding-top": "2px"},
-                                id="nb8")
-                        )
+                                style={"text-align": "right", "padding-top": "2px"},
+                                id="nb8",
+                            )
+                        ),
                     ]
                 ),
-
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "OTHER INCOME",
                                 className="card-text",
-                                style={"font-weight": "bold","padding-top": "2px","font-size": "18px"}
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
                             )
                         ),
                         dbc.Col(
-                            html.P("2,130 €",
-                                   style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                   id="nb9"
-                                  )
-                        )
+                            html.P(
+                                "2,130 €",
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb9",
+                            )
+                        ),
                     ]
                 ),
-
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "OTHER EXPENSES",
                                 className="card-text",
-                                style={"font-weight": "bold", "padding-top": "2px","font-size": "18px"}
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
                             )
                         ),
                         dbc.Col(
                             html.P(
                                 "51,195 €",
-                                style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                id="nb10"
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb10",
                             )
-                        )
+                        ),
                     ]
                 ),
-
                 html.Hr(
-                    style={
-                        'borderWidth': "0.5vh",
-                        "width": "100%",
-                        "color": "blak"
-                    }
+                    style={"borderWidth": "0.5vh", "width": "100%", "color": "blak"}
                 ),
-
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "EBIT",
                                 className="card-text",
-                                style={"font-weight": "bold", "padding-top": "2px","font-size": "18px"}
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
                             )
                         ),
-                        
                         dbc.Col(
                             html.P(
                                 "232,684 €",
-                                style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                id="nb11"
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb11",
                             )
                         ),
                     ]
                 ),
-
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "Intrest and Tax",
                                 className="card-text",
-                                style={'margin-left':25, "padding-top": "2px","font-size": "18px"}
+                                style={
+                                    "margin-left": 25,
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
                             )
                         ),
                         dbc.Col(
                             html.P(
                                 "1,305,507 €",
-                                style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                id="nb12"
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb12",
                             )
-                        )
+                        ),
                     ]
                 ),
-
-                html.Hr(style={'borderWidth': "0.5vh",
-                               "width": "100%",
-                               "color": "blak"}
-                       ),
-
+                html.Hr(
+                    style={"borderWidth": "0.5vh", "width": "100%", "color": "blak"}
+                ),
                 dbc.Row(
                     [
                         dbc.Col(
                             html.P(
                                 "NET PROFIT",
                                 className="card-text",
-                                style={"font-weight": "bold", "padding-top": "2px","font-size": "18px"}
+                                style={
+                                    "font-weight": "bold",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
                             )
                         ),
                         dbc.Col(
                             html.P(
                                 "194,440 €",
-                                style={'text-align':'right', "padding-top": "2px","font-size": "18px"},
-                                id="nb13"
+                                style={
+                                    "text-align": "right",
+                                    "padding-top": "2px",
+                                    "font-size": "18px",
+                                },
+                                id="nb13",
                             )
-                        )
+                        ),
                     ]
-                )            
+                ),
             ]
         ),
     ),
-#     className="gx-5",
-    xs=12, sm=12, md=12, lg=4, xl=4,
+    #     className="gx-5",
+    xs=12,
+    sm=12,
+    md=12,
+    lg=4,
+    xl=4,
 )
 ```
 
@@ -808,19 +833,21 @@ income_statement_card = dbc.Col(
 
 
 ```python
-app = dash.Dash(requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/', 
-                external_stylesheets=[dbc.themes.BOOTSTRAP],
-                meta_tags=[{'name': 'viewport','content': 'width=device-width, initial-scale=1.0'}]
-                )
+app = dash.Dash(
+    requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+)
 
-#app = dash.Dash() if you are not in Naas
+# app = dash.Dash() if you are not in Naas
 app.title = APP_TITLE
 app.layout = html.Div(
     [
-        #Navbar
+        # Navbar
         navbar,
-
-        #HKPIS
+        # HKPIS
         dbc.Row(
             [
                 create_card_col("card1", "REVENUE TARGET", "85%", CARD_COLOR[0]),
@@ -832,91 +859,95 @@ app.layout = html.Div(
             ],
             className="g-0 d-flex align-items-center",
         ),
-
-        #SPACE
+        # SPACE
         html.Br(),
-
-        #CHARTS
+        # CHARTS
         dbc.Row(
             [
-                #Column 1: Charts
+                # Column 1: Charts
                 dbc.Col(
                     [
-                        #Row 1: 1 Charts
+                        # Row 1: 1 Charts
                         dbc.Row(
                             create_chart("REVENUE", "fig1", CARD_COL_STYLE2),
                         ),
-                        #Row 2: 2 Charts
+                        # Row 2: 2 Charts
                         dbc.Row(
                             [
-                                create_chart("OPERATIONAL EXPENSES", "fig2", CARD_COL_STYLE3),
-                                create_chart("EARNINGS BEFORE INTREST AND TAXES", "fig3", CARD_COL_STYLE3)
+                                create_chart(
+                                    "OPERATIONAL EXPENSES", "fig2", CARD_COL_STYLE3
+                                ),
+                                create_chart(
+                                    "EARNINGS BEFORE INTREST AND TAXES",
+                                    "fig3",
+                                    CARD_COL_STYLE3,
+                                ),
                             ]
-                        )
+                        ),
                     ],
-                    xs=12, sm=12, md=12, lg=8, xl=8,
+                    xs=12,
+                    sm=12,
+                    md=12,
+                    lg=8,
+                    xl=8,
                 ),
-                #Column 2: Income Statement Card 
+                # Column 2: Income Statement Card
                 income_statement_card,
             ]
-        )
+        ),
     ]
 )
-    
+
 # add callback for toggling the collapse on small screens
 @app.callback(
     Output("navbar-collapse", "is_open"),
     [Input("navbar-toggler", "n_clicks")],
-    [State("navbar-collapse", "is_open")],   
+    [State("navbar-collapse", "is_open")],
 )
-
 def toggle_navbar_collapse(n, is_open):
     if n:
         return not is_open
     return is_open
 
+
 # add callback to filter data in cards and charts
 @app.callback(
     [
-        Output('card1', 'children'),
-        Output('card2', 'children'),
-        Output('card3', 'children'),
-        Output('card4', 'children'),
-        Output('card5', 'children'),
-        Output('card6', 'children'),
-        Output('fig1', 'figure'),
-        Output('fig2', 'figure'),
-        Output('fig3', 'figure'),
-        Output('nb1', 'children'),
-        Output('nb2', 'children'),
-        Output('nb3', 'children'),
-        Output('nb4', 'children'),
-        Output('nb5', 'children'),
-        Output('nb6', 'children'),
-        Output('nb7', 'children'),
-        Output('nb8', 'children'),
-        Output('nb9', 'children'),
-        Output('nb10', 'children'),
-        Output('nb11', 'children'),
-        Output('nb12', 'children'),
-        Output('nb13', 'children'),
+        Output("card1", "children"),
+        Output("card2", "children"),
+        Output("card3", "children"),
+        Output("card4", "children"),
+        Output("card5", "children"),
+        Output("card6", "children"),
+        Output("fig1", "figure"),
+        Output("fig2", "figure"),
+        Output("fig3", "figure"),
+        Output("nb1", "children"),
+        Output("nb2", "children"),
+        Output("nb3", "children"),
+        Output("nb4", "children"),
+        Output("nb5", "children"),
+        Output("nb6", "children"),
+        Output("nb7", "children"),
+        Output("nb8", "children"),
+        Output("nb9", "children"),
+        Output("nb10", "children"),
+        Output("nb11", "children"),
+        Output("nb12", "children"),
+        Output("nb13", "children"),
     ],
-    [
-        Input('entity', 'value'),
-        Input('scenario', 'value')
-    ]
-    
+    [Input("entity", "value"), Input("scenario", "value")],
 )
-
 def multi_outputs(entity, scenario):
     if entity is None and scenario is None:
         raise PreventUpdate
-        
+
     # Get HKPIs dataframe
     dfhkpis = df_hkpis.copy()
-    dfhkpis = dfhkpis[(dfhkpis["ENTITY"] == entity) &
-                      (dfhkpis["SCENARIO"].astype(str) == scenario)].reset_index(drop=True)
-    
+    dfhkpis = dfhkpis[
+        (dfhkpis["ENTITY"] == entity) & (dfhkpis["SCENARIO"].astype(str) == scenario)
+    ].reset_index(drop=True)
+
     # Return card data
     card1 = dfhkpis.loc[dfhkpis["LABEL"] == "Revenue Target", "VALUE_D"].values[0]
     card2 = dfhkpis.loc[dfhkpis["LABEL"] == "COGS Ratio", "VALUE_D"].values[0]
@@ -924,50 +955,104 @@ def multi_outputs(entity, scenario):
     card4 = dfhkpis.loc[dfhkpis["LABEL"] == "Opex Ratio", "VALUE_D"].values[0]
     card5 = dfhkpis.loc[dfhkpis["LABEL"] == "Ebit Margin", "VALUE_D"].values[0]
     card6 = dfhkpis.loc[dfhkpis["LABEL"] == "Net Profit Margin", "VALUE_D"].values[0]
-    
-    
+
     # Get Revenue graph dataframe
     dfrevenue = df_revenue.copy()
-    dfrevenue = dfrevenue[(dfrevenue["ENTITY"] == entity) &
-                      (dfrevenue["SCENARIO"].astype(str) == scenario)].reset_index(drop=True)
-    
+    dfrevenue = dfrevenue[
+        (dfrevenue["ENTITY"] == entity)
+        & (dfrevenue["SCENARIO"].astype(str) == scenario)
+    ].reset_index(drop=True)
+
     # Get Operational expenses graph dataframe
     dfoperationalexpenses = df_operational_expenses.copy()
-    dfoperationalexpenses = dfoperationalexpenses[(dfoperationalexpenses["ENTITY"] == entity) &
-                      (dfoperationalexpenses["SCENARIO"].astype(str) == scenario)].reset_index(drop=True)
-    
+    dfoperationalexpenses = dfoperationalexpenses[
+        (dfoperationalexpenses["ENTITY"] == entity)
+        & (dfoperationalexpenses["SCENARIO"].astype(str) == scenario)
+    ].reset_index(drop=True)
+
     # Get Earning before intrest and taxes graph dataframe
     dfearningBIT = df_earningBIT.copy()
-    dfearningBIT = dfearningBIT [(dfearningBIT ["ENTITY"] == entity) &
-                      (dfearningBIT ["SCENARIO"].astype(str) == scenario)].reset_index(drop=True)
-    
+    dfearningBIT = dfearningBIT[
+        (dfearningBIT["ENTITY"] == entity)
+        & (dfearningBIT["SCENARIO"].astype(str) == scenario)
+    ].reset_index(drop=True)
+
     # Create graphs
     fig1 = create_barlinechart(dfrevenue, yaxis_title_r=None, yaxis_title_l=None)
     fig2 = stacked_bar(dfoperationalexpenses, None, None)
     fig3 = create_doublelinechart(dfearningBIT)
 
-    
-        # Get Earning before intrest and taxes graph dataframe
+    # Get Earning before intrest and taxes graph dataframe
     dfincome_statement = df_income_statement.copy()
-    dfincome_statement = dfincome_statement[(dfincome_statement ["ENTITY"] == entity) &
-                      (dfincome_statement ["SCENARIO"].astype(str) == scenario)].reset_index(drop=True)
-    
-    
+    dfincome_statement = dfincome_statement[
+        (dfincome_statement["ENTITY"] == entity)
+        & (dfincome_statement["SCENARIO"].astype(str) == scenario)
+    ].reset_index(drop=True)
+
     # Return values of income statement card data
-    nb1 = dfincome_statement.loc[dfincome_statement["LABEL"] == "Revenue", "VALUE_D"].values[0]
-    nb2 = dfincome_statement.loc[dfincome_statement["LABEL"] == "COGS", "VALUE_D"].values[0]
-    nb3 = dfincome_statement.loc[dfincome_statement["LABEL"] == "Gross Profit", "VALUE_D"].values[0]
-    nb4 = dfincome_statement.loc[dfincome_statement["LABEL"] == "Opex", "VALUE_D"].values[0]
-    nb5 = dfincome_statement.loc[dfincome_statement["LABEL"] == "Sales", "VALUE_D"].values[0]
-    nb6 = dfincome_statement.loc[dfincome_statement["LABEL"] == "Marketing", "VALUE_D"].values[0]
-    nb7 = dfincome_statement.loc[dfincome_statement["LABEL"] == "IT", "VALUE_D"].values[0]
-    nb8 = dfincome_statement.loc[dfincome_statement["LABEL"] == "General & Admin", "VALUE_D"].values[0]
-    nb9 = dfincome_statement.loc[dfincome_statement["LABEL"] == "OTHER INCOME", "VALUE_D"].values[0]
-    nb10 = dfincome_statement.loc[dfincome_statement["LABEL"] == "OTHER EXPENSES", "VALUE_D"].values[0]
-    nb11 = dfincome_statement.loc[dfincome_statement["LABEL"] == "EBIT", "VALUE_D"].values[0]
-    nb12 = dfincome_statement.loc[dfincome_statement["LABEL"] == "Intrest and Tax", "VALUE_D"].values[0]
-    nb13 = dfincome_statement.loc[dfincome_statement["LABEL"] == "NET PROFIT", "VALUE_D"].values[0]
-    return card1, card2, card3, card4, card5, card6, fig1, fig2, fig3, nb1, nb2, nb3, nb4, nb5, nb6, nb7, nb8, nb9, nb10, nb11, nb12, nb13
+    nb1 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "Revenue", "VALUE_D"
+    ].values[0]
+    nb2 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "COGS", "VALUE_D"
+    ].values[0]
+    nb3 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "Gross Profit", "VALUE_D"
+    ].values[0]
+    nb4 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "Opex", "VALUE_D"
+    ].values[0]
+    nb5 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "Sales", "VALUE_D"
+    ].values[0]
+    nb6 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "Marketing", "VALUE_D"
+    ].values[0]
+    nb7 = dfincome_statement.loc[dfincome_statement["LABEL"] == "IT", "VALUE_D"].values[
+        0
+    ]
+    nb8 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "General & Admin", "VALUE_D"
+    ].values[0]
+    nb9 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "OTHER INCOME", "VALUE_D"
+    ].values[0]
+    nb10 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "OTHER EXPENSES", "VALUE_D"
+    ].values[0]
+    nb11 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "EBIT", "VALUE_D"
+    ].values[0]
+    nb12 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "Intrest and Tax", "VALUE_D"
+    ].values[0]
+    nb13 = dfincome_statement.loc[
+        dfincome_statement["LABEL"] == "NET PROFIT", "VALUE_D"
+    ].values[0]
+    return (
+        card1,
+        card2,
+        card3,
+        card4,
+        card5,
+        card6,
+        fig1,
+        fig2,
+        fig3,
+        nb1,
+        nb2,
+        nb3,
+        nb4,
+        nb5,
+        nb6,
+        nb7,
+        nb8,
+        nb9,
+        nb10,
+        nb11,
+        nb12,
+        nb13,
+    )
 ```
 
 ## Output
@@ -976,7 +1061,7 @@ def multi_outputs(entity, scenario):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
 ```
 

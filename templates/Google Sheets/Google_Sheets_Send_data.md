@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook send data to a Google Sheets spreadsheet.
+**Description:** This notebook allows users to send data from Google Sheets to other applications.
 
 ## Input
 
@@ -21,7 +21,9 @@ import pandas as pd
 
 
 ```python
-SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1RdwdYXDFDSFSFxxxxxxxx/edit#gid=XXXXXXXX33"
+SPREADSHEET_URL = (
+    "https://docs.google.com/spreadsheets/d/1RdwdYXDFDSFSFxxxxxxxx/edit#gid=XXXXXXXX33"
+)
 SHEET_NAME = "MY_SHEET"
 ```
 
@@ -29,8 +31,10 @@ SHEET_NAME = "MY_SHEET"
 
 
 ```python
-data = [{ "name": "Jean", "email": "jean@appleseed.com" },
-        { "name": "Bunny", "email": "bunny@appleseed.com" }]
+data = [
+    {"name": "Jean", "email": "jean@appleseed.com"},
+    {"name": "Bunny", "email": "bunny@appleseed.com"},
+]
 df = pd.DataFrame(data)
 ```
 
@@ -40,9 +44,9 @@ df = pd.DataFrame(data)
 
 
 ```python
-result = gsheet.connect(SPREADSHEET_URL).send(sheet_name=SHEET_NAME,
-                                              data=df,
-                                              append=False)
+result = gsheet.connect(SPREADSHEET_URL).send(
+    sheet_name=SHEET_NAME, data=df, append=False
+)
 ```
 
 ## Output

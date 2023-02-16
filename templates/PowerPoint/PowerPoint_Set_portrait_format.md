@@ -4,8 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This template set portrait format in PowerPoint presentation.<br>
-Reference: https://python-pptx.readthedocs.io/en/latest/user/quickstart.html
+**Description:** This notebook allows you to easily set the portrait format for your PowerPoint presentation.
 
 ## Input
 
@@ -25,7 +24,7 @@ from pptx.util import Inches
 
 
 ```python
-output_pptx = 'MyPowerPoint_Slide.pptx'
+output_pptx = "MyPowerPoint_Slide.pptx"
 ```
 
 ## Model

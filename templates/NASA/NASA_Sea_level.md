@@ -42,7 +42,26 @@ uri_nasa_sea_level = "nasa-sea-level-data.txt"
 
 
 ```python
-df = pandas.read_csv(uri_nasa_sea_level, engine="python", comment='HDR',delim_whitespace=True, names=["A","B","Year + Fraction","D","E","F","G", "H","I","J","K","Smoothed GMSL (mm)",])
+df = pandas.read_csv(
+    uri_nasa_sea_level,
+    engine="python",
+    comment="HDR",
+    delim_whitespace=True,
+    names=[
+        "A",
+        "B",
+        "Year + Fraction",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "Smoothed GMSL (mm)",
+    ],
+)
 
 df.head(10)
 ```
@@ -51,7 +70,7 @@ Now lets only get the information we want and convert year + fraction to date
 
 
 ```python
-new_df = pandas.DataFrame(df, columns=['Year + Fraction', 'Smoothed GMSL (mm)'])
+new_df = pandas.DataFrame(df, columns=["Year + Fraction", "Smoothed GMSL (mm)"])
 
 dates = []
 values = []
@@ -59,30 +78,28 @@ values = []
 ref = 0
 
 for i, row in new_df.iterrows():
-    #date formating
-    date_split = str(row['Year + Fraction']).split('.')
+    # date formating
+    date_split = str(row["Year + Fraction"]).split(".")
     year = date_split[0]
-    fraction = '0.' + date_split[1]
+    fraction = "0." + date_split[1]
     float_fraction = float(fraction)
     date = year + "-1-1"
     date_delta = 365 * float_fraction
-    value = pandas.to_datetime(date) + pandas.to_timedelta(date_delta, unit='D')
+    value = pandas.to_datetime(date) + pandas.to_timedelta(date_delta, unit="D")
     dates.append(value)
-    
-    #value formating
-    #to stay inline with the graph visible on nasa's website, we need to have 0 as our first value
-    if i == 0:
-       ref = row['Smoothed GMSL (mm)'] 
-    
-    val = row['Smoothed GMSL (mm)'] - ref 
-    values.append(val)
-    
-    
-    
 
-new_df['Date'] = dates
-new_df['Value'] = values
-    
+    # value formating
+    # to stay inline with the graph visible on nasa's website, we need to have 0 as our first value
+    if i == 0:
+        ref = row["Smoothed GMSL (mm)"]
+
+    val = row["Smoothed GMSL (mm)"] - ref
+    values.append(val)
+
+
+new_df["Date"] = dates
+new_df["Value"] = values
+
 new_df.head()
 ```
 
@@ -93,24 +110,28 @@ new_df.head()
 
 ```python
 fig = go.Figure(layout_title="<b>Sea Level variation since 1993 (mm)</b>")
-fig.add_trace(go.Scatter(
-    x = new_df["Date"],
-    y = new_df["Value"],
-    name="Delta",
-))
+fig.add_trace(
+    go.Scatter(
+        x=new_df["Date"],
+        y=new_df["Value"],
+        name="Delta",
+    )
+)
 
 fig.update_layout(
     autosize=False,
     width=1300,
     height=700,
-    plot_bgcolor='rgb(250,250,250)',
+    plot_bgcolor="rgb(250,250,250)",
 )
 
 
-fig.add_annotation(y=6, x='2020-1-1',
-            text="Data source: Satellite sea level observations.<br> Credit: NASA's Goddard Space Flight Center",
-            showarrow=False,
-            )
+fig.add_annotation(
+    y=6,
+    x="2020-1-1",
+    text="Data source: Satellite sea level observations.<br> Credit: NASA's Goddard Space Flight Center",
+    showarrow=False,
+)
 
 fig.update_yaxes(title_text="Sea Height Variation (mm)")
 fig.update_xaxes(title_text="Year", tickangle=60)

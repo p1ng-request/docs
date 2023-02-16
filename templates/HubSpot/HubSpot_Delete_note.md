@@ -41,18 +41,14 @@ note_id = 19996680052
 
 ```python
 def delete_note(note_id):
-    url = f'https://api.hubapi.com/crm/v3/objects/notes/{note_id}'
+    url = f"https://api.hubapi.com/crm/v3/objects/notes/{note_id}"
     headers = {
-            "accept": "application/json",
-            "content-type": "application/json",
-        }
-    params = {"limit": "100",
-              "archived": "false",
-              "hapikey": HS_API_KEY}
+        "accept": "application/json",
+        "content-type": "application/json",
+    }
+    params = {"limit": "100", "archived": "false", "hapikey": HS_API_KEY}
     # Requests data
-    res = requests.delete(url,
-                          headers=headers,
-                          params=params)
+    res = requests.delete(url, headers=headers, params=params)
     res.raise_for_status()
     if res.status_code == 204:
         print(f"❎ Note deleted in HubSpot: {note_id}")

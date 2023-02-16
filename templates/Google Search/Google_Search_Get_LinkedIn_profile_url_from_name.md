@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
+**Description:** This notebook provides a method to quickly and easily obtain a LinkedIn profile URL from a given name using Google Search.
+
 ## Input
 
 ### Import library
@@ -35,11 +37,11 @@ lastname = "Ravenel"
 def get_linkedin_url(firstname, lastname):
     # Init linkedinbio
     linkedinbio = None
-    
+
     # Create query
     query = f"{firstname}+{lastname}+Linkedin"
     print("Google query: ", query)
-    
+
     # Search in Google
     for i in search(query, tld="com", num=10, stop=10, pause=2):
         pattern = "https:\/\/.+.linkedin.com\/in\/.([^?])+"
@@ -50,6 +52,7 @@ def get_linkedin_url(firstname, lastname):
             linkedinbio = result.group(0).replace(" ", "")
             return linkedinbio
     return linkedinbio
+
 
 linkedin_url = get_linkedin_url(firstname, lastname)
 ```

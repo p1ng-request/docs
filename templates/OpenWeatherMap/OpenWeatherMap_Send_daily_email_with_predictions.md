@@ -4,6 +4,8 @@
 
 **Author:** [Gautier Vivard](https://www.linkedin.com/in/gautier-vivard-1811b877/)
 
+**Description:** This notebook sends a daily email with weather predictions from OpenWeatherMap.
+
 ## Input
 
 ### Import libraries
@@ -22,16 +24,16 @@ from naas_drivers import plotly, prediction
 
 
 ```python
-OPENWEATHER_KEY = '***************'  # get your key from here https://home.openweathermap.org/api_keys (it takes couples of minutes)
-city = 'rouen'
-country_code = 'fr' # if you don't want to specify a country code, let ''
+OPENWEATHER_KEY = "***************"  # get your key from here https://home.openweathermap.org/api_keys (it takes couples of minutes)
+city = "rouen"
+country_code = "fr"  # if you don't want to specify a country code, let ''
 ```
 
 
 ```python
 # Output paths image and html
-output_image = f'{city}.png'
-output_html = f'{city}.html'
+output_image = f"{city}.png"
+output_html = f"{city}.html"
 ```
 
 ### Input email parameter
@@ -40,7 +42,7 @@ output_html = f'{city}.html'
 ```python
 email_to = ["template@naas.ai"]
 email_from = None
-subject = f'{city} predictions as of today'
+subject = f"{city} predictions as of today"
 ```
 
 ### Schedule every day
@@ -92,31 +94,33 @@ The historical open weather api need the latitude, longitude in order to have th
 
 
 ```python
-def get_geoloc(city: str, country_code: str = ''):
-    """ Get the geoloc of a city, country
-    
+def get_geoloc(city: str, country_code: str = ""):
+    """Get the geoloc of a city, country
+
     :param city: name of the city
     :type city: str
     :param country_code: Please use ISO 3166 country codes, default to ''
     :type country_code: str
     """
-    url = f'http://api.openweathermap.org/geo/1.0/direct?q={city},,{country_code}&appid={OPENWEATHER_KEY}'
+    url = f"http://api.openweathermap.org/geo/1.0/direct?q={city},,{country_code}&appid={OPENWEATHER_KEY}"
     return requests.get(url).json()
 
-def get_lat_lon(city: str, country_code: str = ''):
-    """ Get the geoloc of a city, country
-    
+
+def get_lat_lon(city: str, country_code: str = ""):
+    """Get the geoloc of a city, country
+
     :param city: name of the city
     :type city: str
     :param country_code: Please use ISO 3166 country codes, default to ''
     :type country_code: str
     """
     geoloc = get_geoloc(city, country_code)
-    
+
     if len(geoloc) == 0:
         return None, None
-    
-    return geoloc[0]['lat'], geoloc[0]['lon']
+
+    return geoloc[0]["lat"], geoloc[0]["lon"]
+
 
 # get_lat_lon('paris')
 # get_lat_lon('paris', 'us')
@@ -124,38 +128,52 @@ def get_lat_lon(city: str, country_code: str = ''):
 
 
 ```python
-def get_historical_weather(city: str, country_code: str = '', nbr_days_before_now: int = 0):
+def get_historical_weather(
+    city: str, country_code: str = "", nbr_days_before_now: int = 0
+):
     """Get historical weather data. For free API, maximum history is 5 days before now
-    
+
     :param city: name of the city
     :type city: str
     :param country_code: Please use ISO 3166 country codes, default to ''
-    :type country_code: str 
+    :type country_code: str
     :param nbr_hours_before_now: number of hour before now
     """
     unix_dt = int(time.time() - 60 * 60 * 24 * nbr_days_before_now)
     lat, lon = get_lat_lon(city, country_code)
     if lat is None:
         return None
-    url = f'https://api.openweathermap.org/data/2.5/onecall/timemachine?lat={lat}&lon={lon}&dt={unix_dt}&appid={OPENWEATHER_KEY}&units=metric'
+    url = f"https://api.openweathermap.org/data/2.5/onecall/timemachine?lat={lat}&lon={lon}&dt={unix_dt}&appid={OPENWEATHER_KEY}&units=metric"
     return requests.get(url).json()
 
-def weather_data_to_df(city: str, country_code: str = '', nbr_days_before_now: int = 0) -> pd.DataFrame:
-    data = get_historical_weather(city, country_code, nbr_days_before_now) 
-    df = pd.DataFrame(data['hourly'])
-    df['date_time'] = pd.to_datetime(df['dt'], unit='s')
-    df['city'] = city
-    df['country_code'] = country_code
-    
-    df_explode_weather = pd.concat([df.drop(['weather', 'dt'], axis=1), df['weather'].str[0].apply(pd.Series)], axis=1)
+
+def weather_data_to_df(
+    city: str, country_code: str = "", nbr_days_before_now: int = 0
+) -> pd.DataFrame:
+    data = get_historical_weather(city, country_code, nbr_days_before_now)
+    df = pd.DataFrame(data["hourly"])
+    df["date_time"] = pd.to_datetime(df["dt"], unit="s")
+    df["city"] = city
+    df["country_code"] = country_code
+
+    df_explode_weather = pd.concat(
+        [df.drop(["weather", "dt"], axis=1), df["weather"].str[0].apply(pd.Series)],
+        axis=1,
+    )
     # df_explode_weather.set_index('date_time', inplace=True)
     return df_explode_weather
 ```
 
 
 ```python
-df_histo_weather = pd.concat([weather_data_to_df(city, country_code, _) for _ in range(6)], ignore_index=True)
-df_histo_weather = df_histo_weather.sort_values(by='date_time').reset_index(drop=True).rename(columns={"date_time": "Date"})
+df_histo_weather = pd.concat(
+    [weather_data_to_df(city, country_code, _) for _ in range(6)], ignore_index=True
+)
+df_histo_weather = (
+    df_histo_weather.sort_values(by="date_time")
+    .reset_index(drop=True)
+    .rename(columns={"date_time": "Date"})
+)
 df_histo_weather
 ```
 
@@ -163,11 +181,13 @@ df_histo_weather
 
 
 ```python
-df_predict = prediction.get(dataset=df_histo_weather,
-                            date_column='Date',
-                            column="temp",
-                            data_points=5,
-                            prediction_type="all")
+df_predict = prediction.get(
+    dataset=df_histo_weather,
+    date_column="Date",
+    column="temp",
+    data_points=5,
+    prediction_type="all",
+)
 
 df_predict
 ```
@@ -176,11 +196,13 @@ df_predict
 
 
 ```python
-chart = plotly.linechart(df_predict,
-                         x='Date',
-                         y=['temp', 'ARIMA', "LINEAR", "SVR", "COMPOUND"],
-                         showlegend=True,
-                         title=f'Temp in {city} last 5 days')
+chart = plotly.linechart(
+    df_predict,
+    x="Date",
+    y=["temp", "ARIMA", "LINEAR", "SVR", "COMPOUND"],
+    showlegend=True,
+    title=f"Temp in {city} last 5 days",
+)
 ```
 
 ## Output
@@ -198,7 +220,7 @@ chart.write_image(output_image, width=1200)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {'inline': True})
+link_html = naas.asset.add(output_html, {"inline": True})
 ```
 
 ### Add webhook to run your notebook again
@@ -234,9 +256,7 @@ post
 
 ```python
 content = post
-naas.notification.send(email_to=email_to,
-                       subject=subject,
-                       html=content,
-                       files=files,
-                       email_from=email_from)
+naas.notification.send(
+    email_to=email_to, subject=subject, html=content, files=files, email_from=email_from
+)
 ```

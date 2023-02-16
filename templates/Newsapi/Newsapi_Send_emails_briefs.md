@@ -4,7 +4,7 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
-Source: https://newsapi.org/
+**Description:** This notebook allows users to send automated email briefs based on news articles from the Newsapi API.
 
 ## Input
 
@@ -21,12 +21,12 @@ import naas
 
 ```python
 # Input
-query = "data, automation, AI" #newsapi query
+query = "data, automation, AI"  # newsapi query
 
 # Outputs
 your_email = "*********"
 email_subject = "News scheduled from Naas dev"
-email_from = 'notifications@naas.ai'
+email_from = "notifications@naas.ai"
 ```
 
 ### Schedule everyday at 8am CET
@@ -48,8 +48,8 @@ naas.scheduler.add(recurrence="0 8 * * *")
 table_news = newsapi.connect().get(q=query)
 
 # rename columns match the field required by Naas emailbuilder drivers
-table_news.rename(columns={'title':'text'}, inplace=True)
-table_news.rename(columns={'link':'row_link'}, inplace=True)
+table_news.rename(columns={"title": "text"}, inplace=True)
+table_news.rename(columns={"link": "row_link"}, inplace=True)
 ```
 
 ### Filter results 
@@ -57,7 +57,7 @@ table_news.rename(columns={'link':'row_link'}, inplace=True)
 
 ```python
 table_news_email = table_news[:10]
-table_news_email = table_news_email[['text','row_link']]
+table_news_email = table_news_email[["text", "row_link"]]
 table_news_email
 ```
 
@@ -68,22 +68,32 @@ table_news_email
 links = []
 ht_str = "<ul>"
 for i in range(len(table_news_email)):
-    val = "<li>"+"<a href="+'"'+table_news_email['row_link'][i]+'"'+">"+table_news_email['text'][i]+"</a>"+"</li>"
-    ht_str = ht_str+'\n'+val
-ht_str = ht_str+"\n"+"</ul>" 
+    val = (
+        "<li>"
+        + "<a href="
+        + '"'
+        + table_news_email["row_link"][i]
+        + '"'
+        + ">"
+        + table_news_email["text"][i]
+        + "</a>"
+        + "</li>"
+    )
+    ht_str = ht_str + "\n" + val
+ht_str = ht_str + "\n" + "</ul>"
 ```
 
 ### Fill the content of the mail
 
 
 ```python
-email_content = emailbuilder.generate( 
-        display='iframe',
-        title=f'🌏 NewsAPI brief', 
-        subtitle=f'<b>Topics</b>: {query}',         
-        table_1= ht_str,
-        text="Source: <a>https://newsapi.org/</a>"
-        )
+email_content = emailbuilder.generate(
+    display="iframe",
+    title=f"🌏 NewsAPI brief",
+    subtitle=f"<b>Topics</b>: {query}",
+    table_1=ht_str,
+    text="Source: <a>https://newsapi.org/</a>",
+)
 ```
 
 ## Output
@@ -92,8 +102,10 @@ email_content = emailbuilder.generate(
 
 
 ```python
-naas.notification.send(email_to=your_email,
-                       subject=email_subject,
-                       html=email_content,
-                       email_from=email_from)
+naas.notification.send(
+    email_to=your_email,
+    subject=email_subject,
+    html=email_content,
+    email_from=email_from,
+)
 ```

@@ -4,10 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-Ce document récupère les informations établies d'une société au REGISTRE NATIONAL DU COMMERCE ET DES SOCIÉTÉS :
-- L'identité de l'entreprise
-- Les bénéficiaires / gérants
-- Autres observations
+**Description:** This notebook downloads a PDF summary of INPI (Instituto Nacional da Propriedade Industrial) data.
 
 ## Input
 
@@ -37,11 +34,11 @@ PDF_OUTPUT = f"RECAPITULATIF_INPI_{SIREN}.pdf"
 ```python
 def download_pdf(siren, filepath):
     url = f"https://data.inpi.fr/export/companies?format=pdf&ids=[%22{siren}%22]"
-    response = urllib.request.urlopen(url)    
-    file = open(filepath, 'wb')
+    response = urllib.request.urlopen(url)
+    file = open(filepath, "wb")
     file.write(response.read())
     file.close()
-    print("File saved:", filepath) 
+    print("File saved:", filepath)
 ```
 
 ## Output

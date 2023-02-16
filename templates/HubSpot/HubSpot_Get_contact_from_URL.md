@@ -4,12 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook get a contact from HubSpot using its URL. Data will be returned as json with keys: 
-- 'id': number,
-- 'properties': dict
-- 'createdAt': datetime
-- 'updatedAt': datetime
-- 'archived': boolean
+**Description:** This notebook allows you to extract contact information from a given URL using the HubSpot API.
 
 ## Input
 
@@ -35,7 +30,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-contact_url =  "ENTER_CONTACT_URL_HERE" # EXAMPLE : "https://app.hubspot.com/contacts/0000011/contact/00001"
+contact_url = "ENTER_CONTACT_URL_HERE"  # EXAMPLE : "https://app.hubspot.com/contacts/0000011/contact/00001"
 ```
 
 #### Enter your Contact properties

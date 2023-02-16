@@ -4,8 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook removes profile pending invitations.<br>
-You can change the month limit by updating the variable in the "Setup Limit" cell below.
+**Description:** This notebook allows users to view and manage pending profile invitations sent through LinkedIn.
 
 ## Input
 
@@ -29,7 +28,10 @@ import requests
 
 ```python
 # Credentials
-LI_AT = naas.secret.get("LINKEDIN_LI_AT") or "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2AAXc-FCKmgiMit5FLdY1AAXc-FCKmgiMit5FLdY1"
+LI_AT = (
+    naas.secret.get("LINKEDIN_LI_AT")
+    or "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2AAXc-FCKmgiMit5FLdY1AAXc-FCKmgiMit5FLdY1"
+)
 JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "ajax:8379907400220XXXXX"
 ```
 
@@ -68,14 +70,15 @@ df_invitations_sent.head(1)
 def out_of_limit(df):
     # Get limit date
     date_limit = datetime.today() - relativedelta(months=LIMIT)
-    
+
     # Create time diff columns
     df.loc[:, "TIME_DIFF"] = 0
     df.loc[pd.to_datetime(df["SENT_AT"]) < date_limit, "TIME_DIFF"] = 1
-    
+
     # Filter on limit exceed
     df = df[df["TIME_DIFF"] == 1]
     return df.reset_index(drop=True)
+
 
 df_withdraw = out_of_limit(df_invitations_sent)
 print("Invitations to withdraw:", len(df_withdraw))
@@ -93,28 +96,28 @@ def withdraw_invitation(invitation_id):
     payload = {
         "inviteActionType": "ACTOR_WITHDRAW",
         "inviteActionData": [
-            {"entityUrn":
-             f"urn:li:fs_relInvitation:{invitation_id}",
-             "genericInvitation": False,
-             "genericInvitationType":"CONNECTION"
+            {
+                "entityUrn": f"urn:li:fs_relInvitation:{invitation_id}",
+                "genericInvitation": False,
+                "genericInvitationType": "CONNECTION",
             }
-        ]
+        ],
     }
     req_url = "https://www.linkedin.com/voyager/api/relationships/invitations?action=closeInvitations"
-    res = requests.post(req_url,
-                        data=json.dumps(payload),
-                        cookies=cookies,
-                        headers=headers)
+    res = requests.post(
+        req_url, data=json.dumps(payload), cookies=cookies, headers=headers
+    )
     res.raise_for_status()
     res_json = res.json()
     return res_json
+
 
 def withdraw_invitations(df):
     for index, row in df.iterrows():
         fullname = row["FULLNAME"]
         invitation_id = row["INVITATION_ID"]
         print(f"➡️ Withdrawing from invitations pending:", fullname)
-        
+
         # Get distance with profile
         try:
             withdraw_invitation(invitation_id)
@@ -122,6 +125,7 @@ def withdraw_invitations(df):
             print("❌ Withdraw not available", e)
         time.sleep(3)
     return df
+
 
 withdraw_invitations(df_withdraw)
 ```
@@ -134,6 +138,6 @@ withdraw_invitations(df_withdraw)
 ```python
 naas.scheduler.add(cron=SCHEDULER_CRON)
 
-# to de-schedule this notebook, simply run the following command: 
+# to de-schedule this notebook, simply run the following command:
 # naas.scheduler.delete()
 ```

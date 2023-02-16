@@ -4,9 +4,7 @@
 
 **Author:** [Mateusz Polakowski](https://www.linkedin.com/in/polakowski/)
 
-This notebook shows basic usage of Snowflake driver.
-
-Below you can find essential operations for setting up the environment and querying data that already exists in your data warehouse.
+**Description:** This notebook provides an introduction to the basics of Snowflake and how to query data within it.
 
 ## Input
 
@@ -33,12 +31,12 @@ If you're proceeding with the trial account, it's highly probable that your ID w
 
 
 ```python
-# Here environment variables are used to pass Snowflake credentials, 
+# Here environment variables are used to pass Snowflake credentials,
 # but it's okay to do it in a different manner
 
-sf_username=os.environ['SNOWFLAKE_USER']
-sf_password=os.environ['SNOWFLAKE_PASSWORD']
-sf_account=os.environ['SNOWFLAKE_ACCOUNT']
+sf_username = os.environ["SNOWFLAKE_USER"]
+sf_password = os.environ["SNOWFLAKE_PASSWORD"]
+sf_account = os.environ["SNOWFLAKE_ACCOUNT"]
 ```
 
 ## Model
@@ -47,11 +45,7 @@ sf_account=os.environ['SNOWFLAKE_ACCOUNT']
 
 
 ```python
-snowflake.connect(
-    username=sf_username,
-    password=sf_password,
-    account=sf_account
-)
+snowflake.connect(username=sf_username, password=sf_password, account=sf_account)
 ```
 
 ### Environment setup
@@ -64,10 +58,10 @@ snowflake.database.get_current() is None
 
 ```python
 snowflake.set_environment(
-    warehouse='COMPUTE_WH',
-    database='SNOWFLAKE_SAMPLE_DATA',
-    schema='TPCH_SF100',
-    role='ACCOUNTADMIN'
+    warehouse="COMPUTE_WH",
+    database="SNOWFLAKE_SAMPLE_DATA",
+    schema="TPCH_SF100",
+    role="ACCOUNTADMIN",
 )
 ```
 
@@ -82,29 +76,29 @@ snowflake.get_environment()
 
 
 ```python
-snowflake.database.create('NAAS', or_replace=True)
+snowflake.database.create("NAAS", or_replace=True)
 ```
 
 
 ```python
-snowflake.database.use('NAAS', silent=True)
+snowflake.database.use("NAAS", silent=True)
 ```
 
 
 ```python
-snowflake.schema.create('INGESTION_SCHEMA', silent=True)
+snowflake.schema.create("INGESTION_SCHEMA", silent=True)
 ```
 
 
 ```python
-snowflake.schema.use('INGESTION_SCHEMA', True)
+snowflake.schema.use("INGESTION_SCHEMA", True)
 ```
 
 ### Executing custom query with a cursor
 
 
 ```python
-snowflake.cursor.execute('SHOW SCHEMAS;').fetchall()
+snowflake.cursor.execute("SHOW SCHEMAS;").fetchall()
 ```
 
 ### Data querying - wrong schema
@@ -116,7 +110,7 @@ snowflake.get_environment()
 
 
 ```python
-query = 'SELECT * FROM CUSTOMER;'
+query = "SELECT * FROM CUSTOMER;"
 ```
 
 
@@ -125,7 +119,7 @@ query = 'SELECT * FROM CUSTOMER;'
 try:
     results_1_not_working = snowflake.execute(query)
 except ProgrammingError as pe:
-    print('Something went wrong!')
+    print("Something went wrong!")
     print(pe)
 ```
 
@@ -133,10 +127,7 @@ except ProgrammingError as pe:
 
 
 ```python
-snowflake.set_environment(
-    database = 'SNOWFLAKE_SAMPLE_DATA',
-    schema = 'TPCH_SF100'
-)
+snowflake.set_environment(database="SNOWFLAKE_SAMPLE_DATA", schema="TPCH_SF100")
 ```
 
 
@@ -152,7 +143,7 @@ results_1_working
 results_2 = snowflake.execute(query, n=100)
 
 print(f"Rows returned: {len(results_2['results'])}")
-results_2['results'][:2]
+results_2["results"][:2]
 ```
 
 ### Data querying - mapping results to Pandas DataFrame
@@ -161,7 +152,7 @@ results_2['results'][:2]
 ```python
 results_pandas = snowflake.query_pd(query, n=100)
 
-print(f'Rows returned: {len(results_pandas)}')
+print(f"Rows returned: {len(results_pandas)}")
 results_pandas.head(2)
 ```
 
@@ -173,7 +164,7 @@ Both provided by Snowflake connector, that allow to execute any functionality po
 
 
 ```python
-snowflake.cursor.execute('SELECT CURRENT_WAREHOUSE()').fetchall()
+snowflake.cursor.execute("SELECT CURRENT_WAREHOUSE()").fetchall()
 ```
 
 

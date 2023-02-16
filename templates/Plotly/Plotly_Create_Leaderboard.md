@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-Learn more on the Plotly doc : https://plotly.com/python/horizontal-bar-charts/
+**Description:** This notebook provides an interactive way to visualize and compare data using Plotly to create a leaderboard.
 
 ## Input
 
@@ -46,7 +46,7 @@ data = [
     {"LABEL": "J", "VALUE": 123},
 ]
 df = pd.DataFrame(data)
-df = df.sort_values(by=["VALUE"], ascending=True) #Order will be reversed in plot 
+df = df.sort_values(by=["VALUE"], ascending=True)  # Order will be reversed in plot
 df
 ```
 
@@ -55,12 +55,8 @@ df
 
 ```python
 def create_barchart(df, label, value):
-    last_value = '{:,.0f}'.format(df[value].sum())
-    fig = px.bar(df,
-                 y=label,
-                 x=value,
-                 orientation='h',
-                 text=value)
+    last_value = "{:,.0f}".format(df[value].sum())
+    fig = px.bar(df, y=label, x=value, orientation="h", text=value)
     fig.update_layout(
         title=f"<b>Ranking by label</b><br><span style='font-size: 13px;'>Total value: {last_value}</span>",
         title_font=dict(family="Arial", size=18, color="black"),
@@ -77,10 +73,11 @@ def create_barchart(df, label, value):
         margin_pad=10,
         margin_t=100,
     )
-    # Display fig        
-    config = {'displayModeBar': False}
+    # Display fig
+    config = {"displayModeBar": False}
     fig.show(config=config)
     return fig
+
 
 fig = create_barchart(df, "LABEL", "VALUE")
 ```
@@ -100,9 +97,9 @@ fig.write_html(output_html)
 
 ```python
 link_image = naas.asset.add(output_image)
-link_html = naas.asset.add(output_html, {"inline":True})
+link_html = naas.asset.add(output_html, {"inline": True})
 
-#-> Uncomment the line below to remove your assets
+# -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
 ```

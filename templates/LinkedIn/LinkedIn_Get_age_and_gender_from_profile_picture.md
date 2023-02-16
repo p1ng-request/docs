@@ -72,11 +72,11 @@ except:
 
 ```python
 # LinkedIn cookies
-LI_AT = "ENTER_YOUR_COOKIE_HERE" # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
-JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE" # EXAMPLE : "ajax:8379907400220387585"
+LI_AT = "ENTER_YOUR_COOKIE_HERE"  # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2"
+JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE"  # EXAMPLE : "ajax:8379907400220387585"
 
 # LinkedIn profile url
-PROFILE_URL = "ENTER_YOUR_LINKEDIN_PROFILE_HERE" # EXAMPLE "https://www.linkedin.com/in/myprofile/"
+PROFILE_URL = "ENTER_YOUR_LINKEDIN_PROFILE_HERE"  # EXAMPLE "https://www.linkedin.com/in/myprofile/"
 ```
 
 ## Model
@@ -95,7 +95,7 @@ def get_image_from_url(imgurl):
 
 ```python
 def get_demographics_from_image(img):
-    try: 
+    try:
         bounding_boxes, landmarks = detect_faces(img)
     except Exception as e:
         raise Exception("Image parse error [" + str(e) + "].")
@@ -103,23 +103,35 @@ def get_demographics_from_image(img):
         raise Exception("No face in image.")
     if len(bounding_boxes) > 1:
         raise Exception("Multiples faces in image.")
-        
-    bb = [bounding_boxes[0,0], bounding_boxes[0,1], bounding_boxes[0,2], bounding_boxes[0,3]]
+
+    bb = [
+        bounding_boxes[0, 0],
+        bounding_boxes[0, 1],
+        bounding_boxes[0, 2],
+        bounding_boxes[0, 3],
+    ]
     img_cropped = img.crop(bb)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     model_fair_7 = torchvision.models.resnet34(pretrained=True)
     model_fair_7.fc = nn.Linear(model_fair_7.fc.in_features, 18)
-    model_fair_7.load_state_dict(torch.load('models/res34_fair_align_multi_7_20190809.pt', map_location=torch.device('cpu')))
+    model_fair_7.load_state_dict(
+        torch.load(
+            "models/res34_fair_align_multi_7_20190809.pt",
+            map_location=torch.device("cpu"),
+        )
+    )
     model_fair_7 = model_fair_7.to(device)
     model_fair_7.eval()
 
-    trans = transforms.Compose([
+    trans = transforms.Compose(
+        [
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-        ])
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ]
+    )
 
     face_names = []
     gender_scores_fair = []
@@ -128,7 +140,9 @@ def get_demographics_from_image(img):
     age_preds_fair = []
 
     image = trans(img_cropped)
-    image = image.view(1, 3, 224, 224)  # reshape image to match model dimensions (1 batch size)
+    image = image.view(
+        1, 3, 224, 224
+    )  # reshape image to match model dimensions (1 batch size)
     image = image.to(device)
 
     # fair 7 class
@@ -151,27 +165,25 @@ def get_demographics_from_image(img):
     gender_preds_fair.append(gender_pred)
     age_preds_fair.append(age_pred)
 
-    result = pd.DataFrame([gender_preds_fair,
-                           age_preds_fair]).T
+    result = pd.DataFrame([gender_preds_fair, age_preds_fair]).T
 
-    result.columns = ['gender_preds_fair',
-                      'age_preds_fair']
+    result.columns = ["gender_preds_fair", "age_preds_fair"]
     # gender
-    result.loc[result['gender_preds_fair'] == 0, 'gender'] = 'Male'
-    result.loc[result['gender_preds_fair'] == 1, 'gender'] = 'Female'
+    result.loc[result["gender_preds_fair"] == 0, "gender"] = "Male"
+    result.loc[result["gender_preds_fair"] == 1, "gender"] = "Female"
 
     # age
-    result.loc[result['age_preds_fair'] == 0, 'age'] = '0-2'
-    result.loc[result['age_preds_fair'] == 1, 'age'] = '3-9'
-    result.loc[result['age_preds_fair'] == 2, 'age'] = '10-19'
-    result.loc[result['age_preds_fair'] == 3, 'age'] = '20-29'
-    result.loc[result['age_preds_fair'] == 4, 'age'] = '30-39'
-    result.loc[result['age_preds_fair'] == 5, 'age'] = '40-49'
-    result.loc[result['age_preds_fair'] == 6, 'age'] = '50-59'
-    result.loc[result['age_preds_fair'] == 7, 'age'] = '60-69'
-    result.loc[result['age_preds_fair'] == 8, 'age'] = '70+'
+    result.loc[result["age_preds_fair"] == 0, "age"] = "0-2"
+    result.loc[result["age_preds_fair"] == 1, "age"] = "3-9"
+    result.loc[result["age_preds_fair"] == 2, "age"] = "10-19"
+    result.loc[result["age_preds_fair"] == 3, "age"] = "20-29"
+    result.loc[result["age_preds_fair"] == 4, "age"] = "30-39"
+    result.loc[result["age_preds_fair"] == 5, "age"] = "40-49"
+    result.loc[result["age_preds_fair"] == 6, "age"] = "50-59"
+    result.loc[result["age_preds_fair"] == 7, "age"] = "60-69"
+    result.loc[result["age_preds_fair"] == 8, "age"] = "70+"
 
-    return [result['gender'][0],result['age'][0]]
+    return [result["gender"][0], result["age"][0]]
 ```
 
 ### Get LinkedIn profile
@@ -179,8 +191,8 @@ def get_demographics_from_image(img):
 
 ```python
 df = linkedin.connect(LI_AT, JSESSIONID).profile.get_identity(PROFILE_URL)
-df.insert(loc=2, column='GENDER', value=None)
-df.insert(loc=3, column='AGE', value=None)
+df.insert(loc=2, column="GENDER", value=None)
+df.insert(loc=3, column="AGE", value=None)
 ```
 
 ### Enrich profile with estimates of gender and age range
@@ -190,12 +202,16 @@ df.insert(loc=3, column='AGE', value=None)
 imgurl = df["PROFILE_PICTURE"][0]
 if imgurl != None:
     img = get_image_from_url(imgurl)
-    try :
+    try:
         result = get_demographics_from_image(img)
-        df['GENDER'] = result[0]
-        df['AGE'] = result[1]
+        df["GENDER"] = result[0]
+        df["AGE"] = result[1]
     except Exception as e:
-        print("\nCould not perform estimation.\nThe following input error occured : " + str(e)+"\n")
+        print(
+            "\nCould not perform estimation.\nThe following input error occured : "
+            + str(e)
+            + "\n"
+        )
 ```
 
 ## Output

@@ -30,7 +30,8 @@ from dash.exceptions import PreventUpdate
 from jupyter_dash import JupyterDash
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
-load_figure_template('flatly')
+
+load_figure_template("flatly")
 
 pd.options.display.max_columns = None
 ```
@@ -48,41 +49,41 @@ KNATIVE = False
 ```python
 DASH_PORT = 8050
 
-BASE_URL = 'https://connectors.windsor.ai/all'
+BASE_URL = "https://connectors.windsor.ai/all"
 PARAMS = dict(
-    api_key = None,
-    date_preset = None,
-    fields = None,
+    api_key=None,
+    date_preset=None,
+    fields=None,
 )
 
 date_preset_options = {
-    'Yesterday': 'last_1d',
-    'Last 3 days': 'last_3d',
-    'Last 7 days': 'last_7d',
-    'Last 14 days': 'last_14d',
-    'Last 28 days': 'last_28d',
-    'Last 30 days': 'last_30d',
-    'Last 90 days': 'last_90d',
-    'Last 180 days': 'last_180d',
-    'This month': 'this_month',
-    '1 year': 'last_year'
+    "Yesterday": "last_1d",
+    "Last 3 days": "last_3d",
+    "Last 7 days": "last_7d",
+    "Last 14 days": "last_14d",
+    "Last 28 days": "last_28d",
+    "Last 30 days": "last_30d",
+    "Last 90 days": "last_90d",
+    "Last 180 days": "last_180d",
+    "This month": "this_month",
+    "1 year": "last_year",
 }
 
 # to implement custom dates, this format can be used:
 # date_from=2021-10-05&date_to=2021-10-08
 
 fields_options = [
-    'account_name',
-    'campaign',
-    'clicks',
-    'countryisocode',
-    'datasource',
-    'date',
-    'email',
-    'flat_file_open_listings_data__asin',
-    'sessions',
-    'source',
-    'spend',
+    "account_name",
+    "campaign",
+    "clicks",
+    "countryisocode",
+    "datasource",
+    "date",
+    "email",
+    "flat_file_open_listings_data__asin",
+    "sessions",
+    "source",
+    "spend",
 ]
 ```
 
@@ -94,23 +95,21 @@ fields_options = [
 ```python
 def make_table(df):
     table = DataTable(
-        data=df.to_dict('records'),
-        columns=[{'name': i, 'id': i } for i in df.columns],
+        data=df.to_dict("records"),
+        columns=[{"name": i, "id": i} for i in df.columns],
         style_header={
-            'fontFamily': 'Arial',
-            'fontColor': '#2F3B4C',
-            'fontWeight': 'bold'},
-        style_data={'fontFamily': 'Arial'},
-        style_cell={
-            'overflow': 'hidden',
-            'textOverflow': 'ellipsis',
-            'minWidth': 100},
+            "fontFamily": "Arial",
+            "fontColor": "#2F3B4C",
+            "fontWeight": "bold",
+        },
+        style_data={"fontFamily": "Arial"},
+        style_cell={"overflow": "hidden", "textOverflow": "ellipsis", "minWidth": 100},
         virtualization=True,
-        sort_action='native',
+        sort_action="native",
         page_size=500,
-        fixed_rows={'headers': True},
-        export_format='csv',
-        )
+        fixed_rows={"headers": True},
+        export_format="csv",
+    )
     return table
 
 
@@ -132,59 +131,94 @@ def num_cols(df):
 if KNATIVE is False:
     app = Dash(
         requests_pathname_prefix=f'/user/{os.environ.get("JUPYTERHUB_USER")}/proxy/{DASH_PORT}/',
-        external_stylesheets=[dbc.themes.FLATLY])
+        external_stylesheets=[dbc.themes.FLATLY],
+    )
 else:
-    app = Dash(
-        external_stylesheets=[dbc.themes.FLATLY])
+    app = Dash(external_stylesheets=[dbc.themes.FLATLY])
 
 
-app.layout = html.Div([
-    dcc.Store(id='store_columns'),
-    html.Br(), html.Br(),
-    html.H2([html.B("windsor.ai"),
-             html.Span(" – interactive dashboard")],
-            style={'textAlign': 'center'}), html.Br(),
-    dbc.Row([
-        dbc.Col(lg=1),
-        dbc.Col([
-            dbc.Label('Date range:'),
-            dcc.Dropdown(
-                id='date_dropdown',
-                value='last_7d',
-                options=[{'label': k, 'value': v}
-                         for k, v in date_preset_options.items()]), html.Br(),
-        ], lg=2),
-        dbc.Col([
-            dbc.Label('Fields:'),
-            dcc.Dropdown(
-                id='fields_dropdown',
-                multi=True,
-                options=[{'label': field.replace('_', ' ').title(),
-                          'value': field}
-                         for field in fields_options]), html.Br(),
-        ], lg=4),
-        dbc.Col([
-            dbc.Label('Your API key:'),
-            dbc.Input(id='api_key')
-        ], lg=2),
-        dbc.Col([
-            html.Br(),
-            html.Div(dbc.Button('Submit', id='submit_button'),
-                     )
-        ], lg=2),
-    ]), html.Hr(), html.Br(),
-    dbc.Row([
-        dbc.Col(lg=1),
-        dbc.Col([
-            html.Div([
-                dbc.Col([dcc.Dropdown(id='num_cols_dropdown')], lg=3)
-                ,
-                dcc.Loading(dcc.Graph(id='chart')), html.Br(),
-                dcc.Loading(html.Div(id='output'))
-            ], hidden=True, id='output_id')
-        ], lg=10),
-    ])
-])
+app.layout = html.Div(
+    [
+        dcc.Store(id="store_columns"),
+        html.Br(),
+        html.Br(),
+        html.H2(
+            [html.B("windsor.ai"), html.Span(" – interactive dashboard")],
+            style={"textAlign": "center"},
+        ),
+        html.Br(),
+        dbc.Row(
+            [
+                dbc.Col(lg=1),
+                dbc.Col(
+                    [
+                        dbc.Label("Date range:"),
+                        dcc.Dropdown(
+                            id="date_dropdown",
+                            value="last_7d",
+                            options=[
+                                {"label": k, "value": v}
+                                for k, v in date_preset_options.items()
+                            ],
+                        ),
+                        html.Br(),
+                    ],
+                    lg=2,
+                ),
+                dbc.Col(
+                    [
+                        dbc.Label("Fields:"),
+                        dcc.Dropdown(
+                            id="fields_dropdown",
+                            multi=True,
+                            options=[
+                                {
+                                    "label": field.replace("_", " ").title(),
+                                    "value": field,
+                                }
+                                for field in fields_options
+                            ],
+                        ),
+                        html.Br(),
+                    ],
+                    lg=4,
+                ),
+                dbc.Col([dbc.Label("Your API key:"), dbc.Input(id="api_key")], lg=2),
+                dbc.Col(
+                    [
+                        html.Br(),
+                        html.Div(
+                            dbc.Button("Submit", id="submit_button"),
+                        ),
+                    ],
+                    lg=2,
+                ),
+            ]
+        ),
+        html.Hr(),
+        html.Br(),
+        dbc.Row(
+            [
+                dbc.Col(lg=1),
+                dbc.Col(
+                    [
+                        html.Div(
+                            [
+                                dbc.Col([dcc.Dropdown(id="num_cols_dropdown")], lg=3),
+                                dcc.Loading(dcc.Graph(id="chart")),
+                                html.Br(),
+                                dcc.Loading(html.Div(id="output")),
+                            ],
+                            hidden=True,
+                            id="output_id",
+                        )
+                    ],
+                    lg=10,
+                ),
+            ]
+        ),
+    ]
+)
 ```
 
 ### Create app's callback function/interactivity
@@ -192,33 +226,35 @@ app.layout = html.Div([
 
 ```python
 @app.callback(
-    Output('output', 'children'),
-    Output('num_cols_dropdown', 'options'),
-    Output('output_id', 'hidden'),
-    Output('store_columns', 'data'),
-    Input('submit_button', 'n_clicks'),
-    State('date_dropdown', 'value'),
-    State('fields_dropdown', 'value'),
-    State('api_key', 'value'),
-    prevent_initial_call=True)
+    Output("output", "children"),
+    Output("num_cols_dropdown", "options"),
+    Output("output_id", "hidden"),
+    Output("store_columns", "data"),
+    Input("submit_button", "n_clicks"),
+    State("date_dropdown", "value"),
+    State("fields_dropdown", "value"),
+    State("api_key", "value"),
+    prevent_initial_call=True,
+)
 def make_api_request(n_clicks, date_dropdown, fields_dropdown, api_key):
-    if 'date' not in fields_dropdown:
-        fields_dropdown.append('date')
-    PARAMS['date_preset'] = date_dropdown
-    PARAMS['fields'] = ','.join(fields_dropdown)
-    PARAMS['api_key'] = api_key
+    if "date" not in fields_dropdown:
+        fields_dropdown.append("date")
+    PARAMS["date_preset"] = date_dropdown
+    PARAMS["fields"] = ",".join(fields_dropdown)
+    PARAMS["api_key"] = api_key
     response = requests.get(BASE_URL, params=PARAMS)
-    resp_df = pd.DataFrame(response.json()['data'])
+    resp_df = pd.DataFrame(response.json()["data"])
     table = make_table(resp_df)
     hidden = False
     return table, num_cols(resp_df), hidden, resp_df.to_json()
 
 
 @app.callback(
-    Output('chart', 'figure'),
-    Input('num_cols_dropdown', 'value'),
-    Input('store_columns', 'data'),
-    prevent_initial_call=True)
+    Output("chart", "figure"),
+    Input("num_cols_dropdown", "value"),
+    Input("store_columns", "data"),
+    prevent_initial_call=True,
+)
 def make_chart(value, data):
     if not value:
         raise PreventUpdate
@@ -230,9 +266,12 @@ def make_chart(value, data):
             continue
     dftest = df
     fig = px.bar(
-        df.groupby('date').sum().reset_index(), x='date', y=value, title=f'<b>Total daily {value}</b>')
+        df.groupby("date").sum().reset_index(),
+        x="date",
+        y=value,
+        title=f"<b>Total daily {value}</b>",
+    )
     return fig
-
 ```
 
 ## Output
@@ -241,10 +280,9 @@ def make_chart(value, data):
 
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     if KNATIVE is False:
         app.run_server(proxy=f"http://127.0.0.1:{DASH_PORT}::https://app.naas.ai")
     else:
         app.run_server()
-
 ```

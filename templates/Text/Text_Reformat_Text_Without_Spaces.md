@@ -4,7 +4,7 @@
 
 **Author:** [Minura Punchihewa](https://www.linkedin.com/in/minurapunchihewa/)
 
-This notebook reformats text that does not contain spaces.
+**Description:** This notebook reformats text by removing all spaces.
 
 ## Input
 
@@ -34,11 +34,11 @@ text = """WhenSatoshiNakamotofirstsettheBitcoinblockchainintomotioninJanuary2009
 ```python
 def reformat_text(text):
     sentences = []
-    
-    for sentence in text.split('.'):
+
+    for sentence in text.split("."):
         if len(sentence) > 0:
-            sentences.append(" ".join(wordninja.split(sentence)) + '.')
-    
+            sentences.append(" ".join(wordninja.split(sentence)) + ".")
+
     return " ".join(sentences)
 ```
 

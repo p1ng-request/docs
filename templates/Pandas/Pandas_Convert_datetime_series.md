@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook will help you understand to convert a datetime column to any other datetime format.
+**Description:** This notebook provides instructions on how to use the Pandas library to convert a datetime series into a usable format.
 
 ## Input
 
@@ -20,9 +20,15 @@ import pandas as pd
 
 ```python
 dict1 = {
-    "Name": ["Peter","Dolly","Maggie","David","Isabelle"],
-    "Date": ["20/2/2021","19/8/2014","8/9/2000","4/3/2013","14/7/1995"],
-    "Second Date": ["August 20,2011","September 16,1993","January 23,2009","October 17,2019","March 4,2021"]
+    "Name": ["Peter", "Dolly", "Maggie", "David", "Isabelle"],
+    "Date": ["20/2/2021", "19/8/2014", "8/9/2000", "4/3/2013", "14/7/1995"],
+    "Second Date": [
+        "August 20,2011",
+        "September 16,1993",
+        "January 23,2009",
+        "October 17,2019",
+        "March 4,2021",
+    ],
 }
 df = pd.DataFrame(dict1)
 df
@@ -46,7 +52,9 @@ new_format = "%Y-W%U"
 
 
 ```python
-df["New_Date"] = pd.to_datetime(df["Date"], format=current_format).dt.strftime(new_format)
+df["New_Date"] = pd.to_datetime(df["Date"], format=current_format).dt.strftime(
+    new_format
+)
 df
 ```
 

@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a tool to count the number of lines of code in a Jupyter Notebook.
+
 ## Input
 
 ### Import libraries
@@ -31,15 +33,15 @@ def count_codes(notebook_path):
     with open(notebook_path) as f:
         nb = json.load(f)
     data = 0
-    
+
     cells = nb.get("cells")
     # Check each cells
     for cell in cells:
-        cell_type = cell.get('cell_type')
-        sources = cell.get('source')
+        cell_type = cell.get("cell_type")
+        sources = cell.get("source")
         for source in sources:
             if cell_type == "code":
-                if not source.startswith('\n') and not source.startswith('#'):
+                if not source.startswith("\n") and not source.startswith("#"):
                     data += 1
     if data == 0:
         print("❎ No line of code wrote in notebook:", notebook_path)

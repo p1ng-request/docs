@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to easily schedule regular cleanings of their Gmail mailbox.
+
 ## Input
 
 ### Import libraries
@@ -33,7 +35,7 @@ Note: You need to create an application password following this procedure - http
 
 
 ```python
-naas.scheduler.add(recurrence="0 9 * * *") # Scheduler set for 9 am
+naas.scheduler.add(recurrence="0 9 * * *")  # Scheduler set for 9 am
 ```
 
 ## Model
@@ -42,10 +44,7 @@ naas.scheduler.add(recurrence="0 9 * * *") # Scheduler set for 9 am
 
 
 ```python
-emails = naas_drivers.email.connect(username, 
-        password, 
-        username, 
-        smtp_server)
+emails = naas_drivers.email.connect(username, password, username, smtp_server)
 ```
 
 ### Get email list
@@ -63,17 +62,22 @@ dataframe
 sender_name = []
 sender_email = []
 for df in dataframe["from"]:
-    sender_name.append(df['name'])
-    sender_email.append(df['email'])
-result = pd.DataFrame(columns = ['SENDER_NAME','SENDER_EMAIL','COUNT','PERCENTAGE'])
+    sender_name.append(df["name"])
+    sender_email.append(df["email"])
+result = pd.DataFrame(columns=["SENDER_NAME", "SENDER_EMAIL", "COUNT", "PERCENTAGE"])
 name_unique = np.unique(sender_name)
 email_unique = np.unique(sender_email)
 total_email = len(emails.get(criteria="seen")) + len(emails.get(criteria="unseen"))
 c = 0
 for i in np.unique(sender_name):
-    new_row = {'SENDER_NAME':i,'SENDER_EMAIL':sender_email[c],'COUNT':sender_name.count(i),'PERCENTAGE':round(((sender_name.count(i))/total_email)*100)}
+    new_row = {
+        "SENDER_NAME": i,
+        "SENDER_EMAIL": sender_email[c],
+        "COUNT": sender_name.count(i),
+        "PERCENTAGE": round(((sender_name.count(i)) / total_email) * 100),
+    }
     result = result.append(new_row, ignore_index=True)
-    c+=1
+    c += 1
 result
 ```
 
@@ -81,7 +85,7 @@ result
 
 
 ```python
-fig = px.bar(x=result['COUNT'], y=result['SENDER_NAME'], orientation='h')
+fig = px.bar(x=result["COUNT"], y=result["SENDER_NAME"], orientation="h")
 fig.show()
 ```
 
@@ -92,8 +96,8 @@ fig.show()
 
 ```python
 d_email = "notifications@naas.ai"  # email id to be deleted
-data_from = dataframe['from']
-data_uid = dataframe['uid']
+data_from = dataframe["from"]
+data_uid = dataframe["uid"]
 uid = []
 ```
 
@@ -102,7 +106,7 @@ uid = []
 
 ```python
 for i in range(len(dataframe)):
-    if data_from[i]['email'] == d_email:
+    if data_from[i]["email"] == d_email:
         uid.append(data_uid[i])
 print(uid)
 ```

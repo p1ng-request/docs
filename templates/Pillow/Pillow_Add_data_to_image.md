@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook demonstrates how to use the Pillow library to add data to an existing image.
+
 ## Input
 
 ### Import libraries
@@ -37,24 +39,24 @@ output_image = "output_image.png"
 
 
 ```python
-def create_image(input_image,
-                 output_image,
-                 text_position,
-                 text,
-                 font_size=90,
-                 input_font=None):
+def create_image(
+    input_image, output_image, text_position, text, font_size=90, input_font=None
+):
     img = Image.open(input_image)
     d = ImageDraw.Draw(img)
-    
+
     font = ImageFont.truetype(input_font, font_size)
     fill = (255, 255, 255)
-    
+
     d.text(text_position, text, font=font, fill=fill)
     img.save(output_image)
     print("💾 Image saved :", output_image)
     return img
 
-img = create_image(input_image, output_image, text_position, text, font_size, input_font)
+
+img = create_image(
+    input_image, output_image, text_position, text, font_size, input_font
+)
 display(img)
 ```
 
@@ -66,6 +68,6 @@ display(img)
 ```python
 naas.asset.add(output_image)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(output_image)
 ```

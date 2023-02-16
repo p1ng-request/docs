@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
-The objective of the notebook is provide a list of active projects that an organization is working on
+**Description:** This notebook provides an overview of active projects on GitHub.
 
 ## Input
 

@@ -4,10 +4,7 @@
 
 **Author:** [Abhinav Lakhani](https://www.linkedin.com/in/abhinav-lakhani/)
 
-Given a list of stocks data(tickers), find the stock(s) with the closest performance attribute, make a clustering Graph of clusters (with each cluster having a different color) and save the clustered stocks to a .csv as well as the cluster to an image.
-
-Resources / Inspiration:
-https://towardsdatascience.com/in-12-minutes-stocks-analysis-with-pandas-and-scikit-learn-a8d8a7b50ee7
+**Description:** This notebook uses KNN to find the stock with the most similar performance to a given stock from YahooFinance.
 
 ## Input
 
@@ -21,11 +18,11 @@ import naas
 
 
 ```python
-from pylab import plot,show
-from numpy import vstack,array
+from pylab import plot, show
+from numpy import vstack, array
 from numpy.random import rand
 import numpy as np
-from scipy.cluster.vq import kmeans,vq
+from scipy.cluster.vq import kmeans, vq
 import pandas as pd
 from math import sqrt
 from sklearn.cluster import KMeans
@@ -37,12 +34,14 @@ from matplotlib import pyplot as plt
 
 ```python
 # Input
-sp500_url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
+sp500_url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 date_from = -3600
 date_to = "today"
-moving_averages = [20,50]
+moving_averages = [20, 50]
 tickers = []
-feature = ["Adj Close"] # which performance attribute do we want to cluster on: Open	High	Low	Close	Adj Close	Volume
+feature = [
+    "Adj Close"
+]  # which performance attribute do we want to cluster on: Open	High	Low	Close	Adj Close	Volume
 
 # Output
 csv_output = "STOCK_CLUSTERS.csv"
@@ -56,7 +55,7 @@ img_output = "STOCK_CLUSTERS.png"
 # Schedule your notebook everyday at 9 AM
 # naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -79,16 +78,18 @@ tickers = data_table[0]["Symbol"].tolist()
 prices_list = []
 for ticker in tickers:
     try:
-        prices = yahoofinance.get(ticker,
-                      date_from=date_from,
-                      date_to=date_to,
-                      moving_averages=moving_averages)[feature]
+        prices = yahoofinance.get(
+            ticker,
+            date_from=date_from,
+            date_to=date_to,
+            moving_averages=moving_averages,
+        )[feature]
         prices = pd.DataFrame(prices)
         prices.columns = [ticker]
         prices_list.append(prices)
     except:
         pass
-    prices_df = pd.concat(prices_list,axis=1)
+    prices_df = pd.concat(prices_list, axis=1)
 prices_df.sort_index(inplace=True)
 prices_df.head()
 ```
@@ -103,13 +104,13 @@ Lets run the code for our Elbow Curve plot.
 
 
 ```python
-#Calculate average annual percentage return and volatilities over a theoretical one year period
+# Calculate average annual percentage return and volatilities over a theoretical one year period
 returns = prices_df.pct_change().mean() * 252
 returns = pd.DataFrame(returns)
-returns.columns = ['Returns']
-returns['Volatility'] = prices_df.pct_change().std() * sqrt(252)
-#format the data as a numpy array to feed into the K-Means algorithm
-data = np.asarray([np.asarray(returns['Returns']),np.asarray(returns['Volatility'])]).T
+returns.columns = ["Returns"]
+returns["Volatility"] = prices_df.pct_change().std() * sqrt(252)
+# format the data as a numpy array to feed into the K-Means algorithm
+data = np.asarray([np.asarray(returns["Returns"]), np.asarray(returns["Volatility"])]).T
 ```
 
 
@@ -124,7 +125,7 @@ for k in range(2, 20):
 fig = plt.figure(figsize=(15, 5))
 plt.plot(range(2, 20), distorsions)
 plt.grid(True)
-plt.title('Elbow curve')
+plt.title("Elbow curve")
 ```
 
 So we can sort of see that once the number of clusters reaches 5 (on the bottom axis), the reduction in the SSE begins to slow down for each increase in cluster number. This would lead me to believe that the optimal number of clusters for this exercise lies around the 5 mark – so let’s use 5.
@@ -136,28 +137,53 @@ def get_centroid_labels(centroids):
     labels = ["" for _ in range(m)]
     rank_mode = m // 2
     has_even_n_O_centroids = m % 2 == 0
-    
-    for i, (returns_rank, volatility_rank) in enumerate(zip(np.argsort(np.argsort(centroids[:, 0])), np.argsort(np.argsort(centroids[:, 1])))):
+
+    for i, (returns_rank, volatility_rank) in enumerate(
+        zip(
+            np.argsort(np.argsort(centroids[:, 0])),
+            np.argsort(np.argsort(centroids[:, 1])),
+        )
+    ):
         # assign return labels
         if returns_rank == 0:
             labels[i] += "lowest returns, "
-        elif returns_rank == (m-1):
+        elif returns_rank == (m - 1):
             labels[i] += "highest returns, "
         else:
             if has_even_n_O_centroids:
-                labels[i] += (f"low returns({returns_rank}), " if returns_rank <= rank_mode else f"high returns({m-returns_rank-1}), ")
+                labels[i] += (
+                    f"low returns({returns_rank}), "
+                    if returns_rank <= rank_mode
+                    else f"high returns({m-returns_rank-1}), "
+                )
             else:
-                labels[i] += (f"low returns({returns_rank}), " if returns_rank < rank_mode else f"high returns({m-returns_rank-1}), " if returns_rank > rank_mode else "average returns, ")
+                labels[i] += (
+                    f"low returns({returns_rank}), "
+                    if returns_rank < rank_mode
+                    else f"high returns({m-returns_rank-1}), "
+                    if returns_rank > rank_mode
+                    else "average returns, "
+                )
         # assign volatility labels
         if volatility_rank == 0:
             labels[i] += "stable"
-        elif volatility_rank == (m-1):
+        elif volatility_rank == (m - 1):
             labels[i] += "extremly volatile"
         else:
             if has_even_n_O_centroids:
-                labels[i] += (f"low volatility({volatility_rank})" if volatility_rank <= rank_mode else f"high volatility({m-volatility_rank-1})")
+                labels[i] += (
+                    f"low volatility({volatility_rank})"
+                    if volatility_rank <= rank_mode
+                    else f"high volatility({m-volatility_rank-1})"
+                )
             else:
-                labels[i] += (f"low volatility({volatility_rank})" if volatility_rank < rank_mode else f"high volatility({m-volatility_rank-1})" if volatility_rank > rank_mode else "average volatility")
+                labels[i] += (
+                    f"low volatility({volatility_rank})"
+                    if volatility_rank < rank_mode
+                    else f"high volatility({m-volatility_rank-1})"
+                    if volatility_rank > rank_mode
+                    else "average volatility"
+                )
     return labels
 ```
 
@@ -165,19 +191,20 @@ def get_centroid_labels(centroids):
 ```python
 # computing K-Means with K = 5 (5 clusters)
 n_clusters = 5
-centroids,_ = kmeans(data,n_clusters)
+centroids, _ = kmeans(data, n_clusters)
 cluster_names = get_centroid_labels(centroids)
 # assign each sample to a cluster
-idx,_ = vq(data,centroids)
+idx, _ = vq(data, centroids)
 returns["cluster_id"] = idx
 returns["cluster"] = [cluster_names[i] for i in idx]
 # plot the clusters
 plt.figure(figsize=(10, 8))
 for i, cluster in enumerate(cluster_names):
-    cluster_i = returns[returns.cluster_id==i]
-    plt.scatter(cluster_i.Returns, cluster_i.Volatility, alpha = 0.6, s=5)
+    cluster_i = returns[returns.cluster_id == i]
+    plt.scatter(cluster_i.Returns, cluster_i.Volatility, alpha=0.6, s=5)
     plt.scatter(centroids[i, 0], centroids[i, 1], label=cluster)
-plt.xlabel("returns");plt.ylabel("volatility")
+plt.xlabel("returns")
+plt.ylabel("volatility")
 plt.legend()
 plt.show()
 ```
@@ -193,29 +220,30 @@ outliers
 
 
 ```python
-#drop the relevant stock from our data
-returns.drop(outliers.index,inplace=True)
-#recreate data to feed into the algorithm
-data = np.asarray([np.asarray(returns['Returns']),np.asarray(returns['Volatility'])]).T
+# drop the relevant stock from our data
+returns.drop(outliers.index, inplace=True)
+# recreate data to feed into the algorithm
+data = np.asarray([np.asarray(returns["Returns"]), np.asarray(returns["Volatility"])]).T
 ```
 
 
 ```python
 # computing K-Means with K = 5 (5 clusters)
 n_clusters = 5
-centroids,_ = kmeans(data,n_clusters)
+centroids, _ = kmeans(data, n_clusters)
 cluster_names = get_centroid_labels(centroids)
 # assign each sample to a cluster
-idx,_ = vq(data,centroids)
+idx, _ = vq(data, centroids)
 returns["cluster_id"] = idx
 returns["cluster"] = [cluster_names[i] for i in idx]
 # plot the clusters
 plt.figure(figsize=(10, 8))
 for i, cluster in enumerate(cluster_names):
-    cluster_i = returns[returns.cluster_id==i]
-    plt.scatter(cluster_i.Returns, cluster_i.Volatility, alpha = 0.6, s=5)
+    cluster_i = returns[returns.cluster_id == i]
+    plt.scatter(cluster_i.Returns, cluster_i.Volatility, alpha=0.6, s=5)
     plt.scatter(centroids[i, 0], centroids[i, 1], label=cluster)
-plt.xlabel("returns");plt.ylabel("volatility")
+plt.xlabel("returns")
+plt.ylabel("volatility")
 plt.legend()
 plt.show()
 ```
@@ -226,7 +254,7 @@ SO there we go, we now have a list of each of the stocks which are close togethe
 
 
 ```python
-stock_clusters = pd.DataFrame(zip(returns.index,idx), columns=["Ticker", "Group ID"])
+stock_clusters = pd.DataFrame(zip(returns.index, idx), columns=["Ticker", "Group ID"])
 stock_clusters
 ```
 
@@ -255,7 +283,7 @@ plt.savefig(img_output)
 ```python
 naas.asset.add(csv_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete()
 ```
 

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides an interactive visualization of the active cases of Covid-19 reported by Johns Hopkins University.
+
 ## Input
 
 ### Import libraries
@@ -22,9 +24,9 @@ import matplotlib.pyplot as plt
 ```python
 # URLs of the raw csv dataset
 urls = [
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv',
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv',
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv",
 ]
 
 confirmed_df, deaths_df, recovered_df = tuple(pd.read_csv(url) for url in urls)
@@ -51,29 +53,29 @@ Steps:
 
 
 ```python
-#Wide to Long DataFrame conversion
+# Wide to Long DataFrame conversion
 dates = confirmed_df.columns[4:]
 confirmed_df_long = confirmed_df.melt(
-    id_vars=['Province/State', 'Country/Region', 'Lat', 'Long'], 
-    value_vars=dates, 
-    var_name='Date', 
-    value_name='Confirmed'
+    id_vars=["Province/State", "Country/Region", "Lat", "Long"],
+    value_vars=dates,
+    var_name="Date",
+    value_name="Confirmed",
 )
 deaths_df_long = deaths_df.melt(
-    id_vars=['Province/State', 'Country/Region', 'Lat', 'Long'], 
-    value_vars=dates, 
-    var_name='Date', 
-    value_name='Deaths'
+    id_vars=["Province/State", "Country/Region", "Lat", "Long"],
+    value_vars=dates,
+    var_name="Date",
+    value_name="Deaths",
 )
 recovered_df_long = recovered_df.melt(
-    id_vars=['Province/State', 'Country/Region', 'Lat', 'Long'], 
-    value_vars=dates, 
-    var_name='Date', 
-    value_name='Recovered'
+    id_vars=["Province/State", "Country/Region", "Lat", "Long"],
+    value_vars=dates,
+    var_name="Date",
+    value_name="Recovered",
 )
 
 # Adjust for Canada
-recovered_df_long = recovered_df_long[(recovered_df_long['Country/Region']!='Canada')]
+recovered_df_long = recovered_df_long[(recovered_df_long["Country/Region"] != "Canada")]
 ```
 
 
@@ -81,22 +83,21 @@ recovered_df_long = recovered_df_long[(recovered_df_long['Country/Region']!='Can
 # Join into one single dataframe/table
 # Merging confirmed_df_long and deaths_df_long
 full_table = confirmed_df_long.merge(
-  right=deaths_df_long, 
-  how='left',
-  on=['Province/State', 'Country/Region', 'Date', 'Lat', 'Long']
+    right=deaths_df_long,
+    how="left",
+    on=["Province/State", "Country/Region", "Date", "Lat", "Long"],
 )
 # Merging full_table and recovered_df_long
 full_table = full_table.merge(
-  right=recovered_df_long, 
-  how='left',
-  on=['Province/State', 'Country/Region', 'Date', 'Lat', 'Long']
+    right=recovered_df_long,
+    how="left",
+    on=["Province/State", "Country/Region", "Date", "Lat", "Long"],
 )
 
 # Convert date strings to actual dates
-full_table['Date'] = pd.to_datetime(full_table['Date'])
+full_table["Date"] = pd.to_datetime(full_table["Date"])
 # Handle some missing values / NaNs
-full_table['Recovered'] = full_table['Recovered'].fillna(0).astype('int64')
-
+full_table["Recovered"] = full_table["Recovered"].fillna(0).astype("int64")
 ```
 
 
@@ -108,12 +109,22 @@ full_table.isna().sum()
 
 ```python
 # Adjust for Canada and 3 cruise ships
-ship_rows = full_table['Province/State'].str.contains('Grand Princess') | full_table['Province/State'].str.contains('Diamond Princess') | full_table['Country/Region'].str.contains('Diamond Princess') | full_table['Country/Region'].str.contains('MS Zaandam')
+ship_rows = (
+    full_table["Province/State"].str.contains("Grand Princess")
+    | full_table["Province/State"].str.contains("Diamond Princess")
+    | full_table["Country/Region"].str.contains("Diamond Princess")
+    | full_table["Country/Region"].str.contains("MS Zaandam")
+)
 full_ship = full_table[ship_rows]
 full_table = full_table[~(ship_rows)]
 
 # Add one more entry for each day to get the entire world's counts/totals
-world_dict = {"Country/Region": "World", "Confirmed": pd.Series(full_table.groupby(['Date'])['Confirmed'].sum()), "Deaths": pd.Series(full_table.groupby(['Date'])['Deaths'].sum()),"Recovered": pd.Series(full_table.groupby(['Date'])['Recovered'].sum())}
+world_dict = {
+    "Country/Region": "World",
+    "Confirmed": pd.Series(full_table.groupby(["Date"])["Confirmed"].sum()),
+    "Deaths": pd.Series(full_table.groupby(["Date"])["Deaths"].sum()),
+    "Recovered": pd.Series(full_table.groupby(["Date"])["Recovered"].sum()),
+}
 world_df = pd.DataFrame.from_dict(world_dict).reset_index()
 print(world_df.columns)
 full_table = pd.concat([full_table, world_df], ignore_index=True)
@@ -122,9 +133,17 @@ full_table = pd.concat([full_table, world_df], ignore_index=True)
 
 ```python
 # Active Cases = Confirmed - Deaths - Recovered
-full_table['Active'] = full_table['Confirmed'] - full_table['Deaths'] - full_table['Recovered']
+full_table["Active"] = (
+    full_table["Confirmed"] - full_table["Deaths"] - full_table["Recovered"]
+)
 
-full_grouped = full_table.groupby(['Date', 'Country/Region'])['Confirmed', 'Deaths', 'Recovered', 'Active'].sum().reset_index()
+full_grouped = (
+    full_table.groupby(["Date", "Country/Region"])[
+        "Confirmed", "Deaths", "Recovered", "Active"
+    ]
+    .sum()
+    .reset_index()
+)
 ```
 
 
@@ -157,56 +176,69 @@ df_active = df_active.pivot(index="Date", columns="Country", values="Active")
 ```python
 def create_layout_button(df, column):
     first, latest = df.index.values[0], df.index.values[-1]
-    return dict(label = column,
-                method = 'update',
-                args = [{'visible': df.columns.isin([column]),
-                         'title': column,
-                         'xaxis.range': [first, latest],
-                         'showlegend': True
-                        }])
+    return dict(
+        label=column,
+        method="update",
+        args=[
+            {
+                "visible": df.columns.isin([column]),
+                "title": column,
+                "xaxis.range": [first, latest],
+                "showlegend": True,
+            }
+        ],
+    )
 
-def multi_plot(df, title, addAll = True):
+
+def multi_plot(df, title, addAll=True):
     first, latest = df.index.values[0], df.index.values[-1]
     fig = go.Figure()
 
     for column in df.columns.to_list():
-        fig.add_trace(
-            go.Scatter(
-                x = df.index,
-                y = df[column],
-                name = column
-            )
-        )
+        fig.add_trace(go.Scatter(x=df.index, y=df[column], name=column))
 
-    button_all = dict(label = 'All',
-                  method = 'update',
-                  args = [{'visible': df.columns.isin(df.columns),
-                           'title': 'All',
-                           'xaxis.range': [first, latest],
-                           'showlegend':True}])
-    
+    button_all = dict(
+        label="All",
+        method="update",
+        args=[
+            {
+                "visible": df.columns.isin(df.columns),
+                "title": "All",
+                "xaxis.range": [first, latest],
+                "showlegend": True,
+            }
+        ],
+    )
+
     # Need "World" to be the default choice if "All" is not shown
     button_world = create_layout_button(df, "World")
 
     fig.update_layout(
-        updatemenus=[{
-            "active": 0,
-            "buttons": ([button_all] * addAll) + [button_world] + [create_layout_button(df, column) for column in df.columns if column != "World"],
-            "showactive": True
+        updatemenus=[
+            {
+                "active": 0,
+                "buttons": ([button_all] * addAll)
+                + [button_world]
+                + [
+                    create_layout_button(df, column)
+                    for column in df.columns
+                    if column != "World"
+                ],
+                "showactive": True,
             }
         ],
-        yaxis_type="log"
+        yaxis_type="log",
     )
-    
+
     # Update remaining layout properties
     fig.update_layout(
         title_text=title,
-#         annotations=[dict(
-#             text="Country:",
-#             x=0, y=0
-#         )]
+        #         annotations=[dict(
+        #             text="Country:",
+        #             x=0, y=0
+        #         )]
     )
-   
+
     fig.show()
 ```
 
@@ -226,12 +258,19 @@ test_df_active
 
 
 ```python
-multi_plot(test_df_active, title="Logarithmic COVID-19 time series Active Cases by Country (Top 10)")
+multi_plot(
+    test_df_active,
+    title="Logarithmic COVID-19 time series Active Cases by Country (Top 10)",
+)
 ```
 
 
 ```python
-multi_plot(df_active, title="Logarithmic COVID-19 time series Active Cases by Country", addAll=False)
+multi_plot(
+    df_active,
+    title="Logarithmic COVID-19 time series Active Cases by Country",
+    addAll=False,
+)
 ```
 
 ### World Health Indicator (WHI)
@@ -260,14 +299,23 @@ WHI = 10 - 10 \times \frac{Current - Min}{Max - Min}
 # max_30d = df_active["MonthlyAverage"].max()
 # min_30d = df_active["MonthlyAverage"].min()
 # WHI_30d = 10 - 10 * ((curr_30d - min_30d) / (max_30d - min_30d))
-#print(f"World Health Indicator (30 day Moving Average): {round(WHI_30d, 2)}")
+# print(f"World Health Indicator (30 day Moving Average): {round(WHI_30d, 2)}")
 ```
 
 
 ```python
-WHI = 10 - 10 * ((df_active.loc[latest, "World"] - df_active["World"].min()) / (df_active["World"].max() - df_active["World"].min()))
+WHI = 10 - 10 * (
+    (df_active.loc[latest, "World"] - df_active["World"].min())
+    / (df_active["World"].max() - df_active["World"].min())
+)
 
 print(f"World Health Indicator (Raw values): {round(WHI, 2)}")
-WHI_data = pd.DataFrame.from_dict({"DATE_PROCESSED": pd.to_datetime("today").date(), "INDICATOR": "COVID-19 Active Cases", "VALUE": [round(WHI, 2)]})
+WHI_data = pd.DataFrame.from_dict(
+    {
+        "DATE_PROCESSED": pd.to_datetime("today").date(),
+        "INDICATOR": "COVID-19 Active Cases",
+        "VALUE": [round(WHI, 2)],
+    }
+)
 WHI_data
 ```

@@ -45,8 +45,8 @@ If you are not using the Google Chrome Extension, [learn how to get your cookies
 
 ```python
 # Cookies
-LI_AT = naas.secret.get("LINKEDIN_LI_AT") or 'YOUR_COOKIE_LI_AT'
-JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or 'YOUR_COOKIE_JSESSIONID'
+LI_AT = naas.secret.get("LINKEDIN_LI_AT") or "YOUR_COOKIE_LI_AT"
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "YOUR_COOKIE_JSESSIONID"
 
 # LinkedIn limit invitations up to 100 per week (Becareful !)
 LIMIT = 15
@@ -94,6 +94,7 @@ df_contacts
 def filter_data(df):
     df = df
     return df.reset_index(drop=True)
+
 
 df_hubspot = filter_data(df_contacts)
 df_hubspot
@@ -148,51 +149,50 @@ df_csv_invitations
 
 
 ```python
-def get_new_invitations(df_hubspot,
-                        df_lk_invitations,
-                        df_csv_invitations,
-                        df_contacts,
-                        df_not_valid):
+def get_new_invitations(
+    df_hubspot, df_lk_invitations, df_csv_invitations, df_contacts, df_not_valid
+):
     # Cleaning
     df = df_hubspot.copy()
-    df["PROFILE_ID"] = df.apply(lambda row: row[col_linkedin].split("com/in/")[-1].split("/")[0], axis=1)
+    df["PROFILE_ID"] = df.apply(
+        lambda row: row[col_linkedin].split("com/in/")[-1].split("/")[0], axis=1
+    )
     print("✔️ LinkedIn valid URL :", len(df))
-    
+
     # Get list of pending LinkedIn invitations
     pending_lk_invitations = []
     if len(df_lk_invitations) > 0:
         pending_lk_invitations = df_lk_invitations["PUBLIC_ID"].unique().tolist()
     print("❌ Pending LinkedIn invitations :", len(pending_lk_invitations))
-    
+
     # Get list of CSV invitations
     pending_csv_invitations = []
     if len(df_csv_invitations) > 0:
         pending_csv_invitations = df_csv_invitations["PUBLIC_ID"].unique().tolist()
     print("❌ Pending CSV invitations :", len(pending_csv_invitations))
-    
+
     # Get profile already in network
     contacts = []
     if len(df_contacts) > 0:
         contacts = df_contacts["PUBLIC_ID"].unique().tolist()
     print("❌ Already in network :", len(contacts))
-    
+
     # Get profile not valid
     not_valids = []
     if len(df_not_valid) > 0:
         not_valids = df_not_valid["PROFILE_ID"].unique().tolist()
     print("❌ Profile not valid:", len(not_valids))
-    
-    # Remove pending invitations / already in network / not valid profile from dataframe 
-    exclude = (pending_lk_invitations + pending_csv_invitations + contacts + not_valids)
+
+    # Remove pending invitations / already in network / not valid profile from dataframe
+    exclude = pending_lk_invitations + pending_csv_invitations + contacts + not_valids
     df = df[~df["PROFILE_ID"].isin(exclude)].reset_index(drop=True)
     print("➡️ New invitation:", len(df))
     return df
 
-df_new_invitations = get_new_invitations(df_hubspot,
-                                         df_lk_invitations,
-                                         df_csv_invitations,
-                                         df_contacts,
-                                         df_not_valid)
+
+df_new_invitations = get_new_invitations(
+    df_hubspot, df_lk_invitations, df_csv_invitations, df_contacts, df_not_valid
+)
 df_new_invitations
 ```
 
@@ -200,15 +200,12 @@ df_new_invitations
 
 
 ```python
-def send_invitation(df,
-                    df_not_valid=None,
-                    df_contacts=None,
-                    df_csv_invitations=None):
+def send_invitation(df, df_not_valid=None, df_contacts=None, df_csv_invitations=None):
     # Check if new invitations to perform
     if len(df) == 0:
         print("🤙 No new invitations to send")
         return df
-    
+
     # Setup variables
     if df_not_valid is None:
         df_not_valid = pd.DataFrame()
@@ -216,23 +213,25 @@ def send_invitation(df,
         df_contacts = pd.DataFrame()
     if df_csv_invitations is None:
         df_csv_invitations = pd.DataFrame()
-        
+
     # Loop
     count = 1
     for index, row in df.iterrows():
         df_network = pd.DataFrame()
         profile = row[col_linkedin]
         print(f"➡️ Checking :", profile)
-        
+
         # Get distance with profile
         try:
-            df_network = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(profile)
+            df_network = linkedin.connect(LI_AT, JSESSIONID).profile.get_network(
+                profile
+            )
         except Exception as e:
             # If error, profile URL is not valid => append Notion page to CSV not valid to not check it again
-            df_not_valid = pd.concat([df_not_valid, df[index:index+1]])
+            df_not_valid = pd.concat([df_not_valid, df[index : index + 1]])
             df_not_valid.to_csv(csv_not_valid, index=False)
             print("❌ URL not valid", e)
-            
+
         # Check if profile is already in your network
         if len(df_network) > 0:
             distance = df_network.loc[0, "DISTANCE"]
@@ -240,7 +239,9 @@ def send_invitation(df,
             if distance not in ["SELF", "DISTANCE_1"]:
                 # => send invitation
                 try:
-                    linkedin.connect(LI_AT, JSESSIONID).invitation.send(recipient_url=profile)
+                    linkedin.connect(LI_AT, JSESSIONID).invitation.send(
+                        recipient_url=profile
+                    )
                     print(count, "- 🙌 Invitation successfully sent")
                     df_csv_invitations = pd.concat([df_csv_invitations, df_network])
                     df_csv_invitations.to_csv(csv_invitation, index=False)
@@ -252,17 +253,17 @@ def send_invitation(df,
                 df_contacts = pd.concat([df_contacts, df_network])
                 df_contacts.to_csv(csv_contact, index=False)
                 print(f"👍 Already in my network, 💾 saved in CSV")
-            
+
         # Manage LinkedIn limit
         if count > LIMIT:
             print("⚠️ LinkedIn invitation limit reached", LIMIT)
             return df_csv_invitations
     return df_csv_invitations
-        
-df_csv_invitations = send_invitation(df_new_invitations,
-                                     df_not_valid,
-                                     df_contacts,
-                                     df_csv_invitations)
+
+
+df_csv_invitations = send_invitation(
+    df_new_invitations, df_not_valid, df_contacts, df_csv_invitations
+)
 ```
 
 ## Output
@@ -276,7 +277,7 @@ if os.path.exists(csv_contact):
 
 if os.path.exists(csv_not_valid):
     naas.dependency.add(csv_not_valid)
-    
+
 if os.path.exists(csv_invitation):
     naas.dependency.add(csv_invitation)
 ```

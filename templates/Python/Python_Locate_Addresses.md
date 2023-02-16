@@ -4,7 +4,7 @@
 
 **Author:** [Suhas B](https://www.linkedin.com/in/suhasbrao/)
 
-This notebook allows you to easily find the ***latitude and longitude coordinates for any address or to find an address from any set of coordinates***
+**Description:** This notebook provides a Python-based solution for finding and displaying addresses.
 
 ## Input
 

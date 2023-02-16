@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a convenient way to access and view your Qonto account statements.
+
 ## Input
 
 ### Import library
@@ -18,8 +20,8 @@ from naas_drivers import qonto
 
 
 ```python
-QONTO_USER_ID = 'YOUR_USER_ID'
-QONTO_SECRET_KEY = 'YOUR_SECRET_KEY'
+QONTO_USER_ID = "YOUR_USER_ID"
+QONTO_SECRET_KEY = "YOUR_SECRET_KEY"
 ```
 
 ### Parameters
@@ -38,8 +40,9 @@ date_to = None
 
 
 ```python
-df_statement = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.get(date_from=date_from,
-                                                                             date_to=date_to)
+df_statement = qonto.connect(QONTO_USER_ID, QONTO_SECRET_KEY).statements.get(
+    date_from=date_from, date_to=date_to
+)
 ```
 
 ## Output

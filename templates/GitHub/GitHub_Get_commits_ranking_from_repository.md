@@ -4,6 +4,8 @@
 
 **Author:** [Sanjeet Attili](https://www.linkedin.com/in/sanjeet-attili-760bab190/)
 
+**Description:** This notebook provides a way to view the commit rankings of a GitHub repository.
+
 ## Input
 
 
@@ -50,13 +52,14 @@ df_commits
 def get_commits(df):
     # Exclude Github commits
     df = df[(df.COMMITTER_EMAIL.str[-10:] != "github.com")]
-    
+
     # Groupby and count
     df = df.groupby(["AUTHOR_NAME"], as_index=False).agg({"ID": "count"})
-    
+
     # Cleaning
     df = df.rename(columns={"ID": "NB_COMMITS"})
     return df.sort_values(by="NB_COMMITS", ascending=False).reset_index(drop=True)
+
 
 df = get_commits(df_commits)
 df
@@ -69,24 +72,24 @@ df
 def create_barchart(df, repository):
     # Get repository
     repository = repository.split("/")[-1]
-    
+
     # Sort df
     df = df.sort_values(by="NB_COMMITS")
-    
+
     # Calc commits
     commits = df.NB_COMMITS.sum()
-    
+
     # Create fig
-    fig = px.bar(df,
-                 y="AUTHOR_NAME",
-                 x="NB_COMMITS",
-                 orientation='h',
-                 title=f"GitHub - {repository} : Commits by user <br><span style='font-size: 13px;'>Total commits: {commits}</span>",
-                 text="NB_COMMITS",
-                 labels={"AUTHOR_NAME": "Author",
-                         "NB_COMMITS": "Nb commits"}
-                 )
-    fig.update_traces(marker_color='black')
+    fig = px.bar(
+        df,
+        y="AUTHOR_NAME",
+        x="NB_COMMITS",
+        orientation="h",
+        title=f"GitHub - {repository} : Commits by user <br><span style='font-size: 13px;'>Total commits: {commits}</span>",
+        text="NB_COMMITS",
+        labels={"AUTHOR_NAME": "Author", "NB_COMMITS": "Nb commits"},
+    )
+    fig.update_traces(marker_color="black")
     fig.update_layout(
         plot_bgcolor="#ffffff",
         width=1200,
@@ -100,6 +103,7 @@ def create_barchart(df, repository):
     )
     fig.show()
     return fig
+
 
 fig = create_barchart(df, REPO_URL)
 ```

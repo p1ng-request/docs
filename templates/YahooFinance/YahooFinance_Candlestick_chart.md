@@ -4,6 +4,8 @@
 
 **Author:** [Carlo Occhiena](https://www.linkedin.com/in/carloocchiena/)
 
+**Description:** This notebook provides a visual representation of stock market data using a candlestick chart from YahooFinance.
+
 ## Input
 
 ### Install and import libraries
@@ -53,10 +55,7 @@ data
 
 
 ```python
-mpf.plot(data, title=f"{ticker} trend",
-         type="candle",
-         volume=True,
-         style="yahoo")
+mpf.plot(data, title=f"{ticker} trend", type="candle", volume=True, style="yahoo")
 ```
 
 

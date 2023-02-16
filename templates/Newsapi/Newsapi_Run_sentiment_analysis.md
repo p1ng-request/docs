@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook uses Newsapi to analyze the sentiment of news articles.
+
 ## Input
 
 ### Import libraries
@@ -19,7 +21,9 @@ from naas_drivers import newsapi, sentiment
 
 
 ```python
-data = newsapi.connect().get("bitcoin", fields=["title", "image", "link", "description"])
+data = newsapi.connect().get(
+    "bitcoin", fields=["title", "image", "link", "description"]
+)
 ```
 
 ### Get sentiment analysis

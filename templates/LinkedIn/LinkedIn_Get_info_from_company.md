@@ -4,6 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
+**Description:** This notebook provides a way to access and analyze data from LinkedIn to gain insights about companies.
+
 ## Input
 
 ### Import librairy
@@ -18,15 +20,15 @@ from naas_drivers import linkedin
 
 
 ```python
-LI_AT = 'YOUR_COOKIE_LI_AT'  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
-JSESSIONID = 'YOUR_COOKIE_JSESSIONID'  # EXAMPLE ajax:8379907400220387585
+LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 ```
 
 ### Enter company URL, linkedin name or id
 
 
 ```python
-COMPANY_URL = "https://www.linkedin.com/company/naas-ai" #or universal name = "tesla" or id = "8819091"
+COMPANY_URL = "https://www.linkedin.com/company/naas-ai"  # or universal name = "tesla" or id = "8819091"
 ```
 
 ## Model

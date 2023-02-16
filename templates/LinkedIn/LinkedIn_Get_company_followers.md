@@ -36,7 +36,9 @@ import naas
 
 ```python
 # Credentials
-LI_AT = None or naas.secret.get("LI_AT")  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
+LI_AT = None or naas.secret.get(
+    "LI_AT"
+)  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
 JSESSIONID = None or naas.secret.get("JSESSIONID")  # EXAMPLE ajax:8379907400220387585
 
 # Company URL
@@ -59,7 +61,7 @@ csv_input = f"LINKEDIN_COMPANY_FOLLOWERS_{company_name}.csv"
 # Schedule your notebook everyday at 9:00 AM
 naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -78,6 +80,7 @@ def get_company_followers(file_path):
         return pd.DataFrame()
     return df
 
+
 df_followers = get_company_followers(csv_input)
 df_followers
 ```
@@ -89,7 +92,7 @@ df_followers
 def update_connections(df, file_path, key=None):
     # Init output
     df_update = pd.DataFrame()
-    
+
     # Init df posts is empty then return entire database
     if len(df) > 0:
         # If dataframe not empty, get last connections
@@ -97,23 +100,28 @@ def update_connections(df, file_path, key=None):
         start = 0
         count = 1
         while True:
-            tmp_new = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(start=start, count=count, limit=count)
+            tmp_new = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(
+                start=start, count=count, limit=count
+            )
             # Check if existing profile in each call
             tmp_new = tmp_new[~tmp_new.PROFILE_ID.isin(profiles)]
             df_update = pd.concat([df_update, tmp_new])
             if len(tmp_new) == 0:
                 break
-            
+
             # Get more profile
             start += count
         print(f"-> New followers fetched: {len(df_update)}.")
     else:
-        df_update = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(count=100, limit=-1)
-        
+        df_update = linkedin.connect(LI_AT, JSESSIONID).company.get_followers(
+            count=100, limit=-1
+        )
+
     # Concat data
     df = pd.concat([df_update, df]).drop_duplicates(key, keep="first")
     return df.reset_index(drop=True)
-    
+
+
 df_update = update_connections(df_followers, csv_input, key="PROFILE_ID")
 df_update
 ```

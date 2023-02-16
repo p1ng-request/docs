@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-The goal of this notebook is to reset your naas instance.
+**Description:** This notebook provides a way to reset an instance of Naas, allowing users to start fresh with a clean slate.
 
 ## Input
 

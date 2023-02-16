@@ -4,6 +4,8 @@
 
 **Author:** [Christophe Blefari](https://www.linkedin.com/in/christopheblefari/)
 
+**Description:** This notebook provides an easy way to access current weather data for any city using the OpenWeatherMap API.
+
 ## Input
 
 ### Import library
@@ -17,7 +19,7 @@ import requests
 
 
 ```python
-OPENWEATHER_KEY = '**********'  # get your key from here https://home.openweathermap.org/api_keys (it takes couples of minutes)
+OPENWEATHER_KEY = "**********"  # get your key from here https://home.openweathermap.org/api_keys (it takes couples of minutes)
 CITY = "Paris"
 ```
 
@@ -32,12 +34,14 @@ def get_weather_info(city):
     response = requests.get(url)
     return response.json()
 
+
 def format_weather_data(data):
     return {
         "temp": f'{round(int(data["main"]["temp"]) - 273.15, 1)}°',
         "city": data["name"],
     }
-    
+
+
 def run(city):
     data = get_weather_info(city)
     return format_weather_data(data)

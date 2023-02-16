@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook provides a guide to retrieving data from the Quandl API.
+
 ## Input
 
 ### Install packages
@@ -27,7 +29,7 @@ import matplotlib.pyplot as plt
 
 
 ```python
-data = quandl.get('EIA/PET_RWTC_D')
+data = quandl.get("EIA/PET_RWTC_D")
 ```
 
 ## Output

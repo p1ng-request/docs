@@ -22,7 +22,7 @@ import pandas as pd
 
 ```python
 # Output
-excel_output = 'concatenate.xlsx'
+excel_output = "concatenate.xlsx"
 ```
 
 ## Model
@@ -39,7 +39,7 @@ Then
 files = os.listdir()
 my_list = []
 for file in files:
-    if file.endswith('.xlsx'):
+    if file.endswith(".xlsx"):
         df = pd.read_excel(file)
         my_list.append(df)
 

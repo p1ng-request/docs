@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook delete a contact in HubSpot.
+**Description:** This notebook allows users to delete contacts from their HubSpot account.
 
 ## Input
 

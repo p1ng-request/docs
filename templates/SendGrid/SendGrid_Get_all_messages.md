@@ -4,7 +4,7 @@
 
 **Author:** [Sanjeet Attili](https://linkedin.com/in/sanjeet-attili-760bab190/)
 
-This notebook enables you to get a dataframe of all the activities performed
+**Description:** This notebook provides a comprehensive overview of all messages sent through SendGrid.
 
 ## Input
 
@@ -33,14 +33,16 @@ https://docs.sendgrid.com/api-reference/e-mail-activity/filter-all-messages?code
 
 
 ```python
-def get_messages(msg_id=None,
-                 from_email=None,
-                 subject=None,
-                 to_email=None,
-                 status=None,
-                 clicks=None,
-                 limit=1000):
-    
+def get_messages(
+    msg_id=None,
+    from_email=None,
+    subject=None,
+    to_email=None,
+    status=None,
+    clicks=None,
+    limit=1000,
+):
+
     kargs = locals()
     params = {}
     for k in kargs:
@@ -50,22 +52,24 @@ def get_messages(msg_id=None,
     req_url = f"https://api.sendgrid.com/v3/messages?{urllib.parse.urlencode(params)}"
     headers = {
         "Authorization": f"Bearer {SENDGRID_API_KEY}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
-    res = requests.get(req_url,
-                       headers=headers)
+    res = requests.get(req_url, headers=headers)
     try:
         res.raise_for_status()
     except requests.HTTPError as e:
-        raise(e)
+        raise (e)
     res_json = res.json()
     messages = res_json.get("messages")
-    
+
     # Formatting
     df = pd.DataFrame(messages)
-    df["last_event_time"] = df["last_event_time"].astype(str).str.replace("T", " ").str.replace("Z", "")
+    df["last_event_time"] = (
+        df["last_event_time"].astype(str).str.replace("T", " ").str.replace("Z", "")
+    )
     df.columns = df.columns.str.upper()
     return df
+
 
 df_messages = get_messages(limit=1000)
 ```

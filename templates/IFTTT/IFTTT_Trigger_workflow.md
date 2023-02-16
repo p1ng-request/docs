@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to create automated workflows based on triggers from IFTTT.
+
 ## Input
 
 ### Import library
@@ -19,7 +21,7 @@ from naas_drivers import ifttt
 ```python
 event = "myevent"
 key = "cl9U-VaeBu1**********"
-data = { "value1": "Bryan", "value2": "Helmig", "value3": 27 }
+data = {"value1": "Bryan", "value2": "Helmig", "value3": 27}
 ```
 
 ## Model

@@ -4,6 +4,8 @@
 
 **Author:** [Jeremy Ravenel](https://www.linkedin.com/in/ACoAAAJHE7sB5OxuKHuzguZ9L6lfDHqw--cdnJg/)
 
+**Description:** This notebook allows users to download files from their OwnCloud account.
+
 ## Input
 
 ### Install packages
@@ -27,9 +29,9 @@ import owncloud
 
 
 ```python
-oc = owncloud.Client('https://cloud.damken.com')
+oc = owncloud.Client("https://cloud.damken.com")
 
-oc.login('YOURNAME', 'YOURPASS')
+oc.login("YOURNAME", "YOURPASS")
 ```
 
 ## Output
@@ -38,5 +40,5 @@ oc.login('YOURNAME', 'YOURPASS')
 
 
 ```python
-oc.get_file('testdir/download_to_owncloud.ipynb', 'download_to_owncloud.ipynb')
+oc.get_file("testdir/download_to_owncloud.ipynb", "download_to_owncloud.ipynb")
 ```

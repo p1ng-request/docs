@@ -45,10 +45,12 @@ db_name = "DATABASE NAME"
 
 
 ```python
-naas.scheduler.add(cron='0 9 * * *') #Send in production this notebook and run it, every day at 9:00.
+naas.scheduler.add(
+    cron="0 9 * * *"
+)  # Send in production this notebook and run it, every day at 9:00.
 
 # use this to delete your automation
-#naas.scheduler.delete()
+# naas.scheduler.delete()
 ```
 
 ## Model
@@ -66,8 +68,5 @@ df = gsheet.connect(spreadsheet_id).get(sheet_name=sheet_name)
 
 
 ```python
-mongo.connect(host, port, user, passwd).send(df,
-                                             collection_name,
-                                             db_name,
-                                             replace=True)
+mongo.connect(host, port, user, passwd).send(df, collection_name, db_name, replace=True)
 ```

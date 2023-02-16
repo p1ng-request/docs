@@ -4,6 +4,8 @@
 
 **Author:** [Tannia Dubon](https://www.linkedin.com/in/tanniadubon/)
 
+**Description:** This notebook allows users to retrieve and analyze statistics from a Twitter profile.
+
 ## Input
 
 ### Import library
@@ -17,7 +19,7 @@ import pandas as pd
 
 
 ```python
-#install developer snscrape package via command line
+# install developer snscrape package via command line
 os.system("pip3 install git+https://github.com/JustAnotherArchivist/snscrape.git")
 ```
 
@@ -25,7 +27,7 @@ os.system("pip3 install git+https://github.com/JustAnotherArchivist/snscrape.git
 
 
 ```python
-#criteria for searching by username
+# criteria for searching by username
 username = "JupyterNaas"
 tweet_count = 500
 ```
@@ -36,8 +38,12 @@ tweet_count = 500
 
 
 ```python
-#search by username using command line
-os.system("snscrape --jsonl --max-results {} twitter-search from:{} > user-tweets.json".format(tweet_count, username))
+# search by username using command line
+os.system(
+    "snscrape --jsonl --max-results {} twitter-search from:{} > user-tweets.json".format(
+        tweet_count, username
+    )
+)
 ```
 
 ###  Read JSON
@@ -45,7 +51,9 @@ os.system("snscrape --jsonl --max-results {} twitter-search from:{} > user-tweet
 
 ```python
 # Reads the json generated from the CLI command above and creates a pandas dataframe
-df = pd.read_json('user-tweets.json', lines=True, convert_dates=True, keep_default_dates=True)
+df = pd.read_json(
+    "user-tweets.json", lines=True, convert_dates=True, keep_default_dates=True
+)
 df
 ```
 
@@ -61,23 +69,25 @@ df
 
 
 ```python
-#copy dataframe 
+# copy dataframe
 df1 = df.copy()
 
-#keep only the columns needed
-df1 = df1[['url','content','hashtags','date','likeCount','retweetCount']]
+# keep only the columns needed
+df1 = df1[["url", "content", "hashtags", "date", "likeCount", "retweetCount"]]
 
-#convert columns to upper case to follow naas df convention
+# convert columns to upper case to follow naas df convention
 df1.columns = df1.columns.str.upper()
 
-#convert time to ISO format to follow naas date convention
+# convert time to ISO format to follow naas date convention
 df1.DATE = pd.to_datetime(df1.DATE).dt.strftime("%Y-%m-%d")
 
-#clean HASHTAGS column to provide searchable items in columns
+# clean HASHTAGS column to provide searchable items in columns
 df1.HASHTAGS = df1.HASHTAGS.fillna("[]")
-df1.HASHTAGS = df1.apply(lambda row: ", ".join(list(row.HASHTAGS)) if row.HASHTAGS != '[]' else "", axis=1)
+df1.HASHTAGS = df1.apply(
+    lambda row: ", ".join(list(row.HASHTAGS)) if row.HASHTAGS != "[]" else "", axis=1
+)
 
-#display results
+# display results
 df1
 ```
 

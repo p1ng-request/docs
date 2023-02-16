@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-With this template, you can convert dataframe to dictionary in pandas WITHOUT index
+**Description:** This notebook provides an example of how to use the Pandas library to convert a dataframe into a dictionary.
 
 ## Input
 
@@ -22,7 +22,7 @@ from naas_drivers import yahoofinance
 ```python
 ticker = "TSLA"
 date_from = -100
-date_to = 'today'
+date_to = "today"
 ```
 
 ## Model
@@ -31,8 +31,7 @@ date_to = 'today'
 
 
 ```python
-df_yahoo = yahoofinance.get(ticker,
-                            date_from=-5)
+df_yahoo = yahoofinance.get(ticker, date_from=-5)
 df_yahoo
 ```
 

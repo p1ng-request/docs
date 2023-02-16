@@ -4,7 +4,7 @@
 
 **Author:** [Parth Panchal](https://www.linkedin.com/in/parthpanchal8401/)
 
-This notebook copy all elements inside a directory to another directory.
+**Description:** This notebook provides a Python script to copy files and subdirectories from one directory to another.
 
 ## Input
 
@@ -21,8 +21,8 @@ import os
 
 ```python
 # Input
-source_folder = '..'
-destination_folder = '..'
+source_folder = ".."
+destination_folder = ".."
 ```
 
 ## Model
@@ -40,7 +40,7 @@ def copy_all_files(dir_src, dir_des, overwrite=True):
     for root, dirs, files in os.walk(dir_src):
         for file in files:
             path_file = os.path.join(root, file)
-            file_from_dir = path_file.replace(dir_src, '')
+            file_from_dir = path_file.replace(dir_src, "")
             dest_path = os.path.join(dir_des, file_from_dir[1:])
             if not overwrite:
                 if not os.path.exists(dest_path):

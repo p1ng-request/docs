@@ -23,12 +23,12 @@ import naas
 
 
 ```python
-user ="your user"
-passwd ="your password"
-host ="Your Connection URL"
+user = "your user"
+passwd = "your password"
+host = "Your Connection URL"
 port = 9090
-collection_name ="COLLECTION NAME"
-db_name ="DATABASE NAME"
+collection_name = "COLLECTION NAME"
+db_name = "DATABASE NAME"
 ```
 
 ### Setup Google Sheet
@@ -44,7 +44,9 @@ sheet_name = "Sheet1"
 
 
 ```python
-naas.scheduler.add(cron='0 9 * * *') #Send in production this notebook and run it, every day at 9:00.
+naas.scheduler.add(
+    cron="0 9 * * *"
+)  # Send in production this notebook and run it, every day at 9:00.
 
 # use this to delete your automation
 # naas.scheduler.delete()
@@ -65,9 +67,5 @@ df = mongo.connect(host, port, user, passwd).get(collection_name, db_name)
 
 
 ```python
-gsheet.connect(spreadsheet_id).send(
-    sheet_name=sheet_name,
-    data=df,
-    append=False
-)
+gsheet.connect(spreadsheet_id).send(sheet_name=sheet_name, data=df, append=False)
 ```

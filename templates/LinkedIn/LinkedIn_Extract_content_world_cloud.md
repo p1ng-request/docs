@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook extracts the most used world in your LinkedIn posts.
+**Description:** This notebook provides a way to extract content from LinkedIn and visualize it in a word cloud.
 
 <div class="alert alert-info" role="info" style="margin: 10px">
 <b>Requirements:</b><br>
@@ -31,7 +31,7 @@ import pandas as pd
 
 ```python
 # Input
-csv_input = f"LINKEDIN_PROFILE_POSTS.csv" # CSV path with your posts stats generated with 'LinkedIn_Get_profile_posts_stats.ipynb' or 'LinkedIn_Get_company_posts_stats.ipynb'
+csv_input = f"LINKEDIN_PROFILE_POSTS.csv"  # CSV path with your posts stats generated with 'LinkedIn_Get_profile_posts_stats.ipynb' or 'LinkedIn_Get_company_posts_stats.ipynb'
 
 # Outputs
 name_output = "LINKEDIN_CONTENT_WORLD_CLOUD"
@@ -44,7 +44,7 @@ image_output = f"{name_output}.png"
 ```python
 naas.dependency.add()
 
-#-> Uncomment the line below to remove your dependency
+# -> Uncomment the line below to remove your dependency
 # naas.dependency.delete()
 ```
 
@@ -63,6 +63,7 @@ def read_csv(file_path):
         return pd.DataFrame()
     return df
 
+
 df_posts = read_csv(csv_input)
 print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
@@ -72,17 +73,16 @@ df_posts.head(1)
 
 
 ```python
-#Creating the text variable
+# Creating the text variable
 text = " ".join(text for text in df_posts.astype(str).TEXT)
 ```
 
 
 ```python
 # Creating word_cloud with text as argument in .generate() method
-word_cloud = WordCloud(collocations=False,
-                       background_color='white',
-                       width=1200,
-                       height=600).generate(text)
+word_cloud = WordCloud(
+    collocations=False, background_color="white", width=1200, height=600
+).generate(text)
 ```
 
 
@@ -111,6 +111,6 @@ word_cloud.to_file(image_output)
 # Share output with naas
 naas.asset.add(image_output)
 
-#-> Uncomment the line below to remove your asset
+# -> Uncomment the line below to remove your asset
 # naas.asset.delete(image_output)
 ```

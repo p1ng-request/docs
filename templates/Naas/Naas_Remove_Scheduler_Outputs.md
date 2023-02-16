@@ -4,7 +4,7 @@
 
 **Author:** [Maxime Jublou](https://www.linkedin.com/in/maximejublou)
 
-The goal of this notebook is to remove your production scheduler outputs automatically.
+**Description:** This notebook allows users to remove scheduler outputs from the Naas platform.
 
 ## Input
 
@@ -24,7 +24,7 @@ import naas
 # Schedule your notebook everyday at 9 AM
 naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
 ```
 
@@ -35,9 +35,11 @@ naas.scheduler.add(cron="0 9 * * *")
 
 ```python
 def remove_scheduler_outputs():
-    for scheduler_output in glob.glob('/home/ftp/.naas/home/ftp/**/*__output_*.ipynb', recursive=True):
+    for scheduler_output in glob.glob(
+        "/home/ftp/.naas/home/ftp/**/*__output_*.ipynb", recursive=True
+    ):
         os.remove(scheduler_output)
-        print(f'✅ DELETED: {scheduler_output}')
+        print(f"✅ DELETED: {scheduler_output}")
 ```
 
 ## Output

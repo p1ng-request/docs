@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-This notebook will help you use datetime library through several examples.
+**Description:** This notebook provides an introduction to using the Python datetime library to work with dates and times.
 
 ## Input
 

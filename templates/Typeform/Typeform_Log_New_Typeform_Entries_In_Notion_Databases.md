@@ -72,9 +72,8 @@ DATABASE_URL = "<DATABASE_URL>"
 # Schedule your notebook everyday at 9 AM
 naas.scheduler.add(cron="0 9 * * *")
 
-#-> Uncomment the line below to remove your scheduler
+# -> Uncomment the line below to remove your scheduler
 # naas.scheduler.delete()
-
 ```
 
 ## Model
@@ -95,12 +94,13 @@ naas.scheduler.add(cron="0 9 * * *")
 
 ```python
 def get_questions_dict():
-    fields = typeform.forms.get(FORM_ID)['fields']
-    questions={}
+    fields = typeform.forms.get(FORM_ID)["fields"]
+    questions = {}
     for field in fields:
-        new_str = re.sub('{{field:' + r'[0-9A-Z]+'+'}}, ', '', field['title'])
-        questions[field['id']] = new_str
+        new_str = re.sub("{{field:" + r"[0-9A-Z]+" + "}}, ", "", field["title"])
+        questions[field["id"]] = new_str
     return questions
+
 
 questions = get_questions_dict()
 questions
@@ -112,38 +112,41 @@ questions
 ```python
 def get_answers(form_id, token):
     url = f"https://api.typeform.com/forms/{form_id}/responses"
-    headers = {'Authorization': f'Bearer {token}'}
+    headers = {"Authorization": f"Bearer {token}"}
 
-    r = requests.get(url, headers = headers)
-    responses = pd_.get(r.json(), 'items')
-    answers= []
+    r = requests.get(url, headers=headers)
+    responses = pd_.get(r.json(), "items")
+    answers = []
     for resp in responses:
-        response_answer =[]
-        for field in pd_.get(resp, 'answers'):
-            entries={}
-            entries['id'], entries['type'] = pd_.get(field, 'field.id'), pd_.get(field, 'type')
-    
-            if entries['type'] == 'text':
-                entries['answer'] = pd_.get(field, f"{entries['type']}")
-                
-            elif entries['type'] == 'choice':
-                entries['answer'] = pd_.get(field, 'choice.label')
-                
-            elif entries['type'] == 'choices':
-                entries['answer'] = pd_.get(field, 'choices.labels')
-                
-            elif entries['type'] == 'number':
-                entries['answer'] = pd_.get(field, 'number')
-                
-            elif entries['type'] == 'phone_number':
-                entries['answer'] = pd_.get(field, 'phone_number')
-            
-            elif entries['type'] == 'email':
-                entries['answer'] = pd_.get(field, 'email')
-                
+        response_answer = []
+        for field in pd_.get(resp, "answers"):
+            entries = {}
+            entries["id"], entries["type"] = pd_.get(field, "field.id"), pd_.get(
+                field, "type"
+            )
+
+            if entries["type"] == "text":
+                entries["answer"] = pd_.get(field, f"{entries['type']}")
+
+            elif entries["type"] == "choice":
+                entries["answer"] = pd_.get(field, "choice.label")
+
+            elif entries["type"] == "choices":
+                entries["answer"] = pd_.get(field, "choices.labels")
+
+            elif entries["type"] == "number":
+                entries["answer"] = pd_.get(field, "number")
+
+            elif entries["type"] == "phone_number":
+                entries["answer"] = pd_.get(field, "phone_number")
+
+            elif entries["type"] == "email":
+                entries["answer"] = pd_.get(field, "email")
+
             response_answer.append(entries)
         answers.append(response_answer)
     return answers
+
 
 answers = get_answers(FORM_ID, TYPEFORM_ACCESS_TOKEN)
 answers[0]
@@ -156,30 +159,37 @@ def get_typeform_data(form_id, token, questions, answers):
     # Retrieve response and map field id with field title to column name's
     df = pd.DataFrame()
     url = f"https://api.typeform.com/forms/{form_id}/responses"
-    headers = {'Authorization': f'Bearer {token}'}
+    headers = {"Authorization": f"Bearer {token}"}
 
-    r = requests.get(url, headers = headers)
-    lst_responses = pd_.get(r.json(), 'items')
+    r = requests.get(url, headers=headers)
+    lst_responses = pd_.get(r.json(), "items")
     for idx, resp in enumerate(lst_responses):
-        in_time, out_time = pd_.get(resp, 'landed_at'), pd_.get(resp, 'submitted_at')
-        time_diff = datetime.strptime(out_time, '%Y-%m-%dT%H:%M:%SZ') - datetime.strptime(in_time, '%Y-%m-%dT%H:%M:%SZ')
-        if str(time_diff).split(':')[1] == '00':
-            df.loc[idx, 'time_taken_to_fill_form'] = ":".join(str(time_diff).split(':')[1:]) + 'secs'
+        in_time, out_time = pd_.get(resp, "landed_at"), pd_.get(resp, "submitted_at")
+        time_diff = datetime.strptime(
+            out_time, "%Y-%m-%dT%H:%M:%SZ"
+        ) - datetime.strptime(in_time, "%Y-%m-%dT%H:%M:%SZ")
+        if str(time_diff).split(":")[1] == "00":
+            df.loc[idx, "time_taken_to_fill_form"] = (
+                ":".join(str(time_diff).split(":")[1:]) + "secs"
+            )
         else:
-            df.loc[idx, 'time_taken_to_fill_form'] = ":".join(str(time_diff).split(':')[1:]) + 'mins'
-        
-        df.loc[idx, 'response_id'] = pd_.get(resp, 'response_id')
-    
+            df.loc[idx, "time_taken_to_fill_form"] = (
+                ":".join(str(time_diff).split(":")[1:]) + "mins"
+            )
+
+        df.loc[idx, "response_id"] = pd_.get(resp, "response_id")
+
     for idx, response in enumerate(answers):
         for entity in response:
-            if entity['type'] == 'choices':
-                df.loc[idx, questions[entity['id']]] = ",".join(entity['answer'])
+            if entity["type"] == "choices":
+                df.loc[idx, questions[entity["id"]]] = ",".join(entity["answer"])
             else:
-                df.loc[idx, questions[entity['id']]] = entity['answer']
-                
-    df.fillna('None', inplace=True)
-    
+                df.loc[idx, questions[entity["id"]]] = entity["answer"]
+
+    df.fillna("None", inplace=True)
+
     return df
+
 
 df_typeform = get_typeform_data(FORM_ID, TYPEFORM_ACCESS_TOKEN, questions, answers)
 df_typeform
@@ -200,20 +210,22 @@ len(pages)
 
 ```python
 def add_new_entries(df):
-    if df.shape[0]==0:
+    if df.shape[0] == 0:
         return df
-    
+
     columns = df.columns.to_list()
     for col in columns:
-        if 'name' in col:
+        if "name" in col:
             name_col = col
-    
+
     columns.remove(name_col)
-    
+
     for idx, row in df.iterrows():
         if idx == df.shape[0]:
             break
-        page = notion.connect(NOTION_TOKEN).page.create(database_id=DATABASE_URL, title= row[name_col])
+        page = notion.connect(NOTION_TOKEN).page.create(
+            database_id=DATABASE_URL, title=row[name_col]
+        )
         for column in columns:
             page.rich_text(column, str(row[column]))
             page.update()
@@ -225,24 +237,25 @@ def add_new_entries(df):
 def add_data_to_notion(df_typeform, pages):
     id_present = False
     try:
-        pages[0].properties['response_id']
+        pages[0].properties["response_id"]
         id_present = True
     except KeyError:
         pass
-    
+
     # If no data is present initially
     if not id_present:
         df = add_new_entries(df_typeform)
-    
+
     # If some data exists
     else:
         notion_df = notion.connect(NOTION_TOKEN).database.get(DATABASE_URL).df()
         existing_ids = notion_df.response_id.to_list()
-        
+
         new_entries = df_typeform[df_typeform.response_id.isin(existing_ids) == False]
         df = add_new_entries(new_entries)
-    
+
     return df
+
 
 df_notion = add_data_to_notion(df_typeform, pages)
 ```

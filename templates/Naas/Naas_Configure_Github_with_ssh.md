@@ -4,6 +4,8 @@
 
 **Author:** [Maxime Jublou](https://linkedin.com/in/maximejublou)
 
+**Description:** This notebook provides instructions on how to configure Github with SSH for secure access to the Naas platform.
+
 ## Input
 
 ### Import needed libraries

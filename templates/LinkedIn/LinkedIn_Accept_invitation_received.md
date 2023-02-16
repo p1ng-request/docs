@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
-In this notebook, you will be able to accept an invitation received
+**Description:** This notebook allows you to accept invitations to connect on LinkedIn.
 
 ## Input
 
@@ -56,7 +56,9 @@ is_generic = False
 
 
 ```python
-result = linkedin.connect(LI_AT, JSESSIONID).invitation.accept(invitation_id, shared_secret, is_generic)
+result = linkedin.connect(LI_AT, JSESSIONID).invitation.accept(
+    invitation_id, shared_secret, is_generic
+)
 ```
 
 ## Output

@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook delete a deal in HubSpot.
+**Description:** This notebook allows users to delete deals from their HubSpot account.
 
 ## Input
 
@@ -30,7 +30,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-deal_id = '3501002068'
+deal_id = "3501002068"
 ```
 
 ## Model

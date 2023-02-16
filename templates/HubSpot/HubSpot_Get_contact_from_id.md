@@ -4,12 +4,7 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description :** This notebook get a contact from HubSpot using its ID. Data will be returned as json with keys: 
-- 'id': number,
-- 'properties': dict
-- 'createdAt': datetime
-- 'updatedAt': datetime
-- 'archived': boolean
+**Description:** This notebook allows you to retrieve contact information from a HubSpot account using a contact ID.
 
 ## Input
 
@@ -35,7 +30,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-contact_id = "ENTER_CONTACT_ID_HERE" # "580001"
+contact_id = "ENTER_CONTACT_ID_HERE"  # "580001"
 ```
 
 #### Enter your Contact properties
