@@ -51,9 +51,9 @@ Naas can be used to build AI systems such as search and conversational bots that
 
 Contact Jeremy on [LinkedIn](https://www.linkedin.com/in/jeremyravenel/) or via email [jeremy@naas.ai](mailto:jeremy@naas.ai), if you need guidance in building those solutions for your organization. &#x20;
 
-## Naas Cloud
+## Naas Cloud Infrastructure
 
-Naas cloud is the fastest and easiest way to get you started!
+Naas.ai Cloud Infrastructure is the fastest and easiest way to get you started!
 
 Try all of Naas's features for free using [Naas Cloud](https://app.naas.ai/hub/login) a stable environment, without having to install anything.
 
