@@ -51,15 +51,13 @@ Naas can be used to build AI systems such as search and conversational bots that
 
 Contact Jeremy on [LinkedIn](https://www.linkedin.com/in/jeremyravenel/) or via email [jeremy@naas.ai](mailto:jeremy@naas.ai), if you need guidance in building those solutions for your organization. &#x20;
 
-## Naas Cloud Infrastructure
+## Naas Infrastructure
 
-Naas.ai Cloud Infrastructure is the fastest and easiest way to get you started!
+Naas Cloud Infrastructure is the fastest and easiest way to get you started!
 
 Try all of Naas's features for free using [Naas Cloud](https://app.naas.ai/hub/login) a stable environment, without having to install anything.
 
-## How to use Naas Cloud?
-
-### Start with templates&#x20;
+## Start with templates&#x20;
 
 The easiest way to go is simply to find the right template for you. Once you have found the templates that suits your needs (if you don't, feel free to [request new templates here](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+)), you can start leveraging Naas services to build your solutions. But of course, you can also come with your own notebooks and scripts.
 
@@ -67,7 +65,7 @@ The easiest way to go is simply to find the right template for you. Once you hav
 [templates.md](templates.md)
 {% endcontent-ref %}
 
-### Naas services
+## Naas Services
 
 Naas creates a dynamic production environment for your Notebooks. Each time you run the following formulas in a notebook, it will be sent into the "\_\_production\_\_" folder on your Naas server for execution. &#x20;
 
@@ -77,7 +75,7 @@ To get started, create a folder, open a notebook, and import Naas :
 import naas
 ```
 
-### Schedule your notebook
+### Schedule Notebooks
 
 Send in production this notebook and run it, every day at 9:00&#x20;
 
@@ -89,7 +87,7 @@ naas.scheduler.add(cron="0 9 * * *")
 [scheduler.md](features/scheduler.md)
 {% endcontent-ref %}
 
-### Add a dependency
+### Add Dependencies
 
 Send in production any file type like `test.csv` as a dependency:
 
@@ -101,7 +99,7 @@ naas.dependency.add("test.csv")
 [dependency.md](features/dependency.md)
 {% endcontent-ref %}
 
-### Add a secret key
+### Add Secret Keys
 
 Copy in production any secret key :
 
@@ -121,7 +119,7 @@ This allows you to push your notebook in production without sensitive data getti
 [secret.md](features/secret.md)
 {% endcontent-ref %}
 
-### Trigger Webhook
+### Trigger Webhooks
 
 Copy in production this notebook and allow to run it by calling the returned URL:
 
@@ -141,7 +139,7 @@ naas.webhook.respond_notebook()
 [api.md](features/api.md)
 {% endcontent-ref %}
 
-### Expose assets
+### Expose Assets
 
 Copy in production this asset ( file ) and allow to get it by calling the returned url:
 
@@ -153,7 +151,7 @@ link = naas.asset.add("tesla-chart.html")
 [asset.md](features/asset.md)
 {% endcontent-ref %}
 
-### Send notifications
+### Send Notifications
 
 Send an email notification to anyone, to notify about data changes, alert on notebooks operations, etc...
 
@@ -169,9 +167,32 @@ naas.notification.send(email=email, subject=subject, content=content)
 [notification.md](features/notification.md)
 {% endcontent-ref %}
 
-### Help
+### Create Data Pipelines
 
-### Open
+Automate and schedule data workflows, streamlining your data processing and saving you time and effort using Notebooks.
+
+Start with this simple dummy pipeline snippet and learn more on the dedicated docs page.&#x20;
+
+```python
+from naas.pipeline.pipeline import (Pipeline, DummyStep,End)
+
+pipeline = Pipeline()
+
+step1 = DummyStep("Notebook 1")
+step2 = DummyStep("Notebook 2")
+step3 = DummyStep("Notebook 3")
+
+pipeline >> step1 >> step2 >> step3 >> End()
+pipeline.run()
+```
+
+{% content-ref url="features/pipeline-beta.md" %}
+[pipeline-beta.md](features/pipeline-beta.md)
+{% endcontent-ref %}
+
+## Help & Support&#x20;
+
+### Open help chat
 
 If at any time you are lost, you need help, or just want some info!
 
@@ -191,7 +212,7 @@ import naas
 naas.close_help()
 ```
 
-### Documentation
+### Access documentation
 
 Show a button to quickly open this documentation from Jupyter
 
@@ -200,13 +221,25 @@ import naas
 naas.doc()
 ```
 
-## Contributing
+### Hire a Naas Expert
+
+As the field of data & AI space continues to evolve, it's becoming increasingly clear that companies need experts who can not only build data products and models, but also deploy and maintain them at scale. By hiring a Naas expert, you can ensure that your data products are built to the highest standards, and that they are optimized for your specific business needs.&#x20;
+
+Whether you need to build a chatbot, extract insights from text data, or perform sentiment analysis at scale, a Naas expert can help you achieve your goals with greater speed and efficiency.
+
+So if you're ready to take your data products to the next level, consider hiring a Naas expert today. Contact Jeremy on [LinkedIn](https://www.linkedin.com/in/jeremyravenel/) or via email [jeremy@naas.ai](mailto:jeremy@naas.ai) now to learn more!
+
+
+
+## Community
+
+### Contribute
 
 We value all kinds of contributions - not just code. We are particularly motivated to support new contributors and people who are looking to learn and develop their skills.
 
 Please read our [Contributing guidelines](contributing-to-naas/contributing.md) on how to get started.
 
-## Community Support
+### Reach out
 
 You can reach out to us through the following channels:
 
