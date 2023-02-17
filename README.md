@@ -9,8 +9,6 @@ coverY: 0
 
 # Get Started
 
-
-
 {% hint style="warning" %}
 This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
 {% endhint %}
@@ -45,7 +43,7 @@ The easiest way to go is simply to find the right template for you.&#x20;
 
 ### Naas services
 
-Naas creates a dynamic production environment for your Notebooks. Each time you run the following formulas in a notebook, it will be sent into the "⚡️ → Production" folder" for execution. &#x20;
+Naas creates a dynamic production environment for your Notebooks. Each time you run the following formulas in a notebook, it will be sent into the "\_\_production\_\_" folder on your Naas server for execution. &#x20;
 
 To get started, create a folder, open a notebook, and import Naas :
 
@@ -122,7 +120,7 @@ naas.webhook.respond_notebook()
 Copy in production this asset ( file ) and allow to get it by calling the returned url:
 
 ```python
-link = naas.assets.add("tesla-chart.html")
+link = naas.asset.add("tesla-chart.html")
 ```
 
 {% content-ref url="features/asset.md" %}
@@ -138,7 +136,7 @@ Send an email notification to anyone, to notify about data changes, alert on not
 email = "elon@musk.com"
 subject = "The tesla action is going up"
 content = "check in the link the chart data maide from fresh dataset : " + link
-naas.notifications.send(email=email, subject=subject, content=content)
+naas.notification.send(email=email, subject=subject, content=content)
 ```
 
 {% content-ref url="features/notification.md" %}

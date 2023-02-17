@@ -1,4 +1,8 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Follow_content_published_by_weekdays_by_months.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Follow+content+published+by+weekdays+by+months:+Error+short+description">Bug report</a>
+# Follow content published by weekdays by months
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Follow\_content\_published\_by\_weekdays\_by\_months.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Follow+content+published+by+weekdays+by+months:+Error+short+description)
 
 **Tags:** #linkedin #html #plotly #csv #image #content #analytics #dependency
 
@@ -6,15 +10,13 @@
 
 **Description:** This notebook allows you to track and follow content published on LinkedIn by day of the week and month.
 
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Requirements:</b><br>
-To run this notebook, you must have already run <b>LinkedIn_Get_profile_posts_stats.ipynb</b> or <b>LinkedIn_Get_company_posts_stats.ipynb</b> to get your post stats in CSV.<br>
-</div>
+Requirements:\
+To run this notebook, you must have already run LinkedIn\_Get\_profile\_posts\_stats.ipynb or LinkedIn\_Get\_company\_posts\_stats.ipynb to get your post stats in CSV.\
 
-## Input
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 import naas
@@ -26,8 +28,7 @@ import calendar
 from dateutil.relativedelta import relativedelta
 ```
 
-### Setup Variables
-
+#### Setup Variables
 
 ```python
 # Input
@@ -41,8 +42,7 @@ html_output = f"{name_output}.html"
 image_output = f"{name_output}.png"
 ```
 
-### Setup Naas dependency
-
+#### Setup Naas dependency
 
 ```python
 naas.dependency.add()
@@ -51,11 +51,11 @@ naas.dependency.add()
 # naas.dependency.delete()
 ```
 
-## Model
+### Model
 
-### Get your posts
+#### Get your posts
+
 Get posts feed from CSV stored in your local (Returns empty if CSV does not exist)
-
 
 ```python
 def read_csv(file_path):
@@ -72,8 +72,7 @@ print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
 ```
 
-### Get frequency
-
+#### Get frequency
 
 ```python
 MONTH_ROLLING = 12
@@ -137,8 +136,7 @@ df_plotly = get_frequency(
 df_plotly  # .tail(10)
 ```
 
-### Plot Heatmap
-
+#### Plot Heatmap
 
 ```python
 LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png"  # Chart logo
@@ -240,11 +238,9 @@ fig = create_heatmap(
 )
 ```
 
-## Output
+### Output
 
-
-### Save and share your csv file
-
+#### Save and share your csv file
 
 ```python
 # Save your dataframe in CSV
@@ -257,8 +253,7 @@ naas.asset.add(csv_output)
 # naas.asset.delete(csv_output)
 ```
 
-### Save and share your graph in HTML
-
+#### Save and share your graph in HTML
 
 ```python
 # Save your graph in HTML
@@ -271,8 +266,7 @@ naas.asset.add(html_output, params={"inline": True})
 # naas.asset.delete(html_output)
 ```
 
-### Save and share your graph in image
-
+#### Save and share your graph in image
 
 ```python
 # Save your graph in PNG
