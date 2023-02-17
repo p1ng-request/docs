@@ -76,6 +76,8 @@
     * [Get export Factures](templates/Bazimo/Bazimo_Get_export_Factures.md)
     * [Get export Lots](templates/Bazimo/Bazimo_Get_export_Lots.md)
     * [Get export Actifs](templates/Bazimo/Bazimo_Get_export_Actifs.md)
+  * [BeautifulSoup](templates/BeautifulSoup/README.md)
+    * [Scrape emails from URL](templates/BeautifulSoup/BeautifulSoup_Scrape_emails_from_URL.md)
   * [BigQuery](templates/BigQuery/README.md)
     * [Create table from csv](templates/BigQuery/BigQuery_Create_table_from_csv.md)
     * [Read Table](templates/BigQuery/BigQuery_Read_Table.md)
