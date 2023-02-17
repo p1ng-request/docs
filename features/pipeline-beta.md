@@ -217,6 +217,32 @@ pipeline.run()
 
 In this example, if the `distribution` step fails, the pipeline will send a notification to the designated recipient. You can customize the notification message and recipient using the notification feature. This helps you to quickly identify and troubleshoot any issues with your pipeline.
 
+## Orchestrate Your Pipelines with Naas Scheduler
+
+Naas Pipeline provides a powerful and flexible framework for building data pipelines and products. However, pipelines are only useful if they can be run automatically on a regular basis. This is where Naas Scheduler comes in. [Naas Scheduler](scheduler.md) allows you to schedule notebooks and run them automatically at specified intervals using CRON tasks.
+
+By combining Naas Pipeline with Naas Scheduler, you can orchestrate complex data flows for your business. Here's how it works:
+
+1. First, build your data pipeline using Naas Pipeline. Define the steps of your pipeline, their dependencies, and any necessary parameters or inputs.
+2. Once your pipeline is defined, you can create a new notebook that imports your pipeline and sets it up to run automatically using Naas Scheduler.
+3. In the new notebook, use the Naas Scheduler to schedule your pipeline to run at specific times using CRON tasks. You can also specify parameters such as email notifications and success callbacks.
+4. Run the Naas Scheduler notebook to send it to Naas \_\_production\_\_ folder and let it run automatically according to the schedule you set up. Naas Scheduler will automatically start the notebook and run the pipeline at the scheduled times, even when you are not there.
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 14.24.31.png" alt=""><figcaption></figcaption></figure>
+
+By using Naas Pipeline and Naas Scheduler together, you can create complex data flows that run automatically and reliably. This can help you save time, reduce errors, and improve the efficiency of your data processes. Whether you're building a simple data pipeline or a complex data product, Naas Pipeline and Naas Scheduler provide a powerful combination for orchestrating your data flows.
+
+## Comparison with Other Data Pipeline Tools
+
+**Naas Pipeline** is a Python package built on top of Papermil that allows you to build and manage data pipelines. It provides a simple and easy-to-use syntax for defining your pipeline and managing its execution. One of the unique features of Naas Pipeline is that it allows you to build pipelines using Jupyter notebooks as individual steps and to design your pipeline via DummyStep, which can be helpful for data scientists who are more comfortable working in a notebook environment. Additionnaly, Naas Pipeline can be further strengthened by its integration with Naas Scheduler, which provides a simple and powerful way to schedule and orchestrate data flows.&#x20;
+
+**MetaFlow** is another Python package for building and managing data pipelines. It is particularly well-suited for building machine learning pipelines and managing experiments. One of the key features of MetaFlow is its support for versioning and reproducibility.&#x20;
+
+**Dagster** is a data orchestration tool that allows you to build and manage complex data pipelines. It provides a simple and declarative way to define your pipeline using Python code, and supports a variety of data sources and compute platforms. One of the unique features of Dagster is its support for type checking and validation, which can help catch errors early in the pipeline development process.&#x20;
+
+**Ploomber** is a Python package for building and managing data pipelines. It provides a simple and declarative API for defining your pipeline, and supports a variety of data sources and compute platforms. Ploomber also supports templating and task dependencies, which can help simplify the development of complex pipelines.&#x20;
+
+In summary, while all of these tools share a common goal of helping users build and manage data pipelines, they have different strengths and weaknesses. Naas Pipeline is particularly well-suited for data scientists who prefer to work in a notebook environment, while MetaFlow is well-suited for machine learning pipelines and experiments. Dagster focuses on type checking and validation, while Ploomber supports templating and task dependencies.\
 
 
 ## Need help?
