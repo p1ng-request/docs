@@ -15,9 +15,7 @@ This documentation is in `beta`. It may change frequently. To propose changes or
 
 ## Welcome to Naas!
 
-Notebooks as a service (Naas) is an open source platform that allows anyone touching data (analysts, scientists and engineers) to create powerful data solutions combining automation, analytics and AI from the comfort of their Jupyter notebooks.
-
-Naas is an alternative to Google Colab, with superpowers.
+Naas (Notebooks as a service) is an open source platform that empowers anyone working with data (analysts, scientists, and engineers) to create powerful data solutions combining automation, analytics, and AI from the comfort of their Jupyter notebooks.
 
 The platform upgrades notebooks with 3 low-code layers to get things done faster: features, drivers, and templates.
 
@@ -25,17 +23,45 @@ The platform upgrades notebooks with 3 low-code layers to get things done faster
 * ****[**Drivers**](drivers/) act as connectors to push and/or pull data from databases, APIs, Machine Learning algorithms, and more.
 * ****[**Features**](features/) transform Jupyter in a production-ready environment with scheduling, asset sharing, and notifications.
 
+Our mission is to make data & AI product building accessible to anyone.
+
+## What can you build with Naas?
+
+With Naas platform, you can quickly and easily create a wide variety of data-driven products and applications.
+
+### **Static Reports**
+
+Naas can be used to generate static reports such as PDFs, slides, and spreadsheets. You can create Jupyter notebooks to process and analyze data and then use a library like **`reportlab`** to generate a PDF report. Similarly, you can use **`pandas`** and **`openpyxl`** to generate Excel spreadsheets. Naas provides a simple way to schedule and automate the generation of these reports using the Naas Scheduler.
+
+### **Dynamic Reports and Dashboards**
+
+Naas can be used to create dynamic reports and dashboards using popular open-source libraries such as Plotly Dash, Panel, and Streamlit. You can build interactive web applications that allow users to interact with data and gain insights in real-time. Naas provides a simple way to deploy these applications to the web, so you can share them with your team or customers.
+
+### **APIs**
+
+Naas can be used to build APIs using popular Python frameworks such as FastAPI and Flask. You can create Jupyter notebooks to process and analyze data and then use FastAPI or Flask to create a RESTful API. Naas provides a simple way to deploy these APIs to the cloud, so you can integrate them into your applications.
+
+### **Alerting Systems**
+
+Naas provides a simple way to create alerting systems that notify users via Slack, Teams, WhatsApp, or email. You can use Jupyter notebooks to monitor data and trigger alerts based on specific conditions. Naas provides integrations with popular messaging services, making it easy to send alerts to your team.
+
+### **AI Systems**
+
+Naas can be used to build AI systems such as search and conversational bots that use natural language processing (NLP) to understand and respond to user queries. You can use Jupyter notebooks to train and fine-tune large language models such as OpenAI's GPT-3 on your company's data. Naas provides a simple way to deploy these models to the cloud, so you can integrate them into your applications.
+
+Contact Jeremy on [LinkedIn](https://www.linkedin.com/in/jeremyravenel/) or via email [jeremy@naas.ai](mailto:jeremy@naas.ai), if you need guidance in building those solutions for your organization. &#x20;
+
 ## Naas Cloud
 
 Naas cloud is the fastest and easiest way to get you started!
 
-Try all of Naas's features for free using [Naas cloud](https://app.naas.ai/hub/login) a stable environment, without having to install anything.
+Try all of Naas's features for free using [Naas Cloud](https://app.naas.ai/hub/login) a stable environment, without having to install anything.
 
 ## How to use Naas Cloud?
 
 ### Start with templates&#x20;
 
-The easiest way to go is simply to find the right template for you.&#x20;
+The easiest way to go is simply to find the right template for you. Once you have found the templates that suits your needs (if you don't, feel free to [request new templates here](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+)), you can start leveraging Naas services to build your solutions. But of course, you can also come with your own notebooks and scripts.
 
 {% content-ref url="templates.md" %}
 [templates.md](templates.md)
