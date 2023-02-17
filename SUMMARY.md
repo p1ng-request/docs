@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Get Started](README.md)
-* [🪐 Low-code features](features/README.md)
+* [🪐 Features](features/README.md)
   * [⏰ Scheduler](features/scheduler.md)
   * [⚙ Webhook](features/api.md)
   * [🖼 Asset](features/asset.md)
@@ -11,7 +11,7 @@
   * [🏭 Pipeline (Beta)](features/pipeline-beta.md)
   * [👈 Callback (Alpha)](features/callback.md)
   * [🏰 Domain (Alpha)](features/domain.md)
-* [🏎 Low-code drivers](drivers/README.md)
+* [🏎 Drivers](drivers/README.md)
   * [💬 AI/Machine Learning](drivers/ai-machine-learning/README.md)
     * [Clustering](drivers/ai-machine-learning/clustering.md)
     * [NLP](drivers/ai-machine-learning/natural-language-processing.md)
@@ -718,7 +718,7 @@
     * [Connect to server](<templates/Elastic Search/Elastic Search\_Connect\_to\_server.md>)
   * [Excel 365](<templates/Excel 365/README.md>)
     * [Access Excel 365 sheet](<templates/Excel 365/Access Excel 365 sheet.md>)
-* [⚡ Naas manager](naas-manager/README.md)
+* [⚡ Naas Manager](naas-manager/README.md)
 * [🐳 Install Locally](install-locally.md)
 * [🌎 Get Involved](contributing-to-naas.md)
   * [Code of Conduct](project-overview/code-of-conduct.md)

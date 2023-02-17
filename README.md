@@ -15,7 +15,7 @@ This documentation is in `beta`. It may change frequently. To propose changes or
 
 ## Welcome to Naas!
 
-Naas (Notebooks as a service) is an open source platform that empowers anyone working with data (analysts, scientists, and engineers) to create powerful data solutions combining automation, analytics, and AI from the comfort of their Jupyter notebooks.
+Naas (Notebooks as a service) is a low-code open source data & AI platform that empowers anyone working with data (analysts, scientists, and engineers) to create powerful data solutions combining automation, analytics, and AI from the comfort of their Jupyter notebooks.
 
 The platform upgrades notebooks with 3 low-code layers to get things done faster: features, drivers, and templates.
 

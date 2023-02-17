@@ -1,10 +1,10 @@
 ---
-description: The control center of your Naas server.
+description: The control center of your Naas.
 ---
 
-# ⚡ Naas manager
+# ⚡ Naas Manager
 
-<mark style="background-color:yellow;">The “⚡️ → Production folder” visible in your file system is where you can see where your notebooks and files are sent to be scheduled, exposed, triggered to create data jobs.</mark>
+The “\_\__production_\_\_” folder visible in your file system is where you can see where your notebooks and files are sent to be scheduled, exposed, triggered to create data jobs.
 
 ## Concept
 

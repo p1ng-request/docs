@@ -7,8 +7,8 @@ cover: >-
 coverY: 0
 ---
 
-# 🪐 Low-code features
+# 🪐 Features
 
-Check out the library on PyPI:
+The library is available on PyPI:
 
 {% embed url="https://pypi.org/project/naas/" %}
