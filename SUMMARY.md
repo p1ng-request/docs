@@ -592,6 +592,8 @@
     * [Create Table in Database](templates/SQLite/SQLite_Create_Table_in_Database.md)
     * [Read data in Table](templates/SQLite/SQLite_Read_data_in_Table.md)
     * [List Tables in Database](templates/SQLite/SQLite_List_Tables_in_Database.md)
+  * [SWIFT](templates/SWIFT/README.md)
+    * [Create MT940 XML file](templates/SWIFT/SWIFT_Create_MT940_XML_file.md)
   * [SendGrid](templates/SendGrid/README.md)
     * [Get all messages](templates/SendGrid/SendGrid_Get_all_messages.md)
     * [Send message](templates/SendGrid/SendGrid_Send_message.md)
