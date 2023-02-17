@@ -170,6 +170,10 @@ Naas provides a visual representation of the pipeline in the form of a DAG, whic
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.36.30 (2).png" alt=""><figcaption></figcaption></figure>
 
+Naas aslo provides a table representation of the pipeline which displays the status of each step. This table is easily accessible by replacing `pipeline.run()` by `pipeline.run(style="progress")`
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 13.50.16.png" alt=""><figcaption></figcaption></figure>
+
 ### Color Coding <a href="#monitor-your-pipeline-in-22pipeline_executions-22" id="monitor-your-pipeline-in-22pipeline_executions-22"></a>
 
 Another helpful feature of the Naas pipeline UI is the color coding of each step. Each step is represented by a box, and the color of the box represents the status of the step:
@@ -223,6 +227,7 @@ Just use the following command:&#x20;
 import naas
 
 naas.open_help()
+# use naas.close_help() to close the popup
 ```
 
 
