@@ -211,3 +211,19 @@ pipeline.run()
 
 In this example, if the `distribution` step fails, the pipeline will send a notification to the designated recipient. You can customize the notification message and recipient using the notification feature. This helps you to quickly identify and troubleshoot any issues with your pipeline.
 
+
+
+## Need help?
+
+If you need guidance on how to build your pipelines or data products with Naas, don't hesitate to ask for help in the Naas community or contact the Naas team with the internal chat inside the app.&#x20;
+
+Just use the following command:&#x20;
+
+```python
+import naas
+
+naas.open_help()
+```
+
+
+
