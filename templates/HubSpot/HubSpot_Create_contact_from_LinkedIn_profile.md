@@ -1,35 +1,31 @@
-# Create contact from LinkedIn profile
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Create_contact_from_LinkedIn_profile.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=HubSpot+-+Create+contact+from+LinkedIn+profile:+Error+short+description">Bug report</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot\_Create\_contact\_from\_LinkedIn\_profile.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=HubSpot+-+Create+contact+from+LinkedIn+profile:+Error+short+description)
-
-**Tags:** #hubspot #linkedin #profile #naas\_drivers #snippet #sales
+**Tags:** #hubspot #linkedin #profile #naas_drivers #snippet #sales
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook creates a contact in HubSpot from a LinkedIn profile URL with:
+- email
+- linkedinbio
+- phone and mobilephone
+- website
+- twitterhandle
+- firstname
+- lastname
+- info
+- jobtitle
+- industry
+- city
+- state
+- country
+- job_function
+- company
+- field_of_study
 
-* email
-* linkedinbio
-* phone and mobilephone
-* website
-* twitterhandle
-* firstname
-* lastname
-* info
-* jobtitle
-* industry
-* city
-* state
-* country
-* job\_function
-* company
-* field\_of\_study
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 import naas
@@ -37,32 +33,30 @@ from naas_drivers import hubspot, linkedin
 from os import path, mkdir
 ```
 
-#### Setup HubSpot
-
+### Setup HubSpot
 👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
 
 ```python
 # Enter Your Access Token
 HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-#### Setup LinkedIn
-
+### Setup LinkedIn
 If you are using the Chrome Extension:
 
-* [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr\&authuser=0)
-* [Create a new token](https://app.naas.ai/hub/token)
-* Copy/Paste your token in your extension
-* Login/Logout your LinkedIn account
-* Your secrets "LINKEDIN\_LI\_AT" and "LINKEDIN\_JSESSIONID" will be added directly on your naas everytime you login and logout.
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
 
-or\
-
+or <br>
 
 If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75) and set up the values below:
+- 🍪 li_at
+- 🍪 JSESSIONID
 
-* 🍪 li\_at
-* 🍪 JSESSIONID
 
 ```python
 # Cookies
@@ -77,9 +71,10 @@ LINKEDIN_PROFILE_URL = "https://www.linkedin.com/in/xxxxxxxxxx/"
 DIR_PATH = None  # EXAMPLE: 'outputs/contact-name'
 ```
 
-### Model
+## Model
 
-#### Setup outputs path if needed
+### Setup outputs path if needed
+
 
 ```python
 if DIR_PATH is None:
@@ -87,7 +82,8 @@ if DIR_PATH is None:
     print("-> Data will be stored in folder:", DIR_PATH)
 ```
 
-#### Create directory to store result
+### Create directory to store result
+
 
 ```python
 def create_dir(dir_path):
@@ -95,7 +91,8 @@ def create_dir(dir_path):
         mkdir(dir_path)
 ```
 
-#### Get LinkedIn info
+### Get LinkedIn info
+
 
 ```python
 def get_linkedin_info(url, info, dir_path=None):
@@ -130,7 +127,8 @@ def get_linkedin_info(url, info, dir_path=None):
     return df
 ```
 
-#### Create contact in HubSpot
+### Create contact in HubSpot
+
 
 ```python
 def create_hubspot_contact(df, properties={}):
@@ -163,7 +161,8 @@ def create_hubspot_contact(df, properties={}):
     return properties, contact_id, public_id
 ```
 
-#### Update Contact Owner in HubSpot
+### Update Contact Owner in HubSpot
+
 
 ```python
 def update_hubspot_owner(owner_id, hs_object_id, hubspot_owner_id="", properties={}):
@@ -178,7 +177,8 @@ def update_hubspot_owner(owner_id, hs_object_id, hubspot_owner_id="", properties
     return properties
 ```
 
-#### Update LinkedIn identity in HubSpot
+### Update LinkedIn identity in HubSpot
+
 
 ```python
 def update_hubspot_lk_identity(df, hs_object_id, properties={}):
@@ -218,7 +218,8 @@ def update_hubspot_lk_identity(df, hs_object_id, properties={}):
     return properties
 ```
 
-#### Update LinkedIn network in HubSpot
+### Update LinkedIn network in HubSpot
+
 
 ```python
 def update_hubspot_lk_network(df, hs_object_id, properties={}):
@@ -238,7 +239,8 @@ def update_hubspot_lk_network(df, hs_object_id, properties={}):
     return properties
 ```
 
-#### Update LinkedIn resume in HubSpot
+### Update LinkedIn resume in HubSpot
+
 
 ```python
 def update_hubspot_lk_resume(df, hs_object_id, dir_path=None, properties={}):
@@ -264,9 +266,10 @@ def update_hubspot_lk_resume(df, hs_object_id, dir_path=None, properties={}):
     return properties
 ```
 
-### Output
+## Output
 
-#### Update contact in HubSpot
+### Update contact in HubSpot
+
 
 ```python
 def create_contact_husbpot(linkedin_url, owner_id, dir_path=None):
