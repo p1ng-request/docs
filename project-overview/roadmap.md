@@ -6,7 +6,7 @@ description: Where we come from, and were we are going.
 
 ## Overview&#x20;
 
-![](<../.gitbook/assets/Screenshot 2022-03-12 at 17.03.03.png>)
+![](<../.gitbook/assets/Screenshot 2022-03-12 at 17.03.03 (1).png>)
 
 ## Strategy&#x20;
 
@@ -61,7 +61,7 @@ description: Where we come from, and were we are going.
 
 &#x20;\_\_ COMING SOON \_\_
 
-![](<../.gitbook/assets/Naas and Zapier copy.jpg>)
+![](<../.gitbook/assets/Naas and Zapier copy (1).jpg>)
 
 **Tournament content:**&#x20;
 
@@ -95,7 +95,7 @@ Create 1000 templates inspired by
 
 Want to learn more? [Let's talk.](https://calendly.com/jeremyravenel)
 
-![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54 (1).png>)
+![](<../.gitbook/assets/Screenshot 2022-02-21 at 02.14.54.png>)
 
 ## Community edition
 

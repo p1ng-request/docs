@@ -2,7 +2,7 @@
 description: The control center of your Naas.
 ---
 
-# ⚡ Naas Manager
+# 🖥 Manager
 
 The “\_\__production_\_\_” folder visible in your file system is where you can see where your notebooks and files are sent to be scheduled, exposed, triggered to create data jobs.
 

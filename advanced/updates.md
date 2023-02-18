@@ -32,9 +32,9 @@ import naas
 naas.get_last_version()
 ```
 
-## To get the latest version 
+## To get the latest version&#x20;
 
-### In Naas cloud
+### In Naas Cloud
 
 ```python
 import naas
@@ -47,17 +47,7 @@ naas.update()
 !pip install --upgrade naas
 ```
 
-## What's New ?
-
-### find the latest changes in our Canny changelog:
-
-{% embed url="https://naas.canny.io/admin/changelog" %}
-
 Alternatively, for the more tech people you can see our changelog here :
 
 {% embed url="https://github.com/jupyter-naas/naas/blob/main/CHANGELOG.md" %}
-
-
-
-
 

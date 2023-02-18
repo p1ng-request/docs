@@ -4,9 +4,9 @@ cover: >-
 coverY: 0
 ---
 
-# 🌎 Get Involved
+# 🌎 Community
 
-naas is a community led project and your help is extremely welcome. If you get stuck, please don't hesitate to chat with us or raise an issue.&#x20;
+Naas is a community led project and your help is extremely welcome. If you get stuck, please don't hesitate to chat with us or raise an issue.&#x20;
 
 ## Contents of this section
 

@@ -88,7 +88,7 @@ pipeline.run()
 
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.19.23 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.19.23.png" alt=""><figcaption></figcaption></figure>
 
 In this example, we define a pipeline with three steps, each of which executes a different notebook. The pipeline will execute the notebooks in the order defined by the steps, and the output of each notebook will be passed to the next step in the pipeline.
 
@@ -117,7 +117,7 @@ pipeline.run()
 
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.36.30.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.36.30 (1).png" alt=""><figcaption></figcaption></figure>
 
 In this example, we have three steps that we want to execute in parallel: `step1`, `step2`, and `step3`. We create each step using the `NotebookStep` class and provide the name of the step and the notebook path.
 
@@ -168,7 +168,7 @@ When building and running pipelines, it's helpful to have a visual representatio
 
 Naas provides a visual representation of the pipeline in the form of a DAG, which can be accessed through the Naas UI. This DAG shows the structure of the pipeline, the status of each step (e.g., running, successful, failed), and the dependencies between the steps. This visual display can be helpful for quickly identifying bottlenecks or issues in the pipeline.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.36.30 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-02-17 at 12.36.30 (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Naas aslo provides a table representation of the pipeline which displays the status of each step. This table is easily accessible by replacing `pipeline.run()` by `pipeline.run(style="progress")`
 

@@ -4,23 +4,13 @@ description: >-
   locally.
 ---
 
-# 🐳 Install Locally
+# Install Locally
 
 ## Naas Prerequisites
 
 In order to set up Naas, docker is required. Set up Docker with the help of the [Docker official installation guides](https://docs.docker.com/engine/install/).
 
-_**Note:**_ Setting up Naas locally only enables schedulers. In order to access all the features make use of Naas cloud.
-
-## Installing Naas from PyPI
-
-Through PyPI, you can access the `naas` version. To install naas without drivers via `pip` type:
-
-`pip3 install naas`
-
-To install naas with drivers type:
-
-`pip3 install 'naas[full]'`
+_**Note:**_ Setting up Naas locally only enables schedulers. In order to access all the features make use of Naas Cloud.
 
 ## Run locally
 
@@ -104,7 +94,7 @@ When naas is starting, it will automatically mount `../drivers` and `../awesome-
 
 `Welcome_to_Naas.ipynb` is our welcoming notebook to get you a place to start your journey.
 
-### API documentation
+### API Documentation
 
 We have a WIP documentation in swagger.
 

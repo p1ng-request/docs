@@ -1,4 +1,8 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Follow_content_engagements_weekly.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Follow+content+engagements+weekly:+Error+short+description">Bug report</a>
+# Follow content engagements weekly
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Follow\_content\_engagements\_weekly.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Follow+content+engagements+weekly:+Error+short+description)
 
 **Tags:** #linkedin #html #plotly #csv #image #content #analytics #dependency
 
@@ -6,15 +10,13 @@
 
 **Description:** This notebook helps you track and analyze your weekly content engagements on LinkedIn.
 
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Requirements:</b><br>
-To run this notebook, you must have already run <b>LinkedIn_Get_profile_posts_stats.ipynb</b> or <b>LinkedIn_Get_company_posts_stats.ipynb</b> to get your post stats in CSV.<br>
-</div>
+Requirements:\
+To run this notebook, you must have already run LinkedIn\_Get\_profile\_posts\_stats.ipynb or LinkedIn\_Get\_company\_posts\_stats.ipynb to get your post stats in CSV.\
 
-## Input
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 import naas
@@ -23,8 +25,7 @@ from datetime import datetime
 import plotly.graph_objects as go
 ```
 
-### Setup Variables
-
+#### Setup Variables
 
 ```python
 # Input
@@ -39,8 +40,7 @@ html_output = f"{name_output}.html"
 image_output = f"{name_output}.png"
 ```
 
-### Setup Naas dependency
-
+#### Setup Naas dependency
 
 ```python
 naas.dependency.add()
@@ -49,11 +49,11 @@ naas.dependency.add()
 # naas.dependency.delete()
 ```
 
-## Model
+### Model
 
-### Get your posts
+#### Get your posts
+
 Get posts feed from CSV stored in your local (Returns empty if CSV does not exist)
-
 
 ```python
 def read_csv(file_path):
@@ -70,8 +70,7 @@ print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
 ```
 
-### Create trend dataframe
-
+#### Create trend dataframe
 
 ```python
 DATE_FORMAT = "%Y-%m-%d"
@@ -166,10 +165,9 @@ df_trend = get_trend(
 df_trend
 ```
 
-## Output
+### Output
 
-### Display linechart
-
+#### Display linechart
 
 ```python
 LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png"  # Chart logo
@@ -234,8 +232,7 @@ def create_barchart(df, label="DATE_D", value="VALUE", value_d="VALUE_D", text="
 fig = create_barchart(df_trend)
 ```
 
-### Save and share your csv file
-
+#### Save and share your csv file
 
 ```python
 # Save your dataframe in CSV
@@ -248,9 +245,7 @@ naas.asset.add(csv_output)
 # naas.asset.delete(csv_output)
 ```
 
-### Save and share your graph in HTML
-
-
+#### Save and share your graph in HTML
 
 ```python
 # Save your graph in HTML
@@ -263,9 +258,7 @@ naas.asset.add(html_output, params={"inline": True})
 # naas.asset.delete(html_output)
 ```
 
-### Save and share your graph in image
-
-
+#### Save and share your graph in image
 
 ```python
 # Save your graph in PNG

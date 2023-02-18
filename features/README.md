@@ -7,7 +7,7 @@ cover: >-
 coverY: 0
 ---
 
-# 🪐 Features
+# ⚡ Features
 
 The library is available on PyPI:
 
