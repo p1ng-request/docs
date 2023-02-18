@@ -59,7 +59,7 @@ Try all of Naas's features for free using [Naas Cloud](https://app.naas.ai/hub/l
 
 ## Start with templates&#x20;
 
-The easiest way to go is simply to find the right template for you. Once you have found the templates that suits your needs (if you don't, feel free to [request new templates here](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+)), you can start leveraging Naas services to build your solutions. But of course, you can also come with your own notebooks and scripts.
+The easiest way to go is simply to find the right templates for you. Once you have found the templates that suits your needs (if you don't, feel free to [request new templates here](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+)), you can start leveraging Naas services to build your solutions. But of course, you can also come with your own notebooks and scripts.
 
 {% content-ref url="templates.md" %}
 [templates.md](templates.md)
