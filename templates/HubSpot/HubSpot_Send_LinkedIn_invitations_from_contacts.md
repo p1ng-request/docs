@@ -1,18 +1,15 @@
-# Send LinkedIn invitations from contacts
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Send_LinkedIn_invitations_from_contacts.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=HubSpot+-+Send+LinkedIn+invitations+from+contacts:+Error+short+description">Bug report</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot\_Send\_LinkedIn\_invitations\_from\_contacts.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=HubSpot+-+Send+LinkedIn+invitations+from+contacts:+Error+short+description)
+**Tags:** #hubspot #invitation #automation #sales #linkedin 
 
-**Tags:** #hubspot #invitation #automation #sales #linkedin
-
-**Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E\_TXYWitQkmwog/)
+**Author:** [Florent Ravenel](https://www.linkedin.com/in/ACoAABCNSioBW3YZHc2lBHVG0E_TXYWitQkmwog/)
 
 **Description:** This notebook send LinkedIn invitation to your HubSpot contacts.
 
-### Input
+## Input
 
-#### Import libraries
+### Import libraries
+
 
 ```python
 import naas
@@ -21,32 +18,30 @@ import pandas as pd
 import os
 ```
 
-#### Setup HubSpot
-
+### Setup HubSpot
 👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
+
 
 ```python
 # Enter Your Access Token
 HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
-#### Setup LinkedIn
-
+### Setup LinkedIn
 If you are using the Chrome Extension:
 
-* [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr\&authuser=0)
-* [Create a new token](https://app.naas.ai/hub/token)
-* Copy/Paste your token in your extension
-* Login/Logout your LinkedIn account
-* Your secrets "LINKEDIN\_LI\_AT" and "LINKEDIN\_JSESSIONID" will be added directly on your naas everytime you login and logout.
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
 
-or\
-
+or <br>
 
 If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75) and set up the values below:
+- 🍪 li_at
+- 🍪 JSESSIONID
 
-* 🍪 li\_at
-* 🍪 JSESSIONID
 
 ```python
 # Cookies
@@ -57,7 +52,8 @@ JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "YOUR_COOKIE_JSESSIONID"
 LIMIT = 15
 ```
 
-#### Setup Variables
+### Setup Variables
+
 
 ```python
 # CSV to manage and remove profile already in your contact
@@ -70,7 +66,8 @@ csv_not_valid = "LINKEDIN_NOT_VALID.csv"
 csv_invitation = "LINKEDIN_INVITATIONS_SENT.csv"
 ```
 
-#### Setup Naas
+### Setup Naas
+
 
 ```python
 # Scheduler your invitation everyday at 8:00 AM
@@ -80,16 +77,18 @@ naas.scheduler.add(cron="30 9 * * *")
 # naas.scheduler.delete()
 ```
 
-### Model
+## Model
 
-#### Get contacts from HubSpot
+### Get contacts from HubSpot
+
 
 ```python
 df_contacts = gsheet.connect(SPREADSHEET_URL).get(SHEET_NAME)
 df_contacts
 ```
 
-#### Filter dataframe (if needed)
+### Filter dataframe (if needed)
+
 
 ```python
 def filter_data(df):
@@ -101,14 +100,16 @@ df_hubspot = filter_data(df_contacts)
 df_hubspot
 ```
 
-#### Get LinkedIn invitations sent
+### Get LinkedIn invitations sent
+
 
 ```python
 df_lk_invitations = linkedin.connect(LI_AT, JSESSIONID).invitation.get_sent()
 df_lk_invitations
 ```
 
-#### Get profile checked and already in your network
+### Get profile checked and already in your network
+
 
 ```python
 def get_csv(output_path):
@@ -118,32 +119,34 @@ def get_csv(output_path):
     return df
 ```
 
+
 ```python
 df_contacts = get_csv(csv_contact)
 df_contacts
 ```
 
-#### Get URL not valid
+### Get URL not valid
+
 
 ```python
 df_not_valid = get_csv(csv_not_valid)
 df_not_valid
 ```
 
-#### Get invitations sent (CSV)
-
-Public ID can be different between what we get from LinkedIn and from your source URL.\
+### Get invitations sent (CSV)
+Public ID can be different between what we get from LinkedIn and from your source URL.<br>
 So we need to double check invitations sent with a CSV stored on your local
+
 
 ```python
 df_csv_invitations = get_csv(csv_invitation)
 df_csv_invitations
 ```
 
-#### Get new invitation
+### Get new invitation
+- Clean Notion database to get valid URL
+- Remove profile when already invited
 
-* Clean Notion database to get valid URL
-* Remove profile when already invited
 
 ```python
 def get_new_invitations(
@@ -193,7 +196,8 @@ df_new_invitations = get_new_invitations(
 df_new_invitations
 ```
 
-#### Send invitation
+### Send invitation
+
 
 ```python
 def send_invitation(df, df_not_valid=None, df_contacts=None, df_csv_invitations=None):
@@ -262,9 +266,10 @@ df_csv_invitations = send_invitation(
 )
 ```
 
-### Output
+## Output
 
-#### Send CSV as dependencies
+### Send CSV as dependencies
+
 
 ```python
 if os.path.exists(csv_contact):
@@ -277,7 +282,8 @@ if os.path.exists(csv_invitation):
     naas.dependency.add(csv_invitation)
 ```
 
-#### Display invitations sent
+### Display invitations sent
+
 
 ```python
 df_csv_invitations
