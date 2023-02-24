@@ -1,4 +1,8 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_NLP_Examples.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=Naas+-+NLP+Examples:+Error+short+description">Bug report</a>
+# NLP Examples
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/open\_in\_naas.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_NLP\_Examples.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=Naas+-+NLP+Examples:+Error+short+description)
 
 **Tags:** #naas #nlp #snippet #operations
 
@@ -6,19 +10,17 @@
 
 **Description:** This notebook provides examples of Natural Language Processing (NLP) using the Naas framework.
 
-## Input
+### Input
 
-### Import library
-
+#### Import library
 
 ```python
 from naas_drivers import nlp
 ```
 
-## Model
+### Model
 
-### Text Generation
-
+#### Text Generation
 
 ```python
 nlp.get("text-generation", model="gpt2", tokenizer="gpt2")(
@@ -26,9 +28,9 @@ nlp.get("text-generation", model="gpt2", tokenizer="gpt2")(
 )
 ```
 
-### Text Summarization
-Summarize the text given, maximum lenght (number of tokens/words) is set to 200.
+#### Text Summarization
 
+Summarize the text given, maximum lenght (number of tokens/words) is set to 200.
 
 ```python
 nlp.get("summarization", model="t5-small", tokenizer="t5-small")(
@@ -51,10 +53,10 @@ if you feel useless these are much that's a much harder problem to deal with.
 )
 ```
 
-### Text Classification
-Basic sentiment analysis on a text.<br>
-Returns a "label" (negative/neutral/positive), and score between -1 and 1.
+#### Text Classification
 
+Basic sentiment analysis on a text.\
+Returns a "label" (negative/neutral/positive), and score between -1 and 1.
 
 ```python
 nlp.get(
@@ -73,11 +75,10 @@ To her surprise, she found what she least expected to see.
 )
 ```
 
-### Fill Mask
+#### Fill Mask
 
-Fill the blanks ('< mask >') in a sentence given with multiple proposals. <br>
-Each proposal has a score (confidence of accuracy), token value (proposed word in number), token_str (proposed word)
-
+Fill the blanks ('< mask >') in a sentence given with multiple proposals.\
+Each proposal has a score (confidence of accuracy), token value (proposed word in number), token\_str (proposed word)
 
 ```python
 nlp.get("fill-mask", model="distilroberta-base", tokenizer="distilroberta-base")(
@@ -89,10 +90,10 @@ It was a beautiful <mask>.
 )
 ```
 
-### Feature extraction
-This generate a words embedding (extract numbers out of the text data).<br>
-Output is a list of numerical values.
+#### Feature extraction
 
+This generate a words embedding (extract numbers out of the text data).\
+Output is a list of numerical values.
 
 ```python
 nlp.get(
@@ -102,28 +103,29 @@ nlp.get(
 )("Life is a super cool thing")
 ```
 
-### Token classification
-Basically NER. If you give names, location, or any "entity" it can detect it.<br>
+#### Token classification
+
+Basically NER. If you give names, location, or any "entity" it can detect it.\
+
 
 | Entity abreviation | Description                                                                  |
-|--------------|------------------------------------------------------------------------------|
-| O            | Outside of a named entity                                                    |
-| B-MIS        | Beginning of a miscellaneous entity right after another miscellaneous entity |
-| I-MIS        | Miscellaneous entity                                                         |
-| B-PER        | Beginning of a person’s name right after another person’s name               |
-| I-PER        | Person’s name                                                                |
-| B-ORG        | Beginning of an organization right after another organization                |
-| I-ORG        | organization                                                                 |
-| B-LOC        | Beginning of a location right after another location                         |
-| I-LOC        | Location                                                                     |
+| ------------------ | ---------------------------------------------------------------------------- |
+| O                  | Outside of a named entity                                                    |
+| B-MIS              | Beginning of a miscellaneous entity right after another miscellaneous entity |
+| I-MIS              | Miscellaneous entity                                                         |
+| B-PER              | Beginning of a person’s name right after another person’s name               |
+| I-PER              | Person’s name                                                                |
+| B-ORG              | Beginning of an organization right after another organization                |
+| I-ORG              | organization                                                                 |
+| B-LOC              | Beginning of a location right after another location                         |
+| I-LOC              | Location                                                                     |
+
+Full documentation : https://huggingface.co/dslim/bert-base-NER.\
 
 
-Full documentation : https://huggingface.co/dslim/bert-base-NER.<br>
+### Output
 
-## Output
-
-### Display result
-
+#### Display result
 
 ```python
 nlp.get(
