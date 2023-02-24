@@ -460,6 +460,7 @@
     * [Create Completion](templates/OpenAI/OpenAI_Create_Completion.md)
     * [Write a social media post](templates/OpenAI/OpenAI_Write_a_social_media_post.md)
     * [Write a blog post](templates/OpenAI/OpenAI_Write_a_blog_post.md)
+    * [Write a press release](templates/OpenAI/OpenAI_Write_a_press_release.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
   * [OpenBB](templates/OpenBB/README.md)
     * [Create an OpenBB kernel on Naas](templates/OpenBB/OpenBB_Create_an_OpenBB_kernel_on_Naas.md)
