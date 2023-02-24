@@ -458,6 +458,7 @@
     * [Duplicate page](templates/Notion/Notion_Duplicate_page.md)
   * [OpenAI](templates/OpenAI/README.md)
     * [Create Completion](templates/OpenAI/OpenAI_Create_Completion.md)
+    * [Write a job description](templates/OpenAI/OpenAI_Write_a_job_description.md)
     * [Write an outline](templates/OpenAI/OpenAI_Write_an_outline.md)
     * [Write a social media post](templates/OpenAI/OpenAI_Write_a_social_media_post.md)
     * [Write a blog post](templates/OpenAI/OpenAI_Write_a_blog_post.md)
