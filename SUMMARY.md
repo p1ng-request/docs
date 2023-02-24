@@ -644,6 +644,8 @@
     * [Get balances](templates/Stripe/Stripe_Get_balances.md)
     * [Get customers](templates/Stripe/Stripe_Get_customers.md)
     * [Get charges](templates/Stripe/Stripe_Get_charges.md)
+  * [Supabase](templates/Supabase/README.md)
+    * [Email Auth](templates/Supabase/Supabase_Email_Auth.md)
   * [Telegram](templates/Telegram/README.md)
     * [Create crypto sentiment bot](templates/Telegram/Telegram_Create_crypto_sentiment_bot.md)
   * [Text](templates/Text/README.md)
