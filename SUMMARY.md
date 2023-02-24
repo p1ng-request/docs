@@ -183,6 +183,7 @@
     * [Read issue](templates/GitHub/GitHub_Read_issue.md)
     * [Track issues on projects](templates/GitHub/GitHub_Track_issues_on_projects.md)
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
+    * [Get files added on Pull Request Merged](templates/GitHub/GitHub_Get_files_added_on_Pull_Request_Merged.md)
   * [Gmail](templates/Gmail/README.md)
     * [Read mailbox](templates/Gmail/Gmail_Read_mailbox.md)
     * [Send emails from Gsheet classic](templates/Gmail/Gmail_Send_emails_from_Gsheet_classic.md)
