@@ -87,6 +87,7 @@
     * [Read Table](templates/BigQuery/BigQuery_Read_Table.md)
   * [Bitly](templates/Bitly/README.md)
     * [Create Links](templates/Bitly/Bitly_Create_Links.md)
+    * [Retrieve Bitlink](templates/Bitly/Bitly_Retrieve_Bitlink.md)
   * [Boursorama](templates/Boursorama/README.md)
     * [Get CDS](templates/Boursorama/Boursorama_Get_CDS.md)
   * [Bubble](templates/Bubble/README.md)
