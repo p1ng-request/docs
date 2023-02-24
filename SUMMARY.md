@@ -557,6 +557,7 @@
     * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
     * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
     * [Create directory](templates/Python/Python_Create_directory.md)
+    * [Get last file modified from directy](templates/Python/Python_Get_last_file_modified_from_directy.md)
     * [Locate Addresses](templates/Python/Python_Locate_Addresses.md)
     * [Create Strong Random Password](templates/Python/Python_Create_Strong_Random_Password.md)
     * [Create dataframe from lists](templates/Python/Python_Create_dataframe_from_lists.md)
