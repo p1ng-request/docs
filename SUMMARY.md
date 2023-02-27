@@ -727,6 +727,8 @@
     * [Extract files](templates/ZIP/ZIP_Extract_files.md)
   * [Zapier](templates/Zapier/README.md)
     * [Trigger workflow](templates/Zapier/Zapier_Trigger_workflow.md)
+  * [ZeroBounce](templates/ZeroBounce/README.md)
+    * [Validate Single Email](templates/ZeroBounce/ZeroBounce_Validate_Single_Email.md)
   * [spaCy](templates/spaCy/README.md)
     * [SpaCy Build a sentiment analysis model using Twitter](templates/spaCy/SpaCy_Build_a_sentiment_analysis_model_using_Twitter.md)
   * [Abstract API](<templates/Abstract API/README.md>)
