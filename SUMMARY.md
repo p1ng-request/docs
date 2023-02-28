@@ -88,6 +88,7 @@
     * [Read Table](templates/BigQuery/BigQuery_Read_Table.md)
   * [Bitly](templates/Bitly/README.md)
     * [Update a Bitlink](templates/Bitly/Bitly_Update_a_Bitlink.md)
+    * [Get a Clicks Summary for a Bitlink](templates/Bitly/Bitly_Get_a_Clicks_Summary_for_a_Bitlink.md)
     * [Create Links](templates/Bitly/Bitly_Create_Links.md)
     * [Get Metrics for a Bitlink by Referrers](templates/Bitly/Bitly_Get_Metrics_for_a_Bitlink_by_Referrers.md)
     * [Delete a Bitlink](templates/Bitly/Bitly_Delete_a_Bitlink.md)
