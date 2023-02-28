@@ -96,6 +96,7 @@
     * [Get Metrics for a Bitlink by Country](templates/Bitly/Bitly_Get_Metrics_for_a_Bitlink_by_Country.md)
     * [Delete a Bitlink](templates/Bitly/Bitly_Delete_a_Bitlink.md)
     * [Retrieve Bitlink](templates/Bitly/Bitly_Retrieve_Bitlink.md)
+    * [Get Metrics for a Bitlink by City](templates/Bitly/Bitly_Get_Metrics_for_a_Bitlink_by_City.md)
   * [Boursorama](templates/Boursorama/README.md)
     * [Get CDS](templates/Boursorama/Boursorama_Get_CDS.md)
   * [Bubble](templates/Bubble/README.md)
