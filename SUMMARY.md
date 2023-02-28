@@ -554,6 +554,7 @@
     * [Get Word Definition and Translation](templates/Python/Python_Get_Word_Definition_and_Translation.md)
     * [Find Phone Number in string](templates/Python/Python_Find_Phone_Number_in_string.md)
     * [Check email validity](templates/Python/Python_Check_email_validity.md)
+    * [Create Email Combination with Firstname Lastname Domain address](templates/Python/Python_Create_Email_Combination_with_Firstname_Lastname_Domain_address.md)
     * [Locate Coordinates](templates/Python/Python_Locate_Coordinates.md)
     * [Copy files and subdir from directory to another directory](templates/Python/Python_Copy_files_and_subdir_from_directory_to_another_directory.md.md)
     * [Looping Over Dataframe](templates/Python/Python_Looping_Over_Dataframe.md)
