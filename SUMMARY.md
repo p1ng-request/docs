@@ -478,6 +478,7 @@
     * [Write a press release](templates/OpenAI/OpenAI_Write_a_press_release.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
     * [Brainstorm ideas](templates/OpenAI/OpenAI_Brainstorm_ideas.md)
+    * [Generate Text to Speech](templates/OpenAI/OpenAI_Generate_Text_to_Speech.md)
   * [OpenBB](templates/OpenBB/README.md)
     * [Create an OpenBB kernel on Naas](templates/OpenBB/OpenBB_Create_an_OpenBB_kernel_on_Naas.md)
   * [OpenPIV](templates/OpenPIV/README.md)
