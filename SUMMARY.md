@@ -512,6 +512,7 @@
     * [Merge Dataframes](templates/Pandas/Pandas_Merge_Dataframes.md)
     * [Transform dataframe to dict](templates/Pandas/Pandas_Transform_dataframe_to_dict.md)
     * [Drop First column](templates/Pandas/Pandas_Drop_First_column.md)
+    * [Filter DataFrame](templates/Pandas/Pandas_Filter_DataFrame.md)
     * [Drop Columns](templates/Pandas/Pandas_Drop_Columns.md)
     * [Pivot rows to columns](templates/Pandas/Pandas_Pivot_rows_to_columns.md)
     * [Drop Columns By Index](templates/Pandas/Pandas_Drop_Columns_By_Index.md)
