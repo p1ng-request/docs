@@ -695,6 +695,8 @@
     * [Follow CPI](templates/US%20Bureau%20of%20Labor%20Statistics/US_Bureau_of_Labor_Statistics_Follow_CPI.md)
   * [Vizzu](templates/Vizzu/README.md)
     * [Create interactive data story](templates/Vizzu/Vizzu_Create_interactive_data_story.md)
+  * [WAQI](templates/WAQI/README.md)
+    * [Get Daily Air Quality Data for a city](templates/WAQI/WAQI_Get_Daily_Air_Quality_Data_for_a_city.md)
   * [WSR](templates/WSR/README.md)
     * [Get daily Covid19 active cases worldmap JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.md)
     * [Get daily Covid19 active cases trend JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_trend_JHU.md)
