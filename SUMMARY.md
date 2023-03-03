@@ -744,6 +744,8 @@
     * [Trigger workflow](templates/Zapier/Zapier_Trigger_workflow.md)
   * [ZeroBounce](templates/ZeroBounce/README.md)
     * [Validate Single Email](templates/ZeroBounce/ZeroBounce_Validate_Single_Email.md)
+  * [gTTS](templates/gTTS/README.md)
+    * [Save Text to Speech to MP3](templates/gTTS/gTTS_Save_Text_to_Speech_to_MP3.md)
   * [spaCy](templates/spaCy/README.md)
     * [SpaCy Build a sentiment analysis model using Twitter](templates/spaCy/SpaCy_Build_a_sentiment_analysis_model_using_Twitter.md)
   * [Abstract API](<templates/Abstract API/README.md>)
