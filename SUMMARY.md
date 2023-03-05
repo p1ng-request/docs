@@ -173,6 +173,7 @@
     * [Create issue](templates/GitHub/GitHub_Create_issue.md)
     * [Add new issues as page in Notion database](templates/GitHub/GitHub_Add_new_issues_as_page_in_Notion_database.md)
     * [Create leaderboard of contributors](templates/GitHub/GitHub_Create_leaderboard_of_contributors.md)
+    * [List organization repositories](templates/GitHub/GitHub_List_organization_repositories.md)
     * [Get active projects](templates/GitHub/GitHub_Get_active_projects.md)
     * [Get stargazers from repository](templates/GitHub/GitHub_Get_stargazers_from_repository.md)
     * [Get commits ranking from repository](templates/GitHub/GitHub_Get_commits_ranking_from_repository.md)
