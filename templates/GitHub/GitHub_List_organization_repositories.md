@@ -16,15 +16,18 @@
 
 
 ```python
+import naas
 import github
 ```
 
 ### Setup Variables
-- **token**: [Create a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+- `token`: [Create a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+- `organization`: name of your github organization
 
 
 ```python
-token = "YOUR_TOKEN"
+token = naas.secret.get('GITHUB_TOKEN') or "YOUR_TOKEN"
+organization = "jupyter-naas"
 ```
 
 ## Model
@@ -38,7 +41,7 @@ Using the [PyGithub](https://pygithub.readthedocs.io/en/latest/) library, we can
 # Create a Github instance
 g = github.Github(token)
 # Get the organization
-org = g.get_organization("YOUR_ORGANIZATION")
+org = g.get_organization(organization)
 # List all the repositories
 repos = org.get_repos()
 ```
@@ -46,6 +49,7 @@ repos = org.get_repos()
 ## Output
 
 ### Display result
+Response attributes available here: https://docs.github.com/fr/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
 
 
 ```python

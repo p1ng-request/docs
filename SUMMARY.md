@@ -165,6 +165,7 @@
     * [Anonymize Address from dataframe](templates/Faker/Faker_Anonymize_Address_from_dataframe.md)
   * [GitHub](templates/GitHub/README.md)
     * [Get Closed PR by repo](templates/GitHub/GitHub_Get_Closed_PR_by_repo.md)
+    * [Get a repository](templates/GitHub/GitHub_Get_a_repository.md)
     * [Get most starred repos](templates/GitHub/GitHub_Get_most_starred_repos.md)
     * [Get Traffic Clones on repository](templates/GitHub/GitHub_Get_Traffic_Clones_on_repository.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
