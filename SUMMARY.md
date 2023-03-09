@@ -117,6 +117,8 @@
     * [Get data from API](templates/Cityfalcon/Cityfalcon_Get_data_from_API.md)
   * [Cloud Mercato](templates/Cloud%20Mercato/README.md)
     * [Compare VM pricing](templates/Cloud%20Mercato/Cloud_Mercato_Compare_VM_pricing.md)
+  * [Creditsafe](templates/Creditsafe/README.md)
+    * [Get Company Credit Report](templates/Creditsafe/Creditsafe_Get_Company_Credit_Report.md)
   * [D-Tale](templates/D-Tale/README.md)
     * [Visualize dataframe](templates/D-Tale/D-Tale_Visualize_dataframe.md)
   * [Dash](templates/Dash/README.md)
