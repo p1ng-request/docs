@@ -18,7 +18,16 @@
 ```python
 import requests
 import naas
+import pandas as pd
+import plotly.graph_objects as go
+try:
+    from dataprep.clean import clean_country
+except:
+    !pip install dataprep --user
+    from dataprep.clean import clean_country
 import json
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 ```
 
 ### Setup Variables
@@ -27,8 +36,14 @@ import json
 
 
 ```python
+# Inputs
 access_token = naas.secret.get("BITLY_TOKEN") or "<YOUR_TOKEN>"
 bitlink = "bit.ly/3lU6hRt"
+title = "Bitly - Get Metrics for a Bitlink by Country"
+
+# Outputs
+output_image = f"{title}.png"
+output_html = f"{title}.html"
 ```
 
 ## Model
@@ -47,19 +62,92 @@ def get_metrics_by_country(access_token, bitlink):
         return json.loads(response.content)
     else:
         return None
+    
+metrics_by_country = get_metrics_by_country(access_token, bitlink)
+```
+
+### Prep Data
+
+
+```python
+def prep_data(data):
+    # Init
+    df = pd.DataFrame(data)
+    
+    # Cleaning
+    to_rename = {
+        "value": "COUNTRY",
+        "clicks": "VALUE"
+    }
+    df = df.rename(columns=to_rename)
+    
+    # Get countries
+    df = clean_country(df, "COUNTRY", output_format="alpha-3").dropna().rename(columns={"COUNTRY_clean": "COUNTRY_ISO"})
+    df = clean_country(df, "COUNTRY", output_format="name").dropna().rename(columns={"COUNTRY_clean": "COUNTRY_NAME"})              
+    return df
+
+df = prep_data(metrics_by_country.get("metrics"))
+df
+```
+
+### Create Worlmap
+
+
+```python
+fig = go.Figure()
+
+fig = go.Figure(
+    data=go.Choropleth(
+        locations=df["COUNTRY_ISO"],
+        z=df["VALUE"].astype(int),
+        text=df["COUNTRY_NAME"],
+        colorscale="Oranges",
+        autocolorscale=False,
+        reversescale=False,
+        marker_line_color="darkgray",
+        marker_line_width=0.5,
+        colorbar_tickprefix="",
+        colorbar_title="Clicks",
+    )
+)
+
+fig.update_layout(
+    title=title,
+    plot_bgcolor="#ffffff",
+    legend_x=1,
+    geo=dict(
+        showframe=False,
+#         showcoastlines=False,
+    ),
+    dragmode=False,
+    width=1200,
+    height=800,
+)
+
+config = {"displayModeBar": False}
+fig.show(config=config)
 ```
 
 ## Output
 
-### Display result
+### Export in PNG and HTML
 
 
 ```python
-metrics_by_country = get_metrics_by_country(access_token, bitlink)
-if metrics_by_country:
-    print(json.dumps(metrics_by_country, indent=4))
-else:
-    print("An error occurred.")
+fig.write_image(output_image, width=1200)
+fig.write_html(output_html)
+```
+
+### Generate shareable assets
+
+
+```python
+link_image = naas.asset.add(output_image)
+link_html = naas.asset.add(output_html, {"inline": True})
+
+# -> Uncomment the line below to remove your assets
+# naas.asset.delete(output_image)
+# naas.asset.delete(output_html)
 ```
 
  
