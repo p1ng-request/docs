@@ -598,6 +598,7 @@
     * [Replace value in text in a specific paragraph](templates/Python/Python_Replace_value_in_text_in_a_specific_paragraph.md)
     * [Get all files from directory](templates/Python/Python_Get_all_files_from_directory.md)
     * [Copy files and subdir from directory to another directory](templates/Python/Python_Copy_files_and_subdir_from_directory_to_another_directory.md.md)
+    * [Save dict to pickle](templates/Python/Python_Save_dict_to_pickle.md)
   * [Pyvis](templates/Pyvis/README.md)
     * [Create a network visualization](templates/Pyvis/Pyvis_Create_a_network_visualization.md)
   * [Qonto](templates/Qonto/README.md)
