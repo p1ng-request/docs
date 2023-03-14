@@ -586,6 +586,7 @@
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
     * [Check email validity](templates/Python/Python_Check_email_validity.md)
+    * [Read pickle file](templates/Python/Python_Read_pickle_file.md)
     * [Create directory](templates/Python/Python_Create_directory.md)
     * [Read json file](templates/Python/Python_Read_json_file.md)
     * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
