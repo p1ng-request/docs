@@ -689,6 +689,7 @@
     * [Get board data](templates/Trello/Trello_Get_board_data.md)
   * [Twilio](templates/Twilio/README.md)
     * [Send SMS](templates/Twilio/Twilio_Send_SMS.md)
+    * [Add SMS to Google Sheets spreadsheet](templates/Twilio/Twilio_Add_SMS_to_Google_Sheets_spreadsheet.md)
     * [Make Call](templates/Twilio/Twilio_Make_Call.md)
   * [Twitter](templates/Twitter/README.md)
     * [Get members of list](templates/Twitter/Twitter_Get_members_of%20list.md)
