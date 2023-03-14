@@ -568,6 +568,8 @@
   * [PyCaret](templates/PyCaret/README.md)
     * [automl classification](templates/PyCaret/PyCaret_automl_classification.md)
     * [automl regression](templates/PyCaret/PyCaret_automl_regression.md)
+  * [PyGWalker](templates/PyGWalker/README.md)
+    * [Analyze Pandas dataframe](templates/PyGWalker/PyGWalker_Analyze_Pandas_dataframe.md)
   * [PyPI](templates/PyPI/README.md)
     * [- Get number of downloads any package](templates/PyPI/PyPI%20-%20Get_number_of_downloads_any_package.md)
   * [Python](templates/Python/README.md)
