@@ -17,12 +17,18 @@ import os
 ```
 
 ### Setup Variables
+- `source_folder`: Path of your source directory
+- `overwrite`: Overwrite files in destination, (default=True)
+- `destination_folder`: Path of your destination directory
 
 
 ```python
-# Input
+# Inputs
 source_folder = ".."
-destination_folder = ".."
+overwrite = True
+
+# Outputs
+destination_folder = "."
 ```
 
 ## Model
@@ -37,6 +43,16 @@ def copy_all_files(dir_src, dir_des, overwrite=True):
     dir_des : Path of your destination directory
     overwrite: Overwrite files in destination, (default=True)
     """
+    # Check if source and destination folders exists
+    if not os.path.exists(dir_src):
+        print("❌ Source folder does not exist:", dir_src)
+        return None
+    
+    if not os.path.exists(dir_des):
+        print("❌ Destination folder does not exist:", dir_des)
+        return None
+    
+    # Copy files
     for root, dirs, files in os.walk(dir_src):
         for file in files:
             path_file = os.path.join(root, file)
@@ -46,18 +62,18 @@ def copy_all_files(dir_src, dir_des, overwrite=True):
                 if not os.path.exists(dest_path):
                     try:
                         shutil.copy(path_file, dest_path)
-                        print(f"Copied file : {path_file}")
+                        print(f"✅ Copied file: {path_file}")
                     except IOError as io_err:
                         os.makedirs(os.path.dirname(dest_path))
                         shutil.copy(path_file, dest_path)
                 else:
-                    print(f"File already exists : {dest_path}")
+                    print(f"❎ File already exists: {dest_path}")
             else:
                 if os.path.exists(dest_path):
                     os.remove(dest_path)
                 try:
                     shutil.copy(path_file, dest_path)
-                    print(f"Copied file : {path_file}")
+                    print(f"✅ Copied file: {path_file}")
                 except IOError as io_err:
                     os.makedirs(os.path.dirname(dest_path))
                     shutil.copy(path_file, dest_path)
@@ -69,5 +85,5 @@ def copy_all_files(dir_src, dir_des, overwrite=True):
 
 
 ```python
-copy_all_files(source_folder, destination_folder, overwrite=False)
+copy_all_files(source_folder, destination_folder, overwrite=overwrite)
 ```
