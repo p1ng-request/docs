@@ -472,6 +472,7 @@
     * [Add icon image to page](templates/Notion/Notion_Add_icon_image_to_page.md)
     * [Get blocks from page](templates/Notion/Notion_Get_blocks_from_page.md)
     * [Delete page](templates/Notion/Notion_Delete_page.md)
+    * [Create pages in database from dataframe](templates/Notion/Notion_Create_pages_in_database_from_dataframe.md)
     * [Send Slack Messages For New Notion Database Items](templates/Notion/Notion_Send_Slack_Messages_For_New_Notion_Database_Items.md)
     * [Delete all pages from database](templates/Notion/Notion_Delete_all_pages_from_database.md)
     * [Explore API](templates/Notion/Notion_Explore_API.md)
