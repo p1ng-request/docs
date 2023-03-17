@@ -481,6 +481,7 @@
     * [Add image to page](templates/Notion/Notion_Add_image_to_page.md)
     * [Automate transcript generation from recording link in page property](templates/Notion/Notion_Automate_transcript_generation_from_recording_link_in_page_property.md)
     * [Add cover image to page](templates/Notion/Notion_Add_cover_image_to_page.md)
+    * [Update Database with LinkedIn Company Info](templates/Notion/Notion_Update_Database_with_LinkedIn_Company_Info.md)
     * [Add icon image to page](templates/Notion/Notion_Add_icon_image_to_page.md)
   * [OpenAI](templates/OpenAI/README.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
