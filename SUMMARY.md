@@ -495,6 +495,7 @@
     * [Generate Text to Speech](templates/OpenAI/OpenAI_Generate_Text_to_Speech.md)
     * [Create Completion](templates/OpenAI/OpenAI_Create_Completion.md)
     * [Write a press release](templates/OpenAI/OpenAI_Write_a_press_release.md)
+    * [Generate text based prediction](templates/OpenAI/OpenAI_Generate_text_based_prediction.md)
   * [OpenBB](templates/OpenBB/README.md)
     * [Create an OpenBB kernel on Naas](templates/OpenBB/OpenBB_Create_an_OpenBB_kernel_on_Naas.md)
   * [OpenPIV](templates/OpenPIV/README.md)
