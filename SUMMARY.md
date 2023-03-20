@@ -343,6 +343,7 @@
     * [Send invitations to post commenters](templates/LinkedIn/LinkedIn_Send_invitations_to_post_commenters.md)
     * [Follow content published monthly](templates/LinkedIn/LinkedIn_Follow_content_published_monthly.md)
     * [Get invitations received](templates/LinkedIn/LinkedIn_Get_invitations_received.md)
+    * [Create Post](templates/LinkedIn/LinkedIn_Create_Post.md)
     * [Send company followers to Google Sheets](templates/LinkedIn/LinkedIn_Send_company_followers_to_Google_Sheets.md)
     * [Get likes from post](templates/LinkedIn/LinkedIn_Get_likes_from_post.md)
     * [Withdraw pending profile invitations](templates/LinkedIn/LinkedIn_Withdraw_pending_profile_invitations.md)
