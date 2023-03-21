@@ -7,7 +7,7 @@
 **Description:** This notebook will show how to automate a notebook using the scheduler feature of Naas.
 
 **References:**
-- [Naas API Documentation](https://docs.naas.ai/)
+- [Naas Documentation](https://docs.naas.ai/)
 - [Naas Scheduler Documentation](https://docs.naas.ai/features/scheduler)
 
 ## Input
@@ -20,7 +20,7 @@ import naas
 ```
 
 ### Setup Variables
-- `path`: path of the notebook to be deploy in production if no path is set, the current notebook will be sent to production.
+- `path`: path of the notebook to be deploy in production. If no path is set, the current notebook will be sent to production.
 - `cron`: We use CRON tasks to schedule notebooks, find the syntax you need to on: https://crontab.guru/
 - `notif_down`: List of emails. Receive an email when the notebook run fails. By default, you will received notifications on your email used on your naas account
 - `notif_up`: List of emails. Receive an email when the notebook runs well. By default, you won't received notifications if it went well.
