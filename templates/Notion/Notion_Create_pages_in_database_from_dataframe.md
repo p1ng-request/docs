@@ -90,7 +90,7 @@ def create_pages(
         try:
             if page_new:
                 # Create new page in notion
-                page = notion.connect(NOTION_TOKEN).Page.new(database_id=database_id).create()
+                page = notion.connect(notion_token).Page.new(database_id=database_id).create()
                 page.title(notion_key_name, df_key)
                 
                 # You
