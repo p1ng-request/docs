@@ -602,6 +602,7 @@
     * [Organize Directories based on file types](templates/Python/Python_Organize_Directories_based_on_file_types.md)
     * [Create directory](templates/Python/Python_Create_directory.md)
     * [Check email validity](templates/Python/Python_Check_email_validity.md)
+    * [Convert audiofile from wav to mp3](templates/Python/Python_Convert_audiofile_from_wav_to_mp3.md)
     * [Read pickle file](templates/Python/Python_Read_pickle_file.md)
     * [Download PDF from URL](templates/Python/Python_Download_PDF_from_URL.md)
     * [Create dict from lists](templates/Python/Python_Create_dict_from_lists.md)
