@@ -490,6 +490,7 @@
   * [OpenAI](templates/OpenAI/README.md)
     * [Generate Dialogue](templates/OpenAI/OpenAI_Generate_Dialogue.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
+    * [Generate text replacements](templates/OpenAI/OpenAI_Generate_text_replacements.md)
     * [Brainstorm ideas](templates/OpenAI/OpenAI_Brainstorm_ideas.md)
     * [Write a blog post](templates/OpenAI/OpenAI_Write_a_blog_post.md)
     * [Write a social media post](templates/OpenAI/OpenAI_Write_a_social_media_post.md)
