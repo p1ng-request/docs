@@ -488,6 +488,7 @@
     * [Update Database with LinkedIn Company Info](templates/Notion/Notion_Update_Database_with_LinkedIn_Company_Info.md)
     * [Add icon image to page](templates/Notion/Notion_Add_icon_image_to_page.md)
   * [OpenAI](templates/OpenAI/README.md)
+    * [Generate Dialogue](templates/OpenAI/OpenAI_Generate_Dialogue.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
     * [Brainstorm ideas](templates/OpenAI/OpenAI_Brainstorm_ideas.md)
     * [Write a blog post](templates/OpenAI/OpenAI_Write_a_blog_post.md)
