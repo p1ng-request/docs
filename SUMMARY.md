@@ -645,6 +645,8 @@
     * [Get categories from job](templates/Remotive/Remotive_Get_categories_from_job.md)
   * [SAP-HANA](templates/SAP-HANA/README.md)
     * [Query data](templates/SAP-HANA/SAP-HANA_Query_data.md)
+  * [SEON](templates/SEON/README.md)
+    * [Get email info](templates/SEON/SEON_Get_email_info.md)
   * [SQLite](templates/SQLite/README.md)
     * [Create Database file](templates/SQLite/SQLite_Create_Database_file.md)
     * [Create Table in Database](templates/SQLite/SQLite_Create_Table_in_Database.md)
