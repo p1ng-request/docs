@@ -568,6 +568,7 @@
     * [Create Leaderboard](templates/Plotly/Plotly_Create_Leaderboard.md)
     * [Create Vertical Barchart](templates/Plotly/Plotly_Create_Vertical_Barchart.md)
     * [Create Mapchart world](templates/Plotly/Plotly_Create_Mapchart_world.md)
+    * [Create Bubblemap by City](templates/Plotly/Plotly_Create_Bubblemap_by_City.md)
     * [Create Treemaps with plotly.graph objects](templates/Plotly/Plotly_Create_Treemaps_with_plotly.graph_objects.md)
     * [Create Vertical Barchart group](templates/Plotly/Plotly_Create_Vertical_Barchart_group.md)
   * [PostgresSQL](templates/PostgresSQL/README.md)
