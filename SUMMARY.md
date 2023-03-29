@@ -149,6 +149,7 @@
     * [Save file](templates/Excel/Excel_Save_file.md)
     * [Apply Custom Styles](templates/Excel/Excel_Apply_Custom_Styles.md)
     * [Read file](templates/Excel/Excel_Read_file.md)
+    * [List sheets in workbook](templates/Excel/Excel_List_sheets_in_workbook.md)
     * [Get dynamic active range](templates/Excel/Excel_Get_dynamic_active_range.md)
   * [FAO](templates/FAO/README.md)
     * [Consumer price indice](templates/FAO/FAO_Consumer_price_indice.md)
