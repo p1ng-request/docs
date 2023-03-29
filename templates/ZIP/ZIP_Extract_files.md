@@ -13,35 +13,53 @@
 
 ```python
 import zipfile
-from io import BytesIO
-import re
+import os
+from pprint import pprint
+```
+
+### Setup Variables
+- `file_path`: zip archive file path
+- `output_dir`: directory name in which files will be extracted
+
+
+```python
+# Inputs
+file_path = "files.zip"
+
+# Outputs
+output_dir = "zip_extraction"
 ```
 
 ## Model
 
-### Function
+### Extract files
+In this example, `file_path` is the path of the ZIP archive that you want to extract. 
+The with statement is used to ensure that the ZIP file is closed properly after it has been read. 
+The ZipFile class is used to open the file in read mode ('r'). 
+The extractall method is called to extract all the files in the archive to the current working directory. 
+You can also specify a different directory to extract the files to by passing a path to the extractall method.
 
 
 ```python
-def extract_zip(filepath):
-    i = 0
-    with zipfile.ZipFile(filepath, "r") as zfile:
-        for name in zfile.namelist():
-            if re.search(r"\.zip$", name) is not None:
-                zfiledata = BytesIO(zfile.read(name))
-                with zipfile.ZipFile(zfiledata) as zfile2:
-                    for name2 in zfile2.namelist():
-                        zfile2.extract(name2, path="../", pwd=None)
-                        i = i + 1
-    zfile.close()
-    print("Processing Completed. " + str(i) + " file(s) extracted")
+# Create output dir
+os.mkdir(output_dir)
+
+# Extract files
+if os.path.exists(file_path):
+    # open the zip file for reading
+    with zipfile.ZipFile(file_path, 'r') as zip_ref:
+        # extract all files to the current working directory
+        zip_ref.extractall(output_dir)
+else:
+    print(f"❌ ZIP path '{file_path}' does not exist. Please update it on your variables.")
 ```
 
 ## Output
 
-### Extract zip
+### Display result
 
 
 ```python
-extract_zip("bilans_saisis_20181231.zip")
+print("Number of files extracted:", len(os.listdir(output_dir)))
+pprint(os.listdir(output_dir))
 ```
