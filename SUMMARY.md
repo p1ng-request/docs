@@ -602,6 +602,7 @@
     * [Save json file](templates/Python/Python_Save_json_file.md)
     * [Save dict to pickle](templates/Python/Python_Save_dict_to_pickle.md)
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
+    * [Convert string to URL](templates/Python/Python_Convert_string_to_URL.md)
     * [Organize Directories based on file types](templates/Python/Python_Organize_Directories_based_on_file_types.md)
     * [Create directory](templates/Python/Python_Create_directory.md)
     * [Check email validity](templates/Python/Python_Check_email_validity.md)
