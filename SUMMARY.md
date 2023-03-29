@@ -175,6 +175,7 @@
     * [List stargazers from repository](templates/GitHub/GitHub_List_stargazers_from_repository.md)
     * [Create Repo](templates/GitHub/GitHub_Create_Repo.md)
     * [Remove member from team](templates/GitHub/GitHub_Remove_member_from_team.md)
+    * [Download Excel file from URL](templates/GitHub/GitHub_Download_Excel_file_from_URL.md)
     * [Track issues on projects](templates/GitHub/GitHub_Track_issues_on_projects.md)
     * [Create newsletter based on repository activity](templates/GitHub/GitHub_Create_newsletter_based_on_repository_activity.md)
     * [List all pull requests](templates/GitHub/GitHub_List_all_pull_requests.md)
