@@ -621,6 +621,7 @@
     * [Replace value in text in a specific paragraph](templates/Python/Python_Replace_value_in_text_in_a_specific_paragraph.md)
     * [Get Word Definition and Translation](templates/Python/Python_Get_Word_Definition_and_Translation.md)
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
+    * [Convert URL to string](templates/Python/Python_Convert_URL_to_string.md)
     * [Find Phone Number in string](templates/Python/Python_Find_Phone_Number_in_string.md)
     * [Locate city on map](templates/Python/Python_Locate_city_on_map.md)
     * [Get all files from directory](templates/Python/Python_Get_all_files_from_directory.md)
