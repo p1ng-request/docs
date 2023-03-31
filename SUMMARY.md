@@ -528,6 +528,7 @@
     * [Filter DataFrame](templates/Pandas/Pandas_Filter_DataFrame.md)
     * [Fill emtpy values](templates/Pandas/Pandas_Fill_emtpy_values.md)
     * [Format number to string](templates/Pandas/Pandas_Format_number_to_string.md)
+    * [Flatten MultiIndex Columns](templates/Pandas/Pandas_Flatten_MultiIndex_Columns.md)
     * [Drop First column](templates/Pandas/Pandas_Drop_First_column.md)
     * [Drop Columns By Index](templates/Pandas/Pandas_Drop_Columns_By_Index.md)
     * [Check Columns type](templates/Pandas/Pandas_Check_Columns_type.md)
