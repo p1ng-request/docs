@@ -595,6 +595,7 @@
     * [Using datetime library](templates/Python/Python_Using_datetime_library.md)
     * [Get last file modified from directy](templates/Python/Python_Get_last_file_modified_from_directy.md)
     * [Create Strong Random Password](templates/Python/Python_Create_Strong_Random_Password.md)
+    * [Clean your download folder](templates/Python/Python_Clean_your_download_folder.md)
     * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
     * [Read json file](templates/Python/Python_Read_json_file.md)
     * [Rename file](templates/Python/Python_Rename_file.md)
