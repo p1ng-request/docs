@@ -59,8 +59,8 @@ fig = go.Figure(
 fig.update_layout(
     title=title,
     plot_bgcolor="#ffffff",
-    width=1200,
-    height=800,
+    width=800,
+    height=600,
     xaxis_tickfont_size=14,
     yaxis=dict(
         title="USD (millions)",
@@ -95,4 +95,9 @@ link_html = naas.asset.add(output_html, {"inline": True})
 # -> Uncomment the line below to remove your assets
 # naas.asset.delete(output_image)
 # naas.asset.delete(output_html)
+```
+
+
+```python
+
 ```
