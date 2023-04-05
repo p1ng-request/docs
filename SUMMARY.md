@@ -98,6 +98,7 @@
     * [Get Metrics for a Bitlink by Referrers](templates/Bitly/Bitly_Get_Metrics_for_a_Bitlink_by_Referrers.md)
     * [Update a Bitlink](templates/Bitly/Bitly_Update_a_Bitlink.md)
   * [Boursorama](templates/Boursorama/README.md)
+    * [Get EURIBOR 3 MOIS](templates/Boursorama/Boursorama_Get_EURIBOR_3_MOIS.md)
     * [Get CDS](templates/Boursorama/Boursorama_Get_CDS.md)
   * [Bubble](templates/Bubble/README.md)
     * [Send data](templates/Bubble/Bubble_Send_data.md)
