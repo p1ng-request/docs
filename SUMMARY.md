@@ -115,6 +115,8 @@
     * [Satellites over time](templates/Celestrak/Celestrak_Satellites_over_time.md)
   * [Cityfalcon](templates/Cityfalcon/README.md)
     * [Get data from API](templates/Cityfalcon/Cityfalcon_Get_data_from_API.md)
+  * [Clockify](templates/Clockify/README.md)
+    * [Get all my workspaces](templates/Clockify/Clockify_Get_all_my_workspaces.md)
   * [Cloud Mercato](templates/Cloud%20Mercato/README.md)
     * [Compare VM pricing](templates/Cloud%20Mercato/Cloud_Mercato_Compare_VM_pricing.md)
   * [Creditsafe](templates/Creditsafe/README.md)
