@@ -161,6 +161,8 @@
     * [Visualiser Comparer Ventes Line Chart](templates/FEC/FEC_Visualiser_Comparer_Ventes_Line_Chart.md)
     * [Creer un dashboard PowerBI](templates/FEC/FEC_Creer_un_dashboard_PowerBI.md)
     * [Visualiser Bilan Treemap](templates/FEC/FEC_Visualiser_Bilan_Treemap.md)
+  * [FED](templates/FED/README.md)
+    * [Visualize Inflation Rate](templates/FED/FED_Visualize_Inflation_Rate.md)
   * [FTP](templates/FTP/README.md)
     * [S Connect](templates/FTP/FTPS_Connect.md)
     * [Send file](templates/FTP/FTP_Send_file.md)
