@@ -545,6 +545,7 @@
     * [Pivot rows to columns](templates/Pandas/Pandas_Pivot_rows_to_columns.md)
     * [Drop First column](templates/Pandas/Pandas_Drop_First_column.md)
   * [Pandasql](templates/Pandasql/README.md)
+    * [Query Parquet Using SQL](templates/Pandasql/Pandasql_Query_Parquet_Using_SQL.md)
     * [Query CSV Using SQL](templates/Pandasql/Pandasql_Query_CSV_Using_SQL.md)
     * [Query Excel Using SQL](templates/Pandasql/Pandasql_Query_Excel_Using_SQL.md)
   * [Panel](templates/Panel/README.md)
