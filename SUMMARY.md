@@ -581,6 +581,8 @@
     * [Create Bubblechart](templates/Plotly/Plotly_Create_Bubblechart.md)
     * [Create Vertical Barchart stacked](templates/Plotly/Plotly_Create_Vertical_Barchart_stacked.md)
     * [Create Linechart](templates/Plotly/Plotly_Create_Linechart.md)
+  * [Polars](templates/Polars/README.md)
+    * [Read CSV](templates/Polars/Polars_Read_CSV.md)
   * [PostgresSQL](templates/PostgresSQL/README.md)
     * [Get data from database](templates/PostgresSQL/PostgresSQL_Get_data_from_database.md)
   * [PowerPoint](templates/PowerPoint/README.md)
