@@ -4,7 +4,7 @@
 
 **Author:** [Florent Ravenel](http://linkedin.com/in/florent-ravenel)
 
-**Description:** This notebook will show how to get all workspaces of a user using the Clockify API.
+**Description:** This notebook will show how to get all workspaces of a user using the Clockify API and return a dict.
 
 **References:**
 - [Clockify API Documentation](https://docs.clockify.me/#tag/Workspace/operation/getWorkspacesOfUser)
