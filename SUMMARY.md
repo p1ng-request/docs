@@ -613,6 +613,7 @@
     * [Organize Directories based on file types](templates/Python/Python_Organize_Directories_based_on_file_types.md)
     * [Create Email Combination with Firstname Lastname Domain address](templates/Python/Python_Create_Email_Combination_with_Firstname_Lastname_Domain_address.md)
     * [Locate coordinates](templates/Python/Python_Locate_coordinates.md)
+    * [Remove file](templates/Python/Python_Remove_file.md)
     * [Get last file modified from directy](templates/Python/Python_Get_last_file_modified_from_directy.md)
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
     * [Create dict from lists](templates/Python/Python_Create_dict_from_lists.md)
