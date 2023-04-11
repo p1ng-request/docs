@@ -504,6 +504,7 @@
   * [OpenAI](templates/OpenAI/README.md)
     * [Generate Text to Speech](templates/OpenAI/OpenAI_Generate_Text_to_Speech.md)
     * [Create Completion](templates/OpenAI/OpenAI_Create_Completion.md)
+    * [Generate README for GitHub repository](templates/OpenAI/OpenAI_Generate_README_for_GitHub_repository.md)
     * [Brainstorm ideas](templates/OpenAI/OpenAI_Brainstorm_ideas.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
     * [Write a social media post](templates/OpenAI/OpenAI_Write_a_social_media_post.md)

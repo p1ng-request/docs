@@ -52,7 +52,6 @@ api_key = naas.secret.get(name="OPENAI_API_KEY") or "ENTER_YOUR_OPENAI_API_KEY"
 topic = "OpenAI and chatGPT"
 tone = "Informative"
 characters = 1000
-# prompt = f"Write a {tone} blog post about {topic} with {characters} words."
 prompt = f"Write a {characters} characters blog post about {topic} with a {tone} tone and a catchy headline"
 
 # Outputs
