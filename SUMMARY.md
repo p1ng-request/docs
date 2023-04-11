@@ -238,6 +238,8 @@
     * [Get stats per country](templates/Google%20Analytics/Google_Analytics_Get_stats_per_country.md)
     * [Follow number of sessions monthly](templates/Google%20Analytics/Google_Analytics_Follow_number_of_sessions_monthly.md)
     * [Get unique visitors](templates/Google%20Analytics/Google_Analytics_Get_unique_visitors.md)
+  * [Google Calendar](templates/Google%20Calendar/README.md)
+    * [Get calendar](templates/Google%20Calendar/Google_Calendar_Get_calendar.md)
   * [Google Drive](templates/Google%20Drive/README.md)
     * [Download file](templates/Google%20Drive/Google_Drive_Download_file.md)
   * [Google Search](templates/Google%20Search/README.md)
