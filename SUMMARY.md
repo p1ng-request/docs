@@ -455,6 +455,7 @@
     * [Remove Scheduler Outputs](templates/Naas/Naas_Remove_Scheduler_Outputs.md)
     * [Get Transactions](templates/Naas/Naas_Get_Transactions.md)
     * [Automate GitHub Auth](templates/Naas/Naas_Automate_GitHub_Auth.md)
+    * [Start data product](templates/Naas/Naas_Start_data_product.md)
     * [Credits Get Balance](templates/Naas/Naas_Credits_Get_Balance.md)
     * [Manage Pipeline Errors](templates/Naas/Naas_Manage_Pipeline_Errors.md)
     * [Dependency demo](templates/Naas/Naas_Dependency_demo.md)
