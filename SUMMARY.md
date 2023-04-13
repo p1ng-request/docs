@@ -487,6 +487,7 @@
     * [Send Slack Messages For New Notion Database Items](templates/Notion/Notion_Send_Slack_Messages_For_New_Notion_Database_Items.md)
     * [Get blocks from page](templates/Notion/Notion_Get_blocks_from_page.md)
     * [Add cover image to page](templates/Notion/Notion_Add_cover_image_to_page.md)
+    * [Update database with GitHub repositories info](templates/Notion/Notion_Update_database_with_GitHub_repositories_info.md)
     * [Add new github member to team from database](templates/Notion/Notion_Add_new_github_member_to_team_from_database.md)
     * [Create page](templates/Notion/Notion_Create_page.md)
     * [Sent Gmail On New Item](templates/Notion/Notion_Sent_Gmail_On_New_Item.md)
