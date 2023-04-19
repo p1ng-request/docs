@@ -192,6 +192,7 @@
     * [Get commits from repository](templates/GitHub/GitHub_Get_commits_from_repository.md)
     * [Get files added on pull request](templates/GitHub/GitHub_Get_files_added_on_pull_request.md)
     * [Clone repository](templates/GitHub/GitHub_Clone_repository.md)
+    * [List pending team invitations](templates/GitHub/GitHub_List_pending_team_invitations.md)
     * [Download file from url](templates/GitHub/GitHub_Download_file_from_url.md)
     * [Create Repo](templates/GitHub/GitHub_Create_Repo.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
