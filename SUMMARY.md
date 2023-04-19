@@ -197,6 +197,7 @@
     * [Create Repo](templates/GitHub/GitHub_Create_Repo.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
     * [Get active projects](templates/GitHub/GitHub_Get_active_projects.md)
+    * [List team members](templates/GitHub/GitHub_List_team_members.md)
     * [Close issue](templates/GitHub/GitHub_Close_issue.md)
     * [Create issue](templates/GitHub/GitHub_Create_issue.md)
     * [Get files changed on pull request](templates/GitHub/GitHub_Get_files_changed_on_pull_request.md)
