@@ -259,6 +259,8 @@
     * [Send emails from sheet](templates/Google%20Sheets/Google_Sheets_Send_emails_from_sheet.md)
     * [Add new github member to team from spreadsheet](templates/Google%20Sheets/Google_Sheets_Add_new_github_member_to_team_from_spreadsheet.md)
     * [Send data](templates/Google%20Sheets/Google_Sheets_Send_data.md)
+  * [Google Slides](templates/Google%20Slides/README.md)
+    * [Create a blank presentation](templates/Google%20Slides/Google_Slides_Create_a_blank_presentation.md)
   * [HTML](templates/HTML/README.md)
     * [Create a website](templates/HTML/HTML_Create_a_website.md)
   * [Healthchecks](templates/Healthchecks/README.md)
