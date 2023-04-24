@@ -22,7 +22,6 @@ except ModuleNotFoundError:
     !pip install google-api-python-client
     from apiclient.discovery import build
     from google_auth_oauthlib.flow import InstalledAppFlow
-import requests
 import uuid
 ```
 

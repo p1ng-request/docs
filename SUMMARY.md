@@ -261,6 +261,7 @@
     * [Send data](templates/Google%20Sheets/Google_Sheets_Send_data.md)
   * [Google Slides](templates/Google%20Slides/README.md)
     * [Create a blank presentation](templates/Google%20Slides/Google_Slides_Create_a_blank_presentation.md)
+    * [Duplicate slide](templates/Google%20Slides/Google_Slides_Duplicate_slide.md)
     * [List slides in presentation](templates/Google%20Slides/Google_Slides_List_slides_in_presentation.md)
     * [Create a Slide](templates/Google%20Slides/Google_Slides_Create_a_Slide.md)
   * [HTML](templates/HTML/README.md)
