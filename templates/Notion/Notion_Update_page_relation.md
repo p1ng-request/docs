@@ -30,9 +30,9 @@ from pprint import pprint
 
 ```python
 notion_token = naas.secret.get("NOTION_TOKEN") or "YOUR_TOKEN"
-page_id = "https://www.notion.so/asgard-group/EUROPA-VELIZY-41a024aa918347648d63f531736ca141?pvs=4"
+page_id = "https://www.notion.so/xxxxxxxxx/xxxxxxxxxxxxxx?pvs=4"
 relation_property_name = "<relation_property_name>"
-relation_id = "https://www.notion.so/asgard-group/LOKACOM-LEVALLOIS-PERRET-b2f91c6a5d32404997bb0232713400d7?pvs=4"
+relation_id = "https://www.notion.so/xxxxxxxxx/xxxxxxxxxxxxxx?pvs=4"
 ```
 
 ## Model
