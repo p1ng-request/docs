@@ -489,6 +489,7 @@
     * [Delete page](templates/Notion/Notion_Delete_page.md)
     * [Send LinkedIn invitations from database](templates/Notion/Notion_Send_LinkedIn_invitations_from_database.md)
     * [Delete all pages from database](templates/Notion/Notion_Delete_all_pages_from_database.md)
+    * [Update page relation](templates/Notion/Notion_Update_page_relation.md)
     * [Update database with LinkedIn profile info](templates/Notion/Notion_Update_database_with_LinkedIn_profile_info.md)
     * [Generate Google Sheets rows for new items in Notion database](templates/Notion/Notion_Generate_Google_Sheets_rows_for_new_items_in_Notion_database.md)
     * [Send Slack Messages For New Notion Database Items](templates/Notion/Notion_Send_Slack_Messages_For_New_Notion_Database_Items.md)
