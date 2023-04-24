@@ -33,7 +33,10 @@ except ModuleNotFoundError:
 
 ```python
 secret_path = 'secret.json'
-scopes = ['https://www.googleapis.com/auth/presentations', 'https://www.googleapis.com/auth/presentations.readonly']
+scopes = [
+    'https://www.googleapis.com/auth/presentations',
+    'https://www.googleapis.com/auth/presentations.readonly'
+]
 title = 'New Presentation'
 ```
 

@@ -36,8 +36,11 @@ import uuid
 ```python
 # Inputs
 secret_path = 'secret.json'
-scopes = ['https://www.googleapis.com/auth/presentations', 'https://www.googleapis.com/auth/presentations.readonly']
-presentation_url = "https://docs.google.com/presentation/d/1bH9tJgfGIqwzDvhst8rLxmI12efwmsWsbWenKZNRf7s/edit#slide=id.SLIDES_API1712173254_0"
+scopes = [
+    'https://www.googleapis.com/auth/presentations',
+    'https://www.googleapis.com/auth/presentations.readonly'
+]
+presentation_url = "https://docs.google.com/presentation/d/xxxxxxxxxxxxxxxxx/"
 insertion_index = 1  # Replace with the actual position where you want to insert the slide
 ```
 
