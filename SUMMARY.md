@@ -194,6 +194,7 @@
     * [Clone repository](templates/GitHub/GitHub_Clone_repository.md)
     * [List pending team invitations](templates/GitHub/GitHub_List_pending_team_invitations.md)
     * [Download file from url](templates/GitHub/GitHub_Download_file_from_url.md)
+    * [Download repository from URL](templates/GitHub/GitHub_Download_repository_from_URL.md)
     * [Create Repo](templates/GitHub/GitHub_Create_Repo.md)
     * [Add new member to team](templates/GitHub/GitHub_Add_new_member_to_team.md)
     * [Get active projects](templates/GitHub/GitHub_Get_active_projects.md)
