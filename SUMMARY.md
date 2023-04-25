@@ -265,6 +265,7 @@
     * [Duplicate slide](templates/Google%20Slides/Google_Slides_Duplicate_slide.md)
     * [List slides in presentation](templates/Google%20Slides/Google_Slides_List_slides_in_presentation.md)
     * [Create a Slide](templates/Google%20Slides/Google_Slides_Create_a_Slide.md)
+    * [Replace text within a shape](templates/Google%20Slides/Google_Slides_Replace_text_within_a_shape.md)
   * [HTML](templates/HTML/README.md)
     * [Create a website](templates/HTML/HTML_Create_a_website.md)
   * [Healthchecks](templates/Healthchecks/README.md)
