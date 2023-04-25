@@ -770,6 +770,7 @@
     * [Create Grouped Column Chart](templates/Vizzu/Vizzu_Create_Grouped_Column_Chart.md)
     * [Create Line Chart](templates/Vizzu/Vizzu_Create_Line_Chart.md)
     * [Create Waterfall Chart](templates/Vizzu/Vizzu_Create_Waterfall_Chart.md)
+    * [Create Animated Bar Chart](templates/Vizzu/Vizzu_Create_Animated_Bar_Chart.md)
     * [Create Column Chart](templates/Vizzu/Vizzu_Create_Column_Chart.md)
     * [Create Stacked Column Chart](templates/Vizzu/Vizzu_Create_Stacked_Column_Chart.md)
   * [WAQI](templates/WAQI/README.md)
