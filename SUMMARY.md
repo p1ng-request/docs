@@ -175,6 +175,7 @@
   * [GitHub](templates/GitHub/README.md)
     * [Create pull request](templates/GitHub/GitHub_Create_pull_request.md)
     * [Track issues on projects](templates/GitHub/GitHub_Track_issues_on_projects.md)
+    * [Get team membership for a user](templates/GitHub/GitHub_Get_team_membership_for_a_user.md)
     * [List closed pull requests](templates/GitHub/GitHub_List_closed_pull_requests.md)
     * [Create newsletter based on repository activity](templates/GitHub/GitHub_Create_newsletter_based_on_repository_activity.md)
     * [Get commits ranking from repository](templates/GitHub/GitHub_Get_commits_ranking_from_repository.md)
