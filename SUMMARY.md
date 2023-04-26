@@ -188,6 +188,7 @@
     * [Read issue](templates/GitHub/GitHub_Read_issue.md)
     * [Get issues from repo](templates/GitHub/GitHub_Get_issues_from_repo.md)
     * [Peform basic actions](templates/GitHub/GitHub_Peform_basic_actions.md)
+    * [Remove team membership for a user](templates/GitHub/GitHub_Remove_team_membership_for_a_user.md)
     * [Track notebooks created over time](templates/GitHub/GitHub_Track_notebooks_created_over_time.md)
     * [Send stargazers to Google Sheets](templates/GitHub/GitHub_Send_stargazers_to_Google_Sheets.md)
     * [Get commits from repository](templates/GitHub/GitHub_Get_commits_from_repository.md)
