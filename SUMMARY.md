@@ -650,6 +650,7 @@
     * [Convert URL to string](templates/Python/Python_Convert_URL_to_string.md)
     * [Read pickle file](templates/Python/Python_Read_pickle_file.md)
     * [Get coordinates from address](templates/Python/Python_Get_coordinates_from_address.md)
+    * [Delete entire directory tree](templates/Python/Python_Delete_entire_directory_tree.md)
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
     * [Replace value in text in a specific paragraph](templates/Python/Python_Replace_value_in_text_in_a_specific_paragraph.md)
     * [Save dict to pickle](templates/Python/Python_Save_dict_to_pickle.md)
