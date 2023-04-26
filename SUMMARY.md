@@ -213,6 +213,7 @@
     * [Get a repository](templates/GitHub/GitHub_Get_a_repository.md)
     * [List organization repositories](templates/GitHub/GitHub_List_organization_repositories.md)
     * [Create leaderboard of contributors](templates/GitHub/GitHub_Create_leaderboard_of_contributors.md)
+    * [Add or update team membership for a user](templates/GitHub/GitHub_Add_or_update_team_membership_for_a_user.md)
     * [Create repository on personal account](templates/GitHub/GitHub_Create_repository_on_personal_account.md)
     * [List stargazers from repository](templates/GitHub/GitHub_List_stargazers_from_repository.md)
   * [Gmail](templates/Gmail/README.md)
