@@ -346,6 +346,7 @@
     * [Get libraries](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Get_libraries.md)
     * [Count code characters](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Count_code_characters.md)
     * [Read file json](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Read_file_json.md)
+    * [Apply black on notebook file](templates/Jupyter%20Notebooks/Jupyter_Notebooks_Apply_black_on_notebook_file.md)
   * [Kaggle](templates/Kaggle/README.md)
     * [Download Data](templates/Kaggle/Kaggle_Download_Data.md)
   * [Knative](templates/Knative/README.md)
