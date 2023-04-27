@@ -63,6 +63,8 @@
     * [Sync with Notion database](templates/Affinity/Affinity_Sync_with_Notion_database.md)
   * [Agicap](templates/Agicap/README.md)
     * [List companies](templates/Agicap/Agicap_List_companies.md)
+    * [Export treasury plan by account](templates/Agicap/Agicap_Export_treasury_plan_by_account.md)
+    * [Export treasury plan](templates/Agicap/Agicap_Export_treasury_plan.md)
   * [Airtable](templates/Airtable/README.md)
     * [Delete data](templates/Airtable/Airtable_Delete_data.md)
     * [Get data](templates/Airtable/Airtable_Get_data.md)
