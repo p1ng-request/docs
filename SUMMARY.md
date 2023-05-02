@@ -85,6 +85,7 @@
     * [Get export Lots](templates/Bazimo/Bazimo_Get_export_Lots.md)
   * [BeautifulSoup](templates/BeautifulSoup/README.md)
     * [Scrape emails from URL](templates/BeautifulSoup/BeautifulSoup_Scrape_emails_from_URL.md)
+    * [List social network links from website](templates/BeautifulSoup/BeautifulSoup_List_social_network_links_from_website.md)
   * [BigQuery](templates/BigQuery/README.md)
     * [Read Table](templates/BigQuery/BigQuery_Read_Table.md)
     * [Create table from csv](templates/BigQuery/BigQuery_Create_table_from_csv.md)
