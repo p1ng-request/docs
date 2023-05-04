@@ -460,6 +460,7 @@
     * [List Assets](templates/Naas/Naas_List_Assets.md)
     * [Set timezone](templates/Naas/Naas_Set_timezone.md)
     * [List Webhooks](templates/Naas/Naas_List_Webhooks.md)
+    * [Find Asset link from path](templates/Naas/Naas_Find_Asset_link_from_path.md)
     * [Emailbuilder demo](templates/Naas/Naas_Emailbuilder_demo.md)
     * [Asset demo](templates/Naas/Naas_Asset_demo.md)
     * [Secret demo](templates/Naas/Naas_Secret_demo.md)
