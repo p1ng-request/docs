@@ -645,6 +645,7 @@
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
     * [Remove file](templates/Python/Python_Remove_file.md)
+    * [Download ZIP from URL](templates/Python/Python_Download_ZIP_from_URL.md)
     * [Create directory](templates/Python/Python_Create_directory.md)
     * [Rename file](templates/Python/Python_Rename_file.md)
     * [Convert audiofile from wav to mp3](templates/Python/Python_Convert_audiofile_from_wav_to_mp3.md)
