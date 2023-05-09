@@ -197,6 +197,7 @@
     * [Close issue](templates/GitHub/GitHub_Close_issue.md)
     * [List team members](templates/GitHub/GitHub_List_team_members.md)
     * [Get commits from repository](templates/GitHub/GitHub_Get_commits_from_repository.md)
+    * [Clone repository and switch branch](templates/GitHub/GitHub_Clone_repository_and_switch_branch.md)
     * [Get commits ranking from repository](templates/GitHub/GitHub_Get_commits_ranking_from_repository.md)
     * [Get Traffic Clones on repository](templates/GitHub/GitHub_Get_Traffic_Clones_on_repository.md)
     * [Create leaderboard of contributors](templates/GitHub/GitHub_Create_leaderboard_of_contributors.md)

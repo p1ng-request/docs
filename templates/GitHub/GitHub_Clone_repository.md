@@ -4,7 +4,8 @@
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook clones a GitHub repository to your naas.
+**References:**
+- [GitHub Documentation - Cloning a repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
 ## Input
 
@@ -12,38 +13,59 @@
 
 
 ```python
-from IPython.display import display
-from ipywidgets import widgets
-import naas
-from os import path
+import os
 ```
 
-### Define your repository URL
+### Setup Variables
+- `repo_url`: URL of the repository to clone
+- `output_dir`: Output directory to clone repo. If None, we will create a folder with the name of the repo
 
 
 ```python
-GIT_REPO_URL = "https://github.com/jupyter-naas/data-product-framework.git"
+# Inputs
+repo_url = "https://github.com/jupyter-naas/awesome-notebooks"
+
+# Outputs
+output_dir = None
 ```
 
 ## Model
 
-### Setup project path and clone repo
+### Clone repository
+Clone the repository from the given URL and create a local copy of it.
 
 
 ```python
-# Setup folder path
-PROJECT_NAME = GIT_REPO_URL.split("/")[-1].replace(".git", "")
-GIT_REPO_PATH = path.join("/", "home", "ftp", PROJECT_NAME)
-
-# Download repo inside folder
-!git clone "$GIT_REPO_URL" "$GIT_REPO_PATH"
+def clone_branch(repo_url, output_dir):
+    # Get GitHub owner and repo name
+    owner = repo_url.split("https://github.com/")[-1].split("/")[0]
+    repo_name = repo_url.split("/")[-1]
+    
+    # Add repo name with .git extension
+    if not repo_name.endswith(".git"):
+        repo_name = f"{repo_name}.git"
+    repo = f"{owner}/{repo_name}"
+        
+    # Init output dir
+    if not output_dir:
+        output_dir = repo_name[:-4]
+    
+    # Create output directoy
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        
+    # GitHub Action
+    !cd '{output_dir}'
+    !git clone git@github.com:'{repo}' '{output_dir}'
+    print(f"✅ GitHub repo cloned: {output_dir}")
+    return output_dir
 ```
 
 ## Output
 
-#### Display result
+### Clone repository
 
 
 ```python
-print(f"✅ The project has been downloaded to the following folder: {GIT_REPO_PATH}.")
+output_dir = clone_branch(repo_url, output_dir)
 ```
