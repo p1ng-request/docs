@@ -668,6 +668,7 @@
     * [Flatten nested dict](templates/Python/Python_Flatten_nested_dict.md)
     * [Read pickle file](templates/Python/Python_Read_pickle_file.md)
     * [Clean your download folder](templates/Python/Python_Clean_your_download_folder.md)
+    * [Get next occurrences of a cron job](templates/Python/Python_Get_next_occurrences_of_a_cron_job.md)
     * [Locate address on map](templates/Python/Python_Locate_address_on_map.md)
     * [Save dict to pickle](templates/Python/Python_Save_dict_to_pickle.md)
     * [Get coordinates from address](templates/Python/Python_Get_coordinates_from_address.md)
