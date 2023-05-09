@@ -21,10 +21,12 @@ import json
 
 ### Setup Variables
 - `data`: a dictionary containing the data to be saved in the json file
+- `json_path`: json file path
 
 
 ```python
 data = {"name": "John Doe", "age": 30, "city": "New York"}
+json_path = "data.json"
 ```
 
 ## Model
@@ -35,7 +37,7 @@ Using the `json.dump()` function, the `data` dictionary can be saved to a json f
 
 
 ```python
-with open("data.json", "w") as f:
+with open(json_path, "w") as f:
     json.dump(data, f)
 ```
 
@@ -43,7 +45,10 @@ with open("data.json", "w") as f:
 
 ### Display result
 
-The json file has been saved to the current directory.
+
+```python
+print("The json file has been saved to the current directory.")
+```
 
  
 
