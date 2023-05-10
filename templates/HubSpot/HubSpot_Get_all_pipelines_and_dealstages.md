@@ -17,13 +17,12 @@ import naas
 ```
 
 ### Setup HubSpot
-👉 Starting November 30, 2022, HubSpot API keys no longer enable access to HubSpot APIs, so in Naas version 2.8.3 and above, you need [create a private app and use the access token](https://developers.hubspot.com/docs/api/private-apps).
-
-#### Enter Your Access Token
+[Get your HubSpot Access token](https://knowledge.hubspot.com/articles/kcs_article/integrations/how-do-i-get-my-hubspot-api-key)
+- `hs_access_token`: This variable stores an access token used for accessing the HubSpot API. It is retrieved from a secret store using naas.secret.get() method. If the access token is not available in the secret store, a default value of "YOUR_HS_ACCESS_TOKEN" is used.
 
 
 ```python
-HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
+hs_access_token = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 ```
 
 ## Model
@@ -32,7 +31,7 @@ HS_ACCESS_TOKEN = naas.secret.get("HS_ACCESS_TOKEN") or "YOUR_HS_ACCESS_TOKEN"
 
 
 ```python
-df_pipelines = hubspot.connect(HS_ACCESS_TOKEN).pipelines.get_all()
+df_pipelines = hubspot.connect(hs_access_token).pipelines.get_all()
 ```
 
 ## Output

@@ -310,6 +310,7 @@
     * [Get all deals](templates/HubSpot/HubSpot_Get_all_deals.md)
     * [Update contact](templates/HubSpot/HubSpot_Update_contact.md)
     * [Create deal](templates/HubSpot/HubSpot_Create_deal.md)
+    * [Send sales pipeline to Notion](templates/HubSpot/HubSpot_Send_sales_pipeline_to_Notion.md)
     * [Delete note](templates/HubSpot/HubSpot_Delete_note.md)
   * [Hugging Face](templates/Hugging%20Face/README.md)
     * [Ask boolean question to T5](templates/Hugging%20Face/Hugging_Face_Ask_boolean_question_to_T5.md)
