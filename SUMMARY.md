@@ -229,6 +229,7 @@
     * [Update email flag](templates/Gmail/Gmail_Update_email_flag.md)
     * [Get emails stats by sender](templates/Gmail/Gmail_Get_emails_stats_by_sender.md)
     * [Get unseen emails](templates/Gmail/Gmail_Get_unseen_emails.md)
+    * [Send email](templates/Gmail/Gmail_Send_email.md)
     * [Read mailbox](templates/Gmail/Gmail_Read_mailbox.md)
   * [Google Analytics](templates/Google%20Analytics/README.md)
     * [Follow number of new visitors monthly](templates/Google%20Analytics/Google_Analytics_Follow_number_of_new_visitors_monthly.md)
