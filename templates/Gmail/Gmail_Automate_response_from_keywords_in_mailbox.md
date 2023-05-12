@@ -17,15 +17,34 @@ from naas_drivers import email
 from re import search
 ```
 
-### Account credentials
+### Setup Variables
+Create an application password following [this procedure](https://support.google.com/mail/answer/185833?hl=en)
+- `username`: This variable stores the username or email address associated with the email account
+- `password`: This variable stores the password or authentication token required to access the email account
+- `smtp_server`: This variable represents the SMTP server address used for sending emails.
+- `box`: This variable stores the name or identifier of the mailbox or folder within the email account that will be accessed.
+- `keywords`: This variable stores the keywords to be searched in email text.
+- `cron`: CRON to be set to schedule your notebook. More info [here](https://crontab.guru/)
+- `email_to`: This variable stores the emails to received the automatic response.
+- `subject`: This variable stores the subject of the email response.
+- `content`: This variable stores the content of the email response.
+- `files`: This variable stores the files to be sent as attachments.
 
 
 ```python
-username = "**********@gmail.com"
-to = "**********@gmail.com"
-password = "**********"
+# Inputs
+username = "xxxxx@xxxxx"
+password = naas.secret.get("GMAIL_APP_PASSWORD") or "xxxxxxxx"
 smtp_server = "imap.gmail.com"
 box = "INBOX"
+keywords = "sales report"
+
+# Outputs
+cron = "0 20 * * *" #everyday at 8PM
+email_to = "xxxx@xxxxx"
+subject = "Sales Report"
+content = "Hi \n,Here I am attaching the sales report as per your request\n.With Regards\n,NAAS Team"
+files = []
 ```
 
 ## Model
@@ -34,15 +53,16 @@ box = "INBOX"
 
 
 ```python
-emails = email.connect(username, password, username, smtp_server)
+emails = email.connect(username, password, smtp_server=smtp_server)
 ```
 
 ### Get email list
 
 
 ```python
-dataframe = emails.get(criteria="ALL")
-df
+df_emails = emails.get()
+print(f"✅ Emails fetched:", len(df_emails))
+df_emails.head(1)
 ```
 
 ## Output
@@ -53,12 +73,11 @@ df
 ```python
 for df in dataframe["text"]:
     text = df.lower()
-    if search("sales report", text):
-        email_to = "naas.sanjay22@gmail.com"
-        subject = "Sales Report"
-        content = "Hi \n,Here I am attaching the sales report as per your request\n.With Regards\n,NAAS Team"
-        files = ["Excel-Sales_Feb2020.csv"]
+    if search(keywords, text):
         naas.notifications.send(
-            email_to=email_to, subject=subject, html=content, files=files
+            email_to=email_to,
+            subject=subject,
+            html=content,
+            files=files
         )
 ```
