@@ -124,6 +124,7 @@
     * [Remove user from workspace](templates/Clockify/Clockify_Remove_user_from_workspace.md)
     * [Find clients on workspace](templates/Clockify/Clockify_Find_clients_on_workspace.md)
     * [Get all projects on workspace](templates/Clockify/Clockify_Get_all_projects_on_workspace.md)
+    * [Find tasks on project](templates/Clockify/Clockify_Find_tasks_on_project.md)
     * [Find all users on workspace](templates/Clockify/Clockify_Find_all_users_on_workspace.md)
   * [Cloud Mercato](templates/Cloud%20Mercato/README.md)
     * [Compare VM pricing](templates/Cloud%20Mercato/Cloud_Mercato_Compare_VM_pricing.md)

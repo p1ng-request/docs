@@ -55,7 +55,7 @@ projects = get_projects(api_key, workspace_id)
 ```python
 print("Projects found:", len(projects), "\n")
 for project in projects:
-    print("-", project["name"])
+    print("-", project["name"], f'(id: {project["id"]})')
 if len(projects) > 0:
     print()
     pprint(projects[0])
