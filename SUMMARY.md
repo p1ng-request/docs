@@ -122,6 +122,7 @@
   * [Clockify](templates/Clockify/README.md)
     * [Delete client](templates/Clockify/Clockify_Delete_client.md)
     * [Get all my workspaces](templates/Clockify/Clockify_Get_all_my_workspaces.md)
+    * [Get time entries for a user on workspace](templates/Clockify/Clockify_Get_time_entries_for_a_user_on_workspace.md)
     * [Get client by ID](templates/Clockify/Clockify_Get_client_by_ID.md)
     * [Remove user from workspace](templates/Clockify/Clockify_Remove_user_from_workspace.md)
     * [Add a new client](templates/Clockify/Clockify_Add_a_new_client.md)
