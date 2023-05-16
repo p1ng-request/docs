@@ -121,6 +121,7 @@
     * [Get data from API](templates/Cityfalcon/Cityfalcon_Get_data_from_API.md)
   * [Clockify](templates/Clockify/README.md)
     * [Get all my workspaces](templates/Clockify/Clockify_Get_all_my_workspaces.md)
+    * [Remove user from workspace](templates/Clockify/Clockify_Remove_user_from_workspace.md)
     * [Get all projects on workspace](templates/Clockify/Clockify_Get_all_projects_on_workspace.md)
   * [Cloud Mercato](templates/Cloud%20Mercato/README.md)
     * [Compare VM pricing](templates/Cloud%20Mercato/Cloud_Mercato_Compare_VM_pricing.md)
