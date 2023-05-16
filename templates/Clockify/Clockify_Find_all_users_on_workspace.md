@@ -5,6 +5,17 @@
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook will show how to find all users on a workspace using Clockify API.
+It will return a dataframe with columns as follow:
+- id: This column stores an identifier or unique identifier associated with a user. It likely contains alphanumeric values that uniquely identify each user in the DataFrame.
+- email: This column stores the email addresses associated with the users in the DataFrame. It likely contains text values representing the email addresses of the users.
+- name: This column stores the names or titles associated with the users in the DataFrame. It likely contains text values representing the names of the users.
+- memberships: This column represents the memberships or group affiliations of the users. It likely contains a list or nested data structure that indicates the groups or memberships the users belong to.
+- profilePicture: This column stores the URLs or paths to the profile pictures of the users. It likely contains text values representing the image URLs or file paths.
+- activeWorkspace: This column represents the identifier or unique identifier of the active workspace for each user. It likely contains alphanumeric values that uniquely identify the active workspace.
+- defaultWorkspace: This column stores the identifier or unique identifier of the default workspace for each user. It likely contains alphanumeric values that uniquely identify the default workspace.
+- settings: This column stores user-specific settings or configurations. It likely contains nested data structures or dictionaries that hold various settings related to the user, such as the week start day and timezone.
+- status: This column indicates the status of the users, whether they are active or inactive. It likely contains text values such as "ACTIVE" or "INACTIVE".
+- customFields: This column stores custom fields or additional information specific to each user. It may contain nested data structures or lists that hold user-specific custom field values.
 
 **References:**
 - [Clockify API Documentation](https://docs.clockify.me/#tag/User/operation/getUsersOfWorkspace)
@@ -17,7 +28,7 @@
 ```python
 import requests
 import naas
-from pprint import pprint
+import pandas as pd
 ```
 
 ### Setup Variables
@@ -56,7 +67,7 @@ users = get_users_from_workspace(workspace_id, api_key)
 print("Users found:", len(users), "\n")
 for user in users:
     print("-", user["name"], f'(id: {user["id"]})')
-if len(users) > 0:
-    print()
-    pprint(users[0])
+    
+df = pd.DataFrame(users)
+df
 ```
