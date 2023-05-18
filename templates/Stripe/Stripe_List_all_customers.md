@@ -8,7 +8,6 @@
 
 **References:**
 - [Stripe API Documentation](https://stripe.com/docs/api/customers/list)
-- [Stripe Python Library](https://stripe.com/docs/stripe-python)
 
 ## Input
 
@@ -26,7 +25,7 @@ from pprint import pprint
 
 
 ```python
-api_key = naas.secret.get("STRIPE_API_KEY", ) or "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+api_key = naas.secret.get("STRIPE_API_KEY_TEST") or "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 ```
 
 ## Model
@@ -35,34 +34,41 @@ api_key = naas.secret.get("STRIPE_API_KEY", ) or "sk_test_4eC39HqLyjWDarjtT1zdp7
 
 
 ```python
-# URL
-stripe_endpoint = "https://api.stripe.com/v1/customers"
+def list_all_customers(api_key):
+    # Init
+    stripe_endpoint = "https://api.stripe.com/v1/customers"
+    data = []
 
-# Define headers with authorization using Stripe API key
-headers = {
-    "Authorization": f"Bearer {api_key}"
-}
+    # Define headers with authorization using Stripe API key
+    headers = {
+        "Authorization": f"Bearer {api_key}"
+    }
 
-# Send GET request to Stripe API to list customers
-response = requests.get(stripe_endpoint, headers=headers)
+    # Send GET request to Stripe API to list customers
+    response = requests.get(stripe_endpoint, headers=headers)
 
-# Check for successful response (status code 200)
-if response.status_code == 200:
-    # Get the customers from the response
-    customers = response.json()["data"]
-    
-    # Check if there are more customers to fetch
-    while response.json()["has_more"]:
-        # Set the starting_after parameter to the last customer ID from the previous response
-        starting_after = customers[-1]["id"]
-        
-        # Send GET request with the starting_after parameter to fetch the next set of customers
-        response = requests.get(stripe_endpoint, headers=headers, params={"starting_after": starting_after})
-        
-        # Check for successful response (status code 200)
-        if response.status_code == 200:
-            # Get the customers from the response
-            customers.append(response.json()["data"])
+    # Check for successful response (status code 200)
+    if response.status_code == 200:
+        # Get the customers from the response
+        data = response.json()["data"]
+
+        # Check if there are more customers to fetch
+        while response.json()["has_more"]:
+            # Set the starting_after parameter to the last customer ID from the previous response
+            starting_after = data[-1]["id"]
+
+            # Send GET request with the starting_after parameter to fetch the next set of customers
+            response = requests.get(
+                stripe_endpoint,
+                headers=headers,
+                params={"starting_after": starting_after}
+            )
+
+            # Check for successful response (status code 200)
+            if response.status_code == 200:
+                # Get the customers from the response
+                data.append(response.json()["data"])
+    return data
 ```
 
 ## Output
@@ -71,6 +77,8 @@ if response.status_code == 200:
 
 
 ```python
-print("Customer fetched:", len(customers))
-pprint(customers[0])
+results = list_all_customers(api_key)
+print("✅ Customers fetched:", len(results))
+if len(results) > 0:
+    pprint(results[0])
 ```
