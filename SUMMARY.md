@@ -236,6 +236,7 @@
     * [List open pull requests](templates/GitHub/GitHub_List_open_pull_requests.md)
   * [Gmail](templates/Gmail/README.md)
     * [Clean mailbox](templates/Gmail/Gmail_Clean_mailbox.md)
+    * [Create GitHub issue on specific email](templates/Gmail/Gmail_Create_GitHub_issue_on_specific_email.md)
     * [Get seen emails](templates/Gmail/Gmail_Get_seen_emails.md)
     * [Automate response from keywords in mailbox](templates/Gmail/Gmail_Automate_response_from_keywords_in_mailbox.md)
     * [Delete email from mailbox](templates/Gmail/Gmail_Delete_email_from_mailbox.md)

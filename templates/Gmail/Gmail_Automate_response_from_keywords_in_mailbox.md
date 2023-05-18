@@ -81,3 +81,10 @@ for df in dataframe["text"]:
             files=files
         )
 ```
+
+### Add scheduler
+
+
+```python
+naas.scheduler.add(cron=cron)
+```
