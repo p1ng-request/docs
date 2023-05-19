@@ -241,6 +241,7 @@
     * [Automate response from keywords in mailbox](templates/Gmail/Gmail_Automate_response_from_keywords_in_mailbox.md)
     * [Delete email from mailbox](templates/Gmail/Gmail_Delete_email_from_mailbox.md)
     * [Update email flag](templates/Gmail/Gmail_Update_email_flag.md)
+    * [Create draft email](templates/Gmail/Gmail_Create_draft_email.md)
     * [Get emails stats by sender](templates/Gmail/Gmail_Get_emails_stats_by_sender.md)
     * [Get unseen emails](templates/Gmail/Gmail_Get_unseen_emails.md)
     * [Send email](templates/Gmail/Gmail_Send_email.md)
