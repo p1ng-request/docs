@@ -665,6 +665,7 @@
   * [Python](templates/Python/README.md)
     * [Check email validity](templates/Python/Python_Check_email_validity.md)
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
+    * [Compress images](templates/Python/Python_Compress_images.md)
     * [Read pickle file](templates/Python/Python_Read_pickle_file.md)
     * [Convert time delta to months](templates/Python/Python_Convert_time_delta_to_months.md)
     * [Consolidate Excel files](templates/Python/Python_Consolidate_Excel_files.md)
