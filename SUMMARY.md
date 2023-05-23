@@ -811,6 +811,7 @@
     * [Post text and image](templates/Twitter/Twitter_Post_text_and_image.md)
     * [Get tweets stats from profile](templates/Twitter/Twitter_Get_tweets_stats_from_profile.md)
     * [Get tweets from search](templates/Twitter/Twitter_Get_tweets_from_search.md)
+    * [Get followers list](templates/Twitter/Twitter_Get_followers_list.md)
     * [Remove member from list](templates/Twitter/Twitter_Remove_member_from_list.md)
     * [Get user data](templates/Twitter/Twitter_Get_user_data.md)
     * [Schedule posts](templates/Twitter/Twitter_Schedule_posts.md)
