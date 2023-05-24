@@ -179,6 +179,7 @@
     * [Visualiser Bilan Treemap](templates/FEC/FEC_Visualiser_Bilan_Treemap.md)
     * [Creer un dashboard PowerBI](templates/FEC/FEC_Creer_un_dashboard_PowerBI.md)
     * [Visualiser Trésorerie Barline Chart](templates/FEC/FEC_Visualiser_Trésorerie_Barline_Chart.md)
+    * [Visualiser Charges Horizontal Barchart](templates/FEC/FEC_Visualiser_Charges_Horizontal_Barchart.md)
     * [Visualiser Comparer Ventes Line Chart](templates/FEC/FEC_Visualiser_Comparer_Ventes_Line_Chart.md)
   * [FED](templates/FED/README.md)
     * [Visualize Inflation Rate](templates/FED/FED_Visualize_Inflation_Rate.md)
