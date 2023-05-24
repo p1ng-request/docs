@@ -178,6 +178,7 @@
   * [FAO](templates/FAO/README.md)
     * [Consumer price indice](templates/FAO/FAO_Consumer_price_indice.md)
   * [FEC](templates/FEC/README.md)
+    * [Lecture des fichiers](templates/FEC/FEC_Lecture_des_fichiers.md)
     * [Visualiser Bilan Treemap](templates/FEC/FEC_Visualiser_Bilan_Treemap.md)
     * [Creer un dashboard PowerBI](templates/FEC/FEC_Creer_un_dashboard_PowerBI.md)
     * [Visualiser Trésorerie Barline Chart](templates/FEC/FEC_Visualiser_Trésorerie_Barline_Chart.md)
