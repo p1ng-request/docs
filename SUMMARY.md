@@ -578,6 +578,7 @@
     * [Write a job description](templates/OpenAI/OpenAI_Write_a_job_description.md)
     * [Write an outline](templates/OpenAI/OpenAI_Write_an_outline.md)
     * [Generate Q&A](templates/OpenAI/OpenAI_Generate_Q&A.md)
+    * [Generate text summaries](templates/OpenAI/OpenAI_Generate_text_summaries.md)
     * [Generate Text to Speech](templates/OpenAI/OpenAI_Generate_Text_to_Speech.md)
     * [Generate text replacements](templates/OpenAI/OpenAI_Generate_text_replacements.md)
     * [Create Completion](templates/OpenAI/OpenAI_Create_Completion.md)
