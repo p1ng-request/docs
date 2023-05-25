@@ -194,6 +194,8 @@
   * [Faker](templates/Faker/README.md)
     * [Anonymize Address from dataframe](templates/Faker/Faker_Anonymize_Address_from_dataframe.md)
     * [Anonymize Personal Names from dataframe](templates/Faker/Faker_Anonymize_Personal_Names_from_dataframe.md)
+  * [Formant](templates/Formant/README.md)
+    * [Query Device Network](templates/Formant/Formant_Query_Device_Network.md)
   * [GitHub](templates/GitHub/README.md)
     * [Get commits from repository](templates/GitHub/GitHub_Get_commits_from_repository.md)
     * [List closed pull requests](templates/GitHub/GitHub_List_closed_pull_requests.md)
