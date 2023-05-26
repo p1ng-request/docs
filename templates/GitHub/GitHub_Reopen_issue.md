@@ -1,10 +1,10 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/GitHub/GitHub_Close_issue.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=GitHub+-+Close+issue:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/GitHub/GitHub_Reopen_issue.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=GitHub+-+Reopen+issue:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
 **Tags:** #github #issues #update #rest #api #snippet #operations
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook explains how to close an issue on GitHub using the REST API.
+**Description:** This notebook explains how to reopened an issue on GitHub using the REST API.
 
 **References:**
 - [GitHub REST API Documentation](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#update-an-issue)
@@ -24,7 +24,6 @@ import naas
 - `owner`: owner of the repository
 - `repo`: name of the repository
 - `issue_number`: number of the issue
-- `state_reason`: The reason for the issue closed. Can be one of: completed, not_planned
 
 
 ```python
@@ -33,9 +32,6 @@ token = naas.secret.get('GITHUB_TOKEN')
 owner = "jupyter-naas"
 repo = "awesome-notebooks"
 issue_number = 99
-
-# Outputs
-state_reason = "not_planned"
 ```
 
 ## Model
@@ -53,8 +49,8 @@ def update_issue(
     issue_number,
     title=None,
     body=None,
-    state="closed",
-    state_reason=None,
+    state="open",
+    state_reason="reopened",
     labels=[],
     assignees=[],
 ):
@@ -77,7 +73,7 @@ def update_issue(
     # Send the PATCH request
     res = requests.patch(url, headers=headers, json=data)
     if res.status_code == 200:
-        print(f"✅ Issue closed:", f"https://github.com/{owner}/{repo}/issues/{issue_number}")
+        print(f"✅ Issue reopened:", f"https://github.com/{owner}/{repo}/issues/{issue_number}")
         return res
     else:
         print(res.status_code, res.json())
@@ -94,7 +90,6 @@ update_issue(
     owner,
     repo,
     issue_number,
-    state_reason=state_reason,
 )
 ```
 
