@@ -148,6 +148,7 @@
     * [Create Dropdown with multiples output callbacks](templates/Dash/Dash_Create_Dropdown_with_multiples_output_callbacks.md)
     * [Create Navbar Dashboard](templates/Dash/Dash_Create_Navbar_Dashboard.md)
     * [Create conditional formatting on HTML element](templates/Dash/Dash_Create_conditional_formatting_on_HTML_element.md)
+    * [Create Interactive Plot](templates/Dash/Dash_Create_Interactive_Plot.md)
     * [Create Navbar](templates/Dash/Dash_Create_Navbar.md)
     * [Create conditional formatting on number value](templates/Dash/Dash_Create_conditional_formatting_on_number_value.md)
     * [Create Datatable With Dropdown](templates/Dash/Dash_Create_Datatable_With_Dropdown.md)
