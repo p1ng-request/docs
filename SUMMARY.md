@@ -61,6 +61,7 @@
     * [Get IP Geolocation](templates/Abstract%20API/Abstract_API_Get_IP_Geolocation.md)
   * [Advertools](templates/Advertools/README.md)
     * [Analyze website content using XML sitemap](templates/Advertools/Advertools_Analyze_website_content_using_XML_sitemap.md)
+    * [Audit robots txt and xml sitemap issues](templates/Advertools/Advertools_Audit_robots_txt_and_xml_sitemap_issues.md)
   * [Affinity](templates/Affinity/README.md)
     * [Sync with Notion database](templates/Affinity/Affinity_Sync_with_Notion_database.md)
   * [Agicap](templates/Agicap/README.md)
