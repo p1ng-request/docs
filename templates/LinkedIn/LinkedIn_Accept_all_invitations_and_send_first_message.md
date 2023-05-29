@@ -6,6 +6,15 @@
 
 **Description:** This notebook helps you quickly and easily accept all LinkedIn invitations and send a personalized introductory message to each new connection.
 
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
+This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
+
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
+
 ## Input
 
 ### Import libraries
@@ -13,34 +22,36 @@
 
 
 ```python
-from naas_drivers import linkedin
 import naas
+from naas_drivers import linkedin
 import pandas as pd
 ```
 
-### Setup LinkedIn
+### Setup Variables
+If you are using the Chrome Extension:
+- [Install Naas Chrome Extension](https://chrome.google.com/webstore/detail/naas/cpkgfedlkfiknjpkmhcglmjiefnechpp?hl=fr&authuser=0)
+- [Create a new token](https://app.naas.ai/hub/token)
+- Copy/Paste your token in your extension
+- Login/Logout your LinkedIn account
+- Your secrets "LINKEDIN_LI_AT" and "LINKEDIN_JSESSIONID" will be added directly on your naas everytime you login and logout.
 
-- [Get your cookies](/d20a8e7e508e42af8a5b52e33f3dba75)
+or <br>
+
+If you are not using the Google Chrome Extension, [learn how to get your cookies on LinkedIn](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
+- `li_at`: Cookie used to authenticate Members and API clients
+- `JSESSIONID`: Cookie used for Cross Site Request Forgery (CSRF) protection and URL signature validation
+- `cron`: Cron params for naas scheduler. More information: https://crontab.guru/
+- `first_message`: First message to be send
 
 
 ```python
-# Lindekin cookies
-LI_AT = "AQEDARCNSioDe6wmAAABfqF-HR4AAAF-xYqhHlYAtSu7EZZEpFer0UZF-GLuz2DNSz4asOOyCRxPGFjenv37irMObYYgxxxxxxx"
-JSESSIONID = "ajax:12XXXXXXXXXXXXXXXXX"
+# Inputs
+li_at = naas.secret.get("LINKEDIN_LI_AT") or "YOUR_COOKIE_LI_AT"
+JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "YOUR_COOKIE_JSESSIONID"
+cron = "0 * * * *"
 
-# First message
-FIRST_MESSAGE = "Hello, Nice to connect!"
-```
-
-### Setup Naas
-
-
-```python
-# Schedule your notebook every hour
-naas.scheduler.add(cron="0 * * * *")
-
-# -> Uncomment the line below to remove your scheduler
-# naas.scheduler.delete()
+# Outputs
+first_message = "Hello, Nice to connect!"
 ```
 
 ## Model
@@ -49,7 +60,7 @@ naas.scheduler.add(cron="0 * * * *")
 
 
 ```python
-df_invitation = linkedin.connect(LI_AT, JSESSIONID).invitation.get_received()
+df_invitation = linkedin.connect(li_at, JSESSIONID).invitation.get_received()
 df_invitation
 ```
 
@@ -68,7 +79,7 @@ def accept_new_contact(df):
         shared_secret = row.SHARED_SECRET
         if status == "PENDING":
             print(fullname)
-            tmp_df = linkedin.connect(LI_AT, JSESSIONID).invitation.accept(
+            tmp_df = linkedin.connect(li_at, JSESSIONID).invitation.accept(
                 invitation_id, shared_secret
             )
             df_accept = pd.concat([df_accept, tmp_df])
@@ -89,7 +100,7 @@ def send_first_message(df):
         fullname = row.FULLNAME
         profile_id = row.PROFILE_ID
         print(fullname)
-        linkedin.connect(LI_AT, JSESSIONID).message.send(FIRST_MESSAGE, profile_id)
+        linkedin.connect(li_at, JSESSIONID).message.send(FIRST_MESSAGE, profile_id)
 
 
 send_first_message(df_accept)
@@ -104,4 +115,15 @@ send_first_message(df_accept)
 
 ```python
 df_accept
+```
+
+### Schedule notebook
+
+
+```python
+# Schedule your notebook every hour
+naas.scheduler.add(cron=cron)
+
+# -> Uncomment the line below to remove your scheduler
+# naas.scheduler.delete()
 ```

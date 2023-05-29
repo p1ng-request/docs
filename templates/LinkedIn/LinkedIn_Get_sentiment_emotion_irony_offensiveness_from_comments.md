@@ -4,11 +4,7 @@
 
 **Author:** [Nikolaj Groeneweg](https://www.linkedin.com/in/njgroene/)
 
-## About this template
-
-### What it does
-
-This notebook gets all the comments on a LinkedIn post, and performs sentiment analysis, emotion classification and some semantic analysis on them. 
+**Description:** This notebook gets all the comments on a LinkedIn post, and performs sentiment analysis, emotion classification and some semantic analysis on them. 
 It classifies each comment and returns the following information:
 
 - is the comment positive, negative or neutral?
@@ -16,7 +12,7 @@ It classifies each comment and returns the following information:
 - is the comment offensive?
 - does the comment express joy, optimism, anger or sadness?
 
-### References
+**References:**
 
 This template is based on the following work :
 
@@ -34,6 +30,15 @@ These models may be expected to work well on shorter comments, but their output 
 The "emotion" classification performs rather unpredictably on very short comments. For many neutral comments it defaults to "joy", there being neutral category). It is most useful to identify and filter for negative emotions (sadness) and to identify interesting commments (optimism).
 
 In general, caution is recommended when integrating these classifications in any automated decision pipeline.
+
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
+This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
+
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
 ## Input
 

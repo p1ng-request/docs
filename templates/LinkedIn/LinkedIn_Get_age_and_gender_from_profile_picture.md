@@ -4,9 +4,22 @@
 
 **Author:** [Nikolaj Groeneweg](https://www.linkedin.com/in/njgroene/)
 
-This notebook estimates a person's age and gender based on their LinkedIn profile picture. 
+**Description:** This notebook estimates a person's age and gender based on their LinkedIn profile picture. 
 
-## Prerequisites
+**References:**
+
+The code below is based on the following work :
+    
+*Karkkainen, K., & Joo, J. (2021).*
+FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation. 
+In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 1548-1558).
+
+The paper and all other corresponding information can be found on github:
+https://github.com/joojs/fairface
+
+*Disclaimer*: please note that model output and interpretation have been restricted in order to comply to French CNIL regulation regarding the processing and storage of sensitive data (see : https://www.cnil.fr/fr/definition/donnee-sensible)
+
+<u>Prerequisites:</u>
 
 This code requires you to download and install a pretrained neural network for it to function correctly. 
 
@@ -19,18 +32,14 @@ Follow these steps:
    
    3) Copy the model to your "models" folder
 
-## References
 
-The code below is based on the following work :
-    
-*Karkkainen, K., & Joo, J. (2021).*
-FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation. 
-In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 1548-1558).
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
+This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-The paper and all other corresponding information can be found on github:
-https://github.com/joojs/fairface
-
-*Disclaimer*: please note that model output and interpretation have been restricted in order to comply to French CNIL regulation regarding the processing and storage of sensitive data (see : https://www.cnil.fr/fr/definition/donnee-sensible)
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
 ## Input
 
