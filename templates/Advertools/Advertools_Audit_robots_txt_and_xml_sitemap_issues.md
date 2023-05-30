@@ -1,6 +1,6 @@
 <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Advertools/Advertools_Audit_robots_txt_and_xml_sitemap_issues.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=Advertools+-+Audit+robots+txt+and+xml+sitemap+issues:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-**Tags:** #advertools #xml #sitemap #website #analyze #seo #robots.txt
+**Tags:** #advertools #xml #sitemap #website #audit #seo #robots.txt #google
 
 **Author:** [Elias Dabbas](https://www.linkedin.com/in/eliasdabbas/)
 
@@ -13,7 +13,7 @@
 **References:**
 - [advertools robots.txt functions](https://advertools.readthedocs.io/en/master/advertools.robotstxt.html)
 - [Google's robots reference](https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt)
-
+- [advertools XML sitemaps](https://advertools.readthedocs.io/en/master/advertools.sitemaps.html)
 
 ## Input
 
@@ -34,9 +34,6 @@ except ModuleNotFoundError:
 
 ```python
 robotstxt_url = "https://www.example.com/robots.txt"
-
-# just for testing:
-robotstxt_url = "https://www.google.com/robots.txt"
 ```
 
 ## Model
@@ -69,6 +66,14 @@ For all URL/user-agent combinations check if the URL is blocked.
 
 
 ```python
+user_agents = robots_df[robots_df['directive'].str.contains('user-agent', case=False)]['content']
+user_agents
+```
+
+Generate the robots.txt test report:
+
+
+```python
 # Get users agent
 user_agents = robots_df[robots_df['directive'].str.contains('user-agent', case=False)]['content']
 print(user_agents)
@@ -84,11 +89,13 @@ print("Row fetched:", len(robots_report))
 robots_report.head(5)
 ```
 
-Does Google have URLs listed in the XML sitemap that are also disallowed by its robots.txt
+Does the website have URLs listed in the XML sitemap that are also disallowed by its robots.txt?
 
-(this is not necessarily a problem, because they might disallow it for some user-agents), but it's good to check.
+(this is not necessarily a problem, because they might disallow it for some user-agents only), and it's good to check.
 
 ## Output
+
+Get the URLs that cannot be fetched
 
 ### Filter result
 
