@@ -576,6 +576,7 @@
     * [Add new github member to team from database](templates/Notion/Notion_Add_new_github_member_to_team_from_database.md)
     * [Add icon image to page](templates/Notion/Notion_Add_icon_image_to_page.md)
   * [OpenAI](templates/OpenAI/README.md)
+    * [Act as a chef](templates/OpenAI/OpenAI_Act_as_a_chef.md)
     * [Write a social media post](templates/OpenAI/OpenAI_Write_a_social_media_post.md)
     * [Generate text based prediction](templates/OpenAI/OpenAI_Generate_text_based_prediction.md)
     * [Generate Dialogue](templates/OpenAI/OpenAI_Generate_Dialogue.md)
