@@ -696,6 +696,7 @@
     * [Match pattern with regular expressions](templates/Python/Python_Match_pattern_with_regular_expressions.md)
     * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
     * [Create Strong Random Password](templates/Python/Python_Create_Strong_Random_Password.md)
+    * [List specific files from directory and subdirectories](templates/Python/Python_List_specific_files_from_directory_and_subdirectories.md)
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
     * [Convert audiofile from wav to mp3](templates/Python/Python_Convert_audiofile_from_wav_to_mp3.md)
     * [Convert URL to string](templates/Python/Python_Convert_URL_to_string.md)
