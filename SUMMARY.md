@@ -862,6 +862,8 @@
     * [WHI Create indicator](templates/WSR/WHI_Create_indicator.md)
     * [Get daily Covid19 active cases worldmap JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_worldmap_JHU.md)
     * [Get daily Covid19 active cases trend JHU](templates/WSR/WSR_Get_daily_Covid19_active_cases_trend_JHU.md)
+  * [WhatsApp](templates/WhatsApp/README.md)
+    * [Transform chat txt to dataframe](templates/WhatsApp/WhatsApp_Transform_chat_txt_to_dataframe.md)
   * [Wikipedia](templates/Wikipedia/README.md)
     * [List largest cities in the world](templates/Wikipedia/Wikipedia_List_largest_cities_in_the_world.md)
   * [WindsorAI](templates/WindsorAI/README.md)
