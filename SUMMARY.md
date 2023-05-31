@@ -579,6 +579,7 @@
     * [Act as a chef](templates/OpenAI/OpenAI_Act_as_a_chef.md)
     * [Write a social media post](templates/OpenAI/OpenAI_Write_a_social_media_post.md)
     * [Generate text based prediction](templates/OpenAI/OpenAI_Generate_text_based_prediction.md)
+    * [Create chat completion](templates/OpenAI/OpenAI_Create_chat_completion.md)
     * [Generate Dialogue](templates/OpenAI/OpenAI_Generate_Dialogue.md)
     * [Generate README for GitHub repository](templates/OpenAI/OpenAI_Generate_README_for_GitHub_repository.md)
     * [Write a press release](templates/OpenAI/OpenAI_Write_a_press_release.md)
