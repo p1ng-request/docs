@@ -6,7 +6,7 @@
 
 **Description:** This notebook guides you through the process of using OpenAI's Generative Pretrained Transformer 3 (GPT-3) model to build a text completion application. This notebook will show you how to fine-tune GPT-3 to generate text based on a given prompt, and then integrate it into a web application for easy usage. The end result will be a working text completion tool that can be used to generate new ideas, suggestions, or even entire texts with just a few inputs.
 
-<u>References:</u>
+**References:**
 - OpenAI API Documentation: https://platform.openai.com/docs/api-reference
 - GPT-3: https://openai.com/gpt-3/
 - Text Completion with Deep Learning: https://towardsdatascience.com/text-completion-with-deep-learning-4cce287eb716
@@ -28,7 +28,7 @@ import naas
 ```
 
 ### Setup OpenAI
-- [Generate Your API Key](https://elephas.app/blog/how-to-create-openai-api-keys-cl5c4f21d281431po7k8fgyol0)
+- `api_key`: OpenAI API key. [Get your API key here](https://openai.com/docs/api-overview/).
 - `model`: ID of the model to use. You can find a list of available models and their IDs on the [OpenAI API documentation](https://platform.openai.com/docs/models/overview).
 - `prompt`: This is the text prompt that you want to send to the OpenAI API.
 - `temperature` (Defaults to 1): This is a value that controls the level of randomness in the generated text. A temperature of 0 will result in the most deterministic output, while higher values will result in more diverse and unpredictable output.

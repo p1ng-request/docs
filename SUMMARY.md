@@ -591,6 +591,7 @@
     * [Generate Q&A](templates/OpenAI/OpenAI_Generate_Q&A.md)
     * [Generate text summaries](templates/OpenAI/OpenAI_Generate_text_summaries.md)
     * [Generate Text to Speech](templates/OpenAI/OpenAI_Generate_Text_to_Speech.md)
+    * [Create chat conversation with OpenAI](templates/OpenAI/OpenAI_Create_chat_conversation_with_OpenAI.md)
     * [Generate text replacements](templates/OpenAI/OpenAI_Generate_text_replacements.md)
     * [Create Completion](templates/OpenAI/OpenAI_Create_Completion.md)
   * [OpenBB](templates/OpenBB/README.md)
