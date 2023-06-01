@@ -392,6 +392,8 @@
     * [Download Data](templates/Kaggle/Kaggle_Download_Data.md)
   * [Knative](templates/Knative/README.md)
     * [Create command file](templates/Knative/Knative_Create_command_file.md)
+  * [LangChain](templates/LangChain/README.md)
+    * [Pandas Dataframe Agent](templates/LangChain/LangChain_Pandas_Dataframe_Agent.md)
   * [LeFigaro](templates/LeFigaro/README.md)
     * [House Price analysis](templates/LeFigaro/LeFigaro_House_Price_analysis.md)
   * [LinkedIn](templates/LinkedIn/README.md)
