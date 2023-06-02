@@ -155,6 +155,7 @@
     * [Create Datatable With Dropdown](templates/Dash/Dash_Create_Datatable_With_Dropdown.md)
     * [Create conditional formatting on HTML element](templates/Dash/Dash_Create_conditional_formatting_on_HTML_element.md)
     * [Upload mutiples CSV Excel](templates/Dash/Dash_Upload_mutiples_CSV_Excel.md)
+    * [Create button to refresh page](templates/Dash/Dash_Create_button_to_refresh_page.md)
     * [Plotly Dynamic Link](templates/Dash/Dash_Plotly_Dynamic_Link.md)
     * [Deploy app in Naas](templates/Dash/Dash_Deploy_app_in_Naas.md)
     * [Create Navbar](templates/Dash/Dash_Create_Navbar.md)
