@@ -6,34 +6,49 @@
 
 **Description:** This notebook allows users to download videos from YouTube.
 
+**References:**
+- [pytube library](https://pypi.org/project/pytube/)
+
 ## Input
 
-### Install packages 
+### Import libraries
 
 
 ```python
-!pip install pytube3 --upgrade
+try:
+    from pytube import YouTube
+except:
+    !pip install pytube --user
+    from pytube import YouTube
 ```
 
-### Import library
+### Setup Variables
+- `youtube_video_url`: YouTube video URL
+- `output_dir`: Output directory to save the video.
 
 
 ```python
-from pytube import YouTube
-```
+# Inputs
+youtube_video_url = "https://www.youtube.com/watch?v=ONiILHFItzs"
 
-### Variables
-
-
-```python
-youtube_video_url = "https://www.youtube.com/watch?v=bleU_nrckr8"
-
-yt_obj = YouTube(youtube_video_url)
+# Outputs
+output_dir = "videos"
 ```
 
 ## Model
 
-### Paste Youtube URL
+### Init YouTube obj
+
+
+```python
+try:
+    yt_obj = YouTube(youtube_video_url)
+except:
+    !pip install pytube --upgrade --user
+    yt_obj = YouTube(youtube_video_url)
+```
+
+### Display Youtube URL streams
 
 
 ```python
@@ -41,29 +56,35 @@ for stream in yt_obj.streams:
     print(stream)
 ```
 
-### Filter on MP4 Quality
+### Get MP4 Quality
 
 
 ```python
-filters = yt_obj.streams.filter(progressive=True, file_extension="mp4")
+videos_mp4 = yt_obj.streams.filter(progressive=True, file_extension="mp4")
 
-for mp4_filter in filters:
-    print(mp4_filter)
+for videos in videos_mp4:
+    print(videos)
 ```
 
+### Get highest resolution
+
 
 ```python
-filters = yt_obj.streams.filter(progressive=True, file_extension="mp4")
-
-filters.get_highest_resolution()
-filters.get_lowest_resolution()
+video_highest_resolution = videos_mp4.get_highest_resolution()
+video_highest_resolution
 ```
 
 ## Output
 
-### Download video on current directory
+### Download video
+If output_dir does not exist, it will be created
 
 
 ```python
-filters.get_highest_resolution().download()
+video_highest_resolution.download(output_path=output_dir)
+```
+
+
+```python
+
 ```
