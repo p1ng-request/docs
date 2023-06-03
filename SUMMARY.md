@@ -532,6 +532,7 @@
     * [List Schedulers with all executions](templates/Naas/Naas_List_Schedulers_with_all_executions.md)
     * [Send notifications from Google Sheets](templates/Naas/Naas_Send_notifications_from_Google_Sheets.md)
     * [Delete Asset](templates/Naas/Naas_Delete_Asset.md)
+    * [Send Asset image to Notion page](templates/Naas/Naas_Send_Asset_image_to_Notion_page.md)
     * [Create Pipeline](templates/Naas/Naas_Create_Pipeline.md)
     * [Manage Pipeline Errors](templates/Naas/Naas_Manage_Pipeline_Errors.md)
   * [Naas Auth](templates/Naas%20Auth/README.md)
