@@ -18,7 +18,9 @@
 import pandas as pd
 ```
 
-### Setup Variables
+## Model
+
+### Create DataFrame
 
 
 ```python
@@ -33,11 +35,11 @@ df = pd.DataFrame(data)
 df
 ```
 
-## Model
-
 ### Filter DataFrame
 
-This will filter the DataFrame to only show the rows where the number of reports is greater than 4.
+- Comparison Operators: You can use comparison operators (>, <, >=, <=, ==, !=) to create filters based on specific conditions. For example, this filter will only show the rows where the number of reports is greater than 4. 
+
+- isin() Method: You can use the isin() method to filter rows based on whether a value is present in a given list or array. For example, filtering rows where the 'category' column has values 'A' or 'B':
 
 
 ```python

@@ -6,9 +6,12 @@
 
 **Description:** This notebook provides an overview of how to use the Pandas library to merge two or more dataframes.
 
+**References:**
+- [Pandas - Merge](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html)
+
 ## Input
 
-### Import Library
+### Import libraries
 
 
 ```python
@@ -90,9 +93,9 @@ df = pd.merge(df_1, df_2)
 df
 ```
 
-## Other options
+### Other options
 
-### Specifiying the comon column using parameters "on"
+#### Specifiying the comon column using parameters "on"
 
 
 ```python
@@ -100,7 +103,7 @@ df = pd.merge(df_1, df_2, on="student_id")
 df
 ```
 
-### Specifying what kind of Joins you want since merging does inner joins by default
+#### Specifying what kind of Joins you want since merging does inner joins by default
 
 - "inner" > Inner Join: INCLUDING ROWS OF FIRST AND SECOND ONLY IF THE VALUE IS THE SAME IN BOTH DATAFRAMES<br />
 - "outer" > Outer Join: IT JOINS ALL THE ROWS OF FIRST AND SECOND DATAFRAMES TOGETHER AND CREATE NaN VALUE IF A ROW DOESN'T HAVE A VALUE AFTER JOINING<br />
@@ -113,7 +116,7 @@ df = pd.merge(df_1, df_2, on="student_id", how="left")
 df
 ```
 
-### Merging dataframes with same values but different column names
+#### Merging dataframes with same values but different column names
 We add two more parameters :<br>
 - Left_on means merge using this column name<br>
 - Right_on means merge using this column name<br>
@@ -134,7 +137,7 @@ df = pd.merge(df_1, df_2, left_on="id", right_on="student_id")
 df
 ```
 
-### Merging with the index of the first dataframe
+#### Merging with the index of the first dataframe
 
 
 ```python
@@ -149,7 +152,7 @@ df = pd.merge(
 df
 ```
 
-### Merging both table on their index i.e two indexes
+#### Merging both table on their index i.e two indexes
 
 
 ```python

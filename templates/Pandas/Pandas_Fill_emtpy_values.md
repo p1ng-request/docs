@@ -6,6 +6,9 @@
 
 **Description:** This notebook fill empty values in dataframe columns.
 
+**References:**
+- [Pandas - Fillna](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html)
+
 ## Input
 
 ### Import libraries
@@ -16,7 +19,18 @@ import pandas as pd
 import numpy as np
 ```
 
-### Setup DataFrame
+### Setup Variables
+- `to_fillna`: dict of columns with value to fill
+
+
+```python
+# dict of columns with value to fill
+to_fillna = {"team": "Unknown team", "points": 0, "assists": 0, "rebounds": 0}
+```
+
+## Model
+
+### Create DataFrame
 
 
 ```python
@@ -32,16 +46,6 @@ df = pd.DataFrame(
 df
 ```
 
-### Define data to fill if empty values in columns
-
-
-```python
-# dict of columns with value to fill
-to_fillna = {"team": "Unknown team", "points": 0, "assists": 0, "rebounds": 0}
-```
-
-## Model
-
 ### Fill empty values in dataframe
 
 
@@ -51,7 +55,7 @@ df = df.fillna(to_fillna)
 
 ## Output
 
-### View new DataFrame
+### Display new DataFrame
 
 
 ```python

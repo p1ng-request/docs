@@ -6,16 +6,35 @@
 
 **Description:** This notebook provides instructions on how to use the Pandas library to convert a datetime series into a usable format.
 
+**References:**
+- [Pandas - Serie to datetime](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html)
+
 ## Input
 
-### Import library
+### Import libraries
 
 
 ```python
 import pandas as pd
 ```
 
-### Create Sample Dataframe 
+### Setup Variables
+To parse your date format : you can use the [d3 time format documentation](https://github.com/d3/d3-time-format)
+- `current_format`: Your date string format
+- `new_format`: New date format you want to use
+
+
+```python
+# Your date string format
+current_format = "%d/%m/%Y"
+
+# New date format you want to use
+new_format = "%Y-W%U"
+```
+
+## Model
+
+### Create Dataframe 
 
 
 ```python
@@ -34,33 +53,17 @@ df = pd.DataFrame(dict1)
 df
 ```
 
-### Setup Variables
-- To parse your date format : you can use the [d3 time format documentation](https://github.com/d3/d3-time-format)
-
-
-```python
-# Your date string format
-current_format = "%d/%m/%Y"
-
-# New date format you want to use
-new_format = "%Y-W%U"
-```
-
-## Model
-
 ### Convert datetime string series to datetime series to another datetime string
 
 
 ```python
-df["New_Date"] = pd.to_datetime(df["Date"], format=current_format).dt.strftime(
-    new_format
-)
+df["New_Date"] = pd.to_datetime(df["Date"], format=current_format).dt.strftime(new_format)
 df
 ```
 
 ## Output
 
-### Display new dataframe
+### Display new DataFrame
 
 
 ```python
