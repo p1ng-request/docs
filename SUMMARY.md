@@ -656,6 +656,7 @@
     * [Filter DataFrame](templates/Pandas/Pandas_Filter_DataFrame.md)
     * [Pivot rows to columns](templates/Pandas/Pandas_Pivot_rows_to_columns.md)
     * [Create conditional column enrichment using DataFrame.loc](templates/Pandas/Pandas_Create_conditional_column_enrichment_using_DataFrame.loc.md)
+    * [Concatenate dataframes](templates/Pandas/Pandas_Concatenate_dataframes.md)
     * [Drop duplicates](templates/Pandas/Pandas_Drop_duplicates.md)
     * [Create dataframe from dict](templates/Pandas/Pandas_Create_dataframe_from_dict.md)
   * [Pandasql](templates/Pandasql/README.md)
