@@ -826,6 +826,8 @@
     * [Create Radar Chart to analyze Playlist](templates/Spotify/Spotify_Create_Radar_Chart_to_analyze_Playlist.md)
   * [Stabilty AI](templates/Stabilty%20AI/README.md)
     * [Generate Image from text](templates/Stabilty%20AI/Stabilty_AI_Generate_Image_from_text.md)
+  * [Stable Diffusion](templates/Stable%20Diffusion/README.md)
+    * [Generate image from text](templates/Stable%20Diffusion/Stable_Diffusion_Generate_image_from_text.md)
   * [Streamlit](templates/Streamlit/README.md)
     * [Create prediction app](templates/Streamlit/Streamlit_Create_prediction_app.md)
   * [Stripe](templates/Stripe/README.md)
