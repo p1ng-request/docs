@@ -606,6 +606,7 @@
     * [Write a job description](templates/OpenAI/OpenAI_Write_a_job_description.md)
     * [Generate Dialogue](templates/OpenAI/OpenAI_Generate_Dialogue.md)
     * [Act as a chef](templates/OpenAI/OpenAI_Act_as_a_chef.md)
+    * [Generate image from text](templates/OpenAI/OpenAI_Generate_image_from_text.md)
     * [Generate language translations](templates/OpenAI/OpenAI_Generate_language_translations.md)
     * [Write a press release](templates/OpenAI/OpenAI_Write_a_press_release.md)
     * [Create chat completion](templates/OpenAI/OpenAI_Create_chat_completion.md)
