@@ -727,6 +727,7 @@
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
     * [Get coordinates from address](templates/Python/Python_Get_coordinates_from_address.md)
     * [Convert Datetime with Timezone to ISO 8601 date string](templates/Python/Python_Convert_Datetime_with_Timezone_to_ISO_8601_date_string.md)
+    * [Split string](templates/Python/Python_Split_string.md)
     * [Create dataframe from lists](templates/Python/Python_Create_dataframe_from_lists.md)
     * [Save json file](templates/Python/Python_Save_json_file.md)
     * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
