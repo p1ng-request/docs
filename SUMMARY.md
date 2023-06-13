@@ -640,6 +640,7 @@
     * [Drop Columns By Index](templates/Pandas/Pandas_Drop_Columns_By_Index.md)
     * [Iterate over DataFrame rows as namedtuples](templates/Pandas/Pandas_Iterate_over_DataFrame_rows_as_namedtuples.md)
     * [Merge Dataframes](templates/Pandas/Pandas_Merge_Dataframes.md)
+    * [Get n smallest](templates/Pandas/Pandas_Get_n_smallest.md)
     * [Map column with values in dict](templates/Pandas/Pandas_Map_column_with_values_in_dict.md)
     * [Drop columns](templates/Pandas/Pandas_Drop_columns.md)
     * [Format number to string](templates/Pandas/Pandas_Format_number_to_string.md)
