@@ -1,3 +1,5 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/OS/OS_List_entries_in_directory.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/open_in_naas.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=OS+-+List+entries+in+directory:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+
 **Tags:** #os #listdir #directory #python #entries #list
 
 **Author:** [Benjamin Filly](https://www.linkedin.com/in/benjamin-filly-05427727a/)
@@ -68,35 +70,5 @@ print("Subdirectories:")
 for subdirectory in subdirectories:
     print("- {}".format(subdirectory))
 ```
-
-    Files:
-    - .gitconfig
-    - Python_Convert_URL_to_string.ipynb
-    - Naas_Scheduler_demo_(1).ipynb
-    - Excel_Save_file.ipynb
-    - Gmail_Schedule_mailbox_cleaning.ipynb
-    - 108de041-a340-4813-b01f-ef2ee4b8dd68-3329.ipynb
-    - Naas_Scheduler_demo.ipynb
-    - Python_Convert_URL_to_string_(1).ipynb
-    - .bash_history
-    Subdirectories:
-    - .config
-    - Notebooks
-    - .ssh
-    - .git
-    - .cache
-    - awesome-notebooks
-    - .ipynb_checkpoints
-    - .virtual_documents
-    - .naas
-    - My-workbook
-    - .jupyter
-    - .ipython
-    - .local
-    - .npm
-    - __tutorials__
-    - __production__
-    - __templates__
-
 
  

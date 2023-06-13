@@ -722,6 +722,7 @@
     * [Organize Directories based on file types](templates/Python/Python_Organize_Directories_based_on_file_types.md)
     * [Remove all spaces on string](templates/Python/Python_Remove_all_spaces_on_string.md)
     * [Read json file](templates/Python/Python_Read_json_file.md)
+    * [Find differences between stings](templates/Python/Python_Find_differences_between_stings.md)
     * [Convert audiofile from wav to mp3](templates/Python/Python_Convert_audiofile_from_wav_to_mp3.md)
     * [Create Email Combination with Firstname Lastname Domain address](templates/Python/Python_Create_Email_Combination_with_Firstname_Lastname_Domain_address.md)
     * [Convert string to URL](templates/Python/Python_Convert_string_to_URL.md)
