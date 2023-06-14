@@ -661,6 +661,7 @@
     * [Transform DataFrame to json file](templates/Pandas/Pandas_Transform_DataFrame_to_json_file.md)
     * [Drop First column](templates/Pandas/Pandas_Drop_First_column.md)
     * [Rename columns](templates/Pandas/Pandas_Rename_columns.md)
+    * [Get n largest](templates/Pandas/Pandas_Get_n_largest.md)
     * [Drop Columns By Index](templates/Pandas/Pandas_Drop_Columns_By_Index.md)
     * [Iterate over DataFrame rows as namedtuples](templates/Pandas/Pandas_Iterate_over_DataFrame_rows_as_namedtuples.md)
     * [Merge Dataframes](templates/Pandas/Pandas_Merge_Dataframes.md)
