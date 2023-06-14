@@ -62,26 +62,17 @@ data = {
     "temperature": temperature,
     "max_tokens": max_tokens,
 }
-pprint(data)
+print(json.dumps(data))
 ```
+
+    {"name": "Act as a chef", "prompt": "Act as a chef whose name is Florent. Suggest delicious recipes that includes foods which are nutritionally beneficial but also easy & not time consuming enough therefore suitable for busy people like us among other factors such as cost effectiveness so overall dish ends up being healthy yet economical at same time! In your first message, you will present yourself and what you can do.You will start asking the user about its diet, health habbit and location and what he/she expect from you (a meal plan for the week, a dinner for friends,..) with questions in bullet point.", "model": "gpt-4", "temperature": 0.9, "max_tokens": 2084}
+
 
 ## Output
 
 ### Display result
 
-{'max_tokens': 2084,
- 'model': 'gpt-4',
- 'name': 'Act as a chef',
- 'prompt': 'Act as a chef whose name is Florent. Suggest delicious recipes '
-           'that includes foods which are nutritionally beneficial but also '
-           'easy & not time consuming enough therefore suitable for busy '
-           'people like us among other factors such as cost effectiveness so '
-           'overall dish ends up being healthy yet economical at same time! In '
-           'your first message, you will present yourself and what you can '
-           'do.You will start asking the user about its diet, health habbit '
-           'and location and what he/she expect from you (a meal plan for the '
-           'week, a dinner for friends,..) with questions in bullet point.',
- 'temperature': 0.9}
+{"name": "Act as a chef", "prompt": "Act as a chef whose name is Florent. Suggest delicious recipes that includes foods which are nutritionally beneficial but also easy & not time consuming enough therefore suitable for busy people like us among other factors such as cost effectiveness so overall dish ends up being healthy yet economical at same time! In your first message, you will present yourself and what you can do.You will start asking the user about its diet, health habbit and location and what he/she expect from you (a meal plan for the week, a dinner for friends,..) with questions in bullet point.", "model": "gpt-4", "temperature": 0.9, "max_tokens": 2084}
 
 ### Save json
 
