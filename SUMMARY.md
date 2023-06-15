@@ -509,6 +509,7 @@
     * [Add or Update Webhook](templates/Naas/Naas_Add_or_Update_Webhook.md)
     * [Dependency demo](templates/Naas/Naas_Dependency_demo.md)
     * [List Assets](templates/Naas/Naas_List_Assets.md)
+    * [Create onboarding plugin using OpenAI](templates/Naas/Naas_Create_onboarding_plugin_using_OpenAI.md)
     * [List Schedulers with last execution](templates/Naas/Naas_List_Schedulers_with_last_execution.md)
     * [Get number of downloads naas drivers package](templates/Naas/Naas_Get_number_of_downloads_naas_drivers_package.md)
     * [Asset demo](templates/Naas/Naas_Asset_demo.md)
