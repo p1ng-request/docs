@@ -785,6 +785,7 @@
     * [Download ZIP from URL](templates/Python/Python_Download_ZIP_from_URL.md)
     * [List specific files from directory and subdirectories](templates/Python/Python_List_specific_files_from_directory_and_subdirectories.md)
     * [Convert string to URL](templates/Python/Python_Convert_string_to_URL.md)
+    * [Manage exception with try except](templates/Python/Python_Manage_exception_with_try_except.md)
     * [Create Strong Random Password](templates/Python/Python_Create_Strong_Random_Password.md)
     * [Extract characters from string](templates/Python/Python_Extract_characters_from_string.md)
     * [Calculate time delta between two dates](templates/Python/Python_Calculate_time_delta_between_two_dates.md)
