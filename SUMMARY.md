@@ -324,6 +324,7 @@
     * [Create a website](templates/HTML/HTML_Create_a_website.md)
   * [Harvest](templates/Harvest/README.md)
     * [List all time entries](templates/Harvest/Harvest_List_all_time_entries.md)
+    * [List all clients](templates/Harvest/Harvest_List_all_clients.md)
   * [Healthchecks](templates/Healthchecks/README.md)
     * [Perfom basic actions](templates/Healthchecks/Healthchecks_Perfom_basic_actions.md)
   * [HubSpot](templates/HubSpot/README.md)
