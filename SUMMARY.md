@@ -833,6 +833,7 @@
     * [Get jobs from categories](templates/Remotive/Remotive_Get_jobs_from_categories.md)
     * [Send jobs to gsheet](templates/Remotive/Remotive_Send_jobs_to_gsheet.md)
   * [Request](templates/Request/README.md)
+    * [Sending POST Requests with Data](templates/Request/Request_Sending_POST_Requests_with_Data.md)
     * [Basic HTTP GET Request](templates/Request/Request_Basic_HTTP_GET_Request.md)
   * [SAP-HANA](templates/SAP-HANA/README.md)
     * [Query data](templates/SAP-HANA/SAP-HANA_Query_data.md)
