@@ -612,6 +612,7 @@
     * [Create chatbot](templates/OpenAI/OpenAI_Create_chatbot.md)
     * [Generate Act as a x notebook](templates/OpenAI/OpenAI_Generate_Act_as_a_x_notebook.md)
     * [Act as a Educator or student](templates/OpenAI/OpenAI_Act_as_a_Educator_or_student.md)
+    * [Count tokens with tiktoken](templates/OpenAI/OpenAI_Count_tokens_with_tiktoken.md)
     * [Act as a Lifelong learner](templates/OpenAI/OpenAI_Act_as_a_Lifelong_learner.md)
     * [Act as a Creative Writer or Artist](templates/OpenAI/OpenAI_Act_as_a_Creative_Writer_or_Artist.md)
     * [Act as a Data Scientist](templates/OpenAI/OpenAI_Act_as_a_Data_Scientist.md)
