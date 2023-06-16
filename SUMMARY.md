@@ -695,6 +695,7 @@
     * [Get n largest](templates/Pandas/Pandas_Get_n_largest.md)
     * [Insert column](templates/Pandas/Pandas_Insert_column.md)
     * [Create conditional column enrichment using DataFrame.loc](templates/Pandas/Pandas_Create_conditional_column_enrichment_using_DataFrame.loc.md)
+    * [Sort values by multiples columns](templates/Pandas/Pandas_Sort_values_by_multiples_columns.md)
     * [Create dataframe from dict](templates/Pandas/Pandas_Create_dataframe_from_dict.md)
     * [Drop columns](templates/Pandas/Pandas_Drop_columns.md)
     * [Check Columns type](templates/Pandas/Pandas_Check_Columns_type.md)
