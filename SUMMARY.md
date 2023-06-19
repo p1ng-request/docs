@@ -798,6 +798,7 @@
     * [Download Image from URL](templates/Python/Python_Download_Image_from_URL.md)
     * [Convert PNG Images To JPG](templates/Python/Python_Convert_PNG_Images_To_JPG.md)
     * [Validate email and phone numbers](templates/Python/Python_Validate_email_and_phone_numbers.md)
+    * [Transform string to Secure Hash Algorithm](templates/Python/Python_Transform_string_to_Secure_Hash_Algorithm.md)
     * [Locate coordinates](templates/Python/Python_Locate_coordinates.md)
     * [Explore Dataset with Pivot Table](templates/Python/Python_Explore_Dataset_with_Pivot_Table.md)
     * [Get next occurrences of a cron job](templates/Python/Python_Get_next_occurrences_of_a_cron_job.md)
