@@ -766,6 +766,7 @@
     * [Convert URL to string](templates/Python/Python_Convert_URL_to_string.md)
     * [Copy files and subdir from directory to another directory](templates/Python/Python_Copy_files_and_subdir_from_directory_to_another_directory.md.md)
     * [Locate address on map](templates/Python/Python_Locate_address_on_map.md)
+    * [Convert units](templates/Python/Python_Convert_units.md)
     * [Convert relative time delta to months](templates/Python/Python_Convert_relative_time_delta_to_months.md)
     * [Convert CSV to Excel](templates/Python/Python_Convert_CSV_to_Excel.md)
     * [Find differences between strings](templates/Python/Python_Find_differences_between_strings.md)
