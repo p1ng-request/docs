@@ -1,3 +1,5 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Pandas/Pandas_Sort_values_by_multiples_columns.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=Pandas+-+Sort+values+by+multiples+columns:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+
 **Tags:** #pandas #dataframe #sort #columns #values #multiples
 
 **Author:** [Benjamin Filly](https://www.linkedin.com/in/benjamin-filly-05427727a/)
@@ -46,63 +48,6 @@ df = pd.DataFrame(data)
 df
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Tom</td>
-      <td>20</td>
-      <td>99</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>nick</td>
-      <td>21</td>
-      <td>98</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>krish</td>
-      <td>19</td>
-      <td>95</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>jack</td>
-      <td>18</td>
-      <td>90</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
 ## Output
 
 ### Sort values by multiples columns
@@ -113,62 +58,5 @@ df
 sorted_df = df.sort_values(by=by, ascending=ascending, ignore_index=ignore_index)
 sorted_df
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Tom</td>
-      <td>20</td>
-      <td>99</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>nick</td>
-      <td>21</td>
-      <td>98</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>krish</td>
-      <td>19</td>
-      <td>95</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>jack</td>
-      <td>18</td>
-      <td>90</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
  

@@ -1,3 +1,5 @@
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Request/Request_Basic_HTTP_GET_Request.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=Request+-+Basic+HTTP+GET:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+
 **Tags:** #request #http #get #library #python #api
 
 **Author:** [Benjamin Filly](https://www.linkedin.com/in/benjamin-filly-05427727a/)
@@ -60,23 +62,5 @@ else:
     # If the request was not successful, print the status code
     print('Request failed with status code:', response.status_code)
 ```
-
-    Response Headers:
-    Date: Wed, 14 Jun 2023 09:52:03 GMT
-    Content-Type: application/json;charset=UTF-8
-    Transfer-Encoding: chunked
-    Connection: keep-alive
-    Via: 1.1 vegur
-    CF-Cache-Status: DYNAMIC
-    Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=AeEt8OHIGV4JscmRKR85feoGQ9DWj3NWvAenVpLJ%2B6TdOLs6jq7XKWzoopCZJrPVzQmXtMAbVjFSCm%2F3pYNC7GFL106GldQNrheIDEKbu%2BKqyct5jwR%2FR8ZlFH6H%2B0zaNkmqhac%3D"}],"group":"cf-nel","max_age":604800}
-    NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
-    Server: cloudflare
-    CF-RAY: 7d71ada52d4603f5-CDG
-    Content-Encoding: br
-    alt-svc: h3=":443"; ma=86400
-    
-    Response Data:
-    {'categories': [], 'created_at': '2020-01-05 13:42:24.696555', 'icon_url': 'https://assets.chucknorris.host/img/avatar/chuck-norris.png', 'id': 'wGbqgcxRQumTYd6y55cHwA', 'updated_at': '2020-01-05 13:42:24.696555', 'url': 'https://api.chucknorris.io/jokes/wGbqgcxRQumTYd6y55cHwA', 'value': "Chuck Norris ripped the horn off of the world's last unicorn. He made a scrimshawed knife handle out of it."}
-
 
  
