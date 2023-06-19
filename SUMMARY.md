@@ -757,6 +757,7 @@
   * [PyPI](templates/PyPI/README.md)
     * [- Get number of downloads any package](templates/PyPI/PyPI%20-%20Get_number_of_downloads_any_package.md)
   * [Python](templates/Python/README.md)
+    * [Pseudonym generator](templates/Python/Python_Pseudonym_generator.md)
     * [Get random number](templates/Python/Python_Get_random_number.md)
     * [Looping Over Dataframe](templates/Python/Python_Looping_Over_Dataframe.md)
     * [Read pickle file](templates/Python/Python_Read_pickle_file.md)
