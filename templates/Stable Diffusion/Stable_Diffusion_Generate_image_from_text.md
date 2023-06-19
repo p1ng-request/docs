@@ -4,24 +4,17 @@
 
 **Author:** [Oussama El Bahaoui](https://www.linkedin.com/in/oelbahaoui/)
 
-**Description:** This notebook would allow you to generate image from text using Stable Diffusion. It is useful for organizations to create visuals from text for marketing purposes.
+**Description:** This notebook generate image from text using Stable Diffusion.
 
-<a target="_blank" href="https://colab.research.google.com/drive/1PYhRAo8bcgSJdIFrtAFUF2ENbe5BJhn7?usp=sharing">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+It requires a more powerful machine than the free tier we provide. You have two options to proceed:
+
+1. **Using Google Colab:** If you have a Google account, you can open this notebook in Google Colab(link is above), which provides free access to more powerful computational resources to run this notebook. To do this, click the “Open in Colab” button located at the end of this paragraph. Please note that you may need to sign in with your Google account or create one if you don’t have it. <a target="_blank" href="https://colab.research.google.com/drive/1PYhRAo8bcgSJdIFrtAFUF2ENbe5BJhn7?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+2. **Contacting Us for Machine Upgrade:** If you prefer to run this notebook on your own machine, you can contact us to upgrade your machine. Our team will assist you in setting up the necessary environment. Please reach out to [Jeremy Ravenel](mailto:jeremy@naas.ai) for further assistance.
 
 **References:**
 - [Stability.ai - Stable Diffusion](https://stability.ai/stable-diffusion)
 - [Stability.ai - Text to Image](https://stability.ai/text-to-image)
-
-## Note📝
-
-This notebook requires a more powerful machine than the free tier we provide. You have two options to proceed:
-
-1. **Using Google Colab:** If you have a Google account, you can open this notebook in Google Colab(link is above), which provides free access to more powerful computational resources to run this notebook. To do this, click the “Open in Colab” button at the top of the notebook. Please note that you may need to sign in with your Google account or create one if you don’t have it.
-2. **Contacting Us for Machine Upgrade:** If you prefer to run this notebook on your own machine, you can contact us to upgrade your machine. Our team will assist you in setting up the necessary environment. Please reach out to [Jeremy Ravanel](mailto:jeremy@naas.ai) for further assistance.
-
-Please choose the option that best suits your needs and resources.
 
 ## Input
 
@@ -43,6 +36,10 @@ import torch
 ```
 
 ### Setup Variables
+- `REPO_ID`: This variable stores the identifier for the model repository that will be used. In this example, it is set to "stabilityai/stable-diffusion-2" to specify the specific model from the "stabilityai" repository.
+- `NUM_INFERENCE_STEPS`: This variable defines the number of steps or iterations the model will take during the inference process. It determines how many times the model will update its predictions.
+- `prompt`: This variable represents the description or prompt that will be provided to the model. It serves as the basis for generating the image output. In this case, the prompt is set to "A person walking through a field of tall grass".
+- `IMAGE_PATH`: This variable specifies the path or file name for the output image. The generated image will be saved at the location specified by this variable.
 
 
 ```python
