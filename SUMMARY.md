@@ -782,6 +782,7 @@
     * [Clean your download folder](templates/Python/Python_Clean_your_download_folder.md)
     * [Using datetime library](templates/Python/Python_Using_datetime_library.md)
     * [Create dict from lists](templates/Python/Python_Create_dict_from_lists.md)
+    * [Convert currency](templates/Python/Python_Convert_currency.md)
     * [Convert Datetime with Timezone to ISO 8601 date string](templates/Python/Python_Convert_Datetime_with_Timezone_to_ISO_8601_date_string.md)
     * [Download ZIP from URL](templates/Python/Python_Download_ZIP_from_URL.md)
     * [List specific files from directory and subdirectories](templates/Python/Python_List_specific_files_from_directory_and_subdirectories.md)
