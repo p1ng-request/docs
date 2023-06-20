@@ -868,6 +868,8 @@
     * [Upload file](templates/SharePoint/SharePoint_Upload_file.md)
     * [List folder](templates/SharePoint/SharePoint_List_folder.md)
     * [Get file](templates/SharePoint/SharePoint_Get_file.md)
+  * [Shutterstock](templates/Shutterstock/README.md)
+    * [Search for images](templates/Shutterstock/Shutterstock_Search_for_images.md)
   * [Slack](templates/Slack/README.md)
     * [Follow number of users in workspace](templates/Slack/Slack_Follow_number_of_users_in_workspace.md)
     * [Send message](templates/Slack/Slack_Send_message.md)
