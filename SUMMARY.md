@@ -914,6 +914,7 @@
     * [Get board data](templates/Trello/Trello_Get_board_data.md)
   * [Twilio](templates/Twilio/README.md)
     * [Make Call](templates/Twilio/Twilio_Make_Call.md)
+    * [Send SMS Google Calendar Events](templates/Twilio/Twilio_Send_SMS_Google_Calendar_Events.md)
     * [Send SMS](templates/Twilio/Twilio_Send_SMS.md)
     * [Add SMS to Google Sheets spreadsheet](templates/Twilio/Twilio_Add_SMS_to_Google_Sheets_spreadsheet.md)
   * [Twitter](templates/Twitter/README.md)
