@@ -410,6 +410,7 @@
   * [Knative](templates/Knative/README.md)
     * [Create command file](templates/Knative/Knative_Create_command_file.md)
   * [LangChain](templates/LangChain/README.md)
+    * [CSV Agent](templates/LangChain/LangChain_CSV_Agent.md)
     * [Pandas Dataframe Agent](templates/LangChain/LangChain_Pandas_Dataframe_Agent.md)
   * [LeFigaro](templates/LeFigaro/README.md)
     * [House Price analysis](templates/LeFigaro/LeFigaro_House_Price_analysis.md)

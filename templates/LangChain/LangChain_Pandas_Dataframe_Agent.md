@@ -12,13 +12,14 @@
 ## Input
 
 ### Import libraries
+Note: You may need to restart the kernel to use updated packages.
 
 
 ```python
 try:
     import langchain
 except:
-    !pip install langchain --user
+    !pip install langchain tabulate typing-inspect==0.8.0 typing_extensions==4.5.0 --user
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.llms import OpenAI
 import pandas as pd
