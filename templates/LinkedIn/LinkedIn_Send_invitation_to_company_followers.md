@@ -1,24 +1,24 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_invitation_to_company_followers.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Send+invitation+to+company+followers:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send invitation to company followers
 
-**Tags:** #linkedin #company #followers #invitations #naas_drivers #automation #content
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Send\_invitation\_to\_company\_followers.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Send+invitation+to+company+followers:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+
+**Tags:** #linkedin #company #followers #invitations #naas\_drivers #automation #content
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows users to send invitations to their company's followers on LinkedIn.
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import library
+### Input
 
+#### Import library
 
 ```python
 from naas_drivers import linkedin
@@ -29,9 +29,9 @@ import plotly.graph_objects as go
 import os
 ```
 
-### Setup LinkedIn
-👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Credentials
@@ -45,8 +45,7 @@ COMPANY_URL = "https://www.linkedin.com/company/naas-ai/"
 LIMIT = 10
 ```
 
-### Setup variables
-
+#### Setup variables
 
 ```python
 # Inputs
@@ -58,8 +57,7 @@ csv_not_valid = "LINKEDIN_NOT_VALID.csv"  # CSV to manage URL not valid
 csv_invitation = "LINKEDIN_INVITATIONS_SENT.csv"  # CSV to store invitations sent
 ```
 
-### Setup Naas
-
+#### Setup Naas
 
 ```python
 # Schedule your notebook everyday at 9:00 AM
@@ -69,10 +67,9 @@ naas.scheduler.add(cron="0 9 * * *")
 # naas.scheduler.delete()
 ```
 
-## Model
+### Model
 
-### Get followers from company
-
+#### Get followers from company
 
 ```python
 # Get company followers from CSV stored in your local (Returns empty if CSV does not exist)
@@ -88,7 +85,6 @@ def get_company_followers(file_path):
 df_followers = get_company_followers(csv_input)
 df_followers
 ```
-
 
 ```python
 def get_new_followers(df, input_path):
@@ -117,16 +113,14 @@ merged_df = get_new_followers(df_followers, csv_input)
 merged_df
 ```
 
-### Get LinkedIn invitations sent
-
+#### Get LinkedIn invitations sent
 
 ```python
 df_lk_invitations = linkedin.connect(LI_AT, JSESSIONID).invitation.get_sent()
 df_lk_invitations
 ```
 
-### Get profile checked and already in your network
-
+#### Get profile checked and already in your network
 
 ```python
 def get_csv(output_path):
@@ -136,26 +130,25 @@ def get_csv(output_path):
     return df
 ```
 
-
 ```python
 df_contacts = get_csv(csv_contact)
 df_contacts
 ```
 
-### Get invitations sent (CSV)
-Public ID can be different between what we get from LinkedIn and from your source URL.<br>
-So we need to double check invitations sent with a CSV stored on your local
+#### Get invitations sent (CSV)
 
+Public ID can be different between what we get from LinkedIn and from your source URL.\
+So we need to double check invitations sent with a CSV stored on your local
 
 ```python
 df_csv_invitations = get_csv(csv_invitation)
 df_csv_invitations
 ```
 
-### Get new invitation
-- Clean Notion database to get valid URL
-- Remove profile when already invited
+#### Get new invitation
 
+* Clean Notion database to get valid URL
+* Remove profile when already invited
 
 ```python
 def get_new_invitations(df, df_lk_invitations, df_csv_invitations, df_contacts):
@@ -191,8 +184,7 @@ df_new_invitations = get_new_invitations(
 df_new_invitations
 ```
 
-### Send invitation
-
+#### Send invitation
 
 ```python
 def send_invitation(df, df_contacts=None, df_csv_invitations=None):
@@ -255,10 +247,9 @@ df_csv_invitations = send_invitation(
 )
 ```
 
-## Output
+### Output
 
-### Save company followers in CSV
-
+#### Save company followers in CSV
 
 ```python
 if len(merged_df) > 0:
@@ -266,14 +257,11 @@ if len(merged_df) > 0:
     naas.dependency.add(csv_input)
 ```
 
-### Display invitations sent
-
+#### Display invitations sent
 
 ```python
 df_csv_invitations
 ```
 
-
 ```python
-
 ```

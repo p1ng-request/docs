@@ -1,24 +1,24 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_invitation_to_profile_from_post_likes.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Send+invitation+to+profile+from+post+likes:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send invitation to profile from post likes
 
-**Tags:** #linkedin #post #likes #naas_drivers #invitation #content #snippet
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Send\_invitation\_to\_profile\_from\_post\_likes.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Send+invitation+to+profile+from+post+likes:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+
+**Tags:** #linkedin #post #likes #naas\_drivers #invitation #content #snippet
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows users to send LinkedIn invitations to profiles based on post likes.
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -27,9 +27,9 @@ import naas
 import time
 ```
 
-### Setup LinkedIn
-👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Credentials
@@ -40,8 +40,7 @@ JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 POST_URL = "POST_URL"
 ```
 
-### Setup Outputs
-
+#### Setup Outputs
 
 ```python
 # Post likes
@@ -50,10 +49,9 @@ csv_post_likes = (
 )
 ```
 
-## Model
+### Model
 
-### Get likes from post
-
+#### Get likes from post
 
 ```python
 df_post_likes = linkedin.connect(LI_AT, JSESSIONID).post.get_likes(POST_URL)
@@ -61,8 +59,7 @@ print("👍 Post likes :", len(df_post_likes))
 df_post_likes.tail(1)
 ```
 
-### Get connections from post likes
-
+#### Get connections from post likes
 
 ```python
 def get_connections(df):
@@ -89,10 +86,9 @@ df_profile = get_connections(df_post_likes)
 df_profile
 ```
 
-## Output
+### Output
 
-### Send invitations to profile out of network
-
+#### Send invitations to profile out of network
 
 ```python
 def send_invitation(df):

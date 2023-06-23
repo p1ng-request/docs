@@ -44,7 +44,7 @@ To be recognized as a member of Naas, you must register through this [form.](htt
 By submitting issues and pull requests to the many GitHub repositories maintained by the Jupyter-Naas organization, you can also independently contribute to the project.\
 \
 **Open an account on naas.ai**\
-****It’s free 👉 [https://app.naas.ai](https://app.naas.ai). For any kind of contribution, having a naas account is more than helpful, it will help you to:
+It’s free 👉 [https://app.naas.ai](https://app.naas.ai). For any kind of contribution, having a naas account is more than helpful, it will help you to:
 
 * Test notebooks (for writing content or even doing code review)
 * Setup some automation for yourself
@@ -52,8 +52,8 @@ By submitting issues and pull requests to the many GitHub repositories maintaine
 * Review the latest product update and give feedback.
 
 **Take a look at the community roadmap.**\
-****\
-****Our [community roadmap](https://github.com/orgs/jupyter-naas/projects/4#card-84248739) gives insights on the ongoing and upcoming work. Feel free to comment under a good first issue you'd like to work on and we'll assign it to you.\
+\
+Our [community roadmap](https://github.com/orgs/jupyter-naas/projects/4#card-84248739) gives insights on the ongoing and upcoming work. Feel free to comment under a good first issue you'd like to work on and we'll assign it to you.\
 
 
 **Be a part of the community and support Naas on social media!**\

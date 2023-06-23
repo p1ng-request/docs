@@ -1,50 +1,44 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_age_and_gender_from_profile_picture.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Get+age+and+gender+from+profile+picture:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Get age and gender from profile picture
 
-**Tags:** #linkedin #machinelearning #profile #identity #naas_drivers #content #snippet #dataframe
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Get\_age\_and\_gender\_from\_profile\_picture.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Get+age+and+gender+from+profile+picture:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+
+**Tags:** #linkedin #machinelearning #profile #identity #naas\_drivers #content #snippet #dataframe
 
 **Author:** [Nikolaj Groeneweg](https://www.linkedin.com/in/njgroene/)
 
-**Description:** This notebook estimates a person's age and gender based on their LinkedIn profile picture. 
+**Description:** This notebook estimates a person's age and gender based on their LinkedIn profile picture.
 
 **References:**
 
 The code below is based on the following work :
-    
-*Karkkainen, K., & Joo, J. (2021).*
-FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation. 
-In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 1548-1558).
 
-The paper and all other corresponding information can be found on github:
-https://github.com/joojs/fairface
+_Karkkainen, K., & Joo, J. (2021)._ FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 1548-1558).
 
-*Disclaimer*: please note that model output and interpretation have been restricted in order to comply to French CNIL regulation regarding the processing and storage of sensitive data (see : https://www.cnil.fr/fr/definition/donnee-sensible)
+The paper and all other corresponding information can be found on github: https://github.com/joojs/fairface
 
-<u>Prerequisites:</u>
+_Disclaimer_: please note that model output and interpretation have been restricted in order to comply to French CNIL regulation regarding the processing and storage of sensitive data (see : https://www.cnil.fr/fr/definition/donnee-sensible)
 
-This code requires you to download and install a pretrained neural network for it to function correctly. 
+Prerequisites:
+
+This code requires you to download and install a pretrained neural network for it to function correctly.
 
 Follow these steps:
 
-   1) Create new folder called "models" in the same Naas directory as this noteboook
-   
-   2) Download the model "res34_fair_align_multi_7_20190809.pt" from the following url
-       https://drive.google.com/drive/folders/1F_pXfbzWvG-bhCpNsRj6F_xsdjpesiFu
-   
-   3) Copy the model to your "models" folder
+1. Create new folder called "models" in the same Naas directory as this noteboook
+2. Download the model "res34\_fair\_align\_multi\_7\_20190809.pt" from the following url https://drive.google.com/drive/folders/1F\_pXfbzWvG-bhCpNsRj6F\_xsdjpesiFu
+3. Copy the model to your "models" folder
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -73,11 +67,11 @@ except:
     from torch_mtcnn import show_bboxes
 ```
 
-### Get your cookies
+#### Get your cookies
 
-### Setup LinkedIn
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+[How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # LinkedIn cookies
@@ -88,10 +82,9 @@ JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE"  # EXAMPLE : "ajax:8379907400220387585
 PROFILE_URL = "ENTER_YOUR_LINKEDIN_PROFILE_HERE"  # EXAMPLE "https://www.linkedin.com/in/myprofile/"
 ```
 
-## Model
+### Model
 
-### Get image from URL
-
+#### Get image from URL
 
 ```python
 def get_image_from_url(imgurl):
@@ -99,8 +92,7 @@ def get_image_from_url(imgurl):
     return Image.open("tmp_file")
 ```
 
-### Get data from image
-
+#### Get data from image
 
 ```python
 def get_demographics_from_image(img):
@@ -195,8 +187,7 @@ def get_demographics_from_image(img):
     return [result["gender"][0], result["age"][0]]
 ```
 
-### Get LinkedIn profile
-
+#### Get LinkedIn profile
 
 ```python
 df = linkedin.connect(LI_AT, JSESSIONID).profile.get_identity(PROFILE_URL)
@@ -204,8 +195,7 @@ df.insert(loc=2, column="GENDER", value=None)
 df.insert(loc=3, column="AGE", value=None)
 ```
 
-### Enrich profile with estimates of gender and age range
-
+#### Enrich profile with estimates of gender and age range
 
 ```python
 imgurl = df["PROFILE_PICTURE"][0]
@@ -223,16 +213,13 @@ if imgurl != None:
         )
 ```
 
-## Output
+### Output
 
-### Display result
-
+#### Display result
 
 ```python
 df
 ```
 
-
 ```python
-
 ```

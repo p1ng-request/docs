@@ -10,7 +10,7 @@ coverY: 0
 # Get Started
 
 {% hint style="warning" %}
-This documentation is in `beta`. It may change frequently. To propose changes or enhancements, please create a [GitHub Issue.](https://github.com/jupyter-naas/docs)&#x20;
+🚀 We are working on a new version of Naas, [apply to our Limited Alpha now](https://bit.ly/3CFSumN)
 {% endhint %}
 
 ## Welcome to Naas!
@@ -19,9 +19,9 @@ Naas (Notebooks as a service) is a low-code open source data & AI platform that 
 
 The platform upgrades notebooks with 3 low-code layers to get things done faster: features, drivers, and templates.
 
-* ****[**Templates**](templates.md) enable the user to create automated data jobs and reports in minutes.
-* ****[**Drivers**](drivers/) act as connectors to push and/or pull data from databases, APIs, Machine Learning algorithms, and more.
-* ****[**Features**](features/) transform Jupyter in a production-ready environment with scheduling, asset sharing, and notifications.
+* [**Templates**](templates.md) enable the user to create automated data jobs and reports in minutes.
+* [**Drivers**](drivers/) act as connectors to push and/or pull data from databases, APIs, Machine Learning algorithms, and more.
+* [**Features**](features/) transform Jupyter in a production-ready environment with scheduling, asset sharing, and notifications.
 
 Our mission is to make data & AI product building accessible to anyone.
 

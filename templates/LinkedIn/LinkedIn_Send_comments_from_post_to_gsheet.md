@@ -1,24 +1,24 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_comments_from_post_to_gsheet.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Send+comments+from+post+to+gsheet:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send comments from post to gsheet
 
-**Tags:** #linkedin #post #comments #gsheet #naas_drivers #content #snippet #googlesheets
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Send\_comments\_from\_post\_to\_gsheet.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Send+comments+from+post+to+gsheet:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+
+**Tags:** #linkedin #post #comments #gsheet #naas\_drivers #content #snippet #googlesheets
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows users to automatically send comments from a LinkedIn post to a Google Sheet.
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 from naas_drivers import linkedin, gsheet
@@ -28,9 +28,9 @@ import pandas as pd
 from datetime import datetime
 ```
 
-### Setup LinkedIn
-👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Lindekin cookies
@@ -41,11 +41,11 @@ JSESSIONID = "ajax:12XXXXXXXXXXXXXXXXX"
 POST_URL = "POST_URL"
 ```
 
-### Setup your Google Sheet
-👉 Get your spreadsheet id => it is located in your gsheet url after "https://docs.google.com/spreadsheets/d/" and before "/edit"<br>
-👉 Share your gsheet with our service account to connect : naas-share@naas-gsheets.iam.gserviceaccount.com<br>
-👉 Create your sheet before sending data into it
+#### Setup your Google Sheet
 
+👉 Get your spreadsheet id => it is located in your gsheet url after "https://docs.google.com/spreadsheets/d/" and before "/edit"\
+👉 Share your gsheet with our service account to connect : naas-share@naas-gsheets.iam.gserviceaccount.com\
+👉 Create your sheet before sending data into it
 
 ```python
 # Spreadsheet id
@@ -57,25 +57,22 @@ SHEET_MY_NETWORK = "MY_NETWORK"
 SHEET_NOT_MY_NETWORK = "NOT_MY_NETWORK"
 ```
 
-### Constant
-
+#### Constant
 
 ```python
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 ```
 
-## Model
+### Model
 
-### Get likes from post
-
+#### Get likes from post
 
 ```python
 df_posts = linkedin.connect(LI_AT, JSESSIONID).post.get_comments(POST_URL)
 df_posts["DATE_EXTRACT"] = datetime.now().strftime(DATETIME_FORMAT)
 ```
 
-### Get network for profiles
-
+#### Get network for profiles
 
 ```python
 df_network = pd.DataFrame()
@@ -92,8 +89,7 @@ for _, row in df_posts.iterrows():
 df_network.head(5)
 ```
 
-### Merge posts likes and network data
-
+#### Merge posts likes and network data
 
 ```python
 df_all = pd.merge(df_posts, df_network, on=["PROFILE_URN", "PROFILE_ID"], how="left")
@@ -102,8 +98,7 @@ df_all = df_all[df_all["DISTANCE"] != "SELF"].reset_index(drop=True)
 df_all.head(5)
 ```
 
-### Split my network or not
-
+#### Split my network or not
 
 ```python
 # My network
@@ -112,7 +107,6 @@ my_network["DATE_EXTRACT"] = datetime.now().strftime(DATETIME_FORMAT)
 my_network.head(5)
 ```
 
-
 ```python
 # Not in my network
 not_my_network = df_all[df_all["DISTANCE"] != "DISTANCE_1"].reset_index(drop=True)
@@ -120,10 +114,9 @@ not_my_network["DATE_EXTRACT"] = datetime.now().strftime(DATETIME_FORMAT)
 not_my_network.head(5)
 ```
 
-## Output
+### Output
 
-### Save post comments in gsheet
-
+#### Save post comments in gsheet
 
 ```python
 gsheet.connect(SPREADSHEET_ID).send(
@@ -131,8 +124,7 @@ gsheet.connect(SPREADSHEET_ID).send(
 )
 ```
 
-### Save people from my network in gsheet
-
+#### Save people from my network in gsheet
 
 ```python
 gsheet.connect(SPREADSHEET_ID).send(
@@ -140,8 +132,7 @@ gsheet.connect(SPREADSHEET_ID).send(
 )
 ```
 
-### Save people not in my network in gsheet
-
+#### Save people not in my network in gsheet
 
 ```python
 gsheet.connect(SPREADSHEET_ID).send(

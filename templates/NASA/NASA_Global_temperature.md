@@ -1,4 +1,8 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA_Global_temperature.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=NASA+-+Global+temperature:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Global temperature
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/NASA/NASA\_Global\_temperature.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=NASA+-+Global+temperature:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
 
 **Tags:** #nasa #opendata #analytics #plotly
 
@@ -12,33 +16,30 @@ The “Global Temperature” figure on the home page dashboard shows global temp
 
 Website : https://climate.nasa.gov/vital-signs/global-temperature/
 
-Data source: NASA's Goddard Institute for Space Studies (GISS). 
+Data source: NASA's Goddard Institute for Space Studies (GISS).
 
 Credit: NASA/GISS
 
-## Input
+### Input
 
-Data source : https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt
+Data source : https://data.giss.nasa.gov/gistemp/graphs/graph\_data/Global\_Mean\_Estimates\_based\_on\_Land\_and\_Ocean\_Data/graph.txt
 
-### Import libraries
-
+#### Import libraries
 
 ```python
 import pandas
 import plotly.graph_objects as go
 ```
 
-### URL
-
+#### URL
 
 ```python
 url_nasa_termperatures = "https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt"
 ```
 
-## Model
+### Model
 
-### Get the data and create the table
-
+#### Get the data and create the table
 
 ```python
 df = pandas.read_csv(
@@ -52,14 +53,14 @@ df = pandas.read_csv(
 df.tail(10)
 ```
 
-Here we can see the evolution of the average surface temperature anomaly from the last 10 years. <br>
+Here we can see the evolution of the average surface temperature anomaly from the last 10 years.\
+
 
 Now lets visualize this information with a graph using plotly.
 
-## Output
+### Output
 
-### Land-Ocean Temperature Index - Visualization
-
+#### Land-Ocean Temperature Index - Visualization
 
 ```python
 fig = go.Figure(layout_title="<b>Land-Ocean Temperature Index (°C)</b>")
@@ -102,14 +103,15 @@ fig.show()
 
 According to the Paris Agreement, the delta **should not be higher than 2**. As you can see here on the graph, it increasing quickly with the years specially since 1950.
 
-### Land-Ocean Temperature Index - Visualization with Industrial Revolution Dates
+#### Land-Ocean Temperature Index - Visualization with Industrial Revolution Dates
 
 We can now add the dates of the three last Industrial Revolutions :
 
-    - Second 1910 : gaz and petrol
-    - Third 1970 : internet
-    - Forth 2000 : AI
-
+```
+- Second 1910 : gaz and petrol
+- Third 1970 : internet
+- Forth 2000 : AI
+```
 
 ```python
 fig.add_vrect(
@@ -153,5 +155,8 @@ fig.update_layout(
 fig.show()
 ```
 
-<br><br> **Idea to improve :**
-- *Predict with machine learning the delta for the next 50 years*
+\
+\
+**Idea to improve :**
+
+* _Predict with machine learning the delta for the next 50 years_

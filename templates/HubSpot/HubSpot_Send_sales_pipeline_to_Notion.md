@@ -1,4 +1,8 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot_Send_sales_pipeline_to_Notion.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=HubSpot+-+Send+sales+pipeline+to+Notion:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send sales pipeline to Notion
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/HubSpot/HubSpot\_Send\_sales\_pipeline\_to\_Notion.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=HubSpot+-+Send+sales+pipeline+to+Notion:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
 
 **Tags:** #hubspot #notion #sales #pipeline #automation #integration
 
@@ -7,13 +11,13 @@
 **Description:** This notebook automates the process of sending a sales pipeline from HubSpot to Notion. It is useful for organizations that need to keep track of their sales pipeline in both HubSpot and Notion.
 
 **References:**
-- [HubSpot API Documentation](https://developers.hubspot.com/docs/overview)
-- [Notion API Documentation](https://notion-api.readthedocs.io/en/latest/)
 
-## Input
+* [HubSpot API Documentation](https://developers.hubspot.com/docs/overview)
+* [Notion API Documentation](https://notion-api.readthedocs.io/en/latest/)
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 import naas
@@ -23,18 +27,20 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-### Setup Variables
-[Get your HubSpot Access token](https://knowledge.hubspot.com/articles/kcs_article/integrations/how-do-i-get-my-hubspot-api-key)
-- `hs_access_token`: This variable stores an access token used for accessing the HubSpot API. It is retrieved from a secret store using naas.secret.get() method. If the access token is not available in the secret store, a default value of "YOUR_HS_ACCESS_TOKEN" is used.
-- `pipeline_id`: This variable represents the ID of a pipeline in HubSpot. It is a string value that identifies a specific pipeline within HubSpot's system. To get it you can retrieve your pipelines using this function `hubspot.connect(hs_access_token).pipelines.get_all()`
-- `enterprise_id`: This variable stores the ID of an enterprise. It is a string value that represents a unique identifier for an enterprise. You can find it your settings below your "Profile & Preferences".
+#### Setup Variables
+
+[Get your HubSpot Access token](https://knowledge.hubspot.com/articles/kcs\_article/integrations/how-do-i-get-my-hubspot-api-key)
+
+* `hs_access_token`: This variable stores an access token used for accessing the HubSpot API. It is retrieved from a secret store using naas.secret.get() method. If the access token is not available in the secret store, a default value of "YOUR\_HS\_ACCESS\_TOKEN" is used.
+* `pipeline_id`: This variable represents the ID of a pipeline in HubSpot. It is a string value that identifies a specific pipeline within HubSpot's system. To get it you can retrieve your pipelines using this function `hubspot.connect(hs_access_token).pipelines.get_all()`
+* `enterprise_id`: This variable stores the ID of an enterprise. It is a string value that represents a unique identifier for an enterprise. You can find it your settings below your "Profile & Preferences".
 
 [Get your Notion token](https://notion-api.readthedocs.io/en/latest/token.html)
-- `notion_token`:  This variable stores an access token used for accessing the Notion API. It is retrieved from a secret store using naas.secret.get() method. If the access token is not available in the secret store, a default value of "YOUR_TOKEN" is used.
-- `notion_database_key`: This variable represents the key or identifier of a Notion database. It is a string value that uniquely identifies a specific database within Notion.
-- `force_update`: This variable is a boolean flag that indicates whether to force an update or not. It is set to False, indicating that an update will not be forced.
-- `notion_database`: This variable stores a URL representing a Notion database.
 
+* `notion_token`: This variable stores an access token used for accessing the Notion API. It is retrieved from a secret store using naas.secret.get() method. If the access token is not available in the secret store, a default value of "YOUR\_TOKEN" is used.
+* `notion_database_key`: This variable represents the key or identifier of a Notion database. It is a string value that uniquely identifies a specific database within Notion.
+* `force_update`: This variable is a boolean flag that indicates whether to force an update or not. It is set to False, indicating that an update will not be forced.
+* `notion_database`: This variable stores a URL representing a Notion database.
 
 ```python
 # Inputs
@@ -49,10 +55,9 @@ force_update = False
 notion_database = "https://www.notion.so/naas-official/61cf093f0c604eeb8baff67612eb1ac8?v=51965cece44a4cb884a426617f67c88d&pvs=4"
 ```
 
-## Model
+### Model
 
-### Get Notion DB
-
+#### Get Notion DB
 
 ```python
 def create_notion_db(notion_database, key, token):
@@ -102,8 +107,7 @@ print("✅ Notion DB:", len(df_notion))
 df_notion.head(1)
 ```
 
-### Get pipelines and dealstages
-
+#### Get pipelines and dealstages
 
 ```python
 df_pipelines = hubspot.connect(hs_access_token).pipelines.get_all()
@@ -111,8 +115,7 @@ print("✅ Pipelines & dealstages fetched:", len(df_pipelines))
 df_pipelines.tail(1)
 ```
 
-### Get all deals from HubSpot
-
+#### Get all deals from HubSpot
 
 ```python
 df_deals = hubspot.connect(hs_access_token).deals.get_all(properties)
@@ -120,8 +123,7 @@ print("✅ Deals fetched:", len(df_deals))
 df_deals.tail(1)
 ```
 
-### Prep HubSpot data
-
+#### Prep HubSpot data
 
 ```python
 def prep_data(
@@ -175,8 +177,9 @@ print("✅ HubSpot data:", len(df_hubspot))
 df_hubspot.tail(5)
 ```
 
-### Get rows to update
-If `force_update` is set to `True`, the entire database will be updated.<br>
+#### Get rows to update
+
+If `force_update` is set to `True`, the entire database will be updated.\
 
 
 ```python
@@ -225,10 +228,9 @@ print("Rows to update:", len(df_new_rows))
 df_new_rows.head(len(df_new_rows))
 ```
 
-## Output
+### Output
 
-### Update Notion database
-
+#### Update Notion database
 
 ```python
 database_id = notion_database.split("/")[-1].split("?v=")[0]
@@ -269,7 +271,5 @@ if len(df_new_rows) > 0:
             print(row)
 ```
 
-
 ```python
-
 ```

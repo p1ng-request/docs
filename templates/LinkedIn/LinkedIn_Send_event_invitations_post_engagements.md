@@ -1,24 +1,24 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_event_invitations_post_engagements.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Send+event+invitations+post+engagements:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send event invitations post engagements
 
-**Tags:** #linkedin #events #invitations #naas_drivers #snippet
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Send\_event\_invitations\_post\_engagements.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Send+event+invitations+post+engagements:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+
+**Tags:** #linkedin #events #invitations #naas\_drivers #snippet
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows users to send event invitations and post engagements on LinkedIn.
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import library
+### Input
 
+#### Import library
 
 ```python
 from naas_drivers import linkedin
@@ -28,9 +28,9 @@ import requests
 import time
 ```
 
-### Setup LinkedIn
-👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Credentials
@@ -50,10 +50,9 @@ POST_URL = (
 )
 ```
 
-## Model
+### Model
 
-### Get list of events attendees
-
+#### Get list of events attendees
 
 ```python
 df_attendees = linkedin.connect(LI_AT, JSESSIONID).event.get_guests(EVENT_URL)
@@ -61,8 +60,7 @@ print("✅ Attendees fetched:", len(df_attendees))
 df_attendees.head(1)
 ```
 
-### Get post likes and comments
-
+#### Get post likes and comments
 
 ```python
 def get_engagements(post_url):
@@ -84,8 +82,7 @@ print("✅ Engagements fetched:", len(df_engagements))
 df_engagements.head(1)
 ```
 
-### Get new invitations
-
+#### Get new invitations
 
 ```python
 def get_new_invitations(df_attendees, df_engagements):
@@ -99,10 +96,9 @@ print("✅ New invitations fetched:", len(df_new_invitations))
 df_new_invitations.head(1)
 ```
 
-## Output
+### Output
 
-### Send invitations to event
-
+#### Send invitations to event
 
 ```python
 LinkedIn = linkedin.connect(LI_AT, JSESSIONID)
@@ -133,8 +129,7 @@ def send_invitations(profile_id, event_url):
     return res
 ```
 
-### Send invitation
-
+#### Send invitation
 
 ```python
 def send_invitation(df):

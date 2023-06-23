@@ -13,7 +13,7 @@ Contact devops@cashstory.com  to be able to test it.
 {% endhint %}
 
 {% hint style="info" %}
-Set CNAME in your domain or subdomain to: ``&#x20;
+Set CNAME in your domain or subdomain to: &#x20;
 
 abc046369c2ca408fb4e0e33cb35d006-b0f052c2a8fe9e46.elb.eu-west-3.amazonaws.com
 {% endhint %}

@@ -1,4 +1,8 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_weekly_post_engagement_metrics_by_email.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Send+weekly+post+engagement+metrics+by+email:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send weekly post engagement metrics by email
+
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Send\_weekly\_post\_engagement\_metrics\_by\_email.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Send+weekly+post+engagement+metrics+by+email:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
 
 **Tags:** #linkedin #tool #posts #engagement #metrics #analytics #automation #email #naas #notification
 
@@ -6,19 +10,15 @@
 
 **Description:** This notebook automates the process of sending weekly post engagement metrics from LinkedIn via email.
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import libraries
+### Input
 
+#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -36,9 +36,9 @@ import random
 import time
 ```
 
-### Setup LinkedIn
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+[How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # LinkedIn cookies
@@ -53,8 +53,7 @@ PROFILE_URL = "ENTER_YOUR_LINKEDIN_PROFILE_HERE"  # EXAMPLE "https://www.linkedi
 NO_POSTS_RETRIEVED = 10
 ```
 
-### Setup Naas notification
-
+#### Setup Naas notification
 
 ```python
 EMAIL_TO = "ENTER_RECIPIENT_EMAIL_HERE"  # you will receive weekly summary at this email
@@ -62,9 +61,9 @@ EMAIL_FROM = None  # summary will have this email as sender. Only available for 
 EMAIL_SUBJECT = "LinkedIn Metrics"  # subject of your email
 ```
 
-### Setup Outputs
-Create CSV to store your posts feed 
+#### Setup Outputs
 
+Create CSV to store your posts feed
 
 ```python
 # Custom Path of your CSV with profile URL
@@ -72,8 +71,7 @@ profile_id = PROFILE_URL.split("https://www.linkedin.com/in/")[-1].split("/")[0]
 csv_output = f"LINKEDIN_POSTS_{profile_id}.csv"
 ```
 
-### Setup Naas scheduler
-
+#### Setup Naas scheduler
 
 ```python
 # Change your remote timezone if needed. By default remote timezone is "Europe/Paris"
@@ -84,18 +82,17 @@ csv_output = f"LINKEDIN_POSTS_{profile_id}.csv"
 naas.scheduler.add(cron="0 12 * * 6")
 ```
 
-
 ```python
 # this notebook will run each week until de-scheduled
 # to de-schedule this notebook, simply run the following command:
 # naas.scheduler.delete()
 ```
 
-## Model
+### Model
 
-### Get your posts from CSV
+#### Get your posts from CSV
+
 All your posts will be stored in CSV.
-
 
 ```python
 def get_posts(file_path):
@@ -111,10 +108,10 @@ df_posts = get_posts(csv_output)
 df_posts
 ```
 
-### Update last posts
-It will get the last X posts from LinkedIn API (X = number of set in variable "NO_POSTS_RETRIEVED") and update it in your CSV.<br>
-PS: On the first execution all posts will be retrieved.
+#### Update last posts
 
+It will get the last X posts from LinkedIn API (X = number of set in variable "NO\_POSTS\_RETRIEVED") and update it in your CSV.\
+PS: On the first execution all posts will be retrieved.
 
 ```python
 def update_last_posts(
@@ -159,8 +156,7 @@ df_posts = update_last_posts(df_posts, csv_output, no_posts=NO_POSTS_RETRIEVED)
 df_posts
 ```
 
-### Get post published this week
-
+#### Get post published this week
 
 ```python
 def get_iso_year(row):
@@ -198,8 +194,7 @@ df_this_week = df_posts[
 df_this_week.head()
 ```
 
-### Send email if no post published this week
-
+#### Send email if no post published this week
 
 ```python
 # if we didn't post this week, send a simple email of encouragement and exit
@@ -213,8 +208,7 @@ if df_this_week.empty:
     raise SystemExit("No posts this week, basic email sent")
 ```
 
-### Get engagement metrics
-
+#### Get engagement metrics
 
 ```python
 likes = df_this_week.LIKES.sum()
@@ -236,8 +230,7 @@ print(
 )
 ```
 
-### Information on top post
-
+#### Information on top post
 
 ```python
 top_post = df_this_week.sort_values("VIEWS", ascending=False).iloc[0]
@@ -258,8 +251,7 @@ print("This is what it said:\n\n", top_post_text)
 print("See your post on LinkedIn : ", top_post_url)
 ```
 
-### Weekly engagement plots
-
+#### Weekly engagement plots
 
 ```python
 sns.set_style("darkgrid")
@@ -274,8 +266,7 @@ fig.savefig(output_image)
 link_image = naas.asset.add(output_image)
 ```
 
-### This week's biggest fan
-
+#### This week's biggest fan
 
 ```python
 def get_likes(df_posts):
@@ -300,7 +291,6 @@ def count_likes(df):
     return df2
 ```
 
-
 ```python
 df_likes = get_likes(df_this_week)
 df_counts = count_likes(df_likes)
@@ -321,8 +311,7 @@ print(
 print("Go say hi on their profile:", fan_url)
 ```
 
-### Create email content
-
+#### Create email content
 
 ```python
 # You can edit the basic HTML below to change the look and feel of the email
@@ -354,7 +343,6 @@ html = """\
 """
 ```
 
-
 ```python
 html = html.replace("$VIEWS", str(views))
 html = html.replace("$LIKES", str(likes))
@@ -375,10 +363,9 @@ post = html
 print(post)
 ```
 
-## Output
+### Output
 
-### Send post engagement by email
-
+#### Send post engagement by email
 
 ```python
 # sends the email

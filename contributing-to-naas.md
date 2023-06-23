@@ -17,4 +17,4 @@ Naas is a community led project and your help is extremely welcome. If you get s
 [\
 ](project-overview/code-of-conduct.md)
 
-&#x20; **** &#x20;
+&#x20;&#x20;

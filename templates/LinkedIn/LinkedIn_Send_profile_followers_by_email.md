@@ -1,24 +1,24 @@
-<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Send_profile_followers_by_email.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Send+profile+followers+by+email:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
+# Send profile followers by email
 
-**Tags:** #linkedin #network #followers #naas_drivers #content #snippet #dataframe
+[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Send\_profile\_followers\_by\_email.ipynb)\
+\
+[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Send+profile+followers+by+email:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+
+**Tags:** #linkedin #network #followers #naas\_drivers #content #snippet #dataframe
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows users to send emails to their LinkedIn profile followers.
 
-
-<div class="alert alert-info" role="info" style="margin: 10px">
-<b>Disclaimer:</b><br>
+Disclaimer:\
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
-<br>
-</div>
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
 
-## Input
 
-### Import library
+### Input
 
+#### Import library
 
 ```python
 from naas_drivers import linkedin, emailbuilder
@@ -27,9 +27,9 @@ import pandas as pd
 from datetime import datetime
 ```
 
-### Setup LinkedIn
-<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
+#### Setup LinkedIn
 
+[How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # LinkedIn cookies
@@ -37,17 +37,16 @@ LI_AT = "YOUR_COOKIE_LI_AT"  # EXAMPLE AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLdY1af3-2
 JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 ```
 
-### Setup Outputs
-Create CSV to store your followers.<br>
-PS: This CSV could be used in others LinkedIn templates.
+#### Setup Outputs
 
+Create CSV to store your followers.\
+PS: This CSV could be used in others LinkedIn templates.
 
 ```python
 csv_output = f"LINKEDIN_FOLLOWERS.csv"
 ```
 
-### Setup Naas notification
-
+#### Setup Naas notification
 
 ```python
 EMAIL_TO = "ENTER_RECIPIENT_EMAIL_HERE"  # you will receive weekly summary at this email
@@ -55,9 +54,9 @@ EMAIL_FROM = "ENTER_SENDER_EMAIL_HERE"  # summary will have this email as sender
 EMAIL_SUBJECT = "LinkedIn Followers Export"  # subject of your email
 ```
 
-### Setup Naas scheduler
-Schedule your notebook with the naas scheduler feature
+#### Setup Naas scheduler
 
+Schedule your notebook with the naas scheduler feature
 
 ```python
 # the default settings below will make the notebook run at 08:00 on the 1st of every month
@@ -68,10 +67,9 @@ naas.scheduler.add(cron="0 8 1 * *")
 # naas.scheduler.delete()
 ```
 
-## Model
+### Model
 
-### Get followers from CSV
-
+#### Get followers from CSV
 
 ```python
 def read_csv(file_path):
@@ -87,9 +85,9 @@ df_followers = read_csv(csv_output)
 df_followers
 ```
 
-### Update new followers
-If CSV is empty, we will get all your followers
+#### Update new followers
 
+If CSV is empty, we will get all your followers
 
 ```python
 def update_last_posts(df, csv_output):
@@ -141,8 +139,7 @@ df_update = update_last_posts(df_followers, csv_output)
 df_update
 ```
 
-### Share output with naas
-
+#### Share output with naas
 
 ```python
 # Share output with naas
@@ -152,8 +149,7 @@ csv_link = naas.asset.add(csv_output)
 # naas.asset.delete(csv_output)
 ```
 
-### Create email content
-
+#### Create email content
 
 ```python
 def email_content(csv_link):
@@ -180,10 +176,9 @@ def email_content(csv_link):
 email_content = email_content(csv_link)
 ```
 
-## Output
+### Output
 
-### Send followers by email
-
+#### Send followers by email
 
 ```python
 # sends the email
