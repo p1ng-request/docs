@@ -851,6 +851,7 @@
   * [Request](templates/Request/README.md)
     * [Sending POST Requests with Data](templates/Request/Request_Sending_POST_Requests_with_Data.md)
     * [Basic HTTP GET Request](templates/Request/Request_Basic_HTTP_GET_Request.md)
+    * [Handling Errors and Exceptions](templates/Request/Request_Handling_Errors_and_Exceptions.md)
   * [SAP-HANA](templates/SAP-HANA/README.md)
     * [Query data](templates/SAP-HANA/SAP-HANA_Query_data.md)
   * [SEON](templates/SEON/README.md)
