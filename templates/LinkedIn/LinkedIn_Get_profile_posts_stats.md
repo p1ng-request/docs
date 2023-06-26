@@ -1,24 +1,24 @@
-# Get profile posts stats
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_profile_posts_stats.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Get+profile+posts+stats:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Get\_profile\_posts\_stats.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Get+profile+posts+stats:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
-
-**Tags:** #linkedin #profile #post #stats #naas\_drivers #content #automation #csv
+**Tags:** #linkedin #profile #post #stats #naas_drivers #content #automation #csv
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook provides a way to track and analyze the performance of posts on your LinkedIn profile.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -27,9 +27,9 @@ from datetime import datetime
 import naas
 ```
 
-#### Setup LinkedIn
+### Setup LinkedIn
+<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
-[How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # LinkedIn cookies
@@ -44,10 +44,10 @@ JSESSIONID = (
 PROFILE_URL = "ENTER_YOUR_LINKEDIN_PROFILE_HERE"  # EXAMPLE "https://www.linkedin.com/in/myprofile/"
 ```
 
-#### Setup Outputs
-
-Create CSV to store your posts stats.\
+### Setup Outputs
+Create CSV to store your posts stats.<br>
 PS: This CSV could be used in others LinkedIn templates.
+
 
 ```python
 # Custom path of your CSV with the profile URL
@@ -55,9 +55,9 @@ profile_id = PROFILE_URL.split("https://www.linkedin.com/in/")[-1].split("/")[0]
 csv_output = f"LINKEDIN_PROFILE_POSTS_{profile_id}.csv"
 ```
 
-#### Setup Naas scheduler
-
+### Setup Naas scheduler
 Schedule your notebook with the naas scheduler feature
+
 
 ```python
 # the default settings below will make the notebook run everyday at 8:00
@@ -68,11 +68,11 @@ naas.scheduler.add(cron="0 8 * * *")
 # naas.scheduler.delete()
 ```
 
-### Model
+## Model
 
-#### Get your posts from CSV
-
+### Get your posts from CSV
 All your posts will be stored in CSV.
+
 
 ```python
 def read_csv(file_path):
@@ -89,12 +89,12 @@ print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
 ```
 
-#### Update last posts
-
-This function will only update the last 5 posts from LinkedIn API.\
-To change this parameters you can set another number to the parameter "no\_posts" in the update\_posts() function.
+### Update last posts
+This function will only update the last 5 posts from LinkedIn API.<br>
+To change this parameters you can set another number to the parameter "no_posts" in the update_posts() function.
 
 PS: On the first execution all posts will be retrieved.
+
 
 ```python
 def update_posts(
@@ -138,9 +138,10 @@ df_update = update_posts(df_posts, PROFILE_URL)
 df_update.head(1)
 ```
 
-### Output
+## Output
 
-#### Save dataframe in CSV and send to production
+### Save dataframe in CSV and send to production
+
 
 ```python
 # Save dataframe in CSV

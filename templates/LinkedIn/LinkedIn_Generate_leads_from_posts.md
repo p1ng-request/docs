@@ -1,24 +1,24 @@
-# Generate leads from posts
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Generate_leads_from_posts.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Generate+leads+from+posts:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Generate\_leads\_from\_posts.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Generate+leads+from+posts:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
-
-**Tags:** #linkedin #post #comments #naas\_drivers #content #snippet #dataframe
+**Tags:** #linkedin #post #comments #naas_drivers #content #snippet #dataframe
 
 **Author:** [Alok Chilka](https://www.linkedin.com/in/calok64/)
 
 **Description:** This notebook provides a guide to leveraging LinkedIn posts to generate leads for your business.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 from naas_drivers import linkedin, hubspot
@@ -30,9 +30,9 @@ import requests
 import json
 ```
 
-#### Setup your LinkedIn
+### Setup your LinkedIn
+- Get your cookies : <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
-* Get your cookies : [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Lindekin cookies
@@ -43,11 +43,11 @@ JSESSIONID = "ajax:42778xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 PROFILE_URL = "<YOUR_LINKEDIN_PROFILE_URL>"
 ```
 
-#### Setup your HubSpot
-
-👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)\
-👉 Get your HubSpot owner ID\
+### Setup your HubSpot
+👉 Access your [HubSpot API key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)<br>
+👉 Get your HubSpot owner ID<br>
 👉 Get your HubSpot company ID from URL
+
 
 ```python
 # HubSpot API key
@@ -72,15 +72,17 @@ tstamp = tstampobj.timestamp() * 1000
 hs = hubspot.connect(HS_API_TOKEN)
 ```
 
-#### Setup your email to receive notifications
+### Setup your email to receive notifications
+
 
 ```python
 SEND_EMAIL_TO = "<YOUR_EMAIL_ID>"
 ```
 
-### Model
+## Model
 
-#### Get posts from LinkedIn feed
+### Get posts from LinkedIn feed
+
 
 ```python
 df_posts = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(
@@ -89,7 +91,8 @@ df_posts = linkedin.connect(LI_AT, JSESSIONID).profile.get_posts_feed(
 df_posts.head()
 ```
 
-#### Get likes from LinkedIn posts
+### Get likes from LinkedIn posts
+
 
 ```python
 def get_likes(df_posts):
@@ -99,11 +102,13 @@ def get_likes(df_posts):
         DF_all_post_likes = DF_all_post_likes.append(df)
 ```
 
+
 ```python
 get_likes(df_posts)
 ```
 
-#### Get number of likes by profile
+### Get number of likes by profile
+
 
 ```python
 def count_likes(df):
@@ -123,10 +128,11 @@ df_counts = count_likes(DF_all_post_likes)
 df_counts
 ```
 
-#### Apply classification to get potential lead
+### Apply classification to get potential lead
 
-* Grouping the like count and classify the leads as per levels i.e. L1, L2, L3, L4. ( from highest to lowest counts of likes) with column name "POTENTIAL LEAD"
-* Group posts as per the the column "POTENTIAL LEAD"
+- Grouping the like count and classify the leads as per levels i.e. <b>L1, L2, L3, L4.</b> ( from highest to lowest counts of likes) with column name <b>"POTENTIAL LEAD"</b>
+- Group posts as per the the column <b>"POTENTIAL LEAD"</b>
+
 
 ```python
 max_likes = df_counts["LIKE_COUNT"].max()
@@ -134,6 +140,7 @@ cluster_1 = round(max_likes * 0.1, 0)
 cluster_2 = round(max_likes * 0.5, 0)
 cluster_3 = round(max_likes * 0.8, 0)
 ```
+
 
 ```python
 conditions = [
@@ -146,21 +153,23 @@ conditions = [
 values = ["L4", "L3", "L2", "L1"]
 ```
 
+
 ```python
 df_counts["POTENTIAL_LEAD"] = np.select(conditions, values)
 df_counts
 ```
 
-#### Get profile details based on the POST\_URL above
+### Get profile details based on the POST_URL above
+- filter rows from "grouped_profile_posts" dataframe based on L1, L2, & L3 levels and add data to dataframe "df_leads"
+- Iterate through dataframe "df_leads" and add items to leads_list
+- Extract EMAIL, FIRSTNAME, LASTNAME, PHONE_NUMBER, OCCUPATION from profile URL
 
-* filter rows from "grouped\_profile\_posts" dataframe based on L1, L2, & L3 levels and add data to dataframe "df\_leads"
-* Iterate through dataframe "df\_leads" and add items to leads\_list
-* Extract EMAIL, FIRSTNAME, LASTNAME, PHONE\_NUMBER, OCCUPATION from profile URL
 
 ```python
 df_leads = df_counts.loc[df_counts["POTENTIAL_LEAD"].isin(["L1", "L2"])]
 df_leads
 ```
+
 
 ```python
 leads_list = []
@@ -200,11 +209,10 @@ for index, row in df_leads.iterrows():
     r_count = r_count + 1
 ```
 
-#### Create hubspot contacts from linkedin likes
+### Create hubspot contacts from linkedin likes
 
-**HS\_CONTACT\_ID\_LIST**
+<h4>HS_CONTACT_ID_LIST</h4> - The list to store the contact id recently created and the linkedin profile URL of associated contact
 
-\- The list to store the contact id recently created and the linkedin profile URL of associated contact
 
 ```python
 # to store the resulting output of create contact method
@@ -236,9 +244,9 @@ for i in leads_list:
     HS_CONTACT_ID_LIST.append([contact_id, profileurl])
 ```
 
-**Build Email Template**
+<h4>Build Email Template</h4> 
+- This includes the hubspot contact_id, contact URL and LinkedIN URL
 
-\- This includes the hubspot contact\_id, contact URL and LinkedIN URL
 
 ```python
 table_header = f'<table style="border-collapse:collapse;border-spacing:0;font-family:Arial"><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;text-align:left">Contact ID</th><th style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;text-align:left">Hubspot URL</th><th style="border-color:black;border-style:solid;border-width:1px;padding:6px 10px;text-align:left">LinkedIN URL</th></tr></thead><tbody>'
@@ -267,9 +275,10 @@ email_body = (
 )
 ```
 
-### Output
+## Output
 
-#### Create tasks for user and send email notification
+### Create tasks for user and send email notification
+
 
 ```python
 def create_task(
@@ -332,6 +341,7 @@ def create_task(
     return res_json
 ```
 
+
 ```python
 TASK_ID_LIST = []
 for i in HS_CONTACT_ID_LIST:
@@ -353,6 +363,7 @@ for i in HS_CONTACT_ID_LIST:
     TASK_ID_LIST.append(result.get("engagement").get("id"))
 ```
 
+
 ```python
 if not TASK_ID_LIST:
     print("No tasks created")
@@ -364,5 +375,7 @@ else:
     naas.notification.send(email_to=email_to, subject=subject, html=content)
 ```
 
+
 ```python
+
 ```

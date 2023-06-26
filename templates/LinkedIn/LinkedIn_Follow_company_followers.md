@@ -1,24 +1,24 @@
-# Follow company followers
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Follow_company_followers.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Follow+company+followers:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Follow\_company\_followers.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Follow+company+followers:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
-
-**Tags:** #linkedin #company #followers #naas\_drivers #analytics #automation #csv #html #image #content #plotly
+**Tags:** #linkedin #company #followers #naas_drivers #analytics #automation #csv #html #image #content #plotly
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows you to track and follow the followers of a company on LinkedIn.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import library
 
-#### Import library
 
 ```python
 from naas_drivers import linkedin
@@ -28,9 +28,9 @@ import naas
 import plotly.graph_objects as go
 ```
 
-#### Setup LinkedIn
+### Setup LinkedIn
+👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
-👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Credentials
@@ -41,7 +41,8 @@ JSESSIONID = "YOUR_COOKIE_JSESSIONID"  # EXAMPLE ajax:8379907400220387585
 COMPANY_URL = "https://www.linkedin.com/company/naas-ai/"
 ```
 
-#### Setup variables
+### Setup variables
+
 
 ```python
 # Inputs
@@ -56,7 +57,8 @@ html_output = f"{name_output}.html"
 image_output = f"{name_output}.png"
 ```
 
-#### Setup Naas
+### Setup Naas
+
 
 ```python
 # Schedule your notebook everyday at 9:00 AM
@@ -66,21 +68,20 @@ naas.scheduler.add(cron="0 9 * * *")
 # naas.scheduler.delete()
 ```
 
-### Model
+## Model
 
-#### Get followers from company
-
+### Get followers from company
 **Available columns :**
+- FIRSTNAME : First name
+- LASTNAME : Last name
+- OCCUPATION : Text below the name in the profile page
+- PROFILE_PICTURE : Profile picture URL
+- PROFILE_URL : Profile URL
+- PROFILE_ID : LinkedIn profile id
+- PUBLIC_ID : LinkedIn public profile id
+- FOLLOWED_AT : Date of following company
+- DISTANCE : Distance between your profile
 
-* FIRSTNAME : First name
-* LASTNAME : Last name
-* OCCUPATION : Text below the name in the profile page
-* PROFILE\_PICTURE : Profile picture URL
-* PROFILE\_URL : Profile URL
-* PROFILE\_ID : LinkedIn profile id
-* PUBLIC\_ID : LinkedIn public profile id
-* FOLLOWED\_AT : Date of following company
-* DISTANCE : Distance between your profile
 
 ```python
 # Get company followers from CSV stored in your local (Returns empty if CSV does not exist)
@@ -96,6 +97,7 @@ def get_company_followers(file_path):
 df_followers = get_company_followers(csv_input)
 df_followers
 ```
+
 
 ```python
 def get_new_followers(df, input_path):
@@ -124,7 +126,8 @@ merged_df = get_new_followers(df_followers, csv_input)
 merged_df
 ```
 
-#### Prep trend data
+### Prep trend data
+
 
 ```python
 def get_trend(df, date_col_name=None, value_col_name=None, date_order="asc"):
@@ -159,7 +162,8 @@ df_trend = get_trend(merged_df, "FOLLOWED_AT", "PROFILE_ID")
 df_trend
 ```
 
-#### Create linechart
+### Create linechart
+
 
 ```python
 def create_linechart(df, label, value, text, title):
@@ -193,9 +197,10 @@ def create_linechart(df, label, value, text, title):
 fig = create_linechart(df_trend, "FOLLOWED_AT", "VALUE_CUM", "TEXT", title)
 ```
 
-### Output
+## Output
 
-#### Save outputs
+### Save outputs
+
 
 ```python
 df_trend.to_csv(csv_output, index=False)
@@ -203,7 +208,8 @@ fig.write_html(html_output)
 fig.write_image(image_output)
 ```
 
-#### Save and share CSV with naas
+### Save and share CSV with naas
+
 
 ```python
 naas.asset.add(csv_output)
@@ -212,7 +218,8 @@ naas.asset.add(csv_output)
 # naas.asset.delete(csv_output)
 ```
 
-#### Save and share HTML with naas
+### Save and share HTML with naas
+
 
 ```python
 naas.asset.add(html_output, params={"inline": True})
@@ -221,7 +228,8 @@ naas.asset.add(html_output, params={"inline": True})
 # naas.asset.delete(html_output)
 ```
 
-#### Save and share image with naas
+### Save and share image with naas
+
 
 ```python
 naas.asset.add(image_output, params={"inline": True})

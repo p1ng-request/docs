@@ -1,24 +1,24 @@
-# Follow content frequency
-
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Follow\_content\_frequency.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Follow+content+frequency:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Follow_content_frequency.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Follow+content+frequency:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
 **Tags:** #linkedin #html #plotly #csv #image #content #analytics #automation
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook allows users to track how often they post content on LinkedIn and follow the frequency of their posts. To run this notebook, you must have already run LinkedIn\_Get\_profile\_posts\_stats.ipynb or LinkedIn\_Get\_company\_posts\_stats.ipynb to get your post stats in CSV.
+**Description:** This notebook allows users to track how often they post content on LinkedIn and follow the frequency of their posts. To run this notebook, you must have already run <b>LinkedIn_Get_profile_posts_stats.ipynb</b> or <b>LinkedIn_Get_company_posts_stats.ipynb</b> to get your post stats in CSV.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -30,7 +30,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 ```
 
-#### Setup Variables
+### Setup Variables
+
 
 ```python
 # Inputs
@@ -51,7 +52,8 @@ secundary_color = "#5C5C5C"
 company_logo = "https://media-exp2.licdn.com/dms/image/C560BAQEOzG0TtTclXw/company-logo_400_400/0/1606695523917?e=1662595200&v=beta&t=2k73kaJGBZ4i1OtFmy-0Vms6uXu7bLd2AJbhrx_D4AA"
 ```
 
-#### Setup Naas
+### Setup Naas
+
 
 ```python
 naas.dependency.add()
@@ -60,11 +62,11 @@ naas.dependency.add()
 # naas.dependency.delete()
 ```
 
-### Model
+## Model
 
-#### Get your posts from CSV
-
+### Get your posts from CSV
 All your posts will be stored in CSV.
+
 
 ```python
 def read_csv(file_path):
@@ -80,7 +82,8 @@ df_posts = read_csv(csv_input)
 df_posts
 ```
 
-#### Get dataframe trend
+### Get dataframe trend
+
 
 ```python
 def get_trend(df_init, col_date, col_value, label):
@@ -173,7 +176,8 @@ df_actual = get_trend(
 df_actual  # .tail(5)
 ```
 
-#### Plotting a barlinechart to get trend
+### Plotting a barlinechart to get trend
+
 
 ```python
 def create_barlinechart(
@@ -283,9 +287,11 @@ fig = create_barlinechart(
 )
 ```
 
-### Output
+## Output
 
-#### Save and share your csv file
+
+### Save and share your csv file
+
 
 ```python
 # Save your dataframe in CSV
@@ -298,7 +304,8 @@ csv_link = naas.asset.add(csv_output)
 # naas.asset.delete(csv_output)
 ```
 
-#### Save and share your graph in HTML
+### Save and share your graph in HTML
+
 
 ```python
 # Save your graph in HTML
@@ -311,7 +318,8 @@ html_link = naas.asset.add(html_output, params={"inline": True})
 # naas.asset.delete(html_output)
 ```
 
-#### Save and share your graph in image
+### Save and share your graph in image
+
 
 ```python
 # Save your graph in PNG

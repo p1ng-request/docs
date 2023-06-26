@@ -1,24 +1,24 @@
-# Get posts engagements
-
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Get\_posts\_engagements.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Get+posts+engagements:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_posts_engagements.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Get+posts+engagements:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
 **Tags:** #linkedin #posts #interactions #metrics #analytics #automation #naas
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook provides insights into how to increase engagement on LinkedIn posts. To run this notebook, you must have already run LinkedIn\_Get\_profile\_posts\_stats.ipynb or LinkedIn\_Get\_company\_posts\_stats.ipynb to get your post stats in CSV.
+**Description:** This notebook provides insights into how to increase engagement on LinkedIn posts. To run this notebook, you must have already run <b>LinkedIn_Get_profile_posts_stats.ipynb</b> or <b>LinkedIn_Get_company_posts_stats.ipynb</b> to get your post stats in CSV.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 import naas
@@ -26,7 +26,8 @@ import pandas as pd
 from datetime import datetime
 ```
 
-#### Setup Variables
+### Setup Variables
+
 
 ```python
 # Input
@@ -40,7 +41,8 @@ csv_likes = "LINKEDIN_LIKES.csv"
 csv_comments = "LINKEDIN_COMMENTS.csv"
 ```
 
-#### Setup Naas dependency
+### Setup Naas dependency
+
 
 ```python
 naas.dependency.add()
@@ -49,9 +51,10 @@ naas.dependency.add()
 # naas.dependency.delete()
 ```
 
-### Model
+## Model
 
-#### Read CSV
+### Read CSV
+
 
 ```python
 def read_csv(file_path):
@@ -63,9 +66,9 @@ def read_csv(file_path):
     return df
 ```
 
-#### Get your posts
-
+### Get your posts
 Get posts feed from CSV stored in your local (Returns empty if CSV does not exist)
+
 
 ```python
 df_posts = read_csv(csv_input)
@@ -73,7 +76,8 @@ print("✅ Posts fetched:", len(df_posts))
 df_posts.head(1)
 ```
 
-#### Get who likes your posts
+### Get who likes your posts
+
 
 ```python
 df_likes = read_csv(csv_likes)
@@ -81,7 +85,8 @@ print("✅ Likes fetched:", len(df_likes))
 df_likes.head(1)
 ```
 
-#### Get who comments your posts
+### Get who comments your posts
+
 
 ```python
 df_comments = read_csv(csv_comments)
@@ -89,9 +94,10 @@ print("✅ Comments fetched:", len(df_comments))
 df_comments.head(1)
 ```
 
-### Output
+## Output
 
-#### Update engagements
+### Update engagements
+
 
 ```python
 def update_engagements(
@@ -168,27 +174,28 @@ def update_engagements(
     return df_out.reset_index(drop=True)
 ```
 
-#### Update likes
-
-It will update your last X posts like's from LinkedIn API.\
+### Update likes
+It will update your last X posts like's from LinkedIn API.<br>
 PS: On the first execution all posts like's from the current month will be retrieved.
+
 
 ```python
 df_update_likes = update_engagements(df_posts, df_likes, "LIKES", csv_likes)
 df_update_likes.head(1)
 ```
 
-#### Update comments
-
-It will update your last X posts like's from LinkedIn API.\
+### Update comments
+It will update your last X posts like's from LinkedIn API.<br>
 PS: On the first execution all posts like's from the current month will be retrieved.
+
 
 ```python
 df_update_comments = update_engagements(df_posts, df_comments, "COMMENTS", csv_comments)
 df_update_comments.head(1)
 ```
 
-#### Create engagements database
+### Create engagements database
+
 
 ```python
 def create_engagements_db(df_likes, df_comments):
@@ -237,7 +244,8 @@ df_engagements = create_engagements_db(df_update_likes, df_update_comments)
 df_engagements.head(3)
 ```
 
-#### Save data engagements
+### Save data engagements
+
 
 ```python
 df_engagements.to_csv(csv_engagements)

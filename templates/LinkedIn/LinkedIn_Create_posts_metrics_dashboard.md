@@ -1,25 +1,24 @@
-# Create posts metrics dashboard
-
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Create\_posts\_metrics\_dashboard.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Create+posts+metrics+dashboard:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Create_posts_metrics_dashboard.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Create+posts+metrics+dashboard:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
 **Tags:** #linkedin #dashboard #plotly #dash #naas #asset #automation #analytics
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook provides a dashboard to track the performance metrics of posts created on LinkedIn. To run this notebook, you must have already run LinkedIn\_Get\_profile\_posts\_stats.ipynb or LinkedIn\_Get\_company\_posts\_stats.ipynb to get your post stats in CSV.\
+**Description:** This notebook provides a dashboard to track the performance metrics of posts created on LinkedIn. To run this notebook, you must have already run <b>LinkedIn_Get_profile_posts_stats.ipynb</b> or <b>LinkedIn_Get_company_posts_stats.ipynb</b> to get your post stats in CSV.<br>
 
 
-Disclaimer:\
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 # Data
@@ -50,9 +49,9 @@ from dash_bootstrap_components._components.Container import Container
 from dash.exceptions import PreventUpdate
 ```
 
-#### Setup Dash App
-
+### Setup Dash App
 Elements displayed in Dash App
+
 
 ```python
 # Defining the port of the dashboard
@@ -77,10 +76,9 @@ CHART_COLOR = "white"
 DASH_PORT = 8050
 ```
 
-#### Setup CSV
-
-List of CSVs storing your posts stats.\
-_NB: You must have already run LinkedIn\_Get\_profile\_posts\_stats.ipynb or LinkedIn\_Get\_company\_posts\_stats.ipynb to get your post stats in CSV._\
+### Setup CSV
+List of CSVs storing your posts stats. <br>
+*NB: You must have already run <b>LinkedIn_Get_profile_posts_stats.ipynb</b> or <b>LinkedIn_Get_company_posts_stats.ipynb</b> to get your post stats in CSV.<br>*
 
 
 ```python
@@ -92,9 +90,10 @@ CSV_FILES = [
 ]
 ```
 
-### Model
+## Model
 
-#### Constants
+### Constants
+
 
 ```python
 DATE_FORMAT = "%Y-%m-%d"
@@ -104,9 +103,10 @@ PERIOD_TEXT = "This Month"
 PERIOD_COMP = "last month"
 ```
 
-#### Data
+### Data
 
-**Raw data**
+#### Raw data
+
 
 ```python
 def concat_csv(files):
@@ -125,7 +125,8 @@ print("Posts fetched:", len(df_posts))
 df_posts.head(1)
 ```
 
-**Master data**
+#### Master data
+
 
 ```python
 def create_master_table(df):
@@ -151,14 +152,16 @@ print("Posts fetched clean:", len(df_master))
 df_master.head(1)
 ```
 
-**Ref Data: Entities**
+#### Ref Data: Entities
+
 
 ```python
 entities = sorted(df_master["ENTITY"].unique(), reverse=True)
 entities
 ```
 
-**Ref Data: Scenarios**
+#### Ref Data: Scenarios
+
 
 ```python
 scenarios = (
@@ -170,7 +173,8 @@ scenarios = (
 scenarios
 ```
 
-**Barchart data**
+#### Barchart data
+
 
 ```python
 def get_trend_barchart(
@@ -276,6 +280,7 @@ df_barchart = get_trend_barchart(
 df_barchart.head(1)
 ```
 
+
 ```python
 def create_data_histo(df, col_date, col_value, agg_value, file_path):
     output_df = pd.DataFrame()
@@ -288,7 +293,8 @@ def create_data_histo(df, col_date, col_value, agg_value, file_path):
     return output_df
 ```
 
-**Posts published**
+##### Posts published
+
 
 ```python
 df_1 = create_data_histo(
@@ -298,7 +304,8 @@ print("Rows fetched:", len(df_1))
 df_1.head(1)
 ```
 
-**Posts views**
+##### Posts views
+
 
 ```python
 df_2 = create_data_histo(
@@ -308,7 +315,8 @@ print("Rows fetched:", len(df_2))
 df_2.head(1)
 ```
 
-**Posts likes**
+##### Posts likes
+
 
 ```python
 df_3 = create_data_histo(
@@ -318,7 +326,8 @@ print("Rows fetched:", len(df_3))
 df_3.head(1)
 ```
 
-**Posts comments**
+##### Posts comments
+
 
 ```python
 df_4 = create_data_histo(
@@ -328,9 +337,10 @@ print("Rows fetched:", len(df_4))
 df_4.head(1)
 ```
 
-#### Charts
+### Charts
 
-**Create barchart**
+#### Create barchart
+
 
 ```python
 def create_barchart(df, title=None, label="DATE_D", value="VALUE", value_d="VALUE_D"):
@@ -368,9 +378,10 @@ def create_barchart(df, title=None, label="DATE_D", value="VALUE", value_d="VALU
 fig = create_barchart(df_barchart)
 ```
 
-#### Dash App
+### Dash App
 
-**Create dropdown "Entity"**
+#### Create dropdown "Entity"
+
 
 ```python
 dropdown_entity = dcc.Dropdown(
@@ -382,7 +393,8 @@ dropdown_entity = dcc.Dropdown(
 )
 ```
 
-**Create dropdown "Scenario"**
+#### Create dropdown "Scenario"
+
 
 ```python
 dropdown_scenario = dcc.Dropdown(
@@ -394,7 +406,8 @@ dropdown_scenario = dcc.Dropdown(
 )
 ```
 
-**Create Navbar**
+#### Create Navbar
+
 
 ```python
 navbar = dbc.Navbar(
@@ -457,7 +470,8 @@ navbar = dbc.Navbar(
 )
 ```
 
-**Create App title**
+#### Create App title
+
 
 ```python
 def create_app_title(name, uid="app_title"):
@@ -481,7 +495,8 @@ def create_app_title(name, uid="app_title"):
     return title
 ```
 
-**Create Section**
+#### Create Section
+
 
 ```python
 def create_section(name, uid=None):
@@ -517,7 +532,8 @@ def create_section(name, uid=None):
     return section
 ```
 
-**Create HKPIs**
+#### Create HKPIs
+
 
 ```python
 def create_hkpis(card_title, card_value, card_var):
@@ -558,7 +574,8 @@ def create_hkpis(card_title, card_value, card_var):
     return card
 ```
 
-**Create Chart**
+#### Create Chart
+
 
 ```python
 def create_chart(title, chart_id):
@@ -594,7 +611,8 @@ def create_chart(title, chart_id):
     return card
 ```
 
-**Create Layout**
+#### Create Layout
+
 
 ```python
 # Init App
@@ -738,9 +756,10 @@ def multi_outputs(entity, scenario):
     )
 ```
 
-### Output
+## Output
 
-#### Generate URL and show logs
+### Generate URL and show logs
+
 
 ```python
 if __name__ == "__main__":

@@ -1,52 +1,54 @@
-# Get sentiment emotion irony offensiveness from comments
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Get_sentiment_emotion_irony_offensiveness_from_comments.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Get+sentiment+emotion+irony+offensiveness+from+comments:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Get\_sentiment\_emotion\_irony\_offensiveness\_from\_comments.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Get+sentiment+emotion+irony+offensiveness+from+comments:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
-
-**Tags:** #linkedin #nlp #transformers #ai #post #comments #naas\_drivers #content #snippet #dataframe
+**Tags:** #linkedin #nlp #transformers #ai #post #comments #naas_drivers #content #snippet #dataframe
 
 **Author:** [Nikolaj Groeneweg](https://www.linkedin.com/in/njgroene/)
 
-**Description:** This notebook gets all the comments on a LinkedIn post, and performs sentiment analysis, emotion classification and some semantic analysis on them. It classifies each comment and returns the following information:
+**Description:** This notebook gets all the comments on a LinkedIn post, and performs sentiment analysis, emotion classification and some semantic analysis on them. 
+It classifies each comment and returns the following information:
 
-* is the comment positive, negative or neutral?
-* is the comment ironic?
-* is the comment offensive?
-* does the comment express joy, optimism, anger or sadness?
+- is the comment positive, negative or neutral?
+- is the comment ironic?
+- is the comment offensive?
+- does the comment express joy, optimism, anger or sadness?
 
 **References:**
 
 This template is based on the following work :
 
-F. Barbieri, J. Camacho-Collados, L. Neves and L.E. Anke (2020), _TweetEval: Unified Benchmark and Comparative Evaluation for Tweet Classification_, CoRR abs/2010.12421. Full paper : https://arxiv.org/abs/2010.12421. Official github : https://github.com/cardiffnlp/tweeteval
+F. Barbieri, J. Camacho-Collados, L. Neves and L.E. Anke (2020), *TweetEval: Unified Benchmark and Comparative Evaluation for Tweet Classification*, CoRR abs/2010.12421. Full paper : https://arxiv.org/abs/2010.12421. Official github : https://github.com/cardiffnlp/tweeteval
 
-All credit goes to the above authors, any mistakes are on the author of this template.
+All credit goes to the above authors, any mistakes are on the author of this template. 
+  
 
-#### Disclaimers
+### Disclaimers
 
-The machine learning models used in this template were trained on datasets of tweets.\
-Details can be found here : https://github.com/cardiffnlp/tweeteval/blob/main/README.md.
+The machine learning models used in this template were trained on datasets of tweets.<br>Details can be found here : https://github.com/cardiffnlp/tweeteval/blob/main/README.md. 
 
-These models may be expected to work well on shorter comments, but their output will become less reliable as the length of the text increases.
+These models may be expected to work well on shorter comments, but their output will become less reliable as the length of the text increases. 
 
 The "emotion" classification performs rather unpredictably on very short comments. For many neutral comments it defaults to "joy", there being neutral category). It is most useful to identify and filter for negative emotions (sadness) and to identify interesting commments (optimism).
 
 In general, caution is recommended when integrating these classifications in any automated decision pipeline.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 !pip install protobuf==3.20.1 --user
 ```
+
 
 ```python
 from naas_drivers import linkedin
@@ -62,9 +64,9 @@ import os.path
 import naas
 ```
 
-#### Setup LinkedIn
+### Setup LinkedIn
+<a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
-[How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # LinkedIn credentials
@@ -77,40 +79,38 @@ JSESSIONID = None or naas.secret.get("JSESSIONID")  # EXAMPLE ajax:8379907400220
 POST_URL = "ENTER_YOUR_POST_URL_HERE"
 ```
 
-### Model
+## Model
 
-Get the post comments and return them in a dataframe.\
-Colums are added for classifier output.\
-
+Get the post comments and return them in a dataframe. <br> Colums are added for classifier output.<br>
 
 **Available columns after classification :**
+- PROFILE_ID
+- PROFILE_URL
+- PUBLIC_ID
+- FIRSTNAME
+- LASTNAME
+- FULLNAME
+- OCCUPATION
+- PROFILE_PICTURE
+- BACKGROUND_PICTURE
+- PROFILE_TYPE
+- TEXT
+- SENTIMENT
+- SENTIMENT_SCORE
+- IRONY
+- IRONY_SCORE
+- OFFENSIVE
+- OFFENSIVE_SCORE
+- EMOTION
+- EMOTION_SCORE
+- CREATED_TIME
+- LANGUAGE
+- DISTANCE
+- COMMENTS
+- LIKES
+- POST_URL
+- DATE_EXTRACT
 
-* PROFILE\_ID
-* PROFILE\_URL
-* PUBLIC\_ID
-* FIRSTNAME
-* LASTNAME
-* FULLNAME
-* OCCUPATION
-* PROFILE\_PICTURE
-* BACKGROUND\_PICTURE
-* PROFILE\_TYPE
-* TEXT
-* SENTIMENT
-* SENTIMENT\_SCORE
-* IRONY
-* IRONY\_SCORE
-* OFFENSIVE
-* OFFENSIVE\_SCORE
-* EMOTION
-* EMOTION\_SCORE
-* CREATED\_TIME
-* LANGUAGE
-* DISTANCE
-* COMMENTS
-* LIKES
-* POST\_URL
-* DATE\_EXTRACT
 
 ```python
 df = linkedin.connect(LI_AT, JSESSIONID).post.get_comments(POST_URL)
@@ -125,6 +125,7 @@ df.insert(loc=16, column="OFFENSIVE_SCORE", value=None)
 df.insert(loc=17, column="EMOTION", value=None)
 df.insert(loc=18, column="EMOTION_SCORE", value=None)
 ```
+
 
 ```python
 def preprocess(text):
@@ -159,6 +160,7 @@ def classify(text, task, tokenizers, models, task_labels):
     score = np.round(float(scores[idx]), 4)
     return {"label": label, "score": score}
 ```
+
 
 ```python
 # selected subset of available tasks
@@ -198,9 +200,10 @@ for task in tasks:
 df.head(5)
 ```
 
-### Output
+## Output
 
-#### Display result
+### Display result
+
 
 ```python
 # shows only text and classification output

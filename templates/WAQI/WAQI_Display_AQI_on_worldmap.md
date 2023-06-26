@@ -1,33 +1,27 @@
-# Display AQI on worldmap
-
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WAQI/WAQI\_Display\_AQI\_on\_worldmap.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=WAQI+-+Display+AQI+on+worldmap:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/WAQI/WAQI_Display_AQI_on_worldmap.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=WAQI+-+Display+AQI+on+worldmap:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
 **Tags:** #waqi #airquality #api #data #city #stations
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
-**Description:** This notebook displays AQI on worldmap.\
-
+**Description:** This notebook displays AQI on worldmap.<br>
 
 Air Quality Index Scale:
-
-* 0 - 50: Good - Air quality is considered satisfactory, and air pollution poses little or no risk
-* 51 - 100: Moderate - Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.
-* 101-150: Unhealthy for Sensitive Groups - Members of sensitive groups may experience health effects. The general public is not likely to be affected.
-* 151-200: Unhealthy - Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.
-* 201-300: Very Unhealthy - Health warnings of emergency conditions. The entire population is more likely to be affected.
-* 300+: Hazardous - Health alert: everyone may experience more serious health effects.
+- 0 - 50: Good - Air quality is considered satisfactory, and air pollution poses little or no risk
+- 51 - 100: Moderate - Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.
+- 101-150: Unhealthy for Sensitive Groups - Members of sensitive groups may experience health effects. The general public is not likely to be affected.
+- 151-200: Unhealthy - Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.
+- 201-300: Very Unhealthy - Health warnings of emergency conditions. The entire population is more likely to be affected.
+- 300+: Hazardous - Health alert: everyone may experience more serious health effects.
 
 **References:**
+- [WAQI API Documentation](https://aqicn.org/json-api/doc/#api-Map_Queries-GetMapStations)
+- [Air Quality Index Scale](https://aqicn.org/scale/)
 
-* [WAQI API Documentation](https://aqicn.org/json-api/doc/#api-Map\_Queries-GetMapStations)
-* [Air Quality Index Scale](https://aqicn.org/scale/)
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 import requests
@@ -36,10 +30,10 @@ import pandas as pd
 import plotly.express as px
 ```
 
-#### Setup Variables
+### Setup Variables
+- `token`: WAQI API token. [Get your token here](https://aqicn.org/data-platform/token/).
+- `latlng`: map bounds in the form lat1,lng1,lat2,lng2
 
-* `token`: WAQI API token. [Get your token here](https://aqicn.org/data-platform/token/).
-* `latlng`: map bounds in the form lat1,lng1,lat2,lng2
 
 ```python
 # Inputs
@@ -51,9 +45,10 @@ output_html = "WAQI_worldmap.html"
 output_csv = "WAQI_data.csv"
 ```
 
-### Model
+## Model
 
-#### Get all stations by lat/lng bounds
+### Get all stations by lat/lng bounds
+
 
 ```python
 def get_all_stations(token, latlng):
@@ -65,7 +60,8 @@ def get_all_stations(token, latlng):
 result = get_all_stations(token, latlng)
 ```
 
-#### Create dataframe
+### Create dataframe
+
 
 ```python
 def flatten_dict(d, parent_key='', sep='_'):
@@ -130,7 +126,8 @@ print("➡️ Results found:", len(df))
 df.head(5)
 ```
 
-#### Create Bubblemap
+### Create Bubblemap
+
 
 ```python
 fig = px.scatter_mapbox(
@@ -153,21 +150,24 @@ config = {"displayModeBar": False}
 fig.show(config=config)
 ```
 
-### Output
+## Output
 
-#### Save data in csv
+### Save data in csv
+
 
 ```python
 df.to_csv(output_csv, index=False)
 ```
 
-#### Export HTML
+### Export HTML
+
 
 ```python
 fig.write_html(output_html)
 ```
 
-#### Generate shareable asset
+### Generate shareable asset
+
 
 ```python
 link_csv = naas.asset.add(output_csv, {"inline": True})
@@ -178,5 +178,9 @@ link_html = naas.asset.add(output_html, {"inline": True})
 # naas.asset.delete(output_html)
 ```
 
+ 
+
+
 ```python
+
 ```

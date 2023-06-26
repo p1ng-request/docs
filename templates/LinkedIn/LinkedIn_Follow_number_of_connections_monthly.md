@@ -1,24 +1,24 @@
-# Follow number of connections monthly
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Follow_number_of_connections_monthly.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Follow+number+of+connections+monthly:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Follow\_number\_of\_connections\_monthly.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Follow+number+of+connections+monthly:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
-
-**Tags:** #linkedin #network #connections #naas\_drivers #analytics #csv #html #image #content #plotly
+**Tags:** #linkedin #network #connections #naas_drivers #analytics #csv #html #image #content #plotly
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook tracks the number of connections made on LinkedIn each month.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -29,9 +29,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 ```
 
-#### Setup LinkedIn
+### Setup LinkedIn
+👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
-👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # LinkedIn cookies
@@ -39,10 +39,10 @@ LI_AT = "ENTER_YOUR_COOKIE_HERE"  # EXAMPLE : "AQFAzQN_PLPR4wAAAXc-FCKmgiMit5FLd
 JSESSIONID = "ENTER_YOUR_JSESSIONID_HERE"  # EXAMPLE : "ajax:8379907400220387585"
 ```
 
-#### Setup Outputs
-
-Create CSV to store your posts stats.\
+### Setup Outputs
+Create CSV to store your posts stats.<br>
 PS: This CSV could be used in others LinkedIn templates.
+
 
 ```python
 # Inputs
@@ -56,7 +56,8 @@ html_output = f"{name_output}.html"
 image_output = f"{name_output}.png"
 ```
 
-#### Setup Naas scheduler
+### Setup Naas scheduler
+
 
 ```python
 # Schedule your notebook everyday at 9:00 AM
@@ -67,11 +68,11 @@ naas.scheduler.add(cron="0 9 * * *")
 # naas.scheduler.delete()
 ```
 
-### Model
+## Model
 
-#### Get your connections from CSV
-
+### Get your connections from CSV
 All your connections will be stored in CSV.
+
 
 ```python
 def get_csv(file_path):
@@ -83,15 +84,16 @@ def get_csv(file_path):
     return df
 ```
 
+
 ```python
 df_connections = get_csv(csv_input)
 df_connections
 ```
 
-#### Update last connections
-
-It will get the last connections posts from LinkedIn API.\
+### Update last connections
+It will get the last connections posts from LinkedIn API.<br>
 PS: On the first execution all connections will be retrieved. The execution could take some times depending of the size of your network.
+
 
 ```python
 def update_connections(df, csv_input):
@@ -147,9 +149,9 @@ df_connections = update_connections(df_connections, csv_input)
 df_connections
 ```
 
-#### Get trend dataframe
-
+### Get trend dataframe
 Create dataframe with number of LinkedIn views cumulated by monthly with variation
+
 
 ```python
 def get_trend(df_init, col_date, col_value, label, months_limit=12):
@@ -220,7 +222,8 @@ df_trend = get_trend(
 df_trend.tail(5)
 ```
 
-#### Create barlinechart using Plotly
+### Create barlinechart using Plotly
+
 
 ```python
 def create_barlinechart(
@@ -296,9 +299,10 @@ fig = create_barlinechart(
 )
 ```
 
-### Output
+## Output
 
-#### Save and share your csv file
+### Save and share your csv file
+
 
 ```python
 # Save your dataframe in CSV
@@ -311,7 +315,8 @@ naas.asset.add(csv_output)
 # naas.asset.delete(csv_output)
 ```
 
-#### Save and share your graph in HTML
+### Save and share your graph in HTML
+
 
 ```python
 # Save your graph in HTML
@@ -324,7 +329,8 @@ naas.asset.add(html_output, params={"inline": True})
 # naas.asset.delete(html_output)
 ```
 
-#### Save and share your graph in image
+### Save and share your graph in image
+
 
 ```python
 # Save your graph in PNG

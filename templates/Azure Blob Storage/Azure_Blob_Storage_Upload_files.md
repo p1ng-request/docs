@@ -1,21 +1,16 @@
-# Upload files
-
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Azure%20Blob%20Storage/Azure\_Blob\_Storage\_Upload\_files.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=Azure+Blob+Storage+-+Upload+files:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Azure%20Blob%20Storage/Azure_Blob_Storage_Upload_files.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=Azure+Blob+Storage+-+Upload+files:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
 **Tags:** #azure #datalake #naas #snippet
 
-**Author:** [Alexandre Stevens](https://www.linkedin.com/in/)\
-
+**Author:** [Alexandre Stevens](https://www.linkedin.com/in/) <br>
 
 **Description:** This notebook explains how to upload files to Azure Blob Storage using the Azure Python SDK.
 
-### Input
+## Input
 
-#### Import libraries
-
+### Import libraries
 In order to update a file into Azure blob storage in Python, you will need to use the Azure Storage SDK for Python.
+
 
 ```python
 try:
@@ -31,13 +26,13 @@ except ImportError:
     from azure.storage.blob import ContentSettings
 ```
 
-#### Setup Variables
+### Setup Variables
+- ACCOUNT_URL: Your account url in azure blob storage, example: 'https://yourproject.blob.core.windows.net'
+- KEY_ACCOUNT: Your Azure credentials, To get access please follow the procedure [here](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)
+- CONTAINER_NAME: Container name in your Azure project where files will be store
+- FILE_NAME: Name of the file in your container
+- UPLOAD_FILE_PATH: File to be uploaded
 
-* ACCOUNT\_URL: Your account url in azure blob storage, example: 'https://yourproject.blob.core.windows.net'
-* KEY\_ACCOUNT: Your Azure credentials, To get access please follow the procedure [here](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)
-* CONTAINER\_NAME: Container name in your Azure project where files will be store
-* FILE\_NAME: Name of the file in your container
-* UPLOAD\_FILE\_PATH: File to be uploaded
 
 ```python
 # Connect to your storage account
@@ -50,16 +45,18 @@ FILE_NAME = "file_name.csv"
 UPLOAD_FILE_PATH = "../outputs/filename.csv"
 ```
 
-### Model
+## Model
 
-#### Create a BlobServiceClient using the connection string
+### Create a BlobServiceClient using the connection string
+
 
 ```python
 # Create a BlobServiceClient using the connection string
 blob_service_client = BlobServiceClient(account_url=ACCOUNT_URL, credential=KEY_ACCOUNT)
 ```
 
-#### Create a ContainerClient
+### Create a ContainerClient
+
 
 ```python
 # Create a ContainerClient
@@ -68,9 +65,10 @@ blob_client = blob_service_client.get_blob_client(
 )
 ```
 
-### Output
+## Output
 
-#### Upload the file to the container
+### Upload the file to the container
+
 
 ```python
 with open(file=UPLOAD_FILE_PATH, mode="rb") as data:

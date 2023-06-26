@@ -1,24 +1,24 @@
-# Withdraw pending profile invitations
+<a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn_Withdraw_pending_profile_invitations.ipynb" target="_parent"><img src="https://naasai-public.s3.eu-west-3.amazonaws.com/Open_in_Naas_Lab.svg"/></a><br><br><a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=&template=template-request.md&title=Tool+-+Action+of+the+notebook+">Template request</a> | <a href="https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=&labels=bug&template=bug_report.md&title=LinkedIn+-+Withdraw+pending+profile+invitations:+Error+short+description">Bug report</a> | <a href="https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas_Start_data_product.ipynb" target="_parent">Generate Data Product</a>
 
-[![](https://naasai-public.s3.eu-west-3.amazonaws.com/Open\_in\_Naas\_Lab.svg)](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/LinkedIn/LinkedIn\_Withdraw\_pending\_profile\_invitations.ipynb)\
-\
-[Template request](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=\&template=template-request.md\&title=Tool+-+Action+of+the+notebook+) | [Bug report](https://github.com/jupyter-naas/awesome-notebooks/issues/new?assignees=\&labels=bug\&template=bug\_report.md\&title=LinkedIn+-+Withdraw+pending+profile+invitations:+Error+short+description) | [Generate Data Product](https://app.naas.ai/user-redirect/naas/downloader?url=https://raw.githubusercontent.com/jupyter-naas/awesome-notebooks/master/Naas/Naas\_Start\_data\_product.ipynb)
-
-**Tags:** #linkedin #invitation #pending #naas\_drivers #content #automation
+**Tags:** #linkedin #invitation #pending #naas_drivers #content #automation
 
 **Author:** [Florent Ravenel](https://www.linkedin.com/in/florent-ravenel/)
 
 **Description:** This notebook allows users to view and manage pending profile invitations sent through LinkedIn.
 
-Disclaimer:\
+
+<div class="alert alert-info" role="info" style="margin: 10px">
+<b>Disclaimer:</b><br>
 This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by Linkedin or any of its affiliates or subsidiaries. It uses an independent and unofficial API. Use at your own risk.
 
-This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.\
+This project violates Linkedin's User Agreement Section 8.2, and because of this, Linkedin may (and will) temporarily or permanently ban your account. We are not responsible for your account being banned.
+<br>
+</div>
 
+## Input
 
-### Input
+### Import libraries
 
-#### Import libraries
 
 ```python
 from naas_drivers import linkedin
@@ -31,9 +31,9 @@ import json
 import requests
 ```
 
-#### Setup LinkedIn
+### Setup LinkedIn
+👉 <a href='https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75'>How to get your cookies ?</a>
 
-👉 [How to get your cookies ?](https://www.notion.so/LinkedIn-driver-Get-your-cookies-d20a8e7e508e42af8a5b52e33f3dba75)
 
 ```python
 # Credentials
@@ -44,25 +44,27 @@ LI_AT = (
 JSESSIONID = naas.secret.get("LINKEDIN_JSESSIONID") or "ajax:8379907400220XXXXX"
 ```
 
-#### Setup limit
+### Setup limit
+
 
 ```python
 # Invitations pending limit in month(s)
 LIMIT = 3
 ```
 
-#### Setup Naas scheduler
+### Setup Naas scheduler
+For information on changing this setting, please check https://crontab.guru/ for information on the required CRON syntax 
 
-For information on changing this setting, please check https://crontab.guru/ for information on the required CRON syntax
 
 ```python
 # the default settings below will make the notebook run everyday at 14:00 on Friday
 SCHEDULER_CRON = "0 14 * * 5"
 ```
 
-### Model
+## Model
 
-#### Get invitations sent
+### Get invitations sent
+
 
 ```python
 df_invitations_sent = linkedin.connect(LI_AT, JSESSIONID).invitation.get_sent()
@@ -70,7 +72,8 @@ print("Pending invitations:", len(df_invitations_sent))
 df_invitations_sent.head(1)
 ```
 
-#### Filter invitations pending > limit
+### Filter invitations pending > limit
+
 
 ```python
 def out_of_limit(df):
@@ -91,7 +94,8 @@ print("Invitations to withdraw:", len(df_withdraw))
 df_withdraw.head(1)
 ```
 
-#### Witdraw invitations sent pending
+### Witdraw invitations sent pending
+
 
 ```python
 def withdraw_invitation(invitation_id):
@@ -135,9 +139,10 @@ def withdraw_invitations(df):
 withdraw_invitations(df_withdraw)
 ```
 
-### Output
+## Output
 
-#### Automate your task
+### Automate your task
+
 
 ```python
 naas.scheduler.add(cron=SCHEDULER_CRON)
