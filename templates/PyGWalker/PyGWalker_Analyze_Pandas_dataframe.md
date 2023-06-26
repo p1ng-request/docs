@@ -9,6 +9,7 @@
 **References:**
 - [Tableau Documentation](https://help.tableau.com/current/pro/desktop/en-us/data_analysis.htm)
 - [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
+- [PyGWalker Documenation](https://docs.kanaries.net/pygwalker)
 
 ## Input
 
@@ -53,4 +54,11 @@ df.describe()
 ```python
 # Display result
 gwalker = pyg.walk(df)
+```
+
+## Display PyGWalker Help
+
+```python
+# Display build-in help documentation
+help(pyg.walk)
 ```
